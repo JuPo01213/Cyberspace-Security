@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "run_id": "RUN-YYYYMMDD-NNN",
+  "objective": "<observable final objective>",
+  "acceptance": [
+    {
+      "id": "A1",
+      "criterion": "<observable acceptance criterion>",
+      "state": "OPEN"
+    }
+  ],
+  "target": {
+    "sha256": "<SHA256>",
+    "label": "<DESENSITIZED_TARGET_LABEL>"
+  },
+  "environment": {
+    "vm": "<DESENSITIZED_VM_LABEL>",
+    "baseline": "<DESENSITIZED_BASELINE_LABEL>",
+    "control_adapter": "<ADAPTER>",
+    "data_adapter": "<ADAPTER>",
+    "observation_mode": "natural"
+  },
+  "deadline": "<ISO-8601>",
+  "phase": "PRECHECK",
+  "outstanding_op": null,
+  "blocked_on": [],
+  "outcome": null
+}
