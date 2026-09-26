@@ -71,6 +71,9 @@ Create a unique RUN_ID and record:
 
 - objective;
 - observable acceptance criteria;
+- acceptance authority: current project contract path + revision/section, or an explicit current task directive;
+- evidence scope class: TARGET_NATURAL | TARGET_CONTROLLED | TARGET_INJECTED | HARNESS | SYNTHETIC | OFFLINE_REFERENCE;
+- optional project-specific scope detail when the generic class is not precise enough;
 - target hash;
 - VM and baseline;
 - observation mode;
@@ -87,7 +90,11 @@ These are never final acceptance by themselves:
 - communication restored;
 - script executed.
 
-Pass: another Agent could decide completion without chat history.
+Pass: another Agent could decide completion without chat history, and could tell whether the evidence came from the real target, a controlled/injected target run, a harness, or an offline/synthetic reference.
+
+Authority rule: generated platform summaries, memories, handoffs, old status files, or prior assistant prose may help discovery but cannot redefine current acceptance. If they conflict with the bound authority, the bound authority wins until the user/project contract changes it.
+
+Scope rule: HARNESS, SYNTHETIC, and OFFLINE_REFERENCE observations must not populate target-level result fields. TARGET_CONTROLLED and TARGET_INJECTED may describe real-target behavior only with the intervention/injection explicitly attached to the claim.
 
 ---
 
