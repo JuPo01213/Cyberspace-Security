@@ -4,6 +4,7 @@ from pathlib import Path
 
 ALLOWED_MODES={"natural","attach-after-launch","debugger-launch"}
 ALLOWED_OUTCOMES={None,"POSITIVE","NEGATIVE","INCONCLUSIVE","INVALID_INSTRUMENT","INFRA_FAILURE"}
+ALLOWED_SCOPES={"TARGET_NATURAL","TARGET_CONTROLLED","TARGET_INJECTED","HARNESS","SYNTHETIC","OFFLINE_REFERENCE"}
 
 def fail(msg):
     print(f"INVALID: {msg}", file=sys.stderr)
@@ -17,7 +18,7 @@ try:
 except Exception as e:
     fail(f"cannot parse JSON: {e}")
 
-for k in ("schema_version","run_id","objective","acceptance","target","environment","phase","blocked_on","outcome"):
+for k in ("schema_version","run_id","objective","acceptance","acceptance_authority","evidence_scope","target","environment","phase","blocked_on","outcome"):
     if k not in d:
         fail(f"missing field: {k}")
 if not d["run_id"] or not d["objective"]:
@@ -31,3 +32,8 @@ if d["outcome"] not in ALLOWED_OUTCOMES:
 if not d["target"].get("sha256"):
     fail("target.sha256 is required")
 print("OK")
+
+if not isinstance(d["acceptance_authority"],dict) or not d["acceptance_authority"].get("reference"):
+    fail("acceptance_authority.reference is required")
+if not isinstance(d["evidence_scope"],dict) or d["evidence_scope"].get("class") not in ALLOWED_SCOPES:
+    fail("invalid evidence_scope.class")
