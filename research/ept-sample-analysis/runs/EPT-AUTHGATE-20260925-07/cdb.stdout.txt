@@ -1,0 +1,100 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+..
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 1.625 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_08F9AF00_85A9E226.exe
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+(7f0.32c): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffe`c52310d0 cc              int     3
+0:003> .echo AUTH_ATTACH_BEGIN
+AUTH_ATTACH_BEGIN
+0:003> .sxe av
+             ^ Syntax error in '.sxe av'
+0:003> eb 1407a3080 b8 01 00 00 00 c3
+0:003> eb 1407a6a6a 90 90 90 90 90 90
+0:003> .echo AUTH_GATE_AND_MAIN_BRANCH_PATCHED
+AUTH_GATE_AND_MAIN_BRANCH_PATCHED
+0:003> db 1407a3080 L6
+00000001`407a3080  b8 01 00 00 00 c3                                ......
+0:003> db 1407a6a6a L6
+00000001`407a6a6a  90 90 90 90 90 90                                ......
+0:003> ba e 1 1407a4b90
+0:003> ba e 1 1407a6a6a
+0:003> ba e 1 1407a7aec
+0:003> ba e 1 14078f060
+0:003> .echo CHILD_BREAKPOINTS_ARMED
+CHILD_BREAKPOINTS_ARMED
+0:003> g
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+Breakpoint 0 hit
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_08F9AF00_85A9E226.exe
+EPT_08F9AF00_85A9E226+0x7a4b90:
+00000001`407a4b90 48895c2418      mov     qword ptr [rsp+18h],rbx ss:00000000`0014ff00=01dd4ca49f40caa1
+0:000> .echo AUTH_ATTACH_END
+AUTH_ATTACH_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

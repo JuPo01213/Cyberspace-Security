@@ -1,0 +1,203 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.032 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.078 seconds
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_F64543D5_E7E0466A.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(230.160): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:003> .echo STATIC_FATAL_REGION_BEGIN
+STATIC_FATAL_REGION_BEGIN
+0:003> u 0x1407aa640 L16
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_F64543D5_E7E0466A.exe
+EPT_F64543D5_E7E0466A+0x7aa640:
+00000001`407aa640 0000            add     byte ptr [rax],al
+00000001`407aa642 0000            add     byte ptr [rax],al
+00000001`407aa644 0000            add     byte ptr [rax],al
+00000001`407aa646 0000            add     byte ptr [rax],al
+00000001`407aa648 0000            add     byte ptr [rax],al
+00000001`407aa64a 0000            add     byte ptr [rax],al
+00000001`407aa64c 0000            add     byte ptr [rax],al
+00000001`407aa64e 0000            add     byte ptr [rax],al
+00000001`407aa650 0000            add     byte ptr [rax],al
+00000001`407aa652 0000            add     byte ptr [rax],al
+00000001`407aa654 0000            add     byte ptr [rax],al
+00000001`407aa656 0000            add     byte ptr [rax],al
+00000001`407aa658 0000            add     byte ptr [rax],al
+00000001`407aa65a 0000            add     byte ptr [rax],al
+00000001`407aa65c 0000            add     byte ptr [rax],al
+00000001`407aa65e 0000            add     byte ptr [rax],al
+00000001`407aa660 0000            add     byte ptr [rax],al
+00000001`407aa662 0000            add     byte ptr [rax],al
+00000001`407aa664 0000            add     byte ptr [rax],al
+00000001`407aa666 0000            add     byte ptr [rax],al
+00000001`407aa668 0000            add     byte ptr [rax],al
+00000001`407aa66a 0000            add     byte ptr [rax],al
+0:003> u 0x1407aa694 L10
+EPT_F64543D5_E7E0466A+0x7aa694:
+00000001`407aa694 0000            add     byte ptr [rax],al
+00000001`407aa696 0000            add     byte ptr [rax],al
+00000001`407aa698 0000            add     byte ptr [rax],al
+00000001`407aa69a 0000            add     byte ptr [rax],al
+00000001`407aa69c 0000            add     byte ptr [rax],al
+00000001`407aa69e 0000            add     byte ptr [rax],al
+00000001`407aa6a0 0000            add     byte ptr [rax],al
+00000001`407aa6a2 0000            add     byte ptr [rax],al
+00000001`407aa6a4 0000            add     byte ptr [rax],al
+00000001`407aa6a6 0000            add     byte ptr [rax],al
+00000001`407aa6a8 0000            add     byte ptr [rax],al
+00000001`407aa6aa 0000            add     byte ptr [rax],al
+00000001`407aa6ac 0000            add     byte ptr [rax],al
+00000001`407aa6ae 0000            add     byte ptr [rax],al
+00000001`407aa6b0 0000            add     byte ptr [rax],al
+00000001`407aa6b2 0000            add     byte ptr [rax],al
+0:003> u 0x1407b1090 L6
+EPT_F64543D5_E7E0466A+0x7b1090:
+00000001`407b1090 0000            add     byte ptr [rax],al
+00000001`407b1092 0000            add     byte ptr [rax],al
+00000001`407b1094 0000            add     byte ptr [rax],al
+00000001`407b1096 0000            add     byte ptr [rax],al
+00000001`407b1098 0000            add     byte ptr [rax],al
+00000001`407b109a 0000            add     byte ptr [rax],al
+0:003> .echo STATIC_FATAL_REGION_END
+STATIC_FATAL_REGION_END
+0:003> .echo RUN61_STAGE_FORCE_BEGIN
+RUN61_STAGE_FORCE_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:003> sxi av
+0:003> sxi c0000005
+0:003> sxi e06d7363
+0:003> sxi 80000003
+0:003> sxi 80000004
+0:003> sxi c000001d
+0:003> sxi c0000094
+0:003> sxi e0434352
+0:003> sxi 6d9
+0:003> .echo EXCEPTION_PASSTHROUGH_ARMED
+EXCEPTION_PASSTHROUGH_ARMED
+0:003> eb 0x1403b34d0 33 c0 c3
+0:003> eb 0x1403b3280 33 c0 c3
+0:003> eb 0x1403c47e0 33 c0 c3
+0:003> eb 0x1403b3d30 33 c0 c3
+0:003> eb 0x1403c49d0 33 c0 c3
+0:003> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:003> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:003> bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; r rip=poi(rsp); r rsp=rsp+8; g"
+breakpoint 3 redefined
+0:003> bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+0:003> bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+0:003> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:003> bu kernel32!WriteFile ".echo WFW; r rcx; r r8; db @rdx L8; j (@r8 > 0x100000) 'r $t9=@r9; gu; r eax; !gle; dd @$t9 L1; g' 'g'"
+0:003> bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+0:003> bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+0:003> bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+0:003> bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+0:003> bu kernelbase!SetEndOfFile ".echo SETEOF; r rcx; g"
+0:003> bu ntdll!NtWriteFile ".echo NTWF; r rcx; dd @rsp+30 L1; g"
+0:003> bu ntdll!NtReadFile ".echo NTRD; r rcx; g"
+0:003> bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+0:003> bu kernelbase!GetFileSizeEx ".echo GFS; r rcx; g"
+0:003> bu kernelbase!SetFilePointerEx ".echo SFP; r rcx; g"
+0:003> bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+0:003> ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+0:003> ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+0:003> ba e 1 14171f567 ".echo FATAL_THUNK; k L12; dd @rsp L4; r rsp=@$t0; r rbx=0; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b109b; r eax=1; g"
+0:003> .echo HWBP_ARMED_SYNTHRET
+HWBP_ARMED_SYNTHRET
+0:003> g
+EXIT_PROCESS_SKIPPED
+Child-SP          RetAddr               Call Site
+00000000`0014e5f8 00000001`43ae5d57     KERNEL32!ExitProcessImplementation
+00000000`0014e600 00000000`00000000     EPT_F64543D5_E7E0466A+0x3ae5d57
+00000000`0014e5f8  43ae5d57 00000001 00000000 2437b697
+00000000`0014e608  43c533a6 00000001 43d11ddf 00000001
+ntdll!NtTerminateProcess+0x14:
+00007ffb`dcd0db24 c3              ret
+0:000> .echo RUN61_STOP
+RUN61_STOP
+0:000> ~*k
+
+.  0  Id: 230.12f4 Suspend: 0 Teb: 00000000`0024a000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0014feb8 00007ffb`dcccef88     ntdll!NtTerminateProcess+0x14
+00000000`0014fec0 00007ffb`dccbec85     ntdll!RtlExitUserProcess+0xb8
+00000000`0014fef0 00007ffb`db50737d     ntdll!RtlExitUserThread+0x55
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x1d
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo RUN61_END
+RUN61_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

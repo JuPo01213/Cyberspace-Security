@@ -1,0 +1,6 @@
+﻿{"utc":"2026-09-25T18:19:21.9469579Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":3524,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T18:19:22.1988021Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_68ECC4BD_74BAB9AD.exe","pid":2812,"ppid":3524,"type":"CHILD_FOUND","utc":"2026-09-25T18:19:34.7742339Z"}
+{"target_pid":2812,"debugger_pid":4948,"type":"CDB_ATTACHED","utc":"2026-09-25T18:19:34.8054775Z"}
+{"pid":3540,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T18:19:34.8367273Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T18:19:34.8367273Z"}

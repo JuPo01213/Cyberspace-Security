@@ -1,0 +1,99 @@
+﻿{
+    "run_id":  "EPT-AUTH-LOCAL-NATURAL-20260926-01",
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-NATURAL-20260926-01",
+    "harvested_utc":  "2026-09-26T14:13:06.6948051Z",
+    "files":  [
+                  {
+                      "name":  "CONTROL_CANARY.txt",
+                      "guest_sha256":  "12B409460FBDA09964D6986233DE49023371B448D3BCA9F642B961DBEB08A8AD",
+                      "host_sha256":  "12B409460FBDA09964D6986233DE49023371B448D3BCA9F642B961DBEB08A8AD",
+                      "guest_length":  32,
+                      "host_length":  32,
+                      "match":  true
+                  },
+                  {
+                      "name":  "done.json",
+                      "guest_sha256":  "2C72BB346E8D8C7161308F9394C898E7D7A068AB789EEC75AA44E545E781DD5F",
+                      "host_sha256":  "2C72BB346E8D8C7161308F9394C898E7D7A068AB789EEC75AA44E545E781DD5F",
+                      "guest_length":  789,
+                      "host_length":  789,
+                      "match":  true
+                  },
+                  {
+                      "name":  "events.ndjson",
+                      "guest_sha256":  "34B6B915F6D2E5B24C303E121C38558D13C11D186565790CB05AEFF8CBE27729",
+                      "host_sha256":  "34B6B915F6D2E5B24C303E121C38558D13C11D186565790CB05AEFF8CBE27729",
+                      "guest_length":  140358,
+                      "host_length":  140358,
+                      "match":  true
+                  },
+                  {
+                      "name":  "file_changes.json",
+                      "guest_sha256":  "27DEF278CBFB6461B1CFE4014B98712A6FB43AF6E2FA9CF3C6BC139F22F3EDC1",
+                      "host_sha256":  "27DEF278CBFB6461B1CFE4014B98712A6FB43AF6E2FA9CF3C6BC139F22F3EDC1",
+                      "guest_length":  2523,
+                      "host_length":  2523,
+                      "match":  true
+                  },
+                  {
+                      "name":  "heartbeat.json",
+                      "guest_sha256":  "E00038F86771841B59E3AB4FCC9D277A91590A1FA6FFA66296659AEE4526FBCF",
+                      "host_sha256":  "E00038F86771841B59E3AB4FCC9D277A91590A1FA6FFA66296659AEE4526FBCF",
+                      "guest_length":  304,
+                      "host_length":  304,
+                      "match":  true
+                  },
+                  {
+                      "name":  "local_runner.ps1",
+                      "guest_sha256":  "5BE4EBE7CF4C0911CD712B4D5FCDDB63119DA81B43324BEEE1F0ABF7463B00E8",
+                      "host_sha256":  "5BE4EBE7CF4C0911CD712B4D5FCDDB63119DA81B43324BEEE1F0ABF7463B00E8",
+                      "guest_length":  11236,
+                      "host_length":  11236,
+                      "match":  true
+                  },
+                  {
+                      "name":  "phase.json",
+                      "guest_sha256":  "256B8B28530E62E9D1A1583ED98F07F65BB4FCF6761CA68B85FF24B3515AA2AC",
+                      "host_sha256":  "256B8B28530E62E9D1A1583ED98F07F65BB4FCF6761CA68B85FF24B3515AA2AC",
+                      "guest_length":  171,
+                      "host_length":  171,
+                      "match":  true
+                  },
+                  {
+                      "name":  "post.json",
+                      "guest_sha256":  "7F5CA139045A72CDB328744552450774977D226CC7F2F57865BACB14D01F3573",
+                      "host_sha256":  "7F5CA139045A72CDB328744552450774977D226CC7F2F57865BACB14D01F3573",
+                      "guest_length":  49944,
+                      "host_length":  49944,
+                      "match":  true
+                  },
+                  {
+                      "name":  "pre.json",
+                      "guest_sha256":  "88B2947531E6967F371AAA1537D067FBB22CEE7E7E8665F894D80F51998D3BB4",
+                      "host_sha256":  "88B2947531E6967F371AAA1537D067FBB22CEE7E7E8665F894D80F51998D3BB4",
+                      "guest_length":  50412,
+                      "host_length":  50412,
+                      "match":  true
+                  },
+                  {
+                      "name":  "target.stderr.txt",
+                      "guest_sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                      "host_sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                      "guest_length":  0,
+                      "host_length":  0,
+                      "match":  true
+                  },
+                  {
+                      "name":  "target.stdout.txt",
+                      "guest_sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                      "host_sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                      "guest_length":  0,
+                      "host_length":  0,
+                      "match":  true
+                  }
+              ],
+    "control":  "PowerShell Direct",
+    "network_scope":  "excluded",
+    "sample_executed":  "true",
+    "hashes_verified":  "true"
+}

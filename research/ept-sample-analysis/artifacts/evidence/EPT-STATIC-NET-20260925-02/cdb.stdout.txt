@@ -1,0 +1,407 @@
+﻿
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.032 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\ept_obs\spool\EPT-INJECT-20260925-23\ept_obsspoolEPT-INJECT-20260925-23mem_parent.dmp]
+User Mini Dump File with Full Memory: Only application data is available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\ept_obs\static\EPT-STATIC-NET-20260925-02\symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\ept_obs\static\EPT-STATIC-NET-20260925-02\symbols
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\ept_obs\static\EPT-STATIC-NET-20260925-02\symbols
+Symbol search path is: C:\ept_obs\static\EPT-STATIC-NET-20260925-02\symbols
+Executable search path is: C:\ept_obs\static\EPT-STATIC-NET-20260925-02\symbols
+Windows 10 Version 19045 MP (2 procs) Free x64
+Product: WinNt, suite: SingleUserTS
+Edition build lab: 19041.1.amd64fre.vb_release.191206-1406
+Debug session time: Fri Sep 25 08:57:53.000 2026 (UTC + 8:00)
+System Uptime: 0 days 8:49:39.548
+Process Uptime: 0 days 0:00:03.000
+.........................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+This dump file has a breakpoint exception stored in it.
+The stored exception information can be accessed via .ecxr.
+For analysis of this file, run !analyze -v
+*** WARNING: Unable to verify checksum for Hardware.exe
+kernel32!CopyFileW:
+00007ffe`c4c15510 ff2552f20500    jmp     qword ptr [kernel32!QuirkIsEnabledForPackage2Worker+0x11da8 (00007ffe`c4c74768)] ds:00007ffe`c4c74768={KERNELBASE!CopyFileW (00007ffe`c2e24eb0)}
+0:000> .echo STATIC_DUMP_ONLY_BEGIN
+STATIC_DUMP_ONLY_BEGIN
+0:000> lm
+start             end                 module name
+00000001`40000000 00000001`43f83000   Hardware C (no symbols)           
+00007ffe`afc30000 00007ffe`afce0000   comctl32   (deferred)             
+00007ffe`c1bb0000 00007ffe`c1beb000   IPHLPAPI   (deferred)             
+00007ffe`c20e0000 00007ffe`c20ec000   CRYPTBASE   (deferred)             
+00007ffe`c2870000 00007ffe`c2989000   gdi32full   (deferred)             
+00007ffe`c2990000 00007ffe`c2aed000   crypt32    (deferred)             
+00007ffe`c2af0000 00007ffe`c2b12000   win32u     (deferred)             
+00007ffe`c2b20000 00007ffe`c2ba2000   bcryptPrimitives   (deferred)             
+00007ffe`c2bb0000 00007ffe`c2c4d000   msvcp_win   (deferred)             
+00007ffe`c2cd0000 00007ffe`c2dd0000   ucrtbase   (deferred)             
+00007ffe`c2dd0000 00007ffe`c30c6000   KERNELBASE   (export symbols)       KERNELBASE.dll
+00007ffe`c30d0000 00007ffe`c30f7000   bcrypt     (deferred)             
+00007ffe`c31b0000 00007ffe`c31df000   imm32      (deferred)             
+00007ffe`c31e0000 00007ffe`c3534000   combase    (deferred)             
+00007ffe`c3540000 00007ffe`c3cb0000   shell32    (deferred)             
+00007ffe`c3cb0000 00007ffe`c3d4f000   sechost    (deferred)             
+00007ffe`c3ec0000 00007ffe`c3eeb000   gdi32      (deferred)             
+00007ffe`c3ef0000 00007ffe`c4010000   rpcrt4     (deferred)             
+00007ffe`c4010000 00007ffe`c40ae000   msvcrt     (deferred)             
+00007ffe`c4520000 00007ffe`c45d1000   advapi32   (deferred)             
+00007ffe`c4900000 00007ffe`c496b000   ws2_32     (deferred)             
+00007ffe`c4a40000 00007ffe`c4be1000   user32     (deferred)             
+00007ffe`c4bf0000 00007ffe`c4cb2000   kernel32   (export symbols)       kernel32.dll
+00007ffe`c5020000 00007ffe`c514b000   ole32      (deferred)             
+00007ffe`c5190000 00007ffe`c5388000   ntdll      (export symbols)       ntdll.dll
+0:000> .echo PE_HEADERS
+PE_HEADERS
+0:000> !dh 140000000 -f
+
+File Type: EXECUTABLE IMAGE
+FILE HEADER VALUES
+    8664 machine (X64)
+       A number of sections
+6AAAB543 time date stamp Wed Sep 16 23:26:59 2026
+
+       0 file pointer to symbol table
+       0 number of symbols
+      F0 size of optional header
+      23 characteristics
+            Relocations stripped
+            Executable
+            App can handle >2gb addresses
+
+OPTIONAL HEADER VALUES
+     20B magic #
+   14.29 linker version
+  7D9A00 size of code
+  9B7C00 size of initialized data
+       0 size of uninitialized data
+ 235F67B address of entry point
+    1000 base of code
+         ----- new -----
+0000000140000000 image base
+    1000 section alignment
+     200 file alignment
+       2 subsystem (Windows GUI)
+    6.00 operating system version
+    0.00 image version
+    6.00 subsystem version
+ 3F83000 size of image
+     400 size of headers
+       0 checksum
+0000000000100000 size of stack reserve
+0000000000001000 size of stack commit
+0000000000100000 size of heap reserve
+0000000000001000 size of heap commit
+    8120  DLL characteristics
+            High entropy VA supported
+            NX compatible
+            Terminal server aware
+       0 [       0] address [size] of Export Directory
+ 3A1D4C8 [     118] address [size] of Import Directory
+ 3F65000 [   1D445] address [size] of Resource Directory
+ 3F5D150 [    79E0] address [size] of Exception Directory
+       0 [       0] address [size] of Security Directory
+       0 [       0] address [size] of Base Relocation Directory
+       0 [       0] address [size] of Debug Directory
+       0 [       0] address [size] of Description Directory
+       0 [       0] address [size] of Special Directory
+ 2D9CC00 [      28] address [size] of Thread Storage Directory
+ 3F5D010 [     138] address [size] of Load Configuration Directory
+       0 [       0] address [size] of Bound Import Directory
+ 205A000 [      F8] address [size] of Import Address Table Directory
+       0 [       0] address [size] of Delay Import Directory
+       0 [       0] address [size] of COR20 Header Directory
+       0 [       0] address [size] of Reserved Directory
+
+0:000> .echo CARDLOGIN_CANDIDATE_START
+CARDLOGIN_CANDIDATE_START
+0:000> u 1403b3d30 L30
+Hardware+0x3b3d30:
+00000001`403b3d30 4881ecf80b0000  sub     rsp,0BF8h
+00000001`403b3d37 488b05d2a2be00  mov     rax,qword ptr [Hardware+0xf9e010 (00000001`40f9e010)]
+00000001`403b3d3e 4831e0          xor     rax,rsp
+00000001`403b3d41 48898424f00b0000 mov     qword ptr [rsp+0BF0h],rax
+00000001`403b3d49 48898c24d00b0000 mov     qword ptr [rsp+0BD0h],rcx
+00000001`403b3d51 488d0ded964200  lea     rcx,[Hardware+0x7dd445 (00000001`407dd445)]
+00000001`403b3d58 4150            push    r8
+00000001`403b3d5a 49b88f0e21f2a7501f90 mov r8,901F50A7F2210E8Fh
+00000001`403b3d64 41f6d0          not     r8b
+00000001`403b3d67 4153            push    r11
+00000001`403b3d69 9c              pushfq
+00000001`403b3d6a 664181c80eaa    or      r8w,0AA0Eh
+00000001`403b3d70 4c8b442410      mov     r8,qword ptr [rsp+10h]
+00000001`403b3d75 48c744241012269fd8 mov   qword ptr [rsp+10h],0FFFFFFFFD89F2612h
+00000001`403b3d7e ff742400        push    qword ptr [rsp]
+00000001`403b3d82 9d              popfq
+00000001`403b3d83 488d642410      lea     rsp,[rsp+10h]
+00000001`403b3d88 e8b33b8e01      call    Hardware+0x1c97940 (00000001`41c97940)
+00000001`403b3d8d 3a6d73          cmp     ch,byte ptr [rbp+73h]
+00000001`403b3d90 4032bc46ddefbb23 xor     dil,byte ptr [rsi+rax*2+23BBEFDDh]
+00000001`403b3d98 0bcf            or      ecx,edi
+00000001`403b3d9a 49              ???
+00000001`403b3d9b 62              ???
+00000001`403b3d9c 7db5            jge     Hardware+0x3b3d53 (00000001`403b3d53)
+00000001`403b3d9e a6              cmps    byte ptr [rsi],byte ptr [rdi]
+00000001`403b3d9f e84c4e959a      call    00000000`dad08bf0
+00000001`403b3da4 093595e44e95    or      dword ptr [00000000`d58a223f],esi
+00000001`403b3daa 9a              ???
+00000001`403b3dab 99              cdq
+00000001`403b3dac a9e1b99615      test    eax,1596B9E1h
+00000001`403b3db1 d0cf            ror     bh,1
+00000001`403b3db3 57              push    rdi
+00000001`403b3db4 37              ???
+00000001`403b3db5 40b5b0          mov     bpl,0B0h
+00000001`403b3db8 b7da            mov     bh,0DAh
+00000001`403b3dba 7846            js      Hardware+0x3b3e02 (00000001`403b3e02)
+00000001`403b3dbc 4a94            xchg    rax,rsp
+00000001`403b3dbe 74a5            je      Hardware+0x3b3d65 (00000001`403b3d65)
+00000001`403b3dc0 02b16dd0ec61    add     dh,byte ptr [rcx+61ECD06Dh]
+00000001`403b3dc6 06              ???
+00000001`403b3dc7 56              push    rsi
+00000001`403b3dc8 c7              ???
+00000001`403b3dc9 90              nop
+00000001`403b3dca 5b              pop     rbx
+00000001`403b3dcb ded7            fcomp5  st(7)
+00000001`403b3dcd bc74060a31      mov     esp,310A0674h
+00000001`403b3dd2 dc730f          fdiv    qword ptr [rbx+0Fh]
+00000001`403b3dd5 55              push    rbp
+0:000> .echo UPPER_CALLER_CANDIDATE
+UPPER_CALLER_CANDIDATE
+0:000> u 1407a320e L10
+Hardware+0x7a320e:
+00000001`407a320e 488d0dd2189b00  lea     rcx,[Hardware+0x1154ae7 (00000001`41154ae7)]
+00000001`407a3215 e8160bc1ff      call    Hardware+0x3b3d30 (00000001`403b3d30)
+00000001`407a321a 33d2            xor     edx,edx
+00000001`407a321c 488d4d90        lea     rcx,[rbp-70h]
+00000001`407a3220 41b800020000    mov     r8d,200h
+00000001`407a3226 8bd8            mov     ebx,eax
+00000001`407a3228 e8d3140100      call    Hardware+0x7b4700 (00000001`407b4700)
+00000001`407a322d 8bcb            mov     ecx,ebx
+00000001`407a322f e89cc8feff      call    Hardware+0x78fad0 (00000001`4078fad0)
+00000001`407a3234 488d156db07e00  lea     rdx,[Hardware+0xf8e2a8 (00000001`40f8e2a8)]
+00000001`407a323b 4889442420      mov     qword ptr [rsp+20h],rax
+00000001`407a3240 488d4d90        lea     rcx,[rbp-70h]
+00000001`407a3244 448bcb          mov     r9d,ebx
+00000001`407a3247 4c8d05caf47e00  lea     r8,[Hardware+0xf92718 (00000001`40f92718)]
+00000001`407a324e e88da80000      call    Hardware+0x7adae0 (00000001`407adae0)
+00000001`407a3253 488d4d90        lea     rcx,[rbp-70h]
+0:000> .echo IMAGE_IAT_SLOTS
+IMAGE_IAT_SLOTS
+0:000> dps 14205a000 L1f
+00000001`4205a000  00007ffe`c4c0d3a0 kernel32!GetExitCodeProcess
+00000001`4205a008  00000000`00000000
+00000001`4205a010  00007ffe`c4a757e0 user32!SetFocus
+00000001`4205a018  00000000`00000000
+00000001`4205a020  00007ffe`c3ec2c70 gdi32!DeleteDC
+00000001`4205a028  00000000`00000000
+00000001`4205a030  00007ffe`c4536ed0 advapi32!RegOpenKeyExA
+00000001`4205a038  00000000`00000000
+00000001`4205a040  00007ffe`c35b4070 shell32!ShellExecuteExW
+00000001`4205a048  00000000`00000000
+00000001`4205a050  00007ffe`c32964a0 combase!CoTaskMemFree
+00000001`4205a058  00000000`00000000
+00000001`4205a060  00007ffe`c49110a0 ws2_32!setsockopt
+00000001`4205a068  00000000`00000000
+00000001`4205a070  00007ffe`c51c0de0 ntdll!RtlVirtualUnwind
+00000001`4205a078  00000000`00000000
+00000001`4205a080  00007ffe`c299ff30 crypt32!CryptBinaryToStringW
+00000001`4205a088  00000000`00000000
+00000001`4205a090  00007ffe`afc52d00 comctl32!InitCommonControlsEx
+00000001`4205a098  00000000`00000000
+00000001`4205a0a0  00007ffe`c1bb8220 IPHLPAPI!GetAdaptersInfo
+00000001`4205a0a8  00000000`00000000
+00000001`4205a0b0  00007ffe`c4c07ec0 kernel32!GetSystemTimeAsFileTime
+00000001`4205a0b8  00000000`00000000
+00000001`4205a0c0  00007ffe`c51ba9a0 ntdll!RtlAllocateHeap
+00000001`4205a0c8  00007ffe`c4c058b0 kernel32!HeapFree
+00000001`4205a0d0  00007ffe`c4c0e3e0 kernel32!FatalExit
+00000001`4205a0d8  00007ffe`c4c10830 kernel32!LoadLibraryA
+00000001`4205a0e0  00007ffe`c4c0f3f0 kernel32!GetModuleHandleA
+00000001`4205a0e8  00007ffe`c4c0b200 kernel32!GetProcAddress
+00000001`4205a0f0  00000000`00000000
+0:000> .echo MEMORY_STRING_SEARCH
+MEMORY_STRING_SEARCH
+0:000> s -a 140000000 L3f83000 "yz.hwid001.com"
+00000001`40f92688  79 7a 2e 68 77 69 64 30-30 31 2e 63 6f 6d 00 00  yz.hwid001.com..
+00000001`40f926ad  79 7a 2e 68 77 69 64 30-30 31 2e 63 6f 6d 3a 31  yz.hwid001.com:1
+00000001`40f92e96  79 7a 2e 68 77 69 64 30-30 31 2e 63 6f 6d 3a 31  yz.hwid001.com:1
+0:000> s -a 140000000 L3f83000 "StoredVerify"
+00000001`40f92508  53 74 6f 72 65 64 56 65-72 69 66 79 2e 62 65 67  StoredVerify.beg
+00000001`40f92520  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 74 6f  StoredVerify.Sto
+00000001`40f92640  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 50 5f  StoredVerify.SP_
+00000001`40f92660  53 74 6f 72 65 64 56 65-72 69 66 79 2e 69 6e 69  StoredVerify.ini
+00000001`40f92698  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 65 74  StoredVerify.Set
+00000001`40f926c8  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 50 5f  StoredVerify.SP_
+00000001`40f926f0  53 74 6f 72 65 64 56 65-72 69 66 79 2e 6f 70 74  StoredVerify.opt
+00000001`40f92718  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 50 5f  StoredVerify.SP_
+00000001`40f92740  53 74 6f 72 65 64 56 65-72 69 66 79 2e 63 61 72  StoredVerify.car
+00000001`40f92770  53 74 6f 72 65 64 56 65-72 69 66 79 2e 63 61 72  StoredVerify.car
+00000001`40f927a0  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 50 5f  StoredVerify.SP_
+00000001`40f927c0  53 74 6f 72 65 64 56 65-72 69 66 79 2e 69 73 6c  StoredVerify.isl
+00000001`40f927ee  53 74 6f 72 65 64 56 65-72 69 66 79 2e 53 50 5f  StoredVerify.SP_
+00000001`40f92820  53 74 6f 72 65 64 56 65-72 69 66 79 2e 62 65 61  StoredVerify.bea
+00000001`40f92850  53 74 6f 72 65 64 56 65-72 69 66 79 2e 62 65 61  StoredVerify.bea
+00000001`40f92880  53 74 6f 72 65 64 56 65-72 69 66 79 2e 61 6c 6c  StoredVerify.all
+0:000> s -a 140000000 L3f83000 "SP_Verify_CardLogin"
+00000001`40f92725  53 50 5f 56 65 72 69 66-79 5f 43 61 72 64 4c 6f  SP_Verify_CardLo
+00000001`40f92fbe  53 50 5f 56 65 72 69 66-79 5f 43 61 72 64 4c 6f  SP_Verify_CardLo
+0:000> s -a 140000000 L3f83000 "SP_Cloud_Beat"
+00000001`40f927fb  53 50 5f 43 6c 6f 75 64-5f 42 65 61 74 20 6f 6b  SP_Cloud_Beat ok
+0:000> s -a 140000000 L3f83000 "GetProcAddress"
+00000001`4251699c  47 65 74 50 72 6f 63 41-64 64 72 65 73 73 00 00  GetProcAddress..
+0:000> s -a 140000000 L3f83000 "connect"
+00000001`407dc940  63 6f 6e 6e 65 63 74 65-64 00 00 00 00 00 00 00  connected.......
+00000001`407dc9c8  63 6f 6e 6e 65 63 74 69-6f 6e 20 61 62 6f 72 74  connection abort
+00000001`407dc9e0  63 6f 6e 6e 65 63 74 69-6f 6e 20 61 6c 72 65 61  connection alrea
+00000001`407dca00  63 6f 6e 6e 65 63 74 69-6f 6e 20 72 65 66 75 73  connection refus
+00000001`407dca18  63 6f 6e 6e 65 63 74 69-6f 6e 20 72 65 73 65 74  connection reset
+00000001`407dcd1c  63 6f 6e 6e 65 63 74 65-64 00 00 00 6e 6f 74 20  connected...not 
+0:000> s -a 140000000 L3f83000 "recv"
+0:000> .echo CARDLOGIN_FORMATTING_SITES
+CARDLOGIN_FORMATTING_SITES
+0:000> u 1403b8190 L24
+Hardware+0x3b8190:
+00000001`403b8190 3c25            cmp     al,25h
+00000001`403b8192 d8bcbdb1b58015  fdivr   dword ptr [rbp+rdi*4+1580B5B1h]
+00000001`403b8199 af              scas    dword ptr [rdi]
+00000001`403b819a b52f            mov     ch,2Fh
+00000001`403b819c 62              ???
+00000001`403b819d b28c            mov     dl,8Ch
+00000001`403b819f fc              cld
+00000001`403b81a0 7636            jbe     Hardware+0x3b81d8 (00000001`403b81d8)
+00000001`403b81a2 c4              ???
+00000001`403b81a3 aa              stos    byte ptr [rdi]
+00000001`403b81a4 82              ???
+00000001`403b81a5 80a0e7e8eaecd2  and     byte ptr [rax-13151719h],0D2h
+00000001`403b81ac bf68a65e14      mov     edi,145EA668h
+00000001`403b81b1 89ac208e0a1324  mov     dword ptr [rax+24130A8Eh],ebp
+00000001`403b81b8 03c7            add     eax,edi
+00000001`403b81ba 7127            jno     Hardware+0x3b81e3 (00000001`403b81e3)
+00000001`403b81bc 4f1b4714        sbb     r8,qword ptr [r15+14h]
+00000001`403b81c0 9f              lahf
+00000001`403b81c1 56              push    rsi
+00000001`403b81c2 ca50aa          retf    0AA50h
+00000001`403b81c5 bb4a489910      mov     ebx,1099484Ah
+00000001`403b81ca de2f            fisubr  word ptr [rdi]
+00000001`403b81cc 894e4e          mov     dword ptr [rsi+4Eh],ecx
+00000001`403b81cf 70de            jo      Hardware+0x3b81af (00000001`403b81af)
+00000001`403b81d1 2f              ???
+00000001`403b81d2 8946f6          mov     dword ptr [rsi-0Ah],eax
+00000001`403b81d5 d296e8884286    rcl     byte ptr [rsi-79BD7718h],cl
+00000001`403b81db b22a            mov     dl,2Ah
+00000001`403b81dd 4f6a6d          push    6Dh
+00000001`403b81e0 031e            add     ebx,dword ptr [rsi]
+00000001`403b81e2 869187f48bb5    xchg    dl,byte ptr [rcx-4A740B79h]
+00000001`403b81e8 bcb27d8d33      mov     esp,338D7DB2h
+00000001`403b81ed b5bc            mov     ch,0BCh
+00000001`403b81ef b204            mov     dl,4
+00000001`403b81f1 95              xchg    eax,ebp
+00000001`403b81f2 ebb5            jmp     Hardware+0x3b81a9 (00000001`403b81a9)
+0:000> u 1403c2df8 L24
+Hardware+0x3c2df8:
+00000001`403c2df8 802a25          sub     byte ptr [rdx],25h
+00000001`403c2dfb 9c              pushfq
+00000001`403c2dfc 17              ???
+00000001`403c2dfd 1b02            sbb     eax,dword ptr [rdx]
+00000001`403c2dff 6d              ins     dword ptr [rdi],dx
+00000001`403c2e00 6c              ins     byte ptr [rdi],dx
+00000001`403c2e01 1c34            sbb     al,34h
+00000001`403c2e03 b8fee45f00      mov     eax,5FE4FEh
+00000001`403c2e08 f5              cmc
+00000001`403c2e09 3f              ???
+00000001`403c2e0a 0cd7            or      al,0D7h
+00000001`403c2e0c 9a              ???
+00000001`403c2e0d c5              ???
+00000001`403c2e0e 0047fa          add     byte ptr [rdi-6],al
+00000001`403c2e11 bd96e1e988      mov     ebp,88E9E196h
+00000001`403c2e16 dad2            fcmovbe st,st(2)
+00000001`403c2e18 59              pop     rcx
+00000001`403c2e19 052ebe04e3      add     eax,0E304BE2Eh
+00000001`403c2e1e 97              xchg    eax,edi
+00000001`403c2e1f 2630c8          xor     al,cl
+00000001`403c2e22 2ba2e026bb3a    sub     esp,dword ptr [rdx+3ABB26E0h]
+00000001`403c2e28 5b              pop     rbx
+00000001`403c2e29 3a9b9d6f91d9    cmp     bl,byte ptr [rbx-266E9063h]
+00000001`403c2e2f cb              retf
+00000001`403c2e30 ae              scas    byte ptr [rdi]
+00000001`403c2e31 1b544877        sbb     edx,dword ptr [rax+rcx*2+77h]
+00000001`403c2e35 58              pop     rax
+00000001`403c2e36 d02d205bd8af    shr     byte ptr [00000000`f014895c],1
+00000001`403c2e3c d9ba07e47406    fnstcw  word ptr [rdx+674E407h]
+00000001`403c2e42 ffe4            jmp     rsp
+00000001`403c2e44 5f              pop     rdi
+00000001`403c2e45 0cf5            or      al,0F5h
+00000001`403c2e47 c6808b7d6014d6  mov     byte ptr [rax+14607D8Bh],0D6h
+00000001`403c2e4e 60              ???
+00000001`403c2e4f 6c              ins     byte ptr [rdi],dx
+00000001`403c2e50 b393            mov     bl,93h
+0:000> .echo HOST_STRING_CONTEXT
+HOST_STRING_CONTEXT
+0:000> du 140f92680 L80
+00000001`40f92680  "潬w"0:000> .echo WINSOCK_EXPORTS
+WINSOCK_EXPORTS
+0:000> x ws2_32!socket
+00007ffe`c49055f0 ws2_32!socket (<no parameter info>)
+0:000> x ws2_32!connect
+00007ffe`c4911a50 ws2_32!connect (<no parameter info>)
+0:000> x ws2_32!send
+00007ffe`c4902320 ws2_32!send (<no parameter info>)
+0:000> x ws2_32!recv
+00007ffe`c4911d90 ws2_32!recv (<no parameter info>)
+0:000> x ws2_32!WSAStartup
+00007ffe`c490eb10 ws2_32!WSAStartup (<no parameter info>)
+0:000> .echo STATIC_DUMP_ONLY_END
+STATIC_DUMP_ONLY_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

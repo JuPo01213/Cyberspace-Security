@@ -1,0 +1,131 @@
+{
+    "run_id":  "EPT-REAL-20260924-02",
+    "guest_host":  "<VM_LABEL>",
+    "utc":  "2026-09-24T15:01:58.6625270Z",
+    "adapters":  [
+                     {
+                         "Name":  "以太网",
+                         "Status":  "Disconnected",
+                         "ifIndex":  4,
+                         "MacAddress":  "00-15-5D-38-01-02",
+                         "InterfaceDescription":  "Microsoft Hyper-V Network Adapter"
+                     }
+                 ],
+    "ipv4":  [
+                 {
+                     "InterfaceAlias":  "以太网",
+                     "IPAddress":  "<PRIVATE_IP>",
+                     "PrefixLength":  20
+                 },
+                 {
+                     "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                     "IPAddress":  "127.0.0.1",
+                     "PrefixLength":  8
+                 }
+             ],
+    "routes":  [
+                   {
+                       "DestinationPrefix":  "255.255.255.255/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "255.255.255.255/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "224.0.0.0/4",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "224.0.0.0/4",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "<PRIVATE_IP>/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "<PRIVATE_IP>/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "<PRIVATE_IP>/20",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "127.255.255.255/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "127.0.0.1/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "127.0.0.0/8",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "0.0.0.0/0",
+                       "NextHop":  "<PRIVATE_IP>",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  0
+                   }
+               ],
+    "default_route":  [
+                          {
+                              "DestinationPrefix":  "0.0.0.0/0",
+                              "NextHop":  "<PRIVATE_IP>",
+                              "InterfaceAlias":  "以太网",
+                              "RouteMetric":  0
+                          }
+                      ],
+    "external_probes":  [
+                            {
+                                "target":  "<PRIVATE_IP>",
+                                "ping":  false,
+                                "tcp80":  false,
+                                "error":  null
+                            },
+                            {
+                                "target":  "1.1.1.1",
+                                "ping":  false,
+                                "tcp80":  false,
+                                "error":  null
+                            },
+                            {
+                                "target":  "198.18.0.1",
+                                "ping":  false,
+                                "tcp80":  false,
+                                "error":  null
+                            }
+                        ],
+    "dns":  [
+                {
+                    "error":  "example.com : 没有为本地系统配置 DNS 服务器。"
+                }
+            ],
+    "interpretation":  "Hyper-V adapter state and actual probe results are recorded separately; stale guest IP/routes alone are not treated as connectivity.",
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "28f17418-5558-48b1-8fa5-fd2b4fe32cc2",
+    "PSShowComputerName":  true
+}

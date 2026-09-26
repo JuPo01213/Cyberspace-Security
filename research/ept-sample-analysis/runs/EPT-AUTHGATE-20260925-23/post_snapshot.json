@@ -1,0 +1,22 @@
+﻿{
+    "drivers":  [
+
+                ],
+    "procs":  [
+                  "cdb:680",
+                  "EPT_AC4A6550_5D60AEE4:1848",
+                  "Hardware:3492"
+              ],
+    "utc":  "2026-09-25T08:03:57.6758226Z",
+    "log_dirs":  [
+
+                 ],
+    "files":  [
+                  "C:\\Windows\\System32\\Hardware.exe",
+                  "C:\\Windows\\System32\\EPT.cmd"
+              ],
+    "tasks":  [
+                  "DetectHardwareChange",
+                  "RemediateHardwareChange"
+              ]
+}

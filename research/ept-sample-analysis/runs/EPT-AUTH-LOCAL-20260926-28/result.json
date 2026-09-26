@@ -1,0 +1,21 @@
+﻿{
+    "mode":  "offline_dump_reference_scan",
+    "complete":  true,
+    "exit_code":  0,
+    "elapsed_sec":  28.5312941,
+    "sample_executed":  false,
+    "outputs":  [
+                    {
+                        "name":  "config-references.json",
+                        "sha256":  "10BE5180AE0B3CF804E19F9A081C61362CCB642A44F2F35A3F1D5090D15730EF"
+                    },
+                    {
+                        "name":  "scan.stderr.txt",
+                        "sha256":  "F1945CD6C19E56B3C1C78943EF5EC18116907A4CA1EFC40A57D48AB1DB7ADFC5"
+                    },
+                    {
+                        "name":  "scan.stdout.txt",
+                        "sha256":  "D9749B6B0E07DE44A1E9A43E59F76F12A8EC3F4876628179D213032485B048C3"
+                    }
+                ]
+}

@@ -1,0 +1,26 @@
+{
+ "decoded_slide_units": 7671139,
+ "distinct_functions_reading_any_global": 3,
+ "functions_reading_3_or_4_globals": [
+  "0x1407a3080",
+  "0x1407a3510",
+  "0x1407a4b90"
+ ],
+ "per_function_global_counts": {
+  "0x1407a3080": 4,
+  "0x1407a3510": 4,
+  "0x1407a4b90": 4
+ },
+ "call_sites_to_gate_0x1407a3080": [
+  "0x1407a6a4e",
+  "0x1407a7b0e",
+  "0x1407a7b0f"
+ ],
+ "call_sites_to_block_exit_0x1407a3000": [
+  "0x1407a32c4",
+  "0x1407a33c5",
+  "0x1407a3400"
+ ],
+ "control_string_0x140f92520_refs_found": 2,
+ "control_gate_appears_as_reader": "yes"
+}

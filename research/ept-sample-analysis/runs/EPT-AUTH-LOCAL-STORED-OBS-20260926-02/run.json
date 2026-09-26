@@ -1,0 +1,37 @@
+{
+  "run_id": "EPT-AUTH-LOCAL-STORED-OBS-20260926-01",
+  "evidence_scope": "real_sample_guest_run_with_readonly_observer",
+  "objective": "Observe the real StoredFlow stage logger and return codes while consuming a historical 900-byte local config, without forcing authorization or injecting responses.",
+  "hypothesis": "The historical config is loaded by the real target, then StoredFlow emits its own stage labels and return codes before any later behavior.",
+  "target": {
+    "path": "C:/ept_core/Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "authority_sample": {
+    "path": "<HOST_PATH>/EPT/sample/EPT专业游戏维修工具箱V5.1.exe",
+    "sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2"
+  },
+  "baseline": "C173-gen1-ready2",
+  "observation_mode": "natural_child_attach_readonly_observer",
+  "input_state": "historical_forced_run_capture_only",
+  "historical_config_sha256": "E5D72F1C6217F9E4AB492E2A868E88C3A988363A7A09C3BEFE4F9EECA2397E1B",
+  "network_scope": "excluded",
+  "response_injection": false,
+  "authorization_state_writes": false,
+  "code_patches": false,
+  "observer_actions": [
+    "stage logger at 0x1407adae0",
+    "stage logger at 0x1407adb40",
+    "kernelbase CreateFileW observer",
+    "kernelbase CreateProcessW observer",
+    "kernelbase exit observers"
+  ],
+  "acceptance": [
+    "target stage labels and original r9d return codes captured, if reached",
+    "historical config load and target child identity recorded",
+    "no forced values, code patches, response injection, or network activity",
+    "post-run local files/processes/tasks/services snapshot acquired"
+  ],
+  "stop_conditions": ["target exit", "debugger deadline", "instrument failure"],
+  "deadline_sec": 300
+}

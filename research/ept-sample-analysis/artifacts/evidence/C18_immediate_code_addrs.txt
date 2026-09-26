@@ -1,0 +1,22 @@
+targets (17): 0x14078b650 0x14078de50 0x14078e823 0x14078e8c0 0x14078ed39 0x14078ee89 0x14078ef02 0x14078f025 0x14078f0ad 0x14078f250 0x14078fc90 0x1407a1880 0x1407a3000 0x1407a3080 0x1407a4a90 0x1407a550e 0x1407c1f44
+
+target 0x14078b650  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078de50  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078e823  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078e8c0  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078ed39  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078ee89  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078ef02  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078f025  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078f0ad  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078f250  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x14078fc90  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x1407a1880  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x1407a3000  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x1407a3080  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x1407a4a90  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x1407a550e  : 0 raw byte matches, 0 inside a real immediate operand
+target 0x1407c1f44  : 0 raw byte matches, 0 inside a real immediate operand
+CONTROL decoded: cmp edx, 0x12345678 at 0x14078f1d9
+
+CONTROL 0x12345678 (known to be compared in FUN_14078f0ad): 1 real immediate hits

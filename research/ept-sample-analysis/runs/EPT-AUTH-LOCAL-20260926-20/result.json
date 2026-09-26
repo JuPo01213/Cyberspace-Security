@@ -1,0 +1,20 @@
+﻿{
+    "mode":  "offline_dump_and_configuration_only",
+    "input_dump_sha256":  "CA0FFCEC87A8580E9BFDEF4DAAF90C97FB06A53D597028020FE1EC714830E60D",
+    "configuration_sha256":  "E5D72F1C6217F9E4AB492E2A868E88C3A988363A7A09C3BEFE4F9EECA2397E1B",
+    "sample_executed":  false,
+    "patches_applied":  false,
+    "exit_code":  0,
+    "analysis_status":  "FAILED",
+    "analysis_error":  "无法加载文件 C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-20260926-20\\analyze-config.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。",
+    "outputs":  [
+                    {
+                        "name":  "offline.stderr.txt",
+                        "sha256":  "F1945CD6C19E56B3C1C78943EF5EC18116907A4CA1EFC40A57D48AB1DB7ADFC5"
+                    },
+                    {
+                        "name":  "offline.stdout.txt",
+                        "sha256":  "A5016A56FA51D326EB5847D89629EE2EABC55BE52EFCE9FB0C54801A1347C7ED"
+                    }
+                ]
+}

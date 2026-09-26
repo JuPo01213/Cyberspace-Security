@@ -1,0 +1,16 @@
+.echo CANARY_G_BEGIN
+.echo --- FINAL_FORM_TESTS ---
+bu kernel32!ExitProcessImplementation ".echo HIT_EXITIMPL; k 10; g"
+bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+bu kernel32!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+bu kernel32!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+bu advapi32!OpenServiceA ".echo OPENSVCA; da @rdx; g"
+bu advapi32!OpenServiceW ".echo OPENSVCW; du @rdx; g"
+bu advapi32!StartServiceW ".echo STARTSVCW; du @rcx; g"
+bu advapi32!StartServiceA ".echo STARTSVCA; du @rcx; g"
+bu advapi32!CreateServiceA ".echo CREATESVCA; da @rdx; g"
+bu advapi32!CreateServiceW ".echo CREATESVCW; du @rdx; g"
+bu kernelbase!TerminateProcess ".echo TERM_PROC; r rcx; g"
+.echo ALL_BU_ISSUED
+.echo CANARY_G_STOP
+q

@@ -1,0 +1,154 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.032 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.094 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+(df4.e0c): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ffe`c5260860 cc              int     3
+0:000> .echo [RECON5_PARENT_READY]
+[RECON5_PARENT_READY]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> sxe -c "$$><child.cdb" cpr
+0:000> bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON5_PCREATEFILEW]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+0:000> bp kernel32!CreateFileA ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON5_PCREATEFILEA]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+0:000> bp ntdll!NtCreateFile ".if (@rcx!=0) { .if (poi(@rcx+0x10)!=0) { .if (poi(poi(@rcx+0x10)+8)!=0) { .if (by(poi(poi(@rcx+0x10)+8))==0x5c) { .echo [RECON5_PNTCREATE]; dU poi(poi(@rcx+0x10)+8) L16 } .else { g } } .else { g } } .else { g } } .else { g }"
+0:000> bp ntdll!NtOpenFile ".if (@rcx!=0) { .if (poi(@rcx+0x10)!=0) { .if (poi(poi(@rcx+0x10)+8)!=0) { .if (by(poi(poi(@rcx+0x10)+8))==0x5c) { .echo [RECON5_PNTOPEN]; dU poi(poi(@rcx+0x10)+8) L16 } .else { g } } .else { g } } .else { g } } .else { g }"
+0:000> bp ntdll!NtDeviceIoControlFile ".echo [RECON5_PDIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L12; g"
+0:000> sxe -c ".echo [RECON5_PARENT_AV]; .lastevent; r; k; g" av
+0:000> g
+[RECON5_PDIOC]
+rcx=00000000000000dc
+rdx=0000000000000000
+r8=0000000000000000
+r9=0000000000000000
+00000000`0014f068  00007ffe`c30d71f5 00000000`00000000
+00000000`0014f078  00007ffe`c52faf00 00000000`00000000
+00000000`0014f088  00000000`0014f1a0 00000000`0014f0c0
+00000000`0014f098  00007ffe`00390400 00000000`0014f1a0
+00000000`0014f0a8  00000000`00000068 00000000`0014f0d0
+00000000`0014f0b8  00000000`00000008 00000000`00000000
+00000000`0014f0c8  00000000`00000000 00000000`00000000
+00000000`0014f0d8  00000000`00000000 0000fde5`c95a0cb0
+00000000`0014f0e8  00000000`000000d4 00000000`0014fae0
+Child-SP          RetAddr               Call Site
+00000000`0014f068 00007ffe`c30d71f5     ntdll!NtDeviceIoControlFile
+00000000`0014f070 00007ffe`c30d4df3     bcrypt!BCryptOpenAlgorithmProvider+0x1795
+00000000`0014f130 00007ffe`c30d4c39     bcrypt!BCryptGetProperty+0x963
+00000000`0014f240 00007ffe`c30d4b16     bcrypt!BCryptGetProperty+0x7a9
+00000000`0014f270 00007ffe`c30d9447     bcrypt!BCryptGetProperty+0x686
+00000000`0014f2a0 00007ffe`c51a9a1d     bcrypt!BCryptSetAuditingInterface+0x5b7
+00000000`0014f2e0 00007ffe`c51fd2f7     ntdll!RtlActivateActivationContextUnsafeFast+0x11d
+00000000`0014f350 00007ffe`c51fd08a     ntdll!LdrGetProcedureAddressEx+0x2d7
+00000000`0014f4a0 00007ffe`c51fd110     ntdll!LdrGetProcedureAddressEx+0x6a
+00000000`0014f4e0 00007ffe`c51fd110     ntdll!LdrGetProcedureAddressEx+0xf0
+00000000`0014f520 00007ffe`c51fd110     ntdll!LdrGetProcedureAddressEx+0xf0
+00000000`0014f560 00007ffe`c5263d72     ntdll!LdrGetProcedureAddressEx+0xf0
+00000000`0014f5a0 00007ffe`c5205deb     ntdll!LdrInitShimEngineDynamic+0x3872
+00000000`0014f9c0 00007ffe`c5205c73     ntdll!LdrInitializeThunk+0x1db
+00000000`0014fa60 00007ffe`c5205c1e     ntdll!LdrInitializeThunk+0x63
+00000000`0014fa90 00000000`00000000     ntdll!LdrInitializeThunk+0xe
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+[RECON5_PDIOC]
+rcx=00000000000001ac
+rdx=0000000000000000
+r8=0000000000000000
+r9=0000000000000000
+00000000`0014ecf8  00007ffe`c2dfdddb 00000000`0000019c
+00000000`0014ed08  00007ffe`c2b210f0 000000a0`00000014
+00000000`0014ed18  00000000`0014ed24 00000000`0014ed50
+00000000`0014ed28  00007ffe`00390008 00000000`00000000
+00000000`0014ed38  00007ffe`00000000 00000000`0014ee38
+00000000`0014ed48  00000000`00000030 00007ffe`00000007
+00000000`0014ed58  00000000`00000020 00000000`00000000
+00000000`0014ed68  00007ffe`c4c05951 00000000`00390008
+00000000`0014ed78  00000000`00000000 00000000`00000030
+Child-SP          RetAddr               Call Site
+00000000`0014ecf8 00007ffe`c2dfdddb     ntdll!NtDeviceIoControlFile
+00000000`0014ed00 00007ffe`c4c05951     KERNELBASE!DeviceIoControl+0x6b
+00000000`0014ed70 00007ffe`c2b3f10d     KERNEL32!DeviceIoControl+0x81
+00000000`0014edc0 00007ffe`c2b383a4     bcryptPrimitives!GetSecretAgreementInterface+0x11d
+00000000`0014ee10 00007ffe`c2b385e2     bcryptPrimitives!ProcessPrng+0x3394
+00000000`0014ee80 00007ffe`c2b58c5e     bcryptPrimitives!ProcessPrng+0x35d2
+00000000`0014ef60 00007ffe`c51a9a1d     bcryptPrimitives!GetKeyDerivationInterface+0x13b3e
+00000000`0014efa0 00007ffe`c51fd2f7     ntdll!RtlActivateActivationContextUnsafeFast+0x11d
+00000000`0014f010 00007ffe`c51fd08a     ntdll!LdrGetProcedureAddressEx+0x2d7
+00000000`0014f160 00007ffe`c51cd947     ntdll!LdrGetProcedureAddressEx+0x6a
+00000000`0014f1a0 00007ffe`c51afbae     ntdll!RtlSwitchedVVI+0xd07
+00000000`0014f1e0 00007ffe`c51a6d40     ntdll!RtlGetFullPathName_UstrEx+0x231e
+00000000`0014f260 00007ffe`c51a66ee     ntdll!RtlDosPathNameToNtPathName_U_WithStatus+0x160
+00000000`0014f570 00007ffe`c51c1927     ntdll!RtlCreateUnicodeStringFromAsciiz+0x17e
+00000000`0014f680 00007ffe`c51a0446     ntdll!RtlVirtualUnwind+0xb47
+00000000`0014fc50 00007ffe`c20e2472     ntdll!LdrResolveDelayLoadedAPI+0xc6
+00000000`0014fce0 00007ffe`c20e2951     CRYPTBASE!SystemFunction040+0xb2
+00000000`0014fd20 00007ffe`c20e101d     CRYPTBASE!SystemFunction003+0x431
+Memory access error at ')==0x5c) { .echo [RECON5_PNTOPEN]; dU poi(poi(@rcx+0x10)+8) L16 } .else { g } '
+ntdll!ZwOpenFile:
+00007ffe`c522dbf0 4c8bd1          mov     r10,rcx
+0:000> 

@@ -1,0 +1,27 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-53",
+  "evidence_scope": "real_sample_guest_run",
+  "sample_lineage": {
+    "guest_path": "C:\\ept_core\\Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "derived_from": "<HOST_PATH>\\EPT\\artifacts\\captures\\hardware_guest_test.exe",
+    "original_sample": "<HOST_PATH>\\EPT\\sample\\EPT专业游戏维修工具箱V5.1.exe (CA6B4C6A...)"
+  },
+  "vm_state": {"vm": "<VM_LABEL>", "checkpoint": "C173-gen1-ready2 恢复"},
+  "hypothesis": "run 52 终态(payload 文件已建 0 字节、~7.9MB WriteFile 打到句柄 0x2f0 未落盘、随后致命包装 FATAL_THUNK 触发并被合成返回转干净退出)的失败决策点可以通过三个只读增强观测定位: (a) WriteFile 句柄身份(!handle)判断 7.9MB 写入目标到底是不是 payload 文件; (b) 缓冲区头 8 字节判断写入内容是否为 PE 映像; (c) FATAL_THUNK 处 k L12 回溯判断是哪段代码/哪个检查触发了致命包装。另: bu 解析缺陷(run 49 起一直存在, 8 行断点全部未挂)用二次发送补齐。",
+  "new_information_vs_prior": "首次获得: WriteFile 目标句柄对象名与类型; 写入缓冲区内容头; 致命包装触发者的调用栈; CreateProcess/OpenService/StartService/ExitProcess/Sleep 的 API 层观测(run 49-52 全缺失)。",
+  "acceptance_fields": {
+    "big_write_handle_type": "7.9MB WriteFile 的句柄对象类型与名称(决定写入去向)",
+    "big_write_buffer_head": "7.9MB 缓冲区头 8 字节(PE 判定)",
+    "fatal_thunk_stack": "致命包装触发者调用栈(失败检查定位)",
+    "api_layer_observations": "CPW/CPA/OPENSVC/STARTSVC/EXIT_PROCESS/SLEEP 实际命中与否",
+    "payload_file_bytes": "收割时 Temp 非 EPT_ 无扩展名文件尺寸",
+    "target_native_return": "预期 NOT_OBSERVED",
+    "target_caller_diff_bytes": "预期 NOT_OBSERVED"
+  },
+  "verdict": "PENDING",
+  "verdicts": {},
+  "deadline": "发射后 25 分钟无条件收割",
+  "stop_loss": "cdb.stdout 5 分钟增长 <100 字节且 payload 文件无增长 → 杀 cdb 收割",
+  "cleanup_commitments": "harvest 后杀进程/移除 hosts 钉扎/注销任务; 另查运行窗口内事件 1074 数量=0"
+}

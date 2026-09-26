@@ -1,0 +1,91 @@
+[
+  {
+    "name": "aux_2f90",
+    "instructions": 61,
+    "span_lo": "0x1403b2f90",
+    "span_hi": "0x1403b30df",
+    "span_bytes": 335,
+    "invalid_count": 0,
+    "first_invalid_va": null,
+    "call_count": 13,
+    "jmp_count": 0,
+    "lea_count": 6
+  },
+  {
+    "name": "aux_30e0",
+    "instructions": 64,
+    "span_lo": "0x1403b30e0",
+    "span_hi": "0x1403b322f",
+    "span_bytes": 335,
+    "invalid_count": 0,
+    "first_invalid_va": null,
+    "call_count": 9,
+    "jmp_count": 0,
+    "lea_count": 4
+  },
+  {
+    "name": "aux_3320",
+    "instructions": 36,
+    "span_lo": "0x1403b3320",
+    "span_hi": "0x1403b33c9",
+    "span_bytes": 169,
+    "invalid_count": 0,
+    "first_invalid_va": null,
+    "call_count": 4,
+    "jmp_count": 0,
+    "lea_count": 3
+  },
+  {
+    "name": "cardlogin_head",
+    "instructions": 0,
+    "note": "NO_PARSE"
+  },
+  {
+    "name": "get_server_option",
+    "instructions": 23,
+    "span_lo": "0x1403c47e0",
+    "span_hi": "0x1403c485d",
+    "span_bytes": 125,
+    "invalid_count": 0,
+    "first_invalid_va": null,
+    "call_count": 1,
+    "jmp_count": 0,
+    "lea_count": 1
+  },
+  {
+    "name": "init",
+    "instructions": 118,
+    "span_lo": "0x1403b34d0",
+    "span_hi": "0x1403b3ba5",
+    "span_bytes": 1749,
+    "invalid_count": 16,
+    "first_invalid_va": "0x1403b351d",
+    "call_count": 7,
+    "jmp_count": 0,
+    "lea_count": 6
+  },
+  {
+    "name": "is_login",
+    "instructions": 33,
+    "span_lo": "0x1403c49d0",
+    "span_hi": "0x1403c4a66",
+    "span_bytes": 150,
+    "invalid_count": 0,
+    "first_invalid_va": null,
+    "call_count": 7,
+    "jmp_count": 0,
+    "lea_count": 2
+  },
+  {
+    "name": "set_host",
+    "instructions": 21,
+    "span_lo": "0x1403b3280",
+    "span_hi": "0x1403b332f",
+    "span_bytes": 175,
+    "invalid_count": 3,
+    "first_invalid_va": "0x1403b332d",
+    "call_count": 2,
+    "jmp_count": 0,
+    "lea_count": 0
+  }
+]

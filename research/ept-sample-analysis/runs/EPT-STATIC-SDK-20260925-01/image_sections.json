@@ -1,0 +1,62 @@
+[
+  {
+    "name": ".text",
+    "va": "0x140001000",
+    "vsize": 8231212,
+    "vsize_hex": "0x7d992c"
+  },
+  {
+    "name": ".rdata",
+    "va": "0x1407db000",
+    "vsize": 8138192,
+    "vsize_hex": "0x7c2dd0"
+  },
+  {
+    "name": ".data",
+    "va": "0x140f9e000",
+    "vsize": 1894156,
+    "vsize_hex": "0x1ce70c"
+  },
+  {
+    "name": ".pdata",
+    "va": "0x14116d000",
+    "vsize": 20352,
+    "vsize_hex": "0x4f80"
+  },
+  {
+    "name": "_RDATA",
+    "va": "0x141172000",
+    "vsize": 252,
+    "vsize_hex": "0xfc"
+  },
+  {
+    "name": ".fptable",
+    "va": "0x141173000",
+    "vsize": 256,
+    "vsize_hex": "0x100"
+  },
+  {
+    "name": ".Sq>",
+    "va": "0x141174000",
+    "vsize": 15619568,
+    "vsize_hex": "0xee55f0"
+  },
+  {
+    "name": ".bs]",
+    "va": "0x14205a000",
+    "vsize": 3976,
+    "vsize_hex": "0xf88"
+  },
+  {
+    "name": ".)Bu",
+    "va": "0x14205b000",
+    "vsize": 32545584,
+    "vsize_hex": "0x1f09b30"
+  },
+  {
+    "name": ".rsrc",
+    "va": "0x143f65000",
+    "vsize": 119877,
+    "vsize_hex": "0x1d445"
+  }
+]

@@ -1,0 +1,32 @@
+﻿{
+    "run_id":  "EPT-AUTH-LOCAL-STORED-CONFIG-20260926-02",
+    "vm":  "<VM_LABEL>",
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-STORED-CONFIG-20260926-02",
+    "target":  "C:\\ept_core\\Hardware.exe",
+    "target_sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "baseline":  "C173-gen1-ready2",
+    "observation_mode":  "natural",
+    "evidence_scope":  "real_sample_guest_run",
+    "network_scope":  "excluded",
+    "debugger":  "none",
+    "memory_writes":  "none",
+    "input_state":  "HISTORICAL_STORED_CONFIG_CONSUMER",
+    "historical_config_source":  "EPT-AUTHGATE-20260925-65 forced-run capture",
+    "historical_config_sha256":  "E5D72F1C6217F9E4AB492E2A868E88C3A988363A7A09C3BEFE4F9EECA2397E1B",
+    "natural_authorization_proven":  "false",
+    "control_nonce":  "8c636287282e41639faab6970787f329",
+    "runner_sha256":  "EA315C55451737923BD625423D3991C7CE3C8E5FE0A39221B3FE7DA3B2F1A7A5",
+    "task":  {
+                 "run_id":  "EPT-AUTH-LOCAL-STORED-CONFIG-20260926-02",
+                 "task_name":  "EPT-EPT-AUTH-LOCAL-STORED-CONFIG-20260926-02",
+                 "state":  "Running",
+                 "guest_root":  "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-STORED-CONFIG-20260926-02",
+                 "runner_sha256":  "EA315C55451737923BD625423D3991C7CE3C8E5FE0A39221B3FE7DA3B2F1A7A5",
+                 "historical_config_sha256":  "E5D72F1C6217F9E4AB492E2A868E88C3A988363A7A09C3BEFE4F9EECA2397E1B",
+                 "started_utc":  "2026-09-26T15:11:51.9251906Z",
+                 "PSComputerName":  "<VM_LABEL>",
+                 "RunspaceId":  "c666903a-5f50-492b-9d59-303fb3d30454",
+                 "PSShowComputerName":  true
+             },
+    "dispatched_utc":  "2026-09-26T15:11:51.9339271Z"
+}

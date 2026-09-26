@@ -1,0 +1,25 @@
+{
+    "run_id":  "EPT-INJECT-20260925-08",
+    "status":  "OBSERVER_COMPLETE_DEBUGGER_LAUNCH",
+    "mode":  "real_sample_guest_run_injected_io",
+    "evidence_scope":  "real_sample_guest_run_injected_io",
+    "process_model":  "debugger_launch",
+    "completed_utc":  "2026-09-24T17:54:08.9733236Z",
+    "target_path":  "C:\\ept_core\\Hardware.exe",
+    "debugger_pid":  4720,
+    "target_pid":  960,
+    "debugger_exit_code":  0,
+    "target_native_return":  "NOT_OBSERVED",
+    "target_caller_diff_bytes":  "NOT_OBSERVED",
+    "rc06_entry":  "NOT_OBSERVED",
+    "rc06_return":  "NOT_OBSERVED",
+    "post_decode_behavior":  "DERIVED_FROM_POST_RUN_EVIDENCE",
+    "response_injection":  "DERIVED_FROM_CDB_MARKERS",
+    "response_source_scope":  "offline_reference_synthetic_response",
+    "input_state":  "synthetic_invalid_card_no_secret",
+    "deadline_seconds":  240,
+    "runner_sha256":  "7125DF7BA6D0D1B12B7792E783EF9CE799DECA84D57FFCD0C5C62BBD19D62FE9",
+    "errors":  [
+
+               ]
+}

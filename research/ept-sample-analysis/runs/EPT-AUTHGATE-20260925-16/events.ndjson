@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T07:06:29.7140977Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":2080,"type":"PARENT_STARTED","utc":"2026-09-25T07:06:29.8078227Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_BA5A4961_F180DDD7.exe","pid":3620,"ppid":2080,"type":"CHILD_FOUND","utc":"2026-09-25T07:06:32.6984973Z"}
+{"child_pid":3620,"utc":"2026-09-25T07:06:32.7297039Z","debugger_pid":2452,"type":"CDB_ATTACHED"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T07:06:32.7609487Z"}

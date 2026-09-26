@@ -1,0 +1,6 @@
+﻿{"utc":"2026-09-25T13:16:49.2492320Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":2792,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T13:16:49.3586033Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_3782DDA0_C2877A25.exe","pid":2260,"ppid":2792,"type":"CHILD_FOUND","utc":"2026-09-25T13:16:52.2648565Z"}
+{"target_pid":2260,"debugger_pid":4528,"type":"CDB_ATTACHED","utc":"2026-09-25T13:16:52.2804814Z"}
+{"pid":216,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T13:16:52.3273561Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T13:16:52.3742284Z"}

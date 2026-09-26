@@ -1,0 +1,585 @@
+{
+ "hits": [
+  {
+   "va": "0x140f8d010",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\"
+  },
+  {
+   "va": "0x140f8d010",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\"
+  },
+  {
+   "va": "0x140f8d080",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "SYSTEM\\CurrentControlSet\\Services\\"
+  },
+  {
+   "va": "0x140f8d080",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "SYSTEM\\CurrentControlSet\\Services\\"
+  },
+  {
+   "va": "0x140f8d340",
+   "region": "rdata_tail",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Services"
+  },
+  {
+   "va": "0x140f8d340",
+   "region": "rg2",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Services"
+  },
+  {
+   "va": "0x140f8e320",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "<HOST_PATH>\<DIR>rdware.ini"
+  },
+  {
+   "va": "0x140f8e320",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "<HOST_PATH>\<DIR>rdware.ini"
+  },
+  {
+   "va": "0x140f8e370",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "C:\\Windows\\System32\\Hardware.ini"
+  },
+  {
+   "va": "0x140f8e370",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "C:\\Windows\\System32\\Hardware.ini"
+  },
+  {
+   "va": "0x140f8e640",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "wmic "
+  },
+  {
+   "va": "0x140f8e640",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "wmic "
+  },
+  {
+   "va": "0x140f8e660",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "SerialNumber"
+  },
+  {
+   "va": "0x140f8e660",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "SerialNumber"
+  },
+  {
+   "va": "0x140f8e680",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "baseboard get SerialNumber"
+  },
+  {
+   "va": "0x140f8e680",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "baseboard get SerialNumber"
+  },
+  {
+   "va": "0x140f8e760",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "bios get SerialNumber"
+  },
+  {
+   "va": "0x140f8e760",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "bios get SerialNumber"
+  },
+  {
+   "va": "0x140f8e790",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "BiosSerial"
+  },
+  {
+   "va": "0x140f8e790",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "BiosSerial"
+  },
+  {
+   "va": "0x140f8e7a8",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "diskdrive get SerialNumber"
+  },
+  {
+   "va": "0x140f8e7a8",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "diskdrive get SerialNumber"
+  },
+  {
+   "va": "0x140f8e7e0",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "DiskSerials"
+  },
+  {
+   "va": "0x140f8e7e0",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "DiskSerials"
+  },
+  {
+   "va": "0x140f8e810",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "cpu get ProcessorId"
+  },
+  {
+   "va": "0x140f8e810",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "cpu get ProcessorId"
+  },
+  {
+   "va": "0x140f8e848",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "cpu get SerialNumber"
+  },
+  {
+   "va": "0x140f8e848",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "cpu get SerialNumber"
+  },
+  {
+   "va": "0x140f8e878",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "CpuSerials"
+  },
+  {
+   "va": "0x140f8e878",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "CpuSerials"
+  },
+  {
+   "va": "0x140f8e890",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "path Win32_VideoController get Name"
+  },
+  {
+   "va": "0x140f8e890",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "path Win32_VideoController get Name"
+  },
+  {
+   "va": "0x140f8e8e8",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "memorychip get SerialNumber"
+  },
+  {
+   "va": "0x140f8e8e8",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "memorychip get SerialNumber"
+  },
+  {
+   "va": "0x140f8e920",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "MemorySerials"
+  },
+  {
+   "va": "0x140f8e920",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "MemorySerials"
+  },
+  {
+   "va": "0x140f8e940",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "MACAddress"
+  },
+  {
+   "va": "0x140f8e940",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "MACAddress"
+  },
+  {
+   "va": "0x140f8e960",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "path Win32_NetworkAdapterConfiguration where IPEnabled=True get MACAddress"
+  },
+  {
+   "va": "0x140f8e960",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "path Win32_NetworkAdapterConfiguration where IPEnabled=True get MACAddress"
+  },
+  {
+   "va": "0x140f8ea08",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "DefaultIPGateway"
+  },
+  {
+   "va": "0x140f8ea08",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "DefaultIPGateway"
+  },
+  {
+   "va": "0x140f8ea30",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "path Win32_NetworkAdapterConfiguration where IPEnabled=True get DefaultIPGateway"
+  },
+  {
+   "va": "0x140f8ea30",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "path Win32_NetworkAdapterConfiguration where IPEnabled=True get DefaultIPGateway"
+  },
+  {
+   "va": "0x140f90690",
+   "region": "rdata_tail",
+   "enc": "utf-16",
+   "s": "catch{try{$null=Invoke-CimMethod -Namespace 'root/Microsoft/Windows/Defender' -ClassName 'MSFT_MpPreference' -MethodName 'Add' -Arguments @{ExclusionPath=@($p);Force=$true} -ErrorAction Stop;exit 0}catch{exit 1}}"
+  },
+  {
+   "va": "0x140f90690",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "catch{try{$null=Invoke-CimMethod -Namespace 'root/Microsoft/Windows/Defender' -ClassName 'MSFT_MpPreference' -MethodName 'Add' -Arguments @{ExclusionPath=@($p);Force=$true} -ErrorAction Stop;exit 0}catch{exit 1}}"
+  },
+  {
+   "va": "0x140f90a18",
+   "region": "rdata_tail",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Services\\SecurityHealthService"
+  },
+  {
+   "va": "0x140f90a18",
+   "region": "rg2",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Services\\SecurityHealthService"
+  },
+  {
+   "va": "0x140f90c20",
+   "region": "rdata_tail",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management"
+  },
+  {
+   "va": "0x140f90c20",
+   "region": "rg2",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management"
+  },
+  {
+   "va": "0x140f90ca0",
+   "region": "rdata_tail",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity"
+  },
+  {
+   "va": "0x140f90ca0",
+   "region": "rg2",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity"
+  },
+  {
+   "va": "0x140f90d18",
+   "region": "rdata_tail",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\CI\\Policy"
+  },
+  {
+   "va": "0x140f90d18",
+   "region": "rg2",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\CI\\Policy"
+  },
+  {
+   "va": "0x140f90dd0",
+   "region": "rdata_tail",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Power"
+  },
+  {
+   "va": "0x140f90dd0",
+   "region": "rg2",
+   "enc": "ascii",
+   "s": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Power"
+  },
+  {
+   "va": "0x1411a0020",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "\\REGISTRY\\MACHINE\\SOFTWARE\\Classes"
+  },
+  {
+   "va": "0x1411a0150",
+   "region": "rg2",
+   "enc": "utf-16",
+   "s": "\\Registry\\Machine\\Software\\Classes\\"
+  }
+ ],
+ "refs": {
+  "0x140f8d010": [
+   [
+    "0x14078c07c",
+    "0x14078bf50"
+   ],
+   [
+    "0x14078c622",
+    "0x14078c300"
+   ]
+  ],
+  "0x140f8d080": [
+   [
+    "0x14078c0d3",
+    "0x14078bf50"
+   ],
+   [
+    "0x14078c389",
+    "0x14078c300"
+   ]
+  ],
+  "0x140f8d340": [
+   [
+    "0x14078e50f",
+    "0x14078e4d0"
+   ]
+  ],
+  "0x140f8e640": [
+   [
+    "0x140791043",
+    "0x140790fc0"
+   ]
+  ],
+  "0x140f8e320": [
+   [
+    "0x140791b8c",
+    "0x140791b20"
+   ],
+   [
+    "0x140791ca5",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e370": [
+   [
+    "0x140791b93",
+    "0x140791b20"
+   ],
+   [
+    "0x140791cac",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e680": [
+   [
+    "0x140791cee",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e660": [
+   [
+    "0x140791cff",
+    "0x140791c30"
+   ],
+   [
+    "0x1407920d1",
+    "0x140791c30"
+   ],
+   [
+    "0x140792217",
+    "0x140791c30"
+   ],
+   [
+    "0x1407924a3",
+    "0x140791c30"
+   ],
+   [
+    "0x14079272f",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e760": [
+   [
+    "0x1407920c0",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e790": [
+   [
+    "0x1407920f6",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e7a8": [
+   [
+    "0x140792206",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e7e0": [
+   [
+    "0x14079223c",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e810": [
+   [
+    "0x14079234c",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e848": [
+   [
+    "0x140792492",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e878": [
+   [
+    "0x1407924c8",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e890": [
+   [
+    "0x1407925d8",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e8e8": [
+   [
+    "0x14079271e",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e920": [
+   [
+    "0x140792754",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e960": [
+   [
+    "0x140792864",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8e940": [
+   [
+    "0x140792875",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8ea30": [
+   [
+    "0x1407929aa",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f8ea08": [
+   [
+    "0x1407929bb",
+    "0x140791c30"
+   ]
+  ],
+  "0x140f90690": [
+   [
+    "0x14079ce8c",
+    "0x14079cb50"
+   ],
+   [
+    "0x14079cea8",
+    "0x14079cb50"
+   ]
+  ],
+  "0x140f90a18": [
+   [
+    "0x14079d974",
+    "0x14079d7f0"
+   ]
+  ],
+  "0x140f90c20": [
+   [
+    "0x14079dea7",
+    "0x14079d7f0"
+   ],
+   [
+    "0x14079dece",
+    "0x14079d7f0"
+   ],
+   [
+    "0x14079def5",
+    "0x14079d7f0"
+   ]
+  ],
+  "0x140f90ca0": [
+   [
+    "0x14079df19",
+    "0x14079d7f0"
+   ]
+  ],
+  "0x140f90d18": [
+   [
+    "0x14079df3d",
+    "0x14079d7f0"
+   ]
+  ],
+  "0x140f90dd0": [
+   [
+    "0x14079dfa9",
+    "0x14079d7f0"
+   ],
+   [
+    "0x14079e1f3",
+    "0x14079e190"
+   ],
+   [
+    "0x14079e230",
+    "0x14079e190"
+   ]
+  ]
+ },
+ "functions": {
+  "FUN_14078bf50": 2,
+  "FUN_14078c300": 2,
+  "FUN_14078e4d0": 1,
+  "FUN_140790fc0": 1,
+  "FUN_140791b20": 2,
+  "FUN_140791c30": 22,
+  "FUN_14079cb50": 2,
+  "FUN_14079d7f0": 7,
+  "FUN_14079e190": 2
+ }
+}

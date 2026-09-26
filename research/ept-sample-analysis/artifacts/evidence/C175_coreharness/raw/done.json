@@ -1,0 +1,14 @@
+{
+    "input_exit":  0,
+    "run_id":  "EPT-C175-COREHARNESS-01",
+    "self_test_exit":  0,
+    "completed_utc":  "2026-09-24T07:34:43.0832273Z",
+    "modes":  [
+                  "self_test",
+                  "input_268",
+                  "response_284"
+              ],
+    "response_exit":  0,
+    "guest_host":  "<VM_LABEL>",
+    "notes":  "caller/injection-level harness run; no Hardware.exe, no device, no network"
+}

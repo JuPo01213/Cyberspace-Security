@@ -1,0 +1,25 @@
+.echo [XREF2_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!CopyFileExW ".echo [COPYEXW]; r rcx; r rdx; r r8; r r9; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L60; k L8; g"
+sxe -c "$$><late.cdb;g" ld urlmon.dll
+bp ntdll!NtQueryValueKey ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_NTQVK]; r rcx; r rdx; k L14 } } ; g"
+bp kernelbase!CreateFileW ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_CREATEFILEW]; r rcx; dU @rcx L10; k L14 } } ; g"
+bp ntdll!NtWaitForSingleObject ".if (@$t3 < 15) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_WAITOBJ]; r rcx; r rdx; k L20; r @$t3=@$t3+1 } } } ; g"
+bp ntdll!NtWaitForMultipleObjects ".if (@$t4 < 15) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_WAITMULTI]; r rcx; r rdx; k L20; r @$t4=@$t4+1 } } } ; g"
+bp ntdll!NtWaitForSingleObject 100 ".echo [S15_SNAP_100]; ~* k L25; g"
+bp ntdll!NtWaitForSingleObject 1500 ".echo [S15_SNAP_1500]; ~* k L25; g"
+bp win32u!NtUserMsgWaitForMultipleObjectsEx ".if (@$t1 < 12) { .echo [S15_MSGWAIT]; k L20; r @$t1=@$t1+1 } ; g"
+bp win32u!NtUserGetMessage ".if (@$t6 < 8) { .echo [S15_GETMSG]; k L20; r @$t6=@$t6+1 } ; g"
+bp user32!MessageBoxW ".echo [S15_MSGBOXW]; r rcx; r rdx; dU @rdx L10; k L20 ; g"
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [XREF2_PCREATEFILEW]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp ntdll!NtDeviceIoControlFile ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_PDIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14 } } ; g"
+sxe -c ".echo [XREF2_PARENT_AV]; .lastevent; r; k; g" av
+g

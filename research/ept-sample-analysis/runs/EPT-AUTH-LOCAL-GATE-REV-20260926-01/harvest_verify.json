@@ -1,0 +1,74 @@
+﻿{
+    "run_id":  "EPT-AUTH-LOCAL-GATE-REV-20260926-01",
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-GATE-REV-20260926-01",
+    "harvested_utc":  "2026-09-26T16:43:35.6112476Z",
+    "files":  [
+                  {
+                      "name":  "cdb.stderr.txt",
+                      "guest_sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                      "host_sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+                      "guest_length":  0,
+                      "host_length":  0,
+                      "match":  true
+                  },
+                  {
+                      "name":  "cdb.stdout.txt",
+                      "guest_sha256":  "3D21BE969ECE92C66EC3918D3F8D1B499F2B7CF573D525E1F0FCC0C74111D238",
+                      "host_sha256":  "3D21BE969ECE92C66EC3918D3F8D1B499F2B7CF573D525E1F0FCC0C74111D238",
+                      "guest_length":  7134,
+                      "host_length":  7134,
+                      "match":  true
+                  },
+                  {
+                      "name":  "CONTROL_CANARY.txt",
+                      "guest_sha256":  "66A9B1FF6E09A2ACEE597F5EB91810A350783552F2EB9AE974582EE947252FDC",
+                      "host_sha256":  "66A9B1FF6E09A2ACEE597F5EB91810A350783552F2EB9AE974582EE947252FDC",
+                      "guest_length":  32,
+                      "host_length":  32,
+                      "match":  true
+                  },
+                  {
+                      "name":  "events.ndjson",
+                      "guest_sha256":  "31D06B8BC8F734D4A12EB9AA5535B3218DCC0373A34D49A1CF81A25BB1C38A29",
+                      "host_sha256":  "31D06B8BC8F734D4A12EB9AA5535B3218DCC0373A34D49A1CF81A25BB1C38A29",
+                      "guest_length":  60569,
+                      "host_length":  60569,
+                      "match":  true
+                  },
+                  {
+                      "name":  "gate_rev.cdb",
+                      "guest_sha256":  "F9CF54A2F93F790153E0562051104A525A826495B8BC1D1D1FCC524400738537",
+                      "host_sha256":  "F9CF54A2F93F790153E0562051104A525A826495B8BC1D1D1FCC524400738537",
+                      "guest_length":  301,
+                      "host_length":  301,
+                      "match":  true
+                  },
+                  {
+                      "name":  "gate_rev2.cdb",
+                      "guest_sha256":  "4F3D42A4B5AB89249B6AA8D56DD15C4262922C4559FB45271A7CDE36D513D25D",
+                      "host_sha256":  "4F3D42A4B5AB89249B6AA8D56DD15C4262922C4559FB45271A7CDE36D513D25D",
+                      "guest_length":  419,
+                      "host_length":  419,
+                      "match":  true
+                  },
+                  {
+                      "name":  "guest_observe.ps1",
+                      "guest_sha256":  "F88F10BDD96C5128A86201C51371B30090CE58211D267C416BF19D15D9A75238",
+                      "host_sha256":  "F88F10BDD96C5128A86201C51371B30090CE58211D267C416BF19D15D9A75238",
+                      "guest_length":  4494,
+                      "host_length":  4494,
+                      "match":  true
+                  },
+                  {
+                      "name":  "historical_SYS32_Hardware.bin",
+                      "guest_sha256":  "E5D72F1C6217F9E4AB492E2A868E88C3A988363A7A09C3BEFE4F9EECA2397E1B",
+                      "host_sha256":  "E5D72F1C6217F9E4AB492E2A868E88C3A988363A7A09C3BEFE4F9EECA2397E1B",
+                      "guest_length":  900,
+                      "host_length":  900,
+                      "match":  true
+                  }
+              ],
+    "hashes_verified":  true,
+    "network_scope":  "excluded",
+    "observer_mode":  "readonly_hardware_breakpoints_only"
+}

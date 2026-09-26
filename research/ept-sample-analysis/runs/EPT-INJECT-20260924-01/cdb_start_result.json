@@ -1,0 +1,12 @@
+{
+    "run_id":  "EPT-INJECT-20260924-01",
+    "cdb_pid":  8940,
+    "child_attached":  false,
+    "cdb_log":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01\\cdb.log",
+    "cdb_err":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01\\cdb.err.txt",
+    "command_file":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01\\cdb_command.txt",
+    "checked_utc":  "2026-09-24T12:01:35.3085418Z",
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "2f16255b-395d-4cb3-a6e1-acd14e74e367",
+    "PSShowComputerName":  true
+}

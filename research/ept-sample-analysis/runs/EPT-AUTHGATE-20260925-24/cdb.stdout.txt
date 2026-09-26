@@ -1,0 +1,192 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.031 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.032 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_47BB37A8_D8A0BA2A.exe
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+(d70.dc): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffe`c52310d0 cc              int     3
+0:003> .echo RUN24_SETUP_RETURN_PROBE_BEGIN
+RUN24_SETUP_RETURN_PROBE_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo ENTRY_GATE_RELEASED_ONLY
+ENTRY_GATE_RELEASED_ONLY
+0:003> bu user32!MessageBoxA ".echo MSGBOXA; da rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxTimeoutW ".echo MSGBOXTOW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo FATALEXIT; k L8; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:003> ba e 1 142037706 ".echo SETUP_OPTION_RETURN_POINT; r; k L12; u @rip L30; r eax=0; r ebx=0; .echo SETUP_OPTION_FORCED_ZERO; g"
+0:003> ba e 1 1407adae0 ".echo STAGE_LOG; da r8; r r9d; k L10; g"
+0:003> ba e 1 14078de50 ".echo HIT_OPEN_AUTH; k L10; g"
+0:003> ba e 1 14078e8c0 ".echo HIT_COMM_INIT; k L10; g"
+0:003> .echo HWBP_ARMED_RETURN_STAGE_OPEN_COMM
+HWBP_ARMED_RETURN_STAGE_OPEN_COMM
+0:003> g
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+CFW
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_47BB37A8_D8A0BA2A.exe
+00000000`00429640  "C:\Windows\System32\Hardware"
+ModLoad: 00007ffe`acc80000 00007ffe`acc97000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffe`acc60000 00007ffe`acc7b000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffe`bc5b0000 00007ffe`bc5cd000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffe`bd860000 00007ffe`bd87d000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffe`c1ed0000 00007ffe`c1f3a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffe`c1bf0000 00007ffe`c1cba000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffe`c4a30000 00007ffe`c4a38000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ffe`ac390000 00007ffe`ac3a2000   C:\Windows\System32\winrnr.dll
+ModLoad: 00007ffe`baf50000 00007ffe`bafd0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffe`ba570000 00007ffe`ba57a000   C:\Windows\System32\rasadhlp.dll
+STAGE_LOG
+00000001`40f92e60  "Setup.SP_Verify_Init"
+r9d=0
+Child-SP          RetAddr               Call Site
+00000000`00145bd8 00000001`4078fed9     EPT_47BB37A8_D8A0BA2A+0x7adae0
+00000000`00145be0 00000001`4203767c     EPT_47BB37A8_D8A0BA2A+0x78fed9
+00000000`00145e30 00000001`407b1094     EPT_47BB37A8_D8A0BA2A+0x203767c
+00000000`0014fef0 00007ffe`c4c07374     EPT_47BB37A8_D8A0BA2A+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+STAGE_LOG
+00000001`40f92eb0  "Setup.SP_Verify_GetServerOption"
+r9d=fffffffd
+Child-SP          RetAddr               Call Site
+00000000`00145bd8 00000001`4078fed9     EPT_47BB37A8_D8A0BA2A+0x7adae0
+00000000`00145be0 00000001`42037706     EPT_47BB37A8_D8A0BA2A+0x78fed9
+00000000`00145e30 00000001`407b1094     EPT_47BB37A8_D8A0BA2A+0x2037706
+00000000`0014fef0 00007ffe`c4c07374     EPT_47BB37A8_D8A0BA2A+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+SETUP_OPTION_RETURN_POINT
+rax=0000000000000001 rbx=00000000fffffffd rcx=1f6e691a40260000
+rdx=0000000000000000 rsi=0000000000000000 rdi=0000000141154980
+rip=0000000142037706 rsp=0000000000145e30 rbp=0000000000145f30
+ r8=0000000000145888  r9=00000000001459c0 r10=0000000000000000
+r11=0000000000145bd0 r12=0000000000000000 r13=0000000000000006
+r14=0000000000000000 r15=0000000000000001
+iopl=0         nv up ei pl nz na pe nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000202
+EPT_47BB37A8_D8A0BA2A+0x2037706:
+00000001`42037706 e8d16593ff      call    EPT_47BB37A8_D8A0BA2A+0x196dcdc (00000001`4196dcdc)
+Child-SP          RetAddr               Call Site
+00000000`00145e30 00000001`407b1094     EPT_47BB37A8_D8A0BA2A+0x2037706
+00000000`0014fef0 00007ffe`c4c07374     EPT_47BB37A8_D8A0BA2A+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+EPT_47BB37A8_D8A0BA2A+0x2037706:
+00000001`42037706 e8d16593ff      call    EPT_47BB37A8_D8A0BA2A+0x196dcdc (00000001`4196dcdc)
+00000001`4203770b 33e8            xor     ebp,eax
+00000001`4203770d 0492            add     al,92h
+00000001`4203770f 70ff            jo      EPT_47BB37A8_D8A0BA2A+0x2037710 (00000001`42037710)
+00000001`42037711 20e8            and     al,ch
+00000001`42037713 e2a3            loop    EPT_47BB37A8_D8A0BA2A+0x20376b8 (00000001`420376b8)
+00000001`42037715 47ffb1415149b9  push    qword ptr [r9-46B6AEBFh]
+00000001`4203771c 8626            xchg    ah,byte ptr [rsi]
+00000001`4203771e 10f1            adc     cl,dh
+00000001`42037720 bf6035c49c      mov     edi,9CC43560h
+00000001`42037725 41c0e177        shl     r9b,77h
+00000001`42037729 4584c9          test    r9b,r9b
+00000001`4203772c 4150            push    r8
+00000001`4203772e 49f7d1          not     r9
+00000001`42037731 4c8b4c2410      mov     r9,qword ptr [rsp+10h]
+00000001`42037736 48c7442410bfb033e0 mov   qword ptr [rsp+10h],0FFFFFFFFE033B0BFh
+00000001`4203773f ff742408        push    qword ptr [rsp+8]
+00000001`42037743 9d              popfq
+00000001`42037744 488d642410      lea     rsp,[rsp+10h]
+00000001`42037749 e8e130deff      call    EPT_47BB37A8_D8A0BA2A+0x1e1a82f (00000001`41e1a82f)
+00000001`4203774e 2be8            sub     ebp,eax
+00000001`42037750 116499ff        adc     dword ptr [rcx+rbx*4-1],esp
+00000001`42037754 29579c          sub     dword ptr [rdi-64h],edx
+00000001`42037757 48bf812f84142a6c9e55 mov rdi,559E6C2A14842F81h
+00000001`42037761 4150            push    r8
+00000001`42037763 49b83330aa9d209334e7 mov r8,0E73493209DAA3033h
+00000001`4203776d 488b7c2410      mov     rdi,qword ptr [rsp+10h]
+00000001`42037772 48c7442410bf7f6e1d mov   qword ptr [rsp+10h],1D6E7FBFh
+00000001`4203777b 4c8b442400      mov     r8,qword ptr [rsp]
+00000001`42037780 e83cdd42ff      call    EPT_47BB37A8_D8A0BA2A+0x14654c1 (00000001`414654c1)
+00000001`42037785 46e8661a5fff    call    EPT_47BB37A8_D8A0BA2A+0x16291f1 (00000001`416291f1)
+00000001`4203778b 91              xchg    eax,ecx
+00000001`4203778c e884506aff      call    EPT_47BB37A8_D8A0BA2A+0x16dc815 (00000001`416dc815)
+00000001`42037791 fa              cli
+00000001`42037792 e8c67934fe      call    EPT_47BB37A8_D8A0BA2A+0x37f15d (00000001`4037f15d)
+00000001`42037797 3ce8            cmp     al,0E8h
+00000001`42037799 28f7            sub     bh,dh
+00000001`4203779b 40              ???
+00000001`4203779c ff              ???
+00000001`4203779d fb              sti
+00000001`4203779e 4154            push    r12
+00000001`420377a0 9c              pushfq
+00000001`420377a1 49bc2a1b8170994aaef5 mov r12,0F5AE4A9970811B2Ah
+00000001`420377ab 41f7c42a989009  test    r12d,990982Ah
+00000001`420377b2 41bcb0e00e2b    mov     r12d,2B0EE0B0h
+00000001`420377b8 410f9cc4        setl    r12b
+00000001`420377bc 41c0ec2d        shr     r12b,2Dh
+00000001`420377c0 4e8ba4640840e2a9 mov     r12,qword ptr [rsp+r12*2-561DBFF8h]
+SETUP_OPTION_FORCED_ZERO
+STAGE_LOG
+00000001`40f92ee8  "Setup.SP_Verify_GetNotice"
+r9d=fffffffd
+Child-SP          RetAddr               Call Site
+00000000`00145bd8 00000001`4078fed9     EPT_47BB37A8_D8A0BA2A+0x7adae0
+00000000`00145be0 00000001`4203774f     EPT_47BB37A8_D8A0BA2A+0x78fed9
+00000000`00145e30 00000001`407b1094     EPT_47BB37A8_D8A0BA2A+0x203774f
+00000000`0014fef0 00007ffe`c4c07374     EPT_47BB37A8_D8A0BA2A+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`b23d0000 00007ffe`b247c000   C:\Windows\SYSTEM32\TextShaping.dll

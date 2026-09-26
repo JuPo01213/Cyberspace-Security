@@ -1,0 +1,40 @@
+== how long the rollback baseline takes to become reachable, per VBox session ==
+(VM-clock offsets measured from that session's own log start; "end" is the last timestamped
+ line, so a session with no "up" line is one where the NIC was never raised while it lived)
+Files rotate every session, so each row is labelled by WHEN ITS OWN LOG WAS OPENED -
+the VBox.log.N name is only a position in the rotation, not an identity.
+
+session opened / log  linkdown    linkup      wait teardown@ lastguest timesync TMgiveups TMtotlag
+2026-09-19 20:55 [L]       6 s      32 s      25 s       6 s     148 s        -         4    276 s
+2026-09-19 20:29 [L.1]       6 s      31 s      25 s       6 s      87 s        -         1     64 s
+2026-09-19 20:26 [L.2]       6 s      12 s       5 s       6 s      99 s     32 s         0        -
+2026-09-19 20:10 [L.3]       7 s     923 s     917 s       7 s       7 s        -         1    937 s
+
+   Wait after resume before the NIC came up: 5 s, 25 s, 25 s, 917 s. Sessions whose wait exceeded the ~540 s
+   (15 probes x 35 s) that arm8.sh/arm10.sh allowed: %d of %d; the rest never came up.
+   => a "GATE FAIL - the guest will not answer" line is a statement about MY patience and
+      the baseline, not about the sample.
+   "Session 0 is about to close" appears in every session: the armed snapshot holds a state
+   that was mid-teardown when it was taken, so resuming it is NOT equivalent to booting.
+   Worst session: VBox.log.3 (2026-09-19 20:10Z), link at +917 s, TM give-ups 1 totalling 937 s; its last guest-side
+   log line is at 7 s - i.e. the NIC came up long after the guest had stopped reporting
+   anything, so link-up alone does not prove the service set survived.
+
+-- appendix: the exact lines behind the table. VBox keeps only the four newest logs, so
+-- these quotations are what stay checkable after rotation drops the files themselves. --
+   [VBox.log  opened 2026-09-19 20:55Z]
+      LOG-VBox.log       00:00:06.400110 NAT: Link down
+      teardown-marker    00:00:06.431422 VMMDev: Guest Log: 20:27:20.980664 control  Session 0 is about to close ...
+      LOG-VBox.log       00:00:31.719263 NAT: Link up
+   [VBox.log.1  opened 2026-09-19 20:29Z]
+      LOG-VBox.log.1     00:00:06.365464 NAT: Link down
+      teardown-marker    00:00:06.406826 VMMDev: Guest Log: 20:27:20.981486 control  Session 0 is about to close ...
+      LOG-VBox.log.1     00:00:31.205522 NAT: Link up
+   [VBox.log.2  opened 2026-09-19 20:26Z]
+      LOG-VBox.log.2     00:00:06.336627 NAT: Link down
+      teardown-marker    00:00:06.486787 VMMDev: Guest Log: 21:44:38.749256 control  Session 0 is about to close ...
+      LOG-VBox.log.2     00:00:11.788314 NAT: Link up
+   [VBox.log.3  opened 2026-09-19 20:10Z]
+      LOG-VBox.log.3     00:00:06.502075 NAT: Link down
+      teardown-marker    00:00:06.531873 VMMDev: Guest Log: 21:44:38.756901 control  Session 0 is about to close ...
+      LOG-VBox.log.3     00:15:23.429260 NAT: Link up

@@ -1,0 +1,70 @@
+== 0) windows recovered by BR6 ==
+   blk_ret    rva=0x1a1ff00    512 B  non-zero    0/512
+   iat        rva=0x205a000    248 B  non-zero  106/248
+   impdesc    rva=0x3a1d4c8    280 B  non-zero  153/280
+   term_callee rva=0x1761200    512 B  non-zero    0/512
+   tlsdir     rva=0x2d9cc00     40 B  non-zero   16/40
+
+== 1) TLS directory (from BR6 bytes) ==
+   StartAddressOfRawData    0x14205af80   other / unmapped-here
+   EndAddressOfRawData      0x14205af88   other / unmapped-here
+   AddressOfIndex           0x1411559a8   INSIDE RG2 blob
+   AddressOfCallBacks       0x0   NULL
+   SizeOfZeroFill=0  Characteristics=0x300000
+
+== 2) callback array walk starting at 0x0 ==
+   AddressOfCallBacks == 0  =>  NO TLS CALLBACKS.
+   This is a COVERED negative: the directory itself was decrypted and read back, so
+   "TLS entry" as an explanation for the zero-predecessor driver cluster is excluded.
+
+== 3) IAT slots (BR6 bytes), resolved ==
+   slot  0 (0x14205a000) -> 0x7ffbe71dd3a0  other / unmapped-here
+   slot  1  null
+   slot  2 (0x14205a010) -> 0x7ffbe6d457e0  other / unmapped-here
+   slot  3  null
+   slot  4 (0x14205a020) -> 0x7ffbe5c82c70  other / unmapped-here
+   slot  5  null
+   slot  6 (0x14205a030) -> 0x7ffbe6ed6ed0  other / unmapped-here
+   slot  7  null
+   slot  8 (0x14205a040) -> 0x7ffbe5464070  other / unmapped-here
+   slot  9  null
+   slot 10 (0x14205a050) -> 0x7ffbe5eb64a0  other / unmapped-here
+   slot 11  null
+   slot 12 (0x14205a060) -> 0x7ffbe6cb10a0  other / unmapped-here
+   slot 13  null
+   slot 14 (0x14205a070) -> 0x7ffbe7300de0  other / unmapped-here
+   slot 15  null
+   slot 16 (0x14205a080) -> 0x7ffbe519ff30  other / unmapped-here
+   slot 17  null
+   slot 18 (0x14205a090) -> 0x7ffb82e82d00  other / unmapped-here
+   slot 19  null
+   slot 20 (0x14205a0a0) -> 0x7ffbe3cf8220  other / unmapped-here
+   slot 21  null
+   slot 22 (0x14205a0b0) -> 0x7ffbe71d7ec0  other / unmapped-here
+   slot 23  null
+   slot 24 (0x14205a0c0) -> 0x7ffbe72fa9a0  other / unmapped-here
+   slot 25 (0x14205a0c8) -> 0x7ffbe71d58b0  other / unmapped-here
+   slot 26 (0x14205a0d0) -> 0x7ffbe71de3e0  other / unmapped-here
+   slot 27 (0x14205a0d8) -> 0x7ffbe71e0830  other / unmapped-here
+   slot 28 (0x14205a0e0) -> 0x7ffbe71df3f0  other / unmapped-here
+   slot 29 (0x14205a0e8) -> 0x7ffbe71db200  other / unmapped-here
+   slot 30  null
+
+== 4) import descriptors (BR6 bytes) ==
+   #0 NameRVA=0x25a288c (?)  FirstThunk=0x14205a000  OriginalFirstThunk=0x143a1d5e0  unbound: both thunks live
+   #1 NameRVA=0x39fe598 (?)  FirstThunk=0x14205a010  OriginalFirstThunk=0x143a1d5f0  unbound: both thunks live
+   #2 NameRVA=0x2542782 (?)  FirstThunk=0x14205a020  OriginalFirstThunk=0x143a1d600  unbound: both thunks live
+   #3 NameRVA=0x2d87b98 (?)  FirstThunk=0x14205a030  OriginalFirstThunk=0x143a1d610  unbound: both thunks live
+   #4 NameRVA=0x2d80bee (?)  FirstThunk=0x14205a040  OriginalFirstThunk=0x143a1d620  unbound: both thunks live
+   #5 NameRVA=0x238004e (?)  FirstThunk=0x14205a050  OriginalFirstThunk=0x143a1d630  unbound: both thunks live
+   #6 NameRVA=0x252c850 (?)  FirstThunk=0x14205a060  OriginalFirstThunk=0x143a1d640  unbound: both thunks live
+   #7 NameRVA=0x3a2c212 (?)  FirstThunk=0x14205a070  OriginalFirstThunk=0x143a1d650  unbound: both thunks live
+   #8 NameRVA=0x2dadfce (?)  FirstThunk=0x14205a080  OriginalFirstThunk=0x143a1d660  unbound: both thunks live
+   #9 NameRVA=0x238058c (?)  FirstThunk=0x14205a090  OriginalFirstThunk=0x143a1d670  unbound: both thunks live
+   #10 NameRVA=0x2359ad2 (?)  FirstThunk=0x14205a0a0  OriginalFirstThunk=0x143a1d680  unbound: both thunks live
+   #11 NameRVA=0x25a288c (?)  FirstThunk=0x14205a0b0  OriginalFirstThunk=0x143a1d690  unbound: both thunks live
+   #12 NameRVA=0x25a288c (?)  FirstThunk=0x14205a0c0  OriginalFirstThunk=0x143a1d6a0  unbound: both thunks live
+   #13 NULL terminator (descriptor array ends after 13 entries)
+
+== 5) Load Config (if BR6/BR7 read it) - the last route for a runtime-registered handler ==
+   loadcfg window not present in this capture

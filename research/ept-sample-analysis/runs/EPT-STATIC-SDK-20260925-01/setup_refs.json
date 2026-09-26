@@ -1,0 +1,86 @@
+[
+  {
+    "va": "0x140f92da0",
+    "s": "CliConfigUpdate.VerifyStoredCardStatusBeforeUse"
+  },
+  {
+    "va": "0x140f92dd8",
+    "s": "Dynamic serial generate failed."
+  },
+  {
+    "va": "0x140f92e50",
+    "s": "SetupFlow.begin"
+  },
+  {
+    "va": "0x140f92e60",
+    "s": "Setup.SP_Verify_Init"
+  },
+  {
+    "va": "0x140f92e88",
+    "s": "Setup.SetHost yz.hwid001.com:1029"
+  },
+  {
+    "va": "0x140f92eb0",
+    "s": "Setup.SP_Verify_GetServerOption"
+  },
+  {
+    "va": "0x140f92ee8",
+    "s": "Setup.SP_Verify_GetNotice"
+  },
+  {
+    "va": "0x140f92f10",
+    "s": "stage=Setup.SP_Verify_GetLastestVersionInfo ret=%d name=%s self=%d server=%d force=%d"
+  },
+  {
+    "va": "0x140f92fb8",
+    "s": "Setup.SP_Verify_CardLogin"
+  },
+  {
+    "va": "0x140f930d9",
+    "s": "Dynamic serial: "
+  },
+  {
+    "va": "0x140f93108",
+    "s": "Setup.SaveConfig"
+  },
+  {
+    "va": "0x140f93140",
+    "s": "Setup.StoredAuthorizationUsableAfterSave"
+  },
+  {
+    "va": "0x140f93190",
+    "s": "Setup.SP_Verify_IsLogin"
+  },
+  {
+    "va": "0x140f93208",
+    "s": "StoredFlow.begin"
+  },
+  {
+    "va": "0x140f93220",
+    "s": "StoredFlow.LoadConfig"
+  },
+  {
+    "va": "0x140f93238",
+    "s": "StoredFlow.StoredAuthorizationUsable"
+  },
+  {
+    "va": "0x140f93288",
+    "s": "Dynamic serial save failed."
+  },
+  {
+    "va": "0x140f932a8",
+    "s": "Dynamic serial: "
+  },
+  {
+    "va": "0x140f932c0",
+    "s": "StoredFlow.VerifyStoredCardStatusBeforeUse"
+  },
+  {
+    "va": "0x140f93350",
+    "s": "RUN dse_read ret=%lu captured=%d method=%d provider=%s line=%lu"
+  },
+  {
+    "va": "0x140f933b0",
+    "s": "RUN dse_disable ret=%lu method=%d provider=%s startRc=%d startWin32=%lu helper=%"
+  }
+]

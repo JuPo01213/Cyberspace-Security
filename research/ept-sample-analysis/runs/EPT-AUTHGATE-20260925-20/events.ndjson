@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T07:14:39.8819724Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":108,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T07:14:39.9756895Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_D192353F_5C2DF478.exe","pid":780,"ppid":108,"type":"CHILD_FOUND","utc":"2026-09-25T07:14:47.0069371Z"}
+{"target_pid":780,"debugger_pid":4160,"type":"CDB_ATTACHED","utc":"2026-09-25T07:14:47.3350615Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T07:14:48.9288127Z"}

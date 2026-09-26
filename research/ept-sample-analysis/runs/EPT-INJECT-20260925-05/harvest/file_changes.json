@@ -1,0 +1,30 @@
+[
+    {
+        "path":  "C:\\Windows\\System32\\EPT.cmd",
+        "before":  {
+                       "path":  "C:\\Windows\\System32\\ept.cmd",
+                       "length":  1093,
+                       "last_write_utc":  "2026-09-24T17:07:57.2514470Z",
+                       "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609",
+                       "attributes":  "Archive"
+                   },
+        "after":  {
+                      "path":  "C:\\Windows\\System32\\ept.cmd",
+                      "length":  1093,
+                      "last_write_utc":  "2026-09-24T17:19:24.5255728Z",
+                      "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609",
+                      "attributes":  "Archive"
+                  }
+    },
+    {
+        "path":  "C:\\Windows\\Temp\\EPT_F5CC3763_3423AE37.exe",
+        "before":  null,
+        "after":  {
+                      "path":  "C:\\Windows\\Temp\\EPT_F5CC3763_3423AE37.exe",
+                      "length":  32671488,
+                      "last_write_utc":  "2026-09-24T17:19:24.5411139Z",
+                      "sha256":  "C2DE0DEE2D8EBF1BC7718B30F99C3FEB45DC9A2198998397208FE05976AB4D3A",
+                      "attributes":  "Archive"
+                  }
+    }
+]

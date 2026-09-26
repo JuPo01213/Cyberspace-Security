@@ -1,0 +1,267 @@
+== 1) plaintext extents, per-4 KB-page entropy (claim: .text 1985/2016 pages <7.9;
+             rdatafront 24 plaintext / 232 ciphertext pages, island ~0x1407db000-0x1407f4000) ==
+   .text 8.25 MB        pages=2016  <7.9 =1985 ( 98.5%)  >=7.9 =  31  whole entropy=6.614
+   .rdata front 1 MB    pages= 256  <7.9 =  24 (  9.4%)  >=7.9 = 232  whole entropy=7.952
+   .rdata tail 256 KB   pages=  64  <7.9 =  52 ( 81.2%)  >=7.9 =  12  whole entropy=5.924
+   RG2 4 MB             pages=1024  <7.9 = 620 ( 60.5%)  >=7.9 = 404  whole entropy=6.383
+   contiguous plaintext run: 0x1407df000 .. 0x1407f4000  (21 pages = 84 KB)
+   contiguous plaintext run: 0x1407db000 .. 0x1407de000  (3 pages = 12 KB)
+   total plaintext pages in that 1 MB = 24 (96 KB)  -> claim "24 pages / ~96 KB island"
+
+== 2) literals claimed to sit in the .rdata-front plaintext island ==
+   0x1407ea370  \\.\HP_WKS_SWTOOLS_DRIVER                          -> '\\\\.\\HP_WKS_SWTOOLS_DRIVER'                       MATCH
+   0x1407ea2a8  ntdll.dll                                          -> 'ntdll.dll'                                          MATCH
+   0x1407ea2b8  NtQuerySystemInformation                           -> 'NtQuerySystemInformation'                           MATCH
+   0x1407df2ac  SOFTWARE\Microsoft\Windows NT\CurrentVersion       -> 'SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion'    MATCH
+   0x1407df314  kernel32                                           -> 'kernel32'                                           MATCH
+   reverse search \\.\HP_WKS_SWTOOLS_DRIVER -> ['0x1407ea370']
+
+== 3) hardware-identity collection: UTF-16 literals in recovered plaintext ==
+   BoardId        key_ascii=0x140f8e6b8,0x140f8e6b8 wmic_arg_utf16=0x140f8e680,0x140f8e680 OK
+   Uuid           key_ascii=0x140f8e700,0x140f8e700 wmic_arg_utf16=0x140f8e6d8,0x140f8e6d8 OK
+   BrandModel     key_ascii=0x140f8e748,0x140f8e748 wmic_arg_utf16=0x140f8e720,0x140f8e720 OK
+   BiosSerial     key_ascii=0x140f8e790,0x140f8e790 wmic_arg_utf16=0x140f8e760,0x140f8e760 OK
+   DiskSerials    key_ascii=0x140f8e7e0,0x140f8e7e0 wmic_arg_utf16=0x140f8e7a8,0x140f8e7a8 OK
+   CpuIds         key_ascii=0x140f8e838,0x140f8e838 wmic_arg_utf16=0x140f8e810,0x140f8e810 OK
+   CpuSerials     key_ascii=0x140f8e878,0x140f8e878 wmic_arg_utf16=0x140f8e848,0x140f8e848 OK
+   Gpus           key_ascii=0x140f8e8d8,0x140f8e8d8 wmic_arg_utf16=0x140f8e890,0x140f8e890 OK
+   MemorySerials  key_ascii=0x140f8e920,0x140f8e920 wmic_arg_utf16=0x140f8e8e8,0x140f8e8e8 OK
+   Macs           key_ascii=0x140f8e9f8,0x140f8e9f8 wmic_arg_utf16=0x140f8e960,0x140f8e960 OK
+   Gateways       key_ascii=0x140f8ead8,0x140f8ead8 wmic_arg_utf16=0x140f8ea30,0x140f8ea30 OK
+   Duid           key_ascii=0x140f8eb20,0x140f8eb20 wmic_arg_utf16=0x140f8eb00,0x140f8eb00 OK
+   => 12/12 identity keys present as an ASCII key name AND a UTF-16 wmic argument
+   wmic             ascii=[] utf16=['0x140f8e640', '0x140f8e640']
+   Hardware.ini     ascii=[] utf16=['0x140f8e348', '0x140f8e398', '0x140f8e348', '0x140f8e398']
+   Meta             ascii=[] utf16=['0x140f8eb40', '0x140f8eb40']
+   Version          ascii=['0x1407df2d1', '0x140f8cb66', '0x140f90d7a', '0x140f92f30'] utf16=['0x140f8eb30', '0x140f8eb30']
+   C:\Windows\System32\Hardware.ini         ascii=[] utf16=['0x140f8e370', '0x140f8e370']
+   <HOST_PATH>\<DIR>ware.ini         ascii=[] utf16=['0x140f8e320', '0x140f8e320']
+   -- still-negative items, BOTH encodings, over .text + 3 data windows:
+      MachineGuid            ascii=  0 utf16=  0   first: []
+      NetworkAddress         ascii=  0 utf16=  0   first: []
+      VolumeSerial           ascii=  0 utf16=  0   first: []
+      SMBIOS                 ascii=  0 utf16=  0   first: []
+      GetVolumeInformation   ascii=  0 utf16=  0   first: []
+      CM_Get_Device_ID       ascii=  0 utf16=  0   first: []
+      SetupDiGet             ascii=  0 utf16=  0   first: []
+      DeviceIoControl        ascii=  0 utf16=  0   first: []
+      GetAdaptersInfo        ascii=  0 utf16=  0   first: []
+      MACAddress             ascii=  0 utf16=  4   first: ['0x140f8e940', '0x140f8e9e0', '0x140f8e940']
+      SerialNumber           ascii=  0 utf16= 12   first: ['0x140f8e660', '0x140f8e69c', '0x140f8e772']
+      Win32_                 ascii=  0 utf16=  6   first: ['0x140f8e89a', '0x140f8e96a', '0x140f8ea3a']
+   C9 scan-coverage claim was "5,505,024 B of recovered plaintext"; windows here total 5,505,024 B of data + 8,257,536 B of .text
+   C9 artifact rows=82 header='string_va\tencoding\tregion\treferencing_functi'
+
+== 4) self-copy naming: format string absent, built path present ==
+   EPT_%            ascii=0 utf16=2
+   %08X_%08X        ascii=0 utf16=2
+   EPT_%08X_%08X    ascii=0 utf16=2
+   Temp\            ascii=10 utf16=2
+   ppend            ascii=0 utf16=0
+   built path @0x14115b120 = '<HOST_PATH>\\Users\\<USER>\\AppData\\Local\\Temp\\EPT_3C9F3CEF_69BB4F9F.exe'
+   all EPT_XXXXXXXX_XXXXXXXX path strings in RG2 = ['0x140f8cf7a', '0x14115b14a', '0x1411aba2a']
+
+== 5-6) indirect dispatch + reachability + flattening counts ==
+   C7_indirect_dispatch.json top keys: ['regions', 'targets', 'func_span_overlap', 'indirect_control_transfer_counts_in_text']
+   {"regions": {"text": {"bytes": 8257536, "base": "0x140000000", "sha256": "5ae354e2983a5bf4"}, "rdata_tail": {"bytes": 262144, "base": "0x140f80000", "sha256": "fb63581ccc65d4dc"}, "rdata_front": {"bytes": 1048576, "base": "0x1407db000", "sha256": "87bf94ecb38d5c02"}, "rg2_4MB": {"bytes": 4194304, "base": "0x140e00000", "sha256": "09d8d5de60596799"}}, "targets": {"0x14078de50": {"desc": "driver auth handshake (CI00/02/03/04)", "abs_ptr_aligned": [], "abs_ptr_unaligned": [], "rva32": [], "abs_ptr_aligned_count": 0, "abs_ptr_unaligned_count": 0, "rva32_count": 0, "addrtaken_lea_in_text": 0, "addrtaken_sites": [], "first_insn": "mov qword ptr [rsp + 8], rbx"}, "0x14078e823": {"desc": "CI06 scan_
+   tsv header=['0x14078de50', 'driver auth handshake (CI00/02/03/04)', '0', '0', '0', '0'] rows=13
+   by form: {'driver auth handshake (CI00/02/03/04)': 1, 'CI06 scan_existing': 1, 'CI16 comm_init': 1, 'RC00 send': 1, 'RC03 decode_failed': 1, 'RC02 ioctl_failed + RC04 session_mismatch': 1, 'RC01 invalid_state': 1, 'HS02 expected=0x12345678': 1, 'StoredAuthorizationUsable producer': 1, 'block action (clear_or_block)': 1, 'EPT_runtime_hash.csv writer': 1, 'uninstall-script builder': 1, 'temp drop path user': 1}
+   C7_reachability.json = {"reachable_from_main_count": 246, "targets_reachable": {"0x14078de50": false, "0x14078e823": false, "0x14078e8c0": false, "0x14078ed39": false, "0x14078ee89": false, "0x14078ef02": false, "0x14078f025": false, "0x14078f0ad": false, "0x1407a3080": true, "0x1407a3000": true, "0x14078b650": false, "0x1407a1880": true, "0x1407c1f44": false}, "ancestors": {"0x1407a3080": ["0x1407a4b90", "0x1407b0f88", "0x1407b1104"], "0x1407a1880": ["0x140798760", "0x1407a3510", "0x1407a4b90", "0x1407b0f88", "0x1407b1104"], "0x14078e8c0": []}}
+   C7_flattening_counts.txt:
+     stack_slot_code_addr_stores=40
+     inside_this_function=40
+     distinct_targets=40
+     switch=0
+     LAB_labels=24
+     lines=2878
+
+== 7-8) capstone vs Ghidra cross-check ==
+   ---- C10_xref_crosscheck.txt (30 lines kept of 30)
+     Ghidra rows=96 anchors_with_refs=50 (embedded CR in string column: 183)
+     capstone rows=67 anchors_with_refs=57 (embedded CR in string column: 68)
+     union=58  intersection=49  ghidra_only=1  capstone_only=8
+     --- anchors only Ghidra resolves ---
+     0x140f8ce50  ['FUN_14078ac40']
+     --- anchors only capstone resolves ---
+     0x140f8cd40  ['FUN_14078873f']
+     0x140f8d1e0  ['FUN_14078de50']
+     0x140f8d270  ['FUN_14078de50']
+     0x140f8d300  ['FUN_14078de50']
+     0x140f8d5a0  ['FUN_14078e8c0']
+     0x140f8d810  ['FUN_14078ef02']
+     0x140f901d8  ['FUN_140799b60']
+     0x14115b120  ['FUN_1407c1f44']
+     shared anchors=49  of which function-sets overlap=34  disagree=15
+     0x140f8cf78  ghidra=['FUN_14078b650']  capstone=['FUN_14078b6af']
+     0x140f8d370  ghidra=['FUN_14078e4d0']  capstone=['FUN_14078e823']
+     0x140f8d760  ghidra=['FUN_14078ece0']  capstone=['FUN_14078f025']
+     0x140f8d7b0  ghidra=['FUN_14078ece0']  capstone=['FUN_14078ed39']
+     0x140f8d870  ghidra=['FUN_14078ece0']  capstone=['FUN_14078ee89']
+     0x140f8d8d0  ghidra=['FUN_14078ece0']  capstone=['FUN_14078ef02']
+     0x140f8da70  ghidra=['FUN_14078f060']  capstone=['FUN_14078f0ad']
+   ---- C10b_xref_disagreement_classes.txt (19 lines kept of 19)
+     0x140f8cf78  ghidra=['FUN_14078b650']@['0x14078b81b']  capstone=['FUN_14078b6af']@['0x14078b81b']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8d370  ghidra=['FUN_14078e4d0']@['0x14078e8a2']  capstone=['FUN_14078e823']@['0x14078e8a2']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8d760  ghidra=['FUN_14078ece0']@['0x14078f035']  capstone=['FUN_14078f025']@['0x14078f035']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8d7b0  ghidra=['FUN_14078ece0']@['0x14078ed97']  capstone=['FUN_14078ed39']@['0x14078ed97']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8d870  ghidra=['FUN_14078ece0']@['0x14078eec2']  capstone=['FUN_14078ee89']@['0x14078eec2']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8d8d0  ghidra=['FUN_14078ece0']@['0x14078ef2b']  capstone=['FUN_14078ef02']@['0x14078ef2b']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8da70  ghidra=['FUN_14078f060']@['0x14078f1e3']  capstone=['FUN_14078f0ad']@['0x14078f1e3']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f8e030  ghidra=['FUN_14078fad0']@['0x14078fafa']  capstone=['GAP']@['0x14078fafa']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+     0x140f8e0d8  ghidra=['FUN_14078fad0']@['0x14078fb42']  capstone=['GAP']@['0x14078fb42']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+     0x140f8e128  ghidra=['FUN_14078fad0']@['0x14078fb6a']  capstone=['GAP']@['0x14078fb6a']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+     0x140f8e138  ghidra=['FUN_14078fad0']@['0x14078fb72']  capstone=['GAP']@['0x14078fb72']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+     0x140f8e1c8  ghidra=['FUN_14078fad0']@['0x14078fbaa']  capstone=['GAP']@['0x14078fbaa']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+     0x140f927e8  ghidra=['FUN_1407a3080']@['0x1407a3365']  capstone=['FUN_1407a3323']@['0x1407a3365']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f92820  ghidra=['FUN_1407a3080']@['0x1407a33b5']  capstone=['FUN_1407a3323']@['0x1407a33b5']  -> SAME_ADDR_BOUNDARY_ONLY
+     0x140f92850  ghidra=['FUN_1407a3080']@['0x1407a33f0']  capstone=['FUN_1407a3323']@['0x1407a33f0']  -> SAME_ADDR_BOUNDARY_ONLY
+     anchors: ghidra=50 capstone=57 shared=49 ghidra_only=1 capstone_only=8
+     shared-anchor disagreement classes: {'agree': 34, 'SAME_ADDR_BOUNDARY_ONLY': 10, 'SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE': 5}
+     ghidra_only=['0x140f8ce50']
+     capstone_only=['0x140f8cd40', '0x140f8d1e0', '0x140f8d270', '0x140f8d300', '0x140f8d5a0', '0x140f8d810', '0x140f901d8', '0x14115b120']
+   ---- C10c_decode_arbitration.txt (57 lines kept of 57)
+     capture=8257536  anchors=75
+     CONTROL 0x14078ed97 passed (reproduces=True boundary=True) ghidra=DECODED-AT-SITE LEA RCX,[0x140f8d7b0] -> arbiter sound
+     site 0x1407887c8  anchor 0x140f8cd40 (known anchor)
+     capture bytes  : 4c 8d 1d 71 45 80 00 48
+     decode here    : lea r11, [rip + 0x804571] -> 0x140f8cd40  reproduces=True
+     boundary       : True ; 0x1407887c6 inc (2B) ends exactly here
+     ghidra         : NOT-DECODED-AT-SITE (answered 0x1407887cc: ADD byte ptr [R8],0x48)
+     VERDICT        : GHIDRA_NEVER_DECODED_SITE
+     site 0x14078e42e  anchor 0x140f8d1e0 (known anchor)
+     capture bytes  : 48 8d 0d ab ed 7f 00 33
+     decode here    : lea rcx, [rip + 0x7fedab] -> 0x140f8d1e0  reproduces=True
+     boundary       : True ; 0x14078e42c mov (2B) ends exactly here
+     ghidra         : NOT-DECODED-AT-SITE (answered 0x14078e451: MOV R12D,EDI)
+     VERDICT        : GHIDRA_NEVER_DECODED_SITE
+     site 0x14078e383  anchor 0x140f8d270 (known anchor)
+     capture bytes  : 48 8d 0d e6 ee 7f 00 e9
+     decode here    : lea rcx, [rip + 0x7feee6] -> 0x140f8d270  reproduces=True
+     boundary       : True ; 0x14078e382 ret (1B) ends exactly here
+     ghidra         : NOT-DECODED-AT-SITE (answered 0x14078e38f: CALL 0x141a47c2c)
+     VERDICT        : GHIDRA_NEVER_DECODED_SITE
+     site 0x14078e2d2  anchor 0x140f8d300 (known anchor)
+     capture bytes  : 48 8d 0d 27 f0 7f 00 e8
+
+== 9) gate reader census: C19 vs C27 ==
+   C19_gate_readers.json
+      decoded_slide_units                            7650944
+      distinct_functions_reading_any_global          3
+      functions_reading_3_or_4_globals               ['0x1407a3080', '0x1407a3510', '0x1407a4b90']
+      per_function_global_counts                     {'0x1407a3080': 4, '0x1407a3510': 4, '0x1407a4b90': 4}
+      call_sites_to_gate_0x1407a3080                 ['0x1407a6a4e', '0x1407a7b0e', '0x1407a7b0f']
+      call_sites_to_block_exit_0x1407a3000           ['0x1407a32c4', '0x1407a33c5', '0x1407a3400']
+      control_string_0x140f92520_refs_found          2
+      control_gate_appears_as_reader                 yes
+   C27_gate_readers_fulltext.json
+      decoded_slide_units                            7671139
+      distinct_functions_reading_any_global          3
+      functions_reading_3_or_4_globals               ['0x1407a3080', '0x1407a3510', '0x1407a4b90']
+      per_function_global_counts                     {'0x1407a3080': 4, '0x1407a3510': 4, '0x1407a4b90': 4}
+      call_sites_to_gate_0x1407a3080                 ['0x1407a6a4e', '0x1407a7b0e', '0x1407a7b0f']
+      call_sites_to_block_exit_0x1407a3000           ['0x1407a32c4', '0x1407a33c5', '0x1407a3400']
+      control_string_0x140f92520_refs_found          2
+      control_gate_appears_as_reader                 yes
+   C19_gate_readers.tsv               rows=28 owners=['0x1407a3080', '0x1407a3510', '0x1407a4b90']
+   C27_gate_readers_fulltext.tsv      rows=28 owners=['0x1407a3080', '0x1407a3510', '0x1407a4b90']
+   C21_carrier_boundary_referee.txt       lines=25 ADDR-MISMATCH=10
+   C21b_gate_branch_sites_referee.txt     lines=19 ADDR-MISMATCH=0
+   C21c_caller_sites_referee.txt          lines=25 ADDR-MISMATCH=18
+   C22 lines=1955 BAD-SEED mentions=3 ; C22b BAD-SEED mentions=1
+   FUN_1407a3080    claim: 154 starts / 675/675 = 100.0% / 21 blocks / 0 BAD-SEED | file: no per-function header line
+   FUN_1407a3510    claim: 1,313 starts / 5,134/5,165 = 99.4% / 208 blocks / 5 BAD-SEED | file: no per-function header line
+   FUN_1407a4b90    claim: 2,055 starts / 8,729/23,424 = 37.3% / 311 blocks     | file: no per-function header line
+
+== 10) the two-level jump table, decoded from the bytes with capstone ==
+   0x1407a3255  xchg     r8, rax
+   0x1407a3257  call     0x14078fc90
+   0x1407a325c  test     ebx, ebx
+   0x1407a325e  je       0x1407a32ce
+   0x1407a3260  lea      eax, [rbx + 0x3d]
+   0x1407a3263  lea      rdx, [rip - 0x7a326a]
+   0x1407a326a  cmp      eax, 0x28
+   0x1407a326d  ja       0x1407a3285
+   0x1407a326f  cdqe     
+   0x1407a3271  movzx    eax, byte ptr [rdx + rax + 0x7a3448]
+   0x1407a3279  mov      ecx, dword ptr [rdx + rax*4 + 0x7a3440]
+   0x1407a3280  add      rcx, rdx
+   0x1407a3283  jmp      rcx
+   0x1407a3285  lea      eax, [rbx + 0x27]
+   0x1407a3288  cmp      eax, 0x27
+   0x1407a328b  ja       0x1407a32b6
+   0x1407a328d  cdqe     
+   0x1407a328f  movzx    eax, byte ptr [rdx + rax + 0x7a347c]
+   0x1407a3297  mov      ecx, dword ptr [rdx + rax*4 + 0x7a3474]
+   0x1407a329e  add      rcx, rdx
+   0x1407a32a1  jmp      rcx
+   0x1407a32a3  lea      rcx, [rip + 0x7ef4c6]
+   0x1407a32aa  call     0x14078fc90
+   0x1407a32af  mov      al, 1
+   0x1407a32b1  jmp      0x1407a341d
+   0x1407a32b6  lea      rcx, [rip + 0x7ef483]
+   resolved RIP displacements: {'0x1407a3260': [('0x3d', '0x1407a32a0')], '0x1407a3263': [('-0x7a326a', '0x140000000')], '0x1407a3271': [('0x7a3448', '0x140f466c1')], '0x1407a3279': [('0x7a3440', '0x140f466c0')], '0x1407a3285': [('0x27', '0x1407a32af')], '0x1407a328f': [('0x7a347c', '0x140f46713')], '0x1407a3297': [('0x7a3474', '0x140f46712')], '0x1407a32a3': [('0x7ef4c6', '0x140f92770')], '0x1407a32b6': [('0x7ef483', '0x140f92740')]}
+   leaf 0x1407a32a3 first bytes: b'H\x8d\r\xc6\xf4~\x00\xe8'
+   leaf 0x1407a32b6 first bytes: b'H\x8d\r\x83\xf4~\x00\xe8'
+   A-level @RVA 0x7a3440: 41 dwords, 15 distinct -> 0x1010101*18, 0x1010100*4, 0x1407a32b6*2, 0x1000001*2, 0x140000101*2, 0x1401f0f00*2
+   B-level @RVA 0x7a3474: 40 dwords, 16 distinct -> 0x1010101*18, 0x140010101*4, 0x1010000*2, 0x140000000*2, 0x1010100*2, 0xcccccccc*2
+   claim to compare: A has 41 entries / B 39, allow codes = -39,-38,-16,-4,-3,-2,-1,0 (8), everything else -> call FUN_1407a3000
+
+== 11) .pdata: the gate is registered as three entries; is the partition clean? ==
+   0x1407a3000..0x1407a307d     125 B  section=.text
+   0x1407a3080..0x1407a3323     675 B  section=.text
+   0x1407a3323..0x1407a341d     250 B  section=.text
+   0x1407a341d..0x1407a3508     235 B  section=.text
+   0x1407a3510..0x1407a493d    5165 B  section=.text
+   entries=2593  overlapping pairs=0  strictly increasing=True
+
+== 12) code-vs-data inside main's .pdata range (C12 re-run) ==
+   main span 23424 B; nested RUNTIME_FUNCTION begins inside = 0 (claim 0)
+   512 B windows=45, entropy>=7.0 in 19; first such window 0x1407a7d90 (claim 0x1407a7d90)
+   gate body 675 B control entropy=5.841 (claim 5.646-5.779)
+   claimed high-entropy region: 10240 B entropy=7.944 (claim 10,240 B / 7.944)
+   C12 header='lo\tpage_entropy\tprintable_ratio\tinsns\tavg_insn_len\tundecodable_bytes' rows=46
+   entropy column range 0.227 .. 0.422 (claim: control 5.646-5.779, high-entropy 7.46-7.92)
+
+== 13) R7 structural probe re-run on the same region ==
+   lag    16 match-rate 0.00538 (chance 0.0039)
+   lag    32 match-rate 0.00588 (chance 0.0039)
+   lag    64 match-rate 0.00560 (chance 0.0039)
+   lag   256 match-rate 0.00561 (chance 0.0039)
+   lag   264 match-rate 0.00341 (chance 0.0039)
+   lag   512 match-rate 0.00319 (chance 0.0039)
+   lag  1024 match-rate 0.00358 (chance 0.0039)
+   lag  4096 match-rate 0.00423 (chance 0.0039)
+   16 B block repeats = 0
+   AES sbox         region=    -1  whole .text=      -1
+   base64 alphabet  region=    -1  whole .text=      -1
+   zlib 78 9c       region=  6349  whole .text=  665208
+   gzip 1f 8b       region=    -1  whole .text=  180931
+   zip PK           region=    -1  whole .text=      -1
+   SHA-256 IV       region=    -1  whole .text=      -1
+   MD5 IV           region=    -1  whole .text=      -1
+   longest printable run in region = 9 B (claim 9); random control expectation ~8
+   R1 prefixes of the two observed append blocks present in region / in all of .text?
+      0d5421c248d51dbb.. region=-1 text=-1
+      1fcba6522fbbf292.. region=-1 text=-1
+      1b4970684c701451.. region=-1 text=-1
+
+== 14) PE directories: which of the remaining entry mechanisms is closed? ==
+   DataDirectory[ 0] EXPORT    RVA=0x0          size=0x0       ALL ZERO -> directory absent
+   DataDirectory[ 1] IMPORT    RVA=0x3a1d4c8    size=0x118     .)Bu (has disk bytes)
+   DataDirectory[ 9] GLOBALPTR RVA=0x2d9cc00    size=0x28      .)Bu (has disk bytes)
+   DataDirectory[11] LOADCFG   RVA=0x0          size=0x0       ALL ZERO -> directory absent
+   DataDirectory[12] BV        RVA=0x205a000    size=0xf8      .bs] (has disk bytes)
+   DataDirectory[ 3] RESOURCE  RVA=0x3f5d150    size=0x79e0    .)Bu (has disk bytes)
+   DataDirectory[ 6] BASERELOC RVA=0x0          size=0x0       ALL ZERO -> directory absent
+   DataDirectory[ 4] EXCEPTION RVA=0x0          size=0x0       ALL ZERO -> directory absent
+   window TLS       0x2d9cc00 + 0x28 =   40 B
+   window IAT       0x205a000 + 0xf8 =  248 B
+   window LOADCFG   0x0 + 0x0 =    0 B
+   window IMPORT    0x3a1d4c8 + 0x118 =  280 B
+   four windows = 568 B; + a 8 B AddressOfCallBacks array = 576 B  (writeup budget: 888 B)
+
+== 15) the two callees whose return values decide the last open question ==
+   0x141a1ff1b (return value that becomes the gate al): .Sq> (RUNTIME-BUILT, raw=0 -> NOT captured)
+   0x1417612fa (terminate-block callee, followed by int3): .Sq> (RUNTIME-BUILT, raw=0 -> NOT captured)
+   .Sq> RVA=0x1174000 VSize=0xee55f0 raw=0x0 -> both RVAs inside it: True
+   sections carrying disk bytes: .bs](0x1000), .)Bu(0x1f09c00), .rsrc(0x1d600)

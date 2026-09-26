@@ -1,0 +1,8 @@
+.echo [RECON6_CHILD_ATTACHED]
+$$ SAFE recon: NO memory-deref conditionals (NtCreateFile/NtOpenFile conditionals CRASHED RECON-5)
+$$ Only: CreateFileW/A filtered on '\\' first char (safe, rcx is a flat string ptr) + NtDeviceIoControlFile with caller stack
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON6_CREATEFILEW_C]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp kernel32!CreateFileA ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON6_CREATEFILEA_C]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+$$ NtDeviceIoControlFile: RCX=FileHandle; stack: +0x28 IoStatusBlock, +0x30 IoControlCode, +0x38 InputBuffer, +0x40 InputBufferLength, +0x48 OutputBuffer, +0x50 OutputBufferLength
+bp ntdll!NtDeviceIoControlFile ".echo [RECON6_DIOC_C]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14; g"
+.echo [RECON6_CHILD_BPS_ARMED]

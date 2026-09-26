@@ -1,0 +1,24 @@
+{
+    "run_id":  "EPT-AUTH-LOCAL-STORED-CONFIG-20260926-01",
+    "status":  "NATURAL_STORED_CONFIG_CONSUMER_COMPLETE",
+    "mode":  "real_sample_guest_run",
+    "evidence_scope":  "real_sample_guest_run",
+    "completed_utc":  "2026-09-26T14:59:04.2343574Z",
+    "target_path":  "C:\\ept_core\\Hardware.exe",
+    "target_pid":  6108,
+    "target_native_return":  "NOT_OBSERVED",
+    "target_caller_diff_bytes":  "NOT_OBSERVED",
+    "rc06_entry":  "NOT_OBSERVED",
+    "rc06_return":  "NOT_OBSERVED",
+    "post_decode_behavior":  "NOT_OBSERVED",
+    "authorization_state":  "NOT_PROVEN_HISTORICAL_CONFIG",
+    "input_state":  "HISTORICAL_STORED_CONFIG_CONSUMER",
+    "historical_config":  "C:\\Windows\\System32\\Hardware\\Hardware",
+    "network_observer":  "DISABLED",
+    "debugger":  "NONE",
+    "memory_writes":  "NONE",
+    "deadline_seconds":  180,
+    "errors":  [
+                   "无法将“Add-Event”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径正确，然后再试一次。"
+               ]
+}

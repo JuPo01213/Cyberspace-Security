@@ -1,0 +1,40 @@
+
+== template load site  0x1407a2090..0x1407a20e0 ==
+   0x1407a2090  call      0x1407a1f00                               (callee 0x1407a1f00)
+   0x1407a2095  mov       edi, eax                                
+   0x1407a2097  call      0x1407a1f00                               (callee 0x1407a1f00)
+   0x1407a209c  mov       dword ptr [rsp + 0x28], eax             
+   0x1407a20a0  mov       dword ptr [rsp + 0x20], edi             
+   0x1407a20a4  lea       r9, [rbp + 0x330]                       
+   0x1407a20ab  lea       r8, [rip + 0x7f0296]                      -> 0x140f92348 '%sEPT_%08X_%08X.ex�'
+   0x1407a20b2  mov       edx, 0x104                              
+   0x1407a20b7  lea       rcx, [rbp + 0x20]                       
+   0x1407a20bb  call      0x140789eb0                               (callee 0x140789eb0)
+   0x1407a20c0  test      eax, eax                                
+   0x1407a20c2  js        0x1407a20fb                             
+   0x1407a20c4  xor       r8d, r8d                                
+   0x1407a20c7  lea       rdx, [rbp + 0x20]                       
+   0x1407a20cb  lea       rcx, [rbp + 0x540]                      
+   0x1407a20d2  push      rsi                                     
+   0x1407a20d3  call      0x141677922                               (callee 0x141677922)
+   0x1407a20d8  test      eax, eax                                
+
+== nsp-runtime-child site  0x1407a2420..0x1407a2470 ==
+   0x1407a2420  jge       0x1407a2402                             
+   0x1407a2422  cmp       r14, 8                                  
+   0x1407a2426  cmovae    rdi, qword ptr [rbp - 0x20]             
+   0x1407a242b  lea       rcx, [rdi + rsi*2]                      
+   0x1407a242f  mov       r8d, 0x26                               
+   0x1407a2435  lea       rdx, [rip + 0x7eff34]                     -> 0x140f92370 '--nsp-runtime-chil�'
+   0x1407a243c  call      0x1407b48f0                               (callee 0x1407b48f0)
+   0x1407a2441  mov       word ptr [rdi + rbx*2], r12w            
+   0x1407a2446  jmp       0x1407a246c                             
+   0x1407a2448  mov       qword ptr [rsp + 0x20], 0x13            
+   0x1407a2451  lea       r9, [rip + 0x7eff18]                      -> 0x140f92370 '--nsp-runtime-chil�'
+   0x1407a2458  movzx     r8d, byte ptr [rsp + 0x40]              
+   0x1407a245e  mov       edx, 0x13                               
+   0x1407a2463  lea       rcx, [rbp - 0x20]                       
+   0x1407a2467  call      0x1407af5d0                               (callee 0x1407af5d0)
+
+== owning .pdata entry ==
+   0x1407a1fa0	0x1407a258d	1517	0x140f976a0	.text

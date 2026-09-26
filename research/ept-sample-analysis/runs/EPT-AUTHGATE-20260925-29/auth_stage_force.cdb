@@ -1,0 +1,27 @@
+.echo RUN29_STAGE_FORCE_BEGIN
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo ENTRY_GATE_RELEASED
+bu user32!MessageBoxA ".echo MSGBOXA; da rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxW ".echo MSGBOXW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxExA ".echo MSGBOXEXA; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxExW ".echo MSGBOXEXW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxTimeoutW ".echo MSGBOXTOW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxIndirectW ".echo MSGBOXINDW; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!SoftModalMessageBox ".echo SOFTMSGBOX; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!DialogBoxParamW ".echo DLGBOXW; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!DialogBoxIndirectParamW ".echo DLGBOXINDW; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernel32!FatalExit ".echo FATALEXIT_HIT_OBSERVER_ONLY; k L8; g"
+bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+ba e 1 1407adae0 ".echo STAGE_LOG; da r8; r r9d; g"
+ba e 1 1407adb40 ".echo STAGE_LOG2_CODENAME; r r8; r r9d; k L6; g"
+ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+ba e 1 142037792 ".echo SITE_FORCE_CARDLOGIN; r rbx; r r8; r eax=0; r ebx=0; g"
+.echo HWBP_ARMED_STAGE_FORCE
+g
+.echo RUN29_STOP
+~*k
+.echo RUN29_END
+q

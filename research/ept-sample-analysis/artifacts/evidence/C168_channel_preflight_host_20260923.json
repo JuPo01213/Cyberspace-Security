@@ -1,0 +1,69 @@
+{
+    "run_id":  "CHANNEL-PREFLIGHT-20260923-01",
+    "captured_utc":  "2026-09-23T16:42:33.4779073Z",
+    "vm":  "<OTHER_VM_LABEL>",
+    "state":  "running",
+    "snapshot":  "control-clean",
+    "guest_additions_runlevel":  "3",
+    "guestcontrol_list_sessions":  "NO_SESSIONS",
+    "guestcontrol_list_sessions_exit":  0,
+    "guestcontrol_login":  "NOT_TESTED",
+    "share_name":  "HexPatch",
+    "share_host_path":  "<HOST_PATH>\\HexPatch",
+    "sample_share_name":  "EPTSample",
+    "sample_share_host_path":  "<HOST_PATH>\\EPT\\sample",
+    "sample_share_configured":  true,
+    "sample_share_readonly":  true,
+    "sample_share_automount":  true,
+    "share_host_path_exists":  true,
+    "host_marker_written":  false,
+    "host_marker_visible":  true,
+    "guest_ack_path":  "<HOST_PATH>\\HexPatch\\spool\\CHANNEL-PREFLIGHT-20260923-01.guest.json",
+    "guest_ack_present":  false,
+    "guest_ack_run_id":  null,
+    "authoritative_sample_path":  "<HOST_PATH>\\EPT\\sample\\EPT专业游戏维修工具箱V5.1.exe",
+    "authoritative_sample_present":  true,
+    "authoritative_sample_state":  "HASHED",
+    "authoritative_sample_sha256":  "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+    "guest_sample_path":  null,
+    "guest_sample_hash_state":  "PENDING_GUEST_ACK",
+    "guest_sample_sha256":  null,
+    "guest_sample_matches_authority":  false,
+    "ept_launch_state":  "PENDING_GUEST_ACK",
+    "ept_launch_pid":  null,
+    "share_writable":  "true",
+    "share_automount":  "true",
+    "host_tools":  [
+                       {
+                           "name":  "cdb.exe",
+                           "available":  false,
+                           "path":  null
+                       },
+                       {
+                           "name":  "windbg.exe",
+                           "available":  false,
+                           "path":  null
+                       },
+                       {
+                           "name":  "rizin.exe",
+                           "available":  true,
+                           "path":  "C:\\Program Files\\Rizin\\bin\\rizin.exe"
+                       },
+                       {
+                           "name":  "python.exe",
+                           "available":  true,
+                           "path":  "<HOST_PATH>\\Users\\<USER>\\AppData\\Local\\Programs\\Python\\Python311\\python.exe"
+                       },
+                       {
+                           "name":  "git.exe",
+                           "available":  true,
+                           "path":  "C:\\Program Files\\Git\\mingw64\\bin\\git.exe"
+                       },
+                       {
+                           "name":  "7z.exe",
+                           "available":  false,
+                           "path":  null
+                       }
+                   ],
+    "guest_tool_inventory":  "PENDING_GUEST_ACK"
+}

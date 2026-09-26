@@ -1,0 +1,35 @@
+{
+  "runs_61_to_65_consolidated": true,
+  "evidence_scope": "real_sample_guest_run",
+  "instrument_changes_tested": {
+    "run61": "WFW 大写入 gu 探针(捕获返回值/bytesWritten) + kernelbase!SetEndOfFile + ntdll!NtWriteFile/NtReadFile 观察者",
+    "run62": "+发射前 Temp 清理(残留 payload 同名冲突假设, count=8 被清)",
+    "run63": "-ntdll 断点(保护完整性扫描假设)",
+    "run64": "-SetEndOfFile 断点(kernelbase 入口 0xCC 扫描假设)",
+    "run65": "prep 增加 watcher 进程击杀防 spool 锁; 无其他变化"
+  },
+  "outcome_classes_observed": {
+    "FULL_pipeline (GUI+wmic+payload写入尝试+.sys+sc config+FATAL@0x1407aa694)": ["52","53","55","56","60"],
+    "FAST_no_gui (无GUI/wmic/payload写入, .sys+sc config+FATAL@0x1407aa694)": ["57","65"],
+    "INSTANT_death (管线前 ExitProcess@0x143ae5d57)": ["54","58","59","61","62","63","64"]
+  },
+  "hypotheses_eliminated": [
+    "恢复/污染状态决定结果(56真恢复=完整, 59真恢复=秒死)",
+    "父进程 cdb 导致秒死(58/59 秒死, 但 61-64 无父 cdb 也秒死)",
+    "Temp 同名 payload 残留冲突(62 清理后仍秒死)",
+    "ntdll!NtWriteFile/NtReadFile SW断点被扫描(63 去除后仍秒死)",
+    "kernelbase!SetEndOfFile 断点被扫描(64 去除后仍秒死)",
+    "缓冲区 MDL 锁定失败(run60 探测: 缓冲区完全健康)",
+    "Windows Defender 拦截(实时防护开启但零检测)"
+  ],
+  "current_model": "三种结果类为保护的反调试/反分析随机化决策(约 40/20/40 分布), 与可控环境变量无关; 应对=循环重试直至完整线, 在完整线上用 gu 探针捕获 7.9MB WriteFile 的返回值/bytesWritten",
+  "post_auth_behaviors_confirmed_so_far": [
+    "机器指纹采集: 11x wmic(baseboard/csproduct UUID/Name/bios/diskdrive/cpu ProcessorId+SerialNumber/VideoController/memorychip/NetworkAdapterConfiguration) + ipconfig /all (经 cmd.exe 子进程)",
+    "指纹落盘: C:\\Windows\\System32\\Hardware.ini 全量写入(BoardId/Uuid/BrandModel/BiosSerial/DiskSerials/CpuIds/Gpus/Macs/Gateways)",
+    "驱动组件投放: 2x HpDrv<17随机>.sys (19128 字节) 落地 C:\\Windows\\Temp 并保留",
+    "服务伪装持久化准备: sc.exe config \"AntiCheatExpert Protection\"/\"AntiCheatExpert Service\" start= delayed-auto (腾讯ACE命名伪装)",
+    "卸载脚本重写: C:\\Windows\\System32\\EPT.cmd 每轮更新",
+    "加密日志: C:\\Windows\\System32\\Hardware (4字节长度前缀+密文, 每轮追加)"
+  ],
+  "seam_fields": {"target_native_return": "NOT_OBSERVED", "target_caller_diff_bytes": "NOT_OBSERVED", "rc06_stage": "NOT_OBSERVED"}
+}

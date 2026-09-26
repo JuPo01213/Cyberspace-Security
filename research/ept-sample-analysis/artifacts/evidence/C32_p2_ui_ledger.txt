@@ -1,0 +1,66 @@
+# C32 - P2（UI 拼接 / 两前端规则 / 控制台处理 / 持久化伪装）字节码与前端复核台账
+# 脚本 <HOST_PATH>/vmctl/verify_p2.py；离线只读；未执行样本字节码；未联网
+
+code objects loaded: {'main': 196, 'auto_decode': 145, 'cli_mode': 22, 'dx_repair': 11}
+
+== A) 八套 UI 层的存在性 ==
+[PASS] U1 启动窗：SplashScreen 存在   << names 命中=True
+[PASS] U2 免责声明：DisclaimerDialog 存在   << names 命中=True
+[PASS] U3 桌面告警浮层：DesktopWarningOverlay 存在   << names 命中=True
+[PASS] U5 CLI：cli_mode 存在   << names 命中=True
+[PASS] U7 密码窗探测器：PasswordWindowDetector 存在   << names 命中=True
+[PASS] U4 create_window 参数：790 x 556、背景 #010308   << 790=True 556=True 背景色=['#010308']
+[PASS] U6 自动点同意：_detect_disclaimer_dialog / _auto_click_agree_button
+[PASS] U8 绑定弹窗：_detect_bind_error_dialog
+
+== B) 前端→后端桥接：28 个方法是否都有定义 ==
+[PASS] index.html 调用的每个 pywebview.api 方法在 PyWebViewAPI 里有定义   << JS 调用 28 个，缺定义: []
+    JS 侧方法名: ['check_decode_status', 'check_system_version', 'clear_machine_code', 'continue_decode_after_manual', 'enable_windows_update', 'get_boot_delay', 'get_startup_card_key', 'get_window_title', 'hide_warning_overlay', 'install_mac_tool', 'install_winrar_silent', 'manual_swap_code', 'modify_boot_delay', 'open_browser_for_download', 'open_env_guide', 'open_url', 'reject_disclaimer', 'restart_computer', 'run_decode_exec', 'run_optimize', 'run_single_task', 'set_decode_verbose_log', 'set_verbose_log', 'show_warning_overlay', 'stop_decode_exec', 'stop_optimize', 'view_machine_code', 'window_action']
+
+== C) Python→JS 推送通道：evaluate_js 里点名的函数 ==
+[PASS] 10 个推送函数名都出现在常量或前端里   << {}
+
+== D) 两套卡密闸门是否真的不一致 ==
+[PASS] 启动窗用 {31,36} 且带前缀规则   << ['用户点击确认或按回车', 'state', 'disabled', '', '⚠ 请输入卡密！', '_detail_label', '^[a-zA-Z0-9]{31,36}$', '⚠ 卡密错误，验证失败！', '^(C|E(?!PT))', '⚠ 卡密输入有误！']
+[PASS] CLI 侧存在 31~36 且**无**前缀规则   << CLI 常量片段: ['  -k <卡密>            解码卡密（31~36 位）', '[A-Za-z0-9]{31,36}', '卡密格式错误（应为 31~36 位字母数字，当前长度 ']
+[PASS] 前端网页侧是 {30,40}
+[PASS] CLI 退出码常量集合含 0/1/2/4/130   << ints=[-11, -4, -1, 0, 1, 2, 3, 4, 8, 130, 215, 65001, 2147483648, 3221225472, 4294967295, 18446744073709551615]
+[PASS] CLI 里 ORDER_TO_KEY 或 -1~-8 顺序执行的痕迹   << names(cli)=['ORDER_TO_KEY']
+
+== E) 防火墙操作只在 GUI 被过滤 ==
+[FAIL] _is_firewall_related 词表常量存在（含“墙”代称与 SpooferNetworkBlock）   << 命中 0 条，样例: ''
+[PASS] 函数 _is_firewall_related 存在
+[PASS] _CliLogger 不引用过滤函数   << cli_mode 全部 co_names 是否含该词: False
+
+== F) 壳如何处理核心的控制台（12.11 的 (A)）==
+[PASS] CREATE_NO_WINDOW 被使用   << ['CREATE_NO_WINDOW', 'PIPE']
+[PASS] stdout/stderr 只做 len，不解析内容   << ['s stdout_len=', ' stderr_len=']
+[PASS] sleep(8) 与 poll() 形态
+[PASS] 文档串自述 v1.33 由 communicate(timeout=60) 改为非阻塞   << ['\n新版解码核心：直接命令行调用 Hardware.exe，无需UI自动化\n\n调用格式:\n  Hardware.exe -k <卡密> -n <序列模式> -m <解码模式>\n\n参数']
+[PASS] JW.txt / EPTHWID.txt 只被 _tc_files 一类引用   << names: ['_tc_event_logs', '_tc_explorer_traces', '_tc_files', '_tc_firewall_rules', '_tc_nic_registry', '_tc_own_temp', '_tc_prefetch', '_tc_wer']
+    _tc_* 族: ['_tc_event_logs', '_tc_explorer_traces', '_tc_files', '_tc_firewall_rules', '_tc_nic_registry', '_tc_own_temp', '_tc_prefetch', '_tc_wer']
+
+== G) 持久化伪装（12.5）==
+[PASS] 常量含 'MicrosoftEdgeUpdateTask'
+[PASS] 常量含 'C859613A-B3EF-4E7D-8A9D-6FCA0CD619A6'
+[PASS] 常量含 'Microsoft Corporation'
+[PASS] 常量含 'Microsoft Edge 更新任务'
+[PASS] 常量含 'HighestAvailable'
+[PASS] 常量含 'PT0S'
+[PASS] 常量含 'LogonTrigger'
+
+== H) 前端 UI 事实（§11 的操作者视角）==
+[PASS] 产品真名 "R6系统优化工具" 在前端
+[PASS] 版本号 v2.0 PRO 在前端
+[PASS] 页脚署名存在（旧文记作「及寤」）   << 前端实见: ['及以下版', '及使用协', '及寤']
+[PASS] 页脚 QQ 群号存在   << 群号: ['210269026']
+[FAIL] 优化项卡片编号覆盖 1..8   << 编号: []
+[PASS] 存在默认勾选的项（"取消VT判断"等待核实）   << checked 标签 1 个
+[PASS] 线路二为默认选项   << line2=True 线路二=True
+[FAIL] 解码进度是十步（出现 /10 或 step=N 形态）   << 编号: []
+[PASS] 解码页参数分组可数（旧文记 6 组）   << 关键词种类: ['参数', '屏蔽', '模式', '版本', '线路']
+
+== FAIL 列表 (3) ==
+  - _is_firewall_related 词表常量存在（含“墙”代称与 SpooferNetworkBlock）
+  - 优化项卡片编号覆盖 1..8
+  - 解码进度是十步（出现 /10 或 step=N 形态）

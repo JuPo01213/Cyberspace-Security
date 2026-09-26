@@ -1,0 +1,11 @@
+# C24b - GBK decoding of the log messages handed to the logger at the carrier FUN_1407a3510 sinks
+# call shape at 0x1407a48a4: mov r9d,0x10 ; lea r8,[tag] ; lea rdx,[message] ; xor ecx,ecx ; call 0x14117a2c5
+
+0x140f92898 [gb18030] bytes=b9 cc b6 a8 b2 bf ca f0
+   text=固定部署
+
+0x140f928a8 [gb18030] bytes=ce b4 d5 d2 b5 bd d3 d0 d0 a7 c5 e4 d6 c3 a3 ac c7 eb cf c8 ca b9 d3 c3 20 2d 6b 20 cd ea b3 c9 ca da c8 a8 c5 e4 d6 c3 a3 a1
+   text=未找到有效配置，请先使用 -k 完成授权配置！
+
+0x140f92920 [gb18030] bytes=b9 cc b6 a8 b2 bf ca f0 ca a7 b0 dc a3 a1
+   text=固定部署失败！

@@ -1,0 +1,349 @@
+== body_received_handler target=0x14014731c fn=state_body_received_handler ==
+
+/* WARNING: Control flow encountered bad instruction data */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void state_body_received_handler(void)
+
+{
+  uint uVar1;
+  uint uVar2;
+  uint uVar3;
+  byte bVar4;
+  longlong unaff_RBP;
+  uint uVar5;
+  uint uVar6;
+  bool bVar7;
+  
+  bVar7 = (_DAT_14116c6c8 * (_DAT_14116c6c8 + 0x1d05456b) & 1U) == 0;
+  bVar4 = ((bVar7 ^ 0xffU | _DAT_14116c6c4 < 10 ^ 0xffU) ^ 0xff) & 1;
+  bVar7 = bVar7 != _DAT_14116c6c4 < 10;
+  *(byte *)(unaff_RBP + 0x1b07) = bVar4 ^ bVar7 | ((bVar4 ^ 0xff | bVar7 ^ 0xffU) ^ 0xff) & 1;
+  func_0x0001405d5f80(*(undefined1 *)(unaff_RBP + 0x41b7),0x91,0x141037010,unaff_RBP + 0x3188,0xf3c)
+  ;
+  *(undefined1 *)(unaff_RBP + 0x41b7) = 1;
+  uVar2 = 0x675f;
+  if ((*(byte *)(unaff_RBP + 0x1b07) & 1) != 0) {
+    uVar2 = 0x7858;
+  }
+  uVar6 = *(uint *)(unaff_RBP + 0x385c) ^ 0xffffffff;
+  uVar1 = *(uint *)(unaff_RBP + 0x385c) ^ 0xffffffff | 0xcfe6f1f9;
+  uVar5 = (((uVar2 ^ 0xffffffff) & 0x1a383bf5 | uVar2 & 0xe5c7c40a) ^ 0x1a383bf5 | 0x30190e06) ^
+          0xffffffff;
+  uVar3 = (uVar2 ^ 0xffffffff | 0xcfe6f1f9) ^ 0xffffffff;
+  uVar2 = uVar6 & 0xcfe6f1f9 ^ 0xffffffff;
+  uVar1 = (uVar2 & 0x88c9e8a1 | uVar6 & 0x47261158) ^
+          (uVar1 & 0x88c9e8a1 | (uVar1 ^ 0xffffffff) & 0x7736175e) | (uVar2 | uVar1) ^ 0xffffffff;
+  uVar2 = uVar5 & uVar3 | uVar5 ^ uVar3;
+  *(uint *)(unaff_RBP + 0x2edc) = uVar2 & (uVar1 ^ 0xffffffff) | uVar1 & (uVar2 ^ 0xffffffff);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+
+== event40_handler target=0x14014206c fn=state_event40_handler ==
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void state_event40_handler(void)
+
+{
+  undefined1 uVar1;
+  undefined4 uVar2;
+  undefined4 uVar3;
+  longlong lVar4;
+  longlong lVar5;
+  longlong lVar6;
+  longlong lVar7;
+  longlong lVar8;
+  uint uVar9;
+  int iVar10;
+  uint uVar11;
+  uint uVar12;
+  longlong unaff_RBP;
+  uint uVar13;
+  uint uVar14;
+  uint uVar15;
+  uint uVar16;
+  uint uVar17;
+  uint uVar18;
+  undefined8 auStack_38 [5];
+  undefined4 auStack_10 [2];
+  undefined8 uStack_8;
+  
+  *(undefined8 *)(unaff_RBP + 0x1c80) = 0x10;
+  uStack_8 = 0x14014207d;
+  lVar6 = func_0x0001407d8190();
+  lVar6 = -lVar6;
+  *(undefined4 *)(unaff_RBP + 0x30bc) = *(undefined4 *)(&stack0x00000000 + lVar6);
+  *(undefined4 *)(unaff_RBP + 0x1c7c) = *(undefined4 *)(unaff_RBP + 0x30bc);
+  *(undefined8 *)((longlong)&uStack_8 + lVar6) = 0x1401420a3;
+  lVar7 = func_0x0001407d8190();
+  lVar7 = -lVar7;
+  lVar4 = lVar7 + lVar6;
+  *(undefined4 *)(&stack0x00000000 + lVar7 + lVar6) = 0;
+  iVar10 = *(int *)(&stack0x00000000 + lVar7 + lVar6);
+  uVar13 = ~*(uint *)(unaff_RBP + 0x30bc);
+  uVar14 = *(uint *)(unaff_RBP + 0x30bc);
+  uVar11 = ~uVar14 & 0x17007040 | uVar14 & 0x400204ba;
+  uVar12 = uVar11 ^ 0xbffdfb45;
+  uVar14 = (uVar14 ^ 0x570274fa) & uVar14;
+  uVar9 = ~uVar14;
+  uVar16 = (uVar12 & 0x42054d0a | (uVar11 ^ 0x200b0) & 0x150230f0) ^
+           (uVar9 & 0x42054d0a | uVar14 & 0xbdfab2f5) | ~(uVar12 | uVar9);
+  uVar17 = *(uint *)(unaff_RBP + 0x30bc) & 0x7c32dcc7 | ~*(uint *)(unaff_RBP + 0x30bc) & 0x83cd2338;
+  uVar14 = ~(uVar17 ^ 0x7c32dcc7);
+  uVar12 = (uVar17 ^ 0xead47aa0) & uVar14;
+  uVar9 = (uVar17 ^ 0xead47aa0) & (uVar17 ^ 0x7c32dcc7);
+  uVar15 = ~uVar12;
+  uVar11 = ~uVar9;
+  uVar9 = (uVar15 & 0x6555a4ce | uVar12 & 0x9aaa5b31) ^ (uVar11 & 0x6555a4ce | uVar9 & 0x9aaa5b31) |
+          ~(uVar15 | uVar11);
+  uVar9 = ~uVar9 & 0x96e6a665 | uVar9 & 0x6919599a;
+  uVar14 = uVar14 & 0xfffffffd | uVar17 ^ 0x7c32dcc5;
+  uVar14 = ~uVar14 & 0x91dd6f72 | uVar14 & 0x6e22908d;
+  uVar12 = ~uVar9;
+  uVar11 = uVar14 ^ 0x91dd6f72;
+  *(undefined4 *)(unaff_RBP + 0x1c78) = *(undefined4 *)(unaff_RBP + 0x30bc);
+  *(uint *)(unaff_RBP + 0x1c74) =
+       *(int *)(unaff_RBP + 0x1c7c) *
+       (((~(~(uVar13 & 0xfffffffd | *(uint *)(unaff_RBP + 0x30bc) & 2) | uVar13) + iVar10 +
+          *(int *)(unaff_RBP + 0x30bc) + (~uVar16 & 0xa8fd8b05 | uVar16 & 0x570274fa)) -
+        ((uVar12 & 0xd14a7443 | uVar9 & 0x2eb58bbc) ^
+         (uVar11 & 0xd14a7443 | (uVar14 ^ 0x2e20808c) & 0x2eb58bbc) | ~(uVar12 | uVar11))) + -2) * 3
+  ;
+  *(int *)(unaff_RBP + 0x1c70) = *(int *)(unaff_RBP + 0x30bc) * *(int *)(unaff_RBP + 0x30bc) * 3;
+  *(int *)(unaff_RBP + 0x1c6c) = *(int *)(unaff_RBP + 0x30bc) * 7;
+  *(undefined8 *)((longlong)&uStack_8 + lVar7 + lVar6) = 0x1401422d9;
+  lVar8 = func_0x0001407d8190();
+  lVar8 = -lVar8;
+  lVar5 = lVar8 + lVar4;
+  *(undefined4 *)(&stack0x00000000 + lVar8 + lVar7 + lVar6) = 0;
+  uVar9 = ~*(uint *)(unaff_RBP + 0x1c74);
+  uVar14 = uVar9 & 0xebd90f4d | *(uint *)(unaff_RBP + 0x1c74) & 0x1426f0b2;
+  uVar11 = (uVar14 ^ 0x29510b0d) & 0x2d73db1f | (uVar14 ^ 0x100420a0) & 0xd28c24e0;
+  uVar13 = ~*(uint *)(unaff_RBP + 0x1c70);
+  uVar12 = uVar11 ^ 0x2d73db1f;
+  uVar14 = *(uint *)(unaff_RBP + 0x1c70);
+  uVar15 = (uVar12 & 0x379d3728 | (uVar11 ^ 0xc00000c0) & 0xc862c8d7) ^
+           (*(uint *)(unaff_RBP + 0x1c70) & 0x379d3728 | uVar13 & 0xc862c8d7) | ~(uVar12 | uVar14);
+  uVar11 = uVar9 & 0xdb80456f | *(uint *)(unaff_RBP + 0x1c74) & 0x247fba90;
+  uVar16 = uVar11 ^ 0x247fba90;
+  uVar12 = (uVar11 ^ 0xfd79bfa) & uVar16;
+  uVar11 = *(uint *)(unaff_RBP + 0x1c74) & 0x2ba8216a;
+  uVar11 = uVar12 & uVar11 | uVar12 ^ uVar11;
+  uVar12 = uVar13 & 0xd457de95 | uVar14 & 0x2ba8216a;
+  uVar12 = uVar12 & ~uVar11 | uVar11 & ~uVar12;
+  uVar11 = uVar16 & uVar13 | uVar16 ^ uVar13;
+  uVar11 = ~uVar11 & 0xff658803 | uVar11 & 0x9a77fc;
+  uVar13 = uVar11 ^ 0xff658803;
+  uVar16 = ~uVar12;
+  uVar11 = (uVar16 & 0xf0dbb48 | uVar12 & 0xf0f244b7) ^
+           (uVar13 & 0xf0dbb48 | (uVar11 ^ 0x9244b4) & 0xf0f244b7) | ~(uVar16 | uVar13);
+  *(uint *)(unaff_RBP + 0x1c68) =
+       ((((*(int *)(&stack0x00000000 + lVar8 + lVar7 + lVar6) + *(uint *)(unaff_RBP + 0x1c74)) -
+         ((~uVar15 & 0xdb4a085 | uVar15 & 0xf24b5f7a) ^ 0xf24b5f7a)) - uVar14) -
+       (~(uVar11 & 0x6f5feb03) & 0x6f5feb03 |
+       (~uVar11 & 0x8004d4 | uVar11 & 0x90201028) ^ 0x90201028)) +
+       ((*(uint *)(unaff_RBP + 0x1c74) & 0x9028a59b | uVar9 & 0x6fd75a64) ^ 0x9028a59b) +
+       *(int *)(unaff_RBP + 0x1c6c);
+  *(undefined8 *)((longlong)&uStack_8 + lVar8 + lVar7 + lVar6) = 0x140142501;
+  lVar6 = func_0x0001407d8190();
+  lVar6 = -lVar6;
+  *(undefined4 *)(&stack0x00000000 + lVar6 + lVar8 + lVar4) = 0;
+  uVar9 = ~*(uint *)(unaff_RBP + 0x1c68);
+  uVar12 = uVar9 & 0xfffffffe | *(uint *)(unaff_RBP + 0x1c68) & 1;
+  uVar13 = (*(uint *)(unaff_RBP + 0x1c68) ^ 0xfffffffe) & *(uint *)(unaff_RBP + 0x1c68);
+  uVar14 = uVar9 & 0xea4ffafc | *(uint *)(unaff_RBP + 0x1c68) & 0x15b00503;
+  uVar15 = ~uVar13;
+  uVar11 = uVar14 ^ 0x15b00502;
+  uVar14 = (uVar15 & 0xe1c315dc | uVar13 & 0x1e3cea23) ^
+           (uVar11 & 0xe1c315dc | (uVar14 ^ 0xa0cea21) & 0x1e3cea23) | ~(uVar15 | uVar11);
+  uVar11 = uVar14 | 0x25190487;
+  uVar14 = ~uVar14 | 0xdae6fb78;
+  uVar11 = (uVar11 & 0x243a1cf8 | ~uVar11 & 0xdac4e300) ^
+           (uVar14 & 0x243a1cf8 | ~uVar14 & 0x1010007);
+  uVar16 = (*(uint *)(unaff_RBP + 0x1c68) & 0xa07ef5fc | 0x30b4d0 | uVar9 & 0x48010200) ^
+           ((uVar9 | 0xe84f432c) & 0xa07ef5fc | ~(uVar9 | 0xe84f432c) & 0x17800803);
+  uVar13 = (uVar9 & 0x6201e6e8 | *(uint *)(unaff_RBP + 0x1c68) & 0x9dfe1917) ^ 0x9dfe1916;
+  uVar13 = (uVar13 ^ uVar9) & uVar13;
+  uVar15 = (uVar13 ^ 0xddaf39e5) & uVar13;
+  uVar14 = ~uVar13 & 0xddaf39e5 ^ uVar15;
+  uVar2 = *(undefined4 *)(_DAT_140fa1ce0 + 0x577a9250);
+  uVar3 = *(undefined4 *)(_DAT_140fa1ce8 + 0x577a9250);
+  *(uint *)(unaff_RBP + 0x1c64) =
+       ((((~uVar11 & 0xb880d147 | uVar11 & 0x477f2eb8) ^ 0x9d99d5c0) -
+        (((uVar12 ^ uVar9) & uVar12) + *(int *)(&stack0x00000000 + lVar6 + lVar8 + lVar4))) -
+       (~uVar16 & 0x17b0bcd3 | uVar16 & 0xe84f432c)) +
+       (~uVar14 & 0x2250c61a | ~uVar13 & 0xddaf39e5 & uVar15 | uVar14 & 0xddaf39e5);
+  *(undefined4 *)(unaff_RBP + 0x1c60) = uVar2;
+  *(undefined4 *)(unaff_RBP + 0x1c5c) = uVar3;
+  *(undefined8 *)((longlong)&uStack_8 + lVar6 + lVar8 + lVar4) = 0x1401426fd;
+  lVar7 = func_0x0001407d8190();
+  lVar7 = -lVar7;
+  *(undefined4 *)(&stack0x00000000 + lVar7 + lVar6 + lVar5) = 0;
+  uVar11 = ~*(uint *)(unaff_RBP + 0x1c5c);
+  uVar14 = uVar11 & 0xe99447b8 | *(uint *)(unaff_RBP + 0x1c5c) & 0x166bb847;
+  uVar17 = ~*(uint *)(unaff_RBP + 0x1c60);
+  uVar15 = (uVar14 ^ 0x166bb847) & uVar17 | *(uint *)(unaff_RBP + 0x1c60) & (uVar14 ^ 0xe99447b8);
+  uVar16 = uVar17 | uVar11;
+  uVar14 = *(uint *)(unaff_RBP + 0x1c5c) & uVar17 | *(uint *)(unaff_RBP + 0x1c60) & uVar11;
+  uVar13 = ~uVar14;
+  uVar9 = uVar17 & 0x659b3b06 | *(uint *)(unaff_RBP + 0x1c60) & 0x9a64c4f9;
+  uVar18 = (uVar9 ^ 0xbd3a2881) & (uVar9 ^ 0x9a64c4f9);
+  uVar12 = (*(uint *)(unaff_RBP + 0x1c60) ^ 0xd8a11387) & *(uint *)(unaff_RBP + 0x1c60);
+  uVar18 = uVar18 & uVar12 | uVar18 ^ uVar12;
+  uVar12 = uVar11 & 0xd8a11387 | *(uint *)(unaff_RBP + 0x1c5c) & 0x275eec78;
+  uVar12 = uVar12 & ~uVar18 | uVar18 & ~uVar12;
+  uVar18 = ((uVar9 ^ 0x659b3b06) & 0x819dce05 | (uVar9 ^ 0x9a64c4f9) & 0x7e6231fa) ^
+           (*(uint *)(unaff_RBP + 0x1c5c) & 0x819dce05 | uVar11 & 0x7e6231fa) |
+           ~(uVar9 ^ 0x659b3b06 | *(uint *)(unaff_RBP + 0x1c5c));
+  uVar9 = ~uVar12;
+  uVar18 = (uVar9 & 0xeac0f2aa | uVar12 & 0x153f0d55) ^ (uVar18 & 0xeac0f2aa | ~uVar18 & 0x153f0d55)
+           | ~(uVar9 | uVar18);
+  uVar12 = (uVar18 ^ 0xda947779) & uVar18;
+  uVar9 = ~uVar12;
+  uVar12 = ((uVar18 | 0x256b8886) & 0xdba943ef | ~uVar18 & 0x143410) ^
+           (uVar9 & 0xdba943ef | uVar12 & 0x2456bc10) | ~(uVar18 | 0x256b8886 | uVar9);
+  uVar9 = uVar11 & uVar17 | *(uint *)(unaff_RBP + 0x1c60) & *(uint *)(unaff_RBP + 0x1c5c);
+  iVar10 = *(int *)(unaff_RBP + 0x1c64) +
+           (((((uVar15 ^ uVar17) & uVar15) + *(int *)(&stack0x00000000 + lVar7 + lVar6 + lVar5)) -
+            ((uVar16 & 0xc6359a52 | ~uVar16 & 0x39ca65ad) ^
+             (uVar13 & 0xc6359a52 | uVar14 & 0x39ca65ad) | ~(uVar16 | uVar13))) -
+           (~uVar12 & 0x256b8886 | uVar12 & 0xda947779)) + ~((uVar9 ^ uVar17) & uVar9) + 3;
+  uVar14 = 0xa5;
+  if (iVar10 == 0) {
+    uVar14 = 0x149;
+  }
+  lVar8 = *(longlong *)(_DAT_140fa18f0 + 0x577a9250 + (ulonglong)uVar14 * 8);
+  uVar1 = *(undefined1 *)(unaff_RBP + 0x4199);
+  *(undefined4 *)((longlong)auStack_10 + lVar7 + lVar6 + lVar5) = 0x3193;
+  *(int *)(unaff_RBP + 0x1c58) = iVar10;
+  *(longlong *)(unaff_RBP + 0x1c50) = lVar8 + 0x51ea58a4;
+  *(undefined8 *)((longlong)auStack_38 + lVar7 + lVar6 + lVar5) = 0x1401429a2;
+  func_0x0001405d5f80(CONCAT31((int3)((uint)iVar10 >> 8),uVar1),0x2d,0x141036d90,unaff_RBP + 0x3188)
+  ;
+  *(undefined1 *)(unaff_RBP + 0x4199) = 1;
+                    /* WARNING: Could not recover jumptable at 0x0001401429b4. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(unaff_RBP + 0x1c50))();
+  return;
+}
+
+
+
+== after_len_read target=0x140131455 fn=state_after_len_read ==
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void state_after_len_read(void)
+
+{
+  uint uVar1;
+  longlong unaff_RBP;
+  
+  uVar1 = 0x15c;
+  if (*(char *)(unaff_RBP + 0x2f69) != '\0') {
+    uVar1 = 0x8d;
+  }
+  *(longlong *)(unaff_RBP + 0x2118) =
+       *(longlong *)(_DAT_140fa18f0 + 0x577a9250 + (ulonglong)uVar1 * 8) + 0x51ea58a4;
+  func_0x0001405d5f80(*(undefined1 *)(unaff_RBP + 0x4130),0x94,0x141035980,unaff_RBP + 0x3188,0x361e
+                     );
+  *(undefined1 *)(unaff_RBP + 0x4130) = 1;
+                    /* WARNING: Could not recover jumptable at 0x0001401314cf. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(unaff_RBP + 0x2118))();
+  return;
+}
+
+
+
+== after_body_recv target=0x14017713f fn=state_after_body_recv ==
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void state_after_body_recv(void)
+
+{
+  undefined4 in_EAX;
+  uint uVar1;
+  longlong unaff_RBP;
+  
+  **(undefined4 **)(unaff_RBP + 0x2f20) = in_EAX;
+  *(bool *)(unaff_RBP + 0x2f6e) = **(int **)(unaff_RBP + 0x2f20) == 0;
+  uVar1 = 5;
+  if (*(char *)(unaff_RBP + 0x2f6e) != '\0') {
+    uVar1 = 0x40;
+  }
+  *(longlong *)(unaff_RBP + 0x1c88) =
+       *(longlong *)(_DAT_140fa18f0 + 0x577a9250 + (ulonglong)uVar1 * 8) + 0x51ea58a4;
+  func_0x0001405d5f80(*(undefined1 *)(unaff_RBP + 0x4198),0xc0,0x141036a90,unaff_RBP + 0x3188,0x222f
+                     );
+  *(undefined1 *)(unaff_RBP + 0x4198) = 1;
+                    /* WARNING: Could not recover jumptable at 0x000140142069. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(unaff_RBP + 0x1c88))();
+  return;
+}
+
+
+
+== after_len_recv target=0x140170895 fn=state_after_len_recv ==
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void state_after_len_recv(void)
+
+{
+  undefined4 in_EAX;
+  uint uVar1;
+  longlong unaff_RBP;
+  
+  **(undefined4 **)(unaff_RBP + 0x2f20) = in_EAX;
+  *(bool *)(unaff_RBP + 0x2f69) = **(int **)(unaff_RBP + 0x2f20) == 0;
+  uVar1 = 0x15c;
+  if (*(char *)(unaff_RBP + 0x2f69) != '\0') {
+    uVar1 = 0x8d;
+  }
+  *(longlong *)(unaff_RBP + 0x2118) =
+       *(longlong *)(_DAT_140fa18f0 + 0x577a9250 + (ulonglong)uVar1 * 8) + 0x51ea58a4;
+  func_0x0001405d5f80(*(undefined1 *)(unaff_RBP + 0x4130),0x94,0x141035980,unaff_RBP + 0x3188,0x361e
+                     );
+  *(undefined1 *)(unaff_RBP + 0x4130) = 1;
+                    /* WARNING: Could not recover jumptable at 0x0001401314cf. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(unaff_RBP + 0x2118))();
+  return;
+}
+
+
+
+== body_proc_cont target=0x140141fef fn=state_body_proc_cont ==
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void state_body_proc_cont(void)
+
+{
+  uint uVar1;
+  longlong unaff_RBP;
+  
+  uVar1 = 5;
+  if (*(char *)(unaff_RBP + 0x2f6e) != '\0') {
+    uVar1 = 0x40;
+  }
+  *(longlong *)(unaff_RBP + 0x1c88) =
+       *(longlong *)(_DAT_140fa18f0 + 0x577a9250 + (ulonglong)uVar1 * 8) + 0x51ea58a4;
+  func_0x0001405d5f80(*(undefined1 *)(unaff_RBP + 0x4198),0xc0,0x141036a90,unaff_RBP + 0x3188,0x222f
+                     );
+  *(undefined1 *)(unaff_RBP + 0x4198) = 1;
+                    /* WARNING: Could not recover jumptable at 0x000140142069. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(unaff_RBP + 0x1c88))();
+  return;
+}
+
+
+

@@ -1,0 +1,127 @@
+{
+  "evidence_id": "C177_auth_gate_attach_boundary_20260925",
+  "date": "2026-09-25",
+  "evidence_scope": "real_sample_guest_run_predecode_auth_gate_attach",
+  "authorization_scope": "Authorized isolated local analysis; temporary in-memory observation only; no real license input; no real C2; no response injection; no distributable patched artifact.",
+  "target": {
+    "path": "C:/ept_core/Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "guest": {
+    "vm": "<VM_LABEL>",
+    "hostname": "<VM_LABEL>",
+    "os": "Windows 10 Pro build 19045",
+    "network": "disconnected"
+  },
+  "debugger": {
+    "path": "C:/Program Files (x86)/Windows Kits/10/Debuggers/x64/cdb.exe",
+    "version": "10.0.26100.9169 (WinBuild.160101.0800)",
+    "sha256": "B27BEEAB332294D3B043095D727DC5ACA2A53AE609EEC9223BC4276531595B6E"
+  },
+  "input": {
+    "real_card_present": false,
+    "card_value": "NOT_STORED",
+    "input_kind": "format-test-only",
+    "response_injection": false,
+    "network_request_sent": false
+  },
+  "runs": [
+    {
+      "run_id": "EPT-AUTHGATE-20260925-07",
+      "mode": "natural SYSTEM parent -> child discovery -> CDB attach",
+      "child_path": "C:/Windows/TEMP/EPT_08F9AF00_85A9E226.exe",
+      "child_pid": 2032,
+      "parent_pid": 520,
+      "temporary_patch_writes_verified": true,
+      "main_entry_hit": true,
+      "follow_on_observation": "CDB command file quit at first main breakpoint; no authorization-success interpretation."
+    },
+    {
+      "run_id": "EPT-AUTHGATE-20260925-08",
+      "mode": "natural SYSTEM parent -> child discovery -> CDB attach with auto-continue breakpoint actions",
+      "child_path": "C:/Windows/TEMP/EPT_98BF998F_27BA2008.exe",
+      "child_pid": 1016,
+      "parent_pid": 2452,
+      "temporary_patch_writes_verified": true,
+      "main_entry_hit": true,
+      "main_entry_registers": {
+        "rcx": "0x8",
+        "rdx": "0x5998c0",
+        "r8": "0x592680",
+        "r9": "0x5a6260"
+      },
+      "main_auth_branch_hit": false,
+      "main_branch_follow_hit": false,
+      "core_candidate_hit": false,
+      "debugger_wait_expired": true
+    }
+  ],
+  "temporary_points": {
+    "description": "Only transient Guest child address-space writes were attempted after natural child discovery; authoritative host sample and Guest source executable were not modified.",
+    "points": [
+      "FUN_1407a3080 runtime return gate",
+      "main authorization-controlled branch at 0x1407a6a6a"
+    ],
+    "patch_artifact_distribution": "PROHIBITED_AND_NOT_CREATED"
+  },
+  "results": {
+    "natural_child_observed": true,
+    "cdb_attach_observed": true,
+    "main_entry_observed": true,
+    "authorization_success": "NOT_ESTABLISHED",
+    "target_native_return": "NOT_OBSERVED",
+    "target_caller_diff_bytes": "NOT_OBSERVED",
+    "post_decode_behavior": "NOT_OBSERVED",
+    "target_code_page_difference": "NOT_OBSERVED",
+    "target_pid_ppid": "Only temporary observation PIDs/PPIDs recorded; target completion attribution unavailable."
+  },
+  "interpretation": "The earlier launch-under-CDB route terminated before child creation because debugger-present startup was not equivalent to the natural SYSTEM route. The natural-then-attach route reached the child and main entry, but the observed main entry did not proceed to the recorded authorization branch or core candidate within the bounded window. This is an instrumentation/behavior boundary, not an authorization failure or success.",
+  "unresolved": [
+    "real license response",
+    "CardLogin request/response buffers and lengths",
+    "runtime authorization return code",
+    "0x1407a6a6a / 0x1407a7aec follow-on state",
+    "0x14078f060 core candidate",
+    "native_return",
+    "changed_bytes",
+    "caller +0x80 before/after",
+    "post-auth behavior"
+  ],
+  "raw_artifacts": [
+    "runs/EPT-AUTHGATE-20260925-07/auth_gate_attach.cdb",
+    "runs/EPT-AUTHGATE-20260925-07/cdb.stdout.txt",
+    "runs/EPT-AUTHGATE-20260925-07/events.ndjson",
+    "runs/EPT-AUTHGATE-20260925-07/summary.json",
+    "runs/EPT-AUTHGATE-20260925-08/auth_gate_attach.cdb",
+    "runs/EPT-AUTHGATE-20260925-08/cdb.stdout.txt",
+    "runs/EPT-AUTHGATE-20260925-08/cdb.stderr.txt",
+    "runs/EPT-AUTHGATE-20260925-08/events.ndjson",
+    "runs/EPT-AUTHGATE-20260925-08/summary.json",
+    "runs/EPT-AUTHGATE-20260925-08/done.json"
+  ],
+  "compliance": [
+    "SAMPLE_LAUNCH_HELD remains for the normal real-card workflow.",
+    "No real C2 connection or response injection occurred.",
+    "Only transient Guest memory writes were used; no reusable patched binary or license data was produced.",
+    "The analysis is limited to local study, security testing, and reverse-engineering research under the cited authorization scope."
+  ],
+  "artifact_hashes": {
+    "runs/EPT-AUTHGATE-20260925-07/auth_gate_attach.cdb": "5DCE0C973F654F47B6B2A570F895C44D61823FF923DC28F17D4E82608E030E9E",
+    "runs/EPT-AUTHGATE-20260925-07/cdb.stdout.txt": "E6C27B071A33C4599CA40B05EAA7AA7432041F15AA8015DBC4C6652AD19FD18A",
+    "runs/EPT-AUTHGATE-20260925-07/events.ndjson": "1C875687DDA118104C85EE15474D17FC934FBB23ACABD77E4B8D594541F7F7F2",
+    "runs/EPT-AUTHGATE-20260925-07/summary.json": "44D65A710E83810CE6FCB040DF8A6434F9AA95EAFE09DC6E23C1E26CF8F46F4B",
+    "runs/EPT-AUTHGATE-20260925-08/auth_gate_attach.cdb": "F8A6BED125F3F650EDD939DECA937D74475117049EF32161803D29BB1D032815",
+    "runs/EPT-AUTHGATE-20260925-08/cdb.stdout.txt": "4987DC464EDF87119B3C99E36A51B02B54F54E7CF53253821202EAF2C7854631",
+    "runs/EPT-AUTHGATE-20260925-08/cdb.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "runs/EPT-AUTHGATE-20260925-08/events.ndjson": "0EA14F5230836CE30B7B10E047225D769BE27897628A421E15F9B45D89A900A4",
+    "runs/EPT-AUTHGATE-20260925-08/summary.json": "5F084906A18D29AA1247D03771FA8B482238812EE4F02AE5FAA350236E24DD6D",
+    "runs/EPT-AUTHGATE-20260925-08/done.json": "ED361D0A1659C8BD6BDA0077B6F71BF3E239862AB2387559D54C5074A2D08621"
+  },
+  "cleanup": {
+    "guest_auth_spool_dirs_removed": 8,
+    "guest_temp_child_files_removed": 2,
+    "relevant_guest_processes_after_cleanup": 0,
+    "ept_tasks_after_cleanup": 0,
+    "host_raw_artifacts_retained": true
+  }
+}

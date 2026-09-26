@@ -1,0 +1,45 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.016 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.219 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: cmd.exe /c echo CANARY_ECHO_OK 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00007ff6`4e8f0000 00007ff6`4e957000   cmd.exe 
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+(f58.a64): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrpDoDebuggerBreak+0x30:
+00007ffb`dcd40860 cc              int     3
+0:000> 

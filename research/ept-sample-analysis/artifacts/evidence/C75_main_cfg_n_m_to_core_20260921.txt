@@ -1,0 +1,516 @@
+C75 — main CFG-qualified -n/-m to local-core candidate trace
+date=2026-09-21
+input=<HOST_PATH>\EPT\artifacts\captures\stream_C6\stream_text.bin bytes=8257536 sha256=5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757
+mapping=VA 0x140000000 + stream_text_offset; end_exclusive=0x1407e0000
+slice=<HOST_PATH>\EPT\artifacts\evidence\C11_main_slot_slice.json sha256=247431ebbdd3d0a94667df2c56320208ae6eaf6d0841a41c16f3999a85bffa3e
+slice_function=0x1407a4b90..0x1407aa710 bytes=23424
+cfg_reached=1404 resync_only=4924 block_starts=134
+qualification=instruction starts below are taken only from C11 cfg_reached; calls are not assumed to return into opaque bytes without marking the edge
+
+=== parser and consumer windows ===
+
+--- -n/-m parser: 0x1407a5480..0x1407a5650 ---
+0x00000001407a5482: test     rdx, rdx
+0x00000001407a5485: je       0x1407a56a7  [EDGE->0x1407a56a7]
+0x00000001407a548b: movzx    eax, byte ptr [rdx]
+0x00000001407a548e: test     al, al
+0x00000001407a5490: je       0x1407a56a7  [EDGE->0x1407a56a7]
+0x00000001407a5496: cmp      al, 0x2d
+0x00000001407a5498: jne      0x1407a54a4  [EDGE->0x1407a54a4]
+0x00000001407a549a: cmp      byte ptr [rdx + 1], r15b
+0x00000001407a549e: jne      0x1407a56a7  [EDGE->0x1407a56a7]
+0x00000001407a54a4: mov      r8d, 0xfe  [BLOCK; IN=0x1407a5498:jne]
+0x00000001407a54aa: lea      rcx, [rbp + 0x1e90]
+0x00000001407a54b1: call     0x1407d86e0  [CALL->0x1407d86e0]
+0x00000001407a54b6: mov      byte ptr [rbp + 0x1f8e], r15b
+0x00000001407a54bd: mov      byte ptr [rsp + 0x62], 1
+0x00000001407a54c2: jmp      0x1407a563d  [EDGE->0x1407a563d]
+0x00000001407a54c7: lea      rdx, [rip + 0x7ed682]  [BLOCK; IN=0x1407a5470:jne]
+0x00000001407a54ce: mov      rcx, qword ptr [rdi + rsi*8]
+0x00000001407a54d2: call     0x1407be830  [CALL->0x1407be830]
+0x00000001407a54d7: test     eax, eax
+0x00000001407a54d9: jne      0x1407a54e5  [EDGE->0x1407a54e5]
+0x00000001407a54db: mov      byte ptr [rsp + 0x67], 1
+0x00000001407a54e0: jmp      0x1407a5640  [EDGE->0x1407a5640]
+0x00000001407a54e5: lea      rdx, [rip + 0x7ece3c]  [BLOCK; IN=0x1407a54d9:jne]
+0x00000001407a54ec: mov      rcx, qword ptr [rdi + rsi*8]
+0x00000001407a54f0: call     0x1407be830  [CALL->0x1407be830]
+0x00000001407a54f5: test     eax, eax
+0x00000001407a54f7: jne      0x1407a5503  [EDGE->0x1407a5503]
+0x00000001407a54f9: mov      byte ptr [rsp + 0x64], 1
+0x00000001407a54fe: jmp      0x1407a5640  [EDGE->0x1407a5640]
+0x00000001407a5503: lea      rdx, [rip + 0x7ed64e]  [BLOCK; IN=0x1407a54f7:jne]
+0x00000001407a550a: mov      rcx, qword ptr [rdi + rsi*8]
+0x00000001407a550e: call     0x1407be830  [CALL->0x1407be830]
+0x00000001407a5513: test     eax, eax
+0x00000001407a5515: jne      0x1407a556c  [EDGE->0x1407a556c]
+0x00000001407a5517: inc      ebx
+0x00000001407a5519: cmp      ebx, r12d
+0x00000001407a551c: jge      0x1407a56cc  [EDGE->0x1407a56cc]
+0x00000001407a5522: mov      rdx, qword ptr [rdi + rsi*8 + 8]
+0x00000001407a5527: test     rdx, rdx
+0x00000001407a552a: je       0x1407a56cc  [EDGE->0x1407a56cc]
+0x00000001407a5530: movzx    eax, byte ptr [rdx]
+0x00000001407a5533: test     al, al
+0x00000001407a5535: je       0x1407a56cc  [EDGE->0x1407a56cc]
+0x00000001407a553b: cmp      al, 0x2d
+0x00000001407a553d: jne      0x1407a5549  [EDGE->0x1407a5549]
+0x00000001407a553f: cmp      byte ptr [rdx + 1], r15b
+0x00000001407a5543: jne      0x1407a56cc  [EDGE->0x1407a56cc]
+0x00000001407a5549: mov      r8d, 0xfe  [BLOCK; IN=0x1407a553d:jne]
+0x00000001407a554f: lea      rcx, [rbp + 0x1f90]
+0x00000001407a5556: call     0x1407d86e0  [CALL->0x1407d86e0]
+0x00000001407a555b: mov      byte ptr [rbp + 0x208e], r15b
+0x00000001407a5562: mov      byte ptr [rsp + 0x65], 1
+0x00000001407a5567: jmp      0x1407a563d  [EDGE->0x1407a563d]
+0x00000001407a556c: lea      rdx, [rip + 0x7ed609]  [BLOCK; IN=0x1407a5515:jne]
+0x00000001407a5573: mov      rcx, qword ptr [rdi + rsi*8]
+0x00000001407a5577: call     0x1407be830  [CALL->0x1407be830]
+0x00000001407a557c: test     eax, eax
+0x00000001407a557e: jne      0x1407a55d4  [EDGE->0x1407a55d4]
+0x00000001407a5580: inc      ebx
+0x00000001407a5582: cmp      ebx, r12d
+0x00000001407a5585: jge      0x1407a56f1  [EDGE->0x1407a56f1]
+0x00000001407a558b: mov      rcx, qword ptr [rdi + rsi*8 + 8]
+0x00000001407a5590: test     rcx, rcx
+0x00000001407a5593: je       0x1407a56f1  [EDGE->0x1407a56f1]
+0x00000001407a5599: cmp      byte ptr [rcx], r15b
+0x00000001407a559c: je       0x1407a56f1  [EDGE->0x1407a56f1]
+0x00000001407a55a2: mov      qword ptr [rbp + 0x70], r15
+0x00000001407a55a6: lea      r8d, [rax + 0xa]
+0x00000001407a55aa: lea      rdx, [rbp + 0x70]
+0x00000001407a55ae: call     0x1407c0494  [CALL->0x1407c0494]
+0x00000001407a55b3: mov      dword ptr [rsp + 0x70], eax
+0x00000001407a55b7: mov      rcx, qword ptr [rbp + 0x70]
+0x00000001407a55bb: test     rcx, rcx
+0x00000001407a55be: je       0x1407a56f1  [EDGE->0x1407a56f1]
+0x00000001407a55c4: cmp      byte ptr [rcx], r15b
+0x00000001407a55c7: jne      0x1407a56f1  [EDGE->0x1407a56f1]
+0x00000001407a55cd: mov      byte ptr [rsp + 0x60], 1
+0x00000001407a55d2: jmp      0x1407a563d  [EDGE->0x1407a563d]
+0x00000001407a55d4: lea      rdx, [rip + 0x7ed5c5]  [BLOCK; IN=0x1407a557e:jne]
+0x00000001407a55db: mov      rcx, qword ptr [rdi + rsi*8]
+0x00000001407a55df: call     0x1407be830  [CALL->0x1407be830]
+0x00000001407a55e4: test     eax, eax
+0x00000001407a55e6: jne      0x1407a573b  [EDGE->0x1407a573b]
+0x00000001407a55ec: inc      ebx
+0x00000001407a55ee: cmp      ebx, r12d
+0x00000001407a55f1: jge      0x1407a5716  [EDGE->0x1407a5716]
+0x00000001407a55f7: mov      rcx, qword ptr [rdi + rsi*8 + 8]
+0x00000001407a55fc: test     rcx, rcx
+0x00000001407a55ff: je       0x1407a5716  [EDGE->0x1407a5716]
+0x00000001407a5605: cmp      byte ptr [rcx], r15b
+0x00000001407a5608: je       0x1407a5716  [EDGE->0x1407a5716]
+0x00000001407a560e: mov      qword ptr [rbp + 0x78], r15
+0x00000001407a5612: lea      r8d, [rax + 0xa]
+0x00000001407a5616: lea      rdx, [rbp + 0x78]
+0x00000001407a561a: call     0x1407c0494  [CALL->0x1407c0494]
+0x00000001407a561f: mov      dword ptr [rbp - 0x80], eax
+0x00000001407a5622: mov      rcx, qword ptr [rbp + 0x78]
+0x00000001407a5626: test     rcx, rcx
+0x00000001407a5629: je       0x1407a5716  [EDGE->0x1407a5716]
+0x00000001407a562f: cmp      byte ptr [rcx], r15b
+0x00000001407a5632: jne      0x1407a5716  [EDGE->0x1407a5716]
+0x00000001407a5638: mov      byte ptr [rsp + 0x61], 1
+0x00000001407a563d: inc      rsi  [BLOCK; IN=0x1407a54c2:jmp,0x1407a5567:jmp,0x1407a55d2:jmp]
+0x00000001407a5640: inc      ebx  [BLOCK; IN=0x1407a5422:je,0x1407a543a:je,0x1407a5459:jmp,0x1407a54e0:jmp,0x1407a54fe:jmp]
+0x00000001407a5642: inc      rsi
+0x00000001407a5645: cmp      rsi, r14
+0x00000001407a5648: jl       0x1407a5410  [EDGE->0x1407a5410]
+0x00000001407a564e: movzx    esi, byte ptr [rsp + 0x65]
+
+--- first consumer / CliConfigUpdate branch: 0x1407a57b0..0x1407a5910 ---
+0x00000001407a57b6: lea      rdx, [rip + 0x7ed4b3]
+0x00000001407a57bd: xor      ecx, ecx
+0x00000001407a57bf: call     0x141a07aec  [CALL->0x141a07aec]
+0x00000001407a57c4: mov      eax, 0xe855c933
+0x00000001407a57c9: or       ecx, ebx
+0x00000001407a57cb: or       al, byte ptr [rcx]
+0x00000001407a57cd: int3  [TRAP]
+0x00000001407a57ce: cmp      byte ptr [rsp + 0x64], 0  [BLOCK; IN=0x1407a5673:je]
+0x00000001407a57d3: je       0x1407a580b  [EDGE->0x1407a580b]
+0x00000001407a57d5: test     sil, sil
+0x00000001407a57d8: jne      0x1407a581f  [EDGE->0x1407a581f]
+0x00000001407a57da: cmp      byte ptr [rsp + 0x62], sil
+0x00000001407a57df: jne      0x1407a5899  [EDGE->0x1407a5899]
+0x00000001407a57e5: cmp      byte ptr [rsp + 0x60], sil
+0x00000001407a57ea: jne      0x1407a5899  [EDGE->0x1407a5899]
+0x00000001407a57f0: cmp      byte ptr [rsp + 0x61], sil
+0x00000001407a57f5: jne      0x1407a5899  [EDGE->0x1407a5899]
+0x00000001407a57fb: cmp      byte ptr [rsp + 0x63], sil
+0x00000001407a5800: jne      0x1407a742d  [EDGE->0x1407a742d]
+0x00000001407a5806: jmp      0x1407a72d2  [EDGE->0x1407a72d2]
+0x00000001407a580b: movzx    eax, byte ptr [rsp + 0x60]  [BLOCK; IN=0x1407a57d3:je]
+0x00000001407a5810: movzx    edx, byte ptr [rsp + 0x62]
+0x00000001407a5815: movzx    ecx, byte ptr [rsp + 0x61]
+0x00000001407a581a: test     sil, sil  [BLOCK; IN=0x1407a579f:jne,0x1407a57a3:jne,0x1407a57a7:jne]
+0x00000001407a581d: je       0x1407a5880  [EDGE->0x1407a5880]
+0x00000001407a581f: movzx    edx, byte ptr [rsp + 0x62]  [BLOCK; IN=0x1407a57d8:jne]
+0x00000001407a5824: cmp      byte ptr [rsp + 0x60], 0
+0x00000001407a5829: jne      0x1407a583d  [EDGE->0x1407a583d]
+0x00000001407a582b: xor      ecx, ecx
+0x00000001407a582d: test     dl, dl
+0x00000001407a582f: setne    cl
+0x00000001407a5832: mov      dword ptr [rsp + 0x70], ecx
+0x00000001407a5836: mov      byte ptr [rsp + 0x60], 1
+0x00000001407a583b: jmp      0x1407a5841  [EDGE->0x1407a5841]
+0x00000001407a583d: mov      ecx, dword ptr [rsp + 0x70]  [BLOCK; IN=0x1407a5829:jne]
+0x00000001407a5841: cmp      byte ptr [rsp + 0x61], 0  [BLOCK; IN=0x1407a583b:jmp]
+0x00000001407a5846: jne      0x1407a5855  [EDGE->0x1407a5855]
+0x00000001407a5848: mov      eax, r8d
+0x00000001407a584b: mov      dword ptr [rbp - 0x80], eax
+0x00000001407a584e: mov      byte ptr [rsp + 0x61], 1
+0x00000001407a5853: jmp      0x1407a5858  [EDGE->0x1407a5858]
+0x00000001407a5855: mov      eax, dword ptr [rbp - 0x80]  [BLOCK; IN=0x1407a5846:jne]
+0x00000001407a5858: cmp      ecx, r12d  [BLOCK; IN=0x1407a5853:jmp]
+0x00000001407a585b: ja       0x1407a6af6  [EDGE->0x1407a6af6]
+0x00000001407a5861: test     dl, dl
+0x00000001407a5863: je       0x1407a586e  [EDGE->0x1407a586e]
+0x00000001407a5865: cmp      ecx, 1
+0x00000001407a5868: jne      0x1407a6ad1  [EDGE->0x1407a6ad1]
+0x00000001407a586e: test     eax, eax  [BLOCK; IN=0x1407a5863:je]
+0x00000001407a5870: js       0x1407a6b32  [EDGE->0x1407a6b32]
+0x00000001407a5876: movzx    eax, byte ptr [rsp + 0x60]
+0x00000001407a587b: movzx    ecx, byte ptr [rsp + 0x61]
+0x00000001407a5880: test     dl, dl  [BLOCK; IN=0x1407a581d:je]
+0x00000001407a5882: jne      0x1407a5890  [EDGE->0x1407a5890]
+0x00000001407a5884: test     al, al
+0x00000001407a5886: jne      0x1407a5890  [EDGE->0x1407a5890]
+0x00000001407a5888: test     cl, cl
+0x00000001407a588a: je       0x1407a740b  [EDGE->0x1407a740b]
+0x00000001407a5890: test     sil, sil  [BLOCK; IN=0x1407a5882:jne,0x1407a5886:jne]
+0x00000001407a5893: jne      0x1407a740b  [EDGE->0x1407a740b]
+0x00000001407a5899: lea      rcx, [rip + 0x7ed470]  [BLOCK; IN=0x1407a57df:jne,0x1407a57ea:jne,0x1407a57f5:jne]
+0x00000001407a58a0: call     0x14078fc90  [CALL->0x14078fc90]
+0x00000001407a58a5: mov      eax, dword ptr [rip + 0x9af465]
+0x00000001407a58ab: test     eax, eax
+0x00000001407a58ad: jns      0x1407a58ea  [EDGE->0x1407a58ea]
+0x00000001407a58af: lea      rcx, [rip + 0x7e787a]
+0x00000001407a58b6: call     0x141462910  [CALL->0x141462910]
+0x00000001407a58bb: in       eax, 0x83
+0x00000001407a58bd: clc
+0x00000001407a58be: push     qword ptr [rsp + rax - 0x58]
+0x00000001407a58c2: adc      byte ptr [rbp + 0x1d], dh
+0x00000001407a58c5: lea      rcx, [rip + 0x7e787c]
+0x00000001407a58cc: call     0x1419088a0  [CALL->0x1419088a0]
+0x00000001407a58d1: movabs   byte ptr [0x7410a80b74fff883], al
+0x00000001407a58ea: cmp      eax, 1  [BLOCK; IN=0x1407a58ad:jns]
+0x00000001407a58ed: lea      rax, [rip + 0x7e8ae4]
+0x00000001407a58f4: lea      rcx, [rip + 0x7e8abd]
+0x00000001407a58fb: cmove    rax, rcx
+0x00000001407a58ff: mov      qword ptr [rsp + 0x30], 0
+0x00000001407a5908: mov      dword ptr [rsp + 0x28], 0x80
+
+--- post-consumer reached starts: 0x1407a58e0..0x1407a5b20 ---
+0x00000001407a58ea: cmp      eax, 1  [BLOCK; IN=0x1407a58ad:jns]
+0x00000001407a58ed: lea      rax, [rip + 0x7e8ae4]
+0x00000001407a58f4: lea      rcx, [rip + 0x7e8abd]
+0x00000001407a58fb: cmove    rax, rcx
+0x00000001407a58ff: mov      qword ptr [rsp + 0x30], 0
+0x00000001407a5908: mov      dword ptr [rsp + 0x28], 0x80
+0x00000001407a5910: mov      dword ptr [rsp + 0x20], 3
+0x00000001407a5918: xor      r9d, r9d
+0x00000001407a591b: mov      edx, 0x80000000
+0x00000001407a5920: lea      r8d, [r9 + 7]
+0x00000001407a5924: mov      rcx, rax
+0x00000001407a5927: call     0x141acf8fd  [CALL->0x141acf8fd]
+0x00000001407a592c: or       ecx, dword ptr [rax - 0x75]
+0x00000001407a592f: fmul     dword ptr [rax - 0x7d]
+0x00000001407a5932: clc
+0x00000001407a5933: dec      dword ptr [rdi]
+0x00000001407a5935: test     dword ptr [rdx + 2], esp
+0x00000001407a5938: add      byte ptr [rax], al
+0x00000001407a593a: call     0x14194a8f2  [CALL->0x14194a8f2]
+0x00000001407a593f: movabs   al, byte ptr [0x1e45958d4cc88b44]
+0x00000001407a5948: add      byte ptr [rax], al
+0x00000001407a594a: nop      word ptr [rax + rax]
+0x00000001407a5950: dec      r10  [BLOCK; IN=0x1407a597f:jne]
+0x00000001407a5953: mov      eax, 0xcccccccd
+0x00000001407a5958: mul      r9d
+0x00000001407a595b: mov      r8d, edx
+0x00000001407a595e: shr      r8d, 3
+0x00000001407a5962: movzx    ecx, r8b
+0x00000001407a5966: shl      cl, 2
+0x00000001407a5969: lea      edx, [rcx + r8]
+0x00000001407a596d: add      dl, dl
+0x00000001407a596f: sub      r9b, dl
+0x00000001407a5972: add      r9b, 0x30
+0x00000001407a5976: mov      byte ptr [r10], r9b
+0x00000001407a5979: mov      r9d, r8d
+0x00000001407a597c: test     r8d, r8d
+0x00000001407a597f: jne      0x1407a5950  [EDGE->0x1407a5950]
+0x00000001407a5981: xor      r15d, r15d
+0x00000001407a5984: mov      qword ptr [rbp + 0x5f0], r15
+0x00000001407a598b: mov      r8d, r15d
+0x00000001407a598e: mov      qword ptr [rbp + 0x600], r15
+0x00000001407a5995: mov      ecx, 0xf
+0x00000001407a599a: mov      qword ptr [rbp + 0x608], rcx
+0x00000001407a59a1: mov      byte ptr [rbp + 0x5f0], r8b
+0x00000001407a59a8: lea      rax, [rbp + 0x1e45]
+0x00000001407a59af: cmp      r10, rax
+0x00000001407a59b2: je       0x1407a59db  [EDGE->0x1407a59db]
+0x00000001407a59b4: lea      r8, [rbp + 0x1e45]
+0x00000001407a59bb: sub      r8, r10
+0x00000001407a59be: mov      rdx, r10
+0x00000001407a59c1: lea      rcx, [rbp + 0x5f0]
+0x00000001407a59c8: call     0x1407ad020  [CALL->0x1407ad020]
+0x00000001407a59cd: mov      rcx, qword ptr [rbp + 0x608]
+0x00000001407a59d4: mov      r8, qword ptr [rbp + 0x600]
+0x00000001407a59db: mov      rax, rcx  [BLOCK; IN=0x1407a59b2:je]
+0x00000001407a59de: sub      rax, r8
+0x00000001407a59e1: mov      ebx, 0x1a
+0x00000001407a59e6: lea      rsi, [rip + 0x7ea993]
+0x00000001407a59ed: cmp      rax, rbx
+0x00000001407a59f0: jb       0x1407a5a7a  [EDGE->0x1407a5a7a]
+0x00000001407a59f6: lea      rax, [r8 + 0x1a]
+0x00000001407a59fa: mov      qword ptr [rbp + 0x600], rax
+0x00000001407a5a01: lea      rdi, [rbp + 0x5f0]
+0x00000001407a5a08: cmp      rcx, 0x10
+0x00000001407a5a0c: cmovae   rdi, qword ptr [rbp + 0x5f0]
+0x00000001407a5a14: lea      rax, [rip + 0x7ea97f]
+0x00000001407a5a1b: cmp      rax, rdi
+0x00000001407a5a1e: jbe      0x1407a5a3b  [EDGE->0x1407a5a3b]
+0x00000001407a5a20: lea      rax, [rdi + r8]
+0x00000001407a5a24: cmp      rsi, rax
+0x00000001407a5a27: ja       0x1407a5a3b  [EDGE->0x1407a5a3b]
+0x00000001407a5a29: cmp      rdi, rsi
+0x00000001407a5a2c: ja       0x1407a5a33  [EDGE->0x1407a5a33]
+0x00000001407a5a2e: mov      r14, r15
+0x00000001407a5a31: jmp      0x1407a5a3e  [EDGE->0x1407a5a3e]
+0x00000001407a5a33: mov      r14, rdi  [BLOCK; IN=0x1407a5a2c:ja]
+0x00000001407a5a36: sub      r14, rsi
+0x00000001407a5a39: jmp      0x1407a5a3e  [EDGE->0x1407a5a3e]
+0x00000001407a5a3b: mov      r14, rbx  [BLOCK; IN=0x1407a5a1e:jbe,0x1407a5a27:ja]
+0x00000001407a5a3e: inc      r8  [BLOCK; IN=0x1407a5a31:jmp,0x1407a5a39:jmp]
+0x00000001407a5a41: lea      rcx, [rdi + 0x1a]
+0x00000001407a5a45: mov      rdx, rdi
+0x00000001407a5a48: call     0x1407b48f0  [CALL->0x1407b48f0]
+0x00000001407a5a4d: mov      r8, r14
+0x00000001407a5a50: mov      rdx, rsi
+0x00000001407a5a53: mov      rcx, rdi
+0x00000001407a5a56: call     0x1407b48f0  [CALL->0x1407b48f0]
+0x00000001407a5a5b: sub      rbx, r14
+0x00000001407a5a5e: lea      rdx, [rsi + 0x1a]
+0x00000001407a5a62: add      rdx, r14
+0x00000001407a5a65: lea      rcx, [rdi + r14]
+0x00000001407a5a69: mov      r8, rbx
+0x00000001407a5a6c: call     0x1407b48f0  [CALL->0x1407b48f0]
+0x00000001407a5a71: lea      rax, [rbp + 0x5f0]
+0x00000001407a5a78: jmp      0x1407a5a93  [EDGE->0x1407a5a93]
+0x00000001407a5a7a: mov      qword ptr [rsp + 0x28], rbx  [BLOCK; IN=0x1407a59f0:jb]
+0x00000001407a5a7f: mov      qword ptr [rsp + 0x20], rsi
+0x00000001407a5a84: mov      rdx, rbx
+0x00000001407a5a87: lea      rcx, [rbp + 0x5f0]
+0x00000001407a5a8e: call     0x1407b0420  [CALL->0x1407b0420]
+0x00000001407a5a93: movups   xmm0, xmmword ptr [rax]  [BLOCK; IN=0x1407a5a78:jmp]
+0x00000001407a5a96: movups   xmmword ptr [rbp + 0x750], xmm0
+0x00000001407a5a9d: movups   xmm1, xmmword ptr [rax + 0x10]
+0x00000001407a5aa1: movups   xmmword ptr [rbp + 0x760], xmm1
+0x00000001407a5aa8: mov      qword ptr [rax + 0x10], r15
+0x00000001407a5aac: mov      qword ptr [rax + 0x18], 0xf
+0x00000001407a5ab4: mov      byte ptr [rax], 0
+0x00000001407a5ab7: mov      rdx, qword ptr [rbp + 0x608]
+0x00000001407a5abe: cmp      rdx, 0x10
+0x00000001407a5ac2: jb       0x1407a5af8  [EDGE->0x1407a5af8]
+0x00000001407a5ac4: inc      rdx
+0x00000001407a5ac7: mov      rcx, qword ptr [rbp + 0x5f0]
+0x00000001407a5ace: mov      rax, rcx
+0x00000001407a5ad1: cmp      rdx, 0x1000
+0x00000001407a5ad8: jb       0x1407a5af3  [EDGE->0x1407a5af3]
+0x00000001407a5ada: add      rdx, 0x27
+0x00000001407a5ade: mov      rcx, qword ptr [rcx - 8]
+0x00000001407a5ae2: sub      rax, rcx
+0x00000001407a5ae5: add      rax, -8
+0x00000001407a5ae9: cmp      rax, 0x1f
+0x00000001407a5aed: ja       0x1407aa704  [EDGE->0x1407aa704]
+0x00000001407a5af3: call     0x1407b06d0  [BLOCK; IN=0x1407a5ad8:jb; CALL->0x1407b06d0]
+0x00000001407a5af8: mov      qword ptr [rbp + 0x600], r15  [BLOCK; IN=0x1407a5ac2:jb]
+0x00000001407a5aff: mov      qword ptr [rbp + 0x608], 0xf
+0x00000001407a5b0a: mov      byte ptr [rbp + 0x5f0], 0
+0x00000001407a5b11: lea      rdx, [rbp + 0x750]
+0x00000001407a5b18: cmp      qword ptr [rbp + 0x768], 0x10
+
+--- consumer branch leaves: 0x1407a6a80..0x1407a6b60 ---
+0x00000001407a6ad1: mov      r9d, 0x10  [BLOCK; IN=0x1407a5868:jne]
+0x00000001407a6ad7: lea      r8, [rip + 0x7ec042]
+0x00000001407a6ade: lea      rdx, [rip + 0x7ec1db]
+0x00000001407a6ae5: xor      ecx, ecx
+0x00000001407a6ae7: push     rax
+0x00000001407a6ae8: call     0x141a46d82  [CALL->0x141a46d82]
+0x00000001407a6aed: xor      ecx, ecx
+0x00000001407a6aef: push     rax
+0x00000001407a6af0: call     0x141529b26  [CALL->0x141529b26]
+0x00000001407a6af5: int3  [TRAP]
+0x00000001407a6af6: mov      r9d, 0x10  [BLOCK; IN=0x1407a585b:ja]
+0x00000001407a6afc: lea      r8, [rip + 0x7ec01d]
+0x00000001407a6b03: lea      rdx, [rip + 0x7ec196]
+0x00000001407a6b0a: xor      ecx, ecx
+0x00000001407a6b0c: push     rax
+0x00000001407a6b0d: call     0x141666867  [CALL->0x141666867]
+0x00000001407a6b12: xor      ecx, ecx
+0x00000001407a6b14: push     rax
+0x00000001407a6b15: call     0x1419b082d  [CALL->0x1419b082d]
+0x00000001407a6b1a: int3  [TRAP]
+0x00000001407a6b32: mov      r9d, 0x10  [BLOCK; IN=0x1407a5870:js]
+0x00000001407a6b38: lea      r8, [rip + 0x7ebfe1]
+0x00000001407a6b3f: lea      rdx, [rip + 0x7ec1aa]
+0x00000001407a6b46: xor      ecx, ecx
+0x00000001407a6b48: push     rax
+0x00000001407a6b49: call     0x1413d9113  [CALL->0x1413d9113]
+0x00000001407a6b4e: xor      ecx, ecx
+0x00000001407a6b50: call     0x1414d240f  [CALL->0x1414d240f]
+0x00000001407a6b55: sbb      al, 0xcc
+0x00000001407a6b57: mov      ecx, dword ptr [rip + 0x9ae199]
+0x00000001407a6b5d: test     dl, dl
+0x00000001407a6b5f: cmovne   ecx, r8d
+
+--- later branch leaves: 0x1407a72a0..0x1407a7440 ---
+0x00000001407a72d2: call     0x14079a100  [BLOCK; IN=0x1407a5806:jmp; CALL->0x14079a100]
+0x00000001407a72d7: xor      ecx, ecx
+0x00000001407a72d9: push     rbx
+0x00000001407a72da: call     0x141600693  [CALL->0x141600693]
+0x00000001407a72df: int3  [TRAP]
+0x00000001407a7377: mov      r9d, 0x10  [BLOCK; IN=0x1407a6ce6:jmp,0x1407a6ef7:jmp]
+0x00000001407a737d: lea      r8, [rip + 0x7e8e34]
+0x00000001407a7384: lea      rdx, [rip + 0x7eba6d]
+0x00000001407a738b: xor      ecx, ecx
+0x00000001407a738d: call     0x1415923d9  [CALL->0x1415923d9]
+0x00000001407a73ca: xor      edx, edx  [BLOCK; IN=0x1407a5b97:jmp]
+0x00000001407a73cc: lea      rcx, [rip + 0x7eb955]
+0x00000001407a73d3: call     0x14078ff10  [CALL->0x14078ff10]
+0x00000001407a73d8: xor      edx, edx
+0x00000001407a73da: lea      rcx, [rip + 0x7eb967]
+0x00000001407a73e1: call     0x14078ff10  [CALL->0x14078ff10]
+0x00000001407a73e6: mov      r9d, 0x10
+0x00000001407a73ec: lea      r8, [rip + 0x7eb72d]
+0x00000001407a73f3: lea      rdx, [rip + 0x7eb97e]
+0x00000001407a73fa: xor      ecx, ecx
+0x00000001407a73fc: call     0x1419036c9  [CALL->0x1419036c9]
+0x00000001407a7401: mov      dl, 0x33
+0x00000001407a7403: leave
+0x00000001407a7404: call     0x1418d65a9  [CALL->0x1418d65a9]
+0x00000001407a7409: stosb    byte ptr [rdi], al
+0x00000001407a740a: int3  [TRAP]
+0x00000001407a740b: movzx    r14d, byte ptr [rsp + 0x63]  [BLOCK; IN=0x1407a588a:je,0x1407a5893:jne]
+0x00000001407a7411: xor      bl, bl
+0x00000001407a7413: test     r14b, r14b
+0x00000001407a7416: je       0x1407a7b6e  [EDGE->0x1407a7b6e]
+0x00000001407a741c: test     sil, sil
+0x00000001407a741f: jne      0x1407a7b6e  [EDGE->0x1407a7b6e]
+0x00000001407a7425: test     dl, dl
+0x00000001407a7427: jne      0x1407a7b6e  [EDGE->0x1407a7b6e]
+0x00000001407a742d: call     0x140790010  [BLOCK; IN=0x1407a5800:jne; CALL->0x140790010]
+0x00000001407a7432: mov      rcx, rax
+0x00000001407a7435: call     0x141610fb5  [CALL->0x141610fb5]
+0x00000001407a743a: mov      es, word ptr [rbx - 0x7bf00008]
+
+=== direct calls in the selected main windows ===
+-n/-m parser: 0x1407a54b1 -> 0x1407d86e0 [inside captured .text]
+-n/-m parser: 0x1407a54d2 -> 0x1407be830 [inside captured .text]
+-n/-m parser: 0x1407a54f0 -> 0x1407be830 [inside captured .text]
+-n/-m parser: 0x1407a550e -> 0x1407be830 [inside captured .text]
+-n/-m parser: 0x1407a5556 -> 0x1407d86e0 [inside captured .text]
+-n/-m parser: 0x1407a5577 -> 0x1407be830 [inside captured .text]
+-n/-m parser: 0x1407a55ae -> 0x1407c0494 [inside captured .text]
+-n/-m parser: 0x1407a55df -> 0x1407be830 [inside captured .text]
+-n/-m parser: 0x1407a561a -> 0x1407c0494 [inside captured .text]
+first consumer / CliConfigUpdate branch: 0x1407a57bf -> 0x141a07aec [outside captured .text]
+first consumer / CliConfigUpdate branch: 0x1407a58a0 -> 0x14078fc90 [inside captured .text]
+first consumer / CliConfigUpdate branch: 0x1407a58b6 -> 0x141462910 [outside captured .text]
+first consumer / CliConfigUpdate branch: 0x1407a58cc -> 0x1419088a0 [outside captured .text]
+post-consumer reached starts: 0x1407a5927 -> 0x141acf8fd [outside captured .text]
+post-consumer reached starts: 0x1407a593a -> 0x14194a8f2 [outside captured .text]
+post-consumer reached starts: 0x1407a59c8 -> 0x1407ad020 [inside captured .text]
+post-consumer reached starts: 0x1407a5a48 -> 0x1407b48f0 [inside captured .text]
+post-consumer reached starts: 0x1407a5a56 -> 0x1407b48f0 [inside captured .text]
+post-consumer reached starts: 0x1407a5a6c -> 0x1407b48f0 [inside captured .text]
+post-consumer reached starts: 0x1407a5a8e -> 0x1407b0420 [inside captured .text]
+post-consumer reached starts: 0x1407a5af3 -> 0x1407b06d0 [inside captured .text]
+consumer branch leaves: 0x1407a6ae8 -> 0x141a46d82 [outside captured .text]
+consumer branch leaves: 0x1407a6af0 -> 0x141529b26 [outside captured .text]
+consumer branch leaves: 0x1407a6b0d -> 0x141666867 [outside captured .text]
+consumer branch leaves: 0x1407a6b15 -> 0x1419b082d [outside captured .text]
+consumer branch leaves: 0x1407a6b49 -> 0x1413d9113 [outside captured .text]
+consumer branch leaves: 0x1407a6b50 -> 0x1414d240f [outside captured .text]
+later branch leaves: 0x1407a72d2 -> 0x14079a100 [inside captured .text]
+later branch leaves: 0x1407a72da -> 0x141600693 [outside captured .text]
+later branch leaves: 0x1407a738d -> 0x1415923d9 [outside captured .text]
+later branch leaves: 0x1407a73d3 -> 0x14078ff10 [inside captured .text]
+later branch leaves: 0x1407a73e1 -> 0x14078ff10 [inside captured .text]
+later branch leaves: 0x1407a73fc -> 0x1419036c9 [outside captured .text]
+later branch leaves: 0x1407a7404 -> 0x1418d65a9 [outside captured .text]
+later branch leaves: 0x1407a742d -> 0x140790010 [inside captured .text]
+later branch leaves: 0x1407a7435 -> 0x141610fb5 [outside captured .text]
+
+=== selected local-core target incoming calls in the captured .text ===
+target=0x14078ce60 label=0x14078ce60 local 0x10c-byte transform incoming_from_cfg_reached=0
+target=0x14078d900 label=0x14078d900 response/checksum helper incoming_from_cfg_reached=0
+target=0x14078db80 label=0x14078db80 response validator incoming_from_cfg_reached=0
+target=0x14078ed39 label=0x14078ed39 RC00 block incoming_from_cfg_reached=0
+target=0x14078ece0 label=0x14078ece0 communication block incoming_from_cfg_reached=0
+target=0x141757acd label=0x141757acd missing .Sq> call target incoming_from_cfg_reached=0
+
+=== exact -n/-m slot evidence reused from C11 ===
+rsp:0x70:
+  0x1407a4bcc WRITE reached=True mov dword ptr [rsp + 0x70], r13d
+  0x1407a531e read reached=True mov r12d, dword ptr [rsp + 0x70]
+  0x1407a53a0 WRITE reached=True mov dword ptr [rsp + 0x70], r15d
+  0x1407a55b3 WRITE reached=True mov dword ptr [rsp + 0x70], eax
+  0x1407a5832 WRITE reached=True mov dword ptr [rsp + 0x70], ecx
+  0x1407a583d read reached=True mov ecx, dword ptr [rsp + 0x70]
+  0x1407a6a89 WRITE reached=False mov dword ptr [rsp + 0x70], esi
+  0x1407a6a9e read reached=False mov r8d, dword ptr [rsp + 0x70]
+  0x1407a6aaf WRITE reached=False mov dword ptr [rsp + 0x70], r8d
+  0x1407a6abd WRITE reached=False mov dword ptr [rsp + 0x70], eax
+  0x1407a6ac9 WRITE reached=False mov dword ptr [rsp + 0x70], eax
+  0x1407a6b1b read reached=False mov r8d, dword ptr [rsp + 0x70]
+  0x1407a7d03 WRITE reached=False shl word ptr [rsp + 0x70], 0xff
+  0x1407a8699 read reached=False lea rsp, [rsp + 0x70]
+  0x1407a8799 read reached=False lea rsp, [rsp + 0x70]
+rbp:-0x80:
+  0x1407a5310 WRITE reached=True mov dword ptr [rbp - 0x80], 0
+  0x1407a5317 read reached=True lea r8, [rbp - 0x80]
+  0x1407a532f read reached=True mov eax, dword ptr [rbp - 0x80]
+  0x1407a53aa WRITE reached=True mov dword ptr [rbp - 0x80], r15d
+  0x1407a561f WRITE reached=True mov dword ptr [rbp - 0x80], eax
+  0x1407a584b WRITE reached=True mov dword ptr [rbp - 0x80], eax
+  0x1407a5855 read reached=True mov eax, dword ptr [rbp - 0x80]
+  0x1407a6b26 read reached=False mov eax, dword ptr [rbp - 0x80]
+rsp:0x60:
+  0x1407a5398 WRITE reached=True mov byte ptr [rsp + 0x60], sil
+  0x1407a55cd WRITE reached=True mov byte ptr [rsp + 0x60], 1
+  0x1407a5793 read reached=True movzx eax, byte ptr [rsp + 0x60]
+  0x1407a57e5 read reached=True cmp byte ptr [rsp + 0x60], sil
+  0x1407a580b read reached=True movzx eax, byte ptr [rsp + 0x60]
+  0x1407a5824 read reached=True cmp byte ptr [rsp + 0x60], 0
+  0x1407a5836 WRITE reached=True mov byte ptr [rsp + 0x60], 1
+  0x1407a5876 read reached=True movzx eax, byte ptr [rsp + 0x60]
+  0x1407a6a78 read reached=False movzx edx, byte ptr [rsp + 0x60]
+  0x1407a6a91 WRITE reached=False mov byte ptr [rsp + 0x60], dl
+  0x1407a6aa8 WRITE reached=False mov byte ptr [rsp + 0x60], dl
+  0x1407a6ab9 WRITE reached=False mov byte ptr [rsp + 0x60], dl
+  0x1407a6ac5 WRITE reached=False mov byte ptr [rsp + 0x60], dl
+  0x1407a7c94 read reached=False lea rsp, [rsp + 0x60]
+  0x1407a7da4 read reached=False push qword ptr [rsp + 0x60]
+  0x1407a8694 read reached=False push qword ptr [rsp + 0x60]
+  0x1407a8794 read reached=False push qword ptr [rsp + 0x60]
+  0x1407a880c WRITE reached=False xchg qword ptr [rsp + 0x60], rax
+  0x1407a8816 read reached=False lea rsp, [rsp + 0x60]
+  0x1407a91d0 read reached=False mov r11, qword ptr [rsp + 0x60]
+rsp:0x61:
+  0x1407a53a5 WRITE reached=True mov byte ptr [rsp + 0x61], sil
+  0x1407a5638 WRITE reached=True mov byte ptr [rsp + 0x61], 1
+  0x1407a5798 read reached=True movzx ecx, byte ptr [rsp + 0x61]
+  0x1407a57f0 read reached=True cmp byte ptr [rsp + 0x61], sil
+  0x1407a5815 read reached=True movzx ecx, byte ptr [rsp + 0x61]
+  0x1407a5841 read reached=True cmp byte ptr [rsp + 0x61], 0
+  0x1407a584e WRITE reached=True mov byte ptr [rsp + 0x61], 1
+  0x1407a587b read reached=True movzx ecx, byte ptr [rsp + 0x61]
+  0x1407a6b20 read reached=False movzx r10d, byte ptr [rsp + 0x61]
+
+=== interpretation guardrails ===
+1. The -n/-m parser stores values in [rsp+0x70] and [rbp-0x80], and sets presence flags [rsp+0x60]/[rsp+0x61].
+2. The first consumer block performs option/config checks and calls 0x14078fc90; this helper is a logging/config marker in the recovered evidence, not a local decoder entry.
+3. Any bytes after a call into an address outside stream_text, or an INT3/high-entropy island, are retained as an instrument boundary and are not promoted to a semantic path.
+4. No main CFG-qualified direct edge in these windows is allowed to count as a call to 0x14078ce60/0x14078d900/0x14078db80/0x14078ed39 unless the exact target is printed above.
+5. This artifact does not claim that -n/-m reaches the local transform; it records the evidence needed to decide that without linear-disassembly overreach.

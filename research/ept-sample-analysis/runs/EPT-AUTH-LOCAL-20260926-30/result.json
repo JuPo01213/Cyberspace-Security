@@ -1,0 +1,21 @@
+﻿{
+    "mode":  "offline_dump_scan",
+    "complete":  true,
+    "exit_code":  0,
+    "elapsed_sec":  17.865509799999998,
+    "sample_executed":  false,
+    "outputs":  [
+                    {
+                        "name":  "protected-references.json",
+                        "sha256":  "0A208C46971236D0C5FDE24D93B24FE5992D86B8FEAA6D5E917B47304DDD9310"
+                    },
+                    {
+                        "name":  "scan.stderr.txt",
+                        "sha256":  "F1945CD6C19E56B3C1C78943EF5EC18116907A4CA1EFC40A57D48AB1DB7ADFC5"
+                    },
+                    {
+                        "name":  "scan.stdout.txt",
+                        "sha256":  "E65E24E9CD2301C363D73C04F5F943B4C15350C34F8EDDD6AB5C22D70146508F"
+                    }
+                ]
+}

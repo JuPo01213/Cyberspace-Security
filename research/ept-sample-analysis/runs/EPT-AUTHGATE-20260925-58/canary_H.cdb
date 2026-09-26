@@ -1,0 +1,10 @@
+.echo CANARY_H_BEGIN
+bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+.echo H_FORMS_ISSUED
+r $t1 = 100000
+.if (@$t1 > 0x1000) '.echo IF_TRUE_WORKS' '.echo IF_FALSE_BROKEN'
+r $t1 = 5
+.if (@$t1 > 0x1000) '.echo IF2_BROKEN' '.echo IF2_NEG_WORKS'
+.echo CANARY_H_STOP
+q

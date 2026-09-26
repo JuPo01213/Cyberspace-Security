@@ -1,0 +1,74 @@
+== BR1 instrument checks (all must pass before any statement about the sample) ==
+   CORE_HASH == genB                                              PASS
+   hosts pinned (validator unreachable from the guest)            PASS
+   RESOLVE_NOW == 127.0.0.1                                       PASS
+   BRANCH_DONE reached, i.e. the collector ran to its end         FAIL
+   collector self-probe BOOT present                              PASS
+   windows read: blk_ret(512 B), iat(248 B), impdesc(280 B), term_callee(512 B), tlsdir(40 B)
+
+== the pre-registered binary judgement ==
+   observed EXIT line: None | BRANCH_EXITCODE field: None | used: none
+   VERDICT: INSTRUMENT FAILURE - no exit code captured. No claim about either branch.
+
+== BR6 pre-registered window criteria (fixed BEFORE the VM was booted) ==
+   The exit-code route never reached a verdict in five arms, and C44 shows the two decisive
+   callees sit inside .Sq>, whose first 557 KB we ALREADY hold (RG2 blob). So the narrow
+   question becomes: are the 512 B at each callee decrypted while the process lives?
+   PASS  = a window reads back non-zero AND capstone decodes a legal prologue AND some
+           instruction in the block writes al/eax  =>  the block path return value is known.
+   FAIL  = all zeros or unreadable => that page is not decrypted; the open quantity STAYS open.
+   Either way this is a statement about 1 KB of memory, not about a branch taken.
+   blk_ret 0x141a1ff1b    512 B, 0/512 non-zero
+        -> all zero: page not decrypted (FAIL by the criteria above)
+   term 0x1417612fa       512 B, 0/512 non-zero
+        -> all zero: page not decrypted (FAIL by the criteria above)
+   LAUNCH pid=7196 at=03:31:15.364
+   PRE    guid=41cda592-3a79-477c-9af5-e2e36eb8aa10 svccount=89 usertmpEPT=0
+   POST   None
+   EXIT   None
+
+   tlsdir rva=0x2d9cc00 len=40
+      StartAddressOfRawData    0x14205af80
+      EndAddressOfRawData      0x14205af88
+      AddressOfIndex           0x1411559a8
+      AddressOfCallBacks       0x0
+      SizeOfZeroFill=0 Characteristics=0x300000
+      -> AddressOfCallBacks == 0: NO TLS callbacks. That kills "TLS entry" as an
+         explanation for the zero-predecessor driver cluster (P4 4.6/4.15).
+
+   iat rva=0x205a000 len=248
+      31 slots, 18 non-zero
+        slot -> 0x7ffbe71dd3a0 [system module / other]
+        slot -> 0x7ffbe6d457e0 [system module / other]
+        slot -> 0x7ffbe5c82c70 [system module / other]
+        slot -> 0x7ffbe6ed6ed0 [system module / other]
+        slot -> 0x7ffbe5464070 [system module / other]
+        slot -> 0x7ffbe5eb64a0 [system module / other]
+        slot -> 0x7ffbe6cb10a0 [system module / other]
+        slot -> 0x7ffbe7300de0 [system module / other]
+        slot -> 0x7ffbe519ff30 [system module / other]
+        slot -> 0x7ffb82e82d00 [system module / other]
+        slot -> 0x7ffbe3cf8220 [system module / other]
+        slot -> 0x7ffbe71d7ec0 [system module / other]
+        slot -> 0x7ffbe72fa9a0 [system module / other]
+        slot -> 0x7ffbe71d58b0 [system module / other]
+        slot -> 0x7ffbe71de3e0 [system module / other]
+        slot -> 0x7ffbe71e0830 [system module / other]
+        slot -> 0x7ffbe71df3f0 [system module / other]
+        slot -> 0x7ffbe71db200 [system module / other]
+
+   impdesc rva=0x3a1d4c8 len=280
+      #0 OriginalFirstThunk=0x3a1d5e0 FirstThunk=0x205a000 NameRVA=0x25a288c
+      #1 OriginalFirstThunk=0x3a1d5f0 FirstThunk=0x205a010 NameRVA=0x39fe598
+      #2 OriginalFirstThunk=0x3a1d600 FirstThunk=0x205a020 NameRVA=0x2542782
+      #3 OriginalFirstThunk=0x3a1d610 FirstThunk=0x205a030 NameRVA=0x2d87b98
+      #4 OriginalFirstThunk=0x3a1d620 FirstThunk=0x205a040 NameRVA=0x2d80bee
+      #5 OriginalFirstThunk=0x3a1d630 FirstThunk=0x205a050 NameRVA=0x238004e
+      #6 OriginalFirstThunk=0x3a1d640 FirstThunk=0x205a060 NameRVA=0x252c850
+      #7 OriginalFirstThunk=0x3a1d650 FirstThunk=0x205a070 NameRVA=0x3a2c212
+      #8 OriginalFirstThunk=0x3a1d660 FirstThunk=0x205a080 NameRVA=0x2dadfce
+      #9 OriginalFirstThunk=0x3a1d670 FirstThunk=0x205a090 NameRVA=0x238058c
+      #10 OriginalFirstThunk=0x3a1d680 FirstThunk=0x205a0a0 NameRVA=0x2359ad2
+      #11 OriginalFirstThunk=0x3a1d690 FirstThunk=0x205a0b0 NameRVA=0x25a288c
+      #12 OriginalFirstThunk=0x3a1d6a0 FirstThunk=0x205a0c0 NameRVA=0x25a288c
+      descriptor 13 = NULL terminator

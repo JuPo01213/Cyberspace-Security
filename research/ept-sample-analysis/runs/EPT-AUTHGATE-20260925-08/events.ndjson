@@ -1,0 +1,3 @@
+﻿{"pid":2452,"utc":"2026-09-25T04:19:05.5068297Z","type":"NATURAL_PARENT_STARTED","command":"Hardware.exe -k \u003cformat-test\u003e -n 2 -m 1"}
+{"path":"C:\\Windows\\TEMP\\EPT_98BF998F_27BA2008.exe","pid":1016,"ppid":2452,"type":"NATURAL_CHILD_FOUND","utc":"2026-09-25T04:19:08.1786959Z"}
+{"debugger_wait_expired":true,"pid":1016,"debugger_pid":1480,"type":"CDB_ATTACH_FINISHED","utc":"2026-09-25T04:19:38.2100080Z"}

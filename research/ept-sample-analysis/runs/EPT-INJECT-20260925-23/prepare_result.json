@@ -1,0 +1,26 @@
+{
+    "run_id":  "EPT-INJECT-20260925-23",
+    "vm_name":  "<VM_LABEL>",
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-23",
+    "evidence_scope":  "real_sample_guest_run_injected_io",
+    "process_model":  "debugger_launch",
+    "response_source":  "forge_license_response_284.bin",
+    "response_source_scope":  "offline_reference_synthetic_response",
+    "response_sha256":  "BFA525E78731BEAAA2EBF1C64E993FCD933AC43D60B7A6E3D1F61576C78B0CC8",
+    "runner_sha256":  "C738479BCF28F6B342814239C36EB7F218789B226556D48DAEE0FDE08C4D57A2",
+    "child_cdb_sha256":  "E33257D929BFFDE687E98029E666373BA85F87457BF6DCF6303B0D21C0E19C28",
+    "late_cdb_sha256":  "DDD5733CA03569324BBA50DDDB2410ACE29D97B8F25C5DAAE9CE07AAAEBCBF82",
+    "target_sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "target_length":  32671232,
+    "target_identity_expected":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "target_identity_match":  true,
+    "target_present":  true,
+    "guest_adapter":  [
+                          {
+                              "Name":  "以太网",
+                              "Status":  "Disconnected",
+                              "MacAddress":  "00-15-5D-38-01-02"
+                          }
+                      ],
+    "prepared_utc":  "2026-09-25T00:57:46.7570940Z"
+}

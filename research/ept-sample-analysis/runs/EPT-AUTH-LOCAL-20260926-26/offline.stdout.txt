@@ -1,0 +1,130 @@
+﻿
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\ept_obs\spool\EPT-AUTH-LOCAL-20260926-18\input.dmp]
+User Mini Dump File with Full Memory: Only application data is available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\ept_obs\spool\EPT-AUTH-LOCAL-20260926-26
+Symbol search path is: C:\ept_obs\spool\EPT-AUTH-LOCAL-20260926-26
+Executable search path is: 
+Windows 10 Version 19045 MP (2 procs) Free x64
+Product: WinNt, suite: SingleUserTS
+Edition build lab: 19041.1.amd64fre.vb_release.191206-1406
+Debug session time: Sat Sep 26 10:51:09.000 2026 (UTC + 8:00)
+System Uptime: 0 days 0:55:10.611
+Process Uptime: 0 days 0:02:37.000
+....................................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+This dump file has a breakpoint exception stored in it.
+The stored exception information can be accessed via .ecxr.
+For analysis of this file, run !analyze -v
+*** WARNING: Unable to verify checksum for EPT_0C7D4CED_D1AE35BE.exe
+ws2_32!recv:
+00007ffb`b9e41d90 48895c2408      mov     qword ptr [rsp+8],rbx ss:00000000`00141020=0000000000000004
+0:000> .echo LOCAL_CONFIG_SCHEMA_BEGIN
+LOCAL_CONFIG_SCHEMA_BEGIN
+0:000> .echo STRUCT_BUFFER_3B
+STRUCT_BUFFER_3B
+0:000> s -b 0x140788000 L0n196608 3b 00 00 00
+00000001`407a0604  3b 00 00 00 4c 8d 0d d1-10 7f 00 44 0f b6 44 24  ;...L......D..D$
+00000001`407a0616  3b 00 00 00 48 8d 4d 10-e8 ad ef 00 00 48 8b 4d  ;...H.M......H.M
+0:000> .echo STRUCT_BUFFER_9F
+STRUCT_BUFFER_9F
+0:000> s -b 0x140788000 L0n196608 9f 00 00 00
+00000001`40789983  9f 00 00 00 48 8b 0d a2-25 9d 00 48 8b 35 83 25  ....H...%..H.5.%
+00000001`4078f374  9f 00 00 00 8b 05 fa cf-9c 00 48 8d 15 9f e2 7f  ..........H.....
+00000001`40796468  9f 00 00 00 89 6c 24 28-89 6c 24 20 e8 a3 c0 ce  .....l$(.l$ ....
+00000001`40797e7c  9f 00 00 00 8b cb e8 1a-18 ff 00 4d 49 8b 4e 20  ...........MI.N 
+00000001`4079c187  9f 00 00 00 49 8b c8 e8-3d 45 01 00 41 0f b6 c6  ....I...=E..A...
+0:000> .echo STRUCT_BUFFER_103
+STRUCT_BUFFER_103
+0:000> s -b 0x140788000 L0n196608 03 01 00 00
+00000001`4078e786  03 01 00 00 74 5b 0f 57-c0 89 1d df db 9c 00 41  ....t[.W.......A
+00000001`4079ba9a  03 01 00 00 4c 89 64 24-20 4c 8d 4c 24 54 41 b8  ....L.d$ L.L$TA.
+00000001`4079c45e  03 01 00 00 4c 89 7d f7-4c 89 7d 07 48 c7 45 0f  ....L.}.L.}.H.E.
+00000001`407b799c  03 01 00 00 00 41 8b 01-3b c1 75 33 41 83 79 18  .....A..;.u3A.y.
+00000001`407b79d4  03 01 00 00 00 eb 02 33-c0 48 83 c4 20 5b c3 cc  .......3.H.. [..
+00000001`407b7b17  03 01 00 00 49 8b d7 48-8b c8 e8 aa 0b 00 00 49  ....I..H.......I
+00000001`407b7dd6  03 01 00 00 49 8b d7 e8-ee 08 00 00 eb 37 48 8b  ....I........7H.
+00000001`407b7e12  03 01 00 00 e8 65 09 00-00 49 8b cd e8 cd c0 ff  .....e...I......
+0:000> .echo STRUCT_COPY_167
+STRUCT_COPY_167
+0:000> s -b 0x140788000 L0n196608 67 01 00 00
+00000001`407969b2  67 01 00 00 41 b8 fe 00-00 00 e8 1f 1d 04 00 48  g...A..........H
+00000001`40798dd5  67 01 00 00 41 80 38 00-74 0e ba 45 2f 00 00 48  g...A.8.t..E/..H
+00000001`407a32b2  67 01 00 00 48 8d 0d 83-f4 7e 00 e8 ce c9 fe ff  g...H....~......
+0:000> .echo STRUCT_BYTE_COPY_63
+STRUCT_BYTE_COPY_63
+0:000> s -b 0x140788000 L0n196608 63 00 00 00
+0:000> .echo CONFIG_RESET_CANDIDATE
+CONFIG_RESET_CANDIDATE
+0:000> u 0x1407a3000 L0n20
+EPT_0C7D4CED_D1AE35BE+0x7a3000:
+00000001`407a3000 4053            push    rbx
+00000001`407a3002 4881ec30010000  sub     rsp,130h
+00000001`407a3009 488b0500b07f00  mov     rax,qword ptr [EPT_0C7D4CED_D1AE35BE+0xf9e010 (00000001`40f9e010)]
+00000001`407a3010 4833c4          xor     rax,rsp
+00000001`407a3013 4889842420010000 mov     qword ptr [rsp+120h],rax
+00000001`407a301b 8bd9            mov     ebx,ecx
+00000001`407a301d e86efaffff      call    EPT_0C7D4CED_D1AE35BE+0x7a2a90 (00000001`407a2a90)
+00000001`407a3022 33d2            xor     edx,edx
+00000001`407a3024 488d4c2420      lea     rcx,[rsp+20h]
+00000001`407a3029 41b800010000    mov     r8d,100h
+00000001`407a302f e8cc160100      call    EPT_0C7D4CED_D1AE35BE+0x7b4700 (00000001`407b4700)
+00000001`407a3034 448bc3          mov     r8d,ebx
+00000001`407a3037 488d1582f47e00  lea     rdx,[EPT_0C7D4CED_D1AE35BE+0xf924c0 (00000001`40f924c0)]
+00000001`407a303e 488d4c2420      lea     rcx,[rsp+20h]
+00000001`407a3043 e8f8aa0000      call    EPT_0C7D4CED_D1AE35BE+0x7adb40 (00000001`407adb40)
+00000001`407a3048 41b910000000    mov     r9d,10h
+00000001`407a304e 4c8d05a3f47e00  lea     r8,[EPT_0C7D4CED_D1AE35BE+0xf924f8 (00000001`40f924f8)]
+00000001`407a3055 488d542420      lea     rdx,[rsp+20h]
+00000001`407a305a 33c9            xor     ecx,ecx
+00000001`407a305c e8bace2701      call    EPT_0C7D4CED_D1AE35BE+0x1a1ff1b (00000001`41a1ff1b)
+0:000> .echo LOCAL_CONFIG_SCHEMA_END
+LOCAL_CONFIG_SCHEMA_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

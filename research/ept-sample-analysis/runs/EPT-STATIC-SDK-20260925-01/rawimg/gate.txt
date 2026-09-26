@@ -1,0 +1,336 @@
+            0x1407a3080      mov   qword [rsp+0x10], rbx
+            0x1407a3085      push  rbp
+            0x1407a3086      lea   rbp, qword [rsp-0x2a0]
+            0x1407a308e      sub   rsp, 0x3a0
+            0x1407a3095      mov   rax, qword [0x140f9e010]            ; [0x140f9e010:8]=0x945919614feb
+            0x1407a309c      xor   rax, rsp
+            0x1407a309f      mov   qword [rbp+0x290], rax
+            0x1407a30a6      lea   rcx, qword [0x140f92508]            ; "StoredVerify.begin"
+            0x1407a30ad      call  0x14078fc90
+            0x1407a30b2      cmp   dword [0x141154ced], 0x01           ; [0x141154ced:4]=0
+        ,=< 0x1407a30b9      jnz   0x1407a30da
+        |   0x1407a30bb      cmp   dword [0x141154cf1], 0x01           ; [0x141154cf1:4]=0
+       ,==< 0x1407a30c2      jnz   0x1407a30da
+       ||   0x1407a30c4      cmp   byte [0x141154ae7], 0x00            ; [0x141154ae7:1]=0
+      ,===< 0x1407a30cb      jz    0x1407a30da
+      |||   0x1407a30cd      cmp   dword [0x141154ce9], 0x00           ; [0x141154ce9:4]=0
+     ,====< 0x1407a30d4      jz    0x1407a30da
+     ||||   0x1407a30d6      mov   bl, 0x01
+    ,=====< 0x1407a30d8      jmp   0x1407a30dc
+    |````-> 0x1407a30da      xor   bl, bl
+    `-----> 0x1407a30dc      xor   edx, edx
+            0x1407a30de      lea   rcx, qword [rbp-0x70]
+            0x1407a30e2      mov   r8d, 0x100                          ; 256
+            0x1407a30e8      call  0x1407b4700
+            0x1407a30ed      movzx r9d, bl
+            0x1407a30f1      lea   r8, qword [0x140f92520]             ; "StoredVerify.StoredAuthorizationUsable"
+            0x1407a30f8      lea   rdx, qword [0x140f8e2c0]            ; "stage=%s value=%d"
+            0x1407a30ff      lea   rcx, qword [rbp-0x70]
+            0x1407a3103      call  0x1407adb40
+            0x1407a3108      lea   rcx, qword [rbp-0x70]
+            0x1407a310c      call  0x14078fc90
+            0x1407a3111      test  bl, bl
+        ,=< 0x1407a3113      jnz   0x1407a311c
+        |   0x1407a3115      xor   al, al
+       ,==< 0x1407a3117      jmp   0x1407a341d
+       |`-> 0x1407a311c      xor   r8d, r8d
+       |    0x1407a311f      lea   rcx, qword [0x140f92550]            ; "<REDACTED_EMBEDDED_VERIFY_TOKEN>"
+       |    0x1407a3126      mov   edx, 0x7530                         ; '0u'
+       |    0x1407a312b      call  0x1403b34d0
+       |    0x1407a3130      xor   edx, edx
+       |    0x1407a3132      lea   rcx, qword [rbp-0x70]
+       |    0x1407a3136      mov   r8d, 0x200                          ; 512
+       |    0x1407a313c      mov   ebx, eax
+       |    0x1407a313e      call  0x1407b4700
+       |    0x1407a3143      mov   ecx, ebx
+       |    0x1407a3145      call  0x14078fad0
+       |    0x1407a314a      lea   rdx, qword [0x140f8e2a8]            ; "stage=%s ret=%d name=%s"
+       |    0x1407a3151      mov   qword [rsp+0x20], rax
+       |    0x1407a3156      lea   rcx, qword [rbp-0x70]
+       |    0x1407a315a      mov   r9d, ebx
+       |    0x1407a315d      lea   r8, qword [0x140f92640]             ; "StoredVerify.SP_Verify_Init"
+       |    0x1407a3164      call  0x1407adae0
+       |    0x1407a3169      lea   rcx, qword [rbp-0x70]
+       |    0x1407a316d      call  0x14078fc90
+       |    0x1407a3172      test  ebx, ebx
+       |,=< 0x1407a3174      jz    0x1407a3189
+       ||   0x1407a3176      lea   rcx, qword [0x140f92660]            ; "StoredVerify.init_failed_soft_allow"
+       ||   0x1407a317d      call  0x14078fc90
+       ||   0x1407a3182      mov   al, 0x01
+      ,===< 0x1407a3184      jmp   0x1407a341d
+      ||`-> 0x1407a3189      call  0x1405a03d0
+      ||    0x1407a318e      mov   edx, 0x405                          ; 1029
+      ||    0x1407a3193      lea   rcx, qword [0x140f92688]            ; "yz.hwid001.com"
+      ||    0x1407a319a      call  0x1403b3280
+      ||    0x1407a319f      lea   rcx, qword [0x140f92698]            ; "StoredVerify.SetHost yz.hwid001.com:1029"
+      ||    0x1407a31a6      call  0x14078fc90
+      ||    0x1407a31ab      lea   rcx, qword [rsp+0x40]
+      ||    0x1407a31b0      call  0x1403c47e0
+      ||    0x1407a31b5      xor   edx, edx
+      ||    0x1407a31b7      lea   rcx, qword [rbp-0x70]
+      ||    0x1407a31bb      mov   r8d, 0x200                          ; 512
+      ||    0x1407a31c1      mov   ebx, eax
+      ||    0x1407a31c3      call  0x1407b4700
+      ||    0x1407a31c8      mov   ecx, ebx
+      ||    0x1407a31ca      call  0x14078fad0
+      ||    0x1407a31cf      lea   rdx, qword [0x140f8e2a8]            ; "stage=%s ret=%d name=%s"
+      ||    0x1407a31d6      mov   qword [rsp+0x20], rax
+      ||    0x1407a31db      lea   rcx, qword [rbp-0x70]
+      ||    0x1407a31df      mov   r9d, ebx
+      ||    0x1407a31e2      lea   r8, qword [0x140f926c8]             ; "StoredVerify.SP_Verify_GetServerOption"
+      ||    0x1407a31e9      call  0x1407adae0
+      ||    0x1407a31ee      lea   rcx, qword [rbp-0x70]
+      ||    0x1407a31f2      call  0x14078fc90
+      ||    0x1407a31f7      test  ebx, ebx
+      ||,=< 0x1407a31f9      jz    0x1407a320e
+      |||   0x1407a31fb      lea   rcx, qword [0x140f926f0]            ; "StoredVerify.option_failed_soft_allow"
+      |||   0x1407a3202      call  0x14078fc90
+      |||   0x1407a3207      mov   al, 0x01
+     ,====< 0x1407a3209      jmp   0x1407a341d
+     |||`-> 0x1407a320e      lea   rcx, qword [0x141154ae7]
+     |||    0x1407a3215      call  0x1403b3d30
+     |||    0x1407a321a      xor   edx, edx
+     |||    0x1407a321c      lea   rcx, qword [rbp-0x70]
+     |||    0x1407a3220      mov   r8d, 0x200                          ; 512
+     |||    0x1407a3226      mov   ebx, eax
+     |||    0x1407a3228      call  0x1407b4700
+     |||    0x1407a322d      mov   ecx, ebx
+     |||    0x1407a322f      call  0x14078fad0
+     |||    0x1407a3234      lea   rdx, qword [0x140f8e2a8]            ; "stage=%s ret=%d name=%s"
+     |||    0x1407a323b      mov   qword [rsp+0x20], rax
+     |||    0x1407a3240      lea   rcx, qword [rbp-0x70]
+     |||    0x1407a3244      mov   r9d, ebx
+     |||    0x1407a3247      lea   r8, qword [0x140f92718]             ; "StoredVerify.SP_Verify_CardLogin"
+     |||    0x1407a324e      call  0x1407adae0
+     |||    0x1407a3253      lea   rcx, qword [rbp-0x70]
+     |||    0x1407a3257      call  0x14078fc90
+     |||    0x1407a325c      test  ebx, ebx
+     |||,=< 0x1407a325e      jz    0x1407a32ce
+     ||||   0x1407a3260      lea   eax, qword [rbx+0x3d]
+     ||||   0x1407a3263      lea   rdx, qword [0x140000000]            ; "MZ\x90"
+     ||||   0x1407a326a      cmp   eax, 0x28                           ; '(' ; 40
+    ,=====< 0x1407a326d      jnbe  0x1407a3285
+    |||||   0x1407a326f      cdqe
+    |||||   0x1407a3271      movzx eax, byte [rdx+rax*1+0x7a3448]
+    |||||   0x1407a3279      mov   ecx, dword [rdx+rax*4+0x7a3440]
+    |||||   0x1407a3280      add   rcx, rdx
+    |||||   0x1407a3283      jmp   rcx
+    `-----> 0x1407a3285      lea   eax, qword [rbx+0x27]
+     ||||   0x1407a3288      cmp   eax, 0x27                           ; ''' ; 39
+    ,=====< 0x1407a328b      jnbe  0x1407a32b6
+    |||||   0x1407a328d      cdqe
+    |||||   0x1407a328f      movzx eax, byte [rdx+rax*1+0x7a347c]
+    |||||   0x1407a3297      mov   ecx, dword [rdx+rax*4+0x7a3474]
+    |||||   0x1407a329e      add   rcx, rdx
+    |||||   0x1407a32a1      jmp   rcx
+    |||||   0x1407a32a3      lea   rcx, qword [0x140f92770]            ; "StoredVerify.cardlogin_failed_soft_allow"
+    |||||   0x1407a32aa      call  0x14078fc90
+    |||||   0x1407a32af      mov   al, 0x01
+   ,======< 0x1407a32b1      jmp   0x1407a341d
+   |`-----> 0x1407a32b6      lea   rcx, qword [0x140f92740]            ; "StoredVerify.cardlogin_denied_clear_or_block"
+   | ||||   0x1407a32bd      call  0x14078fc90
+   | ||||   0x1407a32c2      mov   ecx, ebx
+   | ||||   0x1407a32c4      call  0x1407a3000
+   |,=====< 0x1407a32c9      jmp   0x1407a341d
+   |||||`-> 0x1407a32ce      call  0x1403c49d0
+   |||||    0x1407a32d3      xor   edx, edx
+   |||||    0x1407a32d5      movzx ebx, al
+   |||||    0x1407a32d8      mov   r8d, 0x100                          ; 256
+   |||||    0x1407a32de      lea   rcx, qword [rbp-0x70]
+   |||||    0x1407a32e2      call  0x1407b4700
+   |||||    0x1407a32e7      mov   r9d, ebx
+   |||||    0x1407a32ea      lea   r8, qword [0x140f927a0]             ; "StoredVerify.SP_Verify_IsLogin"
+   |||||    0x1407a32f1      lea   rdx, qword [0x140f8e2c0]            ; "stage=%s value=%d"
+   |||||    0x1407a32f8      lea   rcx, qword [rbp-0x70]
+   |||||    0x1407a32fc      call  0x1407adb40
+   |||||    0x1407a3301      lea   rcx, qword [rbp-0x70]
+   |||||    0x1407a3305      call  0x14078fc90
+   |||||    0x1407a330a      test  ebx, ebx
+   |||||,=< 0x1407a330c      jnz   0x1407a3321
+   ||||||   0x1407a330e      lea   rcx, qword [0x140f927c0]            ; "StoredVerify.islogin_failed_soft_allow"
+   ||||||   0x1407a3315      call  0x14078fc90
+   ||||||   0x1407a331a      mov   al, 0x01
+  ,=======< 0x1407a331c      jmp   0x1407a341d
+  ||||||`-> 0x1407a3321      xor   ebx, ebx
+  ||||||    0x1407a3323      mov   qword [rsp+0x3b0], rdi
+  ||||||    0x1407a332b      lea   rcx, qword [rsp+0x30]
+  ||||||    0x1407a3330      mov   dword [rsp+0x30], ebx
+  ||||||    0x1407a3334      call  0x1403b28f0
+  ||||||    0x1407a3339      xor   edx, edx
+  ||||||    0x1407a333b      lea   rcx, qword [rbp+0x190]
+  ||||||    0x1407a3342      mov   r8d, 0x100                          ; 256
+  ||||||    0x1407a3348      movzx edi, al
+  ||||||    0x1407a334b      call  0x1407b4700
+  ||||||    0x1407a3350      mov   r9d, dword [rsp+0x30]
+  ||||||    0x1407a3355      mov   ecx, r9d
+  ||||||    0x1407a3358      call  0x14078fad0
+  ||||||    0x1407a335d      test  dil, dil
+  ||||||    0x1407a3360      mov   qword [rsp+0x20], rax
+  ||||||    0x1407a3365      lea   rdx, qword [0x140f927e8]            ; "stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s"
+  ||||||    0x1407a336c      setnz bl
+  ||||||    0x1407a336f      lea   rcx, qword [rbp+0x190]
+  ||||||    0x1407a3376      mov   r8d, ebx
+  ||||||    0x1407a3379      call  0x1407adb40
+  ||||||    0x1407a337e      lea   rcx, qword [rbp+0x190]
+  ||||||    0x1407a3385      call  0x14078fc90
+  ||||||    0x1407a338a      mov   r8d, dword [rsp+0x30]
+  ||||||    0x1407a338f      lea   rdx, qword [0x140000000]            ; "MZ\x90"
+  ||||||    0x1407a3396      lea   eax, qword [r8+0x3d]
+  ||||||    0x1407a339a      cmp   eax, 0x28                           ; '(' ; 40
+  ||||||,=< 0x1407a339d      jnbe  0x1407a33cc
+  |||||||   0x1407a339f      cdqe
+  |||||||   0x1407a33a1      movzx eax, byte [rdx+rax*1+0x7a34ac]
+  |||||||   0x1407a33a9      mov   ecx, dword [rdx+rax*4+0x7a34a4]
+  |||||||   0x1407a33b0      add   rcx, rdx
+  |||||||   0x1407a33b3      jmp   rcx
+  |||||||   0x1407a33b5      lea   rcx, qword [0x140f92820]            ; "StoredVerify.beat_hard_deny_clear_or_block"
+  |||||||   0x1407a33bc      call  0x14078fc90
+  |||||||   0x1407a33c1      mov   ecx, dword [rsp+0x30]
+  |||||||   0x1407a33c5      call  0x1407a3000
+  ========< 0x1407a33ca      jmp   0x1407a3415
+  ||||||`-> 0x1407a33cc      test  dil, dil
+  ||||||,=< 0x1407a33cf      jnz   0x1407a3407
+  |||||||   0x1407a33d1      lea   eax, qword [r8+0x27]
+  |||||||   0x1407a33d5      cmp   eax, 0x27                           ; ''' ; 39
+  ========< 0x1407a33d8      jnbe  0x1407a33f0
+  |||||||   0x1407a33da      cdqe
+  |||||||   0x1407a33dc      movzx eax, byte [rdx+rax*1+0x7a34e0]
+  |||||||   0x1407a33e4      mov   ecx, dword [rdx+rax*4+0x7a34d8]
+  |||||||   0x1407a33eb      add   rcx, rdx
+  |||||||   0x1407a33ee      jmp   rcx
+  --------> 0x1407a33f0      lea   rcx, qword [0x140f92850]            ; "StoredVerify.beat_not_soft_allow_clear_or_block"
+  |||||||   0x1407a33f7      call  0x14078fc90
+  |||||||   0x1407a33fc      mov   ecx, dword [rsp+0x30]
+  |||||||   0x1407a3400      call  0x1407a3000
+  ========< 0x1407a3405      jmp   0x1407a3415
+  ||||||`-> 0x1407a3407      lea   rcx, qword [0x140f92880]            ; "StoredVerify.allow"
+  ||||||    0x1407a340e      call  0x14078fc90
+  ||||||    0x1407a3413      mov   al, 0x01
+  --------> 0x1407a3415      mov   rdi, qword [rsp+0x3b0]
+  ``````--> 0x1407a341d      mov   rcx, qword [rbp+0x290]
+            0x1407a3424      xor   rcx, rsp
+            0x1407a3427      call  0x1407b06b0
+            0x1407a342c      mov   rbx, qword [rsp+0x3b8]
+            0x1407a3434      add   rsp, 0x3a0
+            0x1407a343b      pop   rbp
+            0x1407a343c      ret
+            0x1407a343d      nop   dword [rax], eax
+            0x1407a3440      mov   dh, 0x32                            ; '2' ; 50
+        ,=< 0x1407a3442      jp    0x1407a3444
+        `-> 0x1407a3444      test  dword [rdx], esi
+        ,=< 0x1407a3446      jp    0x1407a3448
+        `-> 0x1407a3448      add   byte [rcx], al
+            0x1407a344a      add   dword [rcx], eax
+            0x1407a344c      add   dword [rcx], eax
+            0x1407a344e      add   dword [rcx], eax
+            0x1407a3450      add   dword [rcx], eax
+            0x1407a3452      add   dword [rcx], eax
+            0x1407a3454      add   dword [rcx], eax
+            0x1407a3456      add   dword [rcx], eax
+            0x1407a3458      add   dword [rcx], eax
+            0x1407a345a      add   dword [rcx], eax
+            0x1407a345c      add   byte [rcx], al
+            0x1407a345e      add   dword [rcx], eax
+            0x1407a3460      add   dword [rcx], eax
+            0x1407a3462      add   dword [rcx], eax
+            0x1407a3464      add   dword [rcx], eax
+            0x1407a3466      add   dword [rcx], eax
+            0x1407a3468      add   dword [rax], eax
+            0x1407a346a      add   byte [rcx], al
+            0x1407a346c      add   dword [rcx], eax
+            0x1407a346e      add   byte [rax], al
+            0x1407a3470      add   byte [rdi], cl
+            0x1407a3472      invalid
+            0x1407a3473      add   byte [rbx-0x49ff85ce], ah
+            0x1407a3479      xor   bh, byte [rdx]
+            0x1407a347c      add   byte [rax], al
+            0x1407a347e      add   dword [rcx], eax
+            0x1407a3480      add   dword [rcx], eax
+            0x1407a3482      add   dword [rcx], eax
+            0x1407a3484      add   dword [rcx], eax
+            0x1407a3486      add   dword [rcx], eax
+            0x1407a3488      add   dword [rcx], eax
+            0x1407a348a      add   dword [rcx], eax
+            0x1407a348c      add   dword [rcx], eax
+            0x1407a348e      add   dword [rcx], eax
+            0x1407a3490      add   dword [rcx], eax
+            0x1407a3492      add   dword [rax], eax
+            0x1407a3494      add   dword [rcx], eax
+            0x1407a3496      add   dword [rcx], eax
+            0x1407a3498      add   dword [rcx], eax
+            0x1407a349a      add   dword [rcx], eax
+            0x1407a349c      add   dword [rcx], eax
+            0x1407a349e      add   dword [rax], eax
+            0x1407a34a0      add   byte [rax], al
+            0x1407a34a2      add   byte [rax], al
+            0x1407a34a4      mov   ch, 0x33                            ; '3' ; 51
+        ,=< 0x1407a34a6      jp    0x1407a34a8
+        `-> 0x1407a34a8      int3
+            0x1407a34a9      xor   edi, dword [rdx]
+            0x1407a34ac      add   byte [rcx], al
+            0x1407a34ae      add   dword [rcx], eax
+            0x1407a34b0      add   dword [rcx], eax
+            0x1407a34b2      add   dword [rcx], eax
+            0x1407a34b4      add   dword [rcx], eax
+            0x1407a34b6      add   dword [rcx], eax
+            0x1407a34b8      add   dword [rcx], eax
+            0x1407a34ba      add   dword [rcx], eax
+            0x1407a34bc      add   dword [rcx], eax
+            0x1407a34be      add   dword [rcx], eax
+            0x1407a34c0      add   byte [rcx], al
+            0x1407a34c2      add   dword [rcx], eax
+            0x1407a34c4      add   dword [rcx], eax
+            0x1407a34c6      add   dword [rcx], eax
+            0x1407a34c8      add   dword [rcx], eax
+            0x1407a34ca      add   dword [rcx], eax
+            0x1407a34cc      add   dword [rax], eax
+            0x1407a34ce      add   byte [rcx], al
+            0x1407a34d0      add   dword [rcx], eax
+            0x1407a34d2      add   byte [rax], al
+            0x1407a34d4      add   byte [rdi], cl
+            0x1407a34d6      invalid
+            0x1407a34d7      add   byte [rdi], al
+            0x1407a34d9      xor   al, 0x7a                            ; 122
+            0x1407a34db      add   al, dh
+            0x1407a34dd      xor   edi, dword [rdx]
+            0x1407a34e0      add   byte [rax], al
+            0x1407a34e2      add   dword [rcx], eax
+            0x1407a34e4      add   dword [rcx], eax
+            0x1407a34e6      add   dword [rcx], eax
+            0x1407a34e8      add   dword [rcx], eax
+            0x1407a34ea      add   dword [rcx], eax
+            0x1407a34ec      add   dword [rcx], eax
+            0x1407a34ee      add   dword [rcx], eax
+            0x1407a34f0      add   dword [rcx], eax
+            0x1407a34f2      add   dword [rcx], eax
+            0x1407a34f4      add   dword [rcx], eax
+            0x1407a34f6      add   dword [rax], eax
+            0x1407a34f8      add   dword [rcx], eax
+            0x1407a34fa      add   dword [rcx], eax
+            0x1407a34fc      add   dword [rcx], eax
+            0x1407a34fe      add   dword [rcx], eax
+            0x1407a3500      add   dword [rcx], eax
+            0x1407a3502      add   dword [rax], eax
+            0x1407a3504      add   byte [rax], al
+            0x1407a3506      add   byte [rax], al
+            0x1407a3508      int3
+            0x1407a3509      int3
+            0x1407a350a      int3
+            0x1407a350b      int3
+            0x1407a350c      int3
+            0x1407a350d      int3
+            0x1407a350e      int3
+            0x1407a350f      int3
+            0x1407a3510      mov   qword [rsp+0x08], rbx
+            0x1407a3515      mov   qword [rsp+0x10], rsi
+            0x1407a351a      mov   qword [rsp+0x18], rdi
+            0x1407a351f      mov   qword [rsp+0x20], r13
+            0x1407a3524      push  rbp
+            0x1407a3525      push  r14
+            0x1407a3527      push  r15
+            0x1407a3529      invalid
+            0x1407a352a      invalid
+            0x1407a352b      lodsb
+            0x1407a352c      and   al, 0xa0                            ; 160
+            0x1407a352e      invalid
+            0x1407a352f      invalid

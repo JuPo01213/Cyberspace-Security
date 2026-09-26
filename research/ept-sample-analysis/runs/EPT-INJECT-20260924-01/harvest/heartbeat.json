@@ -1,0 +1,12 @@
+{
+    "run_id":  "EPT-INJECT-20260924-01",
+    "utc":  "2026-09-24T12:02:11.2362500Z",
+    "evidence_scope":  "real_sample_guest_run_injected_io",
+    "phase":  "RUNNING",
+    "elapsed_seconds":  28983.3,
+    "target_pid":  3736,
+    "target_alive":  true,
+    "process_count":  123,
+    "observed_process_count":  129,
+    "file_count":  9
+}

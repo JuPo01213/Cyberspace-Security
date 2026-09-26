@@ -1,0 +1,10 @@
+.echo [RECON3_CHILD_ATTACHED]
+$$ I/O recon: only system-DLL breakpoints, NO sample 0xCC (child is anti-debug packed)
+$$ CreateFileW: log only device/UNC paths (first WCHAR == '\' == 0x5c) to avoid flood
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON3_CREATEFILE]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+$$ NtDeviceIoControlFile: capture every device I/O control (low noise), full params
+$$   RCX=FileHandle RDX=Event R8=ApcRoutine R9=ApcContext
+$$   [rsp+0x20]=IoStatusBlock [rsp+0x28]=IoControlCode [rsp+0x30]=InputBuffer
+$$   [rsp+0x38]=InputBufferLength [rsp+0x40]=OutputBuffer [rsp+0x48]=OutputBufferLength
+bp ntdll!NtDeviceIoControlFile ".echo [RECON3_DIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L6; g"
+.echo [RECON3_CHILD_BPS_ARMED]

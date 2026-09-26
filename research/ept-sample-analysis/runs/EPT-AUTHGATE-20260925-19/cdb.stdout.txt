@@ -1,0 +1,230 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.031 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_68368B6E_AD50C1CD.exe
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+(664.1174): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffe`c52310d0 cc              int     3
+0:003> .echo RUN19_BEGIN
+RUN19_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo AUTH_RELEASED
+AUTH_RELEASED
+0:003> db 0x141154ced L4
+00000001`41154ced  01 00 00 00                                      ....
+0:003> db 0x141154cf1 L4
+00000001`41154cf1  01 00 00 00                                      ....
+0:003> db 0x141154ae7 L1
+00000001`41154ae7  01                                               .
+0:003> db 0x141154ce9 L4
+00000001`41154ce9  01 00 00 00                                      ....
+0:003> .echo READBACK_DONE
+READBACK_DONE
+0:003> bu user32!MessageBoxA ".echo MSGBOXA; da rdx; du r8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW; du rdx; du r8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxTimeoutW ".echo MSGBOXTOW; du rdx; du r8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxTimeoutA ".echo MSGBOXTOA; da rdx; du r8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo SKIP_FATALEXIT; k L6; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> .echo SKIPPER_ARMED
+SKIPPER_ARMED
+0:003> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:003> bu kernel32!GetFileAttributesW ".echo GFAW; du rcx; g"
+0:003> bu advapi32!RegOpenKeyExW ".echo ROKW; du rdx; g"
+0:003> bu advapi32!RegOpenKeyExA ".echo ROKA; da rdx; g"
+0:003> bu advapi32!RegCreateKeyExW ".echo RCKW; du rdx; g"
+0:003> bu kernel32!GetPrivateProfileStringW ".echo GPPSW; du rcx; du rdx; g"
+0:003> bu kernel32!WritePrivateProfileStringW ".echo WPPSW; du rcx; du rdx; g"
+0:003> .echo FILEPROBE_ARMED
+FILEPROBE_ARMED
+0:003> ba e 1 1407adae0 ".echo STAGE_LOG; da r8; r r9d; g"
+0:003> ba e 1 14078de50 ".echo HIT_OPEN_AUTH; k L8; g"
+0:003> ba e 1 14078e8c0 ".echo HIT_COMM_INIT; k L8; g"
+0:003> ba e 1 14078ed97 ".echo HIT_RC00; k L8; g"
+0:003> .echo HWBP_ARMED
+HWBP_ARMED
+0:003> g
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+CFW
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_68368B6E_AD50C1CD.exe
+00000000`004b8b80  "C:\Windows\System32\Hardware"
+ModLoad: 00007ffe`ae9f0000 00007ffe`aea07000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffe`ae840000 00007ffe`ae85b000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffe`bc5b0000 00007ffe`bc5cd000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffe`bd860000 00007ffe`bd87d000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffe`c1ed0000 00007ffe`c1f3a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffe`c1bf0000 00007ffe`c1cba000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffe`c4a30000 00007ffe`c4a38000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ffe`acc80000 00007ffe`acc92000   C:\Windows\System32\winrnr.dll
+ModLoad: 00007ffe`baf50000 00007ffe`bafd0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffe`ba570000 00007ffe`ba57a000   C:\Windows\System32\rasadhlp.dll
+STAGE_LOG
+00000001`40f92e60  "Setup.SP_Verify_Init"
+r9d=0
+STAGE_LOG
+00000001`40f92eb0  "Setup.SP_Verify_GetServerOption"
+r9d=fffffffd
+MSGBOXA
+00000001`40f92ed0  "..................!"
+00000001`40f8cb58  ""
+SKIP_FATALEXIT
+Child-SP          RetAddr               Call Site
+00000000`00145e28 00000001`42037712     KERNEL32!FatalExit
+00000000`00145e30 00000001`407b1094     EPT_68368B6E_AD50C1CD+0x2037712
+00000000`0014fef0 00007ffe`c4c07374     EPT_68368B6E_AD50C1CD+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+(664.834): Break instruction exception - code 80000003 (first chance)
+EPT_68368B6E_AD50C1CD+0x7a7ce2:
+00000001`407a7ce2 cc              int     3
+0:000> .echo STOP1
+STOP1
+0:000> ~*k
+
+.  0  Id: 664.834 Suspend: 1 Teb: 00000000`002d3000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00145e30 00000001`407b1094     EPT_68368B6E_AD50C1CD+0x7a7ce2
+00000000`0014fef0 00007ffe`c4c07374     EPT_68368B6E_AD50C1CD+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   1  Id: 664.1250 Suspend: 1 Teb: 00000000`002d5000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0076fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0076fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0076ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0076ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   2  Id: 664.774 Suspend: 1 Teb: 00000000`002d7000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0086fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0086fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0086ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0086ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> gh
+(664.834): Single step exception - code 80000004 (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+EPT_68368B6E_AD50C1CD+0x17526c1:
+00000001`417526c1 e8154e7600      call    EPT_68368B6E_AD50C1CD+0x1eb74db (00000001`41eb74db)
+0:000> .echo STOP2
+STOP2
+0:000> ~*k
+
+.  0  Id: 664.834 Suspend: 1 Teb: 00000000`002d3000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00145e48 00000001`41154980     EPT_68368B6E_AD50C1CD+0x17526c1
+00000000`00145e50 00000001`40f8e420     EPT_68368B6E_AD50C1CD+0x1154980
+00000000`00145e58 00000000`00000000     EPT_68368B6E_AD50C1CD+0xf8e420
+
+   1  Id: 664.1250 Suspend: 1 Teb: 00000000`002d5000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0076fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0076fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0076ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0076ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   2  Id: 664.774 Suspend: 1 Teb: 00000000`002d7000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0086fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0086fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0086ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0086ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> gh
+(664.834): Access violation - code c0000005 (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+EPT_68368B6E_AD50C1CD+0x1d5a881:
+00000001`41d5a881 418b03          mov     eax,dword ptr [r11] ds:00000001`b9ea5ce3=????????
+0:000> .echo STOP3
+STOP3
+0:000> ~*k
+
+.  0  Id: 664.834 Suspend: 1 Teb: 00000000`002d3000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00145b50 00000000`00000000     EPT_68368B6E_AD50C1CD+0x1d5a881
+
+   1  Id: 664.1250 Suspend: 1 Teb: 00000000`002d5000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0076fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0076fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0076ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0076ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   2  Id: 664.774 Suspend: 1 Teb: 00000000`002d7000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0086fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0086fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0086ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0086ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo ALL_DONE
+ALL_DONE
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

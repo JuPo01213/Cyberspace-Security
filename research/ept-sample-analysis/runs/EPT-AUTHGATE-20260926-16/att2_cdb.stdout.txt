@@ -1,0 +1,693 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.062 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.032 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\sym
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\sym
+Symbol search path is: C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\sym
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_F0D6D07A_BFCAC451.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(de4.3f0): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:003> .echo SAME_ROUND_CAPTURE_BEGIN
+SAME_ROUND_CAPTURE_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:003> sxi av
+0:003> sxi c0000005
+0:003> sxi e06d7363
+0:003> sxi 80000003
+0:003> sxi 80000004
+0:003> sxi c000001d
+0:003> sxi c0000094
+0:003> sxi e0434352
+0:003> sxi 6d9
+0:003> .echo EXCEPTION_PASSTHROUGH_ARMED
+EXCEPTION_PASSTHROUGH_ARMED
+0:003> eb 0x1403b34d0 33 c0 c3
+0:003> eb 0x1403b3280 33 c0 c3
+0:003> eb 0x1403c47e0 33 c0 c3
+0:003> eb 0x1403b3d30 33 c0 c3
+0:003> eb 0x1403c49d0 33 c0 c3
+0:003> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:003> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:003> bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; .dump /ma C:/ept_obs/spool/EPT-AUTHGATE-20260926-15/early_death.dmp; r rip=poi(rsp); r rsp=rsp+8; g"
+breakpoint 3 redefined
+0:003> bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+0:003> bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+0:003> bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+0:003> bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+0:003> bu kernel32!WriteFile ".echo WFW; r rcx; r r8; db @rdx L16; g"
+0:003> bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+0:003> bu ws2_32!connect ".echo CONN; db @rdx L10; g"
+0:003> bu ws2_32!WSAConnect ".echo WSACONN; db @rdx L10; g"
+0:003> bu ws2_32!getaddrinfo ".echo GAI_A; da @rcx; g"
+0:003> bu ws2_32!GetAddrInfoW ".echo GAI; du @rcx; g"
+0:003> bu ws2_32!send ".echo SEND_OBS; r rcx; r rdx; r r8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/sendbuf_at_send.bin @rdx @rdx+0x200; .echo SEND_BUF_DUMPED; u poi(@rsp) L12; g"
+0:003> bu ws2_32!WSASend ".echo WSASEND_OBS; r rcx; r rdx; r r8; dd @rsp L1; u poi(@rsp) L10; g"
+0:003> bu ws2_32!recv ".echo RECV; r rcx; r r8; r $t10=@rdx; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/recvbuf_at_recv.bin @rdx @rdx+0x200; .echo RECV_BUF_DUMPED; u poi(@rsp) L12; g"
+0:003> bu ws2_32!WSARecv ".echo WSARECV; r rcx; dd @rsp L1; u poi(@rsp) L10; g"
+0:003> bu kernelbase!DeviceIoControl ".echo DIOC; r rcx; r rdx; r r8; dd @rsp+20 L4; g"
+0:003> bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+0:003> bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> ba e 1 14078e6ac ".echo KEY_DERIVER_DONE; dd 0x14115c340 L8; db 0x14115c3f0 L28; g"
+0:003> ba e 1 14078ee73 ".echo RC00_CALLSITE; r rcx; r rdx; r r8; r r9; dd @rsp+20 L8; dd 0x14115c340 L8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/rc00_request_284.bin @rsp+0x50 @rsp+0x50+0x11c; .echo RC00_REQUEST_DUMPED; g"
+0:003> ba e 1 14078ee9b ".echo RC03_VALIDATOR_CALLSITE; r rcx; r rdx; r r8; r r9; dd @rsp+0x50 L8; dd 0x14115c340 L8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/rc00_response_284.bin @rsp+0x50 @rsp+0x50+0x11c; .echo RC03_RESPONSE_DUMPED; g"
+0:003> ba e 1 14171f567 ".echo FATAL_THUNK_OBS; k L12; g"
+0:003> .echo SAME_ROUND_CAPTURE_ARMED
+SAME_ROUND_CAPTURE_ARMED
+0:003> g
+ModLoad: 00007ffb`d9bc0000 00007ffb`d9bcc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffb`da3b0000 00007ffb`da432000   C:\Windows\System32\bcryptPrimitives.dll
+DIOC
+rcx=00000000000001c0
+rdx=0000000000390008
+r8=0000000000000000
+00000000`0014ed88  00000000 00000000 0014ee38 00000000
+KB_CFW
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_F0D6D07A_BFCAC451.exe
+00000000`005b94a0  "C:\Windows\System32\Hardware"
+WFW
+rcx=00000000000001bc
+r8=0000000000000016
+00000000`00145b70  5b 32 30 32 36 2d 30 39-2d 32 36 20 31 38 3a 34  [2026-09-26 18:4
+00000000`00145b80  38 3a 32 37 5d 20                                8:27] 
+WFW
+rcx=00000000000001bc
+r8=000000000000000f
+00000001`40f92e50  53 65 74 75 70 46 6c 6f-77 2e 62 65 67 69 6e 00  SetupFlow.begin.
+00000001`40f92e60  53 65 74 75 70 2e                                Setup.
+WFW
+rcx=00000000000001bc
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67-65 3d 25 73 20 72 65 74  ....stage=%s ret
+00000001`40f8e2b4  3d 25 64 20 6e 61                                =%d na
+ModLoad: 00007ffb`c9700000 00007ffb`c9717000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffb`c6fa0000 00007ffb`c6fbb000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffb`d4040000 00007ffb`d405d000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffb`d4fe0000 00007ffb`d4ffd000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffb`d99b0000 00007ffb`d9a1a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffb`d96d0000 00007ffb`d979a000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffb`dac90000 00007ffb`dac98000   C:\Windows\System32\NSI.dll
+KB_CFW
+00007ffb`dac932a0  "\\.\Nsi"
+ModLoad: 00007ffb`c6e60000 00007ffb`c6e72000   C:\Windows\System32\winrnr.dll
+KB_CFW
+00000000`00144060  "C:\Windows\Globalization\Sorting"
+00000000`001440a0  "\sortdefault.nls"
+ModLoad: 00007ffb`d2a20000 00007ffb`d2aa0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffb`d1f00000 00007ffb`d1f0a000   C:\Windows\System32\rasadhlp.dll
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+00000000`00145920  5b 32 30 32 36 2d 30 39-2d 32 36 20 31 38 3a 34  [2026-09-26 18:4
+00000000`00145930  38 3a 32 37 5d 20                                8:27] 
+WFW
+rcx=00000000000002c4
+r8=0000000000000030
+00000000`00145c10  73 74 61 67 65 3d 53 65-74 75 70 2e 53 50 5f 56  stage=Setup.SP_V
+00000000`00145c20  65 72 69 66 79 5f                                erify_
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67-65 3d 25 73 20 72 65 74  ....stage=%s ret
+00000001`40f8e2b4  3d 25 64 20 6e 61                                =%d na
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+00000000`00145b70  5b 32 30 32 36 2d 30 39-2d 32 36 20 31 38 3a 34  [2026-09-26 18:4
+00000000`00145b80  38 3a 32 37 5d 20                                8:27] 
+WFW
+rcx=00000000000002c4
+r8=0000000000000021
+00000001`40f92e88  53 65 74 75 70 2e 53 65-74 48 6f 73 74 20 79 7a  Setup.SetHost yz
+00000001`40f92e98  2e 68 77 69 64 30                                .hwid0
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67-65 3d 25 73 20 72 65 74  ....stage=%s ret
+00000001`40f8e2b4  3d 25 64 20 6e 61                                =%d na
+CONN
+00000001`4115a508  02 00 04 05 7f 00 00 01-00 00 00 00 00 00 00 00  ................
+SEND_OBS
+rcx=00000000000002c4
+rdx=00000000005de010
+r8=000000000000006b
+Writing 201 bytes.
+SEND_BUF_DUMPED
+EPT_F0D6D07A_BFCAC451+0x11f943:
+00000001`4011f943 4883c420        add     rsp,20h
+00000001`4011f947 488b8d502f0000  mov     rcx,qword ptr [rbp+2F50h]
+00000001`4011f94e 8901            mov     dword ptr [rcx],eax
+00000001`4011f950 488b8d502f0000  mov     rcx,qword ptr [rbp+2F50h]
+00000001`4011f957 8b01            mov     eax,dword ptr [rcx]
+00000001`4011f959 488b0de021e800  mov     rcx,qword ptr [EPT_F0D6D07A_BFCAC451+0xfa1b40 (00000001`40fa1b40)]
+00000001`4011f960 448b8150927a57  mov     r8d,dword ptr [rcx+577A9250h]
+00000001`4011f967 488b0dda21e800  mov     rcx,qword ptr [EPT_F0D6D07A_BFCAC451+0xfa1b48 (00000001`40fa1b48)]
+00000001`4011f96e 448b8950927a57  mov     r9d,dword ptr [rcx+577A9250h]
+00000001`4011f975 b910000000      mov     ecx,10h
+00000001`4011f97a 8985c4250000    mov     dword ptr [rbp+25C4h],eax
+00000001`4011f980 4889c8          mov     rax,rcx
+00000001`4011f983 448985c0250000  mov     dword ptr [rbp+25C0h],r8d
+00000001`4011f98a 44898dbc250000  mov     dword ptr [rbp+25BCh],r9d
+00000001`4011f991 48898db0250000  mov     qword ptr [rbp+25B0h],rcx
+00000001`4011f998 e8f3876b00      call    EPT_F0D6D07A_BFCAC451+0x7d8190 (00000001`407d8190)
+00000001`4011f99d 4829c4          sub     rsp,rax
+00000001`4011f9a0 4889e0          mov     rax,rsp
+RECV
+rcx=00000000000002c4
+r8=0000000000000004
+Writing 201 bytes.
+RECV_BUF_DUMPED
+EPT_F0D6D07A_BFCAC451+0x170895:
+00000001`40170895 4883c420        add     rsp,20h
+00000001`40170899 488b8d202f0000  mov     rcx,qword ptr [rbp+2F20h]
+00000001`401708a0 8901            mov     dword ptr [rcx],eax
+00000001`401708a2 488b8d202f0000  mov     rcx,qword ptr [rbp+2F20h]
+00000001`401708a9 8b01            mov     eax,dword ptr [rcx]
+00000001`401708ab 85c0            test    eax,eax
+00000001`401708ad 0f9485692f0000  sete    byte ptr [rbp+2F69h]
+00000001`401708b4 e99c0bfcff      jmp     EPT_F0D6D07A_BFCAC451+0x131455 (00000001`40131455)
+00000001`401708b9 488b8510110000  mov     rax,qword ptr [rbp+1110h]
+00000001`401708c0 e8cb786600      call    EPT_F0D6D07A_BFCAC451+0x7d8190 (00000001`407d8190)
+00000001`401708c5 4829c4          sub     rsp,rax
+00000001`401708c8 4889e0          mov     rax,rsp
+00000001`401708cb c70000000000    mov     dword ptr [rax],0
+00000001`401708d1 448b00          mov     r8d,dword ptr [rax]
+00000001`401708d4 448b8d80300000  mov     r9d,dword ptr [rbp+3080h]
+00000001`401708db 4501c8          add     r8d,r9d
+00000001`401708de 448b8d80300000  mov     r9d,dword ptr [rbp+3080h]
+00000001`401708e5 4589cb          mov     r11d,r9d
+SLEEP_OBSERVER
+rcx=00000000000003e8
+CONN
+00000001`4115a508  02 00 04 05 7f 00 00 01-00 00 00 00 00 00 00 00  ................
+SEND_OBS
+rcx=00000000000002c4
+rdx=00000000005de010
+r8=000000000000006b
+Writing 201 bytes.
+SEND_BUF_DUMPED
+EPT_F0D6D07A_BFCAC451+0x11f943:
+00000001`4011f943 4883c420        add     rsp,20h
+00000001`4011f947 488b8d502f0000  mov     rcx,qword ptr [rbp+2F50h]
+00000001`4011f94e 8901            mov     dword ptr [rcx],eax
+00000001`4011f950 488b8d502f0000  mov     rcx,qword ptr [rbp+2F50h]
+00000001`4011f957 8b01            mov     eax,dword ptr [rcx]
+00000001`4011f959 488b0de021e800  mov     rcx,qword ptr [EPT_F0D6D07A_BFCAC451+0xfa1b40 (00000001`40fa1b40)]
+00000001`4011f960 448b8150927a57  mov     r8d,dword ptr [rcx+577A9250h]
+00000001`4011f967 488b0dda21e800  mov     rcx,qword ptr [EPT_F0D6D07A_BFCAC451+0xfa1b48 (00000001`40fa1b48)]
+00000001`4011f96e 448b8950927a57  mov     r9d,dword ptr [rcx+577A9250h]
+00000001`4011f975 b910000000      mov     ecx,10h
+00000001`4011f97a 8985c4250000    mov     dword ptr [rbp+25C4h],eax
+00000001`4011f980 4889c8          mov     rax,rcx
+00000001`4011f983 448985c0250000  mov     dword ptr [rbp+25C0h],r8d
+00000001`4011f98a 44898dbc250000  mov     dword ptr [rbp+25BCh],r9d
+00000001`4011f991 48898db0250000  mov     qword ptr [rbp+25B0h],rcx
+00000001`4011f998 e8f3876b00      call    EPT_F0D6D07A_BFCAC451+0x7d8190 (00000001`407d8190)
+00000001`4011f99d 4829c4          sub     rsp,rax
+00000001`4011f9a0 4889e0          mov     rax,rsp
+RECV
+rcx=00000000000002c4
+r8=0000000000000004
+Writing 201 bytes.
+RECV_BUF_DUMPED
+EPT_F0D6D07A_BFCAC451+0x170895:
+00000001`40170895 4883c420        add     rsp,20h
+00000001`40170899 488b8d202f0000  mov     rcx,qword ptr [rbp+2F20h]
+00000001`401708a0 8901            mov     dword ptr [rcx],eax
+00000001`401708a2 488b8d202f0000  mov     rcx,qword ptr [rbp+2F20h]
+00000001`401708a9 8b01            mov     eax,dword ptr [rcx]
+00000001`401708ab 85c0            test    eax,eax
+00000001`401708ad 0f9485692f0000  sete    byte ptr [rbp+2F69h]
+00000001`401708b4 e99c0bfcff      jmp     EPT_F0D6D07A_BFCAC451+0x131455 (00000001`40131455)
+00000001`401708b9 488b8510110000  mov     rax,qword ptr [rbp+1110h]
+00000001`401708c0 e8cb786600      call    EPT_F0D6D07A_BFCAC451+0x7d8190 (00000001`407d8190)
+00000001`401708c5 4829c4          sub     rsp,rax
+00000001`401708c8 4889e0          mov     rax,rsp
+00000001`401708cb c70000000000    mov     dword ptr [rax],0
+00000001`401708d1 448b00          mov     r8d,dword ptr [rax]
+00000001`401708d4 448b8d80300000  mov     r9d,dword ptr [rbp+3080h]
+00000001`401708db 4501c8          add     r8d,r9d
+00000001`401708de 448b8d80300000  mov     r9d,dword ptr [rbp+3080h]
+00000001`401708e5 4589cb          mov     r11d,r9d
+SLEEP_OBSERVER
+rcx=00000000000003e8
+CONN
+00000001`4115a508  02 00 04 05 7f 00 00 01-00 00 00 00 00 00 00 00  ................
+SEND_OBS
+rcx=00000000000002c4
+rdx=00000000005de010
+r8=000000000000006b
+Writing 201 bytes.
+SEND_BUF_DUMPED
+EPT_F0D6D07A_BFCAC451+0x11f943:
+00000001`4011f943 4883c420        add     rsp,20h
+00000001`4011f947 488b8d502f0000  mov     rcx,qword ptr [rbp+2F50h]
+00000001`4011f94e 8901            mov     dword ptr [rcx],eax
+00000001`4011f950 488b8d502f0000  mov     rcx,qword ptr [rbp+2F50h]
+00000001`4011f957 8b01            mov     eax,dword ptr [rcx]
+00000001`4011f959 488b0de021e800  mov     rcx,qword ptr [EPT_F0D6D07A_BFCAC451+0xfa1b40 (00000001`40fa1b40)]
+00000001`4011f960 448b8150927a57  mov     r8d,dword ptr [rcx+577A9250h]
+00000001`4011f967 488b0dda21e800  mov     rcx,qword ptr [EPT_F0D6D07A_BFCAC451+0xfa1b48 (00000001`40fa1b48)]
+00000001`4011f96e 448b8950927a57  mov     r9d,dword ptr [rcx+577A9250h]
+00000001`4011f975 b910000000      mov     ecx,10h
+00000001`4011f97a 8985c4250000    mov     dword ptr [rbp+25C4h],eax
+00000001`4011f980 4889c8          mov     rax,rcx
+00000001`4011f983 448985c0250000  mov     dword ptr [rbp+25C0h],r8d
+00000001`4011f98a 44898dbc250000  mov     dword ptr [rbp+25BCh],r9d
+00000001`4011f991 48898db0250000  mov     qword ptr [rbp+25B0h],rcx
+00000001`4011f998 e8f3876b00      call    EPT_F0D6D07A_BFCAC451+0x7d8190 (00000001`407d8190)
+00000001`4011f99d 4829c4          sub     rsp,rax
+00000001`4011f9a0 4889e0          mov     rax,rsp
+RECV
+rcx=00000000000002c4
+r8=0000000000000004
+Writing 201 bytes.
+RECV_BUF_DUMPED
+EPT_F0D6D07A_BFCAC451+0x170895:
+00000001`40170895 4883c420        add     rsp,20h
+00000001`40170899 488b8d202f0000  mov     rcx,qword ptr [rbp+2F20h]
+00000001`401708a0 8901            mov     dword ptr [rcx],eax
+00000001`401708a2 488b8d202f0000  mov     rcx,qword ptr [rbp+2F20h]
+00000001`401708a9 8b01            mov     eax,dword ptr [rcx]
+00000001`401708ab 85c0            test    eax,eax
+00000001`401708ad 0f9485692f0000  sete    byte ptr [rbp+2F69h]
+00000001`401708b4 e99c0bfcff      jmp     EPT_F0D6D07A_BFCAC451+0x131455 (00000001`40131455)
+00000001`401708b9 488b8510110000  mov     rax,qword ptr [rbp+1110h]
+00000001`401708c0 e8cb786600      call    EPT_F0D6D07A_BFCAC451+0x7d8190 (00000001`407d8190)
+00000001`401708c5 4829c4          sub     rsp,rax
+00000001`401708c8 4889e0          mov     rax,rsp
+00000001`401708cb c70000000000    mov     dword ptr [rax],0
+00000001`401708d1 448b00          mov     r8d,dword ptr [rax]
+00000001`401708d4 448b8d80300000  mov     r9d,dword ptr [rbp+3080h]
+00000001`401708db 4501c8          add     r8d,r9d
+00000001`401708de 448b8d80300000  mov     r9d,dword ptr [rbp+3080h]
+00000001`401708e5 4589cb          mov     r11d,r9d
+SLEEP_OBSERVER
+rcx=00000000000003e8
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+00000000`00145920  5b 32 30 32 36 2d 30 39-2d 32 36 20 31 38 3a 34  [2026-09-26 18:4
+00000000`00145930  38 3a 35 35 5d 20                                8:55] 
+WFW
+rcx=00000000000002c4
+r8=0000000000000042
+00000000`00145c10  73 74 61 67 65 3d 53 65-74 75 70 2e 53 50 5f 56  stage=Setup.SP_V
+00000000`00145c20  65 72 69 66 79 5f                                erify_
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67-65 3d 25 73 20 72 65 74  ....stage=%s ret
+00000001`40f8e2b4  3d 25 64 20 6e 61                                =%d na
+MSGBOXA_SKIPPED
+00000001`40f92ed0  "..................!"
+Child-SP          RetAddr               Call Site
+00000000`00145e28 00000001`4203770c     USER32!MessageBoxA
+00000000`00145e30 00000001`407b1094     EPT_F0D6D07A_BFCAC451+0x203770c
+00000000`0014fef0 00007ffb`db507374     EPT_F0D6D07A_BFCAC451+0x7b1094
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+EXIT_PROCESS_SKIPPED
+Child-SP          RetAddr               Call Site
+00000000`00145e28 00000001`42037712     KERNEL32!ExitProcessImplementation
+00000000`00145e30 00000001`407b1094     EPT_F0D6D07A_BFCAC451+0x2037712
+00000000`0014fef0 00007ffb`db507374     EPT_F0D6D07A_BFCAC451+0x7b1094
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+00000000`00145e28  42037712 00000001 00000000 00000000
+00000000`00145e38  00000000 00000000 fffffffd 00000000
+Unable to create file 'C:/ept_obs/spool/EPT-AUTHGATE-20260926-15/early_death.dmp' - Win32 error 0n3
+    "ÏµÍ³ÕÒ²»µ½Ö"
+(de4.b70): Stack overflow - code c00000fd (first chance)
+First chance exceptions are reported before any exception handling.
+This exception may be expected and handled.
+ntdll!_chkstk+0x37:
+00007ffb`dcd12887 45841b          test    byte ptr [r11],r11b ds:00000000`00053000=00
+0:000> .echo SAME_ROUND_CAPTURE_STOP
+SAME_ROUND_CAPTURE_STOP
+0:000> ~*k
+
+.  0  Id: de4.b70 Suspend: 1 Teb: 00000000`00317000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00054118 00007ffb`dccc23ff     ntdll!_chkstk+0x37
+00000000`00054130 00007ffb`dcd1147e     ntdll!RtlDispatchException+0xef
+00000000`00054340 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00054a68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00054a70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00054a78 00007ffb`dcd1296f     0x77391f91
+00000000`00054a80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00054ab0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000551c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000558e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000558f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000558f8 00007ffb`dcd1296f     0x77391f91
+00000000`00055900 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00055930 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00056040 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00056768 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00056770 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00056778 00007ffb`dcd1296f     0x77391f91
+00000000`00056780 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000567b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00056ec0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000575e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000575f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000575f8 00007ffb`dcd1296f     0x77391f91
+00000000`00057600 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00057630 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00057d40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00058468 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00058470 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00058478 00007ffb`dcd1296f     0x77391f91
+00000000`00058480 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000584b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00058bc0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000592e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000592f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000592f8 00007ffb`dcd1296f     0x77391f91
+00000000`00059300 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00059330 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00059a40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005a168 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005a170 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005a178 00007ffb`dcd1296f     0x77391f91
+00000000`0005a180 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005a1b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005a8c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005afe8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005aff0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005aff8 00007ffb`dcd1296f     0x77391f91
+00000000`0005b000 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005b030 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005b740 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005be68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005be70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005be78 00007ffb`dcd1296f     0x77391f91
+00000000`0005be80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005beb0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005c5c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005cce8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005ccf0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005ccf8 00007ffb`dcd1296f     0x77391f91
+00000000`0005cd00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005cd30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005d440 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005db68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005db70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005db78 00007ffb`dcd1296f     0x77391f91
+00000000`0005db80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005dbb0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005e2c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005e9e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005e9f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005e9f8 00007ffb`dcd1296f     0x77391f91
+00000000`0005ea00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005ea30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005f140 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0005f868 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0005f870 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0005f878 00007ffb`dcd1296f     0x77391f91
+00000000`0005f880 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0005f8b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0005ffc0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000606e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000606f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000606f8 00007ffb`dcd1296f     0x77391f91
+00000000`00060700 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00060730 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00060e40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00061568 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00061570 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00061578 00007ffb`dcd1296f     0x77391f91
+00000000`00061580 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000615b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00061cc0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000623e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000623f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000623f8 00007ffb`dcd1296f     0x77391f91
+00000000`00062400 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00062430 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00062b40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00063268 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00063270 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00063278 00007ffb`dcd1296f     0x77391f91
+00000000`00063280 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000632b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000639c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000640e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000640f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000640f8 00007ffb`dcd1296f     0x77391f91
+00000000`00064100 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00064130 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00064840 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00064f68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00064f70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00064f78 00007ffb`dcd1296f     0x77391f91
+00000000`00064f80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00064fb0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000656c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00065de8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00065df0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00065df8 00007ffb`dcd1296f     0x77391f91
+00000000`00065e00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00065e30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00066540 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00066c68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00066c70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00066c78 00007ffb`dcd1296f     0x77391f91
+00000000`00066c80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00066cb0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000673c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00067ae8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00067af0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00067af8 00007ffb`dcd1296f     0x77391f91
+00000000`00067b00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00067b30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00068240 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00068968 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00068970 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00068978 00007ffb`dcd1296f     0x77391f91
+00000000`00068980 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000689b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000690c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000697e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000697f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000697f8 00007ffb`dcd1296f     0x77391f91
+00000000`00069800 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00069830 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00069f40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006a668 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006a670 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006a678 00007ffb`dcd1296f     0x77391f91
+00000000`0006a680 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006a6b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0006adc0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006b4e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006b4f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006b4f8 00007ffb`dcd1296f     0x77391f91
+00000000`0006b500 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006b530 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0006bc40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006c368 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006c370 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006c378 00007ffb`dcd1296f     0x77391f91
+00000000`0006c380 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006c3b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0006cac0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006d1e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006d1f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006d1f8 00007ffb`dcd1296f     0x77391f91
+00000000`0006d200 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006d230 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0006d940 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006e068 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006e070 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006e078 00007ffb`dcd1296f     0x77391f91
+00000000`0006e080 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006e0b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0006e7c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006eee8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006eef0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006eef8 00007ffb`dcd1296f     0x77391f91
+00000000`0006ef00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006ef30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0006f640 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0006fd68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`0006fd70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`0006fd78 00007ffb`dcd1296f     0x77391f91
+00000000`0006fd80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`0006fdb0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000704c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00070be8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00070bf0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00070bf8 00007ffb`dcd1296f     0x77391f91
+00000000`00070c00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00070c30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00071340 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00071a68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00071a70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00071a78 00007ffb`dcd1296f     0x77391f91
+00000000`00071a80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00071ab0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000721c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000728e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000728f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000728f8 00007ffb`dcd1296f     0x77391f91
+00000000`00072900 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00072930 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00073040 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00073768 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00073770 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00073778 00007ffb`dcd1296f     0x77391f91
+00000000`00073780 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000737b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00073ec0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000745e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000745f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000745f8 00007ffb`dcd1296f     0x77391f91
+00000000`00074600 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00074630 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00074d40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00075468 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00075470 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00075478 00007ffb`dcd1296f     0x77391f91
+00000000`00075480 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000754b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00075bc0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`000762e8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`000762f0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`000762f8 00007ffb`dcd1296f     0x77391f91
+00000000`00076300 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00076330 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00076a40 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00077168 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00077170 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00077178 00007ffb`dcd1296f     0x77391f91
+00000000`00077180 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`000771b0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000778c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00077fe8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00077ff0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00077ff8 00007ffb`dcd1296f     0x77391f91
+00000000`00078000 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00078030 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`00078740 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00078e68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00078e70 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00078e78 00007ffb`dcd1296f     0x77391f91
+00000000`00078e80 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00078eb0 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`000795c0 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`00079ce8 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+00000000`00079cf0 00000000`77391f91     EPT_F0D6D07A_BFCAC451+0x202ee0d
+00000000`00079cf8 00007ffb`dcd1296f     0x77391f91
+00000000`00079d00 00007ffb`dccc2554     ntdll!RtlpExecuteHandlerForException+0xf
+00000000`00079d30 00007ffb`dcd1147e     ntdll!RtlDispatchException+0x244
+00000000`0007a440 00000001`4202ed80     ntdll!KiUserExceptionDispatch+0x2e
+00000000`0007ab68 00000001`4202ee0d     EPT_F0D6D07A_BFCAC451+0x202ed80
+
+   1  Id: de4.1540 Suspend: 1 Teb: 00000000`00319000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0079fc28 00007ffb`dccbd407     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+00000000`0079fc30 00007ffb`db507374     ntdll!TppWorkerThread+0x2f7
+00000000`0079ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0079ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   2  Id: de4.173c Suspend: 1 Teb: 00000000`0031b000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0089fc28 00007ffb`dccbd407     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+00000000`0089fc30 00007ffb`db507374     ntdll!TppWorkerThread+0x2f7
+00000000`0089ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0089ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   3  Id: de4.484 Suspend: 1 Teb: 00000000`0031f000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00d2fc28 00007ffb`dccbd407     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+00000000`00d2fc30 00007ffb`db507374     ntdll!TppWorkerThread+0x2f7
+00000000`00d2ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`00d2ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   4  Id: de4.a98 Suspend: 1 Teb: 00000000`00321000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00e9fc28 00007ffb`dccbd407     ntdll!NtWaitForWorkViaWorkerFactory+0x14
+00000000`00e9fc30 00007ffb`db507374     ntdll!TppWorkerThread+0x2f7
+00000000`00e9ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`00e9ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo SAME_ROUND_CAPTURE_END
+SAME_ROUND_CAPTURE_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

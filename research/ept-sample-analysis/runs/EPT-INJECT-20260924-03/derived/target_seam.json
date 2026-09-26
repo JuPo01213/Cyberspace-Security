@@ -1,0 +1,141 @@
+{
+  "run_id": "EPT-INJECT-20260924-03",
+  "evidence_scope": "real_sample_guest_run_injected_io",
+  "process_model": "debugger_launch",
+  "log_path": "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260924-03\\harvest\\cdb.stdout.txt",
+  "log_present": true,
+  "marker_hits": {
+    "INJ2_PARENT_READY": [
+      59
+    ],
+    "INJ2_CHILD_ATTACHED": [
+      126
+    ],
+    "INJ2_CHILD_BPS_ARMING": [
+      129
+    ],
+    "INJ2_CHILD_BPS_ARMED": [
+      130
+    ],
+    "INJ2_DEVICE_CALLSITE": [],
+    "INJ2_DEVICE_ENTRY": [],
+    "INJ2_DEVICEIO_ENTRY": [
+      155
+    ],
+    "INJ2_DEVICE_RETURN": [],
+    "INJ2_RC03_ENTRY": [],
+    "INJ2_MARKER_CHECK": [],
+    "INJ2_RC06_ENTRY": [],
+    "INJ2_RC06_AFTER_TRANSFORM": [],
+    "INJ2_CALLER_AFTER_COPY": [],
+    "INJ2_NATIVE_RETURN_PRE": [],
+    "INJ2_NATIVE_RETURN": [],
+    "INJ2_AV": []
+  },
+  "marker_excerpt": {
+    "INJ2_PARENT_READY": [
+      {
+        "line": 59,
+        "excerpt": [
+          "[INJ2_PARENT_READY]",
+          "0:000> .symfix",
+          "0:000> .reload",
+          "Reloading current modules",
+          ".....................",
+          "",
+          "************* Symbol Loading Error Summary **************",
+          "Module name            Error",
+          "ntdll                  The system cannot find the file specified"
+        ]
+      }
+    ],
+    "INJ2_CHILD_ATTACHED": [
+      {
+        "line": 126,
+        "excerpt": [
+          "[INJ2_CHILD_ATTACHED]",
+          "Reloading current modules",
+          ".",
+          "[INJ2_CHILD_BPS_ARMING]",
+          "[INJ2_CHILD_BPS_ARMED]",
+          "Some commands were skipped because previous commands caused target execution inside an event handler.ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll",
+          "ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\\Windows\\System32\\KERNEL32.DLL",
+          "ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\\Windows\\System32\\KERNELBASE.dll",
+          "ModLoad: 00007ff9`1d230000 00007ff9`1d2c0000   C:\\Windows\\SYSTEM32\\apphelp.dll"
+        ]
+      }
+    ],
+    "INJ2_CHILD_BPS_ARMING": [
+      {
+        "line": 129,
+        "excerpt": [
+          "[INJ2_CHILD_BPS_ARMING]",
+          "[INJ2_CHILD_BPS_ARMED]",
+          "Some commands were skipped because previous commands caused target execution inside an event handler.ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll",
+          "ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\\Windows\\System32\\KERNEL32.DLL",
+          "ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\\Windows\\System32\\KERNELBASE.dll",
+          "ModLoad: 00007ff9`1d230000 00007ff9`1d2c0000   C:\\Windows\\SYSTEM32\\apphelp.dll",
+          "ModLoad: 00007ff9`20cf0000 00007ff9`20e8e000   C:\\Windows\\System32\\USER32.dll",
+          "ModLoad: 00007ff9`201a0000 00007ff9`201c2000   C:\\Windows\\System32\\win32u.dll",
+          "ModLoad: 00007ff9`21450000 00007ff9`2147c000   C:\\Windows\\System32\\GDI32.dll"
+        ]
+      }
+    ],
+    "INJ2_CHILD_BPS_ARMED": [
+      {
+        "line": 130,
+        "excerpt": [
+          "[INJ2_CHILD_BPS_ARMED]",
+          "Some commands were skipped because previous commands caused target execution inside an event handler.ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll",
+          "ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\\Windows\\System32\\KERNEL32.DLL",
+          "ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\\Windows\\System32\\KERNELBASE.dll",
+          "ModLoad: 00007ff9`1d230000 00007ff9`1d2c0000   C:\\Windows\\SYSTEM32\\apphelp.dll",
+          "ModLoad: 00007ff9`20cf0000 00007ff9`20e8e000   C:\\Windows\\System32\\USER32.dll",
+          "ModLoad: 00007ff9`201a0000 00007ff9`201c2000   C:\\Windows\\System32\\win32u.dll",
+          "ModLoad: 00007ff9`21450000 00007ff9`2147c000   C:\\Windows\\System32\\GDI32.dll",
+          "ModLoad: 00007ff9`20010000 00007ff9`2012a000   C:\\Windows\\System32\\gdi32full.dll"
+        ]
+      }
+    ],
+    "INJ2_DEVICE_CALLSITE": [],
+    "INJ2_DEVICE_ENTRY": [],
+    "INJ2_DEVICEIO_ENTRY": [
+      {
+        "line": 155,
+        "excerpt": [
+          "[INJ2_DEVICEIO_ENTRY]",
+          "rcx=00000000000000b0",
+          "rdx=0000000000390008",
+          "r8=0000000000000000",
+          "r9=0000000000000000",
+          "ModLoad: 00007ff9`16770000 00007ff9`16787000   C:\\Windows\\system32\\napinsp.dll",
+          "ModLoad: 00007ff9`16750000 00007ff9`1676b000   C:\\Windows\\system32\\pnrpnsp.dll",
+          "ModLoad: 00007ff9`05640000 00007ff9`05655000   C:\\Windows\\system32\\wshbth.dll",
+          "ModLoad: 00007ff9`16c00000 00007ff9`16c1d000   C:\\Windows\\system32\\NLAapi.dll"
+        ]
+      }
+    ],
+    "INJ2_DEVICE_RETURN": [],
+    "INJ2_RC03_ENTRY": [],
+    "INJ2_MARKER_CHECK": [],
+    "INJ2_RC06_ENTRY": [],
+    "INJ2_RC06_AFTER_TRANSFORM": [],
+    "INJ2_CALLER_AFTER_COPY": [],
+    "INJ2_NATIVE_RETURN_PRE": [],
+    "INJ2_NATIVE_RETURN": [],
+    "INJ2_AV": []
+  },
+  "target_native_return": "NOT_OBSERVED",
+  "native_return_marker_line": null,
+  "target_caller_diff_bytes": "NOT_OBSERVED",
+  "caller_before_bytes": null,
+  "caller_after_bytes": null,
+  "response_before_bytes": null,
+  "response_after_bytes": null,
+  "response_diff_bytes": "NOT_OBSERVED",
+  "response_after_matches_fixture": null,
+  "response_source_scope": "offline_reference_synthetic_response",
+  "rc06_entry": false,
+  "rc06_return": false,
+  "post_decode_observation": "REQUIRES_PROCESS_FILE_REGISTRY_NETWORK_CORRELATION"
+}

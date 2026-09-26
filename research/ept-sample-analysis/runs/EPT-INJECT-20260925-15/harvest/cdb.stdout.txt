@@ -1,0 +1,256 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.063 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+(d0.e9c): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ffe`c5260860 cc              int     3
+0:000> .echo [XREF2_PARENT_READY]
+[XREF2_PARENT_READY]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> sxe -c "$$><child.cdb" cpr
+0:000> bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+0:000> bp kernel32!CopyFileExW ".echo [COPYEXW]; r rcx; r rdx; r r8; r r9; dU @rcx L60; dU @rdx L60; k L10; g"
+0:000> bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+0:000> bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L60; k L8; g"
+0:000> sxe -c "$$><late.cdb;g" ld urlmon.dll
+0:000> bp ntdll!NtQueryValueKey ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_NTQVK]; r rcx; r rdx; k L14 } } ; g"
+0:000> bp kernelbase!CreateFileW ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_CREATEFILEW]; r rcx; dU @rcx L10; k L14 } } ; g"
+0:000> bp ntdll!NtWaitForSingleObject ".if (@$t3 < 15) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_WAITOBJ]; r rcx; r rdx; k L20; r @$t3=@$t3+1 } } } ; g"
+0:000> bp ntdll!NtWaitForMultipleObjects ".if (@$t4 < 15) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_WAITMULTI]; r rcx; r rdx; k L20; r @$t4=@$t4+1 } } } ; g"
+0:000> bp ntdll!NtWaitForSingleObject 100 ".echo [S15_SNAP_100]; ~* k L25; g"
+breakpoint 6 redefined
+0:000> bp ntdll!NtWaitForSingleObject 1500 ".echo [S15_SNAP_1500]; ~* k L25; g"
+breakpoint 6 redefined
+0:000> bp win32u!NtUserMsgWaitForMultipleObjectsEx ".if (@$t1 < 12) { .echo [S15_MSGWAIT]; k L20; r @$t1=@$t1+1 } ; g"
+0:000> bp win32u!NtUserGetMessage ".if (@$t6 < 8) { .echo [S15_GETMSG]; k L20; r @$t6=@$t6+1 } ; g"
+0:000> bp user32!MessageBoxW ".echo [S15_MSGBOXW]; r rcx; r rdx; dU @rdx L10; k L20 ; g"
+0:000> bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [XREF2_PCREATEFILEW]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+0:000> bp ntdll!NtDeviceIoControlFile ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15_PDIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14 } } ; g"
+0:000> sxe -c ".echo [XREF2_PARENT_AV]; .lastevent; r; k; g" av
+0:000> g
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+[DELW]
+rcx=00000000001459f0
+*** WARNING: Unable to verify checksum for C:\ept_core\Hardware.exe
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a14b0     KERNEL32!DeleteFileW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a14b0
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+[COPYW]
+rcx=0000000000145c00
+rdx=00000000001459f0
+r8=0000000000000000
+00000000`00145c00  "C:\ept_core\Hardware.exe"
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a14c6     KERNEL32!CopyFileW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a14c6
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`c1a40000 00007ffe`c1a73000   C:\Windows\SYSTEM32\ntmarta.dll
+[MOVEW]
+rcx=00000000001459f0
+rdx=0000000140f8e4a0
+r8=000000000000000b
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+00000001`40f8e4a0  "C:\Windows\System32\Hardware.exe"
+00000001`40f8e4e0  ""
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a1588     KERNEL32!MoveFileExW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a1588
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+[COPYW]
+rcx=0000000000145be0
+rdx=00000000001456c0
+r8=0000000000000000
+00000000`00145be0  "C:\ept_core\Hardware.exe"
+00000000`001456c0  "C:\Windows\TEMP\EPT_BA8E7105_7F1"
+00000000`00145700  "451E8.exe"
+Child-SP          RetAddr               Call Site
+00000000`00145598 00000001`407a20d8     KERNEL32!CopyFileW
+00000000`001455a0 00000001`407a532b     Hardware+0x7a20d8
+00000000`00145e30 00000001`407b1094     Hardware+0x7a532b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+[S15_CREATEFILEW]
+rcx=000000000054bba0
+00000000`0054bba0  "C:\Windows\TEMP\"
+Child-SP          RetAddr               Call Site
+00000000`00145598 00000001`407a218f     KERNELBASE!CreateFileW
+00000000`001455a0 00000001`407a532b     Hardware+0x7a218f
+00000000`00145e30 00000001`407b1094     Hardware+0x7a532b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`c46b0000 00007ffe`c475d000   C:\Windows\System32\SHCORE.dll
+ModLoad: 00007ffe`c4cc0000 00007ffe`c4d1b000   C:\Windows\System32\shlwapi.dll
+ModLoad: 00007ffe`c08b0000 00007ffe`c1055000   C:\Windows\SYSTEM32\windows.storage.dll
+ModLoad: 00007ffe`c2170000 00007ffe`c219b000   C:\Windows\SYSTEM32\Wldp.dll
+ModLoad: 00007ffe`c45e0000 00007ffe`c46ad000   C:\Windows\System32\OLEAUT32.dll
+[S15_MSGWAIT]
+Child-SP          RetAddr               Call Site
+00000000`00145058 00007ffe`c4a60cae     win32u!NtUserMsgWaitForMultipleObjectsEx
+00000000`00145060 00007ffe`c35ea2d4     USER32!MsgWaitForMultipleObjectsEx+0x9e
+00000000`001450a0 00007ffe`c36115d0     SHELL32!IsDesktopExplorerProcess+0x414
+00000000`00145160 00007ffe`c35b3ed4     SHELL32!Ordinal900+0xe70
+00000000`001451c0 00007ffe`c35b490b     SHELL32!Ordinal99+0x1ae4
+00000000`001453a0 00007ffe`c35b414e     SHELL32!ShellExecuteExW+0x89b
+00000000`00145400 00000001`407a24d8     SHELL32!ShellExecuteExW+0xde
+00000000`001455a0 00000001`407a532b     Hardware+0x7a24d8
+00000000`00145e30 00000001`407b1094     Hardware+0x7a532b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`c06b0000 00007ffe`c06c2000   C:\Windows\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ffe`bd880000 00007ffe`bd974000   C:\Windows\SYSTEM32\PROPSYS.dll
+ModLoad: 00007ffe`c4d20000 00007ffe`c4dc9000   C:\Windows\System32\clbcatq.dll
+ModLoad: 00007ffe`c2750000 00007ffe`c2774000   C:\Windows\SYSTEM32\profapi.dll
+ModLoad: 00007ffe`b16e0000 00007ffe`b1704000   C:\Windows\SYSTEM32\edputil.dll
+ModLoad: 00007ffe`b81e0000 00007ffe`b83d2000   C:\Windows\SYSTEM32\urlmon.dll
+[S15_LATE_START]
+00000001`40f9252d  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f92d58  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93146  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93243  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93424  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+[S15_SCAN1]
+[S15_XREF_DONE]
+Writing 1000000 bytes................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+[S15_DUMP_DONE]
+ModLoad: 00007ffe`b7e60000 00007ffe`b811f000   C:\Windows\SYSTEM32\iertutil.dll
+ModLoad: 00007ffe`bdbb0000 00007ffe`bdbd8000   C:\Windows\SYSTEM32\srvcli.dll
+ModLoad: 00007ffe`c1d10000 00007ffe`c1d1c000   C:\Windows\SYSTEM32\netutils.dll
+ModLoad: 00007ffe`c2820000 00007ffe`c286e000   C:\Windows\System32\CFGMGR32.dll
+ModLoad: 00007ffe`b4a30000 00007ffe`b4b76000   C:\Windows\System32\Windows.StateRepositoryPS.dll
+[S15_MSGWAIT]
+Child-SP          RetAddr               Call Site
+00000000`0184fbf8 00007ffe`c4a60cae     win32u!NtUserMsgWaitForMultipleObjectsEx
+00000000`0184fc00 00007ffe`c46c76a1     USER32!MsgWaitForMultipleObjectsEx+0x9e
+00000000`0184fc40 00007ffe`c46c6b8c     SHCORE!SHTaskPoolQueueTask+0x1c91
+00000000`0184fed0 00007ffe`c46c5381     SHCORE!SHTaskPoolQueueTask+0x117c
+00000000`0184ff00 00007ffe`c4c07374     SHCORE!SHStrDupW+0x2a1
+00000000`0184ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0184ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`c26d0000 00007ffe`c2702000   C:\Windows\SYSTEM32\SspiCli.dll
+ModLoad: 00007ffe`bd9c0000 00007ffe`bd9d3000   C:\Windows\SYSTEM32\virtdisk.dll
+ModLoad: 00007ffe`bdb80000 00007ffe`bdb8b000   C:\Windows\SYSTEM32\FLTLIB.DLL
+ModLoad: 00007ffe`bf710000 00007ffe`bf867000   C:\Windows\System32\wintypes.dll
+ModLoad: 00007ffe`ae860000 00007ffe`ae8f4000   C:\Windows\System32\appresolver.dll
+ModLoad: 00007ffe`b5240000 00007ffe`b529b000   C:\Windows\System32\Bcp47Langs.dll
+ModLoad: 00007ffe`c1320000 00007ffe`c1349000   C:\Windows\System32\SLC.dll
+ModLoad: 00007ffe`c2710000 00007ffe`c273e000   C:\Windows\System32\USERENV.dll
+ModLoad: 00007ffe`c12f0000 00007ffe`c1315000   C:\Windows\System32\sppc.dll
+onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(1) tid(135c) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(2) tid(135c) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(3) tid(135c) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(4) tid(135c) 80070490 找不到元[S15_MSGWAIT]
+Child-SP          RetAddr               Call Site
+00000000`0184fbf8 00007ffe`c4a60cae     win32u!NtUserMsgWaitForMultipleObjectsEx
+00000000`0184fc00 00007ffe`c46c76a1     USER32!MsgWaitForMultipleObjectsEx+0x9e
+00000000`0184fc40 00007ffe`c46c6b8c     SHCORE!SHTaskPoolQueueTask+0x1c91
+00000000`0184fed0 00007ffe`c46c5381     SHCORE!SHTaskPoolQueueTask+0x117c
+00000000`0184ff00 00007ffe`c4c07374     SHCORE!SHStrDupW+0x2a1
+00000000`0184ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0184ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\system32\apphelp.dll
+ModLoad: 00007ffe`bcf40000 00007ffe`bcf60000   C:\Windows\SYSTEM32\pcacli.dll
+ModLoad: 00007ffe`bcb40000 00007ffe`bcb5d000   C:\Windows\SYSTEM32\MPR.dll
+ModLoad: 00007ffe`b2380000 00007ffe`b2392000   C:\Windows\System32\sfc_os.dll
+ModLoad: 00007ffe`c40b0000 00007ffe`c4520000   C:\Windows\System32\SETUPAPI.dll
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: srv*
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+[S15_CHILD_ATTACHED]
+Bp expression 'kernelbase!CreateFileW ' could not be resolved, adding deferred bp
+Bp expression 'ntdll!NtDeviceIoControlFile ' could not be resolved, adding deferred bp
+Bp expression 'ntdll!NtDelayExecution ' could not be resolved, adding deferred bp
+Bp expression 'ntdll!NtWaitForSingleObject ' could not be resolved, adding deferred bp
+[S15_CHILD_BPS_ARMED]
+00007ffe`c51dcc70 4883ec78        sub     rsp,78h
+1:011> 

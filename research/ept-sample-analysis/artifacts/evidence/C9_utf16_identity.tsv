@@ -1,0 +1,83 @@
+string_va	encoding	region	referencing_function	insn_va	string
+0x140f8d010	utf-16	rdata_tail	FUN_14078bf50	0x14078c07c	\Registry\Machine\System\CurrentControlSet\Services\
+0x140f8d010	utf-16	rdata_tail	FUN_14078c300	0x14078c622	\Registry\Machine\System\CurrentControlSet\Services\
+0x140f8d010	utf-16	rg2	FUN_14078bf50	0x14078c07c	\Registry\Machine\System\CurrentControlSet\Services\
+0x140f8d010	utf-16	rg2	FUN_14078c300	0x14078c622	\Registry\Machine\System\CurrentControlSet\Services\
+0x140f8d080	utf-16	rdata_tail	FUN_14078bf50	0x14078c0d3	SYSTEM\CurrentControlSet\Services\
+0x140f8d080	utf-16	rdata_tail	FUN_14078c300	0x14078c389	SYSTEM\CurrentControlSet\Services\
+0x140f8d080	utf-16	rg2	FUN_14078bf50	0x14078c0d3	SYSTEM\CurrentControlSet\Services\
+0x140f8d080	utf-16	rg2	FUN_14078c300	0x14078c389	SYSTEM\CurrentControlSet\Services\
+0x140f8d340	ascii	rdata_tail	FUN_14078e4d0	0x14078e50f	SYSTEM\CurrentControlSet\Services
+0x140f8d340	ascii	rg2	FUN_14078e4d0	0x14078e50f	SYSTEM\CurrentControlSet\Services
+0x140f8e320	utf-16	rdata_tail	FUN_140791b20	0x140791b8c	<HOST_PATH>\<DIR>ware.ini
+0x140f8e320	utf-16	rdata_tail	FUN_140791c30	0x140791ca5	<HOST_PATH>\<DIR>ware.ini
+0x140f8e320	utf-16	rg2	FUN_140791b20	0x140791b8c	<HOST_PATH>\<DIR>ware.ini
+0x140f8e320	utf-16	rg2	FUN_140791c30	0x140791ca5	<HOST_PATH>\<DIR>ware.ini
+0x140f8e370	utf-16	rdata_tail	FUN_140791b20	0x140791b93	C:\Windows\System32\Hardware.ini
+0x140f8e370	utf-16	rdata_tail	FUN_140791c30	0x140791cac	C:\Windows\System32\Hardware.ini
+0x140f8e370	utf-16	rg2	FUN_140791b20	0x140791b93	C:\Windows\System32\Hardware.ini
+0x140f8e370	utf-16	rg2	FUN_140791c30	0x140791cac	C:\Windows\System32\Hardware.ini
+0x140f8e640	utf-16	rdata_tail	FUN_140790fc0	0x140791043	wmic 
+0x140f8e640	utf-16	rg2	FUN_140790fc0	0x140791043	wmic 
+0x140f8e660	utf-16	rdata_tail	FUN_140791c30	0x140791cff	SerialNumber
+0x140f8e660	utf-16	rdata_tail	FUN_140791c30	0x1407920d1	SerialNumber
+0x140f8e660	utf-16	rdata_tail	FUN_140791c30	0x140792217	SerialNumber
+0x140f8e660	utf-16	rdata_tail	FUN_140791c30	0x1407924a3	SerialNumber
+0x140f8e660	utf-16	rdata_tail	FUN_140791c30	0x14079272f	SerialNumber
+0x140f8e660	utf-16	rg2	FUN_140791c30	0x140791cff	SerialNumber
+0x140f8e660	utf-16	rg2	FUN_140791c30	0x1407920d1	SerialNumber
+0x140f8e660	utf-16	rg2	FUN_140791c30	0x140792217	SerialNumber
+0x140f8e660	utf-16	rg2	FUN_140791c30	0x1407924a3	SerialNumber
+0x140f8e660	utf-16	rg2	FUN_140791c30	0x14079272f	SerialNumber
+0x140f8e680	utf-16	rdata_tail	FUN_140791c30	0x140791cee	baseboard get SerialNumber
+0x140f8e680	utf-16	rg2	FUN_140791c30	0x140791cee	baseboard get SerialNumber
+0x140f8e760	utf-16	rdata_tail	FUN_140791c30	0x1407920c0	bios get SerialNumber
+0x140f8e760	utf-16	rg2	FUN_140791c30	0x1407920c0	bios get SerialNumber
+0x140f8e790	utf-16	rdata_tail	FUN_140791c30	0x1407920f6	BiosSerial
+0x140f8e790	utf-16	rg2	FUN_140791c30	0x1407920f6	BiosSerial
+0x140f8e7a8	utf-16	rdata_tail	FUN_140791c30	0x140792206	diskdrive get SerialNumber
+0x140f8e7a8	utf-16	rg2	FUN_140791c30	0x140792206	diskdrive get SerialNumber
+0x140f8e7e0	utf-16	rdata_tail	FUN_140791c30	0x14079223c	DiskSerials
+0x140f8e7e0	utf-16	rg2	FUN_140791c30	0x14079223c	DiskSerials
+0x140f8e810	utf-16	rdata_tail	FUN_140791c30	0x14079234c	cpu get ProcessorId
+0x140f8e810	utf-16	rg2	FUN_140791c30	0x14079234c	cpu get ProcessorId
+0x140f8e848	utf-16	rdata_tail	FUN_140791c30	0x140792492	cpu get SerialNumber
+0x140f8e848	utf-16	rg2	FUN_140791c30	0x140792492	cpu get SerialNumber
+0x140f8e878	utf-16	rdata_tail	FUN_140791c30	0x1407924c8	CpuSerials
+0x140f8e878	utf-16	rg2	FUN_140791c30	0x1407924c8	CpuSerials
+0x140f8e890	utf-16	rdata_tail	FUN_140791c30	0x1407925d8	path Win32_VideoController get Name
+0x140f8e890	utf-16	rg2	FUN_140791c30	0x1407925d8	path Win32_VideoController get Name
+0x140f8e8e8	utf-16	rdata_tail	FUN_140791c30	0x14079271e	memorychip get SerialNumber
+0x140f8e8e8	utf-16	rg2	FUN_140791c30	0x14079271e	memorychip get SerialNumber
+0x140f8e920	utf-16	rdata_tail	FUN_140791c30	0x140792754	MemorySerials
+0x140f8e920	utf-16	rg2	FUN_140791c30	0x140792754	MemorySerials
+0x140f8e940	utf-16	rdata_tail	FUN_140791c30	0x140792875	MACAddress
+0x140f8e940	utf-16	rg2	FUN_140791c30	0x140792875	MACAddress
+0x140f8e960	utf-16	rdata_tail	FUN_140791c30	0x140792864	path Win32_NetworkAdapterConfiguration where IPEnabled=True get MACAddress
+0x140f8e960	utf-16	rg2	FUN_140791c30	0x140792864	path Win32_NetworkAdapterConfiguration where IPEnabled=True get MACAddress
+0x140f8ea08	utf-16	rdata_tail	FUN_140791c30	0x1407929bb	DefaultIPGateway
+0x140f8ea08	utf-16	rg2	FUN_140791c30	0x1407929bb	DefaultIPGateway
+0x140f8ea30	utf-16	rdata_tail	FUN_140791c30	0x1407929aa	path Win32_NetworkAdapterConfiguration where IPEnabled=True get DefaultIPGateway
+0x140f8ea30	utf-16	rg2	FUN_140791c30	0x1407929aa	path Win32_NetworkAdapterConfiguration where IPEnabled=True get DefaultIPGateway
+0x140f90690	utf-16	rdata_tail	FUN_14079cb50	0x14079ce8c	catch{try{$null=Invoke-CimMethod -Namespace 'root/Microsoft/Windows/Defender' -ClassName 'MSFT_MpPreference' -
+0x140f90690	utf-16	rdata_tail	FUN_14079cb50	0x14079cea8	catch{try{$null=Invoke-CimMethod -Namespace 'root/Microsoft/Windows/Defender' -ClassName 'MSFT_MpPreference' -
+0x140f90690	utf-16	rg2	FUN_14079cb50	0x14079ce8c	catch{try{$null=Invoke-CimMethod -Namespace 'root/Microsoft/Windows/Defender' -ClassName 'MSFT_MpPreference' -
+0x140f90690	utf-16	rg2	FUN_14079cb50	0x14079cea8	catch{try{$null=Invoke-CimMethod -Namespace 'root/Microsoft/Windows/Defender' -ClassName 'MSFT_MpPreference' -
+0x140f90a18	ascii	rdata_tail	FUN_14079d7f0	0x14079d974	SYSTEM\CurrentControlSet\Services\SecurityHealthService
+0x140f90a18	ascii	rg2	FUN_14079d7f0	0x14079d974	SYSTEM\CurrentControlSet\Services\SecurityHealthService
+0x140f90c20	ascii	rdata_tail	FUN_14079d7f0	0x14079dea7	SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90c20	ascii	rdata_tail	FUN_14079d7f0	0x14079dece	SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90c20	ascii	rdata_tail	FUN_14079d7f0	0x14079def5	SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90c20	ascii	rg2	FUN_14079d7f0	0x14079dea7	SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90c20	ascii	rg2	FUN_14079d7f0	0x14079dece	SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90c20	ascii	rg2	FUN_14079d7f0	0x14079def5	SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90ca0	ascii	rdata_tail	FUN_14079d7f0	0x14079df19	SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity
+0x140f90ca0	ascii	rg2	FUN_14079d7f0	0x14079df19	SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity
+0x140f90d18	ascii	rdata_tail	FUN_14079d7f0	0x14079df3d	SYSTEM\CurrentControlSet\Control\CI\Policy
+0x140f90d18	ascii	rg2	FUN_14079d7f0	0x14079df3d	SYSTEM\CurrentControlSet\Control\CI\Policy
+0x140f90dd0	ascii	rdata_tail	FUN_14079d7f0	0x14079dfa9	SYSTEM\CurrentControlSet\Control\Session Manager\Power
+0x140f90dd0	ascii	rdata_tail	FUN_14079e190	0x14079e1f3	SYSTEM\CurrentControlSet\Control\Session Manager\Power
+0x140f90dd0	ascii	rdata_tail	FUN_14079e190	0x14079e230	SYSTEM\CurrentControlSet\Control\Session Manager\Power
+0x140f90dd0	ascii	rg2	FUN_14079d7f0	0x14079dfa9	SYSTEM\CurrentControlSet\Control\Session Manager\Power
+0x140f90dd0	ascii	rg2	FUN_14079e190	0x14079e1f3	SYSTEM\CurrentControlSet\Control\Session Manager\Power
+0x140f90dd0	ascii	rg2	FUN_14079e190	0x14079e230	SYSTEM\CurrentControlSet\Control\Session Manager\Power

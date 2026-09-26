@@ -1,0 +1,9 @@
+.echo RUN_STORED_OBSERVE_BEGIN
+sxe av
+ba e 1 0x1407adae0 ".echo STAGE_LOG; da @r8; r r9d; g"
+ba e 1 0x1407adb40 ".echo STAGE_LOG2; r r8; r r9d; g"
+.echo OBSERVER_ARMED
+ g
+.echo RUN_STORED_OBSERVE_END
+~*k
+q

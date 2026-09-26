@@ -1,0 +1,94 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\Windows\System32\cmd.exe /c C:\Windows\System32\ping.exe -n 2 127.0.0.1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00007ff6`5f070000 00007ff6`5f0d7000   cmd.exe 
+ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll
+ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ff9`21690000 00007ff9`2172e000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ff9`210f0000 00007ff9`21444000   C:\Windows\System32\combase.dll
+ModLoad: 00007ff9`1f8f0000 00007ff9`1f9f0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ff9`21cc0000 00007ff9`21de6000   C:\Windows\System32\RPCRT4.dll
+(1fe8.13bc): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ff9`222e0730 cc              int     3
+0:000> .echo [SMOKE_PARENT_READY]
+[SMOKE_PARENT_READY]
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxd epr
+0:000> sxe av
+0:000> sxe -c "$$><smoke_child.cdb;g" cpr
+0:000> sxe -c ".echo [SMOKE_PARENT_AV]; .lastevent; r; k; g" av
+0:000> g
+ModLoad: 00007ff9`20c50000 00007ff9`20cec000   C:\Windows\System32\sechost.dll
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00007ff7`dccc0000 00007ff7`dcccb000   ping.exe
+[SMOKE_CHILD_ATTACHED]
+[SMOKE_CHILD_BPS_ARMED]
+Some commands were skipped because previous commands caused target execution inside an event handler.ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll
+ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ff9`21690000 00007ff9`2172e000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ff9`21480000 00007ff9`214eb000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ff9`21cc0000 00007ff9`21de6000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ff9`1ecb0000 00007ff9`1eceb000   C:\Windows\System32\IPHLPAPI.DLL
+ModLoad: 00007ff9`17bc0000 00007ff9`17bcb000   C:\Windows\SYSTEM32\WINNSI.DLL
+ModLoad: 00007ff9`220d0000 00007ff9`220d8000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ff9`1efc0000 00007ff9`1f02a000   C:\Windows\system32\mswsock.dll
+
+正在 Ping 127.0.0.1 具有 32 字节的数据:
+来自 127.0.0.1 的回复: 字节=32 时间<1ms TTL=128
+来自 127.0.0.1 的回复: 字节=32 时间<1ms TTL=128
+
+127.0.0.1 的 Ping 统计信息:
+    数据包: 已发送 = 2，已接收 = 2，丢失 = 0 (0% 丢失)，
+往返行程的估计时间(以毫秒为单位):
+    最短 = 0ms，最长 = 0ms，平均 = 0ms
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

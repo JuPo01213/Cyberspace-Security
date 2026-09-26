@@ -1,0 +1,17 @@
+== BR1 instrument checks (all must pass before any statement about the sample) ==
+   CORE_HASH == genB                                              PASS
+   hosts pinned (validator unreachable from the guest)            PASS
+   RESOLVE_NOW == 127.0.0.1                                       PASS
+   BRANCH_DONE reached, i.e. the collector ran to its end         FAIL
+   collector self-probe BOOT present                              PASS
+   windows read: 
+
+== the pre-registered binary judgement ==
+   observed EXIT line: None | BRANCH_EXITCODE field: None | used: none
+   VERDICT: INSTRUMENT FAILURE - no exit code captured. No claim about either branch.
+
+== side-effect ledger (bounded negatives; only meaningful if the checks above passed) ==
+   LAUNCH pid=868 at=02:10:09.234
+   PRE    None
+   POST   None
+   EXIT   None

@@ -1,0 +1,144 @@
+{
+  "socket\u0000": {
+    "count": 1,
+    "vas": [
+      "0x1407dccfe"
+    ]
+  },
+  "connect\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "send\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "recv\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "closesocket\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "WSAStartup\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "WSAGetLastError\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "ws2_32.dll\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "WS2_32.dll\u0000": {
+    "count": 1,
+    "vas": [
+      "0x14252c850"
+    ]
+  },
+  "ws2_32": {
+    "count": 0,
+    "vas": []
+  },
+  "WS2_32": {
+    "count": 1,
+    "vas": [
+      "0x14252c850"
+    ]
+  },
+  "WSAStartup": {
+    "count": 1,
+    "vas": [
+      "0x1407dedb7"
+    ]
+  },
+  "gethostbyname\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "select\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "ioctlsocket\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "htons\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "inet_addr\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "bind\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "listen\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "accept\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "getaddrinfo\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "WSAIoctl\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "shutdown\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "yz.hwid001.com": {
+    "count": 3,
+    "vas": [
+      "0x140f92688",
+      "0x140f926ad",
+      "0x140f92e96"
+    ]
+  },
+  "kernel32.dll\u0000": {
+    "count": 0,
+    "vas": []
+  },
+  "ntdll.dll\u0000": {
+    "count": 2,
+    "vas": [
+      "0x1407ea2a8",
+      "0x143a2c212"
+    ]
+  },
+  "LoadLibraryA\u0000": {
+    "count": 1,
+    "vas": [
+      "0x14234b0a2"
+    ]
+  },
+  "GetProcAddress\u0000": {
+    "count": 1,
+    "vas": [
+      "0x14251699c"
+    ]
+  },
+  "HP_WKS_SWTOOLS_DRIVER": {
+    "count": 2,
+    "vas": [
+      "0x1407ea374",
+      "0x140f8cba0"
+    ]
+  },
+  "\\\\\\\\.\\\\HP_WKS": {
+    "count": 0,
+    "vas": []
+  }
+}

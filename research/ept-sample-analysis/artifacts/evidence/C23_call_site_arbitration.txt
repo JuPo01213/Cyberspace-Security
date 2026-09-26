@@ -1,0 +1,21 @@
+# C23 - which address is the real `call FUN_1407a3080` start: 0x1407a7b0e or 0x1407a7b0f?
+# C19's 1-byte slide reported BOTH (plus 0x1407a6a4e); a slide counts the same instruction at
+# neighbouring offsets, so the byte string decides. Decoding forward from each candidate:
+
+candidate 0x1407a6a4e   bytes: e8 2d c6 ff ff 0f b6 d8
+   1407a6a4e  call 0x1407a3080
+   1407a6a53  movzx ebx, al
+   1407a6a56  mov edx, r14d
+   1407a6a59  test al, al
+
+candidate 0x1407a7b0e   bytes: 40 e8 6c b5 ff ff 84 c0
+   1407a7b0e  call 0x1407a3080
+   1407a7b14  test al, al
+   1407a7b16  jne 0x1407a7b4f
+   1407a7b18  xor ecx, ecx
+
+candidate 0x1407a7b0f   bytes: e8 6c b5 ff ff 84 c0 75
+   1407a7b0f  call 0x1407a3080
+   1407a7b14  test al, al
+   1407a7b16  jne 0x1407a7b4f
+   1407a7b18  xor ecx, ecx

@@ -1,0 +1,21 @@
+.echo [XREF2_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!CopyFileExW ".echo [COPYEXW]; r rcx; r rdx; r r8; r r9; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; $$><late.cdb; g"
+bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L60; k L8; g"
+.echotime
+ba e 1 1407a30a6 ".echo [S18_AUTH_STOREDVERIFY_BEGIN]; r rip; r rcx; r rdx; r r8; r r9; k L16; g"
+ba e 1 1407a311f ".echo [S18_AUTH_STOREDAUTH_USABLE]; r rip; r rcx; r rdx; r r8; r r9; k L16; g"
+ba e 1 1407a315d ".echo [S18_AUTH_SP_STATE]; r rip; r rcx; r rdx; r r8; r r9; k L16; g"
+ba e 1 1407ad554 ".echo [S18_AUTH_SKIP_DRIVER_LOAD]; r rip; r rcx; r rdx; r r8; r r9; k L16; g"
+bp kernelbase!CreateFileW ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S18_CREATEFILEW]; r rcx; dU @rcx L10; k L14 } } ; g"
+bp ntdll!NtQueryValueKey ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S18_NTQVK]; r rcx; r rdx; k L14 } } ; g"
+bp user32!MessageBoxW ".echo [S18_MSGBOXW]; r rcx; r rdx; dU @rdx L10; k L20 ; g"
+sxe -c ".echo [XREF2_PARENT_AV]; .lastevent; r; k; g" av
+g

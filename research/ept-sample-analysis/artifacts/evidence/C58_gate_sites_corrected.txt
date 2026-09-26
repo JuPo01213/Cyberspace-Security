@@ -1,0 +1,128 @@
+== C58 corrected gate conjunction and branch-state references ==
+instrument=<HOST_PATH>/vmctl/verify_gate_sites_corrected.py
+input=<HOST_PATH>\EPT\artifacts\captures\stream_C6\stream_text.bin
+input_bytes=8257536 sha256=5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757
+source_kind=process_memory_span_with_embedded_PE_header
+e_lfanew=0x80 image_base=0x140000000 size_of_image=0x3f83000
+address_formula=VA=image_base+stream_offset; stream_offset 0 is the PE header
+text_section=.text RVA=0x1000 stream_offset=0x1000 virtual_size=0x7d992c
+capture_window_after_header=stream_offset 0x1000..0x7e0000 (8253440 bytes)
+supersedes=C56_gate_conjunction_sites_byte_check.txt
+C56_status=RETRACTED: its BASE=0x140001000 was not the stream base
+claim_scope=static byte/reference structure only; no runtime branch-reachability claim
+
+-- independent byte signature: 83 3D disp32 01 --
+scan_coverage=8257536/8257536 bytes (100.0%)
+signature_total=7 in_image=6 outside_image=1
+target=0x141154ced count=3 sites=0x1407a30b2,0x1407a354f,0x1407a4700
+  owner[0x1407a30b2]=.text@0x1407a3080..0x1407a3323
+  owner[0x1407a354f]=.text@0x1407a3510..0x1407a493d
+  owner[0x1407a4700]=.text@0x1407a3510..0x1407a493d
+target=0x141154cf1 count=3 sites=0x1407a30bb,0x1407a3558,0x1407a470d
+  owner[0x1407a30bb]=.text@0x1407a3080..0x1407a3323
+  owner[0x1407a3558]=.text@0x1407a3510..0x1407a493d
+  owner[0x1407a470d]=.text@0x1407a3510..0x1407a493d
+exact_cmp_target_count[0x141154ced]=3
+exact_cmp_target_count[0x141154cf1]=3
+exact_cmp_target_count[0x141154ae7]=0
+exact_cmp_target_count[0x141154ce9]=0
+
+-- independent Capstone RIP-relative reference walk over captured code window --
+walk_coverage=8253440/8253440 bytes (100.00%)
+walk_scope=stream offset 0x1000 through end of capture; Capstone detail=True; RIP memory operands resolved arithmetically
+rip_target=0x141154ced count=4
+  site=0x1407a30b2 cmp dword ptr [rip + 0x9b1c34], 1 owner=.text@0x1407a3080..0x1407a3323
+  site=0x1407a354f cmp dword ptr [rip + 0x9b1797], 1 owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a4700 cmp dword ptr [rip + 0x9b05e6], 1 owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a7aec cmp dword ptr [rip + 0x9ad1fa], r11d owner=.text@0x1407a4b90..0x1407aa710
+rip_target=0x141154cf1 count=5
+  site=0x1407a30bb cmp dword ptr [rip + 0x9b1c2f], 1 owner=.text@0x1407a3080..0x1407a3323
+  site=0x1407a3558 cmp dword ptr [rip + 0x9b1792], 1 owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a470d cmp dword ptr [rip + 0x9b05dd], 1 owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a6a05 cmp dword ptr [rip + 0x9ae2e6], esi owner=.text@0x1407a4b90..0x1407aa710
+  site=0x1407a7af5 cmp dword ptr [rip + 0x9ad1f6], ebx owner=.text@0x1407a4b90..0x1407aa710
+rip_target=0x141154ae7 count=6
+  site=0x1407a30c4 cmp byte ptr [rip + 0x9b1a1c], 0 owner=.text@0x1407a3080..0x1407a3323
+  site=0x1407a320e lea rcx, [rip + 0x9b18d2] owner=.text@0x1407a3080..0x1407a3323
+  site=0x1407a3561 movzx eax, byte ptr [rip + 0x9b157f] owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a4720 movzx eax, byte ptr [rip + 0x9b03c0] owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a6a0d cmp byte ptr [rip + 0x9ae0d3], r14b owner=.text@0x1407a4b90..0x1407aa710
+  site=0x1407a7afd cmp byte ptr [rip + 0x9acfe3], r12b owner=.text@0x1407a4b90..0x1407aa710
+rip_target=0x141154ce9 count=5
+  site=0x1407a30cd cmp dword ptr [rip + 0x9b1c15], 0 owner=.text@0x1407a3080..0x1407a3323
+  site=0x1407a356c mov ecx, dword ptr [rip + 0x9b1777] owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a471a mov ecx, dword ptr [rip + 0x9b05c9] owner=.text@0x1407a3510..0x1407a493d
+  site=0x1407a6a16 cmp dword ptr [rip + 0x9ae2cc], r14d owner=.text@0x1407a4b90..0x1407aa710
+  site=0x1407a7b06 cmp dword ptr [rip + 0x9ad1dc], r12d owner=.text@0x1407a4b90..0x1407aa710
+reference_cluster_count=6 reference_site_count=20
+cluster_1=count:4 sites:0x1407a30b2,0x1407a30bb,0x1407a30c4,0x1407a30cd
+  globals=0x141154ae7,0x141154ce9,0x141154ced,0x141154cf1
+  owners=.text@0x1407a3080..0x1407a3323
+cluster_2=count:1 sites:0x1407a320e
+  globals=0x141154ae7
+  owners=.text@0x1407a3080..0x1407a3323
+cluster_3=count:4 sites:0x1407a354f,0x1407a3558,0x1407a3561,0x1407a356c
+  globals=0x141154ae7,0x141154ce9,0x141154ced,0x141154cf1
+  owners=.text@0x1407a3510..0x1407a493d
+cluster_4=count:4 sites:0x1407a4700,0x1407a470d,0x1407a471a,0x1407a4720
+  globals=0x141154ae7,0x141154ce9,0x141154ced,0x141154cf1
+  owners=.text@0x1407a3510..0x1407a493d
+cluster_5=count:3 sites:0x1407a6a05,0x1407a6a0d,0x1407a6a16
+  globals=0x141154ae7,0x141154ce9,0x141154cf1
+  owners=.text@0x1407a4b90..0x1407aa710
+cluster_6=count:4 sites:0x1407a7aec,0x1407a7af5,0x1407a7afd,0x1407a7b06
+  globals=0x141154ae7,0x141154ce9,0x141154ced,0x141154cf1
+  owners=.text@0x1407a4b90..0x1407aa710
+
+-- absolute landmarks --
+landmark=0x1407a30b2 stream_offset=0x7a30b2
+  0x1407a30b2 833d341c9b0001       cmp     dword ptr [rip + 0x9b1c34], 1
+  0x1407a30b9 751f                 jne     0x1407a30da
+  0x1407a30bb 833d2f1c9b0001       cmp     dword ptr [rip + 0x9b1c2f], 1
+  0x1407a30c2 7516                 jne     0x1407a30da
+  0x1407a30c4 803d1c1a9b0000       cmp     byte ptr [rip + 0x9b1a1c], 0
+  0x1407a30cb 740d                 je      0x1407a30da
+  0x1407a30cd 833d151c9b0000       cmp     dword ptr [rip + 0x9b1c15], 0
+  0x1407a30d4 7404                 je      0x1407a30da
+landmark=0x1407a354f stream_offset=0x7a354f
+  0x1407a354f 833d97179b0001       cmp     dword ptr [rip + 0x9b1797], 1
+  0x1407a3556 7522                 jne     0x1407a357a
+  0x1407a3558 833d92179b0001       cmp     dword ptr [rip + 0x9b1792], 1
+  0x1407a355f 7519                 jne     0x1407a357a
+  0x1407a3561 0fb6057f159b00       movzx   eax, byte ptr [rip + 0x9b157f]
+  0x1407a3568 84c0                 test    al, al
+  0x1407a356a 740e                 je      0x1407a357a
+  0x1407a356c 8b0d77179b00         mov     ecx, dword ptr [rip + 0x9b1777]
+landmark=0x1407a4700 stream_offset=0x7a4700
+  0x1407a4700 833de6059b0001       cmp     dword ptr [rip + 0x9b05e6], 1
+  0x1407a4707 0f8597010000         jne     0x1407a48a4
+  0x1407a470d 833ddd059b0001       cmp     dword ptr [rip + 0x9b05dd], 1
+  0x1407a4714 0f858a010000         jne     0x1407a48a4
+  0x1407a471a 8b0dc9059b00         mov     ecx, dword ptr [rip + 0x9b05c9]
+  0x1407a4720 0fb605c0039b00       movzx   eax, byte ptr [rip + 0x9b03c0]
+  0x1407a4727 84c0                 test    al, al
+  0x1407a4729 0f8475010000         je      0x1407a48a4
+landmark=0x1407a6a4e stream_offset=0x7a6a4e
+  0x1407a6a4e e82dc6ffff           call    0x1407a3080
+  0x1407a6a53 0fb6d8               movzx   ebx, al
+  0x1407a6a56 418bd6               mov     edx, r14d
+  0x1407a6a59 84c0                 test    al, al
+  0x1407a6a5b 0f95c2               setne   dl
+  0x1407a6a5e 488d0d3bc37e00       lea     rcx, [rip + 0x7ec33b]
+  0x1407a6a65 e8a694feff           call    0x14078ff10
+  0x1407a6a6a 84db                 test    bl, bl
+landmark=0x1407a7b1b stream_offset=0x7a7b1b
+  0x1407a7b1b e8da97fb00           call    0x1417612fa
+  0x1407a7b20 cc                   int3    
+  0x1407a7b21 488d15c0887e00       lea     rdx, [rip + 0x7e88c0]
+  0x1407a7b28 eb07                 jmp     0x1407a7b31
+  0x1407a7b2a 488d1587887e00       lea     rdx, [rip + 0x7e8887]
+  0x1407a7b31 41b910000000         mov     r9d, 0x10
+  0x1407a7b37 4c8d057a867e00       lea     r8, [rip + 0x7e867a]
+  0x1407a7b3e 33c9                 xor     ecx, ecx
+
+-- corrected conclusion --
+The real references are resolved with ImageBase 0x140000000, not with a +0x1000 stream-base offset.
+The byte-level gate-state reads therefore remain present, but their real addresses and site owners are those above.
+This artifact does not establish which state was supplied at runtime or whether either branch was reached.
+confidence=HIGH for address/reference correction; STATIC_ONLY for branch separation

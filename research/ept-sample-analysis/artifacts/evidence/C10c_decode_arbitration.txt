@@ -1,0 +1,68 @@
+capture=8257536  anchors=75
+
+CONTROL 0x14078ed97 passed (reproduces=True boundary=True) ghidra=DECODED-AT-SITE LEA RCX,[0x140f8d7b0] -> arbiter sound
+
+site 0x1407887c8  anchor 0x140f8cd40 (known anchor)
+  capture bytes  : 4c 8d 1d 71 45 80 00 48
+  decode here    : lea r11, [rip + 0x804571] -> 0x140f8cd40  reproduces=True
+  boundary       : True ; 0x1407887c6 inc (2B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x1407887cc: ADD byte ptr [R8],0x48)
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x14078e42e  anchor 0x140f8d1e0 (known anchor)
+  capture bytes  : 48 8d 0d ab ed 7f 00 33
+  decode here    : lea rcx, [rip + 0x7fedab] -> 0x140f8d1e0  reproduces=True
+  boundary       : True ; 0x14078e42c mov (2B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x14078e451: MOV R12D,EDI)
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x14078e383  anchor 0x140f8d270 (known anchor)
+  capture bytes  : 48 8d 0d e6 ee 7f 00 e9
+  decode here    : lea rcx, [rip + 0x7feee6] -> 0x140f8d270  reproduces=True
+  boundary       : True ; 0x14078e382 ret (1B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x14078e38f: CALL 0x141a47c2c)
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x14078e2d2  anchor 0x140f8d300 (known anchor)
+  capture bytes  : 48 8d 0d 27 f0 7f 00 e8
+  decode here    : lea rcx, [rip + 0x7ff027] -> 0x140f8d300  reproduces=True
+  boundary       : True ; 0x14078e2cd adc (5B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x14078e38f: CALL 0x141a47c2c)
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x14078ecb9  anchor 0x140f8d5a0 (known anchor)
+  capture bytes  : 48 8d 0d e0 e8 7f 00 4c
+  decode here    : lea rcx, [rip + 0x7fe8e0] -> 0x140f8d5a0  reproduces=True
+  boundary       : True ; 0x14078ecb4 or (5B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x14078ece0: MOV R11,RSP)
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x14078f019  anchor 0x140f8d810 (known anchor)
+  capture bytes  : 48 8d 0d f0 e7 7f 00 e9
+  decode here    : lea rcx, [rip + 0x7fe7f0] -> 0x140f8d810  reproduces=True
+  boundary       : True ; 0x14078f017 and (2B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x14078f025: MOV EAX,dword ptr [0x14115c368])
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x140799bbb  anchor 0x140f901d8 (known anchor)
+  capture bytes  : 48 8d 15 16 66 7f 00 48
+  decode here    : lea rdx, [rip + 0x7f6616] -> 0x140f901d8  reproduces=True
+  boundary       : True ; 0x140799bb8 lea (3B) ends exactly here
+  ghidra         : NOT-DECODED-AT-SITE (answered 0x140799d20: MOV qword ptr [RSP + 0x8],RBX)
+  VERDICT        : GHIDRA_NEVER_DECODED_SITE
+
+site 0x1407c1f87  anchor 0x14115b120 (known anchor)
+  capture bytes  : 48 8d 1d 92 91 99 00 41
+  decode here    : lea rbx, [rip + 0x999192] -> 0x14115b120  reproduces=True
+  boundary       : True ; 0x1407c1f85 add (2B) ends exactly here
+  ghidra         : DECODED-AT-SITE LEA RBX,[0x14115b120]
+  VERDICT        : GHIDRA_DECODED_BUT_DROPPED_REF
+
+site 0x14078ae6d  anchor 0x140f8ce50 (known anchor)
+  capture bytes  : 0f b6 84 39 50 ce f8 00
+  decode here    : movzx eax, byte ptr [rcx + rdi + 0xf8ce50] -> 0x--------  reproduces=False
+  boundary       : True ; 0x14078ae6b sub (2B) ends exactly here
+  ghidra         : DECODED-AT-SITE MOVZX EAX,byte ptr [RCX + RDI*0x1 + 0xf8ce50]  |  disp32=0xf8ce50 equals the anchor RVA 0xf8ce50 (relative to image base)
+  VERDICT        : GHIDRA_FALSE_POSITIVE_DISPLACEMENT
+
+summary: {'GHIDRA_NEVER_DECODED_SITE': 7, 'GHIDRA_DECODED_BUT_DROPPED_REF': 1, 'GHIDRA_FALSE_POSITIVE_DISPLACEMENT': 1}

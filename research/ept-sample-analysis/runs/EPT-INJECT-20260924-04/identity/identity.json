@@ -1,0 +1,30 @@
+﻿[
+    {
+        "path":  "C:\\ept_core\\Hardware.exe",
+        "exists":  true,
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260924-04\\identity\\Hardware.exe",
+        "length":  32671232,
+        "sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+        "last_write_utc":  "2026-09-24T11:58:51.0427494Z"
+    },
+    {
+        "path":  "C:\\Windows\\System32\\Hardware.exe",
+        "exists":  true,
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260924-04\\identity\\Hardware.exe",
+        "length":  32671232,
+        "sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+        "last_write_utc":  "2026-09-24T11:58:51.0427494Z"
+    },
+    {
+        "path":  "C:\\Windows\\Temp\\EPT_46F4557F_E917B6D2.exe",
+        "exists":  true,
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260924-04\\identity\\EPT_46F4557F_E917B6D2.exe",
+        "length":  32671488,
+        "sha256":  "D2FA3ACE3205E01C6DD3973410933A57F687E1E2E85141C1B74CD8AA92B1B893",
+        "last_write_utc":  "2026-09-24T13:50:20.3466349Z"
+    },
+    {
+        "path":  "C:\\Windows\\Temp\\EPT_15669800_B33D1B09.exe",
+        "exists":  false
+    }
+]

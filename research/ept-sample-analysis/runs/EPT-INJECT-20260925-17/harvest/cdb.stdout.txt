@@ -1,0 +1,240 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.063 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.062 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+(13b0.af8): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ffe`c5260860 cc              int     3
+0:000> .echo [XREF2_PARENT_READY]
+[XREF2_PARENT_READY]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> sxe -c "$$><child.cdb" cpr
+0:000> bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; dU @rcx L40; dU @rdx L40; k L8; g"
+0:000> bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; dU @rcx L40; dU @rdx L40; k L8; $$><late.cdb; g"
+0:000> bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L40; k L6; g"
+0:000> bu ws2_32!connect ".echo [NET_CONNECT]; r rcx; db @rdx L8; k L12; g"
+0:000> bu ws2_32!WSAConnect ".echo [NET_WSACONNECT]; r rcx; db @rdx L8; k L12; g"
+0:000> bu ws2_32!GetAddrInfoW ".echo [NET_GAI_W]; r rcx; dU @rcx L48; k L12; g"
+0:000> bu ws2_32!getaddrinfo ".echo [NET_GAI_A]; r rcx; da @rcx L48; k L12; g"
+0:000> bu wininet!InternetOpenUrlW ".echo [NET_INETURL]; r rdx; dU @rdx L48; k L12; g"
+0:000> bu wininet!HttpSendRequestW ".echo [NET_HTTPSEND]; r rcx; k L12; g"
+0:000> bu winhttp!WinHttpSendRequest ".echo [NET_WH_SEND]; r rcx; k L12; g"
+0:000> bu winhttp!WinHttpConnect ".echo [NET_WH_CONN]; r rdx; dU @rdx L48; k L12; g"
+0:000> bu urlmon!URLDownloadToFileW ".echo [NET_DL]; r rcx; r rdx; dU @rcx L48; dU @rdx L48; k L12; g"
+0:000> bp ntdll!NtSetValueKey ".if (@$t9 < 40) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [REG_SET]; r rcx; r rdx; k L12; r @$t9=@$t9+1 } } } ; g"
+0:000> bp kernel32!CreateProcessW ".echo [PROC_CREATE_W]; r rcx; r rdx; dU @rcx L40; dU @rdx L40; k L12; g"
+0:000> bp kernel32!CreateProcessA ".echo [PROC_CREATE_A]; r rcx; r rdx; da @rcx L40; da @rdx L40; k L12; g"
+0:000> sxe -c ".echo [S17_AV]; .lastevent; r; k; g" av
+0:000> g
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+[DELW]
+rcx=00000000001459f0
+*** WARNING: Unable to verify checksum for C:\ept_core\Hardware.exe
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a14b0     KERNEL32!DeleteFileW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a14b0
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+[COPYW]
+rcx=0000000000145c00
+rdx=00000000001459f0
+00000000`00145c00  "C:\ept_core\Hardware.exe"
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a14c6     KERNEL32!CopyFileW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a14c6
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`c1a40000 00007ffe`c1a73000   C:\Windows\SYSTEM32\ntmarta.dll
+[MOVEW]
+rcx=00000000001459f0
+rdx=0000000140f8e4a0
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+00000001`40f8e4a0  "C:\Windows\System32\Hardware.exe"
+00000001`40f8e4e0  ""
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a1588     KERNEL32!MoveFileExW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a1588
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+[PD_ARM_START]
+00000001`40f9252d  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f92d58  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93146  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93243  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93424  53 74 6f 72 65 64 41 75-74 68 6f 72 69 7a 61 74  StoredAuthorizat
+00000001`40f93624  73 6b 69 70 5f 64 72 69-76 65 72 5f 6c 6f 61 64  skip_driver_load
+[PD_ARM_DONE]
+[DELW]
+rcx=00000000001459f0
+00000000`001459f0  "C:\Windows\System32\Hardware.exe"
+00000000`00145a30  ".tmp"
+Child-SP          RetAddr               Call Site
+00000000`001459c8 00000001`407a1597     KERNEL32!DeleteFileW
+00000000`001459d0 00000001`407a530b     Hardware+0x7a1597
+00000000`00145e30 00000001`407b1094     Hardware+0x7a530b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+[COPYW]
+rcx=0000000000145be0
+rdx=00000000001456c0
+00000000`00145be0  "C:\ept_core\Hardware.exe"
+00000000`001456c0  "C:\Windows\TEMP\EPT_FBC34EE7_CC8"
+00000000`00145700  "6ACBD.exe"
+Child-SP          RetAddr               Call Site
+00000000`00145598 00000001`407a20d8     KERNEL32!CopyFileW
+00000000`001455a0 00000001`407a532b     Hardware+0x7a20d8
+00000000`00145e30 00000001`407b1094     Hardware+0x7a532b
+00000000`0014fef0 00007ffe`c4c07374     Hardware+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`c46b0000 00007ffe`c475d000   C:\Windows\System32\SHCORE.dll
+ModLoad: 00007ffe`c4cc0000 00007ffe`c4d1b000   C:\Windows\System32\shlwapi.dll
+ModLoad: 00007ffe`c08b0000 00007ffe`c1055000   C:\Windows\SYSTEM32\windows.storage.dll
+ModLoad: 00007ffe`c2170000 00007ffe`c219b000   C:\Windows\SYSTEM32\Wldp.dll
+ModLoad: 00007ffe`c45e0000 00007ffe`c46ad000   C:\Windows\System32\OLEAUT32.dll
+ModLoad: 00007ffe`c06b0000 00007ffe`c06c2000   C:\Windows\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ffe`bd880000 00007ffe`bd974000   C:\Windows\SYSTEM32\PROPSYS.dll
+ModLoad: 00007ffe`c4d20000 00007ffe`c4dc9000   C:\Windows\System32\clbcatq.dll
+ModLoad: 00007ffe`c2750000 00007ffe`c2774000   C:\Windows\SYSTEM32\profapi.dll
+ModLoad: 00007ffe`b16e0000 00007ffe`b1704000   C:\Windows\SYSTEM32\edputil.dll
+ModLoad: 00007ffe`c2820000 00007ffe`c286e000   C:\Windows\System32\CFGMGR32.dll
+ModLoad: 00007ffe`b81e0000 00007ffe`b83d2000   C:\Windows\SYSTEM32\urlmon.dll
+ModLoad: 00007ffe`bdbb0000 00007ffe`bdbd8000   C:\Windows\SYSTEM32\srvcli.dll
+ModLoad: 00007ffe`b7e60000 00007ffe`b811f000   C:\Windows\SYSTEM32\iertutil.dll
+ModLoad: 00007ffe`c1d10000 00007ffe`c1d1c000   C:\Windows\SYSTEM32\netutils.dll
+ModLoad: 00007ffe`b4a30000 00007ffe`b4b76000   C:\Windows\System32\Windows.StateRepositoryPS.dll
+ModLoad: 00007ffe`c26d0000 00007ffe`c2702000   C:\Windows\SYSTEM32\SspiCli.dll
+ModLoad: 00007ffe`bd9c0000 00007ffe`bd9d3000   C:\Windows\SYSTEM32\virtdisk.dll
+ModLoad: 00007ffe`bdb80000 00007ffe`bdb8b000   C:\Windows\SYSTEM32\FLTLIB.DLL
+ModLoad: 00007ffe`bf710000 00007ffe`bf867000   C:\Windows\System32\wintypes.dll
+ModLoad: 00007ffe`ae860000 00007ffe`ae8f4000   C:\Windows\System32\appresolver.dll
+ModLoad: 00007ffe`b5240000 00007ffe`b529b000   C:\Windows\System32\Bcp47Langs.dll
+ModLoad: 00007ffe`c1320000 00007ffe`c1349000   C:\Windows\System32\SLC.dll
+ModLoad: 00007ffe`c2710000 00007ffe`c273e000   C:\Windows\System32\USERENV.dll
+ModLoad: 00007ffe`c12f0000 00007ffe`c1315000   C:\Windows\System32\sppc.dll
+onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(1) tid(c28) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(2) tid(c28) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(3) tid(c28) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(4) tid(c28) 80070490 找不到元[PROC_CREATE_W]
+rcx=00000000004d3370
+rdx=00000000004d3e80
+00000000`004d3370  "C:\Windows\TEMP\EPT_FBC34EE7_CC8"
+00000000`004d33b0  "6ACBD.exe"
+00000000`004d3e80  ""C:\Windows\TEMP\EPT_FBC34EE7_CC"
+00000000`004d3ec0  "86ACBD.exe" -k CAAAAAAAAAAAAAAAA"
+Child-SP          RetAddr               Call Site
+00000000`00d8f4a8 00007ffe`c0a214bd     KERNEL32!CreateProcessW
+00000000`00d8f4b0 00007ffe`c09ddabc     windows_storage!SHTestTokenMembership+0x38d
+00000000`00d8f750 00007ffe`c0a0a84c     windows_storage!Ordinal923+0x611c
+00000000`00d8f7d0 00007ffe`c0a0a673     windows_storage!SHCreateShellItemArrayFromIDLists+0x84c
+00000000`00d8f800 00007ffe`c0a0acdd     windows_storage!SHCreateShellItemArrayFromIDLists+0x673
+00000000`00d8f8a0 00007ffe`c0a8de28     windows_storage!SHCreateShellItemArrayFromIDLists+0xcdd
+00000000`00d8f8e0 00007ffe`c0a0ae8f     windows_storage!DllMain+0x1a728
+00000000`00d8f960 00007ffe`c09de0e7     windows_storage!SHCreateShellItemArrayFromIDLists+0xe8f
+00000000`00d8f9e0 00007ffe`c3594e3d     windows_storage!Ordinal923+0x6747
+00000000`00d8fd00 00007ffe`c35b1469     SHELL32!Shell_MergeMenus+0xd3d
+00000000`00d8fd70 00007ffe`c3615b3d     SHELL32!SHCreateItemFromParsingName+0x1269
+00000000`00d8fde0 00007ffe`c46dbd19     SHELL32!SHCloneSpecialIDList+0x41d
+00000000`00d8fe50 00007ffe`c4c07374     SHCORE!Ordinal172+0x1e9
+00000000`00d8ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`00d8ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\system32\apphelp.dll
+ModLoad: 00007ffe`bcf40000 00007ffe`bcf60000   C:\Windows\SYSTEM32\pcacli.dll
+ModLoad: 00007ffe`bcb40000 00007ffe`bcb5d000   C:\Windows\SYSTEM32\MPR.dll
+ModLoad: 00007ffe`b2380000 00007ffe`b2392000   C:\Windows\System32\sfc_os.dll
+ModLoad: 00007ffe`c40b0000 00007ffe`c4520000   C:\Windows\System32\SETUPAPI.dll
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: srv*
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+[WAIT_CHILD_ATTACHED]
+Bp expression 'ntdll!NtDelayExecution ' could not be resolved, adding deferred bp
+Bp expression 'ntdll!NtWaitForSingleObject ' could not be resolved, adding deferred bp
+Bp expression 'ntdll!NtDelayExecution ' could not be resolved, adding deferred bp
+Bp expression 'kernel32!CreateFileW ' could not be resolved, adding deferred bp
+[WAIT_CHILD_BPS_ARMED]
+00007ffe`c51dcc70 4883ec78        sub     rsp,78h
+1:003> 

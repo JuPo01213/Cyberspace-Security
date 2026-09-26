@@ -1,0 +1,12 @@
+.echo [INJ_PARENT_ATTACH]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><
+C:\ept_obs\spool\EPT-INJECT-20260924-01\child_honest.cdb
+;g" cpr
+sxe -c ".echo [INJ_PARENT_AV]; .lastevent; r; k; g" av
+bu 14235f67b ".echo [INJ_PARENT_ENTRY]; r rip; g"
+g

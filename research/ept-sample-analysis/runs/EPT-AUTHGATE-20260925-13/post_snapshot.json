@@ -1,0 +1,22 @@
+﻿{
+    "drivers":  [
+
+                ],
+    "procs":  [
+                  "cdb:4688",
+                  "EPT_E4F4D2F0_A1CAB8D6:4448",
+                  "Hardware:3908"
+              ],
+    "utc":  "2026-09-25T06:55:47.3804493Z",
+    "log_dirs":  [
+
+                 ],
+    "files":  [
+                  "C:\\Windows\\System32\\Hardware.exe",
+                  "C:\\Windows\\System32\\EPT.cmd"
+              ],
+    "tasks":  [
+                  "DetectHardwareChange",
+                  "RemediateHardwareChange"
+              ]
+}

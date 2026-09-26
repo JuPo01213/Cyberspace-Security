@@ -1,0 +1,13 @@
+.echo [INJ2_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+bu 1407a3080 ".echo [AUTH_PARENT_ENTRY]; r rip; r rsp; r rcx; r rdx; r r8; r r9; dq @rsp L4; k; g"
+bu 1407a6a53 ".echo [AUTH_PARENT_RETURN_A]; r eax; k; g"
+bu 1407a7b14 ".echo [AUTH_PARENT_RETURN_B]; r eax; k; g"
+bu 14078ee73 ".echo [AUTH_PARENT_RC00]; r rcx; r rdx; r r8; r r9; dq @rsp L10; k; g"
+sxe -c "$$><child.cdb" cpr
+sxe -c ".echo [INJ2_PARENT_AV]; .lastevent; r; k; g" av
+g

@@ -1,0 +1,177 @@
+﻿{
+    "scope":  "offline_configuration_structure_only",
+    "size":  890,
+    "raw_strings_printed":  false,
+    "byte_class_ranges":  [
+                              {
+                                  "offset":  "0x0",
+                                  "length":  11,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0xb",
+                                  "length":  1,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0xc",
+                                  "length":  8,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x14",
+                                  "length":  1,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x15",
+                                  "length":  1,
+                                  "kind":  "ascii",
+                                  "label":  "hex_characters"
+                              },
+                              {
+                                  "offset":  "0x16",
+                                  "length":  2,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x18",
+                                  "length":  2,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x1a",
+                                  "length":  1,
+                                  "kind":  "ascii",
+                                  "label":  "hex_characters"
+                              },
+                              {
+                                  "offset":  "0x1b",
+                                  "length":  5,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x20",
+                                  "length":  1,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x21",
+                                  "length":  1,
+                                  "kind":  "ascii",
+                                  "label":  "hex_characters"
+                              },
+                              {
+                                  "offset":  "0x22",
+                                  "length":  2,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x24",
+                                  "length":  23,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x3b",
+                                  "length":  99,
+                                  "kind":  "ascii",
+                                  "label":  "base64_or_alphanumeric_characters"
+                              },
+                              {
+                                  "offset":  "0x9e",
+                                  "length":  1,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x9f",
+                                  "length":  99,
+                                  "kind":  "ascii",
+                                  "label":  "base64_or_alphanumeric_characters"
+                              },
+                              {
+                                  "offset":  "0x102",
+                                  "length":  1,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x103",
+                                  "length":  99,
+                                  "kind":  "ascii",
+                                  "label":  "base64_or_alphanumeric_characters"
+                              },
+                              {
+                                  "offset":  "0x166",
+                                  "length":  1,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x167",
+                                  "length":  10,
+                                  "kind":  "ascii",
+                                  "label":  "known_test_placeholder"
+                              },
+                              {
+                                  "offset":  "0x171",
+                                  "length":  500,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x365",
+                                  "length":  1,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x366",
+                                  "length":  3,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x369",
+                                  "length":  3,
+                                  "kind":  "ascii",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x36c",
+                                  "length":  2,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x36e",
+                                  "length":  3,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x371",
+                                  "length":  1,
+                                  "kind":  "binary",
+                                  "label":  "not_printed"
+                              },
+                              {
+                                  "offset":  "0x372",
+                                  "length":  8,
+                                  "kind":  "zero",
+                                  "label":  "not_printed"
+                              }
+                          ],
+    "metadata_tail_hex":  "01-00-00-00-3E-21-22-B4-01-00-00-00-01-00-00-00-00-00-00-00-00",
+    "authorization_proven":  false
+}

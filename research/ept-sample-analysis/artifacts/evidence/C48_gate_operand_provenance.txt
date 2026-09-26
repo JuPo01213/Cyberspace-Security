@@ -1,0 +1,78 @@
+== C48: provenance of the four gate operands, covering pass over main's whole body ==
+   function 0x1407a4b90..0x1407aa710 (23424 B); decoded 6323 instructions; covered 22944 B (98.0 %); stepped over 480 B
+   => the uncovered 480 B are the high-entropy stretches of §4.10; every "no write" below
+      is a statement about the decoded part only.
+
+-- controls (inside this same traversal) --
+   C1 instruction STARTING at 0x1407a7aec : cmp dword ptr [rip + 0x9ad1fa], r11d   PASS
+   C2 writes to eax/rax found by the walk: 535   PASS
+   C3 prologue pushes: push rbp; push rsi; push rdi; push r12; push r13   PASS
+
+-- what feeds the comparison --
+   r11d  : 22 writes in the decoded body (5 of them frame restores), 6 reads
+        -> NO write before the site inside decoded code => the value arrives from
+           outside it: an undecoded high-entropy stretch, or (for the callee-saved
+           ebx/r12) main's own caller.
+        calls before the site: 353 (last at 0x1407a7ae7)
+   ebx   : 159 writes in the decoded body (27 of them frame restores), 126 reads
+        last: 0x1407a769f  mov     ebx, 1                     
+        last: 0x1407a7962  mov     rbx, rax                   
+        last: 0x1407a7a13  pop     rbx                        (frame restore)
+        calls before the site: 353 (last at 0x1407a7ae7)
+   r12b  : 17 writes in the decoded body (3 of them frame restores), 27 reads
+        last: 0x1407a566a  lea     r12d, [r15 - 0x1a]         
+        last: 0x1407a6f3b  mov     r12d, 1                    
+        last: 0x1407a7449  xor     r12d, r12d                 
+        calls before the site: 353 (last at 0x1407a7ae7)
+   r12d  : 17 writes in the decoded body (3 of them frame restores), 27 reads
+        last: 0x1407a566a  lea     r12d, [r15 - 0x1a]         
+        last: 0x1407a6f3b  mov     r12d, 1                    
+        last: 0x1407a7449  xor     r12d, r12d                 
+        calls before the site: 353 (last at 0x1407a7ae7)
+
+-- the byte holes the walk could NOT decode, which bound every "no write" claim below --
+   378 holes, 480 B total; widest anywhere in main 6 B; holes >= 4 B: 0x1407a8231..0x1407a8235, 0x1407a8387..0x1407a838d, 0x1407a8d40..0x1407a8d44, 0x1407a98e0..0x1407a98e4, 0x1407a9aec..0x1407a9af0, 0x1407a9d12..0x1407a9d16
+   holes between 0x1407a5000 and the site: 17 of them, widest 2 B (0x1407a52ec..0x1407a52ed (1 B), 0x1407a52ef..0x1407a52f0 (1 B), 0x1407a58da..0x1407a58db (1 B), 0x1407a5bda..0x1407a5bdb (1 B), 0x1407a5c4a..0x1407a5c4b (1 B), 0x1407a6187..0x1407a6188 (1 B), 0x1407a61fe..0x1407a61ff (1 B), 0x1407a6fd0..0x1407a6fd1 (1 B), 0x1407a71d0..0x1407a71d1 (1 B), 0x1407a71e6..0x1407a71e7 (1 B), 0x1407a725b..0x1407a725c (1 B), 0x1407a7328..0x1407a7329 (1 B), 0x1407a7392..0x1407a7393 (1 B), 0x1407a7657..0x1407a7658 (1 B), 0x1407a771c..0x1407a771d (1 B), 0x1407a7805..0x1407a7807 (2 B), 0x1407a786c..0x1407a786d (1 B))
+   Shortest possible encoding of a write to the registers in question:
+        mov r12b, r11b       3 B
+        lea r11d, [..]       4 B
+        mov r11d, eax        5 B
+        xor r12d, r12d       5 B
+        mov r12d, imm32      7 B
+   => In the 0x1407a5000..site corridor the holes are all <= 2 B, i.e. too narrow for any
+      of the encodings above EXCEPT a 3-byte byte-register mov, so "no r11d write before
+      the site" holds for the 32-bit operand but NOT for r11b/r12b as a 3-byte write - which
+      matters because the gate compares r12b too (0x1407a7afd). Treat that one as bounded only
+      to 4 B+. The 26 B of >=4 B holes elsewhere in main are outside this corridor.
+
+
+-- window around the site, as decoded --
+   0x1407a7aaf  movups xmm0, xmmword ptr [rcx + 0x40] 0f104140
+   0x1407a7ab3  movups xmmword ptr [rdi + 0x40], xmm0 0f114740
+   0x1407a7ab7  movups xmm1, xmmword ptr [rcx + 0x50] 0f104950
+   0x1407a7abb  movups xmmword ptr [rdi + 0x50], xmm1 0f114f50
+   0x1407a7abf  movups xmm0, xmmword ptr [rcx + 0x60] 0f104160
+   0x1407a7ac3  movups xmmword ptr [rdi + 0x60], xmm0 0f114760
+   0x1407a7ac7  mov rax, qword ptr [rcx + 0x70]    488b4170
+   0x1407a7acb  mov qword ptr [rdi + 0x70], rax    48894770
+   0x1407a7acf  movzx eax, word ptr [rcx + 0x78]   0fb74178
+   0x1407a7ad3  mov word ptr [rdi + 0x78], ax      66894778
+   0x1407a7ad7  mov rcx, qword ptr [rbp - 0x40]    488b4dc0
+   0x1407a7adb  push rdx                           52
+   0x1407a7adc  call 0x14144a1c7                   e8e626ca00
+   0x1407a7ae1  xor edx, edx                       33d2
+   0x1407a7ae3  mov rcx, qword ptr [rbp]           488b4d00
+   0x1407a7ae7  call 0x1415a6087                   e89be5df00
+   0x1407a7aec  cmp dword ptr [rip + 0x9ad1fa], r11d 47391dfad19a00
+   0x1407a7af3  jne 0x1407a7b4f                    755a
+   0x1407a7af5  cmp dword ptr [rip + 0x9ad1f6], ebx 391df6d19a00
+   0x1407a7afb  jne 0x1407a7b4f                    7552
+   0x1407a7afd  cmp byte ptr [rip + 0x9acfe3], r12b 443825e3cf9a00
+   0x1407a7b04  je 0x1407a7b4f                     7449
+   0x1407a7b06  cmp dword ptr [rip + 0x9ad1dc], r12d 443925dcd19a00
+
+-- where those registers ARE written inside main --
+   r11d  : 0x1407a7cda, 0x1407a7d1f, 0x1407a85e3, 0x1407a85ed, 0x1407a85f4, 0x1407a85f8, 0x1407a8609, 0x1407a8717, 0x1407a886d, 0x1407a88b5, 0x1407a8cb8, 0x1407a9106, 0x1407a910d, 0x1407a9119, 0x1407a91d0, 0x1407a9f7a, 0x1407aa3eb, 0x1407aa5ef, 0x1407aa5f9, 0x1407aa601, 0x1407aa60e, 0x1407aa611
+   ebx   : 0x1407a4bec, 0x1407a4c7c, 0x1407a4c81, 0x1407a4ca6, 0x1407a4cc4, 0x1407a4cfa, 0x1407a4d18, 0x1407a4d29, 0x1407a4d5c, 0x1407a4d6d, 0x1407a4d84, 0x1407a4dd2, 0x1407a4df8, 0x1407a4e0c, 0x1407a4e60, 0x1407a4e82, 0x1407a4f61, 0x1407a5046, 0x1407a5063, 0x1407a5231, 0x1407a523b, 0x1407a533e, 0x1407a535b, 0x1407a53f5
+            (+135 more)
+   r12b  : 0x1407a4bd6, 0x1407a4c79, 0x1407a4d64, 0x1407a4ee2, 0x1407a531e, 0x1407a5370, 0x1407a566a, 0x1407a6f3b, 0x1407a7449, 0x1407a88ae, 0x1407a8bc9, 0x1407a9153, 0x1407a915d, 0x1407a916e, 0x1407a9675, 0x1407aa1c4, 0x1407aa6bd

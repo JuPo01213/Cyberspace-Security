@@ -1,0 +1,17 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-47",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "platform": "checkpoint restored per-run (residue-zero discipline); sample re-staged+hash-verified; config absent -> GUI path",
+  "hypothesis": "残留归零后 44 行为复现（GUI 全链 -> 载荷空壳 -> FATAL_THUNK）；合成返回落 109b/eax=1 强制第二闸门 -> 成功路径 b08e4(1,0) -> main 返回 -> 工作线程 Run 调度 -> RC00 推进。",
+  "acceptance_fields": {
+    "gui_chain": null,
+    "wfw_sizes": null,
+    "synthret_executed": null,
+    "gate2_forced": null,
+    "main_returned": null,
+    "process_alive_after": null,
+    "rc00_region_evidence": null
+  },
+  "deadline_sec": 720,
+  "verdict": "47: INVALID_INSTRUMENT(prompt-hang on uncovered first-chance exceptions in COM phase -> sxi fix in 48); 48: POSITIVE(观测) — full GUI chain + payload-create + 7.9MB WriteFile attempt (file left 0 bytes) + FATAL_THUNK synthret landed 109b/eax=1 -> success path b08e4(1,0) -> main returned cleanly (RtlExitUserThread) -> process exit (no worker kept alive). RC00 not reached: deployment completion (service start) blocked in isolated env."
+}

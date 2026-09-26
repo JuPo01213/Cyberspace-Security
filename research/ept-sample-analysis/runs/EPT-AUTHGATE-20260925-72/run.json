@@ -1,0 +1,24 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-72",
+  "evidence_scope": "real_sample_guest_run",
+  "response_source_annotation": {
+    "framework": "AGENTS.md",
+    "classification_this_run": "real_sample_guest_run + 被动网络观测",
+    "mock_listener_role": "HttpListener 仅记录样本发起的请求(method/url/body), 统一回 200 'OK' 两个字节——若样本将收到的 200 视为服务器响应并据此推进, 则响应部分构成受控注入 ⇒ 该轮降级标注 real_sample_guest_run_injected_io (网络 I/O 边界受控响应); 仅记录不响应的部分仍为自然观测。逐事件判定。"
+  },
+  "prior_finding": "run 71: \\Device\\HP_WKS_SWTOOLS_DRIVER 因此前测试残留自始在线(183 冲突), 样本全程未发 0x9c40xxxx IOCTL ⇒ 驱动源假设(经 kernelbase API)被削弱, 转向网络源假设",
+  "hypothesis": "HWID 阶段的输入来源 = yz.hwid001.com(钉扎 127.0.0.1)的网络响应: 样本 HWID/授权阶段会向钉扎地址发起 HTTP(S) 请求(至少一次), mock 监听器(:80/:8080/:8000/:8001)将捕获请求行与请求体(预计含指纹/卡密); 若无 HTTP 命中但 netstat 显示对 127.0.0.1:443 的连接尝试 ⇒ 样本走 HTTPS, 需要证书绑定后重做。",
+  "falsifiable_predictions": {
+    "P2_confirmed": "requests.ndjson 出现样本发源请求(非我们的探测), 请求体含指纹/卡密数据 ⇒ 输入源=网络",
+    "P2_refirmed_A": "无请求且无连接 ⇒ HWID 输入既非驱动也非网络(本地文件/注册表/纯本地计算), 转 E-3",
+    "P2_refirmed_B": "netstat 有 127.0.0.1:443 SYN 无完成请求 ⇒ HTTPS, 加证书绑定重做"
+  },
+  "acceptance_fields": {
+    "http_requests": "requests.ndjson 条目(method/url/body)",
+    "netstat_connections": "对 127.0.0.1 的连接记录",
+    "dioc_hits": "本轮 DIOC(对照)",
+    "fatal_present": "FATAL_THUNK 是否出现"
+  },
+  "deadline": "2 轮循环, 每轮 25 分钟收割",
+  "stop_loss": "2 轮无网络活动 ⇒ 归档 P2_refuted, 转 E-3(本地文件源假设)"
+}

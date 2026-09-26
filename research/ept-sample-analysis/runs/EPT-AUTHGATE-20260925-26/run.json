@@ -1,0 +1,28 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-26",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "objective": "Test whether a stage-generic runtime release at the shared stage-log wrapper return (0x14078ff03) lets the real Setup verification chain advance past Setup.SP_Verify_GetServerOption/GetNotice into the remaining stages (CardLogin/IsLogin/SaveConfig/StoredAuthorizationUsableAfterSave), and observe what the sample subsequently does.",
+  "hypothesis": "The virtualized Setup driver carries each stage return code in a callee-saved register (observed rbx=fffffffd at site 0x142037706 in run 24) across the shared log-wrapper call; the wrapper epilogue restores that register before ret, so zeroing eax/ebx at the fixed wrapper ret 0x14078ff03 after a logged failure makes the driver treat the stage as successful.",
+  "discriminator": "chain advances (new stage tags beyond GetNotice, e.g. CardLogin/IsLogin/SaveConfig/StoredAuthorizationUsableAfterSave) vs chain stalls at GetNotice or earlier (no new tags).",
+  "changed_variable_vs_run24": "single-site one-time force at 0x142037706 replaced by conditional stage-generic force at shared wrapper ret 0x14078ff03; message-box skip family extended; FatalExit changed from skip to observer-only.",
+  "observation_mode": "attach-after-launch (CDB attaches natural EPT_* temp child started by parent C:/ept_core/Hardware.exe under SYSTEM scheduled task)",
+  "acceptance": [
+    "stage log captured with original codes per stage (STAGE_LOG lines)",
+    "presence/absence of stage tags beyond GetNotice recorded",
+    "every forced stage marked FORCED_ZERO with the forcing site fixed at 0x14078ff03",
+    "post_snapshot flags: tasks/log_dirs/files/hardware_dir/services/drivers/procs",
+    "no response injection, no card value fabrication, in-memory writes only"
+  ],
+  "control_adapter": "Hyper-V PowerShell Direct (<VM_USER>)",
+  "data_adapter": "Copy-Item ToSession/FromSession over the same PSSession",
+  "completion_source": "cdb.stdout.txt + events.ndjson + post_snapshot.json",
+  "writer_lock": "exclusive scheduled task name EPT-EPT-AUTHGATE-20260925-26; prep kills leftover Hardware/EPT_/cdb processes; single operator session",
+  "vm": "<VM_LABEL> (Windows 10 Pro 19045, Gen1, adapter disconnected)",
+  "target": {"path": "C:/ept_core/Hardware.exe", "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"},
+  "authority_sample": {"path": "<HOST_PATH>/EPT/sample/EPT专业游戏维修工具箱V5.1.exe", "sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2"},
+  "instrument_canary": "canary_syntax.cdb run against benign cmd.exe before task registration; task not registered unless all markers present and no Syntax error",
+  "expected_duration_sec": 240,
+  "deadline_sec": 300,
+  "timeout_action": "host kills cdb at harvest; run classified INCONCLUSIVE if no stage evidence",
+  "stop_conditions": ["deadline", "process exit", "FatalExit hit (observer-only)", "debugger stall"]
+}

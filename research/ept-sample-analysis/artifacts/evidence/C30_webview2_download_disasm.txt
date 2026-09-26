@@ -1,0 +1,439 @@
+# C30 - WebView2 下载安装路径的字节码取证（对应旧文 §10.4 的安全断言）
+# 手段：marshal 加载 .pyc + dis 反汇编；不执行任何样本字节码；不访问网络
+
+=== <module>._verify_webview2_files   (132 条指令, 行跨度 482..516) ===
+    co_names: ['os', 'glob', 'environ', 'get', 'path', 'isdir', 'join', 'isfile', '_debug_log']
+    @40   LOAD_ATTR      get + NULL|self
+          前文: LOAD_CONST None | IMPORT_NAME glob | STORE_FAST _g2 | LOAD_FAST _os2 | LOAD_ATTR environ | LOAD_ATTR get + NULL|self
+    @64   CALL           
+          前文: LOAD_FAST _os2 | LOAD_ATTR environ | LOAD_ATTR get + NULL|self | LOAD_CONST 'PROGRAMFILES(X86)' | LOAD_CONST 'C:\\Program Files (x86)' | CALL 
+    @94   LOAD_ATTR      get + NULL|self
+          前文: LOAD_CONST 'PROGRAMFILES(X86)' | LOAD_CONST 'C:\\Program Files (x86)' | CALL  | LOAD_FAST _os2 | LOAD_ATTR environ | LOAD_ATTR get + NULL|self
+    @118  CALL           
+          前文: LOAD_FAST _os2 | LOAD_ATTR environ | LOAD_ATTR get + NULL|self | LOAD_CONST 'PROGRAMFILES' | LOAD_CONST 'C:\\Program Files' | CALL 
+    @148  LOAD_ATTR      get + NULL|self
+          前文: LOAD_CONST 'PROGRAMFILES' | LOAD_CONST 'C:\\Program Files' | CALL  | LOAD_FAST _os2 | LOAD_ATTR environ | LOAD_ATTR get + NULL|self
+    @172  CALL           
+          前文: LOAD_FAST _os2 | LOAD_ATTR environ | LOAD_ATTR get + NULL|self | LOAD_CONST 'LOCALAPPDATA' | LOAD_CONST 'C:\\Users' | CALL 
+    @184  LOAD_CONST     False
+          前文: LOAD_CONST 'LOCALAPPDATA' | LOAD_CONST 'C:\\Users' | CALL  | BUILD_LIST  | STORE_FAST program_files_paths | LOAD_CONST False
+    @256  CALL           
+          前文: POP_JUMP_IF_FALSE to L2 | LOAD_FAST _os2 | LOAD_ATTR path | LOAD_ATTR isdir + NULL|self | LOAD_FAST base | CALL 
+    @334  CALL           
+          前文: LOAD_CONST 'Microsoft' | LOAD_CONST 'EdgeWebView' | LOAD_CONST 'Application' | LOAD_CONST '*' | LOAD_CONST 'msedgewebview2.exe' | CALL 
+    @400  CALL           
+          前文: LOAD_CONST 'Application' | LOAD_CONST '*' | LOAD_CONST 'EBWebView' | LOAD_CONST 'x64' | LOAD_CONST 'EmbeddedBrowserWebView.dll' | CALL 
+    @460  CALL           
+          前文: LOAD_FAST base | LOAD_CONST 'Microsoft' | LOAD_CONST 'EdgeCore' | LOAD_CONST '*' | LOAD_CONST 'msedgewebview2.exe' | CALL 
+    @506  CALL           
+          前文: FOR_ITER to L10 | STORE_FAST pattern | LOAD_FAST _g2 | LOAD_ATTR glob + NULL|self | LOAD_FAST pattern | CALL 
+    @570  CALL           
+          前文: STORE_FAST m | LOAD_FAST _os2 | LOAD_ATTR path | LOAD_ATTR isfile + NULL|self | LOAD_FAST m | CALL 
+    @616  CALL           
+          前文: LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '[WebView2文件验证] 找到: ' | LOAD_FAST m | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    URL 常量: []
+    可执行体常量: ['msedgewebview2.exe']
+    False 常量存在: True
+
+=== <module>._wv2_download_bootstrapper   (400 条指令, 行跨度 598..682) ===
+    co_names: ['tempfile', 'requests', 'requests.adapters', 'HTTPAdapter', 'urllib3.util.ssl_', 'create_urllib3_context', 'ssl', 'enumerate', '_WV2_BOOTSTRAPPER_URLS', '_debug_log', 'SplashScreen', 'set_backend_status', 'set_confirm_btn_enabled', 'Session', 'mount', 'headers', 'update', 'get', 'raise_for_status', 'int', 'open', 'iter_content', 'write', 'len', 'min', 'os', 'path', 'getsize', 'remove', 'Exception', 'exists', 'rename', 'time', 'sleep']
+    @74   CALL           
+          前文: LOAD_CONST <code object _TLSAdapter at 0x00000273F6 | MAKE_FUNCTION  | SET_FUNCTION_ATTRIBUTE closure | LOAD_CONST '_TLSAdapter' | LOAD_FAST HTTPAdapter | CALL 
+    @84   LOAD_CONST     False
+          前文: SET_FUNCTION_ATTRIBUTE closure | LOAD_CONST '_TLSAdapter' | LOAD_FAST HTTPAdapter | CALL  | STORE_FAST _TLSAdapter | LOAD_CONST False
+    @108  CALL           
+          前文: STORE_FAST _TLSAdapter | LOAD_CONST False | STORE_FAST downloaded | LOAD_GLOBAL enumerate + NULL | LOAD_GLOBAL _WV2_BOOTSTRAPPER_URLS | CALL 
+    @178  CALL           
+          前文: FORMAT_SIMPLE  | LOAD_CONST ': ' | LOAD_FAST url | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @220  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '正在下载系统组件... 0%' | CALL 
+    @260  LOAD_CONST     False
+          前文: LOAD_CONST '正在下载系统组件... 0%' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @264  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ⏳  正在下载组件...  ' | CALL 
+    @296  CALL           
+          前文: LOAD_CONST '  ⏳  正在下载组件...  ' | CALL  | POP_TOP  | LOAD_FAST _req2 | LOAD_ATTR Session + NULL|self | CALL 
+    @334  CALL           
+          前文: LOAD_FAST session | LOAD_ATTR mount + NULL|self | LOAD_CONST 'https://' | LOAD_FAST _TLSAdapter | PUSH_NULL  | CALL 
+    @342  CALL           
+          前文: LOAD_ATTR mount + NULL|self | LOAD_CONST 'https://' | LOAD_FAST _TLSAdapter | PUSH_NULL  | CALL  | CALL 
+    @400  CALL           
+          前文: LOAD_ATTR headers | LOAD_ATTR update + NULL|self | LOAD_CONST 'User-Agent' | LOAD_CONST 'Mozilla/5.0 (Windows NT 10.0; Win64; x6 | BUILD_MAP  | CALL 
+    @412  LOAD_ATTR      get + NULL|self
+          前文: LOAD_CONST 'Mozilla/5.0 (Windows NT 10.0; Win64; x6 | BUILD_MAP  | CALL  | POP_TOP  | LOAD_FAST session | LOAD_ATTR get + NULL|self
+    @438  LOAD_CONST     False
+          前文: LOAD_FAST session | LOAD_ATTR get + NULL|self | LOAD_FAST url | LOAD_CONST True | LOAD_CONST 60 | LOAD_CONST False
+    @442  CALL_KW        
+          前文: LOAD_FAST url | LOAD_CONST True | LOAD_CONST 60 | LOAD_CONST False | LOAD_CONST ('stream', 'timeout', 'verify') | CALL_KW 
+    @468  CALL           
+          前文: LOAD_CONST ('stream', 'timeout', 'verify') | CALL_KW  | STORE_FAST resp | LOAD_FAST resp | LOAD_ATTR raise_for_status + NULL|self | CALL 
+    @510  LOAD_ATTR      get + NULL|self
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL int + NULL | LOAD_FAST resp | LOAD_ATTR headers | LOAD_ATTR get + NULL|self
+    @534  CALL           
+          前文: LOAD_FAST resp | LOAD_ATTR headers | LOAD_ATTR get + NULL|self | LOAD_CONST 'content-length' | LOAD_CONST 0 | CALL 
+    @542  CALL           
+          前文: LOAD_ATTR headers | LOAD_ATTR get + NULL|self | LOAD_CONST 'content-length' | LOAD_CONST 0 | CALL  | CALL 
+    @570  CALL           
+          前文: LOAD_CONST 0 | STORE_FAST downloaded_bytes | LOAD_GLOBAL open + NULL | LOAD_FAST tmp_path | LOAD_CONST 'wb' | CALL 
+    @608  CALL_KW        
+          前文: STORE_FAST f | LOAD_FAST resp | LOAD_ATTR iter_content + NULL|self | LOAD_CONST 65536 | LOAD_CONST ('chunk_size',) | CALL_KW 
+    @660  CALL           
+          前文: POP_JUMP_IF_TRUE to L3 | JUMP_BACKWARD to L2 | LOAD_FAST f | LOAD_ATTR write + NULL|self | LOAD_FAST chunk | CALL 
+    @684  CALL           
+          前文: CALL  | POP_TOP  | LOAD_FAST downloaded_bytes | LOAD_GLOBAL len + NULL | LOAD_FAST chunk | CALL 
+    @744  CALL           
+          前文: LOAD_FAST downloaded_bytes | LOAD_CONST 100 | BINARY_OP * | LOAD_FAST total_size | BINARY_OP / | CALL 
+    @754  CALL           
+          前文: BINARY_OP * | LOAD_FAST total_size | BINARY_OP / | CALL  | LOAD_CONST 100 | CALL 
+    @840  CALL           
+          前文: LOAD_FAST total_mb | LOAD_CONST '.1f' | FORMAT_WITH_SPEC  | LOAD_CONST ' MB)' | BUILD_STRING  | CALL 
+    @906  CALL           
+          前文: LOAD_FAST dl_mb | LOAD_CONST '.1f' | FORMAT_WITH_SPEC  | LOAD_CONST ' MB' | BUILD_STRING  | CALL 
+    @930  CALL           
+          前文: END_FOR  | POP_TOP  | LOAD_CONST None | LOAD_CONST None | LOAD_CONST None | CALL 
+    @970  LOAD_ATTR      getsize + NULL|self
+          前文: LOAD_CONST None | CALL  | POP_TOP  | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self
+    @992  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self | LOAD_FAST tmp_path | CALL 
+    @1064 LOAD_ATTR      getsize + NULL|self
+          前文: BINARY_OP + | FORMAT_SIMPLE  | LOAD_CONST ' 文件过小(' | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self
+    @1086 CALL           
+          前文: LOAD_CONST ' 文件过小(' | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self | LOAD_FAST tmp_path | CALL 
+    @1100 CALL           
+          前文: LOAD_FAST tmp_path | CALL  | FORMAT_SIMPLE  | LOAD_CONST '字节)，疑似无效' | BUILD_STRING  | CALL 
+    @1144 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST tmp_path | CALL 
+    @1166 CALL           
+          前文: LOAD_FAST tmp_path | CALL  | POP_TOP  | LOAD_GLOBAL Exception + NULL | LOAD_CONST '下载文件过小，疑似无效响应' | CALL 
+    @1228 CALL           
+          前文: RAISE_VARARGS  | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR exists + NULL|self | LOAD_FAST dest_path | CALL 
+    @1282 CALL           
+          前文: POP_JUMP_IF_FALSE to L9 | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST dest_path | CALL 
+    @1326 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL os | LOAD_ATTR rename | PUSH_NULL  | LOAD_FAST_LOAD_FAST tmp_path, dest_path | CALL 
+    @1394 LOAD_ATTR      getsize + NULL|self
+          前文: BINARY_OP + | FORMAT_SIMPLE  | LOAD_CONST ' 下载成功(' | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self
+    @1416 CALL           
+          前文: LOAD_CONST ' 下载成功(' | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self | LOAD_FAST dest_path | CALL 
+    @1430 CALL           
+          前文: LOAD_FAST dest_path | CALL  | FORMAT_SIMPLE  | LOAD_CONST '字节)' | BUILD_STRING  | CALL 
+    @1568 CALL           
+          前文: FORMAT_SIMPLE  | LOAD_CONST ' 失败: ' | LOAD_FAST e | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @1612 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST tmp_path | CALL 
+    @1660 CALL           
+          前文: POP_EXCEPT  | RERAISE  | LOAD_FAST i | LOAD_GLOBAL len + NULL | LOAD_GLOBAL _WV2_BOOTSTRAPPER_URLS | CALL 
+    @1714 CALL           
+          前文: COMPARE_OP bool(<) | POP_JUMP_IF_FALSE to L13 | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '下载失败，正在切换备用线路...' | CALL 
+    @1754 LOAD_CONST     False
+          前文: LOAD_CONST '下载失败，正在切换备用线路...' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @1758 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ⏳  切换下载线路...  ' | CALL 
+    @1802 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL time | LOAD_ATTR sleep | PUSH_NULL  | LOAD_CONST 1 | CALL 
+    URL 常量: ['https://']
+    可执行体常量: []
+    False 常量存在: True
+
+=== <module>._update_webview2_silently   (245 条指令, 行跨度 719..787) ===
+    co_names: ['_debug_log', 'SplashScreen', 'set_backend_status', 'set_confirm_btn_enabled', 'tempfile', 'os', 'path', 'join', 'gettempdir', '_wv2_download_bootstrapper', '_wv2_open_browser_fallback', 'threading', 'Thread', '_wv2_simulate_install_progress', 'start', 'subprocess', 'run', 'CREATE_NO_WINDOW', '_WV2_INSTALL_PROGRESS', 'remove', 'Exception', 'returncode', 'time', 'sleep', 'stderr', 'decode']
+    @22   CALL           
+          前文: LOAD_CONST '开始静默更新 WebView2 Runtime (旧版本: ' | LOAD_FAST old_version | FORMAT_SIMPLE  | LOAD_CONST ')...' | BUILD_STRING  | CALL 
+    @64   CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '正在准备更新系统组件...' | CALL 
+    @104  LOAD_CONST     False
+          前文: LOAD_CONST '正在准备更新系统组件...' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @108  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ⏳  正在准备组件...  ' | CALL 
+    @182  LOAD_ATTR      gettempdir
+          前文: STORE_FAST bootstrapper_name | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR join + NULL|self | LOAD_FAST tempfile | LOAD_ATTR gettempdir
+    @204  CALL           
+          前文: LOAD_ATTR path | LOAD_ATTR join + NULL|self | LOAD_FAST tempfile | LOAD_ATTR gettempdir | PUSH_NULL  | CALL 
+    @214  CALL           
+          前文: LOAD_FAST tempfile | LOAD_ATTR gettempdir | PUSH_NULL  | CALL  | LOAD_FAST bootstrapper_name | CALL 
+    @236  CALL           
+          前文: LOAD_FAST bootstrapper_name | CALL  | STORE_FAST bootstrapper_path | LOAD_GLOBAL _wv2_download_bootstrapper + NULL | LOAD_FAST bootstrapper_path | CALL 
+    @268  CALL           
+          前文: CALL  | TO_BOOL  | POP_JUMP_IF_TRUE to L1 | LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '所有下载源均失败，自动打开浏览器下载页...' | CALL 
+    @288  CALL           
+          前文: LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '所有下载源均失败，自动打开浏览器下载页...' | CALL  | POP_TOP  | LOAD_GLOBAL _wv2_open_browser_fallback + NULL | CALL 
+    @330  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 自动下载失败，已帮您打开下载页面' | CALL 
+    @370  LOAD_CONST     False
+          前文: LOAD_CONST '✗ 自动下载失败，已帮您打开下载页面' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @374  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  下载失败  ' | CALL 
+    @416  LOAD_CONST     False
+          前文: CALL  | POP_TOP  | RETURN_CONST False | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @420  CALL           
+          前文: RETURN_CONST False | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ⏳  正在安装组件...  ' | CALL 
+    @476  CALL_KW        
+          前文: LOAD_ATTR Thread | PUSH_NULL  | LOAD_GLOBAL _wv2_simulate_install_progress | LOAD_CONST True | LOAD_CONST ('target', 'daemon') | CALL_KW 
+    @502  CALL           
+          前文: LOAD_CONST ('target', 'daemon') | CALL_KW  | STORE_FAST _install_progress_thread | LOAD_FAST _install_progress_thread | LOAD_ATTR start + NULL|self | CALL 
+    @526  CALL           
+          前文: CALL  | POP_TOP  | NOP  | LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '下载完成，开始静默安装...' | CALL 
+    @612  CALL_KW        
+          前文: LOAD_CONST True | LOAD_CONST 300 | LOAD_GLOBAL subprocess | LOAD_ATTR CREATE_NO_WINDOW | LOAD_CONST ('capture_output', 'timeout', 'creationf | CALL_KW 
+    @660  CALL_KW        
+          前文: STORE_SUBSCR  | LOAD_FAST _install_progress_thread | LOAD_ATTR join + NULL|self | LOAD_CONST 2 | LOAD_CONST ('timeout',) | CALL_KW 
+    @700  CALL           
+          前文: NOP  | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST bootstrapper_path | CALL 
+    @814  CALL           
+          前文: LOAD_FAST result | LOAD_ATTR returncode | FORMAT_SIMPLE  | LOAD_CONST ')' | BUILD_STRING  | CALL 
+    @856  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '正在安装系统组件... 100%' | CALL 
+    @900  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL time | LOAD_ATTR sleep | PUSH_NULL  | LOAD_CONST 0.5 | CALL 
+    @942  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✓ 系统组件更新完成' | CALL 
+    @986  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL time | LOAD_ATTR sleep | PUSH_NULL  | LOAD_CONST 1.5 | CALL 
+    @1080 CALL_KW        
+          前文: LOAD_ATTR stderr | LOAD_ATTR decode + NULL|self | LOAD_CONST 'gbk' | LOAD_CONST 'ignore' | LOAD_CONST ('errors',) | CALL_KW 
+    @1132 CALL           
+          前文: FORMAT_SIMPLE  | LOAD_CONST ', Error=' | LOAD_FAST error_msg | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @1174 CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 系统组件更新失败' | CALL 
+    @1214 LOAD_CONST     False
+          前文: LOAD_CONST '✗ 系统组件更新失败' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @1218 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  安装失败  ' | CALL 
+    @1320 CALL           
+          前文: LOAD_GLOBAL _debug_log + NULL | LOAD_CONST 'WebView2 更新异常: ' | LOAD_FAST e | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @1362 CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 系统组件更新异常' | CALL 
+    @1402 LOAD_CONST     False
+          前文: LOAD_CONST '✗ 系统组件更新异常' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @1406 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  安装异常  ' | CALL 
+    URL 常量: []
+    可执行体常量: ['MicrosoftEdgeWebview2Setup.exe']
+    False 常量存在: True
+
+=== <module>.install_webview2   (267 条指令, 行跨度 790..861) ===
+    co_names: ['_debug_log', 'SplashScreen', 'set_backend_status', 'set_confirm_btn_enabled', 'tempfile', 'os', 'path', 'join', 'gettempdir', '_wv2_download_bootstrapper', '_wv2_open_browser_fallback', 'threading', 'Thread', '_wv2_simulate_install_progress', 'start', 'subprocess', 'run', 'CREATE_NO_WINDOW', '_WV2_INSTALL_PROGRESS', 'remove', 'Exception', 'returncode', 'time', 'sleep', 'stderr', 'decode', 'TimeoutExpired']
+    @14   CALL           
+          前文: RESUME  | LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '开始下载并安装 WebView2 Runtime...' | CALL 
+    @56   CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '正在准备安装系统组件...' | CALL 
+    @96   LOAD_CONST     False
+          前文: LOAD_CONST '正在准备安装系统组件...' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @100  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ⏳  正在准备组件...  ' | CALL 
+    @174  LOAD_ATTR      gettempdir
+          前文: STORE_FAST bootstrapper_name | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR join + NULL|self | LOAD_FAST tempfile | LOAD_ATTR gettempdir
+    @196  CALL           
+          前文: LOAD_ATTR path | LOAD_ATTR join + NULL|self | LOAD_FAST tempfile | LOAD_ATTR gettempdir | PUSH_NULL  | CALL 
+    @206  CALL           
+          前文: LOAD_FAST tempfile | LOAD_ATTR gettempdir | PUSH_NULL  | CALL  | LOAD_FAST bootstrapper_name | CALL 
+    @228  CALL           
+          前文: LOAD_FAST bootstrapper_name | CALL  | STORE_FAST bootstrapper_path | LOAD_GLOBAL _wv2_download_bootstrapper + NULL | LOAD_FAST bootstrapper_path | CALL 
+    @260  CALL           
+          前文: CALL  | TO_BOOL  | POP_JUMP_IF_TRUE to L1 | LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '所有下载源均失败，自动打开浏览器下载页...' | CALL 
+    @280  CALL           
+          前文: LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '所有下载源均失败，自动打开浏览器下载页...' | CALL  | POP_TOP  | LOAD_GLOBAL _wv2_open_browser_fallback + NULL | CALL 
+    @322  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 自动下载失败，已帮您打开下载页面' | CALL 
+    @362  LOAD_CONST     False
+          前文: LOAD_CONST '✗ 自动下载失败，已帮您打开下载页面' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @366  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  下载失败  ' | CALL 
+    @408  LOAD_CONST     False
+          前文: CALL  | POP_TOP  | RETURN_CONST False | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @412  CALL           
+          前文: RETURN_CONST False | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ⏳  正在安装组件...  ' | CALL 
+    @468  CALL_KW        
+          前文: LOAD_ATTR Thread | PUSH_NULL  | LOAD_GLOBAL _wv2_simulate_install_progress | LOAD_CONST True | LOAD_CONST ('target', 'daemon') | CALL_KW 
+    @494  CALL           
+          前文: LOAD_CONST ('target', 'daemon') | CALL_KW  | STORE_FAST _install_progress_thread | LOAD_FAST _install_progress_thread | LOAD_ATTR start + NULL|self | CALL 
+    @518  CALL           
+          前文: CALL  | POP_TOP  | NOP  | LOAD_GLOBAL _debug_log + NULL | LOAD_CONST '下载完成，开始静默安装...' | CALL 
+    @604  CALL_KW        
+          前文: LOAD_CONST True | LOAD_CONST 300 | LOAD_GLOBAL subprocess | LOAD_ATTR CREATE_NO_WINDOW | LOAD_CONST ('capture_output', 'timeout', 'creationf | CALL_KW 
+    @652  CALL_KW        
+          前文: STORE_SUBSCR  | LOAD_FAST _install_progress_thread | LOAD_ATTR join + NULL|self | LOAD_CONST 2 | LOAD_CONST ('timeout',) | CALL_KW 
+    @692  CALL           
+          前文: NOP  | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST bootstrapper_path | CALL 
+    @806  CALL           
+          前文: LOAD_FAST result | LOAD_ATTR returncode | FORMAT_SIMPLE  | LOAD_CONST ')' | BUILD_STRING  | CALL 
+    @848  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '正在安装系统组件... 100%' | CALL 
+    @892  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL time | LOAD_ATTR sleep | PUSH_NULL  | LOAD_CONST 0.5 | CALL 
+    @934  CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✓ 系统组件安装完成' | CALL 
+    @978  CALL           
+          前文: POP_TOP  | LOAD_GLOBAL time | LOAD_ATTR sleep | PUSH_NULL  | LOAD_CONST 1.5 | CALL 
+    @1072 CALL_KW        
+          前文: LOAD_ATTR stderr | LOAD_ATTR decode + NULL|self | LOAD_CONST 'gbk' | LOAD_CONST 'ignore' | LOAD_CONST ('errors',) | CALL_KW 
+    @1124 CALL           
+          前文: FORMAT_SIMPLE  | LOAD_CONST ', Error=' | LOAD_FAST error_msg | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @1166 CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 系统组件安装失败' | CALL 
+    @1206 LOAD_CONST     False
+          前文: LOAD_CONST '✗ 系统组件安装失败' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @1210 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  安装失败  ' | CALL 
+    @1326 CALL           
+          前文: LOAD_GLOBAL _WV2_INSTALL_PROGRESS | LOAD_CONST 'stop' | STORE_SUBSCR  | LOAD_GLOBAL _debug_log + NULL | LOAD_CONST 'WebView2 安装超时' | CALL 
+    @1368 CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 系统组件安装超时' | CALL 
+    @1408 LOAD_CONST     False
+          前文: LOAD_CONST '✗ 系统组件安装超时' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @1412 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  安装超时  ' | CALL 
+    @1480 CALL           
+          前文: LOAD_GLOBAL _debug_log + NULL | LOAD_CONST 'WebView2 安装异常: ' | LOAD_FAST e | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @1522 CALL           
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_backend_status + NULL|self | LOAD_CONST '✗ 系统组件安装出错' | CALL 
+    @1562 LOAD_CONST     False
+          前文: LOAD_CONST '✗ 系统组件安装出错' | CALL  | POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False
+    @1566 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL SplashScreen | LOAD_ATTR set_confirm_btn_enabled + NULL|self | LOAD_CONST False | LOAD_CONST '  ✗  安装出错  ' | CALL 
+    URL 常量: []
+    可执行体常量: ['MicrosoftEdgeWebview2Setup.exe']
+    False 常量存在: True
+
+=== <module>._fetch_feishu_notice   (157 条指令, 行跨度 3243..3306) ===
+    co_names: ['re', 'requests', 'ssl', 'requests.adapters', 'HTTPAdapter', 'urllib3.util.ssl_', 'create_urllib3_context', 'Session', 'headers', 'update', 'mount', 'get', '_NOTICE_URL', 'text', 'findall', 'sub', 'strip', 'replace', 'append', 'len', 'join', 'Exception']
+    @88   CALL           
+          前文: LOAD_CONST <code object TLSAdapter at 0x00000273F70 | MAKE_FUNCTION  | SET_FUNCTION_ATTRIBUTE closure | LOAD_CONST 'TLSAdapter' | LOAD_FAST HTTPAdapter | CALL 
+    @120  CALL           
+          前文: LOAD_FAST HTTPAdapter | CALL  | STORE_FAST TLSAdapter | LOAD_FAST _req | LOAD_ATTR Session + NULL|self | CALL 
+    @174  CALL           
+          前文: STORE_FAST session | LOAD_FAST session | LOAD_ATTR headers | LOAD_ATTR update + NULL|self | LOAD_FAST headers | CALL 
+    @212  CALL           
+          前文: LOAD_FAST session | LOAD_ATTR mount + NULL|self | LOAD_CONST 'https://' | LOAD_FAST TLSAdapter | PUSH_NULL  | CALL 
+    @220  CALL           
+          前文: LOAD_ATTR mount + NULL|self | LOAD_CONST 'https://' | LOAD_FAST TLSAdapter | PUSH_NULL  | CALL  | CALL 
+    @232  LOAD_ATTR      get + NULL|self
+          前文: PUSH_NULL  | CALL  | CALL  | POP_TOP  | LOAD_FAST session | LOAD_ATTR get + NULL|self
+    @264  LOAD_CONST     False
+          前文: POP_TOP  | LOAD_FAST session | LOAD_ATTR get + NULL|self | LOAD_GLOBAL _NOTICE_URL | LOAD_CONST 15 | LOAD_CONST False
+    @268  CALL_KW        
+          前文: LOAD_ATTR get + NULL|self | LOAD_GLOBAL _NOTICE_URL | LOAD_CONST 15 | LOAD_CONST False | LOAD_CONST ('timeout', 'verify') | CALL_KW 
+    @322  CALL           
+          前文: STORE_FAST html | LOAD_FAST _re | LOAD_ATTR findall + NULL|self | LOAD_CONST '<span[^>]*data-leaf[^>]*>(.*?)</span>' | LOAD_FAST html | CALL 
+    @374  CALL           
+          前文: LOAD_FAST _re | LOAD_ATTR sub + NULL|self | LOAD_CONST '<[^>]+>' | LOAD_CONST '' | LOAD_FAST m | CALL 
+    @402  CALL           
+          前文: LOAD_CONST '<[^>]+>' | LOAD_CONST '' | LOAD_FAST m | CALL  | LOAD_ATTR strip + NULL|self | CALL 
+    @438  CALL           
+          前文: STORE_FAST text | LOAD_FAST text | LOAD_ATTR replace + NULL|self | LOAD_CONST '\u200b' | LOAD_CONST '' | CALL 
+    @470  CALL           
+          前文: LOAD_CONST '' | CALL  | LOAD_ATTR replace + NULL|self | LOAD_CONST '\u200c' | LOAD_CONST '' | CALL 
+    @502  CALL           
+          前文: LOAD_CONST '' | CALL  | LOAD_ATTR replace + NULL|self | LOAD_CONST '\u200d' | LOAD_CONST '' | CALL 
+    @554  CALL           
+          前文: POP_JUMP_IF_TRUE to L2 | JUMP_BACKWARD to L1 | LOAD_FAST texts | LOAD_ATTR append + NULL|self | LOAD_FAST text | CALL 
+    @600  CALL           
+          前文: TO_BOOL  | POP_JUMP_IF_TRUE to L4 | RETURN_CONST '' | LOAD_GLOBAL len + NULL | LOAD_FAST texts | CALL 
+    @662  CALL           
+          前文: BINARY_SLICE  | STORE_FAST body_lines | LOAD_CONST '\n' | LOAD_ATTR join + NULL|self | LOAD_FAST body_lines | CALL 
+    URL 常量: ['https://']
+    可执行体常量: []
+    False 常量存在: True
+
+=== <module>._download_file   (619 条指令, 行跨度 2250..2403) ===
+    co_names: ['time', 'urllib.parse', 'unquote', 'urlparse', 'os', 'path', 'basename', 'requests', 'get', 'raise_for_status', 'int', 'headers', 're', 'search', 'group', 'strip', 'startswith', 'Exception', 'splitext', 'lower', 'join', 'open', 'iter_content', 'write', 'len', 'append', 'pop', 'print', 'remove', '_wait_file_ready', 'exists', 'getsize']
+    @42   CALL           
+          前文: BUILD_CONST_KEY_MAP  | STORE_FAST dl_headers | LOAD_FAST urlparse | PUSH_NULL  | LOAD_FAST url | CALL 
+    @124  CALL           
+          前文: LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR basename + NULL|self | LOAD_FAST parsed | LOAD_ATTR path | CALL 
+    @154  CALL           
+          前文: TO_BOOL  | POP_JUMP_IF_FALSE to L1 | LOAD_FAST _unquote | PUSH_NULL  | LOAD_FAST url_filename | CALL 
+    @178  LOAD_ATTR      get
+          前文: CALL  | JUMP_FORWARD to L2 | LOAD_CONST None | STORE_FAST original_filename | LOAD_GLOBAL requests | LOAD_ATTR get
+    @208  CALL_KW        
+          前文: PUSH_NULL  | LOAD_FAST_LOAD_FAST url, dl_headers | LOAD_CONST True | LOAD_CONST 120 | LOAD_CONST ('headers', 'stream', 'timeout') | CALL_KW 
+    @236  CALL           
+          前文: CALL_KW  | BEFORE_WITH  | STORE_FAST r | LOAD_FAST r | LOAD_ATTR raise_for_status + NULL|self | CALL 
+    @278  LOAD_ATTR      get + NULL|self
+          前文: CALL  | POP_TOP  | LOAD_GLOBAL int + NULL | LOAD_FAST r | LOAD_ATTR headers | LOAD_ATTR get + NULL|self
+    @302  CALL           
+          前文: LOAD_FAST r | LOAD_ATTR headers | LOAD_ATTR get + NULL|self | LOAD_CONST 'content-length' | LOAD_CONST 0 | CALL 
+    @310  CALL           
+          前文: LOAD_ATTR headers | LOAD_ATTR get + NULL|self | LOAD_CONST 'content-length' | LOAD_CONST 0 | CALL  | CALL 
+    @360  LOAD_ATTR      get + NULL|self
+          前文: LOAD_FAST filename | TO_BOOL  | POP_JUMP_IF_TRUE to L4 | LOAD_FAST r | LOAD_ATTR headers | LOAD_ATTR get + NULL|self
+    @384  CALL           
+          前文: LOAD_FAST r | LOAD_ATTR headers | LOAD_ATTR get + NULL|self | LOAD_CONST 'content-disposition' | LOAD_CONST '' | CALL 
+    @442  CALL           
+          前文: STORE_FAST _re | LOAD_FAST _re | LOAD_ATTR search + NULL|self | LOAD_CONST 'filename[*]?=["\\\']?([^"\\\';\\n]+)' | LOAD_FAST cd | CALL 
+    @490  CALL           
+          前文: TO_BOOL  | POP_JUMP_IF_FALSE to L4 | LOAD_FAST m | LOAD_ATTR group + NULL|self | LOAD_CONST 1 | CALL 
+    @520  CALL           
+          前文: LOAD_ATTR group + NULL|self | LOAD_CONST 1 | CALL  | LOAD_ATTR strip + NULL|self | LOAD_CONST '"\'' | CALL 
+    @554  CALL           
+          前文: CALL  | STORE_FAST filename | LOAD_FAST filename | LOAD_ATTR startswith + NULL|self | LOAD_CONST "UTF-8''" | CALL 
+    @586  CALL           
+          前文: PUSH_NULL  | LOAD_FAST filename | LOAD_CONST 7 | LOAD_CONST None | BINARY_SLICE  | CALL 
+    @604  CALL           
+          前文: STORE_FAST filename | JUMP_FORWARD to L4 | LOAD_FAST _unquote | PUSH_NULL  | LOAD_FAST filename | CALL 
+    @684  CALL           
+          前文: STORE_FAST filename | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR splitext + NULL|self | LOAD_FAST filename | CALL 
+    @736  CALL           
+          前文: LOAD_FAST ext | TO_BOOL  | POP_JUMP_IF_FALSE to L6 | LOAD_FAST ext | LOAD_ATTR lower + NULL|self | CALL 
+    @778  CALL           
+          前文: COMPARE_OP bool(!=) | POP_JUMP_IF_FALSE to L6 | LOAD_FAST ext | LOAD_ATTR startswith + NULL|self | LOAD_CONST '.' | CALL 
+    @886  CALL           
+          前文: STORE_FAST filename | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR join + NULL|self | LOAD_FAST_LOAD_FAST save_dir, filename | CALL 
+    @922  CALL           
+          前文: STORE_FAST save_path | LOAD_CONST 0 | STORE_FAST downloaded | LOAD_FAST _time | LOAD_ATTR time + NULL|self | CALL 
+    @958  CALL           
+          前文: BUILD_LIST  | STORE_FAST speed_samples | LOAD_GLOBAL open + NULL | LOAD_FAST save_path | LOAD_CONST 'wb' | CALL 
+    @996  CALL_KW        
+          前文: STORE_FAST f | LOAD_FAST r | LOAD_ATTR iter_content + NULL|self | LOAD_CONST 131072 | LOAD_CONST ('chunk_size',) | CALL_KW 
+    @1050 CALL           
+          前文: POP_JUMP_IF_TRUE to L9 | JUMP_BACKWARD to L8 | LOAD_FAST f | LOAD_ATTR write + NULL|self | LOAD_FAST chunk | CALL 
+    @1072 CALL           
+          前文: LOAD_FAST chunk | CALL  | POP_TOP  | LOAD_GLOBAL len + NULL | LOAD_FAST chunk | CALL 
+    @1114 CALL           
+          前文: LOAD_FAST chunk_len | BINARY_OP += | STORE_FAST downloaded | LOAD_FAST _time | LOAD_ATTR time + NULL|self | CALL 
+    @1290 CALL           
+          前文: LOAD_FAST speed_samples | LOAD_ATTR append + NULL|self | LOAD_FAST now | LOAD_FAST downloaded | BUILD_TUPLE  | CALL 
+    @1378 CALL           
+          前文: COMPARE_OP bool(<) | POP_JUMP_IF_FALSE to L15 | LOAD_FAST speed_samples | LOAD_ATTR pop + NULL|self | LOAD_CONST 0 | CALL 
+    @1442 CALL           
+          前文: COMPARE_OP bool(<) | POP_JUMP_IF_FALSE to L15 | JUMP_BACKWARD to L14 | LOAD_GLOBAL len + NULL | LOAD_FAST speed_samples | CALL 
+    @1682 CALL           
+          前文: LOAD_CONST ')，持续' | LOAD_FAST slow_duration | FORMAT_SIMPLE  | LOAD_CONST '秒低于阈值，触发线路切换' | BUILD_STRING  | CALL 
+    @1728 CALL           
+          前文: NOP  | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST save_path | CALL 
+    @1756 CALL           
+          前文: LOAD_GLOBAL print + NULL | LOAD_CONST '[INFO] 已删除半成品文件: ' | LOAD_FAST save_path | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @1774 CALL           
+          前文: POP_TOP  | POP_TOP  | LOAD_CONST None | LOAD_CONST None | LOAD_CONST None | CALL 
+    @1790 CALL           
+          前文: CALL  | POP_TOP  | LOAD_CONST None | LOAD_CONST None | LOAD_CONST None | CALL 
+    @1876 CALL           
+          前文: PUSH_NULL  | LOAD_FAST pct | LOAD_FAST speed_str | LOAD_FAST downloaded | LOAD_FAST total_size | CALL 
+    @1902 CALL           
+          前文: END_FOR  | POP_TOP  | LOAD_CONST None | LOAD_CONST None | LOAD_CONST None | CALL 
+    @1968 CALL           
+          前文: POP_JUMP_IF_TRUE to L27 | POP_TOP  | LOAD_CONST '' | LOAD_FAST downloaded | LOAD_FAST total_size | CALL 
+    @1984 CALL           
+          前文: CALL  | POP_TOP  | LOAD_CONST None | LOAD_CONST None | LOAD_CONST None | CALL 
+    @2010 CALL_KW        
+          前文: POP_TOP  | LOAD_GLOBAL _wait_file_ready + NULL | LOAD_FAST_CHECK save_path | LOAD_CONST 10 | LOAD_CONST ('timeout',) | CALL_KW 
+    @2066 CALL           
+          前文: POP_TOP  | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR exists + NULL|self | LOAD_FAST save_path | CALL 
+    @2116 LOAD_ATTR      getsize + NULL|self
+          前文: CALL  | TO_BOOL  | POP_JUMP_IF_FALSE to L30 | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self
+    @2138 CALL           
+          前文: POP_JUMP_IF_FALSE to L30 | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR getsize + NULL|self | LOAD_FAST save_path | CALL 
+    @2184 CALL           
+          前文: LOAD_CONST '[WARN] 下载文件异常小(' | LOAD_FAST actual_size | FORMAT_SIMPLE  | LOAD_CONST '字节)，可能下载不完整或服务器返回错误页' | BUILD_STRING  | CALL 
+    @2230 CALL           
+          前文: NOP  | LOAD_GLOBAL os | LOAD_ATTR remove | PUSH_NULL  | LOAD_FAST save_path | CALL 
+    @2258 CALL           
+          前文: LOAD_GLOBAL print + NULL | LOAD_CONST '[INFO] 已删除无效文件: ' | LOAD_FAST save_path | FORMAT_SIMPLE  | BUILD_STRING  | CALL 
+    @2334 CALL           
+          前文: LOAD_CONST '[OK] 下载验证通过: ' | LOAD_GLOBAL os | LOAD_ATTR path | LOAD_ATTR basename + NULL|self | LOAD_FAST save_path | CALL 
+    @2362 CALL           
+          前文: BINARY_OP / | LOAD_CONST '.1f' | FORMAT_WITH_SPEC  | LOAD_CONST ' MB)' | BUILD_STRING  | CALL 
+    URL 常量: ['http://xz.hwid001.com/']
+    可执行体常量: ['downloaded_exe.exe', '.exe']
+    False 常量存在: False
+

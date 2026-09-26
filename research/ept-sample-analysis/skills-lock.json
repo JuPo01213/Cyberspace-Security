@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "skills": {
+    "reverse-engineering-tools": {
+      "source": "gmh5225/awesome-game-security",
+      "sourceType": "github",
+      "ref": "3753d7739ae9d29f4d68c748af545686becd679a",
+      "skillPath": ".claude/skills/reverse-engineering",
+      "computedHash": "58b4b868f429bfcb6b0a4d6c5259cdc71c531e2985c0de74908b08d893b668fd"
+    }
+  }
+}

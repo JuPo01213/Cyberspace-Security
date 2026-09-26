@@ -1,0 +1,7 @@
+﻿{"utc":"2026-09-25T19:54:48.7108248Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":1440,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T19:54:48.9607344Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_F64543D5_E7E0466A.exe","pid":560,"ppid":1440,"type":"CHILD_FOUND","utc":"2026-09-25T19:54:51.8513618Z"}
+{"target_pid":560,"debugger_pid":1768,"type":"CDB_ATTACHED","utc":"2026-09-25T19:54:51.8826105Z"}
+{"pid":3940,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T19:54:51.8982396Z"}
+{"pid":116,"type":"WATCHER_STARTED","utc":"2026-09-25T19:54:51.9295711Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T19:54:51.9295711Z"}

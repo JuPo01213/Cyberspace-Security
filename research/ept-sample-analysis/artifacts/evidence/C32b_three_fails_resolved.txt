@@ -1,0 +1,20 @@
+# C32b - 判读 C32 的 3 个 FAIL：文档错还是检查器错
+== 1) _is_firewall_related 的词表是 tuple 常量，还是散落的 str？ ==
+  <module>.PyWebViewAPI._is_firewall_related 字符串常量: "判断日志是否与墙操作相关（含'墙'隐蔽代称的所有变体）"
+  <module>.PyWebViewAPI._is_firewall_related 常量 tuple(23 项): ('防火墙', '墙策略', '墙设置', '墙规则', '墙配', '墙已', '墙+ ', '墙- ', '清理墙', '配置墙', '系统墙', '开启墙', '启用墙', '禁用墙', '强制开', '强制关', '阻止.*联', '禁止.*联', 'firewall', 'Firewall', 'FIREWALL', 'advfirewall', 'SpooferNetworkBlock')
+  co_names=['lower', 're', 'search']
+  指令数=35，前 14 条: [('RESUME', ''), ('BUILD_LIST', ''), ('LOAD_CONST', "('防火墙', '墙策略', '墙设置', '墙规则', '墙配', '墙已', '墙+ ', '墙- ', '清理墙', '配置墙', '"), ('LIST_EXTEND', ''), ('STORE_FAST', 'fw_keywords'), ('LOAD_FAST', 'log_line'), ('LOAD_ATTR', 'lower + NULL|self'), ('CALL', ''), ('STORE_FAST', 'line_lower'), ('LOAD_FAST', 'fw_keywords'), ('GET_ITER', ''), ('FOR_ITER', 'to L3'), ('STORE_FAST', 'kw'), ('LOAD_FAST', 'kw')]
+
+== 2) 调用方是否只有 GUI 两个日志函数 ==
+  引用者: <module>.PyWebViewAPI
+  引用者: <module>.PyWebViewAPI._log_to_decode_frontend
+
+== 3) 前端：8 个优化项 与 10 步进度 的真实写法 ==
+  data-* 属性名集合           {'idx', 'value', 'group', 'key'}
+  opt/optim 相关 id/class  []
+  卡片 class 名             ['tool-card']
+  checked 出现次数           7
+  含 10 的步骤数组片段           []
+  /10 或 步骤 n             ['/ 10', '/ 10']
+  decodeSteps 之类标识符      ['step']
+  优化项上下文样本: ['优化项', 'optimize', 'optimize', 'optimize', 'optimize', 'optimize']

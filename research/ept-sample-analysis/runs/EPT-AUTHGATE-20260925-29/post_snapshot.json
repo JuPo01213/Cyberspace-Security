@@ -1,0 +1,27 @@
+﻿{
+    "hardware_dir":  [
+
+                     ],
+    "drivers":  [
+
+                ],
+    "procs":  [
+
+              ],
+    "utc":  "2026-09-25T12:16:58.1414545Z",
+    "log_dirs":  [
+
+                 ],
+    "files":  [
+                  "C:\\Windows\\System32\\Hardware.exe",
+                  "C:\\Windows\\System32\\EPT.cmd"
+              ],
+    "tasks":  [
+                  "DetectHardwareChange",
+                  "RemediateHardwareChange"
+              ],
+    "services":  [
+                     "ShellHWDetection:Running",
+                     "shpamsvc:Stopped"
+                 ]
+}

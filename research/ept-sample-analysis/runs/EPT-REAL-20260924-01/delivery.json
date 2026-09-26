@@ -1,0 +1,19 @@
+{
+    "run_id":  "EPT-REAL-20260924-01",
+    "vm_name":  "<VM_LABEL>",
+    "guest_host":  "<VM_LABEL>",
+    "evidence_scope":  "real_sample_guest_run",
+    "target_lineage":  "genB_direct_derived_target",
+    "host_source":  "<HOST_PATH>/EPT/artifacts/captures/hardware_guest_test.exe",
+    "guest_target":  "C:\\ept_core\\Hardware.exe",
+    "incoming_guest_path":  "C:\\ept_obs\\spool\\EPT-REAL-20260924-01\\target.bin",
+    "host_length":  32671232,
+    "host_sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "guest_length":  32671232,
+    "guest_sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "guest_free_gb":  40.61,
+    "target_processes_before_start":  0,
+    "delivered_utc":  "2026-09-24T10:30:14.1265940Z",
+    "input_state":  "synthetic_invalid_card_no_secret",
+    "launch_gate":  "NATURAL_BASELINE_READY"
+}

@@ -1,0 +1,36 @@
+!! could not parse .pdata tsv; first lines:
+   begin_va	end_va	size	unwind_va	section
+   0x140001000	0x140001027	39	0x140f955a8	.text
+   0x140001030	0x14000107b	75	0x140f952c4	.text
+   0x140001080	0x14000109c	28	0x140f955a8	.text
+   0x1400010a0	0x1400010b6	22	0x140f955a8	.text
+   0x1400010c0	0x140001105	69	0x140f957c4	.text
+   columns assumed wrong - going by raw numeric pairs per line instead
+.pdata entries parsed: 2593
+
+== 1) the eight 0x25 sites, by owning .pdata entry ==
+   0x1401bfaf1  entry=no entry found  
+   0x1403adf9b  entry=0x1403a93f0..0x1403ae8c6  
+   0x1403b8190  entry=0x1403b3d30..0x1403c42ac  
+   0x1403c2df8  entry=0x1403b3d30..0x1403c42ac  
+   0x140779756  entry=0x140770330..0x140783d53  
+   0x1407a7eae  entry=0x1407a4b90..0x1407aa710  
+   0x1407bd597  entry=0x1407bd37c..0x1407bd5d5  INSIDE formatter neighbourhood 0x1407bb000..0x1407be900
+   0x1407bd80c  entry=0x1407bd5d8..0x1407bd852  INSIDE formatter neighbourhood 0x1407bb000..0x1407be900
+
+== 2) g5 (0x141154d10) write sites from C43, by owner ==
+   listed write sites: 32
+   entry 0x140790010..0x140790073    1 writes: 0x140790053
+   entry 0x140791b20..0x140791c2c    1 writes: 0x140791b83
+   entry 0x140791c30..0x140792e40    3 writes: 0x140791c9f, 0x140792c61, 0x140792cca
+   entry 0x14079a790..0x14079bc09    1 writes: 0x14079a95e
+   entry 0x14079f760..0x1407a1335    1 writes: 0x14079f81b
+   entry 0x1407a1340..0x1407a15be    4 writes: 0x1407a13e3, 0x1407a1467, 0x1407a150d, 0x1407a1567
+   entry 0x1407a1880..0x1407a1efe    9 writes: 0x1407a1b34, 0x1407a1b93, 0x1407a1bfa, 0x1407a1c4e, 0x1407a1cc7, 0x1407a1d0f
+   entry 0x1407a2a90..0x1407a2ff6    2 writes: 0x1407a2d39, 0x1407a2d98
+   entry 0x1407a3510..0x1407a493d    4 writes: 0x1407a35b7, 0x1407a35c1, 0x1407a3629, 0x1407a3633
+   entry 0x1407a4b90..0x1407aa710    6 writes: 0x1407a4ecf, 0x1407a51b6, 0x1407a521a, 0x1407a5224, 0x1407a5278, 0x1407a58e4
+
+== 3) who receives g_ae7 (0x141154ae7) by address at 0x1407a320e ==
+   0x1407a320e  lea    rcx, [rip + 0x9b18d2]
+   0x1407a3215  call   0x1403b3d30

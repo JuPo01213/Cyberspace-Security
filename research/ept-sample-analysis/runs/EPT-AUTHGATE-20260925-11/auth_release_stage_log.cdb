@@ -1,0 +1,19 @@
+.echo RUN11_BEGIN
+db 0x141154ced L4
+db 0x141154cf1 L4
+db 0x141154ae7 L1
+db 0x141154ce9 L4
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo AUTH_RELEASED
+bu user32!MessageBoxW ".echo SKIP_MSGBOXW; r eax=1; g @$ra"
+bu user32!MessageBoxA ".echo SKIP_MSGBOXA; r eax=1; g @$ra"
+bu user32!MessageBoxExW ".echo SKIP_MSGBOXEXW; r eax=1; g @$ra"
+bu user32!MessageBoxTimeoutW ".echo SKIP_MSGBOXTO; r eax=1; g @$ra"
+ba e 1 1407adae0 ".echo STAGE_LOG; da r8; r r9d; g"
+ba e 1 1407a3000 ".echo HIT_DENY_OR_CLEANUP; g"
+.echo BP_ARMED
+g
+q

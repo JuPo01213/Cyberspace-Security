@@ -1,0 +1,74 @@
+{
+  "claim_id": "C118",
+  "status": "completed",
+  "input": "<HOST_PATH>\\EPT\\artifacts\\captures\\stream_SQSCAN_20260921A\\sq_runtime_range.bin",
+  "size": 15622144,
+  "sha256": "1daf7ec28a09b43eb456f2027bcbaeb047aafab6b1a290ce14edc9cce761d1d4",
+  "mapping": "VA=0x141174000+stream_offset",
+  "range_end_exclusive": "0x14205a000",
+  "raw_e8_scan": {
+    "start_offsets": 15622140,
+    "raw_e8_count": 127855,
+    "hits": {
+      "RUN_apply_soft_success": [],
+      "RC00": [],
+      "RC03": [],
+      "RC04": [],
+      "RC06": [],
+      "N_string": [],
+      "M_string": [],
+      "F250": [],
+      "F060": [],
+      "POST_TARGET": [],
+      "SQ_call_1415844d3": [
+        {
+          "callsite": "0x141757acf",
+          "target": "0x1415844d3",
+          "rel32": "0xffe2c9ff"
+        }
+      ],
+      "SQ_call_1419060e7": [
+        {
+          "callsite": "0x141757af5",
+          "target": "0x1419060e7",
+          "rel32": "0x1ae5ed"
+        }
+      ],
+      "SQ_call_14171631b": [
+        {
+          "callsite": "0x141757afc",
+          "target": "0x14171631b",
+          "rel32": "0xfffbe81a"
+        }
+      ],
+      "SQ_call_141a93e50": [
+        {
+          "callsite": "0x141757b15",
+          "target": "0x141a93e50",
+          "rel32": "0x33c336"
+        }
+      ]
+    }
+  },
+  "common_rip_relative_pattern_scan": {
+    "pattern_count": 846,
+    "patterns": "REX 0x40-0x4f + mov/lea/store opcodes with modrm mod=00,r/m=101",
+    "hits": {
+      "RUN_apply_soft_success": [],
+      "RC00": [],
+      "RC03": [],
+      "RC04": [],
+      "RC06": [],
+      "N_string": [],
+      "M_string": [],
+      "F250": [],
+      "F060": [],
+      "POST_TARGET": [],
+      "SQ_call_1415844d3": [],
+      "SQ_call_1419060e7": [],
+      "SQ_call_14171631b": [],
+      "SQ_call_141a93e50": []
+    }
+  },
+  "interpretation": "The raw E8 scan is controlled by four known C81 direct calls. No direct E8 from the captured .Sq> range targets RUN_apply_soft_success, RC00/RC03/RC04/RC06, F250, or F060. The common RIP-relative pattern scan is supplementary and not a full instruction-boundary negative."
+}

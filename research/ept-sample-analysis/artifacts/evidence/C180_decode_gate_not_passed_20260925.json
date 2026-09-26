@@ -1,0 +1,61 @@
+{
+  "evidence_id": "C180_decode_gate_not_passed_20260925",
+  "run_id": "EPT-AUTHGATE-20260925-20",
+  "evidence_scope": "real_sample_guest_run_entry_gate_release_without_decode",
+  "environment": {
+    "vm": "<VM_LABEL>",
+    "guest": "<VM_LABEL>",
+    "target_pid": 780,
+    "target_path": "C:/Windows/TEMP/EPT_D192353F_5C2DF478.exe",
+    "parent_pid": 108,
+    "network": "hosts-pinned-to-127.0.0.1-and-no-TCP-request-observed",
+    "real_card": false,
+    "response_injection": false
+  },
+  "entry_gate_release": {
+    "meaning": "main-program GUI/entry authorization predicate only",
+    "writes": {
+      "0x141154ced": "1",
+      "0x141154cf1": "1",
+      "0x141154ae7": "1",
+      "0x141154ce9": "1"
+    },
+    "status": "RELEASED_FOR_ENTRY_OBSERVATION_ONLY",
+    "must_not_be_called": "decode authorization passed or real license success"
+  },
+  "observed_stage_log": [
+    {"tag": "Setup.SP_Verify_Init", "return_code": "0x00000000"},
+    {"tag": "Setup.SP_Verify_GetServerOption", "return_code": "0xfffffffd"}
+  ],
+  "decode_gate_evidence": {
+    "stored_flow_tags": "NOT_OBSERVED",
+    "run_tags": "NOT_OBSERVED",
+    "stored_authorization_usable_before_driver": "NOT_OBSERVED",
+    "skip_driver_load_because_authorization_not_usable": "NOT_OBSERVED",
+    "hit_open_auth": false,
+    "hit_comm_init": false,
+    "hit_rc00": false,
+    "rc03": "NOT_OBSERVED",
+    "rc06": "NOT_OBSERVED",
+    "target_native_return": "NOT_OBSERVED",
+    "target_caller_diff_bytes": "NOT_OBSERVED"
+  },
+  "termination": {
+    "message_box": "observed after GetServerOption failure",
+    "fatal_exit": "observed through KERNEL32!FatalExit+0xb",
+    "post_snapshot": {
+      "drivers": [],
+      "processes": [],
+      "log_dirs": [],
+      "files": ["C:/Windows/System32/Hardware.exe", "C:/Windows/System32/EPT.cmd"],
+      "tasks": ["DetectHardwareChange", "RemediateHardwareChange"]
+    },
+    "interpretation": "Hardware.exe and EPT.cmd are pre/post self-deployment artifacts; the listed tasks were not proven to be created by a successful decode run."
+  },
+  "conclusion": "MAIN_ENTRY_GATE_RELEASED_BUT_DECODE_AUTHORIZATION_NOT_PASSED",
+  "raw_evidence": [
+    "runs/EPT-AUTHGATE-20260925-20/cdb.stdout.txt",
+    "runs/EPT-AUTHGATE-20260925-20/events.ndjson",
+    "runs/EPT-AUTHGATE-20260925-20/post_snapshot.json"
+  ]
+}

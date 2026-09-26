@@ -1,0 +1,579 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.062 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_9CC8C8E1_91FEFC7A.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(10e4.af0): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:004> .echo STATIC_FATAL_REGION_BEGIN
+STATIC_FATAL_REGION_BEGIN
+0:004> u 0x1407aa640 L16
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_9CC8C8E1_91FEFC7A.exe
+EPT_9CC8C8E1_91FEFC7A+0x7aa640:
+00000001`407aa640 0000            add     byte ptr [rax],al
+00000001`407aa642 0000            add     byte ptr [rax],al
+00000001`407aa644 0000            add     byte ptr [rax],al
+00000001`407aa646 0000            add     byte ptr [rax],al
+00000001`407aa648 0000            add     byte ptr [rax],al
+00000001`407aa64a 0000            add     byte ptr [rax],al
+00000001`407aa64c 0000            add     byte ptr [rax],al
+00000001`407aa64e 0000            add     byte ptr [rax],al
+00000001`407aa650 0000            add     byte ptr [rax],al
+00000001`407aa652 0000            add     byte ptr [rax],al
+00000001`407aa654 0000            add     byte ptr [rax],al
+00000001`407aa656 0000            add     byte ptr [rax],al
+00000001`407aa658 0000            add     byte ptr [rax],al
+00000001`407aa65a 0000            add     byte ptr [rax],al
+00000001`407aa65c 0000            add     byte ptr [rax],al
+00000001`407aa65e 0000            add     byte ptr [rax],al
+00000001`407aa660 0000            add     byte ptr [rax],al
+00000001`407aa662 0000            add     byte ptr [rax],al
+00000001`407aa664 0000            add     byte ptr [rax],al
+00000001`407aa666 0000            add     byte ptr [rax],al
+00000001`407aa668 0000            add     byte ptr [rax],al
+00000001`407aa66a 0000            add     byte ptr [rax],al
+0:004> u 0x1407aa694 L10
+EPT_9CC8C8E1_91FEFC7A+0x7aa694:
+00000001`407aa694 0000            add     byte ptr [rax],al
+00000001`407aa696 0000            add     byte ptr [rax],al
+00000001`407aa698 0000            add     byte ptr [rax],al
+00000001`407aa69a 0000            add     byte ptr [rax],al
+00000001`407aa69c 0000            add     byte ptr [rax],al
+00000001`407aa69e 0000            add     byte ptr [rax],al
+00000001`407aa6a0 0000            add     byte ptr [rax],al
+00000001`407aa6a2 0000            add     byte ptr [rax],al
+00000001`407aa6a4 0000            add     byte ptr [rax],al
+00000001`407aa6a6 0000            add     byte ptr [rax],al
+00000001`407aa6a8 0000            add     byte ptr [rax],al
+00000001`407aa6aa 0000            add     byte ptr [rax],al
+00000001`407aa6ac 0000            add     byte ptr [rax],al
+00000001`407aa6ae 0000            add     byte ptr [rax],al
+00000001`407aa6b0 0000            add     byte ptr [rax],al
+00000001`407aa6b2 0000            add     byte ptr [rax],al
+0:004> u 0x1407b1090 L6
+EPT_9CC8C8E1_91FEFC7A+0x7b1090:
+00000001`407b1090 0000            add     byte ptr [rax],al
+00000001`407b1092 0000            add     byte ptr [rax],al
+00000001`407b1094 0000            add     byte ptr [rax],al
+00000001`407b1096 0000            add     byte ptr [rax],al
+00000001`407b1098 0000            add     byte ptr [rax],al
+00000001`407b109a 0000            add     byte ptr [rax],al
+0:004> .echo STATIC_FATAL_REGION_END
+STATIC_FATAL_REGION_END
+0:004> .echo RUN61_STAGE_FORCE_BEGIN
+RUN61_STAGE_FORCE_BEGIN
+0:004> ed 0x141154ced 1
+0:004> ed 0x141154cf1 1
+0:004> eb 0x141154ae7 1
+0:004> ed 0x141154ce9 1
+0:004> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:004> sxi av
+0:004> sxi c0000005
+0:004> sxi e06d7363
+0:004> sxi 80000003
+0:004> sxi 80000004
+0:004> sxi c000001d
+0:004> sxi c0000094
+0:004> sxi e0434352
+0:004> sxi 6d9
+0:004> .echo EXCEPTION_PASSTHROUGH_ARMED
+EXCEPTION_PASSTHROUGH_ARMED
+0:004> eb 0x1403b34d0 33 c0 c3
+0:004> eb 0x1403b3280 33 c0 c3
+0:004> eb 0x1403c47e0 33 c0 c3
+0:004> eb 0x1403b3d30 33 c0 c3
+0:004> eb 0x1403c49d0 33 c0 c3
+0:004> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:004> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:004> bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; r rip=poi(rsp); r rsp=rsp+8; g"
+breakpoint 3 redefined
+0:004> bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+0:004> bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+0:004> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:004> bu kernel32!WriteFile ".echo WFW; r rcx; r r8; db @rdx L8; j (@r8 > 0x100000) 'r $t9=@r9; gu; r eax; !gle; dd @$t9 L1; g' 'g'"
+0:004> bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+0:004> bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+0:004> bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+0:004> bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+0:004> bu kernelbase!DeviceIoControl ".echo DIOC; r rcx; r rdx; r r8; r r9; dd @rsp+20 L4; g"
+0:004> bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+0:004> bu kernelbase!GetFileSizeEx ".echo GFS; r rcx; g"
+0:004> bu kernelbase!SetFilePointerEx ".echo SFP; r rcx; g"
+0:004> bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+0:004> ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+0:004> ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+0:004> ba e 1 14171f567 ".echo FATAL_THUNK; k L12; dd @rsp L4; u 0x1407aa580 L28; u 0x1407aa694 L12; da 140f8e308 L30; du 140f8e308 L20; da 140f92ed0 L20; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260925-70/fatal_region.bin 1407aa000 L3000; r rsp=@$t0; r rbx=0; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b109b; r eax=1; g"
+0:004> .echo HWBP_ARMED_SYNTHRET
+HWBP_ARMED_SYNTHRET
+0:004> g
+ModLoad: 00007ffb`d9bc0000 00007ffb`d9bcc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffb`da3b0000 00007ffb`da432000   C:\Windows\System32\bcryptPrimitives.dll
+DIOC
+rcx=00000000000001c0
+rdx=0000000000390008
+r8=0000000000000000
+r9=0000000000000000
+00000000`0014ed88  00000000 00000000 0014ee38 00000000
+SCHED_CALLSITE
+CFW
+00000000`005a93e0  "C:\Windows\System32\Hardware"
+KB_CFW
+00000000`005a93e0  "C:\Windows\System32\Hardware"
+WFW
+rcx=00000000000001b0
+r8=0000000000000016
+00000000`00145b70  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001b0
+r8=0000000000000010
+00000001`40f93208  53 74 6f 72 65 64 46 6c                          StoredFl
+WFW
+rcx=00000000000001b0
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+RDF
+rcx=00000000000001b0
+r8=0000000000000004
+RDF
+rcx=00000000000001b0
+r8=0000000000000380
+ModLoad: 00007ffb`d9ba0000 00007ffb`d9bb8000   C:\Windows\SYSTEM32\CRYPTSP.dll
+ModLoad: 00007ffb`d92d0000 00007ffb`d9308000   C:\Windows\system32\rsaenh.dll
+WFW
+rcx=00000000000001c4
+r8=0000000000000016
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001c4
+r8=0000000000000023
+00000000`00145d10  73 74 61 67 65 3d 53 74                          stage=St
+WFW
+rcx=00000000000001c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000001
+WFW
+rcx=00000000000001c4
+r8=0000000000000016
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001c4
+r8=0000000000000032
+00000000`00145d10  73 74 61 67 65 3d 53 74                          stage=St
+WFW
+rcx=00000000000001c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000001
+WFW
+rcx=00000000000001c4
+r8=0000000000000016
+00000000`001457c0  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001c4
+r8=0000000000000012
+00000001`40f92508  53 74 6f 72 65 64 56 65                          StoredVe
+WFW
+rcx=00000000000001c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+WFW
+rcx=00000000000001c4
+r8=0000000000000016
+00000000`001457c0  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001c4
+r8=0000000000000034
+00000000`00145b10  73 74 61 67 65 3d 53 74                          stage=St
+WFW
+rcx=00000000000001c4
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+ModLoad: 00007ffb`d3800000 00007ffb`d3817000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffb`d2e60000 00007ffb`d2e7b000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffb`d4040000 00007ffb`d405d000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffb`d4fe0000 00007ffb`d4ffd000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffb`d99b0000 00007ffb`d9a1a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffb`d96d0000 00007ffb`d979a000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffb`dac90000 00007ffb`dac98000   C:\Windows\System32\NSI.dll
+KB_CFW
+00007ffb`dac932a0  "\\.\Nsi"
+ModLoad: 00007ffb`cd4f0000 00007ffb`cd502000   C:\Windows\System32\winrnr.dll
+KB_CFW
+00000000`00143cb0  "C:\Windows\Globalization\Sorting"
+00000000`00143cf0  "\sortdefault.nls"
+ModLoad: 00007ffb`d2a20000 00007ffb`d2aa0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffb`d1f00000 00007ffb`d1f0a000   C:\Windows\System32\rasadhlp.dll
+WFW
+rcx=00000000000002d8
+r8=0000000000000016
+00000000`001457c0  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d8
+r8=0000000000000037
+00000000`00145b10  73 74 61 67 65 3d 53 74                          stage=St
+WFW
+rcx=00000000000002d8
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+WFW
+rcx=00000000000002d8
+r8=0000000000000016
+00000000`001457c0  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d8
+r8=0000000000000028
+00000001`40f92698  53 74 6f 72 65 64 56 65                          StoredVe
+WFW
+rcx=00000000000002d8
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+SLEEP_OBSERVER
+rcx=00000000000003e8
+WFW
+rcx=00000000000002d8
+r8=0000000000000016
+00000000`001457c0  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d8
+r8=0000000000000049
+00000000`00145b10  73 74 61 67 65 3d 53 74                          stage=St
+WFW
+rcx=00000000000002d8
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+WFW
+rcx=00000000000002d8
+r8=0000000000000016
+00000000`001457c0  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d8
+r8=0000000000000025
+00000001`40f926f0  53 74 6f 72 65 64 56 65                          StoredVe
+WFW
+rcx=00000000000002d8
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+WFW
+rcx=00000000000002d8
+r8=0000000000000016
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d8
+r8=0000000000000038
+00000000`00145d10  73 74 61 67 65 3d 53 74                          stage=St
+WFW
+rcx=00000000000002d8
+r8=0000000000000002
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000001
+CPA_OBS
+00000000`00145ce0  "sc.exe config "AntiCheatExpert P"
+00000000`00145d00  "rotection" start= delayed-auto"
+CPA_OBS
+00000000`00145d10  "sc.exe config "AntiCheatExpert S"
+00000000`00145d30  "ervice" start= delayed-auto"
+ModLoad: 00007ffb`c73c0000 00007ffb`c74ac000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002dc
+r8=0000000000000ab8
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=00000000000001f4
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002dc
+r8=0000000000000ab8
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=00000000000002bc
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002dc
+r8=0000000000000ab8
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=0000000000000384
+ModLoad: 00007ffb`c73c0000 00007ffb`c74ac000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002dc
+r8=0000000000000ab8
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=00000000000001f4
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002dc
+r8=0000000000000ab8
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=00000000000002bc
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002dc
+r8=0000000000001000
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002dc
+r8=0000000000000ab8
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=0000000000000384
+MSGBOXA_SKIPPED
+00000000`001484c0  "................................"
+00000000`001484e0  "..... HVCI.......... / ........ "
+00000000`00148500  "/ .............. ..............."
+00000000`00148520  "...........DSE-10"
+Child-SP          RetAddr               Call Site
+00000000`00145e28 00000001`4203aad8     USER32!MessageBoxA
+00000000`00145e30 00000001`407b1094     EPT_9CC8C8E1_91FEFC7A+0x203aad8
+00000000`0014fef0 00007ffb`db507374     EPT_9CC8C8E1_91FEFC7A+0x7b1094
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+FATAL_THUNK
+Child-SP          RetAddr               Call Site
+00000000`00145e20 00000001`407aa694     EPT_9CC8C8E1_91FEFC7A+0x171f567
+00000000`00145e28 00000000`00000000     EPT_9CC8C8E1_91FEFC7A+0x7aa694
+00000000`00145e20  407aa694 00000001 00000001 00000000
+EPT_9CC8C8E1_91FEFC7A+0x7aa580:
+00000001`407aa580 bb53aa7353      mov     ebx,5373AA53h
+00000001`407aa585 66c1a41cbf388682a2 shl   word ptr [rsp+rbx-7D79C741h],0A2h
+00000001`407aa58e 4887bc1c17398682 xchg    rdi,qword ptr [rsp+rbx-7D79C6E9h]
+00000001`407aa596 488b9c1cf7388682 mov     rbx,qword ptr [rsp+rbx-7D79C709h]
+00000001`407aa59e 66c1642428e9    shl     word ptr [rsp+28h],0E9h
+00000001`407aa5a4 e8fb451301      call    EPT_9CC8C8E1_91FEFC7A+0x18deba4 (00000001`418deba4)
+00000001`407aa5a9 41c1ed59        shr     r13d,59h
+00000001`407aa5ad 4e21ac2c28000000 and     qword ptr [rsp+r13+28h],r13
+00000001`407aa5b5 4c0fb7742438    movzx   r14,word ptr [rsp+38h]
+00000001`407aa5bb 0f8092a3dc00    jo      EPT_9CC8C8E1_91FEFC7A+0x1574953 (00000001`41574953)
+00000001`407aa5c1 4a8d942a1b28a3fd lea     rdx,[rdx+r13-25CD7E5h]
+00000001`407aa5c9 4e89b4b4d8ffffff mov     qword ptr [rsp+r14*4-28h],r14
+00000001`407aa5d1 4f8dacf59e98896e lea     r13,[r13+r14*8+6E89989Eh]
+00000001`407aa5d9 41f6dd          neg     r13b
+00000001`407aa5dc e89b462201      call    EPT_9CC8C8E1_91FEFC7A+0x19cec7c (00000001`419cec7c)
+00000001`407aa5e1 410f96c1        setbe   r9b
+00000001`407aa5e5 0f83afd3ce00    jae     EPT_9CC8C8E1_91FEFC7A+0x149799a (00000001`4149799a)
+00000001`407aa5eb 58              pop     rax
+00000001`407aa5ec 4153            push    r11
+00000001`407aa5ee 9c              pushfq
+00000001`407aa5ef 49bb08b300bc03621cc5 mov r11,0C51C6203BC00B308h
+00000001`407aa5f9 4d8d9c231657b048 lea     r11,[r11+48B05716h]
+00000001`407aa601 4d8d9c231d5a02ab lea     r11,[r11-54FDA5E3h]
+00000001`407aa609 4887442410      xchg    rax,qword ptr [rsp+10h]
+00000001`407aa60e 450bdb          or      r11d,r11d
+00000001`407aa611 41b381          mov     r11b,81h
+00000001`407aa614 4155            push    r13
+00000001`407aa616 4157            push    r15
+00000001`407aa618 0f8ea293e600    jle     EPT_9CC8C8E1_91FEFC7A+0x16139c0 (00000001`416139c0)
+00000001`407aa61e e8e5d10401      call    EPT_9CC8C8E1_91FEFC7A+0x17f7808 (00000001`417f7808)
+00000001`407aa623 e8a1dbf800      call    EPT_9CC8C8E1_91FEFC7A+0x17381c9 (00000001`417381c9)
+00000001`407aa628 7cad            jl      EPT_9CC8C8E1_91FEFC7A+0x7aa5d7 (00000001`407aa5d7)
+00000001`407aa62a 85db            test    ebx,ebx
+00000001`407aa62c 7450            je      EPT_9CC8C8E1_91FEFC7A+0x7aa67e (00000001`407aa67e)
+00000001`407aa62e 8b442478        mov     eax,dword ptr [rsp+78h]
+00000001`407aa632 85c0            test    eax,eax
+00000001`407aa634 743a            je      EPT_9CC8C8E1_91FEFC7A+0x7aa670 (00000001`407aa670)
+00000001`407aa636 4c8d05cb3c7e00  lea     r8,[EPT_9CC8C8E1_91FEFC7A+0xf8e308 (00000001`40f8e308)]
+00000001`407aa63d ba64000000      mov     edx,64h
+00000001`407aa642 488b4c2468      mov     rcx,qword ptr [rsp+68h]
+EPT_9CC8C8E1_91FEFC7A+0x7aa694:
+00000001`407aa694 cc              int     3
+00000001`407aa695 4180c63b        add     r14b,3Bh
+00000001`407aa699 f7c13370a352    test    ecx,52A37033h
+00000001`407aa69f 4881442400387ce8ff add   qword ptr [rsp],0FFFFFFFFFFE87C38h
+00000001`407aa6a8 4154            push    r12
+00000001`407aa6aa 664181c695e0    add     r14w,0E095h
+00000001`407aa6b0 55              push    rbp
+00000001`407aa6b1 0f873873d900    ja      EPT_9CC8C8E1_91FEFC7A+0x15419ef (00000001`415419ef)
+00000001`407aa6b7 0f899f94ce00    jns     EPT_9CC8C8E1_91FEFC7A+0x1493b5c (00000001`41493b5c)
+00000001`407aa6bd 49bc318283c98d6bb763 mov r12,63B76B8DC9838231h
+00000001`407aa6c7 488b442410      mov     rax,qword ptr [rsp+10h]
+00000001`407aa6cc 488b84489c79ccf8 mov     rax,qword ptr [rax+rcx*2-7338664h]
+00000001`407aa6d4 e8e8e91601      call    EPT_9CC8C8E1_91FEFC7A+0x19190c1 (00000001`419190c1)
+00000001`407aa6d9 53              push    rbx
+00000001`407aa6da 9c              pushfq
+00000001`407aa6db 48bb851f02b026b82f97 mov rbx,972FB826B0021F85h
+00000001`407aa6e5 e8a8f09d00      call    EPT_9CC8C8E1_91FEFC7A+0x1189792 (00000001`41189792)
+00000001`407aa6ea 4153            push    r11
+00000001`40f8e308  "HWID.............."
+00000001`40f8e308  "ˆc??ùÓ????
+00000001`40f92ed0  "..................!"
+Writing 3000 bytes......
+ntdll!NtTerminateProcess+0x14:
+00007ffb`dcd0db24 c3              ret
+0:000> .echo RUN61_STOP
+RUN61_STOP
+0:000> ~*k
+
+.  0  Id: 10e4.bd0 Suspend: 0 Teb: 00000000`0033d000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0014feb8 00007ffb`dcccef88     ntdll!NtTerminateProcess+0x14
+00000000`0014fec0 00007ffb`dccbec85     ntdll!RtlExitUserProcess+0xb8
+00000000`0014fef0 00007ffb`db50737d     ntdll!RtlExitUserThread+0x55
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x1d
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo RUN61_END
+RUN61_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

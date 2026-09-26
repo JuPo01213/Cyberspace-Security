@@ -1,0 +1,34 @@
+{
+  "run_id": "C173-gen1-debugger-smoke-20260924-01",
+  "vm_name": "<VM_LABEL>",
+  "guest_name": "<VM_LABEL>",
+  "sample_launch_requested": false,
+  "sample_opened": false,
+  "cdb": {
+    "status": "PASS_BENIGN_ATTACH",
+    "smoke_run_id": "C173-gen1-cdb-benign-smoke-20260924-02",
+    "target_process": "ping.exe",
+    "cdb_started": true,
+    "wait_state": "EXITED",
+    "exit_code_observed": false,
+    "stdout_harvested": true,
+    "stderr_length": 0,
+    "attach_marker_found": true,
+    "module_listing_found": true,
+    "thread_listing_found": true,
+    "command_file_sha256": "92CCC95B0D6221BAD002E62161A52BBBA659A91AD223026556349CC70BC9C04D"
+  },
+  "harvest_plane": "PowerShell Direct PSSession plus Copy-Item -FromSession",
+  "residual_process_check": "PASS: host cdb/ping/EPT/Hardware process counts are zero; Guest cleanup completed",
+  "rizin": {
+    "status": "RUNTIME_DEPENDENCY_MISSING",
+    "exit_code": "0xC0000135",
+    "workflow_impact": "WAIVED_FOR_ACTIVE_CDB_WORKFLOW"
+  },
+  "windbg": {
+    "status": "FILE_IDENTITY_RECORDED_NOT_RUNTIME_SMOKED",
+    "workflow_impact": "OPTIONAL_GUI_PATH"
+  },
+  "interpretation": "CDB runtime attach and durable Guest-log harvest are proven with a benign ping.exe target. This closes the active debugger-path prerequisite without opening or launching the EPT sample.",
+  "evidence_directory": "<HOST_PATH>\\EPT\\artifacts\\evidence\\<VM_LABEL>_gen1_cdb_benign_smoke_20260924_02"
+}

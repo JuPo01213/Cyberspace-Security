@@ -1,0 +1,25 @@
+.echo CANARY_C_BEGIN
+.echo --- X_KERNEL32_EXIT ---
+x kernel32!Exi*
+.echo --- X_KERNELBASE_EXIT ---
+x kernelbase!ExitProcess*
+.echo --- X_KERNEL32_SLEEP ---
+x kernel32!Sleep*
+.echo --- X_ADVAPI ---
+x advapi32!OpenServiceA*
+.echo --- BP_TEST ---
+bp kernel32!ExitProcess ".echo HIT_EXITP; g"
+.echo BP_EXITP_DONE
+bp kernel32!Sleep ".echo HIT_SLEEP; g"
+.echo BP_SLEEP_DONE
+bp advapi32!OpenServiceA ".echo HIT_OSA; g"
+.echo BP_OSA_DONE
+bu kernelbase!ExitProcess ".echo HIT_KB_EXITP; g"
+.echo BU_KB_EXITP_DONE
+bu kernelbase!Sleep ".echo HIT_KB_SLEEP; g"
+.echo BU_KB_SLEEP_DONE
+.echo --- LM ---
+lm m kernel32
+lm m advapi32
+.echo CANARY_C_STOP
+q

@@ -1,0 +1,12 @@
+.echo [RECON5_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [AUTHG_PCREATEFILEW]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp ntdll!NtDeviceIoControlFile ".echo [AUTHG_PDIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14; g"
+ba e 1 1407a3080 ".echo [AUTHG_GATE_ENTRY]; r rip; r rsp; r rcx; r rdx; r r8; r r9; dq @rsp L4; k L10; .echo [AUTHG_GATE_FORCING_RAX1]; r rax=1; r rip=poi(@rsp); r rsp=@rsp+8; r rip; r rax; g"
+sxe -c ".echo [AUTHG_PARENT_AV]; .lastevent; r; k; g" av
+g

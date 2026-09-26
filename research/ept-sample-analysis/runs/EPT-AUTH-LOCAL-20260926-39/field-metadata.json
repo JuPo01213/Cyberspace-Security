@@ -1,0 +1,43 @@
+﻿{
+    "evidence_scope":  "offline_configuration_field_metadata",
+    "plaintext_bytes":  890,
+    "fields":  [
+                   {
+                       "offset":  "0x3b",
+                       "encoded_length":  99,
+                       "encoding":  "base64_unpadded_candidate",
+                       "decoded_length":  74,
+                       "encoded_sha256":  "B9FAD89CFAF2988B90980591082349AB3A64CF9FAD2A63BBEDDFF4879A055B58",
+                       "decoded_sha256":  "C968A4D3E948C7F99C1E98349AE7151BBEFAD4447D2B98DFF2D4E924A2F41D8B",
+                       "decoded_entropy":  5.96621,
+                       "raw_text_emitted":  false
+                   },
+                   {
+                       "offset":  "0x9f",
+                       "encoded_length":  99,
+                       "encoding":  "base64_unpadded_candidate",
+                       "decoded_length":  74,
+                       "encoded_sha256":  "B9FAD89CFAF2988B90980591082349AB3A64CF9FAD2A63BBEDDFF4879A055B58",
+                       "decoded_sha256":  "C968A4D3E948C7F99C1E98349AE7151BBEFAD4447D2B98DFF2D4E924A2F41D8B",
+                       "decoded_entropy":  5.96621,
+                       "raw_text_emitted":  false
+                   },
+                   {
+                       "offset":  "0x103",
+                       "encoded_length":  99,
+                       "encoding":  "base64_unpadded_candidate",
+                       "decoded_length":  74,
+                       "encoded_sha256":  "B9FAD89CFAF2988B90980591082349AB3A64CF9FAD2A63BBEDDFF4879A055B58",
+                       "decoded_sha256":  "C968A4D3E948C7F99C1E98349AE7151BBEFAD4447D2B98DFF2D4E924A2F41D8B",
+                       "decoded_entropy":  5.96621,
+                       "raw_text_emitted":  false
+                   }
+               ],
+    "encoded_fields_identical":  true,
+    "sample_executed":  false,
+    "validation_result_modified":  false,
+    "authorization_proven":  false,
+    "external_dependencies":  [
+
+                              ]
+}

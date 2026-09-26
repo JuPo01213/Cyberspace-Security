@@ -1,0 +1,11 @@
+{
+    "run_id":  "EPT-REAL-20260924-03",
+    "utc":  "2026-09-24T15:39:32.1609304Z",
+    "phase":  "RUNNING",
+    "elapsed_seconds":  28864,
+    "target_pid":  3044,
+    "target_alive":  true,
+    "process_count":  121,
+    "observed_process_count":  127,
+    "file_count":  11
+}

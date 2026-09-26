@@ -1,0 +1,268 @@
+# C35 - census of every host-side VirtualBox capture (re-run for P3)
+# inputs: <HOST_PATH>/Users/<USER> (8 files) + archived copies in <HOST_PATH>/EPT/artifacts/pcap
+# hit criterion is a raw byte run, so it does not depend on this file's DNS decoder
+
+== VBox-1f00.pcap  size=148,506  sha256=04fb99afb358ca46b8516f1b447a6e2d78949d685b82aaf46a0e2a7806e78d8e
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=954  port53=20  dns_parsed=20  dns_unparsed=0
+   span=531.0 s (t0=0)  bytes_consumed=148,506 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=0  xz=0
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (32 distinct), top:
+          7  <PRIVATE_IP>:49689-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49706-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49707-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49708-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49739-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49740-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49754-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49789-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49794-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49795-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49818-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:49822-><PRIVATE_IP>:22
+   DNS query names seen (6 distinct), top 10:
+          6  www.microsoft.com/A
+          6  www.microsoft.com/AAAA
+          2  dns.msftncsi.com/A
+          2  3.2.0.10.in-addr.arpa/PTR
+          2  www.msftconnecttest.com/A
+          2  www.msftconnecttest.com/AAAA
+
+== VBox-2a0c.pcap  size=148,166,238  sha256=f74d4e2464428c1bd951867ce5f7c9a4e01ce86697964022743c8b77243d3777
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=107,250  port53=190  dns_parsed=190  dns_unparsed=0
+   span=1692.0 s (t0=0)  bytes_consumed=148,166,238 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=2  xz=0
+     t= 488.924  QUERY A    yz.hwid001.com         <PRIVATE_IP>:62623 -> <PRIVATE_IP>:53
+     t= 488.924  QUERY A    yz.hwid001.com         <PRIVATE_IP>:53 -> <PRIVATE_IP>:62623
+     t= 488.924  ANSWER A     yz.hwid001.com         = 198.18.2.159     <PRIVATE_IP>:53 -> <PRIVATE_IP>:62623
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (46 distinct), top:
+          7  <PRIVATE_IP>:58070-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:58071-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:58325-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:52786-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:52787->198.18.0.207:443
+          1  <PRIVATE_IP>:52789->198.18.0.205:443
+          1  <PRIVATE_IP>:52790->198.18.0.151:443
+          1  <PRIVATE_IP>:60265-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:56770-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:56771-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:60266->198.18.0.152:443
+          1  <PRIVATE_IP>:60267->198.18.0.19:443
+   DNS query names seen (67 distinct), top 10:
+          8  v10.events.data.microsoft.com/A
+          8  v10.events.data.microsoft.com/AAAA
+          8  edge.microsoft.com/HTTPS
+          8  edge.microsoft.com/AAAA
+          8  edge.microsoft.com/A
+          4  dns.msftncsi.com/A
+          4  www.bing.com/A
+          4  www.bing.com/AAAA
+          4  ocsp.digicert.com/A
+          4  ocsp.digicert.com/AAAA
+
+== VBox-2d44.pcap  size=158,450,158  sha256=9056fae2556f7380c4243073a8ef0816e6504feebecc526a0bc03776d6817da5
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=124,981  port53=374  dns_parsed=374  dns_unparsed=0
+   span=674.6 s (t0=0)  bytes_consumed=158,450,158 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=0  xz=0
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (220 distinct), top:
+          1  <PRIVATE_IP>:54710-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:54837-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:54711->198.18.0.104:443
+          1  <PRIVATE_IP>:54712->198.18.0.207:443
+          1  <PRIVATE_IP>:54713->198.18.1.196:80
+          1  <PRIVATE_IP>:54969-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:54840-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:55071-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:54715->198.18.0.151:443
+          1  <PRIVATE_IP>:54716->198.18.0.205:443
+          1  <PRIVATE_IP>:54717->198.18.2.49:443
+          1  <PRIVATE_IP>:55130-><PRIVATE_IP>:22
+   DNS query names seen (115 distinct), top 10:
+         12  edge.microsoft.com/HTTPS
+         12  edge.microsoft.com/AAAA
+         12  edge.microsoft.com/A
+         10  ecs.office.com/A
+         10  ecs.office.com/AAAA
+          8  g.live.com/A
+          8  g.live.com/AAAA
+          8  oneclient.sfx.ms/A
+          8  oneclient.sfx.ms/AAAA
+          8  self.events.data.microsoft.com/A
+
+== VBox-3bf4.pcap  size=105,802  sha256=c6dca84579593eb7a7cc0cd3906004767f10150973e5dbe3e785d0109279b4aa
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=687  port53=24  dns_parsed=24  dns_unparsed=0
+   span=659.5 s (t0=0)  bytes_consumed=105,802 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=2  xz=0
+     t=  55.296  QUERY A    yz.hwid001.com         <PRIVATE_IP>:51626 -> <PRIVATE_IP>:53
+     t=  55.303  QUERY A    yz.hwid001.com         <PRIVATE_IP>:53 -> <PRIVATE_IP>:51626
+     t=  55.303  ANSWER A     yz.hwid001.com         = 198.18.2.159     <PRIVATE_IP>:53 -> <PRIVATE_IP>:51626
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (21 distinct), top:
+          7  <PRIVATE_IP>:56854-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:56887-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57059-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57707-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57724-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57833-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57893-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57896-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57929-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57941-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:57974-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:58360-><PRIVATE_IP>:22
+   DNS query names seen (8 distinct), top 10:
+          6  www.microsoft.com/A
+          6  www.microsoft.com/AAAA
+          2  time.windows.com/AAAA
+          2  dns.msftncsi.com/A
+          2  3.2.0.10.in-addr.arpa/PTR
+          2  www.msftconnecttest.com/A
+          2  www.msftconnecttest.com/AAAA
+          2  yz.hwid001.com/A
+
+== VBox-46b0.pcap  size=1,176,224  sha256=f43692b4b2f1e1be73b1bb3df27858e6f7bef36237d243c84576b227fda31370
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=1,600  port53=82  dns_parsed=82  dns_unparsed=0
+   span=571.1 s (t0=0)  bytes_consumed=1,176,224 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=0  xz=0
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          2  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (23 distinct), top:
+          7  <PRIVATE_IP>:55830-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:55833-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:55983-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:56035-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:56056-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:56061-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:56062-><PRIVATE_IP>:22
+          1  <PRIVATE_IP>:59633-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:64582-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:54441-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:54442->198.18.0.104:443
+          1  <PRIVATE_IP>:54443->198.18.0.207:443
+   DNS query names seen (35 distinct), top 10:
+          6  dns.msftncsi.com/A
+          6  www.microsoft.com/A
+          6  www.microsoft.com/AAAA
+          2  ecs.office.com/A
+          2  ecs.office.com/AAAA
+          2  mobile.events.data.microsoft.com/A
+          2  mobile.events.data.microsoft.com/AAAA
+          2  pcmanager.api.mc.microsoft.com/A
+          2  pcmanager.api.mc.microsoft.com/AAAA
+          2  chinanorth3-0.in.applicationinsights.azure.cn/A
+
+== VBox-4e98.pcap  size=68,577  sha256=56143af5543cfbe3eae175f4e88621a121012fac80d9399ed0a2492d4f819ca0
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=394  port53=52  dns_parsed=52  dns_unparsed=0
+   span=172.4 s (t0=0)  bytes_consumed=68,577 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=0  xz=0
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (11 distinct), top:
+          1  <PRIVATE_IP>:59808-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:49307-><PRIVATE_IP>:53
+          1  <PRIVATE_IP>:49308->198.18.1.130:443
+          1  <PRIVATE_IP>:49309->198.18.1.62:443
+          1  <PRIVATE_IP>:49310->198.18.1.130:443
+          1  <PRIVATE_IP>:49311->198.18.0.19:443
+          1  <PRIVATE_IP>:49312->198.18.1.130:443
+          1  <PRIVATE_IP>:49313->198.18.0.19:443
+          1  <PRIVATE_IP>:49315->198.18.0.111:80
+          1  <PRIVATE_IP>:49316->198.18.0.111:80
+          1  <PRIVATE_IP>:49317->198.18.0.240:80
+   DNS query names seen (16 distinct), top 10:
+          8  slscr.update.microsoft.com/A
+          6  slscr.update.microsoft.com/AAAA
+          4  www.microsoft.com/AAAA
+          4  dns.msftncsi.com/A
+          4  fe3cr.delivery.mp.microsoft.com/A
+          4  v10.events.data.microsoft.com/A
+          4  v10.events.data.microsoft.com/AAAA
+          2  www.microsoft.com/A
+          2  fe3cr.delivery.mp.microsoft.com/AAAA
+          2  edge.microsoft.com/HTTPS
+
+== VBox-5198.pcap  size=115,589  sha256=68be74f59451301a2c11940b9289ec74ae3f358876050c45fb8954b31cdc4706
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=771  port53=24  dns_parsed=24  dns_unparsed=0
+   span=532.1 s (t0=0)  bytes_consumed=115,589 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=0  xz=0
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (26 distinct), top:
+          7  <PRIVATE_IP>:59725-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:59726-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:59861-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:59983-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:60002-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:60217-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:60469-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:61459-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:61478-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:61659-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:61660-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:61884-><PRIVATE_IP>:22
+   DNS query names seen (8 distinct), top 10:
+          6  www.microsoft.com/A
+          6  www.microsoft.com/AAAA
+          2  dns.msftncsi.com/A
+          2  time.windows.com/A
+          2  time.windows.com/AAAA
+          2  3.2.0.10.in-addr.arpa/PTR
+          2  www.msftconnecttest.com/A
+          2  www.msftconnecttest.com/AAAA
+
+== VBox-5d54.pcap  size=102,379  sha256=b7f3957c70933b0071e362c338dce549a57b8c889d2c7dc2efcf51c2f4348e7f
+   pcap v2.4 endian=< linktype=1 snaplen=65535
+   packets=686  port53=12  dns_parsed=12  dns_unparsed=0
+   span=417.8 s (t0=0)  bytes_consumed=102,379 leftover=0  truncated_tail=0 incl_lt_orig=1
+   BYTE-RUN HITS  yz=0  xz=0
+   peer flows not involving 10.0.2.x: 1 distinct, top 8:
+          1  UDP 0.0.0.0:68->255.255.255.255:67
+   TCP SYN destinations (24 distinct), top:
+          7  <PRIVATE_IP>:50422-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50426-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50442-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50443-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50444-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50480-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50507-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50510-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50511-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50512-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50568-><PRIVATE_IP>:22
+          7  <PRIVATE_IP>:50575-><PRIVATE_IP>:22
+   DNS query names seen (3 distinct), top 10:
+          6  www.microsoft.com/A
+          4  www.microsoft.com/AAAA
+          2  dns.msftncsi.com/A
+
+== archive reconciliation (artifacts/pcap vs host originals) ==
+   VBox-3bf4.pcap     c6dca84579593eb7  MATCH host original
+   VBox-4e98.pcap     56143af5543cfbe3  MATCH host original
+   VBox-5198.pcap     68be74f59451301a  MATCH host original
+   host captures NOT archived: 5 -> VBox-1f00.pcap (148,506 B), VBox-2a0c.pcap (148,166,238 B), VBox-2d44.pcap (158,450,158 B), VBox-46b0.pcap (1,176,224 B), VBox-5d54.pcap (102,379 B)
+
+== controls ==
+   DECODER-ALIVE: port-53 packets across corpus=778 parsed=778 unparsed=0 -> OK
+   EXACT-TAIL VBox-1f00.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-2a0c.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-2d44.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-3bf4.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-46b0.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-4e98.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-5198.pcap     leftover=0 tail_trunc=0 -> OK
+   EXACT-TAIL VBox-5d54.pcap     leftover=0 tail_trunc=0 -> OK
+   ZERO-PACKET files (instrument failure if any): none
+   ARCHIVE-MATCH: all archived copies identical to host originals

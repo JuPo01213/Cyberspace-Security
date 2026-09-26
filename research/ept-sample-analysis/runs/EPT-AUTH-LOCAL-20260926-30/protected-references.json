@@ -1,0 +1,33 @@
+{
+  "evidence_scope": "offline_protected_reference_and_copy_candidates",
+  "dump_sha256": "ca0ffcec87a8580e9bfdef4daaf90c97fb06a53d597028020fe1ec714830e60d",
+  "windows": [
+    {
+      "name": ".Sq>",
+      "start": 5387010048,
+      "size": 15619568,
+      "flags": 1610612768,
+      "status": "scanned",
+      "read_bytes": 15619568,
+      "prefilter_candidates": 9
+    },
+    {
+      "name": ".)Bu",
+      "start": 5402636288,
+      "size": 32545584,
+      "flags": 1744830560,
+      "status": "scanned",
+      "read_bytes": 32545584,
+      "prefilter_candidates": 8
+    }
+  ],
+  "references": [],
+  "placeholder_config_candidates": [],
+  "elapsed_sec": 17.625,
+  "limits": [
+    "Historical captured bytes only; not runtime reachability.",
+    "Instruction encodings prefiltered and candidate alignment not certified.",
+    "Literal input search only finds known placeholder, not all configuration instances.",
+    "No authorization success inferred."
+  ]
+}

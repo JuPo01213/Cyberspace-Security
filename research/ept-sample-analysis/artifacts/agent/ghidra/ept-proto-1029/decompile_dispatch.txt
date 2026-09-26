@@ -1,0 +1,14 @@
+== dispatch_7858_675f target=0x1400f77ae fn=CREATE_FAILED ==
+== trampoline_19349d target=0x14019349d fn=thunk_EXT_FUN_1400f77ae ==
+
+/* WARNING: Control flow encountered bad instruction data */
+
+void thunk_EXT_FUN_1400f77ae(void)
+
+{
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+
+

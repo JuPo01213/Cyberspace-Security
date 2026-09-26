@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T06:48:59.4295173Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":3012,"type":"PARENT_STARTED","utc":"2026-09-25T06:48:59.5232708Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_10997F2A_DCB5023C.exe","pid":4608,"ppid":3012,"type":"CHILD_FOUND","utc":"2026-09-25T06:49:02.2107679Z"}
+{"child_pid":4608,"utc":"2026-09-25T06:49:02.2420214Z","debugger_pid":4560,"type":"CDB_ATTACHED"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T06:49:02.2576427Z"}

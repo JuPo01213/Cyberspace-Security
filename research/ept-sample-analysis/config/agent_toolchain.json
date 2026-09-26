@@ -1,0 +1,147 @@
+{
+  "schema_version": "1.0",
+  "scope": "remnux_and_ghidra_only",
+  "status": "partially_deployed",
+  "updated": "2026-09-25",
+  "guidance_skills": {
+    "status": "installed_local_adapters",
+    "remnux": "<HOST_PATH>/Users/<USER>/.codebuddy/skills/remnux-mcp-workbench/SKILL.md",
+    "ghidra": "<HOST_PATH>/Users/<USER>/.codebuddy/skills/ghidra-mcp-workbench/SKILL.md",
+    "project_workflow": "method/AGENT_STATIC_ANALYSIS_WORKFLOW.md",
+    "official_behavior_source": "fixed-version MCP schema, handshake instructions and upstream README"
+  },
+  "excluded_components": ["cape", "windows_sandbox_automation", "flare_vm_automation", "custom_tool_hub"],
+  "host_inventory": "artifacts/host_inventory.json",
+  "control_plane": {
+    "os_build": "Windows 10 19045",
+    "logical_processors": 12,
+    "memory_bytes": 16870006784,
+    "workspace": "<HOST_PATH>/EPT",
+    "artifact_root": "<HOST_PATH>/EPT/artifacts/agent",
+    "case_root": "<HOST_PATH>/EPT/cases",
+    "report_root": "<HOST_PATH>/EPT/reports",
+    "mcp_transport_policy": "localhost_or_ssh_only",
+    "credentials_policy": "reference_external_secret_store_only"
+  },
+  "existing_dynamic_node": {
+    "role": "ept_windows_guest_cdb",
+    "status": "verified",
+    "must_remain_separate": true,
+    "sample_launch_requested": false,
+    "launch_state": "SAMPLE_LAUNCH_HELD"
+  },
+  "remnux": {
+    "role": "static_triage_and_ioc",
+    "status": "not_deployed",
+    "official_repository": "https://github.com/REMnux/remnux-mcp-server.git",
+    "package": "@remnux/mcp-server",
+    "package_version": "0.1.75",
+    "source_head_verified": "b8ee3f1a8e91ab75d9154b20852fac9b179e5087",
+    "node_requirement": ">=20.0.0",
+    "transport": "stdio_client_to_host_process",
+    "connector": "ssh_to_remnux_vm",
+    "bind_policy": "localhost_only",
+    "required_capabilities": [
+      "file_type_and_architecture",
+      "sha256",
+      "pe_metadata_imports_exports_sections_entropy",
+      "strings_and_floss_class_recovery",
+      "yara_and_capa_class_matching",
+      "ioc_extraction",
+      "offline_text_log_pcap_dump_metadata_parsing",
+      "raw_artifact_capture"
+    ],
+    "sample_access": "controlled_read_only_only",
+    "dynamic_execution": false,
+    "artifact_subdirectory": "remnux"
+  },
+  "ghidra": {
+    "role": "static_reverse_engineering",
+    "status": "installed_benign_smoke_pass",
+    "official_repository": "https://github.com/NationalSecurityAgency/ghidra.git",
+    "candidate_version": "12.1.4",
+    "candidate_tag_commit": "8b6bbb857accdfa20dc5b2f5dea471178c2e9fbc",
+    "release_asset": "ghidra_12.1.4_PUBLIC_20260921.zip",
+    "release_sha256": "ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db",
+    "mcp_repository": "https://github.com/symgraph/GhidrAssistMCP.git",
+    "mcp_candidate_version": "2.11.0",
+    "mcp_candidate_tag_commit": "0d412d1fe3203e98a32f7dc70df21dc8f6f57131",
+    "mcp_release_asset": "ghidra_12.1_PUBLIC_20260802_GhidrAssistMCP.zip",
+    "mcp_release_sha256": "baba204a9fe839921a1487be9dfb15526faea787e5e4312c8404281d82b3a1a7",
+    "status_note": "Ghidra and GhidrAssistMCP installed; benign smoke passed; guidance Skill installed",
+    "version_policy": "pin_version_and_sha256",
+    "runtime_java_policy": "Ghidra_12.1_requires_java_21",
+    "source_build_java_major": 25,
+    "host_java_major": 21,
+    "transport": "localhost_http_sse_or_streamable",
+    "bind_policy": "localhost_only",
+    "default_port": 8080,
+    "required_capabilities": [
+      "program_import",
+      "function_listing",
+      "strings_and_imports_exports",
+      "decompile_function",
+      "callers_callees_and_xrefs",
+      "limited_rename_and_comment",
+      "project_metadata_export"
+    ],
+    "artifact_subdirectory": "ghidra"
+  },
+  "conflict_assessment": {
+    "node": {
+      "retain": "C:/Program Files/nodejs/node.exe",
+      "version": "24.21.0",
+      "reason": "satisfies REMnux MCP >=20; no replacement needed",
+      "global_install_changed": false
+    },
+    "java": {
+      "retain": "C:/Program Files/Eclipse Adoptium/jdk-21.0.12.101-hotspot",
+      "version": "21.0.12.1",
+      "reason": "required by Ghidra 12.1; GhidrAssist binary avoids Java 25 source-build dependency",
+      "default_path_changed": false
+    },
+    "ports": {
+      "ghidra_mcp": 8080,
+      "remnux_http": 3000,
+      "conflict_at_audit": false,
+      "post_smoke_state": "released"
+    },
+    "existing_global_npm_packages": "retained_unchanged"
+  },
+  "installations": {
+    "remnux_host_package": {
+      "status": "package_smoke_pass_remote_node_pending",
+      "root": "<HOST_PATH>/CTF/reverse-lab/mcp/remnux-host",
+      "version_check": "@remnux/mcp-server v0.1.75",
+      "help_check": "PASS"
+    },
+    "ghidra": {
+      "status": "benign_import_pass",
+      "root": "<HOST_PATH>/CTF/reverse-lab/tools/ghidra_12.1.4_PUBLIC",
+      "java": "Temurin 21.0.12.1",
+      "project": "<HOST_PATH>/CTF/reverse-lab/projects/smoke2",
+      "analysis_seconds": 105
+    },
+    "ghidrassist_mcp": {
+      "status": "mcp_smoke_pass",
+      "user_extension_root": "<HOST_PATH>/Users/<USER>/AppData/Roaming/ghidra/ghidra_12.1.4_PUBLIC/Extensions/GhidrAssistMCP",
+      "endpoint": "http://127.0.0.1:8080/mcp",
+      "initialize": "HTTP_200",
+      "tools_list_count": 46,
+      "read_only_call": "get_binary_info_notepad.exe_PASS",
+      "server_stopped_after_smoke": true
+    }
+  },
+  "acceptance_tests": [
+    "A_remnux_benign_pe_static_artifacts",
+    "B_ghidra_benign_pe_function_xref_decompile",
+    "C_agent_node_selection_and_evidence_scope"
+  ],
+  "not_yet_verified": [
+    "remnux_vm_or_remote_ssh_endpoint",
+    "remnux_tool_inventory_on_remote_node",
+    "ssh_agent_configuration",
+    "mcp_client_registration_format",
+    "agent_node_selection_and_evidence_scope_test"
+  ]
+}

@@ -1,0 +1,12 @@
+.echo CANARY_BEGIN
+r $t1 = 7
+j (@$t1) '.echo COND_TRUE_WORKS' '.echo COND_FALSE_BROKEN'
+r $t1 = 0
+j (@$t1) '.echo COND_NEG_BROKEN' '.echo COND_NEG_WORKS'
+r $t9 = 80000000h
+j (@$t9 & 80000000h) '.echo SIGN_TEST_TRUE' '.echo SIGN_TEST_FALSE'
+bp ntdll!NtTerminateProcess ".echo TERM_HIT; j (@$t1) '.echo PERSIST_TRUE' '.echo PERSIST_BROKEN'; g"
+.echo CANARY_ARMED
+g
+.echo CANARY_STOP
+q

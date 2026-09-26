@@ -1,0 +1,6 @@
+.echo DUMP_BEGIN
+~*
+.echo THREADS_DONE
+~*k
+.echo STACKS_DONE
+q

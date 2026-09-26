@@ -1,0 +1,283 @@
+﻿{
+    "computer":  "<VM_LABEL>",
+    "user":  "<VM_USER>",
+    "utc":  "2026-09-24T15:01:41.2927098Z",
+    "files":  [
+                  {
+                      "path":  "C:\\ept_core\\Hardware.exe",
+                      "exists":  true,
+                      "length":  32671232,
+                      "sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+                      "last_write_utc":  "2026-09-24T11:58:51.0427494Z"
+                  },
+                  {
+                      "path":  "C:\\Windows\\System32\\Hardware.exe",
+                      "exists":  true,
+                      "length":  32671232,
+                      "sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+                      "last_write_utc":  "2026-09-24T11:58:51.0427494Z"
+                  },
+                  {
+                      "path":  "C:\\Windows\\System32\\EPT_HWID.exe",
+                      "exists":  false
+                  },
+                  {
+                      "path":  "<HOST_PATH>\\Users\\<USER>\\Desktop\\EPT涓撲笟娓告垙缁翠慨宸ュ叿绠盫5.1.exe",
+                      "exists":  false
+                  },
+                  {
+                      "path":  "<HOST_PATH>\\Users\\<USER>\\Desktop\\Hardware.exe",
+                      "exists":  false
+                  },
+                  {
+                      "path":  "<HOST_PATH>\\Users\\<USER>\\Downloads\\Hardware.exe",
+                      "exists":  false
+                  }
+              ],
+    "directories":  [
+                        {
+                            "path":  "C:\\ept_obs",
+                            "exists":  true,
+                            "items":  [
+                                          {
+                                              "Name":  "smoke",
+                                              "Length":  null,
+                                              "LastWriteTimeUtc":  "\/Date(1790252674683)\/",
+                                              "Attributes":  {
+                                                                 "value":  16,
+                                                                 "Value":  "Directory"
+                                                             }
+                                          },
+                                          {
+                                              "Name":  "spool",
+                                              "Length":  null,
+                                              "LastWriteTimeUtc":  "\/Date(1790257801032)\/",
+                                              "Attributes":  {
+                                                                 "value":  16,
+                                                                 "Value":  "Directory"
+                                                             }
+                                          }
+                                      ]
+                        },
+                        {
+                            "path":  "C:\\ept_core",
+                            "exists":  true,
+                            "items":  [
+                                          {
+                                              "Name":  "Hardware.exe",
+                                              "Length":  32671232,
+                                              "LastWriteTimeUtc":  "\/Date(1790251131042)\/",
+                                              "Attributes":  {
+                                                                 "value":  32,
+                                                                 "Value":  "Archive"
+                                                             }
+                                          }
+                                      ]
+                        },
+                        {
+                            "path":  "C:\\HexPatch\\tools",
+                            "exists":  true,
+                            "items":  [
+                                          {
+                                              "Name":  "7zip",
+                                              "Length":  null,
+                                              "LastWriteTimeUtc":  "\/Date(1790210854169)\/",
+                                              "Attributes":  {
+                                                                 "value":  16,
+                                                                 "Value":  "Directory"
+                                                             }
+                                          },
+                                          {
+                                              "Name":  "Rizin",
+                                              "Length":  null,
+                                              "LastWriteTimeUtc":  "\/Date(1790210854248)\/",
+                                              "Attributes":  {
+                                                                 "value":  16,
+                                                                 "Value":  "Directory"
+                                                             }
+                                          },
+                                          {
+                                              "Name":  "winsdksetup.exe",
+                                              "Length":  1449536,
+                                              "LastWriteTimeUtc":  "\/Date(1790210718966)\/",
+                                              "Attributes":  {
+                                                                 "value":  32,
+                                                                 "Value":  "Archive"
+                                                             }
+                                          }
+                                      ]
+                        },
+                        {
+                            "path":  "<HOST_PATH>\\Users\\<USER>\\Desktop",
+                            "exists":  true,
+                            "items":  [
+                                          {
+                                              "Name":  "desktop.ini",
+                                              "Length":  282,
+                                              "LastWriteTimeUtc":  "\/Date(1790209012311)\/",
+                                              "Attributes":  {
+                                                                 "value":  38,
+                                                                 "Value":  "Hidden, System, Archive"
+                                                             }
+                                          }
+                                      ]
+                        },
+                        {
+                            "path":  "<HOST_PATH>\\Users\\<USER>\\Downloads",
+                            "exists":  true,
+                            "items":  [
+                                          {
+                                              "Name":  "desktop.ini",
+                                              "Length":  282,
+                                              "LastWriteTimeUtc":  "\/Date(1790209012358)\/",
+                                              "Attributes":  {
+                                                                 "value":  38,
+                                                                 "Value":  "Hidden, System, Archive"
+                                                             }
+                                          }
+                                      ]
+                        }
+                    ],
+    "processes":  [
+
+                  ],
+    "adapters":  [
+                     {
+                         "Name":  "以太网",
+                         "Status":  "Disconnected",
+                         "MacAddress":  "00-15-5D-38-01-02",
+                         "ifIndex":  4,
+                         "InterfaceDescription":  "Microsoft Hyper-V Network Adapter"
+                     }
+                 ],
+    "ipv4":  [
+                 {
+                     "InterfaceAlias":  "以太网",
+                     "IPAddress":  "<PRIVATE_IP>",
+                     "PrefixLength":  20
+                 },
+                 {
+                     "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                     "IPAddress":  "127.0.0.1",
+                     "PrefixLength":  8
+                 }
+             ],
+    "routes":  [
+                   {
+                       "DestinationPrefix":  "255.255.255.255/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "255.255.255.255/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "224.0.0.0/4",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "224.0.0.0/4",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "<PRIVATE_IP>/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "<PRIVATE_IP>/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "<PRIVATE_IP>/20",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "127.255.255.255/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "127.0.0.1/32",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "127.0.0.0/8",
+                       "NextHop":  "0.0.0.0",
+                       "InterfaceAlias":  "Loopback Pseudo-Interface 1",
+                       "RouteMetric":  256
+                   },
+                   {
+                       "DestinationPrefix":  "0.0.0.0/0",
+                       "NextHop":  "<PRIVATE_IP>",
+                       "InterfaceAlias":  "以太网",
+                       "RouteMetric":  0
+                   }
+               ],
+    "firewall":  [
+                     {
+                         "Name":  "Domain",
+                         "Enabled":  {
+                                         "value":  1,
+                                         "Value":  "True"
+                                     },
+                         "DefaultInboundAction":  {
+                                                      "value":  0,
+                                                      "Value":  "NotConfigured"
+                                                  },
+                         "DefaultOutboundAction":  {
+                                                       "value":  0,
+                                                       "Value":  "NotConfigured"
+                                                   }
+                     },
+                     {
+                         "Name":  "Private",
+                         "Enabled":  {
+                                         "value":  1,
+                                         "Value":  "True"
+                                     },
+                         "DefaultInboundAction":  {
+                                                      "value":  0,
+                                                      "Value":  "NotConfigured"
+                                                  },
+                         "DefaultOutboundAction":  {
+                                                       "value":  0,
+                                                       "Value":  "NotConfigured"
+                                                   }
+                     },
+                     {
+                         "Name":  "Public",
+                         "Enabled":  {
+                                         "value":  1,
+                                         "Value":  "True"
+                                     },
+                         "DefaultInboundAction":  {
+                                                      "value":  0,
+                                                      "Value":  "NotConfigured"
+                                                  },
+                         "DefaultOutboundAction":  {
+                                                       "value":  0,
+                                                       "Value":  "NotConfigured"
+                                                   }
+                     }
+                 ],
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "eb8606e2-3252-499f-abf9-076501428ba5",
+    "PSShowComputerName":  true
+}

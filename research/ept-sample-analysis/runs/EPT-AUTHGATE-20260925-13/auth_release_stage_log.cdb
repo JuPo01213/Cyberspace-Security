@@ -1,0 +1,34 @@
+.echo RUN13_BEGIN
+db 0x141154ced L4
+db 0x141154cf1 L4
+db 0x141154ae7 L1
+db 0x141154ce9 L4
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo AUTH_RELEASED
+.echo STAGE_FUNCS_BEFORE
+db 0x1403b3280 L3
+db 0x1403b34d0 L3
+db 0x1403c47e0 L3
+db 0x1403b3d30 L3
+db 0x1403c49d0 L3
+eb 0x1403b3280 33 C0 C3
+eb 0x1403b34d0 33 C0 C3
+eb 0x1403c47e0 33 C0 C3
+eb 0x1403b3d30 33 C0 C3
+eb 0x1403c49d0 33 C0 C3
+.echo STAGE_FUNCS_PATCHED
+db 0x1403b3280 L3
+db 0x1403b34d0 L3
+db 0x1403c47e0 L3
+db 0x1403b3d30 L3
+db 0x1403c49d0 L3
+bu user32!MessageBoxW ".echo SKIP_MSGBOXW; r eax=1; g @$ra"
+bu user32!MessageBoxA ".echo SKIP_MSGBOXA; r eax=1; g @$ra"
+bu user32!MessageBoxTimeoutW ".echo SKIP_MSGBOXTO; r eax=1; g @$ra"
+ba e 1 1407adae0 ".echo STAGE_LOG; da r8; r r9d; g"
+.echo BP_ARMED
+g
+q

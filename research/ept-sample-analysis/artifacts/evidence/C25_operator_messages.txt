@@ -1,0 +1,52 @@
+# C25 - ASCII + GBK strings in 0x140f92400..0x140f92c00 (the page holding the gate and carrier log tags)
+# source: artifacts/stream_C6/stream_rdata.bin (runtime capture, ~9% of .rdata pages plaintext)
+# control gate PASSED: 47 runs decoded, all 3 control strings present
+# usage rule: these name the exits located by jcc evidence; they never prove an exit exists
+
+0x140f92410  [ascii] rmdir /s /q "C:\Windows\System32\Logs"
+0x140f92438  [ascii] rmdir /s /q "C:\Windows\System32\HardwareLogs"
+0x140f92468  [ascii] rmdir /s /q "<HOST_PATH>\<DIR>"
+0x140f92490  [ascii] rmdir /s /q "<HOST_PATH>\<DIR>wareLogs"
+0x140f924c0  [gbk  ] 授权状态异常，本地配置与固定部署已清理。
+0x140f924e9  [gbk  ] 错误码：%d
+0x140f924f8  [gbk  ] 授权验证
+0x140f92508  [ascii] StoredVerify.begin
+0x140f92520  [ascii] StoredVerify.StoredAuthorizationUsable
+0x140f92550  [ascii] <REDACTED: 308-byte base64-looking blob = the embedded authorization token, out of scope by standing constraint (never decoded, never used); presence only>
+0x140f92640  [ascii] StoredVerify.SP_Verify_Init
+0x140f92660  [ascii] StoredVerify.init_failed_soft_allow
+0x140f92688  [ascii] yz.hwid001.com
+0x140f92698  [ascii] StoredVerify.SetHost yz.hwid001.com:1029
+0x140f926c8  [ascii] StoredVerify.SP_Verify_GetServerOption
+0x140f926f0  [ascii] StoredVerify.option_failed_soft_allow
+0x140f92718  [ascii] StoredVerify.SP_Verify_CardLogin
+0x140f92740  [ascii] StoredVerify.cardlogin_denied_clear_or_block
+0x140f92770  [ascii] StoredVerify.cardlogin_failed_soft_allow
+0x140f927a0  [ascii] StoredVerify.SP_Verify_IsLogin
+0x140f927c0  [ascii] StoredVerify.islogin_failed_soft_allow
+0x140f927e8  [ascii] stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s
+0x140f92820  [ascii] StoredVerify.beat_hard_deny_clear_or_block
+0x140f92850  [ascii] StoredVerify.beat_not_soft_allow_clear_or_block
+0x140f92880  [ascii] StoredVerify.allow
+0x140f92898  [gbk  ] 固定部署
+0x140f928a8  [gbk  ] 未找到有效配置，请先使用 -k 完成授权配置！
+0x140f92920  [gbk  ] 固定部署失败！
+0x140f92930  [ascii] sc.exe config "AntiCheatExpert Protection" start= delayed-auto
+0x140f92970  [ascii] sc.exe config "AntiCheatExpert Service" start= delayed-auto
+0x140f929b0  [ascii] SeDebugPrivilege
+0x140f929c8  [gbk  ] 权限状态: 管理员模式
+0x140f929e0  [gbk  ] 权限状态: 普通用户模式
+0x140f929f8  [gbk  ] 操作: 正在尝试自动获取管理员权限...
+0x140f92a30  [gbk  ] 结果: 提权成功，程序将重启
+0x140f92a50  [gbk  ] 提示: 如果弹出UAC提示请点击'是'
+0x140f92a78  [gbk  ] 结果: 自动提权失败
+0x140f92a90  [gbk  ] 提示: 部分需要管理员权限的功能可能受限，如机器码加载没效果，请手动获取权限！
+0x140f92ae0  [ascii] MAIN startup admin=%d cfgMissing=%d cfgPath=%s exePath=%s
+0x140f92b20  [gbk  ] 参数错误
+0x140f92b30  [gbk  ] 参数错误：-h 缺少自定义序列号！
+0x140f92b50  [ascii] -now
+0x140f92b60  [gbk  ] 参数错误：-k 缺少授权卡密！
+0x140f92b80  [gbk  ] 参数错误：-n 需要序列模式数字！
+0x140f92ba8  [gbk  ] 参数错误：-m 需要功能模式数字！
+0x140f92bd0  [gbk  ] 不支持的命令参数：%s
+0x140f92be6  [gbk  ] 可用参数：-k 卡密 -n 序列模

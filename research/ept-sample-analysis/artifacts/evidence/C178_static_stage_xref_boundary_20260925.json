@@ -1,0 +1,229 @@
+{
+  "evidence_id": "C178_static_stage_xref_boundary_20260925",
+  "date": "2026-09-25",
+  "evidence_scope": "offline_registered_capture_static_xref",
+  "authorization_scope": "Authorized isolated local static analysis only; no sample launch, no C2, no network request, no response injection, no token decoding or use.",
+  "input": {
+    "path": "artifacts/captures/stream_C6/stream_text.bin",
+    "length": 8257536,
+    "sha256": "5AE354E2983A5BF407601B3629D114B8FAA1DDD731D074E8D2092C338ABDF757",
+    "va_mapping": "VA=0x140000000+file_offset"
+  },
+  "method": {
+    "name": "exact RIP-relative LEA and MOVABS target scan",
+    "scope": "full stream_text.bin",
+    "instruction_policy": "Pattern-only; no linear-disassembly CFG was promoted. High-entropy CardLogin bytes remain data-or-virtualized boundary.",
+    "patterns": [
+      "REX 8D modrm RIP-relative disp32",
+      "REX MOVABS imm64"
+    ],
+    "negative_scope": "No E8 call graph was inferred from arbitrary byte offsets."
+  },
+  "stage_xrefs": [
+    {
+      "va": "0x1407a30a6",
+      "target": "0x140f92508",
+      "label": "StoredVerify.begin",
+      "role": "gate-stage log label"
+    },
+    {
+      "va": "0x1407a30f1",
+      "target": "0x140f92520",
+      "label": "StoredVerify.StoredAuthorizationUsable",
+      "role": "gate-stage log label"
+    },
+    {
+      "va": "0x1407a311f",
+      "target": "0x140f92550",
+      "label": "embedded authorization token address",
+      "role": "argument address; token not decoded or used"
+    },
+    {
+      "va": "0x1407a315d",
+      "target": "0x140f92640",
+      "label": "StoredVerify.SP_Verify_Init",
+      "role": "Init-stage log label"
+    },
+    {
+      "va": "0x1407a3176",
+      "target": "0x140f92660",
+      "label": "init_failed_soft_allow",
+      "role": "Init failure label"
+    },
+    {
+      "va": "0x1407a3193",
+      "target": "0x140f92688",
+      "label": "yz.hwid001.com",
+      "role": "host label in success branch"
+    },
+    {
+      "va": "0x1407a319f",
+      "target": "0x140f92698",
+      "label": "StoredVerify.SetHost",
+      "role": "host-setting label"
+    },
+    {
+      "va": "0x1407a31e2",
+      "target": "0x140f926c8",
+      "label": "SP_Verify_GetServerOption",
+      "role": "server-option stage label"
+    },
+    {
+      "va": "0x1407a31fb",
+      "target": "0x140f926f0",
+      "label": "option_failed_soft_allow",
+      "role": "server-option failure label"
+    },
+    {
+      "va": "0x1407a3247",
+      "target": "0x140f92718",
+      "label": "StoredVerify.SP_Verify_CardLogin",
+      "role": "CardLogin stage label"
+    },
+    {
+      "va": "0x1407a32a3",
+      "target": "0x140f92770",
+      "label": "cardlogin_failed_soft_allow",
+      "role": "CardLogin soft branch label"
+    },
+    {
+      "va": "0x1407a32b6",
+      "target": "0x140f92740",
+      "label": "cardlogin_denied_clear_or_block",
+      "role": "CardLogin hard branch label"
+    },
+    {
+      "va": "0x1407a32ea",
+      "target": "0x140f927a0",
+      "label": "StoredVerify.SP_Verify_IsLogin",
+      "role": "IsLogin stage label"
+    },
+    {
+      "va": "0x1407a330e",
+      "target": "0x140f927c0",
+      "label": "islogin_failed_soft_allow",
+      "role": "IsLogin failure label"
+    },
+    {
+      "va": "0x1407a3365",
+      "target": "0x140f927e8",
+      "label": "StoredVerify.SP_Cloud_Beat",
+      "role": "Cloud_Beat stage label"
+    },
+    {
+      "va": "0x1407a33b5",
+      "target": "0x140f92820",
+      "label": "beat_hard_deny_clear_or_block",
+      "role": "Cloud_Beat hard branch label"
+    },
+    {
+      "va": "0x1407a33f0",
+      "target": "0x140f92850",
+      "label": "beat_not_soft_allow_clear_or_block",
+      "role": "Cloud_Beat non-soft branch label"
+    },
+    {
+      "va": "0x1407a3407",
+      "target": "0x140f92880",
+      "label": "StoredVerify.allow",
+      "role": "later-stage label"
+    },
+    {
+      "va": "0x1407a487b",
+      "target": "0x140f92898",
+      "label": "固定部署",
+      "role": "carrier failure title"
+    },
+    {
+      "va": "0x1407a48aa",
+      "target": "0x140f92898",
+      "label": "固定部署",
+      "role": "carrier failure title"
+    },
+    {
+      "va": "0x1407a48b1",
+      "target": "0x140f928a8",
+      "label": "未找到有效配置，请先使用 -k 完成授权配置！",
+      "role": "carrier failure message"
+    }
+  ],
+  "direct_call_anchors": [
+    {
+      "va": "0x1407a320e",
+      "operation": "lea rcx,[0x141154ae7]",
+      "target_global": "0x141154ae7",
+      "role": "passes address of login-state global"
+    },
+    {
+      "va": "0x1407a3215",
+      "callee": "0x1403b3d30",
+      "role": "CardLogin/SDK-stage candidate call; confirmed by C20/C43b and local bytes"
+    },
+    {
+      "va": "0x1407a311c",
+      "callee": "0x1403b34d0",
+      "role": "Init-stage candidate call; confirmed by C20"
+    },
+    {
+      "va": "0x1407a31b0",
+      "callee": "0x1403c47e0",
+      "role": "GetServerOption-stage call; confirmed by C20"
+    },
+    {
+      "va": "0x1407a324e",
+      "callee": "0x1407adae0",
+      "role": "stage log formatting call; not a network API call"
+    },
+    {
+      "va": "0x1407a3257",
+      "callee": "0x14078fc90",
+      "role": "stage log/format consumer; not a network API call"
+    }
+  ],
+  "sequence": {
+    "observed_static": [
+      "StoredVerify.begin",
+      "StoredAuthorizationUsable gate",
+      "SP_Verify_Init",
+      "host label yz.hwid001.com",
+      "StoredVerify.SetHost label",
+      "SP_Verify_GetServerOption",
+      "SP_Verify_CardLogin",
+      "SP_Verify_IsLogin",
+      "SP_Cloud_Beat"
+    ],
+    "port": "0x405 (1029) is recorded in C20/archive static evidence at the host-setting branch",
+    "cardlogin_request": "UNRESOLVED",
+    "response_buffer_and_length": "UNRESOLVED",
+    "runtime_return_codes": "NOT_OBSERVED"
+  },
+  "dynamic_resolution_boundary": {
+    "current_status": "PARTIALLY_RECOVERED_DYNAMIC_RESOLUTION",
+    "evidence": "C176 dump IAT has LoadLibraryA/GetModuleHandleA/GetProcAddress and runtime WSAStartup name fragment; socket/connect/send/recv direct IAT slots are absent.",
+    "stream_text_negative": "GetProcAddress/LoadLibraryA/GetModuleHandleA are absent as literal strings in stream_text.bin; WSAStartup and WSAGetLastError appear only as text at 0x1407dedb7/0x1407dedd8, with no exact LEA/MOVABS xref in this pattern scan.",
+    "interpretation": "The stage-label chain is statically supported, but the actual runtime Winsock resolver and caller remain unresolved."
+  },
+  "conclusion": "OBSERVED_STATIC stage ordering and CardLogin address-taking boundary are strengthened. The result does not recover the network protocol, request/response fields, runtime resolver caller, license response, or authorization outcome.",
+  "unresolved": [
+    "CardLogin request buffer and length",
+    "CardLogin response buffer and length",
+    "runtime API resolver call site",
+    "socket/connect/send/recv runtime addresses",
+    "runtime CardLogin/Cloud_Beat return codes",
+    "license fields and checksum/encoding",
+    "post-auth behavior"
+  ],
+  "raw_evidence": [
+    "artifacts/captures/stream_C6/stream_text.bin",
+    "artifacts/evidence/C20_gate_cfg.txt",
+    "artifacts/evidence/C43b_site_attribution.txt",
+    "artifacts/evidence/C176_static_network_api_boundary_20260925.json",
+    "artifacts/evidence/C27_gate_readers_fulltext.tsv"
+  ],
+  "compliance": [
+    "No real C2 endpoint was contacted.",
+    "No embedded token was decoded or used.",
+    "No authorization-bypass binary or distributable patch was produced.",
+    "Normal real-card workflow remains SAMPLE_LAUNCH_HELD."
+  ]
+}

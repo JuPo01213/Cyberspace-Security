@@ -1,0 +1,70 @@
+{
+  "case_id": "C182",
+  "run_id": "EPT-AUTHGATE-20260925-25",
+  "type": "ept_authorization_gate_dynamic_probe",
+  "status": "SETUP_SERVER_OPTION_FAILURE",
+  "input_state": "MISSING_REAL_CARD_VALUE",
+  "sample_launch_requested": false,
+  "launch_state": "SAMPLE_LAUNCH_HELD",
+  "evidence_scope": "dynamic_observation_setup_path",
+  "artifacts": {
+    "cdb_stdout": "runs/EPT-AUTHGATE-20260925-25/cdb.stdout.txt",
+    "cdb_stderr": "runs/EPT-AUTHGATE-20260925-25/cdb.stderr.txt",
+    "events": "runs/EPT-AUTHGATE-20260925-25/events.ndjson",
+    "post_snapshot": "runs/EPT-AUTHGATE-20260925-25/post_snapshot.json"
+  },
+  "observations": {
+    "entry_gate": {
+      "value": "ENTRY_GATE_RELEASED_ONLY",
+      "evidence": "cdb.stdout.txt:68",
+      "interpretation": "temporary GUI entry gate release only"
+    },
+    "create_filew": {
+      "path": "C:\\Windows\\System32\\Hardware",
+      "evidence": "cdb.stdout.txt:83-85",
+      "interpretation": "Setup path attempted local Hardware configuration access"
+    },
+    "stage_log_setup_verify_init": {
+      "value": "0x00000000",
+      "evidence": "cdb.stdout.txt:96-99"
+    },
+    "stage_log_setup_get_server_option": {
+      "value": "0xfffffffd",
+      "evidence": "cdb.stdout.txt:100-103",
+      "interpretation": "server configuration acquisition failure"
+    },
+    "message_box": {
+      "observed": true,
+      "evidence": "cdb.stdout.txt:104-105"
+    },
+    "fatal_exit": {
+      "observed": true,
+      "evidence": "cdb.stdout.txt:106-110"
+    },
+    "child_process": {
+      "target_pid": 1212,
+      "parent_pid": 2380,
+      "debugger_pid": 3820,
+      "evidence": "events.ndjson:3-4"
+    },
+    "post_snapshot": {
+      "drivers_count": 0,
+      "processes_count": 0,
+      "files": ["C:\\Windows\\System32\\Hardware.exe", "C:\\Windows\\System32\\EPT.cmd"],
+      "tasks": ["DetectHardwareChange", "RemediateHardwareChange"],
+      "evidence": "post_snapshot.json:2-17"
+    }
+  },
+  "negative_observations": {
+    "HIT_OPEN_AUTH": false,
+    "HIT_COMM_INIT": false,
+    "HIT_RC00": false,
+    "driver_access": false,
+    "rc03": null,
+    "rc06": null,
+    "decode_authorization": "NOT_OBSERVED"
+  },
+  "marker_caution": "The strings HIT_OPEN_AUTH, HIT_COMM_INIT and HIT_RC00 occur in breakpoint command definitions at cdb.stdout.txt:75-77; they are not independent execution-hit lines and are therefore not counted as observed markers.",
+  "conclusion": "Setup reached local Hardware configuration access, returned Setup.SP_Verify_Init=0x0 and Setup.SP_Verify_GetServerOption=0xfffffffd, displayed the server-configuration failure message and entered FatalExit. This run does not establish decode authorization, driver access, RC03/RC06, native_return, changed_bytes, caller +0x80 buffers or target code-page differences.",
+  "next_state": "SAMPLE_LAUNCH_HELD; continue static Stored/Run dispatch analysis or await real authorized input; do not search, simulate or substitute card value."
+}

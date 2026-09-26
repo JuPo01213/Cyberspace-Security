@@ -1,0 +1,243 @@
+UUID:           5d046424-2917-48eb-9605-a7f098fdfe17
+Parent UUID:    base
+State:          created
+Type:           writethrough
+Location:       <HOST_PATH>\tinybuild
+Storage format: VHD
+Capacity:       1024 MBytes
+Encryption:     disabled
+
+UUID:           a311dd01-6f92-42ba-98ff-63a7cde67ca3
+Parent UUID:    base
+State:          created
+Type:           normal (base)
+Location:       <HOST_PATH>\tinybuild
+Storage format: VDI
+Capacity:       40960 MBytes
+Encryption:     disabled
+
+UUID:           30493c45-cdbb-4e5f-9648-dae3da641df9
+Parent UUID:    a311dd01-6f92-42ba-98ff-63a7cde67ca3
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VirtualBox VMs\<OTHER_VM_LABEL>\Snapshots/{30493c45-cdbb-4e5f-9648-dae3da641df9}.vdi
+Storage format: VDI
+Capacity:       40960 MBytes
+Encryption:     disabled
+
+UUID:           5e31864f-f3c8-4855-9cc8-5b14475ab047
+Parent UUID:    base
+State:          inaccessible
+Type:           normal (base)
+Location:       <HOST_PATH>\<OTHER_VM_LABEL>-mount.vhd
+Storage format: VHD
+Capacity:       0 MBytes
+Encryption:     disabled
+
+UUID:           33024786-7302-4eff-b700-114e54f87e90
+Parent UUID:    5e31864f-f3c8-4855-9cc8-5b14475ab047
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VirtualBox VMs\<OTHER_VM_LABEL>\Snapshots/{33024786-7302-4eff-b700-114e54f87e90}.vhd
+Storage format: VHD
+Capacity:       40960 MBytes
+Encryption:     disabled
+
+UUID:           4e7ebe82-c15f-42cc-ae16-9b9bd1b0c5b2
+Parent UUID:    base
+State:          created
+Type:           normal (base)
+Location:       <HOST_PATH>\vbox-disks
+Storage format: VDI
+Capacity:       40960 MBytes
+Encryption:     disabled
+
+UUID:           667009dd-1a9f-429c-8fa9-b6d3ec9b33ad
+Parent UUID:    base
+State:          created
+Type:           normal (base)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\<OTHER_VM_LABEL>.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           d7f8ab72-1ec2-40a7-9b19-6b7296129de4
+Parent UUID:    667009dd-1a9f-429c-8fa9-b6d3ec9b33ad
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{d7f8ab72-1ec2-40a7-9b19-6b7296129de4}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           5b979328-5d66-4c38-a85e-e724e2f656a3
+Parent UUID:    d7f8ab72-1ec2-40a7-9b19-6b7296129de4
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{5b979328-5d66-4c38-a85e-e724e2f656a3}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           a5454a47-7180-48ad-9370-8a5ebc61da8c
+Parent UUID:    5b979328-5d66-4c38-a85e-e724e2f656a3
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{a5454a47-7180-48ad-9370-8a5ebc61da8c}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           bf8372f0-36e1-41d6-ab45-3fbb0b8eb7c0
+Parent UUID:    5b979328-5d66-4c38-a85e-e724e2f656a3
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{bf8372f0-36e1-41d6-ab45-3fbb0b8eb7c0}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           6b3b97bc-54f4-453d-b181-efe10d3b67d3
+Parent UUID:    bf8372f0-36e1-41d6-ab45-3fbb0b8eb7c0
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{6b3b97bc-54f4-453d-b181-efe10d3b67d3}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           1183c129-8573-4da3-9f96-96c9c7add61c
+Parent UUID:    5b979328-5d66-4c38-a85e-e724e2f656a3
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{1183c129-8573-4da3-9f96-96c9c7add61c}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           93de8a34-6082-4914-95db-32ac0c42b43b
+Parent UUID:    1183c129-8573-4da3-9f96-96c9c7add61c
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{93de8a34-6082-4914-95db-32ac0c42b43b}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           74c30d4b-a3bf-43fd-8122-379fe2e35dc7
+Parent UUID:    93de8a34-6082-4914-95db-32ac0c42b43b
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{74c30d4b-a3bf-43fd-8122-379fe2e35dc7}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           409e2ba6-5722-4e88-a16e-ce588a42e5f3
+Parent UUID:    74c30d4b-a3bf-43fd-8122-379fe2e35dc7
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{409e2ba6-5722-4e88-a16e-ce588a42e5f3}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           0f36cad9-f480-44bb-9cd8-8c4c9413c362
+Parent UUID:    409e2ba6-5722-4e88-a16e-ce588a42e5f3
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{0f36cad9-f480-44bb-9cd8-8c4c9413c362}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           8fda0809-be92-48a1-95f2-bc8f75b43e9f
+Parent UUID:    0f36cad9-f480-44bb-9cd8-8c4c9413c362
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{8fda0809-be92-48a1-95f2-bc8f75b43e9f}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           b040b564-792e-4b82-8c0d-7e113b0ee63b
+Parent UUID:    8fda0809-be92-48a1-95f2-bc8f75b43e9f
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{b040b564-792e-4b82-8c0d-7e113b0ee63b}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           17501a3c-a6f7-46a2-9971-de87997969f9
+Parent UUID:    b040b564-792e-4b82-8c0d-7e113b0ee63b
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{17501a3c-a6f7-46a2-9971-de87997969f9}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           0804dc93-b582-4439-aa1a-acc1c1a85031
+Parent UUID:    8fda0809-be92-48a1-95f2-bc8f75b43e9f
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{0804dc93-b582-4439-aa1a-acc1c1a85031}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           e89e3392-2fcf-417c-b815-186915ad5984
+Parent UUID:    0804dc93-b582-4439-aa1a-acc1c1a85031
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{e89e3392-2fcf-417c-b815-186915ad5984}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           ff67292c-4147-4ca6-9da3-de3bffb86b28
+Parent UUID:    8fda0809-be92-48a1-95f2-bc8f75b43e9f
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{ff67292c-4147-4ca6-9da3-de3bffb86b28}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           f4674c45-4193-46f9-ab4f-a02f68ea8d7a
+Parent UUID:    8fda0809-be92-48a1-95f2-bc8f75b43e9f
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{f4674c45-4193-46f9-ab4f-a02f68ea8d7a}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           1c1ec786-08a2-4caa-af3d-719c5b832e3e
+Parent UUID:    8fda0809-be92-48a1-95f2-bc8f75b43e9f
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{1c1ec786-08a2-4caa-af3d-719c5b832e3e}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           8a6d3887-8a93-48fa-bc2a-4746b336d818
+Parent UUID:    base
+State:          created
+Type:           normal (base)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\<OTHER_VM_LABEL>.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+
+UUID:           a88db01a-9a94-49fb-bb75-196e8ed718b7
+Parent UUID:    8a6d3887-8a93-48fa-bc2a-4746b336d818
+State:          created
+Type:           normal (differencing)
+Location:       <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{a88db01a-9a94-49fb-bb75-196e8ed718b7}.vdi
+Storage format: VDI
+Capacity:       65536 MBytes
+Encryption:     disabled
+

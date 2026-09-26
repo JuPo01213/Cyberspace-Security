@@ -1,0 +1,138 @@
+== C56  §4.4 合取站点与闸门全局的字节级重推 ==
+问题：§4.4(1)(2) 的站点/全局地址都来自反编译；本轮把它们当成"要去读的地址"之前先自证。
+
+--- 1. 全段 8.26 MB 里 `cmp dword ptr [rip+d], 1` 比较过哪些全局 ---
+   （模式命中 7 处，其中 1 处解出的目标在镜像外 ⇒ 是字节巧合，已剔除；下面只统计落在 0x140000000..0x145000000 的 6 处）
+   全局 0x000141155ced ：3 处  0x1407a40b2, 0x1407a454f, 0x1407a5700
+        站点 0x0001407a40b2 落在 .pdata 条目 .text@0x1407a3510..0x1407a493d
+        站点 0x0001407a454f 落在 .pdata 条目 .text@0x1407a3510..0x1407a493d
+        站点 0x0001407a5700 落在 .pdata 条目 .text@0x1407a4b90..0x1407aa710
+   全局 0x000141155cf1 ：3 处  0x1407a40bb, 0x1407a4558, 0x1407a570d
+        站点 0x0001407a40bb 落在 .pdata 条目 .text@0x1407a3510..0x1407a493d
+        站点 0x0001407a4558 落在 .pdata 条目 .text@0x1407a3510..0x1407a493d
+        站点 0x0001407a570d 落在 .pdata 条目 .text@0x1407a4b90..0x1407aa710
+   ⇒ 只有两个 .data 全局被这种形式比较过：0x141155ced 与 0x141155cf1；正文写的 0x141154ced / 0x141154cf1 在这段明文里从不作为该形式的目标出现。
+
+--- 2. 这两种写法的全局，究竟有没有被任何 rip 相对引用摸到（覆盖式全段遍历）---
+   遍历覆盖 8257536 / 8257536 B = 100.0 %（覆盖率印在证据件里，不然"0 次"没有意义）
+   该窗口内被引用的地址共 283 个（绝大多数是 lea 指向字符串/表，不全列）；只点名两类相关的：
+
+   (a) §4.4 点名的五个全局，两种数字写法各自被谁引用：
+     0x000141154ced : 0 处
+     0x000141154cf1 : 0 处
+     0x000141154ae7 : 0 处
+     0x000141154ce9 : 0 处
+     0x000141154d10 : 0 处
+     0x000141155ced : 4 处：0x1407a40b2(cmp), 0x1407a454f(cmp), 0x1407a5700(cmp), 0x1407a8aec(cmp)   <== 正文写的那一位
+     0x000141155cf1 : 5 处：0x1407a40bb(cmp), 0x1407a4558(cmp), 0x1407a570d(cmp), 0x1407a7a05(cmp), 0x1407a8af5(cmp)   <== 正文写的那一位
+     0x000141155ae7 : 6 处：0x1407a40c4(cmp), 0x1407a420e(lea), 0x1407a4561(movzx), 0x1407a5720(movzx), 0x1407a7a0d(cmp), 0x1407a8afd(cmp)   <== 正文写的那一位
+     0x000141155ce9 : 5 处：0x1407a40cd(cmp), 0x1407a456c(mov), 0x1407a571a(mov), 0x1407a7a16(cmp), 0x1407a8b06(cmp)   <== 正文写的那一位
+     0x000141155d10 : 56 处：0x140791014(mov), 0x140791053(mov), 0x140792b3e(mov), 0x140792b83(mov), 0x140792c61(mov), 0x140792c9f(mov)   <== 正文写的那一位
+
+   (b) 对上述五个真全局（0x141155xxx）的**写入**（rip 操作数是目的寄存器的那些 mov）：
+     0x000140791053  mov dword ptr [rip + 0x9c4cb7], ecx -> 0x000141155d10
+     0x000140792b83  mov dword ptr [rip + 0x9c3187], eax -> 0x000141155d10
+     0x000140792c9f  mov dword ptr [rip + 0x9c306b], eax -> 0x000141155d10
+     0x000140793c61  mov dword ptr [rip + 0x9c20a9], eax -> 0x000141155d10
+     0x000140793cca  mov dword ptr [rip + 0x9c2040], eax -> 0x000141155d10
+     0x00014079b95e  mov dword ptr [rip + 0x9ba3ac], eax -> 0x000141155d10
+     0x0001407a081b  mov dword ptr [rip + 0x9b54ef], eax -> 0x000141155d10
+     0x0001407a23e3  mov dword ptr [rip + 0x9b3927], eax -> 0x000141155d10
+     0x0001407a2467  mov dword ptr [rip + 0x9b38a3], eax -> 0x000141155d10
+     0x0001407a250d  mov dword ptr [rip + 0x9b37fd], eax -> 0x000141155d10
+     0x0001407a2567  mov dword ptr [rip + 0x9b37a3], eax -> 0x000141155d10
+     0x0001407a2b34  mov dword ptr [rip + 0x9b31d6], eax -> 0x000141155d10
+     0x0001407a2b93  mov dword ptr [rip + 0x9b3177], eax -> 0x000141155d10
+     0x0001407a2bfa  mov dword ptr [rip + 0x9b3110], eax -> 0x000141155d10
+     0x0001407a2c4e  mov dword ptr [rip + 0x9b30bc], eax -> 0x000141155d10
+     0x0001407a2cc7  mov dword ptr [rip + 0x9b3043], eax -> 0x000141155d10
+     0x0001407a2d0f  mov dword ptr [rip + 0x9b2ffb], eax -> 0x000141155d10
+     0x0001407a2d6c  mov dword ptr [rip + 0x9b2f9e], eax -> 0x000141155d10
+     0x0001407a2dbb  mov dword ptr [rip + 0x9b2f4f], eax -> 0x000141155d10
+     0x0001407a2e18  mov dword ptr [rip + 0x9b2ef2], eax -> 0x000141155d10
+     0x0001407a3d39  mov dword ptr [rip + 0x9b1fd1], eax -> 0x000141155d10
+     0x0001407a3d98  mov dword ptr [rip + 0x9b1f72], eax -> 0x000141155d10
+     0x0001407a45b7  mov dword ptr [rip + 0x9b1753], eax -> 0x000141155d10
+     0x0001407a45c1  mov dword ptr [rip + 0x9b1749], ebx -> 0x000141155d10
+     0x0001407a4629  mov dword ptr [rip + 0x9b16e1], eax -> 0x000141155d10
+     0x0001407a4633  mov dword ptr [rip + 0x9b16d7], ebx -> 0x000141155d10
+     0x0001407a5ecf  mov dword ptr [rip + 0x9afe3b], eax -> 0x000141155d10
+     0x0001407a61b6  mov dword ptr [rip + 0x9afb54], ebx -> 0x000141155d10
+     0x0001407a621a  mov dword ptr [rip + 0x9afaf0], eax -> 0x000141155d10
+     0x0001407a6224  mov dword ptr [rip + 0x9afae6], ebx -> 0x000141155d10
+     0x0001407a6278  mov dword ptr [rip + 0x9afa92], eax -> 0x000141155d10
+     0x0001407a68e4  mov dword ptr [rip + 0x9af426], eax -> 0x000141155d10
+   ⇒ §4.4 说"第五个全局被写 3 次"要按这张表复核：写在 0x141155d10 上的到底几处、在哪个条目里。
+
+   （imm32/imm64 计数一并列出，但它不构成判据：x64 够到 .data 走的是 rip 相对，一个全局可以被读写上百次而以立即数形式出现 0 次）
+     0x000141154ced : imm32 0, imm64 0
+     0x000141154cf1 : imm32 0, imm64 0
+     0x000141154ae7 : imm32 0, imm64 0
+     0x000141154ce9 : imm32 0, imm64 0
+     0x000141154d10 : imm32 0, imm64 0
+     0x000141155ced : imm32 0, imm64 0
+     0x000141155cf1 : imm32 0, imm64 0
+     0x000141155ae7 : imm32 0, imm64 0
+     0x000141155ce9 : imm32 0, imm64 0
+     0x000141155d10 : imm32 0, imm64 0
+
+--- 3a. 三处合取簇的真实形态（站点由第 1 步算出，反汇编只是把上下文摆出来）---
+   簇 A 从 0x1407a40a6 起：
+     0x0001407a40a6  488d0d5bf47e00       lea     rcx, [rip + 0x7ef45b]   ; -> 0x140f93508
+     0x0001407a40ad  e8decbfeff           call    0x140790c90
+     0x0001407a40b2  833d341c9b0001       cmp     dword ptr [rip + 0x9b1c34], 1   ; -> 0x141155ced
+     0x0001407a40b9  751f                 jne     0x1407a40da
+     0x0001407a40bb  833d2f1c9b0001       cmp     dword ptr [rip + 0x9b1c2f], 1   ; -> 0x141155cf1
+     0x0001407a40c2  7516                 jne     0x1407a40da
+     0x0001407a40c4  803d1c1a9b0000       cmp     byte ptr [rip + 0x9b1a1c], 0   ; -> 0x141155ae7
+     0x0001407a40cb  740d                 je      0x1407a40da
+     0x0001407a40cd  833d151c9b0000       cmp     dword ptr [rip + 0x9b1c15], 0   ; -> 0x141155ce9
+     0x0001407a40d4  7404                 je      0x1407a40da
+     0x0001407a40d6  b301                 mov     bl, 1
+     0x0001407a40d8  eb02                 jmp     0x1407a40dc
+   簇 B 从 0x1407a454f 起：
+     0x0001407a454f  833d97179b0001       cmp     dword ptr [rip + 0x9b1797], 1   ; -> 0x141155ced
+     0x0001407a4556  7522                 jne     0x1407a457a
+     0x0001407a4558  833d92179b0001       cmp     dword ptr [rip + 0x9b1792], 1   ; -> 0x141155cf1
+     0x0001407a455f  7519                 jne     0x1407a457a
+     0x0001407a4561  0fb6057f159b00       movzx   eax, byte ptr [rip + 0x9b157f]   ; -> 0x141155ae7
+     0x0001407a4568  84c0                 test    al, al
+     0x0001407a456a  740e                 je      0x1407a457a
+     0x0001407a456c  8b0d77179b00         mov     ecx, dword ptr [rip + 0x9b1777]   ; -> 0x141155ce9
+     0x0001407a4572  85c9                 test    ecx, ecx
+     0x0001407a4574  0f85ad110000         jne     0x1407a5727
+     0x0001407a457a  33db                 xor     ebx, ebx
+     0x0001407a457c  8b058e179b00         mov     eax, dword ptr [rip + 0x9b178e]   ; -> 0x141155d10
+   簇 C（在 main 的条目里） 从 0x1407a56f0 起：
+     0x0001407a56f0  c9                   leave   
+     0x0001407a56f1  e82a4b1801           call    0x14192a220
+     0x0001407a56f6  66488bcf             mov     rcx, rdi
+     0x0001407a56fa  50                   push    rax
+     0x0001407a56fb  e8794b0c01           call    0x14186a279
+     0x0001407a5700  833de6059b0001       cmp     dword ptr [rip + 0x9b05e6], 1   ; -> 0x141155ced
+     0x0001407a5707  0f8597010000         jne     0x1407a58a4
+     0x0001407a570d  833ddd059b0001       cmp     dword ptr [rip + 0x9b05dd], 1   ; -> 0x141155cf1
+     0x0001407a5714  0f858a010000         jne     0x1407a58a4
+     0x0001407a571a  8b0dc9059b00         mov     ecx, dword ptr [rip + 0x9b05c9]   ; -> 0x141155ce9
+     0x0001407a5720  0fb605c0039b00       movzx   eax, byte ptr [rip + 0x9b03c0]   ; -> 0x141155ae7
+     0x0001407a5727  84c0                 test    al, al
+
+--- 3b. 合取簇由上面的站点按"相邻 <= 0x40 B"自动聚成（不是人眼分组）---
+   簇 A: 4 站点 0x1407a40b2, 0x1407a40bb, 0x1407a40c4, 0x1407a40cd
+        覆盖全局 0x5ced,0x5cf1,0x5ae7,0x5ce9   用到的形式 cmp   所在 .pdata 条目 .text@0x1407a3510..0x1407a493d
+   簇 B: 4 站点 0x1407a454f, 0x1407a4558, 0x1407a4561, 0x1407a456c
+        覆盖全局 0x5ced,0x5cf1,0x5ae7,0x5ce9   用到的形式 cmp/mov/movzx   所在 .pdata 条目 .text@0x1407a3510..0x1407a493d
+   簇 C: 4 站点 0x1407a5700, 0x1407a570d, 0x1407a571a, 0x1407a5720
+        覆盖全局 0x5ced,0x5cf1,0x5ae7,0x5ce9   用到的形式 cmp/mov/movzx   所在 .pdata 条目 .text@0x1407a4b90..0x1407aa710
+   簇 D: 3 站点 0x1407a7a05, 0x1407a7a0d, 0x1407a7a16
+        覆盖全局 0x5cf1,0x5ae7,0x5ce9   用到的形式 cmp   所在 .pdata 条目 .text@0x1407a4b90..0x1407aa710
+   簇 E: 4 站点 0x1407a8aec, 0x1407a8af5, 0x1407a8afd, 0x1407a8b06
+        覆盖全局 0x5ced,0x5cf1,0x5ae7,0x5ce9   用到的形式 cmp   所在 .pdata 条目 .text@0x1407a4b90..0x1407aa710
+   ⇒ 簇数 5、站点总数 19、涉及条目 .text@0x1407a3510..0x1407a493d, .text@0x1407a4b90..0x1407aa710
+
+--- 4. 结论（只报这次算出来的，数字全部来自上面三节）---
+1) 正文 §4.4 点名的 5 个全局写成 0x141154ced/cf1/ae7/ce9/d10，而全段 100 % 覆盖的 rip 反查里这五个地址**一处引用都没有**；被比较/读写的真地址是 0x141155ced/cf1/ae7/ce9/d10。即：正文那批地址成体系地低 0x1000，而不是 ±1 的滑移——所以"相邻地址同目标"那类自检抓不到它。
+2) 合取**不在** FUN_1407a3080 里：0x1407a30b2 处真实字节是 `mov edx,0x104`（参数装配）。真正的簇落在上面"涉及条目"列出的那两个 .pdata 条目内（载体与 main），不是三个函数。
+3) 判据 1 的合取计数应为"簇 5 个 / 站点 19 处 / 条目 2 个"，其中 main 侧那批正是 §4.4(5) 写"进入终止块需五条件"所依赖的四条比对——正文记的 0x1407a7aec/af5/afd/b06 真值在 **0x1407a8aec/af5/afd/b06**（同样低 0x1000）。
+4) 连带降级（在本件重做之前）：凡引用 0x141154xxx 或 §4.4 那批站点地址的结论——C19 合取清单、C43 覆盖走 main、C48 四操作数来历、C49 四全局运行期残值、C52 支配性——量的都可能不是这四个量。它们的**结构**结论（谁与谁比较、汇聚到哪）在簇表里能重画，但地址必须按本件替换后才可引用。
+5) 复核动作：`python <HOST_PATH>/vmctl/verify_gate_sites.py` 重跑即整件复现；站点由 `83 3D <disp32> 01` 的 rip 算术与覆盖式 rip 反查（覆盖率印在第 2 节）两处独立得出。

@@ -1,0 +1,68 @@
+{
+  "evidence_id": "C183_run_dispatch_refscan_sq_boundary_20260925",
+  "date": "2026-09-25",
+  "type": "offline_static_targeted_reference_scan",
+  "status": "COMPLETED",
+  "authorization_scope": "Authorized isolated local analysis; no sample launch, no network, no license input, no code or data modification.",
+  "input": {
+    "path": "runs/EPT-STATIC-SDK-20260925-01/image_140000000.bin",
+    "bytes": 66596864,
+    "sha256": "82D3185B85A60BFEEEDB1B1A400AD7FDF42A819ECF354A94263482ECDA29893B",
+    "hash_after_scan": "82D3185B85A60BFEEEDB1B1A400AD7FDF42A819ECF354A94263482ECDA29893B",
+    "unchanged": true
+  },
+  "instrument": {
+    "script": "runs/EPT-STATIC-SDK-20260925-01/refscan_run_driver.py",
+    "method": [
+      "scan common RIP-relative LEA/MOV/store forms",
+      "scan MOVABS immediate VA forms",
+      "scan raw 8-byte absolute VA occurrences",
+      "classify reference sites against .text/.rdata/.data/.pdata/.Sq> and other recorded sections"
+    ],
+    "section_map_source": "runs/EPT-STATIC-SDK-20260925-01/image_sections.json",
+    "scope_includes": [".text", ".rdata", ".data", ".pdata", ".Sq>", ".bs]", ".)Bu", ".rsrc"]
+  },
+  "run_and_driver_targets": {
+    "StoredFlow.StoredAuthorizationUsable": {"va": "0x140f93238", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0},
+    "StoredFlow.VerifyStoredCardStatusBeforeUse": {"va": "0x140f932c0", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0},
+    "RUN_dse_read": {"va": "0x140f93350", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0},
+    "Run.StoredAuthorizationUsableBeforeDriver": {"va": "0x140f93420", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0},
+    "RUN_comm_init_result": {"va": "0x140f93470", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0},
+    "RUN_apply_soft_success": {"va": "0x140f93570", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0},
+    "Run.skip_driver_load_because_authorization_not_usable": {"va": "0x140f93620", "rip_relative_refs": 0, "raw_absolute_va_occurrences": 0}
+  },
+  "positive_plaintext_stage_refs": {
+    "device_path_HPWKS": ["0x140786118", "0x140786119", "0x140789054", "0x140789055", "0x140789148", "0x140789149"],
+    "driver_helper": ["0x140789106", "0x140789107"],
+    "CI00_open_auth": ["0x14078df47", "0x14078df48"],
+    "CI06_scan_existing": ["0x14078e8a2", "0x14078e8a3"],
+    "CI16_comm_init": ["0x14078ecb9", "0x14078ecba"],
+    "RC00_send": ["0x14078ed97", "0x14078ed98"],
+    "RC02_ioctl_failed": ["0x14078f019", "0x14078f01a"],
+    "RC03_decode_failed": ["0x14078eec2", "0x14078eec3"],
+    "RC04_session_mismatch": ["0x14078ef2b", "0x14078ef2c"],
+    "HS02_common_mismatch": ["0x14078f1e3", "0x14078f1e4"]
+  },
+  "stored_verify_refs_for_comparison": {
+    "StoredVerify.StoredAuthorizationUsable": ["0x1407a30f1", "0x1407a30f2"],
+    "CliConfigUpdate.StoredAuthorizationUsable": ["0x1407a6a3a", "0x1407a6a3b", "0x1407a73da", "0x1407a73db"]
+  },
+  "interpretation": {
+    "confirmed": "The complete extracted image contains ordinary text references to the StoredVerify gate and CI/RC stage labels, but none of the Run/driver dispatch labels has a common RIP-relative or raw absolute reference.",
+    "boundary": "This strengthens the existing conclusion that Run/driver dispatch is likely reached through VMProtect virtualized code, indirect state, runtime-generated code or another reference form not covered by this scan.",
+    "not_proven": [
+      "Run/driver dispatch does not exist",
+      "Stored authorization is denied in every path",
+      "driver access or RC00/RC03/RC06 can never occur",
+      "authorization passed",
+      "decode success"
+    ]
+  },
+  "correlation": {
+    "C118": "The existing complete .Sq> runtime range scan found no direct E8 edges to RUN apply, RC00, RC03 or RC06. C183 is a separate whole-image label-reference scan and does not replace C118.",
+    "C182": "The latest real Guest run stopped in Setup.SP_Verify_GetServerOption=0xfffffffd before any observed Run/driver marker.",
+    "C179": "The four-global in-memory release remains a GUI/stored gate release only; it is not upgraded by this static result."
+  },
+  "state": "STATIC_RUN_DRIVER_PATH_NOT_RECOVERED",
+  "next_step": "Do not repeat plaintext .text scans. Continue only with read-only analysis of existing runtime .Sq> artifacts or wait for a separately authorized input/observation condition. Keep sample_launch_requested=false and SAMPLE_LAUNCH_HELD."
+}

@@ -1,0 +1,7 @@
+$$ AUTHSCAN: run AFTER sample code has decrypted (triggered on urlmon.dll load)
+.echo [SCAN_TRIGGER_URLMON]
+s -a 140000000 L?3f83000 "StoredAuthorizationUsable"
+s -a 140000000 L?3f83000 "AuthorizationUsable"
+s -a 140000000 L?3f83000 "skip_driver_load"
+s -a 140000000 L?3f83000 "StoredVerify"
+.echo [SCAN_DONE]

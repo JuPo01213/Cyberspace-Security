@@ -1,0 +1,19 @@
+dll	function
+KERNEL32.dll	GetExitCodeProcess
+USER32.dll	SetFocus
+GDI32.dll	DeleteDC
+ADVAPI32.dll	RegOpenKeyExA
+SHELL32.dll	ShellExecuteExW
+ole32.dll	CoTaskMemFree
+WS2_32.dll	ordinal 21
+ntdll.dll	RtlVirtualUnwind
+CRYPT32.dll	CryptBinaryToStringW
+COMCTL32.dll	InitCommonControlsEx
+IPHLPAPI.DLL	GetAdaptersInfo
+KERNEL32.dll	GetSystemTimeAsFileTime
+KERNEL32.dll	HeapAlloc
+KERNEL32.dll	HeapFree
+KERNEL32.dll	ExitProcess
+KERNEL32.dll	LoadLibraryA
+KERNEL32.dll	GetModuleHandleA
+KERNEL32.dll	GetProcAddress

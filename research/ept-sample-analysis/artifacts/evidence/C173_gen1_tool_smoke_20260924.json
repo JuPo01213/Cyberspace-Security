@@ -1,0 +1,16 @@
+{
+  "run_id": "C173-GEN1-ACK-20260924-04",
+  "vm_name": "<VM_LABEL>",
+  "guest_name": "<VM_LABEL>",
+  "sample_launch_requested": false,
+  "seven_zip_status": "PASS: 7-Zip 26.03 (x64), exit 0",
+  "rizin_status": "RUNTIME_DEPENDENCY_MISSING: exit 0xC0000135",
+  "cdb_status": "PRESENT_NOT_RUNTIME_SMOKED: non-interactive PowerShell Direct smoke stream not harvested",
+  "windbg_status": "PRESENT_NOT_RUNTIME_SMOKED: file identity and SHA-256 recorded",
+  "sample_opened": false,
+  "notes": "Tool presence/path/hash evidence is in <VM_LABEL>_gen1_tool_inventory_20260924.json; no EPT sample was opened or launched.",
+  "follow_up_run_id": "C173-gen1-debugger-smoke-20260924-01",
+  "cdb_follow_up_status": "PASS_BENIGN_ATTACH",
+  "cdb_follow_up_evidence": "<VM_LABEL>_gen1_debugger_smoke_20260924.json",
+  "cdb_follow_up_note": "The initial non-interactive stream limitation was resolved by Guest-side -cf execution with PowerShell Direct PSSession and Copy-Item -FromSession harvest; target was benign ping.exe and sample_launch_requested remained false."
+}

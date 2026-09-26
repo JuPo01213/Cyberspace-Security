@@ -1,0 +1,16 @@
+{
+    "task_name":  "EPT-EPT-REAL-20260924-02",
+    "utc":  "2026-09-24T14:59:24.8612576Z",
+    "before":  [
+
+               ],
+    "stopped":  [
+
+                ],
+    "after":  [
+
+              ],
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "6addd058-87d6-4f44-bd3a-017a7dc3228f",
+    "PSShowComputerName":  true
+}

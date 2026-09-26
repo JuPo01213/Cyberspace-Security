@@ -1,0 +1,27 @@
+.echo CANARY_D_BEGIN
+.echo --- X_CP ---
+x kernel32!CreateProcess*
+.echo --- X_ADV_OPEN ---
+x advapi32!OpenService*
+.echo --- X_ADV_START ---
+x advapi32!StartService*
+.echo --- X_ADV_CREATE ---
+x advapi32!CreateService*
+.echo --- X_TERM ---
+x kernel32!Terminate*
+x kernelbase!Terminate*
+.echo --- BP_FORM_TESTS ---
+bp kernel32!CreateProcessW ".echo HIT_CPW; g"
+.echo T1_DONE
+bu kernelbase!CreateProcessW ".echo HIT_KB_CPW; g"
+.echo T2_DONE
+bp advapi32!OpenServiceA ".echo HIT_OSA; g"
+.echo T3_DONE
+bu advapi32!OpenServiceA ".echo HIT_OSA_BU; g"
+.echo T4_DONE
+bp advapi32!StartServiceA ".echo HIT_SSA; g"
+.echo T5_DONE
+bp kernel32!ExitProcessImplementation ".echo HIT_EXITIMPL; g"
+.echo T6_DONE
+.echo CANARY_D_STOP
+q

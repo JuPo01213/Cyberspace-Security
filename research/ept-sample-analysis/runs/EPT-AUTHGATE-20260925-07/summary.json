@@ -1,0 +1,28 @@
+﻿{
+    "run_id":  "EPT-AUTHGATE-20260925-07",
+    "evidence_scope":  "real_sample_guest_run_predecode_auth_gate_attach",
+    "sample_launch_requested":  true,
+    "network_request_sent":  false,
+    "real_card_present":  false,
+    "response_injection":  false,
+    "target_path":  "C:\\ept_core\\Hardware.exe",
+    "launch_mode":  "natural_parent_then_cdb_attach_to_natural_child",
+    "command_line":  "Hardware.exe -k \u003cformat-test\u003e -n 2 -m 1",
+    "started_utc":  "2026-09-25T04:16:17.1466319Z",
+    "ended_utc":  "2026-09-25T04:16:22.8966342Z",
+    "child_found":  true,
+    "child_pid":  2032,
+    "parent_pid":  520,
+    "debugger_attached":  true,
+    "debugger_wait_expired":  false,
+    "temporary_patch_points_executed":  [
+                                            "FUN_1407a3080 runtime return -\u003e 1",
+                                            "main authorization-controlled branch at 0x1407a6a6a -\u003e fall-through"
+                                        ],
+    "target_process_alive_after_attach":  false,
+    "parent_alive_after_attach":  true,
+    "target_native_return":  "NOT_OBSERVED",
+    "target_caller_diff_bytes":  "NOT_OBSERVED",
+    "post_decode_behavior":  "NOT_OBSERVED",
+    "observation_state":  "NATURAL_CHILD_ATTACHED_PATCHED_POINTS_ARMED"
+}

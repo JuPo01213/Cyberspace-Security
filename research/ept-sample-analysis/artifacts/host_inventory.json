@@ -1,0 +1,178 @@
+{
+  "collected_utc": "2026-09-25T08:44:28.0173281Z",
+  "host": {
+    "computer_name": "<HOST_NAME>",
+    "os": {
+      "Caption": "Microsoft Windows 10 专业版",
+      "Version": "10.0.19045",
+      "BuildNumber": "19045",
+      "OSArchitecture": "64 位"
+    },
+    "cpu": {
+      "Name": "12th Gen Intel(R) Core(TM) i5-12400",
+      "NumberOfLogicalProcessors": 12,
+      "AddressWidth": 64
+    },
+    "memory_bytes": 16870006784,
+    "powershell": "7.6.6"
+  },
+  "virtualization": {
+    "hyperv_cmdlets_available": true,
+    "hyperv_vms": [
+      {
+        "Name": "<VM_LABEL>",
+        "State": 3,
+        "Generation": 2,
+        "Version": "9.0"
+      },
+      {
+        "Name": "<VM_LABEL>",
+        "State": 3,
+        "Generation": 2,
+        "Version": "9.0"
+      },
+      {
+        "Name": "<VM_LABEL>",
+        "State": 2,
+        "Generation": 1,
+        "Version": "9.0"
+      }
+    ],
+    "hyperv_switches": [
+      {
+        "Name": "Default Switch",
+        "SwitchType": 1,
+        "NetAdapterInterfaceDescription": null
+      },
+      {
+        "Name": "WSL",
+        "SwitchType": 1,
+        "NetAdapterInterfaceDescription": null
+      }
+    ],
+    "wsl_list": [
+      "NAME      STATE           VERSION",
+      "* Ubuntu    Stopped         2"
+    ]
+  },
+  "tools": [
+    {
+      "command": "git",
+      "found": true,
+      "source": "C:\\Program Files\\Git\\mingw64\\bin\\git.exe",
+      "output": [
+        "git version 2.55.0.windows.3"
+      ]
+    },
+    {
+      "command": "python",
+      "found": true,
+      "source": "<HOST_PATH>\\Users\\<USER>\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "output": [
+        "Python 3.11.9"
+      ]
+    },
+    {
+      "command": "py",
+      "found": true,
+      "source": "<HOST_PATH>\\Users\\<USER>\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe",
+      "output": [
+        "Python 3.14.7"
+      ]
+    },
+    {
+      "command": "node",
+      "found": true,
+      "source": "C:\\Program Files\\nodejs\\node.exe",
+      "output": [
+        "v24.21.0"
+      ]
+    },
+    {
+      "command": "npm",
+      "found": true,
+      "source": "C:\\Program Files\\nodejs\\npm.ps1",
+      "output": [
+        "11.19.0"
+      ]
+    },
+    {
+      "command": "docker",
+      "found": false,
+      "source": null,
+      "output": []
+    },
+    {
+      "command": "podman",
+      "found": false,
+      "source": null,
+      "output": []
+    },
+    {
+      "command": "ssh",
+      "found": true,
+      "source": "C:\\Program Files\\Git\\usr\\bin\\ssh.exe",
+      "output": [
+        "OpenSSH_10.3p1, OpenSSL 3.5.7 9 Jun 2026"
+      ]
+    },
+    {
+      "command": "java",
+      "found": true,
+      "source": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.101-hotspot\\bin\\java.exe",
+      "output": [
+        "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+        "OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)",
+        "OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+      ]
+    },
+    {
+      "command": "qemu-system-x86_64",
+      "found": false,
+      "source": null,
+      "output": []
+    },
+    {
+      "command": "VBoxManage",
+      "found": false,
+      "source": null,
+      "output": []
+    },
+    {
+      "command": "ghidraRun.bat",
+      "found": false,
+      "source": null,
+      "output": [
+        "GUI launcher intentionally not executed during inventory"
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "path": "<HOST_PATH>/EPT",
+      "exists": true,
+      "type": "DirectoryInfo"
+    },
+    {
+      "path": "<HOST_PATH>/VMs",
+      "exists": true,
+      "type": "DirectoryInfo"
+    },
+    {
+      "path": "<HOST_PATH>/Users/<USER>/.codebuddy",
+      "exists": true,
+      "type": "DirectoryInfo"
+    },
+    {
+      "path": "<HOST_PATH>/Users/<USER>/.pi",
+      "exists": true,
+      "type": "DirectoryInfo"
+    }
+  ],
+  "agent_capabilities": {
+    "codebuddy_root": "<HOST_PATH>/Users/<USER>/.codebuddy",
+    "pi_root": "<HOST_PATH>/Users/<USER>/.pi",
+    "workspace": "<HOST_PATH>/EPT",
+    "note": "MCP client capabilities must be verified from local configuration after inventory."
+  }
+}

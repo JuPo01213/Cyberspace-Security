@@ -1,0 +1,10 @@
+$$ S15: locate string table, find pointers to it, dump image region for offline xref analysis
+.echo [S15_LATE_START]
+s -a 140000000 L?3f83000 "StoredAuthorizationUsable"
+.echo [S15_SCAN1]
+s -q 140000000 L?3f83000 00000001`40f93624
+s -q 140000000 L?3f83000 00000001`40f9252d
+s -q 140000000 L?3f83000 00000001`40f92508
+.echo [S15_XREF_DONE]
+.writemem C:\ept_obs\spool\EPT-INJECT-20260925-15\mem_140000000_1000000.bin 140000000 L?1000000
+.echo [S15_DUMP_DONE]

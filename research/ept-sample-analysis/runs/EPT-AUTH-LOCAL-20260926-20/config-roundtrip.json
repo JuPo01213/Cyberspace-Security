@@ -1,0 +1,12 @@
+﻿{
+    "evidence_scope":  "offline_configuration_reference",
+    "roundtrip_ciphertext_equal":  true,
+    "placeholder_input_exact_match":  true,
+    "input_length":  10,
+    "static_four_field_predicate":  true,
+    "historical_dump_first_input_byte":  0,
+    "file_first_input_byte":  49,
+    "source_runs_distinct":  true,
+    "authorization_proven":  false,
+    "sample_executed":  false
+}

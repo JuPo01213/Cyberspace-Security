@@ -1,0 +1,6 @@
+﻿{"utc":"2026-09-25T12:34:28.0018141Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":4892,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T12:34:28.0800109Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_C845F272_0BA8FC95.exe","pid":1752,"ppid":4892,"type":"CHILD_FOUND","utc":"2026-09-25T12:34:32.1581036Z"}
+{"target_pid":1752,"debugger_pid":1732,"type":"CDB_ATTACHED","utc":"2026-09-25T12:34:32.1736905Z"}
+{"pid":1852,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T12:34:32.2049407Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T12:34:32.2830643Z"}

@@ -1,0 +1,12 @@
+﻿{
+    "operation":  "offline_analysis_recovery",
+    "transport":  "PowerShell Direct FilePath",
+    "system_execution_policy_changed":  false,
+    "report_sha256":  {
+                          "value":  "91FA9B389725C5CDB579C5A93F3E94875E3CECCECB6A0BDBCA7DE7B3046AFACA",
+                          "PSComputerName":  "<VM_LABEL>",
+                          "RunspaceId":  "ef1e75aa-cabc-4788-a212-32802607186e",
+                          "PSShowComputerName":  true
+                      },
+    "status":  "COMPLETED"
+}

@@ -1,0 +1,69 @@
+C77 — runtime page containing RC00 post-send target 0x141757acd
+date=2026-09-21
+target_page=<HOST_PATH>\EPT\artifacts\captures\core_probe_target_5.bin base=0x141757000 bytes=4096 sha256=bd28f2187520e18924a85ce23b8a603f62721abb180ea3d8599b0ef0c17bc9e7
+later_same_page=<HOST_PATH>\EPT\artifacts\captures\core_probe_target_7.bin bytes=4096 sha256=bd28f2187520e18924a85ce23b8a603f62721abb180ea3d8599b0ef0c17bc9e7
+control_page=<HOST_PATH>\EPT\artifacts\captures\core_probe_control_5.bin base=0x14117c000 bytes=4096 sha256=386a5f833bc9b1a620f6f4cdcc1caed15320334fded88c2ba0ff9b1553951580
+result=<HOST_PATH>\EPT\artifacts\captures\core_probe.result.json sha256=cd7ced5bd321751412387ce82fc4ce9a211a7fb47f5ee84551290098edaa3ed6
+target=0x141757acd page_offset=0xacd
+probe_observation=target and control pages were all-zero through round 4; target became nonzero at round 5 while the core was alive
+scope=offline page bytes only; no network, authorization token, registry, or driver file was read
+
+=== page delta / first bytes ===
+target_round5_first64=76 f2 51 a9 96 be 25 53 d3 b2 05 6b 91 fc 4c 5c ff b8 89 11 9c 7d 07 6d e2 b2 e2 b3 ff c6 8a 91 18 11 36 6b d5 35 29 b1 e2 cb 1d 00 31 d8 dc 5b 4f 31 8b 14 9b 9f 06 70 68 6f 85 59 7a a8 20 5c
+target_round7_first64=76 f2 51 a9 96 be 25 53 d3 b2 05 6b 91 fc 4c 5c ff b8 89 11 9c 7d 07 6d e2 b2 e2 b3 ff c6 8a 91 18 11 36 6b d5 35 29 b1 e2 cb 1d 00 31 d8 dc 5b 4f 31 8b 14 9b 9f 06 70 68 6f 85 59 7a a8 20 5c
+target_round5_nonzero=4023/4096
+target_round7_nonzero=4023/4096
+control_round5_nonzero=3952/4096
+target_round5_equals_round7=True
+
+=== disassembly from the proven E8 target ===
+decoded_from_target=33 instructions bytes_consumed=156 of 1331
+0x0000000141757acd: 50                               push       rax
+0x0000000141757ace: 55                               push       rbp
+0x0000000141757acf: e8 ff c9 e2 ff                   call       0x1415844d3
+0x0000000141757ad4: 48 8b 6c 24 18                   mov        rbp, qword ptr [rsp + 0x18]
+0x0000000141757ad9: 48 8b 6c 25 00                   mov        rbp, qword ptr [rbp + riz]
+0x0000000141757ade: 48 c7 44 24 18 29 de a5 d2       mov        qword ptr [rsp + 0x18], 0xffffffffd2a5de29
+0x0000000141757ae7: f7 5c 24 18                      neg        dword ptr [rsp + 0x18]
+0x0000000141757aeb: 80 64 24 18 3a                   and        byte ptr [rsp + 0x18], 0x3a
+0x0000000141757af0: 48 f7 5c 24 18                   neg        qword ptr [rsp + 0x18]
+0x0000000141757af5: e8 ed e5 1a 00                   call       0x1419060e7
+0x0000000141757afa: 41 53                            push       r11
+0x0000000141757afc: e8 1a e8 fb ff                   call       0x14171631b
+0x0000000141757b01: 9c                               pushfq
+0x0000000141757b02: 48 81 44 24 08 08 e1 30 00       add        qword ptr [rsp + 8], 0x30e108
+0x0000000141757b0b: 48 b9 a6 f5 88 ce 11 9f 9a 12    movabs     rcx, 0x129a9f11ce88f5a6
+0x0000000141757b15: e8 36 c3 33 00                   call       0x141a93e50
+0x0000000141757b1a: 66 f7 5c 24 30                   neg        word ptr [rsp + 0x30]
+0x0000000141757b1f: 48 87 44 24 60                   xchg       qword ptr [rsp + 0x60], rax
+0x0000000141757b24: ff 74 24 50                      push       qword ptr [rsp + 0x50]
+0x0000000141757b28: 9d                               popfq
+0x0000000141757b29: 48 8d 64 24 60                   lea        rsp, [rsp + 0x60]
+0x0000000141757b2e: c3                               ret
+0x0000000141757b2f: 4e 8b bc 84 1c b8 27 89          mov        r15, qword ptr [rsp + r8*4 - 0x76d847e4]
+0x0000000141757b37: 48 89 5c 24 20                   mov        qword ptr [rsp + 0x20], rbx
+0x0000000141757b3c: 81 cf 01 4a a1 fa                or         edi, 0xfaa14a01
+0x0000000141757b42: e8 e6 ba 02 ff                   call       0x14078362d
+0x0000000141757b47: f0 2b 3d 41 fa f6 24             lock sub   edi, dword ptr [rip + 0x24f6fa41]
+0x0000000141757b4e: 64 cb                            retf
+0x0000000141757b50: cb                               retf
+0x0000000141757b51: d3 9a f2 9d 62 f4                rcr        dword ptr [rdx - 0xb9d620e], cl
+0x0000000141757b57: a0 6c cc 4c fc d0 0a 79 25       movabs     al, byte ptr [0x25790ad0fc4ccc6c]
+0x0000000141757b60: 89 27                            mov        dword ptr [rdi], esp
+0x0000000141757b62: 6b 8d 3f 2e 25 60 02             imul       ecx, dword ptr [rbp + 0x60252e3f], 2
+
+=== direct transfer census in captured page suffix ===
+0x141757acf: call -> 0x1415844d3 [outside page]
+0x141757af5: call -> 0x1419060e7 [outside page]
+0x141757afc: call -> 0x14171631b [outside page]
+0x141757b15: call -> 0x141a93e50 [outside page]
+0x141757b2e: ret  [indirect/non-immediate]
+0x141757b42: call -> 0x14078362d [outside page]
+0x141757b4e: retf  [indirect/non-immediate]
+0x141757b50: retf  [indirect/non-immediate]
+
+=== runtime conclusion ===
+1. The E8 target 0x141757acd is not merely an address from static code: its page was readable in the live core and transitioned from zero-filled to dense nonzero bytes during the bounded run.
+2. The target page is runtime-decrypted/mapped code or data; the page-level observation alone does not prove which instructions executed.
+3. The disassembly below the target is the first direct evidence available for the RC00 post-send dependency; its calls, return value, and buffer effects determine whether this is a driver thunk, a local decode routine, or a mixed wrapper.
+4. No end-to-end decode result is claimed until the target's return/buffer contract is linked back to RC00 and the caller's RC03/RC06 branches.

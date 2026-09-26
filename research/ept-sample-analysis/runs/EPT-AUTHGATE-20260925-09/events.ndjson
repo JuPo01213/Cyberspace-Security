@@ -1,0 +1,4 @@
+﻿{"dirs":[],"tasks":["DetectHardwareChange","RemediateHardwareChange"],"files":["C:\\Windows\\System32\\Hardware.exe","C:\\Windows\\System32\\EPT.cmd"],"type":"PRE_SNAPSHOT","utc":"2026-09-25T06:37:13.2592467Z"}
+{"cmd":"Hardware.exe -k \u003cformat-test\u003e -n 2 -m 1","pid":3732,"type":"NATURAL_PARENT_STARTED","utc":"2026-09-25T06:37:13.3529583Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_6AC94BB9_BC662282.exe","pid":4684,"ppid":3732,"type":"NATURAL_CHILD_FOUND","utc":"2026-09-25T06:37:16.3060724Z"}
+{"target_pid":4684,"debugger_pid":4596,"type":"CDB_ATTACHED","utc":"2026-09-25T06:37:16.3529744Z"}

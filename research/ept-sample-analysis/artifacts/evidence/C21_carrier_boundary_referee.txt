@@ -1,0 +1,25 @@
+CONTROL    0x1407a354f  CMP dword ptr [0x141154ced],0x1
+host1      0x1407a3529  LEA RBP,[RSP + -0x1560]
+targ1      0x1407a352d  MOV EAX,0x1660  <<ADDR-MISMATCH 1407a3531>>
+src1       0x1407a35a8  JC 0x1407a352d
+src1b      0x1407a35aa  CLC 
+src1c      0x1407a35b7  MOV dword ptr [0x141154d10],EAX
+host2      0x1407a3977  CMP dword ptr [0x141154ced],0x1  <<ADDR-MISMATCH 1407a4700>>
+targ2      0x1407a3978  CMP dword ptr [0x141154ced],0x1  <<ADDR-MISMATCH 1407a4700>>
+src2       0x1407a3975  CMP dword ptr [0x141154ced],0x1  <<ADDR-MISMATCH 1407a4700>>
+src3       0x1407a4245  CMP dword ptr [0x141154ced],0x1  <<ADDR-MISMATCH 1407a4700>>
+host3      0x1407a4287  CMP dword ptr [0x141154ced],0x1  <<ADDR-MISMATCH 1407a4700>>
+targ3      0x1407a428b  CMP dword ptr [0x141154ced],0x1  <<ADDR-MISMATCH 1407a4700>>
+src4       0x1407a486f  JNZ 0x1407a4891
+host4      0x1407a4890  MOVZX EBX,BL  <<ADDR-MISMATCH 1407a4891>>
+targ4      0x1407a4891  MOVZX EBX,BL
+host5      0x1407a48a0  MOV EAX,EBX
+targ5      0x1407a48a1  JMP 0x1407a48c5  <<ADDR-MISMATCH 1407a48a2>>
+sink       0x1407a48a4  MOV R9D,0x10
+sink+1     0x1407a48a9  LEA R8,[0x140f92898]  <<ADDR-MISMATCH 1407a48aa>>
+con2a      0x1407a4700  CMP dword ptr [0x141154ced],0x1
+con2b      0x1407a470d  CMP dword ptr [0x141154cf1],0x1
+con2c      0x1407a471a  MOV ECX,dword ptr [0x141154ce9]
+con2d      0x1407a4720  MOVZX EAX,byte ptr [0x141154ae7]
+con1dest   0x1407a4727  TEST AL,AL
+con1dest2  0x1407a4729  JZ 0x1407a48a4

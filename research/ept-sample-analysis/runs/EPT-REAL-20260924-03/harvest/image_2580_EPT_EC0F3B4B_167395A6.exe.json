@@ -1,0 +1,26 @@
+{
+    "source_path":  "C:\\Windows\\TEMP\\EPT_EC0F3B4B_167395A6.exe",
+    "capture_path":  "C:\\ept_obs\\spool\\EPT-REAL-20260924-03\\image_2580_EPT_EC0F3B4B_167395A6.exe",
+    "pid":  2580,
+    "ppid":  3044,
+    "process_name":  "EPT_EC0F3B4B_167395A6",
+    "process_start_utc":  "2026-09-24T15:38:41.5914960Z",
+    "captured_utc":  "2026-09-24T15:38:44.1257966Z",
+    "source":  {
+                   "path":  "C:\\ept_obs\\spool\\EPT-REAL-20260924-03\\image_2580_EPT_EC0F3B4B_167395A6.exe",
+                   "length":  32671488,
+                   "last_write_utc":  "2026-09-24T15:38:41.1611640Z",
+                   "sha256":  "8046EADA73ABDF50CADFCD2CB1EF496A511A04BC1113903215FFA38EB314F531",
+                   "attributes":  "Archive"
+               },
+    "header":  {
+                   "e_lfanew":  "0x80",
+                   "machine":  "0x8664",
+                   "sections":  10,
+                   "optional_magic":  "0x20b",
+                   "entrypoint_rva":  "0x235f67b",
+                   "image_base":  "0x140000000",
+                   "size_image":  "0x3f83000",
+                   "module_base_if_preferred":  "0x140000000"
+               }
+}

@@ -1,0 +1,146 @@
+﻿[
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\cdb.stderr.txt",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\cdb.stderr.txt",
+        "acquired":  true,
+        "length":  0,
+        "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\cdb.stdout.txt",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\cdb.stdout.txt",
+        "acquired":  true,
+        "length":  7423008,
+        "sha256":  "AA3922F5DF62317C02D27D5EBA79B5706AC7D7042927A59741E8343AE10E217D"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\cdb_command.txt",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\cdb_command.txt",
+        "acquired":  true,
+        "length":  633,
+        "sha256":  "3F4F29CECE6A3FC413F776FE293F713CEA798CAD8B6CB764303625C05E082DEA"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\cdb_launch_runner.ps1",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\cdb_launch_runner.ps1",
+        "acquired":  true,
+        "length":  18006,
+        "sha256":  "598B66286691A7D825A9474068DF08E56539AE24A5FF74EAB318C136E57ED924"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\child.cdb",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\child.cdb",
+        "acquired":  true,
+        "length":  493,
+        "sha256":  "0F18E778D264D486C21D336D87B41B8484D0CE3BABC79332DC6074851DE5BB56"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\events.ndjson",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\events.ndjson",
+        "acquired":  true,
+        "length":  285175,
+        "sha256":  "A8A2743D6EF18474021A414644F696C206E6E9DC9C9E7AC758C5B61CD6D73ADE"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\forge_license_response_284.bin",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\forge_license_response_284.bin",
+        "acquired":  true,
+        "length":  284,
+        "sha256":  "BFA525E78731BEAAA2EBF1C64E993FCD933AC43D60B7A6E3D1F61576C78B0CC8"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\heartbeat.json",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\heartbeat.json",
+        "acquired":  true,
+        "length":  452,
+        "sha256":  "E8EB60519114A8C60D56AAABA2643DD933C17A25A66F1C0B30D7472C5DC69CC2"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\late.cdb",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\late.cdb",
+        "acquired":  true,
+        "length":  491,
+        "sha256":  "A46D7B68F4070A504CB983EF4142D9DC97D8E9DD182E9EBB38113F65383C3345"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\network.ndjson",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\network.ndjson",
+        "acquired":  true,
+        "length":  154003,
+        "sha256":  "70EC4C6901E5A0DE6E4185E82470BE61D8C9E788879E9428E8CD4116EFCF1D8E"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\phase.json",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\phase.json",
+        "acquired":  true,
+        "length":  273,
+        "sha256":  "E9B5ABDFC60EAAE663E0EEFCD0FA2DFADC0F00AFFF96DFA78594198B2A21CF99"
+    },
+    {
+        "guest_path":  {
+                           "value":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-13\\pre.json",
+                           "PSComputerName":  "<VM_LABEL>",
+                           "RunspaceId":  "51556fe3-35fa-4239-9f86-b7a65132126a",
+                           "PSShowComputerName":  true
+                       },
+        "host_path":  "<HOST_PATH>\\EPT\\runs\\EPT-INJECT-20260925-13\\harvest\\pre.json",
+        "acquired":  true,
+        "length":  213330,
+        "sha256":  "809ED2FC03C42B706835202DE3D1ECF1BC7B98EE60EB7DE7E2DECFB5FE8143C1"
+    }
+]

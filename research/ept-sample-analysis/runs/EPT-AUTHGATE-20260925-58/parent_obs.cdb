@@ -1,0 +1,22 @@
+.echo PARENT_OBS_BEGIN
+sxi av
+sxi c0000005
+sxi e06d7363
+sxi 80000003
+sxi 80000004
+sxi c000001d
+sxi c0000094
+sxi e0434352
+sxi 6d9
+bu kernelbase!CreateProcessW ".echo P_CPW; du @rdx; g"
+bu kernelbase!CreateProcessA ".echo P_CPA; da @rdx; g"
+bu kernel32!CreateFileW ".echo P_CFW; du rcx; g"
+bu kernelbase!CreateFileW ".echo P_KBCFW; du rcx; g"
+bu kernel32!WriteFile ".echo P_WFW; r rcx; r r8; g"
+bu kernel32!ExitProcessImplementation ".echo P_EXIT; k 6; g"
+bu kernelbase!TerminateProcess ".echo P_TERM; r rcx; g"
+.echo PARENT_ARMED
+g
+.echo PARENT_STOP
+~*k
+q

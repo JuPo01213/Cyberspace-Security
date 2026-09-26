@@ -1,0 +1,138 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_948F3BF1_0B232BAE.exe
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+(c18.1154): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffe`c52310d0 cc              int     3
+0:003> .echo RUN15_BEGIN
+RUN15_BEGIN
+0:003> db 0x141154ced L4
+00000001`41154ced  00 00 00 00                                      ....
+0:003> db 0x141154cf1 L4
+00000001`41154cf1  00 00 00 00                                      ....
+0:003> db 0x141154ae7 L1
+00000001`41154ae7  00                                               .
+0:003> db 0x141154ce9 L4
+00000001`41154ce9  00 00 00 00                                      ....
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo AUTH_RELEASED
+AUTH_RELEASED
+0:003> db 0x141154ced L4
+00000001`41154ced  01 00 00 00                                      ....
+0:003> db 0x141154cf1 L4
+00000001`41154cf1  01 00 00 00                                      ....
+0:003> db 0x141154ae7 L1
+00000001`41154ae7  01                                               .
+0:003> db 0x141154ce9 L4
+00000001`41154ce9  01 00 00 00                                      ....
+0:003> .echo READBACK_DONE
+READBACK_DONE
+0:003> bu user32!MessageBoxW ".echo SKIP_MSGBOXW; r eax=1; g @$ra"
+0:003> bu user32!MessageBoxA ".echo SKIP_MSGBOXA; r eax=1; g @$ra"
+0:003> bu user32!MessageBoxTimeoutW ".echo SKIP_MSGBOXTO; r eax=1; g @$ra"
+0:003> bu user32!MessageBoxIndirectW ".echo SKIP_MSGBOXIND; r eax=1; g @$ra"
+0:003> bu user32!GetMessageW ".echo HIT_GETMESSAGEW; k L12; g"
+0:003> bu user32!DialogBoxParamW ".echo HIT_DIALOGBOXPARAM; k L12; g"
+0:003> bu user32!MsgWaitForMultipleObjectsEx ".echo HIT_MSGWMO; k L12; g"
+0:003> .echo USER32_BP_ARMED
+USER32_BP_ARMED
+0:003> ba e 1 1407adae0 ".echo STAGE_LOG; da r8; r r9d; k L6; g"
+0:003> ba e 1 14078de50 ".echo HIT_OPEN_AUTH; k L8; g"
+0:003> ba e 1 14078e8c0 ".echo HIT_COMM_INIT; k L8; g"
+0:003> ba e 1 14078ed97 ".echo HIT_RC00; k L8; g"
+0:003> .echo HWBP_ARMED
+HWBP_ARMED
+0:003> g
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+ModLoad: 00007ffe`ae840000 00007ffe`ae857000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffe`ad1d0000 00007ffe`ad1eb000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffe`bc5b0000 00007ffe`bc5cd000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffe`bd860000 00007ffe`bd87d000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffe`c1ed0000 00007ffe`c1f3a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffe`c1bf0000 00007ffe`c1cba000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffe`c4a30000 00007ffe`c4a38000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ffe`acc80000 00007ffe`acc92000   C:\Windows\System32\winrnr.dll
+ModLoad: 00007ffe`baf50000 00007ffe`bafd0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffe`ba570000 00007ffe`ba57a000   C:\Windows\System32\rasadhlp.dll
+STAGE_LOG
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_948F3BF1_0B232BAE.exe
+00000001`40f92e60  "Setup.SP_Verify_Init"
+r9d=0
+Child-SP          RetAddr               Call Site
+00000000`00145bd8 00000001`4078fed9     EPT_948F3BF1_0B232BAE+0x7adae0
+00000000`00145be0 00000001`4203767c     EPT_948F3BF1_0B232BAE+0x78fed9
+00000000`00145e30 00000001`407b1094     EPT_948F3BF1_0B232BAE+0x203767c
+00000000`0014fef0 00007ffe`c4c07374     EPT_948F3BF1_0B232BAE+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+STAGE_LOG
+00000001`40f92eb0  "Setup.SP_Verify_GetServerOption"
+r9d=fffffffd
+Child-SP          RetAddr               Call Site
+00000000`00145bd8 00000001`4078fed9     EPT_948F3BF1_0B232BAE+0x7adae0
+00000000`00145be0 00000001`42037706     EPT_948F3BF1_0B232BAE+0x78fed9
+00000000`00145e30 00000001`407b1094     EPT_948F3BF1_0B232BAE+0x2037706
+00000000`0014fef0 00007ffe`c4c07374     EPT_948F3BF1_0B232BAE+0x7b1094
+00000000`0014ff30 00007ffe`c51dcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+SKIP_MSGBOXA
+SKIP_MSGBOXTO
+ModLoad: 00007ffe`b23d0000 00007ffe`b247c000   C:\Windows\SYSTEM32\TextShaping.dll

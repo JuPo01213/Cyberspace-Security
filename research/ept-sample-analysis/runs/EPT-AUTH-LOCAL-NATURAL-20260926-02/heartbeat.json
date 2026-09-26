@@ -1,0 +1,11 @@
+{
+    "run_id":  "EPT-AUTH-LOCAL-NATURAL-20260926-02",
+    "utc":  "2026-09-26T14:39:14.2534159Z",
+    "phase":  "RUNNING",
+    "elapsed_seconds":  29017.3,
+    "target_pid":  5300,
+    "target_alive":  false,
+    "process_count":  96,
+    "observed_process_count":  104,
+    "file_count":  8
+}

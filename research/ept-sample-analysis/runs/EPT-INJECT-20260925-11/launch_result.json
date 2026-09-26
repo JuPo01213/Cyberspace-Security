@@ -1,0 +1,10 @@
+{
+    "run_id":  "EPT-INJECT-20260925-11",
+    "task_name":  "EPT-EPT-INJECT-20260925-11",
+    "state":  "Running",
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-INJECT-20260925-11",
+    "started_utc":  "2026-09-24T18:41:08.9654028Z",
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "d67aebb8-34a6-4ad8-ac10-7cb45cbc60aa",
+    "PSShowComputerName":  true
+}

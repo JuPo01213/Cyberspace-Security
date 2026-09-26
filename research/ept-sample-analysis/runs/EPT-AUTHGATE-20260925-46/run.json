@@ -1,0 +1,16 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-46",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "instrument_note": "run45 lesson: SW bp at kernel32!FatalExit+0xb (0xCC in API landing bytes) detected by protection -> immediate-terminate path. Reverted to run44 proven HW set. Second gate forced INSIDE the synthret action: rip=1407b109b, eax=1 (skips call 0x1407b1464, pre-sets AL=1 -> success path), ebx=0 (deploy result).",
+  "hypothesis": "44 全链 + 合成返回落在 109b（AL 预置 1）→ 成功路径 call 0x1407b08e4(cl=1,dl=0) → main 正常返回 → 工作线程进入 Run 调度 → RC00 区域推进、进程存活。",
+  "acceptance_fields": {
+    "synthret_landed_109b": null,
+    "success_path_taken": null,
+    "b08e4_called": null,
+    "main_returned_cleanly": null,
+    "worker_thread_alive": null,
+    "rc00_region_evidence": null,
+    "new_behaviors": null
+  },
+  "deadline_sec": 720
+}

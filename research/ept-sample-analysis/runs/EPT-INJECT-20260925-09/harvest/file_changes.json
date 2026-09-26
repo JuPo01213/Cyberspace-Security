@@ -1,0 +1,47 @@
+[
+    {
+        "path":  "C:\\Windows\\System32\\ept.cmd",
+        "before":  {
+                       "path":  "C:\\Windows\\System32\\ept.cmd",
+                       "length":  1093,
+                       "last_write_utc":  "2026-09-24T17:49:46.6169261Z",
+                       "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609",
+                       "attributes":  "Archive"
+                   },
+        "after":  {
+                      "path":  "C:\\Windows\\System32\\EPT.cmd",
+                      "length":  1093,
+                      "last_write_utc":  "2026-09-24T18:28:52.3288384Z",
+                      "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609",
+                      "attributes":  "Archive"
+                  }
+    },
+    {
+        "path":  "C:\\Windows\\System32\\EPT.cmd",
+        "before":  {
+                       "path":  "C:\\Windows\\System32\\ept.cmd",
+                       "length":  1093,
+                       "last_write_utc":  "2026-09-24T17:49:46.6169261Z",
+                       "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609",
+                       "attributes":  "Archive"
+                   },
+        "after":  {
+                      "path":  "C:\\Windows\\System32\\EPT.cmd",
+                      "length":  1093,
+                      "last_write_utc":  "2026-09-24T18:28:52.3288384Z",
+                      "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609",
+                      "attributes":  "Archive"
+                  }
+    },
+    {
+        "path":  "C:\\Windows\\Temp\\EPT_16DB798C_6B8C5F4A.exe",
+        "before":  null,
+        "after":  {
+                      "path":  "C:\\Windows\\Temp\\EPT_16DB798C_6B8C5F4A.exe",
+                      "length":  32671488,
+                      "last_write_utc":  "2026-09-24T18:28:52.4068827Z",
+                      "sha256":  "65045089A4C5486DCCF0D9DBB4B70903819C6B7E7553A5FE1A386868F20E9834",
+                      "attributes":  "Archive"
+                  }
+    }
+]

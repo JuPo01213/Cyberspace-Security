@@ -1,0 +1,68 @@
+anchor_va	string	function	insn_va	mnemonic	in_function_bounds
+0x140f8cb7c	HpSvc	FUN_140788f00	0x140788f2b	lea	yes
+0x140f8cb84	HpDrv	FUN_140788f00	0x140788f4a	lea	yes
+0x140f8cba0	HP_WKS_SWTOOLS_DRIVER.sys helper	FUN_1407890d0	0x140789106	lea	yes
+0x140f8cd40	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789	FUN_14078873f	0x1407887c8	lea	yes
+0x140f8cec0	0123456789ABCDEF	FUN_14078b6af	0x14078b773	lea	yes
+0x140f8cec0	0123456789ABCDEF	FUN_14079a790	0x14079a7f3	movups	yes
+0x140f8cf78	%sEPT_runtime_hash.csv	FUN_14078b6af	0x14078b81b	lea	yes
+0x140f8d160	CI00 open_auth begin path=%s comm=%s ioctlAuth=0x%08lX magic=0x%08lX	FUN_14078de50	0x14078df47	lea	yes
+0x140f8d1e0	CI02 auth_stage0_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu nonce=0x%08lX comm=%s ioctlAuth=0x%08lX	FUN_14078de50	0x14078e42e	lea	yes
+0x140f8d270	CI03 auth_stage1_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu session=0x%08lX comm=%s ioctlAuth=0x%08lX	FUN_14078de50	0x14078e383	lea	yes
+0x140f8d300	CI04 auth_success comm=%s session=0x%08lX ioctlRun=0x%08lX	FUN_14078de50	0x14078e2d2	lea	yes
+0x140f8d370	CI06 scan_existing attached service=%s comm=%s ioctlRun=0x%08lX session=0x%08lX	FUN_14078e823	0x14078e8a2	lea	yes
+0x140f8d5a0	CI16 comm_init new_load_ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX	FUN_14078e8c0	0x14078ecb9	lea	yes
+0x140f8d710	CI20 reopen_fresh ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX	FUN_14078f250	0x14078f51a	lea	yes
+0x140f8d760	RC01 invalid_state h=%p in=%p session=0x%08lX comm=%s ioctlRun=0x%08lX	FUN_14078f025	0x14078f035	lea	yes
+0x140f8d7b0	RC00 send mode=%lu serialMode=%d diskLen=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX	FUN_14078ed39	0x14078ed97	lea	yes
+0x140f8d810	RC02 ioctl_failed gle=%lu ret=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s	FUN_14078ef02	0x14078f019	lea	yes
+0x140f8d870	RC03 decode_failed ret=%lu marker=0x%08lX comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s	FUN_14078ee89	0x14078eec2	lea	yes
+0x140f8d8d0	RC04 session_mismatch ret=%lu response=0x%08lX expected=0x%08lX comm=%s ioctlRun=0x%08lX driver=%s	FUN_14078ef02	0x14078ef2b	lea	yes
+0x140f8da70	HS02 common_mismatch common=0x%08lX expected=0x12345678 mode=%lu serialMode=%d comm=%s session=0x%08lX	FUN_14078f0ad	0x14078f1e3	lea	yes
+0x140f8dc90	--shift-open	FUN_1407a4b90	0x1407a4bf0	lea	yes
+0x140f8dc90	--shift-open	FUN_1407a4b90	0x1407a4d30	lea	yes
+0x140f8dc90	--shift-open	FUN_1407a4b90	0x1407a4d70	lea	yes
+0x140f8dc90	--shift-open	FUN_1407a4b90	0x1407a5410	lea	yes
+0x140f8dca0	--nsp-runtime-child	FUN_1407a1fa0	0x1407a1ff0	lea	yes
+0x140f8dca0	--nsp-runtime-child	FUN_1407a4b90	0x1407a4c04	lea	yes
+0x140f8dca0	--nsp-runtime-child	FUN_1407a4b90	0x1407a4d44	lea	yes
+0x140f8dca0	--nsp-runtime-child	FUN_1407a4b90	0x1407a4de0	lea	yes
+0x140f8dca0	--nsp-runtime-child	FUN_1407a4b90	0x1407a5428	lea	yes
+0x140f8e030	SP_NOERROR	GAP	0x14078fafa	lea	no
+0x140f8e0d8	SP_INVALIDCARD	GAP	0x14078fb42	lea	no
+0x140f8e128	SP_MAXONLINE	GAP	0x14078fb6a	lea	no
+0x140f8e138	SP_OFFLINE	GAP	0x14078fb72	lea	no
+0x140f8e1c8	SP_BINDMSGDIFF	GAP	0x14078fbaa	lea	no
+0x140f8e238	%s\SysWOW64\SPVerifyDiag.log	FUN_14078fc90	0x14078fd05	lea	yes
+0x140f8e258	C:\Windows\SysWOW64\SPVerifyDiag.log	FUN_14078fc90	0x14078fd1a	lea	yes
+0x140f8e4e8	<HOST_PATH>\<DIR>cmd	FUN_1407a1880	0x1407a1c72	lea	yes
+0x140f8e4e8	<HOST_PATH>\<DIR>cmd	FUN_1407a1880	0x1407a1d78	lea	yes
+0x140f8e508	C:\Windows\System32\EPT.cmd	FUN_1407a1880	0x1407a1c79	lea	yes
+0x140f8e528	<HOST_PATH>\<DIR>.cmd	FUN_1407a1880	0x1407a1b3a	lea	yes
+0x140f8e548	C:\Windows\System32\hwid.cmd	FUN_1407a1880	0x1407a1b41	lea	yes
+0x140f8e568	<HOST_PATH>\<DIR>cmd	FUN_1407a1880	0x1407a1c54	lea	yes
+0x140f8e588	C:\Windows\System32\ept.cmd	FUN_1407a1880	0x1407a1c5b	lea	yes
+0x140f8e5a8	<HOST_PATH>\<DIR>cmd.tmp	FUN_1407a1880	0x1407a1b99	lea	yes
+0x140f8e5c8	C:\Windows\System32\EPT.cmd.tmp	FUN_1407a1880	0x1407a1ba0	lea	yes
+0x140f901d8	0123456789ABCDEFHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz	FUN_140799b60	0x140799bbb	lea	yes
+0x140f92520	StoredVerify.StoredAuthorizationUsable	FUN_1407a3080	0x1407a30f1	lea	yes
+0x140f92640	StoredVerify.SP_Verify_Init	FUN_1407a3080	0x1407a315d	lea	yes
+0x140f92660	StoredVerify.init_failed_soft_allow	FUN_1407a3080	0x1407a3176	lea	yes
+0x140f92688	yz.hwid001.com	FUN_1407a3080	0x1407a3193	lea	yes
+0x140f92698	StoredVerify.SetHost yz.hwid001.com:1029	FUN_1407a3080	0x1407a319f	lea	yes
+0x140f926c8	StoredVerify.SP_Verify_GetServerOption	FUN_1407a3080	0x1407a31e2	lea	yes
+0x140f926f0	StoredVerify.option_failed_soft_allow	FUN_1407a3080	0x1407a31fb	lea	yes
+0x140f92718	StoredVerify.SP_Verify_CardLogin	FUN_1407a3080	0x1407a3247	lea	yes
+0x140f92740	StoredVerify.cardlogin_denied_clear_or_block	FUN_1407a3080	0x1407a32b6	lea	yes
+0x140f92770	StoredVerify.cardlogin_failed_soft_allow	FUN_1407a3080	0x1407a32a3	lea	yes
+0x140f927a0	StoredVerify.SP_Verify_IsLogin	FUN_1407a3080	0x1407a32ea	lea	yes
+0x140f927c0	StoredVerify.islogin_failed_soft_allow	FUN_1407a3080	0x1407a330e	lea	yes
+0x140f927e8	stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s	FUN_1407a3323	0x1407a3365	lea	yes
+0x140f92820	StoredVerify.beat_hard_deny_clear_or_block	FUN_1407a3323	0x1407a33b5	lea	yes
+0x140f92850	StoredVerify.beat_not_soft_allow_clear_or_block	FUN_1407a3323	0x1407a33f0	lea	yes
+0x140f92930	sc.exe config "AntiCheatExpert Protection" start= delayed-auto	FUN_1407a4a90	0x1407a4a94	lea	yes
+0x140f92970	sc.exe config "AntiCheatExpert Service" start= delayed-auto	FUN_1407a4a90	0x1407a4aa0	lea	yes
+0x140f92ae0	MAIN startup admin=%d cfgMissing=%d cfgPath=%s exePath=%s	FUN_1407a4b90	0x1407a52ac	lea	yes
+0x140f92d48	CliConfigUpdate.StoredAuthorizationUsable	FUN_1407a4b90	0x1407a6a3a	lea	yes
+0x140f92d48	CliConfigUpdate.StoredAuthorizationUsable	FUN_1407a4b90	0x1407a73da	lea	yes
+0x14115b120	<HOST_PATH>\Users\<USER>\AppData\Local\Temp\EPT_3C9F3CEF_69BB4F9F.exe	FUN_1407c1f44	0x1407c1f87	lea	yes

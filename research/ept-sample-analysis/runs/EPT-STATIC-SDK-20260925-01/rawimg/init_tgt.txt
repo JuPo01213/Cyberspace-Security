@@ -1,0 +1,150 @@
+       ::   0x14166f7ba      push  r13
+      .---> 0x14166f7bc      pushfq
+      :::   0x14166f7bd      mov   r13, 0xa7a0b1a4d2a5a90f
+      :::   0x14166f7c7      or    r13b, 0x89                          ; 137
+      :::   0x14166f7cb      setno r13b
+      :::   0x14166f7cf      mov   qword [rsp+0x10], 0x16397ebf        ; [0x16397ebf:8]=-1
+      :::   0x14166f7d8      mov   r13, qword [rsp+0x08]
+      `===< 0x14166f7dd      jnl   0x14166f7bc
+       ::   0x14166f7e3      push  qword [rsp]
+       ::   0x14166f7e7      popfq
+       ::   0x14166f7e8      lea   rsp, qword [rsp+0x10]
+       ::   0x14166f7ed      call  0x141e1a82f
+       ::   0x14166f7f2      call  0x1416e0219
+       ::   0x14166f7f7      mov   r12, qword [rsp+0x60]
+      ,===< 0x14166f7fc      jo    0x1419b98d8
+      |`==< 0x14166f802      jo    0x1411808a0
+      | :   0x14166f808      call  0x1415c5312
+      | :   0x14166f80d      invalid
+      | :   0x14166f80e      invalid
+      | :   0x14166f80f      xor   byte [rax+0x7ffe], bl
+      | :   0x14166f815      call  0x14159af0c
+      | :   0x14166f81a      lea   r8, qword [r8+r8*2+0x532d303]
+      | :   0x14166f822      call  0x1417cad74
+      | :   0x14166f827      push  qword [rsp+0x18]
+      | :   0x14166f82b      popfq
+      | :   0x14166f82c      lea   rsp, qword [rsp+0x40]
+      | :   0x14166f831      call  0x141c7b1f8
+      |,==< 0x14166f836      jz    0x141b0c12c
+      ||:   0x14166f83c      mov   rsi, qword [rsp+r12*1-0x4d7aefbd]
+      ||:   0x14166f844      mov   rsi, qword [rsi+r12*1-0x4d7aefed]
+      ||:   0x14166f84c      test  r12, 0x19aca336
+      ||:   0x14166f853      setb  byte [rsp+r12*1-0x4d7aef95]
+      ||:   0x14166f85c      xor   r12d, dword [rsp+r12*1-0x4d7aefc9]
+      ||:   0x14166f864      and   r12, qword [rsp+0x58]
+      ||:   0x14166f869      mov   qword [rsp+0x30], r12
+      ||:   0x14166f86e      call  0x1418fc30e
+      ||:   0x14166f873      not   r10w
+      ||:   0x14166f877      lea   rbp, qword [rbp+0x403e26a5]
+      ||:   0x14166f87e      lea   r15, qword [r10+r15*2-0x5cf81fe1]
+      ||:   0x14166f886      not   r12d
+      ||:   0x14166f889      lea   r15, qword [r12+r10*1-0x3459e7ed]
+      ||:   0x14166f891      call  0x1415ed894
+      ||:   0x14166f896      and   dword [rax+0x7929412e], ebp
+      ||:   0x14166f89c      sbb   ebx, esp
+      ||:   0x14166f89e      adc   byte [rax+0x2cf8a0bc], dl
+      ||:   0x14166f8a4      in    al, dx
+      ||:   0x14166f8a5      adc   al, 0xb4
+      ||:   0x14166f8a7      invalid
+     ,====< 0x14166f8a8      jrcxz 0x14166f912
+     |||:   0x14166f8aa      and   byte [rdx-0x56], ch
+     |||:   0x14166f8ad      fisttp qword [rbx+0x6f]
+     |||:   0x14166f8b0      add   esi, dword [rcx]
+     |||:   0x14166f8b2      stosb
+     |||:   0x14166f8b5      cli
+     |||:   0x14166f8b6      add   esi, dword [ecx]
+     |||:   0x14166f8b9      invalid
+     |||:   0x14166f8ba      invalid
+     |||:   0x14166f8bb      invalid
+     |||:   0x14166f8bc      rcl   bh, cl
+     |||:   0x14166f8be      adc   ecx, dword [rcx-0x55]
+     |||:   0x14166f8c1      lahf
+    .-----> 0x14166f8c2      ret   far
+    :|||:   0x14166f8c3      cmp   eax, dword [rbx+0x23]
+   ::|||:   0x14166f8c6      add   bh, ah
+   ::|||:   0x14166f8c8      test  dword [rdx+0x62], eax
+   ::|||:   0x14166f8cb      test  dword [rdx+0x37b9d26d], esi
+   ::|||:   0x14166f8d1      in    eax, 0xc2
+   ::|||:   0x14166f8d3      xchg  ebp, eax
+   ::|||:   0x14166f8d4      sbb   byte [0x125b0b79c], dl
+   ::|||:   0x14166f8da      mov   byte [0x4dd26b901a10dc65], al
+   ::|||:   0x14166f8e3      clc
+   ::|||:   0x14166f8e4      mov   r10, 0x830a56e577c705b6
+   ::|||:   0x14166f8ee      mov   ch, 0xe8                            ; 232
+   ::|||:   0x14166f8f0      invalid
+   ::|||:   0x14166f8f1      pop   rdx
+   ::|||:   0x14166f8f2      invalid
+   ::|||:   0x14166f8f3      fbld  tbyte [rax]
+   ::|||:   0x14166f8f5      or    eax, 0x898fd436
+  :::|||:   0x14166f8fa      mov   ss, word [rcx+0x4a]
+  :::|||:   0x14166f8fd      in    al, dx
+  :::|||:   0x14166f8fe      shr   edx, 0x01
+  :::|||:   0x14166f900      cld
+  :::|||:   0x14166f901      clc
+  ::`=====< 0x14166f902      jnp   0x14166f8c2
+  :: |||:   0x14166f904      movsb
+  :: |||:   0x14166f905      or    bl, byte [0x14cc87cdc]              ; [0x14cc87cdc:1]=255
+  :: |||:   0x14166f90b      fadd  dword [rax]
+  :`======< 0x14166f90d      loop  0x14166f8c4
+  :  |||:   0x14166f90f      mov   dl, 0xe0                            ; 224
+  :  |||:   0x14166f911      cmp   eax, 0x3de35b17
+  :   ||:   0x14166f916      cmp   eax, 0x38b2e7c7
+  :  :||:   0x14166f91b      mov   dword [0xe2e6c13d7a9497b0], eax
+  :  :||:   0x14166f924      out   0xfb, eax
+  :  :||:   0x14166f926      stosd
+  :  :||:   0x14166f927      mov   ah, byte [rdx-0x37eef26c]
+  `=======< 0x14166f92d      jnz   0x14166f8f6
+     :||:   0x14166f930      sbb   bl, bh
+     :||:   0x14166f932      in    eax, dx
+     :||:   0x14166f933      mov   bl, 0x5e                            ; '^' ; 94
+     :||:   0x14166f935      or    byte [rsi-0x16], 0x1b               ; [0x1b:1]=255 ; 27
+     :||:   0x14166f93a      mov   cl, byte [rdx+0x05]
+     :||:   0x14166f93d      lodsb
+     :||:   0x14166f93e      sahf
+     `====< 0x14166f93f      loopne 0x14166f919
+      ||:   0x14166f941      invalid
+      ||:   0x14166f942      in    eax, 0x4d
+      ||:   0x14166f944      push  rdi
+      ||:   0x14166f945      xchg  ebp, eax
+      ||:   0x14166f946      cli
+      ||:   0x14166f947      adc   dword [rdx-0x55], eax
+      ||:   0x14166f94a      movsxd eax, esp
+      ||:   0x14166f94c      invalid
+      ||:   0x14166f94d      mov   bl, 0xa2                            ; 162
+      ||:   0x14166f94f      pushfq
+      ||:   0x14166f951      or    eax, 0x9004e79
+      ||:   0x14166f956      not   byte [rbx]
+      ||:   0x14166f958      ret   0x69be
+      ||:   0x14166f95b      idiv  dword [rbp-0x41417a2d]
+      ||:   0x14166f961      xor   eax, 0x70e994b7
+      ||:   0x14166f966      mov   bl, 0xa7                            ; 167
+      ||:   0x14166f968      or    ah, byte [rdi+rbx*1]
+      ||:   0x14166f96b      fstp  st5
+      ||:   0x14166f96d      test  byte [rdi+0x793d16d9], 0xf6
+      ||:   0x14166f974      mov   ebp, 0x23c04b06
+      ||:   0x14166f979      adc   eax, 0x4904437c
+      ||:   0x14166f97e      invalid
+      ||:   0x14166f97f      xor   cl, cl
+      ||:   0x14166f981      fisub word [rdi]
+      ||:   0x14166f983      pop   rsp
+      ||:   0x14166f984      push  rax
+      ||:   0x14166f985      fldenv [rdx+rbp*1-0x59a9a1d8]
+      ||:   0x14166f98c      iretd
+      ||:   0x14166f98d      mov   eax, dword [0xa33f7e809098d18b]
+      ||:   0x14166f996      mov   al, 0x77                            ; 'w' ; 119
+      ||:   0x14166f998      push  rcx
+      ||:   0x14166f999      add   eax, 0x22d28d42
+      ||:   0x14166f99e      or    esi, ebp
+      ||:   0x14166f9a0      adc   al, 0x9e
+      ||:   0x14166f9a2      invalid
+      ||:   0x14166f9a3      pop   rsi
+     ,====< 0x14166f9a4      jp    0x14166f9f8
+     |||:   0x14166f9a6      xchg  esi, eax
+     |||:   0x14166f9a7      invalid
+     |||:   0x14166f9a8      mov   ebp, 0xac4a3ad5
+    ,=====< 0x14166f9ae      loop  0x14166fa03
+    ||||:   0x14166f9b1      sti
+    ||||:   0x14166f9b2      push  rdi
+    ||||`=< 0x14166f9b3      jmp   0xc6a2d6b5
+    ||||    0x14166f9b8      outsb
+    ||||    0x14166f9b9      invalid

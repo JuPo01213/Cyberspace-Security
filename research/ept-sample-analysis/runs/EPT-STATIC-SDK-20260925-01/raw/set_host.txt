@@ -1,0 +1,41 @@
+            0x1403b3280      sub   rsp, 0x48
+            0x1403b3284      mov   word [rsp+0x46], dx
+            0x1403b3289      mov   qword [rsp+0x38], rcx
+            0x1403b328e      mov   rcx, qword [rsp+0x38]
+            0x1403b3293      call  0x1416f98f0
+            0x1403b3298      mov   qword [rsp+0x30], rax
+            0x1403b329e      cmp   qword [rsp+0x30], 0x00
+        ,=< 0x1403b32a4      jnz   0x1403b32af
+       ,==< 0x1403b32aa      jmp   0x1403b331b
+       |`-> 0x1403b32af      mov   qword [rsp+0x28], 0x00
+       |    0x1403b32b8      mov   rax, qword [rsp+0x30]
+       |    0x1403b32bd      mov   rax, qword [rax+0x18]
+       |    0x1403b32c1      cmp   qword [rax], 0x00
+       |,=< 0x1403b32c5      jz    0x1403b32ec
+       ||   0x1403b32cb      mov   rax, qword [rsp+0x30]
+       ||   0x1403b32d0      mov   rax, qword [rax+0x18]
+       ||   0x1403b32d4      mov   rax, qword [rax]
+       ||   0x1403b32d7      mov   ecx, dword [rax]
+       ||   0x1403b32d9      mov   dword [rsp+0x20], ecx
+       ||   0x1403b32dd      mov   ecx, dword [rsp+0x20]
+       ||   0x1403b32e1      push  rax
+       ||   0x1403b32e2      call  0x14150ea57
+       ||   0x1403b32e7      mov   qword [rsp+0x28], rax
+       |`-> 0x1403b32ec      mov   rcx, qword [rsp+0x28]
+       |    0x1403b32f1      push  rdi
+       |    0x1403b32f2      call  0x141707612
+       |    0x1403b32f7      mov   dword [0x14115a50c], eax            ; [0x14115a50c:4]=-1
+       |    0x1403b32fd      cmp   word [rsp+0x46], 0x00
+       |,=< 0x1403b3303      jz    0x1403b331b
+       ||   0x1403b3309      mov   cx, word [rsp+0x46]
+       ||   0x1403b330e      push  rax
+       ||   0x1403b330f      call  0x141570a12
+       ||   0x1403b3314      mov   word [0x14115a50a], ax              ; [0x14115a50a:2]=0xffff
+       ``-> 0x1403b331b      add   rsp, 0x48
+            0x1403b331f      ret
+            0x1403b3320      sub   rsp, 0x58
+            0x1403b3324      mov   qword [rsp+0x50], r8
+            0x1403b3329      mov   dword [rsp+0x4c], edx
+            0x1403b332d      invalid
+            0x1403b332e      invalid
+            0x1403b332f      invalid

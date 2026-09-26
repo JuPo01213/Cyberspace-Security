@@ -1,0 +1,93 @@
+== 1) runtime vocabulary (genB_runtime_vocab_0x140f8c800-0x140f99000.txt) ==
+   bytes=12,791 total_lines=257 nonempty=256
+   comment lines=5 vocabulary lines=251
+   VA-anchored lines=251  VA span=0x140f8cb60..0x140f97cdd
+   yz.hwid001.com           lines=  3
+   SetHost                  lines=  2
+   :1029                    lines=  2
+   StoredVerify             lines= 16
+   Setup.                   lines=  9
+   SP_Cloud_Beat            lines=  1
+   HP_WKS_SWTOOLS_DRIVER    lines=  1
+   skip_driver_load         lines=  1
+   0x12345678               lines=  1
+   CryptBinaryToStringW     lines=  0
+   distinct SP_* names=27 (claim: 28)
+     SP_ANOTHERUSERUNBIND SP_BANNEDAGENT SP_BANNEDCARD SP_BINDMSGDIFF SP_CONNECTFAILED SP_DATAERROR SP_DISABLELOGIN SP_EXPIREDCARD SP_EXPIREDTOKEN SP_FAILEDACTIVATECARD SP_FAILEDGETCARD SP_FAILEDWRITE SP_FYINOTENOUGH SP_INVALIDAGENT SP_INVALIDCARD SP_INVALIDPARAM SP_LOGINEXCEPTION SP_MAXONLINE SP_MAXUNBINDCOUNT SP_NOACTIVATEDCARD SP_NOBIND SP_NOERROR SP_NOINIT SP_NOLOADCLOUDDLL SP_OFFLINE SP_UNKNOWNERRROR SP_WSAFAILED
+   lines containing a >=100-char base64 run: 1  (content withheld per standing boundary)
+     0x140f92688  yz.hwid001.com
+     0x140f92698  StoredVerify.SetHost yz.hwid001.com:1029
+     0x140f92e88  Setup.SetHost yz.hwid001.com:1029
+
+== 2) captured memory blocks - is it ciphertext or decrypted? ==
+   RG2 4 MB region (0x140e00000)            size=  4,194,304 entropy=6.383 printable=0.229 zeroshare=0.285
+      note under test: ciphertext per P3 (entropy 8.00, printable 0.371)
+   C6 stream_text.bin (.text)               size=  8,257,536 entropy=6.614 printable=0.288 zeroshare=0.085
+      note under test: claimed decrypted .text (entropy 6.612)
+   C6 stream_rdata.bin (0x140f80000)        size=    262,144 entropy=5.924 printable=0.250 zeroshare=0.348
+      note under test: claimed decrypted .rdata tail
+   C6 stream_rdatafront.bin (0x1407db000)   size=  1,048,576 entropy=7.952 printable=0.361 zeroshare=0.025
+      note under test: claimed .rdata front (entropy 7.952)
+   C6 sample_stdout.txt                     size= 12,758,209 entropy=5.687 printable=1.000 zeroshare=0.000
+      note under test: streamed console text of the arm
+   raw arm stream <HOST_PATH>/vmctl/stream_C6_raw.txt size=12,758,662 (claim 12,758,662)
+   reassembled payload total=9,568,256 (claim 9,568,256)
+
+== 3) C6 offline analysis artifacts ==
+   C6_anchor_xrefs.tsv        bytes=   5,994 lines=    68 header='anchor_va\tstring\tfunction\tinsn_va\tmnemon'  (claim: 67 references)
+   C6_callgraph.tsv           bytes=  85,015 lines=  3401 header='caller\tcallee'  (claim: 3,400 .text edges / 1,299 functions with callers)
+      data rows=3400 distinct-caller-col=1299 distinct-callee-col=1111
+   C6_decompiled_gate.c       bytes= 104,348 lines=  2709 header='// ==== FUN_1407a3080 @ 1407a3080 ===='  (claim: 9 functions, 2,761 lines)
+   anchors_for_xref.tsv       bytes=   4,502 lines=    76 header='va\tstring'  (claim: 73 anchors)
+      anchor rows (excl header)=75
+
+== 4) genB on disk (Hardware.genB.exe) ==
+   size=32,671,232
+   sha256=cfa6998ecc2fba92b027985c5283b09cd9c04c636158fd6961a10560afb28bd7
+   e_lfanew=0x80 machine=8664 nsec=10 timestamp=1789572419 optsz=240 chars=0023
+   PE magic=020b (PE32+) EP=0x235f67b SizeOfImage=0x3f83000 ImageBase=0x140000000
+   DataDirectory[3] (Exception) = RVA 0x3f5d150 size 0x79e0
+   -> lands in section .)Bu
+   name       VA           VirtSize     rawPtr     rawSize    chars     
+   .text      0x140001000  0x7d992c     0x0        0x0        0x60000020
+   .rdata     0x1407db000  0x7c2dd0     0x0        0x0        0x40000040
+   .data      0x140f9e000  0x1ce70c     0x0        0x0        0xc0000040
+   .pdata     0x14116d000  0x4f80       0x0        0x0        0x40000040
+   _RDATA     0x141172000  0xfc         0x0        0x0        0x40000040
+   .fptable   0x141173000  0x100        0x0        0x0        0xc0000040
+   .Sq>       0x141174000  0xee55f0     0x0        0x0        0x60000020
+   .bs]       0x14205a000  0xf88        0x400      0x1000     0xc0000040
+   .)Bu       0x14205b000  0x1f09b30    0x1400     0x1f09c00  0x68000060
+   .rsrc      0x143f65000  0x1d445      0x1f0b000  0x1d600    0x40000040
+   file plaintext find(http://               ) = -1
+   file plaintext find(https://              ) = -1
+   file plaintext find(hwid001               ) = -1
+   file plaintext find(SetHost               ) = -1
+   file plaintext find(requireAdministrator  ) = -1
+   file plaintext find(highestAvailable      ) = -1
+   file plaintext find(yz.hwid001            ) = -1
+   manifest asInvoker at file offset 0x1f283d2 / -0x1
+   requestedExecutionLevel occurrences=1
+   PLAINTEXT-FACE CONTROL (if these are all -1 the scan is dead, and the zeros above mean nothing):
+     find(!This program cannot be run   ) = 77
+     find(KERNEL32.dll                  ) = 5541004
+     find(.rsrc                         ) = 752
+     find(<trustInfo                    ) = 32670542
+
+== 5) .pdata function table and static imports ==
+   header=begin_va	end_va	size	unwind_va	section
+
+   data rows=2593  strictly-increasing=True
+   size: min=1 max=640,498 mean=1775.6 total=4,604,068 B = 4,496 KB
+   address span = 0x140001000 .. 0x143f55411
+   per-section BeginAddress ownership (from the tsv column): {'.text\n': 1694, '.Sq>\n': 870, '.)Bu\n': 29}
+   imports file header=dll	function
+ rows=18 distinct DLLs=11
+     ADVAPI32.dll:1; COMCTL32.dll:1; CRYPT32.dll:1; GDI32.dll:1; IPHLPAPI.DLL:1; KERNEL32.dll:8; SHELL32.dll:1; USER32.dll:1; WS2_32.dll:1; ntdll.dll:1; ole32.dll:1
+
+== 6) raw occurrence of the resolved fake-IP (decoder-independent) ==
+   VBox-2a0c.pcap     198.18.2.159 appears 1 time(s) in 148,166,238 B  (the yz.hwid001.com A answer)
+   VBox-3bf4.pcap     198.18.2.159 appears 1 time(s) in 105,802 B  (the yz.hwid001.com A answer)
+
+== 7) ETW harvest artifact ==
+   setw_CORE1.csv bytes=125,102 lines=280 (writeup quotes ROWS=279 for the CORE1 arm)

@@ -1,0 +1,7 @@
+﻿{"utc":"2026-09-25T19:06:11.6716306Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":2572,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T19:06:11.9384312Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_EA48552C_666C0F8C.exe","pid":3908,"ppid":2572,"type":"CHILD_FOUND","utc":"2026-09-25T19:06:24.9335342Z"}
+{"target_pid":3908,"debugger_pid":816,"type":"CDB_ATTACHED","utc":"2026-09-25T19:06:24.9490534Z"}
+{"pid":1096,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T19:06:24.9803996Z"}
+{"pid":0,"type":"WATCHER_STARTED","utc":"2026-09-25T19:06:26.3709314Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T19:06:26.3709314Z"}

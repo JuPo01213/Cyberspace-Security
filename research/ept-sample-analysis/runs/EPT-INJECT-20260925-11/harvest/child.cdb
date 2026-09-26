@@ -1,0 +1,5 @@
+.echo [XREF_CHILD_ATTACHED]
+$$ child: observe only. No xref hw breakpoints here (would exceed 4 debug registers alongside parent's 3)
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [XREF_CREATEFILEW_C]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp ntdll!NtDeviceIoControlFile ".echo [XREF_DIOC_C]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L6; g"
+.echo [XREF_CHILD_BPS_ARMED]

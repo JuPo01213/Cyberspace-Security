@@ -1,0 +1,22 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-55",
+  "evidence_scope": "real_sample_guest_run",
+  "vm_state": {"vm": "<VM_LABEL>", "note": "本轮未重新恢复检查点(恢复判据当时缺失), 跑在 run54 收割后的连续 VM 状态上; 与 run 52/53 同类状态"},
+  "verdict": "FULL_PIPELINE_OBSERVED (best evidence run to date)",
+  "hypothesis": "ExitProcess/TerminateProcess 强制跳过可否越过保护的直接退出路径",
+  "results": {
+    "cdb_resolve_errors": 0,
+    "markers": {"STAGE_FORCE_POINT2_TRUE": 4, "SCHED_CALLSITE": 1, "FATAL_THUNK": 1, "CWEXA_OBS": 22, "CFW": 2, "WFW": 42, "CPW_OBS": 12, "CPA_OBS": 2, "EXIT_PROCESS_SKIPPED": 0},
+    "key_findings": [
+      "完整管线再次走通: GUI 链(22 窗口) → 指纹采集(11x wmic + ipconfig /all, 经 cmd.exe 子进程, CPW/CPA 首次直接观测) → payload 尝试 → FATAL_THUNK ← 0x1407aa694",
+      "服务持久化伪装: sc.exe config \"AntiCheatExpert Protection\" start= delayed-auto + sc.exe config \"AntiCheatExpert Service\" start= delayed-auto (腾讯 ACE 反作弊命名伪装); 服务本身不存在 ⇒ config 打空",
+      "7.9MB payload 写入: 句柄 0x1fc (File, 写权限 0x120196), 缓冲区头 4d 5a 90 00 (MZ PE 映像), 7,966,720 字节; 文件终态 0 字节随后被样本删除",
+      "第二次 19KB 分块写入到 TEMP\\EGadpBYWJAH (样本随后清理删除)",
+      "FATAL_THUNK 调用者 0x1407aa694 (dd @rsp L4: 407aa694 00000001 00000001 00000000) — 与 52/53/56 完全一致",
+      "Hardware.ini 被本轮更新(02:56:04): BoardId/Uuid/BrandModel=Virtual Machine/BiosSerial/DiskSerials=None/CpuIds=1F8BFBFF00090675/Gpus=Microsoft Hyper-V Video/Macs=00:15:5D:38:01:02/Gateways=<PRIVATE_IP> 全量指纹",
+      "EPT.cmd 同轮重写(02:55:27)",
+      "样本日志 C:\\Windows\\System32\\Hardware (900B) = 4 字节长度前缀 0x380 + 896 字节密文"
+    ],
+    "seam_fields": {"target_native_return": "NOT_OBSERVED", "target_caller_diff_bytes": "NOT_OBSERVED", "rc06_stage": "NOT_OBSERVED"}
+  }
+}

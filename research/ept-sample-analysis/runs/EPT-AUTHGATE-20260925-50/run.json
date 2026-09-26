@@ -1,0 +1,15 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-50",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "environment": "testsigning ON baked into new checkpoint C173-gen1-testsign-ready; copy hash-verified",
+  "instrument": "WFW captures rcx+r8 (+ CreateProcessA in ANSI via da). Goal: diagnose 7.9MB payload WriteFile failure.",
+  "hypothesis": "捕获 7.9MB WriteFile 的句柄与缓冲区头部，判定失败原因（无效句柄/缓冲区/其他）；若写入成功（testsigning 改变了时序）则观察后续服务创建。",
+  "acceptance_fields": {
+    "wfw_handle_captured": null,
+    "wfw_buffer_head": null,
+    "payload_written": null,
+    "chain_completed": null,
+    "post_behaviors": null
+  },
+  "deadline_sec": 720
+}

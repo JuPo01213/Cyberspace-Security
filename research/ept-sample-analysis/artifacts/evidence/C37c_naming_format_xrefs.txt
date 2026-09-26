@@ -1,0 +1,34 @@
+== 1) UTF-16 literal neighbourhood 0x140f92300..0x140f923c0 ==
+   0x140f92300  '⁴慤慴挠敬牡摥\u0a0d'
+   0x140f92318  '硥瑩⼠\u2062ര�'
+   0x140f92327  'ⴀ敲潢瑯ⴀ�'
+   0x140f92334  '灥t敤l椭獮'
+   0x140f92348  '%sEPT_%08X_%08X.ex�'
+   0x140f9236f  'ⴀⴀ渀猀瀀ⴀ爀甀渀琀椀洀攀ⴀ挀栀椀氀搀'
+   0x140f92397  '⼀䘀'
+   0x140f9239f  '猀挀栀琀愀猀欀猀⸀攀砀攀\u2000⼀䐀攀�'
+   resolved targets: {'FMT %sEPT_%08X_%08X.exe': '0x140f92348', 'sibling --nsp-runtime-child': '0x140f92370', 'sibling -ins': None, 'sibling del': '0x140f8e756', 'sibling ept': None}
+
+== 2) one sliding RIP sweep over captured .text: 8253425 units, 582286 undecodable (7.06%) ==
+   FMT %sEPT_%08X_%08X.exe      0x140f92348 refs=2
+      0x1407a20ab  lea r8, [rip + 0x7f0296]                     -> 0x140f92348
+      0x1407a20ac  lea eax, [rip + 0x7f0296]                    -> 0x140f92348
+   sibling --nsp-runtime-child  0x140f92370 refs=4
+      0x1407a2435  lea rdx, [rip + 0x7eff34]                    -> 0x140f92370
+      0x1407a2436  lea edx, [rip + 0x7eff34]                    -> 0x140f92370
+      0x1407a2451  lea r9, [rip + 0x7eff18]                     -> 0x140f92370
+      0x1407a2452  lea ecx, [rip + 0x7eff18]                    -> 0x140f92370
+   sibling -ins                 LITERAL NOT IN WINDOW refs=0
+   sibling del                  0x140f8e756 refs=0
+   sibling ept                  LITERAL NOT IN WINDOW refs=0
+   control: refs to sibling literals (excluding FMT) = 4 -> sweep ALIVE
+
+== 3) C22 BAD-SEED list ==
+   address-shaped entries = 0 (writeup claims 5 for the carrier)
+   per-function coverage lines actually in C22:
+     ===== function 0x1407a3080 .. 0x1407a3323 (675 bytes) =====
+     instruction starts: 154   decoded: 675 B = 100.0% of the body
+     blocks: 21
+     ===== function 0x1407a3510 .. 0x1407a493d (5165 bytes) =====
+     instruction starts: 1313   decoded: 5134 B = 99.4% of the body
+     blocks: 208

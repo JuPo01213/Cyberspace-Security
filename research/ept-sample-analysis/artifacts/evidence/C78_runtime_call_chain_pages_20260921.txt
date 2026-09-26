@@ -1,0 +1,330 @@
+C78 — runtime call-chain page disassembly
+date=2026-09-21
+scope=pages copied by bounded guest ReadProcessMemory probe; no sample bytes executed on host
+classification=page bytes prove runtime availability; instruction semantics are static interpretation of those captured bytes
+
+=== post_send_wrapper ===
+path=<HOST_PATH>\EPT\artifacts\captures\core_probe_target_7.bin base=0x141757000 entry=0x141757acd offset=0xacd bytes=4096 sha256=bd28f2187520e18924a85ce23b8a603f62721abb180ea3d8599b0ef0c17bc9e7
+nonzero=4023/4096 decoded_from_entry=33 consumed=156/1331
+first64=76 f2 51 a9 96 be 25 53 d3 b2 05 6b 91 fc 4c 5c ff b8 89 11 9c 7d 07 6d e2 b2 e2 b3 ff c6 8a 91 18 11 36 6b d5 35 29 b1 e2 cb 1d 00 31 d8 dc 5b 4f 31 8b 14 9b 9f 06 70 68 6f 85 59 7a a8 20 5c
+0x0000000141757acd: 50                               push       rax
+0x0000000141757ace: 55                               push       rbp
+0x0000000141757acf: e8 ff c9 e2 ff                   call       0x1415844d3
+0x0000000141757ad4: 48 8b 6c 24 18                   mov        rbp, qword ptr [rsp + 0x18]
+0x0000000141757ad9: 48 8b 6c 25 00                   mov        rbp, qword ptr [rbp + riz]
+0x0000000141757ade: 48 c7 44 24 18 29 de a5 d2       mov        qword ptr [rsp + 0x18], 0xffffffffd2a5de29
+0x0000000141757ae7: f7 5c 24 18                      neg        dword ptr [rsp + 0x18]
+0x0000000141757aeb: 80 64 24 18 3a                   and        byte ptr [rsp + 0x18], 0x3a
+0x0000000141757af0: 48 f7 5c 24 18                   neg        qword ptr [rsp + 0x18]
+0x0000000141757af5: e8 ed e5 1a 00                   call       0x1419060e7
+0x0000000141757afa: 41 53                            push       r11
+0x0000000141757afc: e8 1a e8 fb ff                   call       0x14171631b
+0x0000000141757b01: 9c                               pushfq
+0x0000000141757b02: 48 81 44 24 08 08 e1 30 00       add        qword ptr [rsp + 8], 0x30e108
+0x0000000141757b0b: 48 b9 a6 f5 88 ce 11 9f 9a 12    movabs     rcx, 0x129a9f11ce88f5a6
+0x0000000141757b15: e8 36 c3 33 00                   call       0x141a93e50
+0x0000000141757b1a: 66 f7 5c 24 30                   neg        word ptr [rsp + 0x30]
+0x0000000141757b1f: 48 87 44 24 60                   xchg       qword ptr [rsp + 0x60], rax
+0x0000000141757b24: ff 74 24 50                      push       qword ptr [rsp + 0x50]
+0x0000000141757b28: 9d                               popfq
+0x0000000141757b29: 48 8d 64 24 60                   lea        rsp, [rsp + 0x60]
+0x0000000141757b2e: c3                               ret
+0x0000000141757b2f: 4e 8b bc 84 1c b8 27 89          mov        r15, qword ptr [rsp + r8*4 - 0x76d847e4]
+0x0000000141757b37: 48 89 5c 24 20                   mov        qword ptr [rsp + 0x20], rbx
+0x0000000141757b3c: 81 cf 01 4a a1 fa                or         edi, 0xfaa14a01
+0x0000000141757b42: e8 e6 ba 02 ff                   call       0x14078362d
+0x0000000141757b47: f0 2b 3d 41 fa f6 24             lock sub   edi, dword ptr [rip + 0x24f6fa41]
+0x0000000141757b4e: 64 cb                            retf
+0x0000000141757b50: cb                               retf
+0x0000000141757b51: d3 9a f2 9d 62 f4                rcr        dword ptr [rdx - 0xb9d620e], cl
+0x0000000141757b57: a0 6c cc 4c fc d0 0a 79 25       movabs     al, byte ptr [0x25790ad0fc4ccc6c]
+0x0000000141757b60: 89 27                            mov        dword ptr [rdi], esp
+0x0000000141757b62: 6b 8d 3f 2e 25 60 02             imul       ecx, dword ptr [rbp + 0x60252e3f], 2
+transfers:
+  0x141757acf: call -> 0x1415844d3 [outside captured page]
+  0x141757af5: call -> 0x1419060e7 [outside captured page]
+  0x141757afc: call -> 0x14171631b [outside captured page]
+  0x141757b15: call -> 0x141a93e50 [outside captured page]
+  0x141757b2e: ret  [indirect/non-immediate]
+  0x141757b42: call -> 0x14078362d [outside captured page]
+  0x141757b4e: retf  [indirect/non-immediate]
+  0x141757b50: retf  [indirect/non-immediate]
+
+=== call_1415844d3 ===
+path=<HOST_PATH>\EPT\artifacts\captures\core_probe_call_1415844d3_7.bin base=0x141584000 entry=0x1415844d3 offset=0x4d3 bytes=4096 sha256=f6547d65c864f1e59d8178e4d2a4190d3bcc47caf5c062e854b32ae502947bbf
+nonzero=4052/4096 decoded_from_entry=82 consumed=417/2861
+first64=df ff 59 30 2f 73 ad a9 c2 72 f3 6f 6b a3 dd fa a3 24 58 ac 71 cd e9 34 0d eb d5 b3 92 fd 97 a4 b8 fe ce 9f cd 9b 5d b1 09 f8 fc 56 df 8b ac d1 00 fc 97 a4 b8 e3 c4 4e 80 f6 05 fc ca 94 39 6e
+0x00000001415844d3: 48 bd 25 90 a6 90 9a 91 93 27    movabs     rbp, 0x2793919a90a69025
+0x00000001415844dd: 9c                               pushfq
+0x00000001415844de: 48 81 ed b9 59 20 20             sub        rbp, 0x202059b9
+0x00000001415844e5: 0f 88 01 db 2e 00                js         0x141871fec
+0x00000001415844eb: 0f 85 fb 69 48 00                jne        0x141a0aeec
+0x00000001415844f1: 66 c1 64 24 18 6e                shl        word ptr [rsp + 0x18], 0x6e
+0x00000001415844f7: 41 50                            push       r8
+0x00000001415844f9: 4c 8b 44 24 20                   mov        r8, qword ptr [rsp + 0x20]
+0x00000001415844fe: 41 55                            push       r13
+0x0000000141584500: 45 23 c2                         and        r8d, r10d
+0x0000000141584503: 0f 86 d4 53 43 00                jbe        0x1419b98dd
+0x0000000141584509: 48 8d 6d 01                      lea        rbp, [rbp + 1]
+0x000000014158450d: 49 f7 d2                         not        r10
+0x0000000141584510: 0f 88 f4 cd 11 00                js         0x1416a130a
+0x0000000141584516: 59                               pop        rcx
+0x0000000141584517: e8 e2 66 3f 00                   call       0x14197abfe
+0x000000014158451c: 49 f7 d0                         not        r8
+0x000000014158451f: 40 80 f6 36                      xor        sil, 0x36
+0x0000000141584523: 0f 85 a8 20 bf ff                jne        0x1411765d1
+0x0000000141584529: 53                               push       rbx
+0x000000014158452a: 48 bb b6 b8 09 11 0a e1 97 b2    movabs     rbx, 0xb297e10a1109b8b6
+0x0000000141584534: e8 b3 30 0b 00                   call       0x1416375ec
+0x0000000141584539: 48 81 44 24 00 f8 f6 b6 be       add        qword ptr [rsp], -0x41490908
+0x0000000141584542: 66 f7 44 24 30 2e e0             test       word ptr [rsp + 0x30], 0xe02e
+0x0000000141584549: 48 8b 6c 24 28                   mov        rbp, qword ptr [rsp + 0x28]
+0x000000014158454e: ba b6 82 80 6e                   mov        edx, 0x6e8082b6
+0x0000000141584553: f6 94 14 7a 7d 7f 91             not        byte ptr [rsp + rdx - 0x6e808286]
+0x000000014158455a: e8 0c 9f 24 00                   call       0x1417ce46b
+0x000000014158455f: 48 c7 44 24 00 56 93 be 8e       mov        qword ptr [rsp], 0xffffffff8ebe9356
+0x0000000141584568: e8 dd b6 94 00                   call       0x141ecfc4a
+0x000000014158456d: 41 53                            push       r11
+0x000000014158456f: 48 8b 54 24 38                   mov        rdx, qword ptr [rsp + 0x38]
+0x0000000141584574: 48 8b 12                         mov        rdx, qword ptr [rdx]
+0x0000000141584577: 48 89 7c 24 38                   mov        qword ptr [rsp + 0x38], rdi
+0x000000014158457c: 4c 8b 44 24 38                   mov        r8, qword ptr [rsp + 0x38]
+0x0000000141584581: 41 51                            push       r9
+0x0000000141584583: 49 bb 3b 1c 30 2c b4 ff 8a 13    movabs     r11, 0x138affb42c301c3b
+0x000000014158458d: 48 8d 92 9b f6 15 b4             lea        rdx, [rdx - 0x4bea0965]
+0x0000000141584594: 66 45 85 d9                      test       r9w, r11w
+0x0000000141584598: 4e 8d 1c c5 a6 5a 02 c6          lea        r11, [r8*8 - 0x39fda55a]
+0x00000001415845a0: 0f 84 43 ae 05 00                je         0x1415df3e9
+0x00000001415845a6: 66 44 33 64 24 03                xor        r12w, word ptr [rsp + 3]
+0x00000001415845ac: 66 41 f7 d9                      neg        r9w
+0x00000001415845b0: 66 45 33 c8                      xor        r9w, r8w
+0x00000001415845b4: 41 57                            push       r15
+0x00000001415845b6: 4c 8b 7c 24 48                   mov        r15, qword ptr [rsp + 0x48]
+0x00000001415845bb: 48 87 54 24 78                   xchg       qword ptr [rsp + 0x78], rdx
+0x00000001415845c0: 4c 8b 4c 24 30                   mov        r9, qword ptr [rsp + 0x30]
+0x00000001415845c5: 49 c1 ec 63                      shr        r12, 0x63
+0x00000001415845c9: 66 44 33 64 24 0e                xor        r12w, word ptr [rsp + 0xe]
+0x00000001415845cf: e8 09 53 06 00                   call       0x1415e98dd
+0x00000001415845d4: 44 00 74 24 20                   add        byte ptr [rsp + 0x20], r14b
+0x00000001415845d9: 4c 8b d9                         mov        r11, rcx
+0x00000001415845dc: 41 c1 e6 5b                      shl        r14d, 0x5b
+0x00000001415845e0: 41 50                            push       r8
+0x00000001415845e2: 49 8b eb                         mov        rbp, r11
+0x00000001415845e5: 66 44 0f b6 5c 24 2c             movzx      r11w, byte ptr [rsp + 0x2c]
+0x00000001415845ec: 48 87 74 24 58                   xchg       qword ptr [rsp + 0x58], rsi
+0x00000001415845f1: 48 8b 6c 24 10                   mov        rbp, qword ptr [rsp + 0x10]
+0x00000001415845f6: 0f 48 4c 24 29                   cmovs      ecx, dword ptr [rsp + 0x29]
+0x00000001415845fb: 0f 98 44 24 40                   sets       byte ptr [rsp + 0x40]
+0x0000000141584600: 4d 0b f6                         or         r14, r14
+0x0000000141584603: 4c 63 9c 0c fb d9 a6 ff          movsxd     r11, dword ptr [rsp + rcx - 0x592605]
+0x000000014158460b: 4a f7 94 1c 4f d2 d9 a6          not        qword ptr [rsp + r11 - 0x59262db1]
+0x0000000141584613: 4c 8b 5c 24 18                   mov        r11, qword ptr [rsp + 0x18]
+0x0000000141584618: 0f 85 43 d0 2e 00                jne        0x141871661
+0x000000014158461e: 0d d2 13 dd 9c                   or         eax, 0x9cdd13d2
+0x0000000141584623: 86 0b                            xchg       byte ptr [rbx], cl
+0x0000000141584625: 49 0f 80 08 f1 ea ff             jo         0x141433734
+0x000000014158462c: 42 81 ac 14 20 1a 39 90 9b 9b 0e c7 sub        dword ptr [rsp + r10 - 0x6fc6e5e0], 0xc70e9b9b
+0x0000000141584638: 46 89 94 14 20 1a 39 90          mov        dword ptr [rsp + r10 - 0x6fc6e5e0], r10d
+0x0000000141584640: 4e 8b 94 14 e8 19 39 90          mov        r10, qword ptr [rsp + r10 - 0x6fc6e618]
+0x0000000141584648: 48 8d 64 24 78                   lea        rsp, [rsp + 0x78]
+0x000000014158464d: c2 08 00                         ret        8
+0x0000000141584650: a9 20 bc 44 59                   test       eax, 0x5944bc20
+0x0000000141584655: 3b dc                            cmp        ebx, esp
+0x0000000141584657: 88 8e 5c 7f 4a 72                mov        byte ptr [rsi + 0x724a7f5c], cl
+0x000000014158465d: 80 8e 5c 7f 3b 2d 38             or         byte ptr [rsi + 0x2d3b7f5c], 0x38
+0x0000000141584664: 8e 5c 7f 14                      mov        ds, word ptr [rdi + rdi*2 + 0x14]
+0x0000000141584668: 52                               push       rdx
+0x0000000141584669: 80 8e 5c 7f fc a3 50             or         byte ptr [rsi - 0x5c0380a4], 0x50
+0x0000000141584670: 8e 5c 7f dc                      mov        ds, word ptr [rdi + rdi*2 - 0x24]
+transfers:
+  0x141584517: call -> 0x14197abfe [outside captured page]
+  0x141584534: call -> 0x1416375ec [outside captured page]
+  0x14158455a: call -> 0x1417ce46b [outside captured page]
+  0x141584568: call -> 0x141ecfc4a [outside captured page]
+  0x1415845cf: call -> 0x1415e98dd [outside captured page]
+  0x14158464d: ret -> 0x8 [outside captured page]
+
+=== call_1419060e7 ===
+path=<HOST_PATH>\EPT\artifacts\captures\core_probe_call_1419060e7_6.bin base=0x141906000 entry=0x1419060e7 offset=0xe7 bytes=4096 sha256=931bd3f536ce8c4d0ab23e28fc30470f88d52830564f0899725edd8dc967dd98
+nonzero=4064/4096 decoded_from_entry=32 consumed=127/3865
+first64=00 48 8d 52 01 48 f7 dd 48 81 44 24 00 42 4f 03 01 e8 e2 16 fb ff e8 f1 d4 16 00 f9 60 23 7f df 5e b2 10 ab df b9 5e 1f 80 d6 20 f6 ee 2f 80 d6 20 f1 5e 8f 80 d6 20 be 46 a7 80 d6 20 19 16 07
+0x00000001419060e7: e8 ce e6 fd ff                   call       0x1418e47ba
+0x00000001419060ec: 41 56                            push       r14
+0x00000001419060ee: 49 be a6 60 8d 84 a3 67 8b 91    movabs     r14, 0x918b67a3848d60a6
+0x00000001419060f8: 0f 87 07 00 00 00                ja         0x141906105
+0x00000001419060fe: b1 0c                            mov        cl, 0xc
+0x0000000141906100: 48 8b 4c 24 10                   mov        rcx, qword ptr [rsp + 0x10]
+0x0000000141906105: 48 c7 44 24 10 91 ec 51 7c       mov        qword ptr [rsp + 0x10], 0x7c51ec91
+0x000000014190610e: 4c 8b 74 24 00                   mov        r14, qword ptr [rsp]
+0x0000000141906113: e8 cb 1b ea fe                   call       0x1407a7ce3
+0x0000000141906118: 50                               push       rax
+0x0000000141906119: e8 88 85 88 ff                   call       0x14118e6a6
+0x000000014190611e: e8 b4 9f 02 00                   call       0x1419300d7
+0x0000000141906123: 1c 4c                            sbb        al, 0x4c
+0x0000000141906125: d9 71 09                         fnstenv    [rcx + 9]
+0x0000000141906128: 85 25 41 ff 72 09                test       dword ptr [rip + 0x972ff41], esp
+0x000000014190612e: 25 ad a1 ff 72                   and        eax, 0x72ffa1ad
+0x0000000141906133: 09 c5                            or         ebp, eax
+0x0000000141906135: 35 09 ff 72 09                   xor        eax, 0x972ff09
+0x000000014190613a: 6d                               insd       dword ptr [rdi], dx
+0x000000014190613b: b5 d9                            mov        ch, 0xd9
+0x000000014190613d: ff 72 09                         push       qword ptr [rdx + 9]
+0x0000000141906140: bd c5 3c c2 87                   mov        ebp, 0x87c23cc5
+0x0000000141906145: f6 6c 1b 13                      imul       byte ptr [rbx + rbx + 0x13]
+0x0000000141906149: 39 7d 7e                         cmp        dword ptr [rbp + 0x7e], edi
+0x000000014190614c: 09 f1                            or         ecx, esi
+0x000000014190614e: 21 15 01 8d f6 71                and        dword ptr [rip + 0x71f68d01], edx
+0x0000000141906154: 56                               push       rsi
+0x0000000141906155: e4 3d                            in         al, 0x3d
+0x0000000141906157: e4 80                            in         al, 0x80
+0x0000000141906159: c5 3b 5e 8d 45 9d ac 33          vdivsd     xmm9, xmm8, qword ptr [rbp + 0x33ac9d45]
+0x0000000141906161: a4                               movsb      byte ptr [rdi], byte ptr [rsi]
+0x0000000141906162: 65 08 66 b5                      or         byte ptr gs:[rsi - 0x4b], ah
+transfers:
+  0x1419060e7: call -> 0x1418e47ba [outside captured page]
+  0x141906113: call -> 0x1407a7ce3 [outside captured page]
+  0x141906119: call -> 0x14118e6a6 [outside captured page]
+  0x14190611e: call -> 0x1419300d7 [outside captured page]
+
+=== call_14171631b ===
+path=<HOST_PATH>\EPT\artifacts\captures\core_probe_call_14171631b_6.bin base=0x141716000 entry=0x14171631b offset=0x31b bytes=4096 sha256=8e14dabd40c3af5cbe518a6ebf56da985d62dde4857304cc5f36ed96119ce764
+nonzero=4053/4096 decoded_from_entry=31 consumed=155/3301
+first64=a5 75 63 52 80 4e ca 19 a7 7b 07 1a a9 02 31 58 f2 1e 04 36 ed 21 83 8a 7f 02 ae 09 d2 bd ca 19 a7 7b 49 8b fe 04 bb 9e f7 b4 cd a9 d5 24 e8 fe 3a 42 ca 19 a7 7b 79 85 fe ba 75 97 75 8f 6e fa
+0x000000014171631b: 48 81 44 24 00 97 29 c5 fe       add        qword ptr [rsp], -0x13ad669
+0x0000000141716324: 48 f7 5c 24 18                   neg        qword ptr [rsp + 0x18]
+0x0000000141716329: 0f 9c 44 24 18                   setl       byte ptr [rsp + 0x18]
+0x000000014171632e: 55                               push       rbp
+0x000000014171632f: 66 44 21 64 24 20                and        word ptr [rsp + 0x20], r12w
+0x0000000141716335: 4f 8d a4 24 0c 91 1e 6d          lea        r12, [r12 + r12 + 0x6d1e910c]
+0x000000014171633d: 49 81 ed 31 71 aa b7             sub        r13, -0x48558ecf
+0x0000000141716344: 0f 82 fd 47 fe ff                jb         0x1416fab47
+0x000000014171634a: 9c                               pushfq
+0x000000014171634b: 48 bb b2 ee ac ac 37 42 3e 86    movabs     rbx, 0x863e4237acaceeb2
+0x0000000141716355: 41 56                            push       r14
+0x0000000141716357: 48 89 74 24 38                   mov        qword ptr [rsp + 0x38], rsi
+0x000000014171635c: 85 da                            test       edx, ebx
+0x000000014171635e: 49 be 2c 8b 3e 05 1f f3 8b 77    movabs     r14, 0x778bf31f053e8b2c
+0x0000000141716368: 41 51                            push       r9
+0x000000014171636a: e8 14 2e a7 ff                   call       0x141189183
+0x000000014171636f: 48 89 6c 24 30                   mov        qword ptr [rsp + 0x30], rbp
+0x0000000141716374: 48 81 44 24 48 8c 1f 23 00       add        qword ptr [rsp + 0x48], 0x231f8c
+0x000000014171637d: 41 56                            push       r14
+0x000000014171637f: 44 3a 7c 24 3d                   cmp        r15b, byte ptr [rsp + 0x3d]
+0x0000000141716384: 48 bf 98 37 11 cd 91 16 36 00    movabs     rdi, 0x361691cd113798
+0x000000014171638e: 4c 8b 74 24 38                   mov        r14, qword ptr [rsp + 0x38]
+0x0000000141716393: 0f 88 18 fd e8 ff                js         0x1415a60b1
+0x0000000141716399: 5d                               pop        rbp
+0x000000014171639a: 9c                               pushfq
+0x000000014171639b: e8 38 b6 de ff                   call       0x1415019d8
+0x00000001417163a0: 42 c0 a4 2c 40 26 ff ff 38       shl        byte ptr [rsp + r13 - 0xd9c0], 0x38
+0x00000001417163a9: e8 8d 02 08 00                   call       0x14179663b
+0x00000001417163ae: e8 74 0c d7 ff                   call       0x141487027
+0x00000001417163b3: 34 80                            xor        al, 0x80
+0x00000001417163b5: 9c                               pushfq
+transfers:
+  0x14171636a: call -> 0x141189183 [outside captured page]
+  0x14171639b: call -> 0x1415019d8 [outside captured page]
+  0x1417163a9: call -> 0x14179663b [outside captured page]
+  0x1417163ae: call -> 0x141487027 [outside captured page]
+
+=== call_141a93e50 ===
+path=<HOST_PATH>\EPT\artifacts\captures\core_probe_call_141a93e50_7.bin base=0x141a93000 entry=0x141a93e50 offset=0xe50 bytes=4096 sha256=17d37da46aa64a52d9b3830277f04bfcbbc599589e2561cdb8edb5ed216879d4
+nonzero=4045/4096 decoded_from_entry=77 consumed=390/432
+first64=7b 71 b9 e6 be df 82 69 39 ef 64 c3 81 cf 6e ae a1 33 d3 4f 3e 70 b9 a6 be f2 69 22 f8 eb b3 1a ca ac 63 91 5c b4 e4 d1 c2 77 71 b9 66 bf d2 79 d7 7a 12 d3 34 1b 45 7b f4 0e 58 c7 b7 4f 3a 70
+0x0000000141a93e50: 41 56                            push       r14
+0x0000000141a93e52: 80 c1 08                         add        cl, 8
+0x0000000141a93e55: 48 8b 4c 24 18                   mov        rcx, qword ptr [rsp + 0x18]
+0x0000000141a93e5a: 48 8b 09                         mov        rcx, qword ptr [rcx]
+0x0000000141a93e5d: 49 be 33 d2 09 73 80 25 ad 29    movabs     r14, 0x29ad25807309d233
+0x0000000141a93e67: 49 81 f6 aa 02 11 9f             xor        r14, 0xffffffff9f1102aa
+0x0000000141a93e6e: 41 80 ee 88                      sub        r14b, 0x88
+0x0000000141a93e72: 0f 8c 20 cc c2 ff                jl         0x1416c0a98
+0x0000000141a93e78: 0f 80 d5 95 fc ff                jo         0x141a5d453
+0x0000000141a93e7e: 66 41 c1 ee d9                   shr        r14w, 0xd9
+0x0000000141a93e83: 41 81 e6 28 6b 85 23             and        r14d, 0x23856b28
+0x0000000141a93e8a: 4e 89 b4 74 18 00 00 c0          mov        qword ptr [rsp + r14*2 - 0x3fffffe8], r14
+0x0000000141a93e92: 4a 8d 8c 31 1b 1e 34 ef          lea        rcx, [rcx + r14 - 0x10cbe1e5]
+0x0000000141a93e9a: 66 41 be 3e af                   mov        r14w, 0xaf3e
+0x0000000141a93e9f: 66 46 03 b4 74 9d a1 fe bf       add        r14w, word ptr [rsp + r14*2 - 0x40015e63]
+0x0000000141a93ea8: 4a 81 84 34 ca 50 ff df e6 84 8a be add        qword ptr [rsp + r14 - 0x2000af36], -0x41757b1a
+0x0000000141a93eb4: 46 08 b4 74 9c a1 fe bf          or         byte ptr [rsp + r14*2 - 0x40015e64], r14b
+0x0000000141a93ebc: 4a 87 8c 34 ea 50 ff df          xchg       qword ptr [rsp + r14 - 0x2000af16], rcx
+0x0000000141a93ec4: 4e 8b b4 74 84 a1 fe bf          mov        r14, qword ptr [rsp + r14*2 - 0x40015e7c]
+0x0000000141a93ecc: 0f 81 d1 4b c2 ff                jno        0x1416b8aa3
+0x0000000141a93ed2: 55                               push       rbp
+0x0000000141a93ed3: e8 ac e4 e7 ff                   call       0x141912384
+0x0000000141a93ed8: 41 f7 d6                         not        r14d
+0x0000000141a93edb: 4e 89 b4 34 98 7d 08 bf          mov        qword ptr [rsp + r14 - 0x40f78268], r14
+0x0000000141a93ee3: e8 9b 84 6f ff                   call       0x14118c383
+0x0000000141a93ee8: e8 a7 2f a7 ff                   call       0x141506e94
+0x0000000141a93eed: e8 c5 58 ae ff                   call       0x1415797b7
+0x0000000141a93ef2: e8 f2 11 e8 ff                   call       0x1419150e9
+0x0000000141a93ef7: 4c 8b 74 24 50                   mov        r14, qword ptr [rsp + 0x50]
+0x0000000141a93efc: ff 74 24 70                      push       qword ptr [rsp + 0x70]
+0x0000000141a93f00: 9d                               popfq
+0x0000000141a93f01: 4c 8b 6c 24 58                   mov        r13, qword ptr [rsp + 0x58]
+0x0000000141a93f06: 4c 8b 54 24 48                   mov        r10, qword ptr [rsp + 0x48]
+0x0000000141a93f0b: 48 8d 64 24 78                   lea        rsp, [rsp + 0x78]
+0x0000000141a93f10: c3                               ret
+0x0000000141a93f11: 66 41 c1 e8 90                   shr        r8w, 0x90
+0x0000000141a93f16: e8 25 b5 08 00                   call       0x141b1f440
+0x0000000141a93f1b: 48 8b 74 24 40                   mov        rsi, qword ptr [rsp + 0x40]
+0x0000000141a93f20: 4d 2b ed                         sub        r13, r13
+0x0000000141a93f23: 41 d3 e5                         shl        r13d, cl
+0x0000000141a93f26: 0f 82 ab 6e d3 ff                jb         0x1417cadd7
+0x0000000141a93f2c: 48 d3 e1                         shl        rcx, cl
+0x0000000141a93f2f: 81 7c 24 30 1f a3 ad 73          cmp        dword ptr [rsp + 0x30], 0x73ada31f
+0x0000000141a93f37: c7 44 24 30 b1 39 b5 31          mov        dword ptr [rsp + 0x30], 0x31b539b1
+0x0000000141a93f3f: 4c 8b 6c 24 28                   mov        r13, qword ptr [rsp + 0x28]
+0x0000000141a93f44: 0f 8e 05 80 c1 ff                jle        0x1416abf4f
+0x0000000141a93f4a: 49 f7 da                         neg        r10
+0x0000000141a93f4d: 66 42 f7 94 14 30 55 7f 78       not        word ptr [rsp + r10 + 0x787f5530]
+0x0000000141a93f56: 4e 8b 94 14 38 55 7f 78          mov        r10, qword ptr [rsp + r10 + 0x787f5538]
+0x0000000141a93f5e: 0f 89 6f 08 ae ff                jns        0x1415747d3
+0x0000000141a93f64: 0f 83 6f 64 a5 ff                jae        0x1414ea3d9
+0x0000000141a93f6a: 66 81 44 24 30 1c 82             add        word ptr [rsp + 0x30], 0x821c
+0x0000000141a93f71: c1 6c 24 30 6d                   shr        dword ptr [rsp + 0x30], 0x6d
+0x0000000141a93f76: ff 74 24 58                      push       qword ptr [rsp + 0x58]
+0x0000000141a93f7a: 9d                               popfq
+0x0000000141a93f7b: 48 8d 64 24 60                   lea        rsp, [rsp + 0x60]
+0x0000000141a93f80: c3                               ret
+0x0000000141a93f81: e8 f9 44 cc ff                   call       0x14175847f
+0x0000000141a93f86: e8 38 31 aa ff                   call       0x1415370c3
+0x0000000141a93f8b: 41 51                            push       r9
+0x0000000141a93f8d: 49 b9 94 b9 ba 2d 1b 52 93 6f    movabs     r9, 0x6f93521b2dbab994
+0x0000000141a93f97: 4f 8d 8c 09 1c 4d 10 3b          lea        r9, [r9 + r9 + 0x3b104d1c]
+0x0000000141a93f9f: 9c                               pushfq
+0x0000000141a93fa0: 41 80 e9 3b                      sub        r9b, 0x3b
+0x0000000141a93fa4: 48 c7 44 24 10 57 7d b9 7e       mov        qword ptr [rsp + 0x10], 0x7eb97d57
+0x0000000141a93fad: 4c 8b 4c 24 08                   mov        r9, qword ptr [rsp + 8]
+0x0000000141a93fb2: ff 74 24 00                      push       qword ptr [rsp]
+0x0000000141a93fb6: 9d                               popfq
+0x0000000141a93fb7: 48 8d 64 24 10                   lea        rsp, [rsp + 0x10]
+0x0000000141a93fbc: e8 1a 35 42 00                   call       0x141eb74db
+0x0000000141a93fc1: 9d                               popfq
+0x0000000141a93fc2: 4c 8b 4c 24 00                   mov        r9, qword ptr [rsp]
+0x0000000141a93fc7: 48 8d 64 24 10                   lea        rsp, [rsp + 0x10]
+0x0000000141a93fcc: e8 a5 4f 29 00                   call       0x141d28f76
+0x0000000141a93fd1: 5d                               pop        rbp
+0x0000000141a93fd2: dc e7                            fsubr      st(7), st(0)
+0x0000000141a93fd4: b3 c4                            mov        bl, 0xc4
+transfers:
+  0x141a93ed3: call -> 0x141912384 [outside captured page]
+  0x141a93ee3: call -> 0x14118c383 [outside captured page]
+  0x141a93ee8: call -> 0x141506e94 [outside captured page]
+  0x141a93eed: call -> 0x1415797b7 [outside captured page]
+  0x141a93ef2: call -> 0x1419150e9 [outside captured page]
+  0x141a93f10: ret  [indirect/non-immediate]
+  0x141a93f16: call -> 0x141b1f440 [outside captured page]
+  0x141a93f80: ret  [indirect/non-immediate]
+  0x141a93f81: call -> 0x14175847f [outside captured page]
+  0x141a93f86: call -> 0x1415370c3 [outside captured page]
+  0x141a93fbc: call -> 0x141eb74db [outside captured page]
+  0x141a93fcc: call -> 0x141d28f76 [outside captured page]
+
+=== boundary reading ===
+1. 0x141757acd is a runtime-decrypted wrapper: its page contains a short prologue, four direct calls into other .Sq> pages, and a ret-shaped epilogue before mutation/junk bytes.
+2. The four callees are independently observed as runtime-nonzero pages, so the missing dependency is a chain of executable runtime pages, not a single absent driver image inferred from a string.
+3. A page capture does not prove that every decoded instruction ran; call-site reachability comes from the captured wrapper, while callee semantics require their own entry-context analysis.
+4. The RC00 caller passes a 0x10c-byte buffer and length 0x11c around this chain; the current evidence still does not show a local file/output decode result or a complete return/buffer contract.
+5. No network/auth/authorization branch is included in this page analysis; those remain excluded boundary evidence.

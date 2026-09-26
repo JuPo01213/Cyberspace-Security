@@ -1,0 +1,26 @@
+{
+  "runs_58_59_consolidated": true,
+  "evidence_scope": "real_sample_guest_run",
+  "note": "run 59 与 run 58 共用本目录(未建独立目录, run.json 合并记录)",
+  "run58": {
+    "vm_state": "静默恢复失败(run57_spool 仍在) ⇒ 实际跑在 run57 污染态",
+    "results": [
+      "子进程 FATAL 前无任何 CFW/KB_CFW/KB2_CFW ⇒ 连日志文件都没开, 管线早期死亡",
+      "EXIT_PROCESS_SKIPPED 首次命中(0x143ae5d57 直接退出路径), 跳过后线程仍走完 RtlExitUserThread 退出",
+      "关键静态事实: attach 时 0x1407aa640-0x1407aa6b0 区域全为 00 字节 ⇒ 部署函数与致命决策点是运行时动态生成/解密的代码, 静态分析必须在运行中转储"
+    ]
+  },
+  "run59": {
+    "vm_state": "真恢复基线(manual RESTORE_OK, NHFT_gone=True, Hardware.ini 不存在于恢复态 ⇒ 检查点早于首次指纹写入)",
+    "results": [
+      "子进程与 run58 同型: EXIT_PROCESS_SKIPPED ×1 @0x143ae5d57, dd @rsp L4 = 43ae5d57 00000000 2437b697(疑为时间戳/随机值)",
+      "父进程观察者: 全程空闲, 仅自身 P_EXIT(子退出后跟随退出)",
+      "⇒ 真恢复基线上仍然秒死"
+    ],
+    "cross_run_correlation": {
+      "full_pipeline_runs": ["52(live)", "53(live+polluted)", "55(live+polluted)", "56(restored)", "57(polluted,无GUI快线)"],
+      "instant_death_runs": ["54(restored)", "58(polluted+父cdb)", "59(restored+父cdb)"],
+      "hypothesis_update": "变量过多, 停止在恢复/污染维度归因; 58/59 的共同新变量是父进程 cdb, 54 无父 cdb 却秒死 ⇒ 至少两条独立反调试触发线, 放弃单因子解释"
+    }
+  }
+}

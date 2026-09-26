@@ -1,0 +1,22 @@
+captured PE header fields (runtime base 0x140000000, source stream_text.bin)
+  AddressOfEntryPoint=0x235f67b (VA 0x14235f67b)  SizeOfImage=0x3f83000  sizeof_optional=4096
+  DataDirectory[16]:
+   [ 0] export        rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [ 1] import        rva=0x3a1d4c8  size=0x118      va=0x143a1d4c8  NOT captured
+   [ 2] resource      rva=0x3f65000  size=0x1d445    va=0x143f65000  NOT captured
+   [ 3] exception     rva=0x3f5d150  size=0x79e0     va=0x143f5d150  NOT captured
+   [ 4] cert          rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [ 5] base_reloc    rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [ 6] debug         rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [ 7] arch          rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [ 8] globalptr     rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [ 9] TLS           rva=0x2d9cc00  size=0x28       va=0x142d9cc00  NOT captured
+   [10] load_config   rva=0x3f5d010  size=0x138      va=0x143f5d010  NOT captured
+   [11] bound_import  rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [12] IAT           rva=0x205a000  size=0xf8       va=0x14205a000  NOT captured
+   [13] delay_import  rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [14] clr           rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+   [15] reserved      rva=0x0        size=0x0        va=0x140000000  ABSENT (zero)
+
+export directory entry is all-zero -> sample has no export table (eliminates export-driven entry)
+TLS directory present at RVA 0x2d9cc00 size 0x28 = one IMAGE_TLS_DIRECTORY64 -> callbacks unverifiable offline

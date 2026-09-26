@@ -1,0 +1,49 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-08",
+  "evidence_scope": "real_sample_guest_run_predecode_auth_gate_attach",
+  "sample_launch_requested": true,
+  "network_request_sent": false,
+  "real_card_present": false,
+  "response_injection": false,
+  "target_path": "C:\\ept_core\\Hardware.exe",
+  "launch_mode": "natural_parent_then_cdb_attach_to_natural_child",
+  "command_line": "Hardware.exe -k <format-test> -n 2 -m 1",
+  "started_utc": "2026-09-25T04:19:05.4755847Z",
+  "ended_utc": "2026-09-25T04:19:38.2882407Z",
+  "child_found": true,
+  "child_pid": 1016,
+  "parent_pid": 2452,
+  "debugger_attached": true,
+  "debugger_wait_expired": true,
+  "temporary_patch_points_executed": [
+    "FUN_1407a3080 runtime return -> 1",
+    "main authorization-controlled branch at 0x1407a6a6a -> fall-through"
+  ],
+  "target_process_alive_after_attach": false,
+  "parent_alive_after_attach": true,
+  "target_native_return": "NOT_OBSERVED",
+  "target_caller_diff_bytes": "NOT_OBSERVED",
+  "post_decode_behavior": "NOT_OBSERVED",
+  "observation_state": "NATURAL_CHILD_ATTACHED_PATCHED_POINTS_ARMED",
+  "temporary_patch_writes_verified": true,
+  "observed_markers": [
+    "AUTH_ATTACH_BEGIN",
+    "AUTH_GATE_AND_MAIN_BRANCH_PATCHED",
+    "CHILD_BREAKPOINTS_ARMED",
+    "MAIN_ENTRY_HIT"
+  ],
+  "main_entry_hit": true,
+  "main_entry_registers": {
+    "rcx": "0x8",
+    "rdx": "0x5998c0",
+    "r8": "0x592680",
+    "r9": "0x5a6260"
+  },
+  "main_auth_branch_hit": false,
+  "main_branch_follow_hit": false,
+  "core_candidate_hit": false,
+  "cdb_stopped_on_main_entry": true,
+  "cdb_stop_reason": "DebuggerWaitSeconds=30 expired while continuing from MAIN_ENTRY_HIT; runner then terminated debugger/target tree.",
+  "network_observation": "No network request was sent; Guest adapter remained disconnected.",
+  "authorization_interpretation": "AUTHORIZATION_SUCCESS_NOT_ESTABLISHED"
+}

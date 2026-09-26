@@ -1,0 +1,17 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-45",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "hypothesis": "合成返回后调度器第二闸门（0x1407b1096 call 0x1407b1464 → AL）是唯一失败判定；HW 断点 0x1407b109b 强制 r al=1 后走成功路径（call 0x1407b08e4(cl=1,dl=0) 启动后续调度 → main 正常返回，工作线程承载 Run 调度）→ RC00 区域推进。",
+  "instrument_note": "SYNTHRET 移至外部 SW 断点 kernel32!FatalExit+0xb（thunk 绕过入口恰好落点）；DR4 槽 = wrapper1/wrapper2/108f捕获/109b强制。风险：驱动区其他 FatalExit 若也走 +0xb 落点会触发过期上下文合成返回（日志可辨）。",
+  "acceptance_fields": {
+    "synthret_at_gate": null,
+    "gate2_forced": null,
+    "success_path_taken": null,
+    "b08e4_called": null,
+    "main_returned": null,
+    "process_alive_after": null,
+    "rc00_region_evidence": null,
+    "new_behaviors": null
+  },
+  "deadline_sec": 720
+}

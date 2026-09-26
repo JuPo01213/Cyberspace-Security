@@ -1,0 +1,9 @@
+.echo [RECON5_CHILD_ATTACHED]
+$$ Device-open recon: catch \\.\ device path via CreateFileW/A AND NtCreateFile/NtOpenFile (filtered), plus NtDeviceIoControlFile full params+caller
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON5_CREATEFILEW_C]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp kernel32!CreateFileA ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON5_CREATEFILEA_C]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+$$ NtCreateFile: RCX=POBJECT_ATTRIBUTES; ObjectName at +0x10 (PUNICODE_STRING); Buffer at ObjectName+0x8
+bp ntdll!NtCreateFile ".if (@rcx!=0) { .if (poi(@rcx+0x10)!=0) { .if (poi(poi(@rcx+0x10)+8)!=0) { .if (by(poi(poi(@rcx+0x10)+8))==0x5c) { .echo [RECON5_NTCREATE_C]; dU poi(poi(@rcx+0x10)+8) L16 } .else { g } } .else { g } } .else { g } } .else { g }"
+bp ntdll!NtOpenFile ".if (@rcx!=0) { .if (poi(@rcx+0x10)!=0) { .if (poi(poi(@rcx+0x10)+8)!=0) { .if (by(poi(poi(@rcx+0x10)+8))==0x5c) { .echo [RECON5_NTOPEN_C]; dU poi(poi(@rcx+0x10)+8) L16 } .else { g } } .else { g } } .else { g } } .else { g }"
+bp ntdll!NtDeviceIoControlFile ".echo [RECON5_DIOC_C]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L12; g"
+.echo [RECON5_CHILD_BPS_ARMED]

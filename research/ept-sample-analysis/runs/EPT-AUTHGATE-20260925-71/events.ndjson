@@ -1,0 +1,8 @@
+﻿{"state":"        STATE              : 1  STOPPED ","create":"[SC] CreateService 成功","utc":"2026-09-25T21:09:43.2707231Z","type":"DRIVER_PRELOADED","start":"[SC] StartService 失败 183:  当文件已存在时，无法创建该文件。 "}
+{"utc":"2026-09-25T21:09:43.3332603Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":5040,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T21:09:43.3800979Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_D4F02688_1B0AF8B4.exe","pid":1760,"ppid":5040,"type":"CHILD_FOUND","utc":"2026-09-25T21:09:46.1300968Z"}
+{"target_pid":1760,"debugger_pid":1212,"type":"CDB_ATTACHED","utc":"2026-09-25T21:09:46.1457229Z"}
+{"pid":4724,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T21:09:46.1613475Z"}
+{"pid":4212,"type":"WATCHER_STARTED","utc":"2026-09-25T21:09:46.1925973Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T21:09:46.1925973Z"}

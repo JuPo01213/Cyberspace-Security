@@ -1,0 +1,16 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-49",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "environment": "testsigning ON (guest reboot verified: testsigning Yes) — enables deployed driver/service to load; user-authorized",
+  "instrument_fix": "CPA_OBS now uses da (ANSI) so sc.exe command line is clear text; WFW captures rcx handle",
+  "hypothesis": "testsigning 开启后 StartService 成功 → 被部署组件（7.9MB 载荷/驱动）真正运行 → 观测 RC00 期行为（服务运行态、驱动加载、文件/注册表/网络动作）。",
+  "acceptance_fields": {
+    "sc_cmdline_cleartext": null,
+    "service_start_success": null,
+    "deployed_component_running": null,
+    "driver_loaded": null,
+    "post_deploy_behaviors": null,
+    "rc00_region_evidence": null
+  },
+  "deadline_sec": 720
+}

@@ -1,0 +1,326 @@
+C74 — RC03 response-validator flow across .pdata boundaries (offline, read-only)
+date=2026-09-21
+text=<HOST_PATH>\EPT\artifacts\captures\stream_C6\stream_text.bin bytes=8257536 sha256=5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757
+mapping=VA 0x140000000 + stream_text_offset; end_exclusive=0x1407e0000
+pdata_text_functions=1694 pdata_sha256=698f4bd6f2d1f610026e940c0ea5dff9baeb047437b35d64ec3046a7c024dd31
+standing_boundary=0x140f92550 embedded authorization token not decoded or used
+
+=== .pdata entries intersecting the response-validator flow ===
+0x14078db80..0x14078dc4a size=0x202 unwind=0x140f9616c
+0x14078dc4a..0x14078ddf1 size=0x423 unwind=0x140f9617c
+0x14078ddf1..0x14078de4c size=0x91 unwind=0x140f9619c
+
+=== RC03 entry and compound validator flow ===
+--- RC03 entry through continuation area 0x14078db80..0x14078de4c bytes=716 ---
+decoded_instructions=210
+0x00014078db80: 48 89 4c 24 08               mov      qword ptr [rsp + 8], rcx
+0x00014078db85: 41 54                        push     r12
+0x00014078db87: 41 55                        push     r13
+0x00014078db89: 41 56                        push     r14
+0x00014078db8b: 41 57                        push     r15
+0x00014078db8d: 48 83 ec 48                  sub      rsp, 0x48
+0x00014078db91: 44 8b 2d ac e7 9c 00         mov      r13d, dword ptr [rip + 0x9ce7ac]  ; rip_ref=0x14115c344 [rg2 +0x35c344, non-printable/requires data interpretation]
+0x00014078db98: 4c 8b d1                     mov      r10, rcx
+0x00014078db9b: 44 8b 05 a6 e7 9c 00         mov      r8d, dword ptr [rip + 0x9ce7a6]  ; rip_ref=0x14115c348 [rg2 +0x35c348, non-printable/requires data interpretation]
+0x00014078dba2: 4c 8b da                     mov      r11, rdx
+0x00014078dba5: 45 33 c5                     xor      r8d, r13d
+0x00014078dba8: 41 bf fb ff ff ff            mov      r15d, 0xfffffffb
+0x00014078dbae: 41 81 f0 4a 19 cf 4b         xor      r8d, 0x4bcf194a
+0x00014078dbb5: 41 8b c0                     mov      eax, r8d
+0x00014078dbb8: c1 e8 10                     shr      eax, 0x10
+0x00014078dbbb: 41 33 c0                     xor      eax, r8d
+0x00014078dbbe: 44 69 c0 2d 35 eb 7f         imul     r8d, eax, 0x7feb352d
+0x00014078dbc5: 41 8b c0                     mov      eax, r8d
+0x00014078dbc8: c1 e8 0f                     shr      eax, 0xf
+0x00014078dbcb: 41 33 c0                     xor      eax, r8d
+0x00014078dbce: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+0x00014078dbd4: 44 8b c9                     mov      r9d, ecx
+0x00014078dbd7: 41 c1 e9 10                  shr      r9d, 0x10
+0x00014078dbdb: 44 33 c9                     xor      r9d, ecx
+0x00014078dbde: 41 8b d1                     mov      edx, r9d
+0x00014078dbe1: c1 ea 1b                     shr      edx, 0x1b
+0x00014078dbe4: 83 e2 0f                     and      edx, 0xf
+0x00014078dbe7: 41 8d 81 15 7c 4a 7f         lea      eax, [r9 + 0x7f4a7c15]
+0x00014078dbee: 8b c8                        mov      ecx, eax
+0x00014078dbf0: c1 e9 10                     shr      ecx, 0x10
+0x00014078dbf3: 33 c8                        xor      ecx, eax
+0x00014078dbf5: 69 c1 2d 35 eb 7f            imul     eax, ecx, 0x7feb352d
+0x00014078dbfb: 8b c8                        mov      ecx, eax
+0x00014078dbfd: c1 e9 0f                     shr      ecx, 0xf
+0x00014078dc00: 33 c8                        xor      ecx, eax
+0x00014078dc02: 69 c1 8b a6 6c 84            imul     eax, ecx, 0x846ca68b
+0x00014078dc08: 41 8b cf                     mov      ecx, r15d
+0x00014078dc0b: 2b ca                        sub      ecx, edx
+0x00014078dc0d: 83 e1 1f                     and      ecx, 0x1f
+0x00014078dc10: 44 8b c0                     mov      r8d, eax
+0x00014078dc13: 41 c1 e8 10                  shr      r8d, 0x10
+0x00014078dc17: 45 33 02                     xor      r8d, dword ptr [r10]
+0x00014078dc1a: 44 33 c0                     xor      r8d, eax
+0x00014078dc1d: 41 8b c0                     mov      eax, r8d
+0x00014078dc20: d3 e0                        shl      eax, cl
+0x00014078dc22: 8d 4a 05                     lea      ecx, [rdx + 5]
+0x00014078dc25: 41 d3 e8                     shr      r8d, cl
+0x00014078dc28: 41 0b c0                     or       eax, r8d
+0x00014078dc2b: 41 33 c1                     xor      eax, r9d
+0x00014078dc2e: 41 3b c5                     cmp      eax, r13d
+0x00014078dc31: 0f 85 06 02 00 00            jne      0x14078de3d
+0x00014078dc37: 8b 0d 0f e7 9c 00            mov      ecx, dword ptr [rip + 0x9ce70f]  ; rip_ref=0x14115c34c [rg2 +0x35c34c, non-printable/requires data interpretation]
+0x00014078dc3d: 45 8b 72 08                  mov      r14d, dword ptr [r10 + 8]
+0x00014078dc41: 41 33 cd                     xor      ecx, r13d
+0x00014078dc44: 81 f1 ac 2d ac 6b            xor      ecx, 0x6bac2dac
+0x00014078dc4a: 48 89 5c 24 78               mov      qword ptr [rsp + 0x78], rbx
+0x00014078dc4f: 8b c1                        mov      eax, ecx
+0x00014078dc51: 48 89 6c 24 40               mov      qword ptr [rsp + 0x40], rbp
+0x00014078dc56: c1 e8 10                     shr      eax, 0x10
+0x00014078dc59: 33 c1                        xor      eax, ecx
+0x00014078dc5b: 48 89 74 24 38               mov      qword ptr [rsp + 0x38], rsi
+0x00014078dc60: 69 c8 2d 35 eb 7f            imul     ecx, eax, 0x7feb352d
+0x00014078dc66: 48 89 7c 24 30               mov      qword ptr [rsp + 0x30], rdi
+0x00014078dc6b: 8b c1                        mov      eax, ecx
+0x00014078dc6d: c1 e8 0f                     shr      eax, 0xf
+0x00014078dc70: 33 c1                        xor      eax, ecx
+0x00014078dc72: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+0x00014078dc78: 44 8b c9                     mov      r9d, ecx
+0x00014078dc7b: 41 c1 e9 10                  shr      r9d, 0x10
+0x00014078dc7f: 44 33 c9                     xor      r9d, ecx
+0x00014078dc82: 41 8b d1                     mov      edx, r9d
+0x00014078dc85: c1 ea 1b                     shr      edx, 0x1b
+0x00014078dc88: 83 e2 0f                     and      edx, 0xf
+0x00014078dc8b: 41 8d 81 15 7c 4a 7f         lea      eax, [r9 + 0x7f4a7c15]
+0x00014078dc92: 8b c8                        mov      ecx, eax
+0x00014078dc94: c1 e9 10                     shr      ecx, 0x10
+0x00014078dc97: 33 c8                        xor      ecx, eax
+0x00014078dc99: 69 c1 2d 35 eb 7f            imul     eax, ecx, 0x7feb352d
+0x00014078dc9f: 8b c8                        mov      ecx, eax
+0x00014078dca1: c1 e9 0f                     shr      ecx, 0xf
+0x00014078dca4: 33 c8                        xor      ecx, eax
+0x00014078dca6: 69 c1 8b a6 6c 84            imul     eax, ecx, 0x846ca68b
+0x00014078dcac: 41 8b 4a 04                  mov      ecx, dword ptr [r10 + 4]
+0x00014078dcb0: 89 4c 24 20                  mov      dword ptr [rsp + 0x20], ecx
+0x00014078dcb4: 44 8b c0                     mov      r8d, eax
+0x00014078dcb7: 41 c1 e8 10                  shr      r8d, 0x10
+0x00014078dcbb: 44 33 c1                     xor      r8d, ecx
+0x00014078dcbe: 41 8b cf                     mov      ecx, r15d
+0x00014078dcc1: 2b ca                        sub      ecx, edx
+0x00014078dcc3: 44 33 c0                     xor      r8d, eax
+0x00014078dcc6: 83 e1 1f                     and      ecx, 0x1f
+0x00014078dcc9: 41 8b e8                     mov      ebp, r8d
+0x00014078dccc: d3 e5                        shl      ebp, cl
+0x00014078dcce: 8d 4a 05                     lea      ecx, [rdx + 5]
+0x00014078dcd1: 41 d3 e8                     shr      r8d, cl
+0x00014078dcd4: 8b 0d 76 e6 9c 00            mov      ecx, dword ptr [rip + 0x9ce676]  ; rip_ref=0x14115c350 [rg2 +0x35c350, non-printable/requires data interpretation]
+0x00014078dcda: 41 0b e8                     or       ebp, r8d
+0x00014078dcdd: 41 33 cd                     xor      ecx, r13d
+0x00014078dce0: 41 33 e9                     xor      ebp, r9d
+0x00014078dce3: 81 f1 e2 31 2b 03            xor      ecx, 0x32b31e2
+0x00014078dce9: 41 89 2b                     mov      dword ptr [r11], ebp
+0x00014078dcec: 8b c1                        mov      eax, ecx
+0x00014078dcee: c1 e8 10                     shr      eax, 0x10
+0x00014078dcf1: 33 c1                        xor      eax, ecx
+0x00014078dcf3: 69 c8 2d 35 eb 7f            imul     ecx, eax, 0x7feb352d
+0x00014078dcf9: 8b c1                        mov      eax, ecx
+0x00014078dcfb: c1 e8 0f                     shr      eax, 0xf
+0x00014078dcfe: 33 c1                        xor      eax, ecx
+0x00014078dd00: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+0x00014078dd06: 8b f1                        mov      esi, ecx
+0x00014078dd08: c1 ee 10                     shr      esi, 0x10
+0x00014078dd0b: 33 f1                        xor      esi, ecx
+0x00014078dd0d: 8b de                        mov      ebx, esi
+0x00014078dd0f: c1 eb 1b                     shr      ebx, 0x1b
+0x00014078dd12: 83 e3 0f                     and      ebx, 0xf
+0x00014078dd15: 8d 86 15 7c 4a 7f            lea      eax, [rsi + 0x7f4a7c15]
+0x00014078dd1b: 8b c8                        mov      ecx, eax
+0x00014078dd1d: c1 e9 10                     shr      ecx, 0x10
+0x00014078dd20: 33 c8                        xor      ecx, eax
+0x00014078dd22: 69 c1 2d 35 eb 7f            imul     eax, ecx, 0x7feb352d
+0x00014078dd28: 8b c8                        mov      ecx, eax
+0x00014078dd2a: c1 e9 0f                     shr      ecx, 0xf
+0x00014078dd2d: 33 c8                        xor      ecx, eax
+0x00014078dd2f: 69 c1 8b a6 6c 84            imul     eax, ecx, 0x846ca68b
+0x00014078dd35: 8b 0d 19 e6 9c 00            mov      ecx, dword ptr [rip + 0x9ce619]  ; rip_ref=0x14115c354 [rg2 +0x35c354, non-printable/requires data interpretation]
+0x00014078dd3b: 41 33 cd                     xor      ecx, r13d
+0x00014078dd3e: 8b f8                        mov      edi, eax
+0x00014078dd40: c1 ef 10                     shr      edi, 0x10
+0x00014078dd43: 41 33 fe                     xor      edi, r14d
+0x00014078dd46: 33 f8                        xor      edi, eax
+0x00014078dd48: 81 f1 50 3c 8a 23            xor      ecx, 0x238a3c50
+0x00014078dd4e: 8b c1                        mov      eax, ecx
+0x00014078dd50: c1 e8 10                     shr      eax, 0x10
+0x00014078dd53: 33 c1                        xor      eax, ecx
+0x00014078dd55: 69 c8 2d 35 eb 7f            imul     ecx, eax, 0x7feb352d
+0x00014078dd5b: 8b c1                        mov      eax, ecx
+0x00014078dd5d: c1 e8 0f                     shr      eax, 0xf
+0x00014078dd60: 33 c1                        xor      eax, ecx
+0x00014078dd62: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+0x00014078dd68: 8b d1                        mov      edx, ecx
+0x00014078dd6a: c1 ea 10                     shr      edx, 0x10
+0x00014078dd6d: 33 d1                        xor      edx, ecx
+0x00014078dd6f: 89 94 24 88 00 00 00         mov      dword ptr [rsp + 0x88], edx
+0x00014078dd76: 8d 82 15 7c 4a 7f            lea      eax, [rdx + 0x7f4a7c15]
+0x00014078dd7c: 8b c8                        mov      ecx, eax
+0x00014078dd7e: c1 e9 10                     shr      ecx, 0x10
+0x00014078dd81: 33 c8                        xor      ecx, eax
+0x00014078dd83: 69 c1 2d 35 eb 7f            imul     eax, ecx, 0x7feb352d
+0x00014078dd89: 8b c8                        mov      ecx, eax
+0x00014078dd8b: c1 e9 0f                     shr      ecx, 0xf
+0x00014078dd8e: 33 c8                        xor      ecx, eax
+0x00014078dd90: 69 c1 8b a6 6c 84            imul     eax, ecx, 0x846ca68b
+0x00014078dd96: 49 8d 4a 10                  lea      rcx, [r10 + 0x10]
+0x00014078dd9a: 44 8b e0                     mov      r12d, eax
+0x00014078dd9d: 41 c1 ec 10                  shr      r12d, 0x10
+0x00014078dda1: 45 33 62 0c                  xor      r12d, dword ptr [r10 + 0xc]
+0x00014078dda5: 44 33 e0                     xor      r12d, eax
+0x00014078dda8: 8b c2                        mov      eax, edx
+0x00014078ddaa: c1 e8 1b                     shr      eax, 0x1b
+0x00014078ddad: 83 e0 0f                     and      eax, 0xf
+0x00014078ddb0: 89 84 24 80 00 00 00         mov      dword ptr [rsp + 0x80], eax
+0x00014078ddb7: e8 b4 ef ff ff               call     0x14078cd70  ; direct_target=0x14078cd70
+0x00014078ddbc: 33 c5                        xor      eax, ebp
+0x00014078ddbe: 8b d7                        mov      edx, edi
+0x00014078ddc0: 48 8b 6c 24 40               mov      rbp, qword ptr [rsp + 0x40]
+0x00014078ddc5: 41 33 c5                     xor      eax, r13d
+0x00014078ddc8: 41 8b cf                     mov      ecx, r15d
+0x00014078ddcb: 83 f0 02                     xor      eax, 2
+0x00014078ddce: 2b cb                        sub      ecx, ebx
+0x00014078ddd0: 83 e1 1f                     and      ecx, 0x1f
+0x00014078ddd3: d3 e2                        shl      edx, cl
+0x00014078ddd5: 8d 4b 05                     lea      ecx, [rbx + 5]
+0x00014078ddd8: 48 8b 5c 24 78               mov      rbx, qword ptr [rsp + 0x78]
+0x00014078dddd: d3 ef                        shr      edi, cl
+0x00014078dddf: 0b d7                        or       edx, edi
+0x00014078dde1: 48 8b 7c 24 30               mov      rdi, qword ptr [rsp + 0x30]
+0x00014078dde6: 33 d6                        xor      edx, esi
+0x00014078dde8: 48 8b 74 24 38               mov      rsi, qword ptr [rsp + 0x38]
+0x00014078dded: 3b d0                        cmp      edx, eax
+0x00014078ddef: 75 4c                        jne      0x14078de3d
+0x00014078ddf1: 8b 84 24 80 00 00 00         mov      eax, dword ptr [rsp + 0x80]
+0x00014078ddf8: 41 8b d4                     mov      edx, r12d
+0x00014078ddfb: 44 33 74 24 20               xor      r14d, dword ptr [rsp + 0x20]
+0x00014078de00: 44 2b f8                     sub      r15d, eax
+0x00014078de03: 41 83 e7 1f                  and      r15d, 0x1f
+0x00014078de07: 41 0f b6 cf                  movzx    ecx, r15b
+0x00014078de0b: d3 e2                        shl      edx, cl
+0x00014078de0d: 8d 48 05                     lea      ecx, [rax + 5]
+0x00014078de10: 48 8b 44 24 70               mov      rax, qword ptr [rsp + 0x70]
+0x00014078de15: 41 d3 ec                     shr      r12d, cl
+0x00014078de18: 41 0b d4                     or       edx, r12d
+0x00014078de1b: 33 94 24 88 00 00 00         xor      edx, dword ptr [rsp + 0x88]
+0x00014078de22: 44 33 30                     xor      r14d, dword ptr [rax]
+0x00014078de25: 33 c0                        xor      eax, eax
+0x00014078de27: 45 33 f5                     xor      r14d, r13d
+0x00014078de2a: 41 3b d6                     cmp      edx, r14d
+0x00014078de2d: 0f 94 c0                     sete     al
+0x00014078de30: 48 83 c4 48                  add      rsp, 0x48
+0x00014078de34: 41 5f                        pop      r15
+0x00014078de36: 41 5e                        pop      r14
+0x00014078de38: 41 5d                        pop      r13
+0x00014078de3a: 41 5c                        pop      r12
+0x00014078de3c: c3                           ret      
+0x00014078de3d: 33 c0                        xor      eax, eax
+0x00014078de3f: 48 83 c4 48                  add      rsp, 0x48
+0x00014078de43: 41 5f                        pop      r15
+0x00014078de45: 41 5e                        pop      r14
+0x00014078de47: 41 5d                        pop      r13
+0x00014078de49: 41 5c                        pop      r12
+0x00014078de4b: c3                           ret      
+direct_calls_and_returns:
+  0x14078ddb7: call -> 0x14078cd70 [inside captured .text]
+  0x14078de3c: ret 
+  0x14078de4b: ret 
+
+=== unmapped helper target used by the validator/checksum path ===
+--- raw bytes around 0x14078cd70 (no .pdata entry at exact target) 0x14078cd60..0x14078ce60 bytes=256 ---
+decoded_instructions=82
+0x00014078cd60: 48 89 54 24 10               mov      qword ptr [rsp + 0x10], rdx
+0x00014078cd65: 4c 89 44 24 18               mov      qword ptr [rsp + 0x18], r8
+0x00014078cd6a: 4c 89 4c 24 20               mov      qword ptr [rsp + 0x20], r9
+0x00014078cd6f: c3                           ret      
+0x00014078cd70: 8b 15 d6 f5 9c 00            mov      edx, dword ptr [rip + 0x9cf5d6]  ; rip_ref=0x14115c34c [rg2 +0x35c34c, non-printable/requires data interpretation]
+0x00014078cd76: 4c 8b c9                     mov      r9, rcx
+0x00014078cd79: 33 15 c5 f5 9c 00            xor      edx, dword ptr [rip + 0x9cf5c5]  ; rip_ref=0x14115c344 [rg2 +0x35c344, non-printable/requires data interpretation]
+0x00014078cd7f: 45 33 d2                     xor      r10d, r10d
+0x00014078cd82: 81 f2 6e 50 e1 b7            xor      edx, 0xb7e1506e
+0x00014078cd88: 8b c2                        mov      eax, edx
+0x00014078cd8a: c1 e8 10                     shr      eax, 0x10
+0x00014078cd8d: 33 c2                        xor      eax, edx
+0x00014078cd8f: 45 8d 5a 43                  lea      r11d, [r10 + 0x43]
+0x00014078cd93: 69 d0 2d 35 eb 7f            imul     edx, eax, 0x7feb352d
+0x00014078cd99: 8b c2                        mov      eax, edx
+0x00014078cd9b: c1 e8 0f                     shr      eax, 0xf
+0x00014078cd9e: 33 c2                        xor      eax, edx
+0x00014078cda0: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+0x00014078cda6: 8b d1                        mov      edx, ecx
+0x00014078cda8: c1 ea 10                     shr      edx, 0x10
+0x00014078cdab: 33 d1                        xor      edx, ecx
+0x00014078cdad: 49 83 c1 02                  add      r9, 2
+0x00014078cdb1: 41 0f b6 41 fe               movzx    eax, byte ptr [r9 - 2]
+0x00014078cdb6: 45 8d 82 b9 04 00 03         lea      r8d, [r10 + 0x30004b9]
+0x00014078cdbd: 41 0f b6 49 ff               movzx    ecx, byte ptr [r9 - 1]
+0x00014078cdc2: 4d 8d 49 04                  lea      r9, [r9 + 4]
+0x00014078cdc6: 81 c1 93 01 00 01            add      ecx, 0x1000193
+0x00014078cdcc: 41 03 c2                     add      eax, r10d
+0x00014078cdcf: 33 c2                        xor      eax, edx
+0x00014078cdd1: 41 03 ca                     add      ecx, r10d
+0x00014078cdd4: 69 d0 93 01 00 01            imul     edx, eax, 0x1000193
+0x00014078cdda: 41 81 c2 4c 06 00 04         add      r10d, 0x400064c
+0x00014078cde1: 8b c2                        mov      eax, edx
+0x00014078cde3: c1 e8 0b                     shr      eax, 0xb
+0x00014078cde6: 33 c8                        xor      ecx, eax
+0x00014078cde8: 33 ca                        xor      ecx, edx
+0x00014078cdea: 69 d1 93 01 00 01            imul     edx, ecx, 0x1000193
+0x00014078cdf0: 41 0f b6 49 fc               movzx    ecx, byte ptr [r9 - 4]
+0x00014078cdf5: 81 c1 6d fe ff fe            add      ecx, 0xfefffe6d
+0x00014078cdfb: 41 03 c8                     add      ecx, r8d
+0x00014078cdfe: 8b c2                        mov      eax, edx
+0x00014078ce00: c1 e8 0b                     shr      eax, 0xb
+0x00014078ce03: 33 c8                        xor      ecx, eax
+0x00014078ce05: 33 ca                        xor      ecx, edx
+0x00014078ce07: 69 d1 93 01 00 01            imul     edx, ecx, 0x1000193
+0x00014078ce0d: 41 0f b6 49 fd               movzx    ecx, byte ptr [r9 - 3]
+0x00014078ce12: 41 03 c8                     add      ecx, r8d
+0x00014078ce15: 8b c2                        mov      eax, edx
+0x00014078ce17: c1 e8 0b                     shr      eax, 0xb
+0x00014078ce1a: 33 c8                        xor      ecx, eax
+0x00014078ce1c: 33 ca                        xor      ecx, edx
+0x00014078ce1e: 69 d1 93 01 00 01            imul     edx, ecx, 0x1000193
+0x00014078ce24: 8b c2                        mov      eax, edx
+0x00014078ce26: c1 e8 0b                     shr      eax, 0xb
+0x00014078ce29: 33 d0                        xor      edx, eax
+0x00014078ce2b: 49 83 eb 01                  sub      r11, 1
+0x00014078ce2f: 75 80                        jne      0x14078cdb1
+0x00014078ce31: 8b c2                        mov      eax, edx
+0x00014078ce33: c1 e8 10                     shr      eax, 0x10
+0x00014078ce36: 33 c2                        xor      eax, edx
+0x00014078ce38: 69 c8 2d 35 eb 7f            imul     ecx, eax, 0x7feb352d
+0x00014078ce3e: 8b c1                        mov      eax, ecx
+0x00014078ce40: c1 e8 0f                     shr      eax, 0xf
+0x00014078ce43: 33 c1                        xor      eax, ecx
+0x00014078ce45: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+0x00014078ce4b: 8b c1                        mov      eax, ecx
+0x00014078ce4d: c1 e8 10                     shr      eax, 0x10
+0x00014078ce50: 33 c1                        xor      eax, ecx
+0x00014078ce52: c3                           ret      
+0x00014078ce53: cc                           int3     
+0x00014078ce54: cc                           int3     
+0x00014078ce55: cc                           int3     
+0x00014078ce56: cc                           int3     
+0x00014078ce57: cc                           int3     
+0x00014078ce58: cc                           int3     
+0x00014078ce59: cc                           int3     
+0x00014078ce5a: cc                           int3     
+0x00014078ce5b: cc                           int3     
+0x00014078ce5c: cc                           int3     
+0x00014078ce5d: cc                           int3     
+0x00014078ce5e: cc                           int3     
+0x00014078ce5f: cc                           int3     
+direct_calls_and_returns:
+  0x14078cd6f: ret 
+  0x14078ce52: ret 
+
+=== exact static observations ===
+1. RC03 entry at 0x14078ee89 passes RCX=&[RSP+0x50] and RDX=&[RSP+0x44] to 0x14078db80, then branches on EAX.
+2. 0x14078db80 reads the response buffer, mixes captured global/table state, and compares a computed value; it is not a pure string/logging function.
+3. The response-validator arithmetic crosses .pdata entries at 0x14078dc4a/0x14078ddf1/0x14078de4c; .pdata boundaries therefore cannot be used as logical function boundaries here.
+4. The full flow contains direct calls to 0x14078cd70, whose exact bytes are recovered in the text window but which lacks an exact .pdata start; its role must be read from this raw slice, not assumed from the table.
+5. The validator path still depends on caller-provided response bytes and captured state; the external request/driver producer remains outside the captured .text.
+6. No end-to-end decode result is claimed by this static artifact, and no harness is run here.

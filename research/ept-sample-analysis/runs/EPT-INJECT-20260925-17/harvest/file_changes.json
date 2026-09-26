@@ -1,0 +1,11 @@
+{
+    "path":  "C:\\Windows\\Temp\\EPT_FBC34EE7_CC86ACBD.exe",
+    "before":  null,
+    "after":  {
+                  "path":  "C:\\Windows\\Temp\\EPT_FBC34EE7_CC86ACBD.exe",
+                  "length":  32671488,
+                  "last_write_utc":  "2026-09-24T19:18:24.8596535Z",
+                  "sha256":  "69849A2CC58C4CA413EC3D6282D832342C0F4C89EC26B6EA8E6F5E7AE585504A",
+                  "attributes":  "Archive"
+              }
+}

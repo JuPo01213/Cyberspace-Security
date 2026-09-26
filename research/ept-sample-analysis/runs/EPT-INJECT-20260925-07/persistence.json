@@ -1,0 +1,3006 @@
+﻿{
+    "tasks":  [
+                  {
+                      "path":  "\\Microsoft\\Windows\\.NET Framework\\",
+                      "name":  ".NET Framework NGEN v4.0.30319",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\.NET Framework\\",
+                      "name":  ".NET Framework NGEN v4.0.30319 64",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\.NET Framework\\",
+                      "name":  ".NET Framework NGEN v4.0.30319 64 Critical",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "2026-09-25T00:18:18.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\.NET Framework\\",
+                      "name":  ".NET Framework NGEN v4.0.30319 Critical",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "2026-09-25T00:18:18.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Active Directory Rights Management Services Client\\",
+                      "name":  "AD RMS Rights Policy Template Management (Automated)",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T03:57:57.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Active Directory Rights Management Services Client\\",
+                      "name":  "AD RMS Rights Policy Template Management (Manual)",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppID\\",
+                      "name":  "EDP Policy Manager",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppID\\",
+                      "name":  "PolicyConverter",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppID\\",
+                      "name":  "VerifiedPublisherCertStoreCheck",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Application Experience\\",
+                      "name":  "MareBackup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Application Experience\\",
+                      "name":  "Microsoft Compatibility Appraiser",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  "2026-09-25T04:40:40.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Application Experience\\",
+                      "name":  "PcaPatchDbTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  "2026-09-25T04:15:15.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Application Experience\\",
+                      "name":  "PcaWallpaperAppDetect",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T12:00:00.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Application Experience\\",
+                      "name":  "ProgramDataUpdater",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Application Experience\\",
+                      "name":  "StartupAppTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\ApplicationData\\",
+                      "name":  "appuriverifierdaily",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\ApplicationData\\",
+                      "name":  "appuriverifierinstall",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:37:37.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\ApplicationData\\",
+                      "name":  "CleanupTemporaryState",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\ApplicationData\\",
+                      "name":  "DsSvcCleanup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppListBackup\\",
+                      "name":  "Backup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppListBackup\\",
+                      "name":  "BackupNonMaintenance",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-28T03:17:17.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppxDeploymentClient\\",
+                      "name":  "Pre-staged app cleanup",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\AppxDeploymentClient\\",
+                      "name":  "UCPD velocity",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:26:26.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Autochk\\",
+                      "name":  "Proxy",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:48:48.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\BitLocker\\",
+                      "name":  "BitLocker Encrypt All Drives",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\BitLocker\\",
+                      "name":  "BitLocker MDM policy Refresh",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Bluetooth\\",
+                      "name":  "UninstallDeviceTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\BrokerInfrastructure\\",
+                      "name":  "BgTaskRegistrationMaintenanceTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CertificateServicesClient\\",
+                      "name":  "AikCertEnrollTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CertificateServicesClient\\",
+                      "name":  "CryptoPolicyTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CertificateServicesClient\\",
+                      "name":  "KeyPreGenTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CertificateServicesClient\\",
+                      "name":  "SystemTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CertificateServicesClient\\",
+                      "name":  "UserTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CertificateServicesClient\\",
+                      "name":  "UserTask-Roam",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Chkdsk\\",
+                      "name":  "ProactiveScan",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Chkdsk\\",
+                      "name":  "SyspartRepair",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "ClipESU",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "ClipESUConsumer",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T08:43:43.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "ClipESUConsumerProcessECUpdate",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "ClipEsuConsumerProcessPreOrder",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-28T13:12:12.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "ClipEsuConsumerProcessRefund",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-28T14:05:05.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "EnableClipESU",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T07:09:09.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "License Validation",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Clip\\",
+                      "name":  "LicenseImdsIntegration",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T08:02:02.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CloudExperienceHost\\",
+                      "name":  "CreateObjectTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\CloudRestore\\",
+                      "name":  "Backup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-28T02:01:01.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\ConsentUX\\UnifiedConsent\\",
+                      "name":  "UnifiedConsentSyncTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T13:06:06.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Customer Experience Improvement Program\\",
+                      "name":  "Consolidator",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:11:11.0000000+08:00",
+                      "next_run":  "2026-09-25T06:00:00.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Customer Experience Improvement Program\\",
+                      "name":  "UsbCeip",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Data Integrity Scan\\",
+                      "name":  "Data Integrity Check And Scan",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T23:51:51.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Data Integrity Scan\\",
+                      "name":  "Data Integrity Scan",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Data Integrity Scan\\",
+                      "name":  "Data Integrity Scan for Crash Recovery",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Defrag\\",
+                      "name":  "ScheduledDefrag",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Device Information\\",
+                      "name":  "Device",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  "2026-09-25T03:36:36.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Device Information\\",
+                      "name":  "Device User",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:28:28.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Device Setup\\",
+                      "name":  "Metadata Refresh",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "HandleCommand",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "HandleWnsCommand",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "IntegrityCheck",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:18:18.0000000+08:00",
+                      "next_run":  "2026-10-02T07:05:05.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "LocateCommandUserSession",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterDeviceAccountChange",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:33:33.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterDeviceLocationRightsChange",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterDevicePeriodic24",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T18:25:25.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterDevicePolicyChange",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterDeviceProtectionStateChanged",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:28:28.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterDeviceSettingChange",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DeviceDirectoryClient\\",
+                      "name":  "RegisterUserDevice",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:33:33.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Diagnosis\\",
+                      "name":  "RecommendedTroubleshootingScanner",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:34:34.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Diagnosis\\",
+                      "name":  "Scheduled",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DirectX\\",
+                      "name":  "DirectXDatabaseUpdater",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:34:34.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DirectX\\",
+                      "name":  "DXGIAdapterCache",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:08:08.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DiskCleanup\\",
+                      "name":  "SilentCleanup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:37:37.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DiskDiagnostic\\",
+                      "name":  "Microsoft-Windows-DiskDiagnosticDataCollector",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DiskDiagnostic\\",
+                      "name":  "Microsoft-Windows-DiskDiagnosticResolver",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DiskFootprint\\",
+                      "name":  "Diagnostics",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DiskFootprint\\",
+                      "name":  "StorageSense",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\DUSM\\",
+                      "name":  "dusmtask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\EDP\\",
+                      "name":  "EDP App Launch Task",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\EDP\\",
+                      "name":  "EDP Auth Task",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\EDP\\",
+                      "name":  "EDP Inaccessible Credentials Task",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\EDP\\",
+                      "name":  "StorageCardEncryption Task",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\ExploitGuard\\",
+                      "name":  "ExploitGuard MDM policy Refresh",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:08:08.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Feedback\\Siuf\\",
+                      "name":  "DmClient",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Feedback\\Siuf\\",
+                      "name":  "DmClientOnScenarioDownload",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:49:49.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\File Classification Infrastructure\\",
+                      "name":  "Property Definition Sync",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T06:06:06.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\FileHistory\\",
+                      "name":  "File History (maintenance mode)",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Flighting\\FeatureConfig\\",
+                      "name":  "ReconcileFeatures",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Flighting\\FeatureConfig\\",
+                      "name":  "UsageDataFlushing",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Flighting\\FeatureConfig\\",
+                      "name":  "UsageDataReporting",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Flighting\\OneSettings\\",
+                      "name":  "RefreshCache",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T00:10:10.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\HelloFace\\",
+                      "name":  "FODCleanupTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Input\\",
+                      "name":  "LocalUserSyncDataAvailable",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:18:18.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Input\\",
+                      "name":  "MouseSyncDataAvailable",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Input\\",
+                      "name":  "PenSyncDataAvailable",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:18:18.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Input\\",
+                      "name":  "TouchpadSyncDataAvailable",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\InstallService\\",
+                      "name":  "ScanForUpdates",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:33:33.0000000+08:00",
+                      "next_run":  "2026-09-25T15:41:41.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\InstallService\\",
+                      "name":  "ScanForUpdatesAsUser",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\InstallService\\",
+                      "name":  "SmartRetry",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\InstallService\\",
+                      "name":  "WakeUpAndContinueUpdates",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\InstallService\\",
+                      "name":  "WakeUpAndScanForUpdates",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T05:55:55.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\International\\",
+                      "name":  "Synchronize Language Settings",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:17:17.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\LanguageComponentsInstaller\\",
+                      "name":  "Installation",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:37:37.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\LanguageComponentsInstaller\\",
+                      "name":  "ReconcileLanguageResources",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\LanguageComponentsInstaller\\",
+                      "name":  "Uninstallation",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\License Manager\\",
+                      "name":  "TempSignedLicenseExchange",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Location\\",
+                      "name":  "Notifications",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Location\\",
+                      "name":  "WindowsActionDialog",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Maintenance\\",
+                      "name":  "WinSAT",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Management\\Autopilot\\",
+                      "name":  "DetectHardwareChange",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Management\\Autopilot\\",
+                      "name":  "RemediateHardwareChange",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Management\\Provisioning\\",
+                      "name":  "Cellular",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Management\\Provisioning\\",
+                      "name":  "Logon",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:26:26.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Management\\Provisioning\\",
+                      "name":  "Retry",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Management\\Provisioning\\",
+                      "name":  "RunOnReboot",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Maps\\",
+                      "name":  "MapsToastTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Maps\\",
+                      "name":  "MapsUpdateTask",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T01:35:35.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\MemoryDiagnostic\\",
+                      "name":  "ProcessMemoryDiagnosticEvents",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\MemoryDiagnostic\\",
+                      "name":  "RunFullMemoryDiagnostic",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Mobile Broadband Accounts\\",
+                      "name":  "MNO Metadata Parser",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\MUI\\",
+                      "name":  "LPRemove",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Multimedia\\",
+                      "name":  "SystemSoundsService",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\NetTrace\\",
+                      "name":  "GatherNetworkInfo",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\NlaSvc\\",
+                      "name":  "WiFiTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Offline Files\\",
+                      "name":  "Background Synchronization",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T02:19:19.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Offline Files\\",
+                      "name":  "Logon Synchronization",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\PI\\",
+                      "name":  "Secure-Boot-Update",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\PI\\",
+                      "name":  "Sqm-Tasks",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Plug and Play\\",
+                      "name":  "Device Install Group Policy",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Plug and Play\\",
+                      "name":  "Device Install Reboot Required",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Plug and Play\\",
+                      "name":  "Sysprep Generalize Drivers",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Power Efficiency Diagnostics\\",
+                      "name":  "AnalyzeSystem",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Printing\\",
+                      "name":  "EduPrintProv",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Printing\\",
+                      "name":  "PrinterCleanupTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T12:00:00.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\PushToInstall\\",
+                      "name":  "LoginCheck",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\PushToInstall\\",
+                      "name":  "Registration",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-10-01T08:00:00.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Ras\\",
+                      "name":  "MobilityManager",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\RecoveryEnvironment\\",
+                      "name":  "VerifyWinRE",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Registry\\",
+                      "name":  "RegIdleBackup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Registry\\",
+                      "name":  "rgnupdt-cleanup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Registry\\",
+                      "name":  "rgnupdt-run",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\RemoteAssistance\\",
+                      "name":  "RemoteAssistanceTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Servicing\\",
+                      "name":  "StartComponentCleanup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SettingSync\\",
+                      "name":  "BackgroundUploadTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SettingSync\\",
+                      "name":  "NetworkStateChangeTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Setup\\",
+                      "name":  "SetupCleanupTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-28T06:00:00.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SharedPC\\",
+                      "name":  "Account Cleanup",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Shell\\",
+                      "name":  "CreateObjectTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Shell\\",
+                      "name":  "FamilySafetyMonitor",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Shell\\",
+                      "name":  "FamilySafetyRefreshTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Shell\\",
+                      "name":  "IndexerAutomaticMaintenance",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Shell\\",
+                      "name":  "ThemesSyncedImageDownload",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Shell\\",
+                      "name":  "UpdateUserPictureTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SoftwareProtectionPlatform\\",
+                      "name":  "SvcRestartTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T18:40:40.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SoftwareProtectionPlatform\\",
+                      "name":  "SvcRestartTaskLogon",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SoftwareProtectionPlatform\\",
+                      "name":  "SvcRestartTaskNetwork",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SpacePort\\",
+                      "name":  "SpaceAgentTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SpacePort\\",
+                      "name":  "SpaceManagerTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Speech\\",
+                      "name":  "SpeechModelDownloadTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-26T00:27:27.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\StateRepository\\",
+                      "name":  "MaintenanceTasks",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Storage Tiers Management\\",
+                      "name":  "Storage Tiers Management Initialization",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Storage Tiers Management\\",
+                      "name":  "Storage Tiers Optimization",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T05:00:00.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Subscription\\",
+                      "name":  "EnableLicenseAcquisition",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:08:08.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Subscription\\",
+                      "name":  "LicenseAcquisition",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T09:51:51.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Sysmain\\",
+                      "name":  "HybridDriveCachePrepopulate",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Sysmain\\",
+                      "name":  "HybridDriveCacheRebalance",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Sysmain\\",
+                      "name":  "ResPriStaticDbSync",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Sysmain\\",
+                      "name":  "WsSwapAssessmentTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\SystemRestore\\",
+                      "name":  "SR",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Task Manager\\",
+                      "name":  "Interactive",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\TextServicesFramework\\",
+                      "name":  "MsCtfMonitor",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Time Synchronization\\",
+                      "name":  "ForceSynchronizeTime",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Time Synchronization\\",
+                      "name":  "SynchronizeTime",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Time Zone\\",
+                      "name":  "SynchronizeTimeZone",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\TPM\\",
+                      "name":  "Tpm-HASCertRetr",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\TPM\\",
+                      "name":  "Tpm-Maintenance",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UNP\\",
+                      "name":  "RunUpdateNotificationMgr",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T15:55:55.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "MusUx_LogonUpdateResults",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Reboot_AC",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:06:06.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Reboot_Battery",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:06:06.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Report policies",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Schedule Maintenance Work",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Schedule Scan",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T22:06:06.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Schedule Scan Static Task",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:40:40.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Schedule Wake To Work",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Schedule Work",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T01:25:25.0000000+08:00",
+                      "next_run":  "2026-09-25T01:55:55.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "Start Oobe Expedite Work",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "StartOobeAppsScanAfterUpdate",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:25:25.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "StartOobeAppsScan_LicenseAccepted",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "UpdateModelTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:38:38.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UpdateOrchestrator\\",
+                      "name":  "USO_UxBroker",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:06:06.0000000+08:00",
+                      "next_run":  "2026-09-25T14:38:38.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\UPnP\\",
+                      "name":  "UPnPHostConfig",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\USB\\",
+                      "name":  "Usb-Notifications",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\User Profile Service\\",
+                      "name":  "HiveUploadTask",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-25T12:16:16.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WaaSMedic\\",
+                      "name":  "PerformRemediation",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  "2026-09-27T03:57:57.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WCM\\",
+                      "name":  "WiFiTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WDI\\",
+                      "name":  "ResolutionHost",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T18:55:55.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Defender\\",
+                      "name":  "Windows Defender Cache Maintenance",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Defender\\",
+                      "name":  "Windows Defender Cleanup",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Defender\\",
+                      "name":  "Windows Defender Scheduled Scan",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Defender\\",
+                      "name":  "Windows Defender Verification",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Error Reporting\\",
+                      "name":  "QueueReporting",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:11:11.0000000+08:00",
+                      "next_run":  "2026-09-25T04:50:50.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Filtering Platform\\",
+                      "name":  "BfeOnServiceStartTypeChange",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Windows Media Sharing\\",
+                      "name":  "UpdateLibrary",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WindowsColorSystem\\",
+                      "name":  "Calibration Loader",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WindowsUpdate\\",
+                      "name":  "Refresh Group Policy Cache",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WindowsUpdate\\",
+                      "name":  "Scheduled Start",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T20:42:42.0000000+08:00",
+                      "next_run":  "2026-09-25T08:14:14.0000000+08:00"
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Wininet\\",
+                      "name":  "CacheTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:16:16.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WlanSvc\\",
+                      "name":  "CDSSync",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:17:17.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WOF\\",
+                      "name":  "WIM-Hash-Management",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WOF\\",
+                      "name":  "WIM-Hash-Validation",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Work Folders\\",
+                      "name":  "Work Folders Logon Synchronization",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:21:21.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Work Folders\\",
+                      "name":  "Work Folders Maintenance Work",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-24T08:56:56.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Workplace Join\\",
+                      "name":  "Automatic-Device-Join",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Workplace Join\\",
+                      "name":  "Device-Sync",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\Workplace Join\\",
+                      "name":  "Recovery-Check",
+                      "state":  {
+                                    "value":  1,
+                                    "Value":  "Disabled"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WwanSvc\\",
+                      "name":  "NotificationTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\Windows\\WwanSvc\\",
+                      "name":  "OobeDiscovery",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "2026-09-25T00:08:08.0000000+08:00",
+                      "next_run":  null
+                  },
+                  {
+                      "path":  "\\Microsoft\\XblGameSave\\",
+                      "name":  "XblGameSaveTask",
+                      "state":  {
+                                    "value":  3,
+                                    "Value":  "Ready"
+                                },
+                      "last_run":  "1999-11-30T00:00:00.0000000+08:00",
+                      "next_run":  null
+                  }
+              ],
+    "files":  [
+                  {
+                      "path":  "C:\\Windows\\System32\\Hardware.exe",
+                      "exists":  true,
+                      "length":  32671232,
+                      "is_dir":  false,
+                      "last_write_utc":  "2026-09-24T11:58:51.0427494Z",
+                      "sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+                  },
+                  {
+                      "path":  "C:\\Windows\\System32\\R3.exe",
+                      "exists":  false
+                  },
+                  {
+                      "path":  "C:\\Windows\\System32\\EPT.cmd",
+                      "exists":  true,
+                      "length":  1093,
+                      "is_dir":  false,
+                      "last_write_utc":  "2026-09-24T17:39:29.5720679Z",
+                      "sha256":  "8FD825961D4582FF3C43E4E90AC78E4E5F8D7958B2651A7FC16C4693B6172609"
+                  },
+                  {
+                      "path":  "C:\\Windows\\System32\\Logs",
+                      "exists":  false
+                  },
+                  {
+                      "path":  "C:\\Windows\\System32\\HardwareLogs",
+                      "exists":  false
+                  },
+                  {
+                      "path":  "C:\\Windows\\Temp\\HardwareTask.xml",
+                      "exists":  false
+                  }
+              ],
+    "procs":  [
+
+              ],
+    "recent_sys":  [
+                       {
+                           "Name":  "acpi.sys",
+                           "Length":  812416,
+                           "LastWriteTimeUtc":  "\/Date(1790247197175)\/"
+                       },
+                       {
+                           "Name":  "Acx01000.sys",
+                           "Length":  699392,
+                           "LastWriteTimeUtc":  "\/Date(1790247210784)\/"
+                       },
+                       {
+                           "Name":  "afd.sys",
+                           "Length":  659856,
+                           "LastWriteTimeUtc":  "\/Date(1790247252158)\/"
+                       },
+                       {
+                           "Name":  "afunix.sys",
+                           "Length":  48128,
+                           "LastWriteTimeUtc":  "\/Date(1790247262847)\/"
+                       },
+                       {
+                           "Name":  "agilevpn.sys",
+                           "Length":  115200,
+                           "LastWriteTimeUtc":  "\/Date(1790247265972)\/"
+                       },
+                       {
+                           "Name":  "ahcache.sys",
+                           "Length":  305152,
+                           "LastWriteTimeUtc":  "\/Date(1790247259300)\/"
+                       },
+                       {
+                           "Name":  "amdk8.sys",
+                           "Length":  210856,
+                           "LastWriteTimeUtc":  "\/Date(1790247197237)\/"
+                       },
+                       {
+                           "Name":  "amdppm.sys",
+                           "Length":  214912,
+                           "LastWriteTimeUtc":  "\/Date(1790247197253)\/"
+                       },
+                       {
+                           "Name":  "appid.sys",
+                           "Length":  211440,
+                           "LastWriteTimeUtc":  "\/Date(1790247245892)\/"
+                       },
+                       {
+                           "Name":  "applockerfltr.sys",
+                           "Length":  18432,
+                           "LastWriteTimeUtc":  "\/Date(1790247245908)\/"
+                       },
+                       {
+                           "Name":  "bindflt.sys",
+                           "Length":  146872,
+                           "LastWriteTimeUtc":  "\/Date(1790247237158)\/"
+                       },
+                       {
+                           "Name":  "bridge.sys",
+                           "Length":  129536,
+                           "LastWriteTimeUtc":  "\/Date(1790247297406)\/"
+                       },
+                       {
+                           "Name":  "BtaMPM.sys",
+                           "Length":  43008,
+                           "LastWriteTimeUtc":  "\/Date(1790247195800)\/"
+                       },
+                       {
+                           "Name":  "bthenum.sys",
+                           "Length":  115712,
+                           "LastWriteTimeUtc":  "\/Date(1790247197565)\/"
+                       },
+                       {
+                           "Name":  "BthMini.SYS",
+                           "Length":  45568,
+                           "LastWriteTimeUtc":  "\/Date(1790247197581)\/"
+                       },
+                       {
+                           "Name":  "bthport.sys",
+                           "Length":  1573376,
+                           "LastWriteTimeUtc":  "\/Date(1790247197628)\/"
+                       },
+                       {
+                           "Name":  "BTHUSB.SYS",
+                           "Length":  110592,
+                           "LastWriteTimeUtc":  "\/Date(1790247197628)\/"
+                       },
+                       {
+                           "Name":  "cdrom.sys",
+                           "Length":  175616,
+                           "LastWriteTimeUtc":  "\/Date(1790247197190)\/"
+                       },
+                       {
+                           "Name":  "CEA.sys",
+                           "Length":  82312,
+                           "LastWriteTimeUtc":  "\/Date(1790247235861)\/"
+                       },
+                       {
+                           "Name":  "cimfs.sys",
+                           "Length":  95232,
+                           "LastWriteTimeUtc":  "\/Date(1790247237142)\/"
+                       },
+                       {
+                           "Name":  "Classpnp.sys",
+                           "Length":  446456,
+                           "LastWriteTimeUtc":  "\/Date(1790247251033)\/"
+                       },
+                       {
+                           "Name":  "cldflt.sys",
+                           "Length":  505856,
+                           "LastWriteTimeUtc":  "\/Date(1790247247252)\/"
+                       },
+                       {
+                           "Name":  "clfs.sys",
+                           "Length":  428448,
+                           "LastWriteTimeUtc":  "\/Date(1790247252939)\/"
+                       },
+                       {
+                           "Name":  "ClipSp.sys",
+                           "Length":  1108864,
+                           "LastWriteTimeUtc":  "\/Date(1790247224612)\/"
+                       },
+                       {
+                           "Name":  "cmimcext.sys",
+                           "Length":  37808,
+                           "LastWriteTimeUtc":  "\/Date(1790247210800)\/"
+                       },
+                       {
+                           "Name":  "cng.sys",
+                           "Length":  747552,
+                           "LastWriteTimeUtc":  "\/Date(1790247250330)\/"
+                       },
+                       {
+                           "Name":  "crashdmp.sys",
+                           "Length":  102832,
+                           "LastWriteTimeUtc":  "\/Date(1790247252799)\/"
+                       },
+                       {
+                           "Name":  "csc.sys",
+                           "Length":  582144,
+                           "LastWriteTimeUtc":  "\/Date(1790247321704)\/"
+                       },
+                       {
+                           "Name":  "dam.sys",
+                           "Length":  102320,
+                           "LastWriteTimeUtc":  "\/Date(1790247260081)\/"
+                       },
+                       {
+                           "Name":  "devauthe.sys",
+                           "Length":  47104,
+                           "LastWriteTimeUtc":  "\/Date(1790247195862)\/"
+                       },
+                       {
+                           "Name":  "dfsc.sys",
+                           "Length":  154112,
+                           "LastWriteTimeUtc":  "\/Date(1790247252986)\/"
+                       },
+                       {
+                           "Name":  "disk.sys",
+                           "Length":  101856,
+                           "LastWriteTimeUtc":  "\/Date(1790247197268)\/"
+                       },
+                       {
+                           "Name":  "Diskdump.sys",
+                           "Length":  41344,
+                           "LastWriteTimeUtc":  "\/Date(1790247253205)\/"
+                       },
+                       {
+                           "Name":  "Dmpusbstor.sys",
+                           "Length":  20480,
+                           "LastWriteTimeUtc":  "\/Date(1790247253221)\/"
+                       },
+                       {
+                           "Name":  "drmk.sys",
+                           "Length":  97792,
+                           "LastWriteTimeUtc":  "\/Date(1790247196019)\/"
+                       },
+                       {
+                           "Name":  "drmkaud.sys",
+                           "Length":  17360,
+                           "LastWriteTimeUtc":  "\/Date(1790247196019)\/"
+                       },
+                       {
+                           "Name":  "Dumpata.sys",
+                           "Length":  40832,
+                           "LastWriteTimeUtc":  "\/Date(1790247246408)\/"
+                       },
+                       {
+                           "Name":  "dumpfve.sys",
+                           "Length":  94712,
+                           "LastWriteTimeUtc":  "\/Date(1790247347938)\/"
+                       },
+                       {
+                           "Name":  "dumpsd.sys",
+                           "Length":  198560,
+                           "LastWriteTimeUtc":  "\/Date(1790247197925)\/"
+                       },
+                       {
+                           "Name":  "Dumpstorport.sys",
+                           "Length":  38384,
+                           "LastWriteTimeUtc":  "\/Date(1790247253205)\/"
+                       },
+                       {
+                           "Name":  "dxgkrnl.sys",
+                           "Length":  3818368,
+                           "LastWriteTimeUtc":  "\/Date(1790247224831)\/"
+                       },
+                       {
+                           "Name":  "dxgmms1.sys",
+                           "Length":  456072,
+                           "LastWriteTimeUtc":  "\/Date(1790247224862)\/"
+                       },
+                       {
+                           "Name":  "dxgmms2.sys",
+                           "Length":  896896,
+                           "LastWriteTimeUtc":  "\/Date(1790247224862)\/"
+                       },
+                       {
+                           "Name":  "exfat.sys",
+                           "Length":  423808,
+                           "LastWriteTimeUtc":  "\/Date(1790247207440)\/"
+                       },
+                       {
+                           "Name":  "fastfat.sys",
+                           "Length":  434576,
+                           "LastWriteTimeUtc":  "\/Date(1790247207456)\/"
+                       },
+                       {
+                           "Name":  "fltMgr.sys",
+                           "Length":  429968,
+                           "LastWriteTimeUtc":  "\/Date(1790247251049)\/"
+                       },
+                       {
+                           "Name":  "fvevol.sys",
+                           "Length":  813440,
+                           "LastWriteTimeUtc":  "\/Date(1790247347923)\/"
+                       },
+                       {
+                           "Name":  "FWPKCLNT.SYS",
+                           "Length":  503680,
+                           "LastWriteTimeUtc":  "\/Date(1790247252439)\/"
+                       },
+                       {
+                           "Name":  "hdaudbus.sys",
+                           "Length":  135168,
+                           "LastWriteTimeUtc":  "\/Date(1790247195972)\/"
+                       },
+                       {
+                           "Name":  "hidi2c.sys",
+                           "Length":  62976,
+                           "LastWriteTimeUtc":  "\/Date(1790247197675)\/"
+                       },
+                       {
+                           "Name":  "http.sys",
+                           "Length":  1583504,
+                           "LastWriteTimeUtc":  "\/Date(1790247250283)\/"
+                       },
+                       {
+                           "Name":  "hvservice.sys",
+                           "Length":  96128,
+                           "LastWriteTimeUtc":  "\/Date(1790247292156)\/"
+                       },
+                       {
+                           "Name":  "hvsocket.sys",
+                           "Length":  161680,
+                           "LastWriteTimeUtc":  "\/Date(1790247307024)\/"
+                       },
+                       {
+                           "Name":  "intelpep.sys",
+                           "Length":  420448,
+                           "LastWriteTimeUtc":  "\/Date(1790247197128)\/"
+                       },
+                       {
+                           "Name":  "intelppm.sys",
+                           "Length":  235920,
+                           "LastWriteTimeUtc":  "\/Date(1790247197222)\/"
+                       },
+                       {
+                           "Name":  "ipfltdrv.sys",
+                           "Length":  91648,
+                           "LastWriteTimeUtc":  "\/Date(1790247264691)\/"
+                       },
+                       {
+                           "Name":  "IPMIDrv.sys",
+                           "Length":  118704,
+                           "LastWriteTimeUtc":  "\/Date(1790247197315)\/"
+                       },
+                       {
+                           "Name":  "ipnat.sys",
+                           "Length":  228352,
+                           "LastWriteTimeUtc":  "\/Date(1790247237252)\/"
+                       },
+                       {
+                           "Name":  "KNetPwrDepBroker.sys",
+                           "Length":  32256,
+                           "LastWriteTimeUtc":  "\/Date(1790247207393)\/"
+                       },
+                       {
+                           "Name":  "ks.sys",
+                           "Length":  456192,
+                           "LastWriteTimeUtc":  "\/Date(1790247258691)\/"
+                       },
+                       {
+                           "Name":  "ksecdd.sys",
+                           "Length":  161168,
+                           "LastWriteTimeUtc":  "\/Date(1790247251955)\/"
+                       },
+                       {
+                           "Name":  "ksecpkg.sys",
+                           "Length":  188800,
+                           "LastWriteTimeUtc":  "\/Date(1790247250408)\/"
+                       },
+                       {
+                           "Name":  "ksthunk.sys",
+                           "Length":  36864,
+                           "LastWriteTimeUtc":  "\/Date(1790247258706)\/"
+                       },
+                       {
+                           "Name":  "luafv.sys",
+                           "Length":  143360,
+                           "LastWriteTimeUtc":  "\/Date(1790247259222)\/"
+                       },
+                       {
+                           "Name":  "MbbCx.sys",
+                           "Length":  393728,
+                           "LastWriteTimeUtc":  "\/Date(1790247207331)\/"
+                       },
+                       {
+                           "Name":  "Microsoft.Bluetooth.AvrcpTransport.sys",
+                           "Length":  66048,
+                           "LastWriteTimeUtc":  "\/Date(1790247195800)\/"
+                       },
+                       {
+                           "Name":  "monitor.sys",
+                           "Length":  83456,
+                           "LastWriteTimeUtc":  "\/Date(1790247196987)\/"
+                       },
+                       {
+                           "Name":  "mrxdav.sys",
+                           "Length":  165888,
+                           "LastWriteTimeUtc":  "\/Date(1790247307852)\/"
+                       },
+                       {
+                           "Name":  "mrxsmb.sys",
+                           "Length":  585600,
+                           "LastWriteTimeUtc":  "\/Date(1790247253017)\/"
+                       },
+                       {
+                           "Name":  "mrxsmb20.sys",
+                           "Length":  268176,
+                           "LastWriteTimeUtc":  "\/Date(1790247253017)\/"
+                       },
+                       {
+                           "Name":  "msgpioclx.sys",
+                           "Length":  189896,
+                           "LastWriteTimeUtc":  "\/Date(1790247225222)\/"
+                       },
+                       {
+                           "Name":  "mskssrv.sys",
+                           "Length":  38400,
+                           "LastWriteTimeUtc":  "\/Date(1790247258706)\/"
+                       },
+                       {
+                           "Name":  "msrpc.sys",
+                           "Length":  379296,
+                           "LastWriteTimeUtc":  "\/Date(1790247252064)\/"
+                       },
+                       {
+                           "Name":  "msseccore.sys",
+                           "Length":  27520,
+                           "LastWriteTimeUtc":  "\/Date(1790247203018)\/"
+                       },
+                       {
+                           "Name":  "mssecflt.sys",
+                           "Length":  378264,
+                           "LastWriteTimeUtc":  "\/Date(1790247203050)\/"
+                       },
+                       {
+                           "Name":  "mssecwfp.sys",
+                           "Length":  44416,
+                           "LastWriteTimeUtc":  "\/Date(1790247203065)\/"
+                       },
+                       {
+                           "Name":  "mup.sys",
+                           "Length":  136080,
+                           "LastWriteTimeUtc":  "\/Date(1790247252986)\/"
+                       },
+                       {
+                           "Name":  "ndis.sys",
+                           "Length":  1481600,
+                           "LastWriteTimeUtc":  "\/Date(1790247252002)\/"
+                       },
+                       {
+                           "Name":  "ndiswan.sys",
+                           "Length":  208384,
+                           "LastWriteTimeUtc":  "\/Date(1790247266003)\/"
+                       },
+                       {
+                           "Name":  "NetAdapterCx.sys",
+                           "Length":  210944,
+                           "LastWriteTimeUtc":  "\/Date(1790247252314)\/"
+                       },
+                       {
+                           "Name":  "netbt.sys",
+                           "Length":  348160,
+                           "LastWriteTimeUtc":  "\/Date(1790247262722)\/"
+                       },
+                       {
+                           "Name":  "netio.sys",
+                           "Length":  613760,
+                           "LastWriteTimeUtc":  "\/Date(1790247252033)\/"
+                       },
+                       {
+                           "Name":  "netvsc.sys",
+                           "Length":  303992,
+                           "LastWriteTimeUtc":  "\/Date(1790247198597)\/"
+                       },
+                       {
+                           "Name":  "npfs.sys",
+                           "Length":  90056,
+                           "LastWriteTimeUtc":  "\/Date(1790247251096)\/"
+                       },
+                       {
+                           "Name":  "ntfs.sys",
+                           "Length":  2846592,
+                           "LastWriteTimeUtc":  "\/Date(1790247251252)\/"
+                       },
+                       {
+                           "Name":  "nwifi.sys",
+                           "Length":  758784,
+                           "LastWriteTimeUtc":  "\/Date(1790247214315)\/"
+                       },
+                       {
+                           "Name":  "partmgr.sys",
+                           "Length":  184704,
+                           "LastWriteTimeUtc":  "\/Date(1790247251861)\/"
+                       },
+                       {
+                           "Name":  "pci.sys",
+                           "Length":  473488,
+                           "LastWriteTimeUtc":  "\/Date(1790247197347)\/"
+                       },
+                       {
+                           "Name":  "pdc.sys",
+                           "Length":  166784,
+                           "LastWriteTimeUtc":  "\/Date(1790247210831)\/"
+                       },
+                       {
+                           "Name":  "PEAuth.sys",
+                           "Length":  823808,
+                           "LastWriteTimeUtc":  "\/Date(1790247211737)\/"
+                       },
+                       {
+                           "Name":  "pmem.sys",
+                           "Length":  142304,
+                           "LastWriteTimeUtc":  "\/Date(1790247197362)\/"
+                       },
+                       {
+                           "Name":  "portcls.sys",
+                           "Length":  388608,
+                           "LastWriteTimeUtc":  "\/Date(1790247196081)\/"
+                       },
+                       {
+                           "Name":  "processr.sys",
+                           "Length":  219560,
+                           "LastWriteTimeUtc":  "\/Date(1790247197206)\/"
+                       },
+                       {
+                           "Name":  "rasacd.sys",
+                           "Length":  20480,
+                           "LastWriteTimeUtc":  "\/Date(1790247264675)\/"
+                       },
+                       {
+                           "Name":  "rasl2tp.sys",
+                           "Length":  112640,
+                           "LastWriteTimeUtc":  "\/Date(1790247266035)\/"
+                       },
+                       {
+                           "Name":  "raspppoe.sys",
+                           "Length":  89088,
+                           "LastWriteTimeUtc":  "\/Date(1790247266128)\/"
+                       },
+                       {
+                           "Name":  "rdbss.sys",
+                           "Length":  463744,
+                           "LastWriteTimeUtc":  "\/Date(1790247253002)\/"
+                       },
+                       {
+                           "Name":  "rdpdr.sys",
+                           "Length":  170496,
+                           "LastWriteTimeUtc":  "\/Date(1790247305477)\/"
+                       },
+                       {
+                           "Name":  "rdpvideominiport.sys",
+                           "Length":  32688,
+                           "LastWriteTimeUtc":  "\/Date(1790247303464)\/"
+                       },
+                       {
+                           "Name":  "refs.sys",
+                           "Length":  2007936,
+                           "LastWriteTimeUtc":  "\/Date(1790247246471)\/"
+                       },
+                       {
+                           "Name":  "refsv1.sys",
+                           "Length":  999808,
+                           "LastWriteTimeUtc":  "\/Date(1790247246502)\/"
+                       },
+                       {
+                           "Name":  "rfcomm.sys",
+                           "Length":  218112,
+                           "LastWriteTimeUtc":  "\/Date(1790247197643)\/"
+                       },
+                       {
+                           "Name":  "rmcast.sys",
+                           "Length":  160768,
+                           "LastWriteTimeUtc":  "\/Date(1790247301855)\/"
+                       },
+                       {
+                           "Name":  "RNDISMP.sys",
+                           "Length":  37376,
+                           "LastWriteTimeUtc":  "\/Date(1790247266175)\/"
+                       },
+                       {
+                           "Name":  "scfilter.sys",
+                           "Length":  44032,
+                           "LastWriteTimeUtc":  "\/Date(1790247254517)\/"
+                       },
+                       {
+                           "Name":  "sdbus.sys",
+                           "Length":  308168,
+                           "LastWriteTimeUtc":  "\/Date(1790247197925)\/"
+                       },
+                       {
+                           "Name":  "spacedump.sys",
+                           "Length":  220128,
+                           "LastWriteTimeUtc":  "\/Date(1790247197300)\/"
+                       },
+                       {
+                           "Name":  "spaceport.sys",
+                           "Length":  682864,
+                           "LastWriteTimeUtc":  "\/Date(1790247197284)\/"
+                       },
+                       {
+                           "Name":  "srv2.sys",
+                           "Length":  800256,
+                           "LastWriteTimeUtc":  "\/Date(1790247253064)\/"
+                       },
+                       {
+                           "Name":  "srvnet.sys",
+                           "Length":  325632,
+                           "LastWriteTimeUtc":  "\/Date(1790247253033)\/"
+                       },
+                       {
+                           "Name":  "stornvme.sys",
+                           "Length":  165232,
+                           "LastWriteTimeUtc":  "\/Date(1790247197378)\/"
+                       },
+                       {
+                           "Name":  "storport.sys",
+                           "Length":  726416,
+                           "LastWriteTimeUtc":  "\/Date(1790247210815)\/"
+                       },
+                       {
+                           "Name":  "storqosflt.sys",
+                           "Length":  94152,
+                           "LastWriteTimeUtc":  "\/Date(1790247237814)\/"
+                       },
+                       {
+                           "Name":  "storufs.sys",
+                           "Length":  66528,
+                           "LastWriteTimeUtc":  "\/Date(1790247197393)\/"
+                       },
+                       {
+                           "Name":  "tbs.sys",
+                           "Length":  32696,
+                           "LastWriteTimeUtc":  "\/Date(1790247213175)\/"
+                       },
+                       {
+                           "Name":  "tcpip.sys",
+                           "Length":  2993536,
+                           "LastWriteTimeUtc":  "\/Date(1790247252424)\/"
+                       },
+                       {
+                           "Name":  "tcpipreg.sys",
+                           "Length":  56320,
+                           "LastWriteTimeUtc":  "\/Date(1790247262550)\/"
+                       },
+                       {
+                           "Name":  "tdx.sys",
+                           "Length":  127360,
+                           "LastWriteTimeUtc":  "\/Date(1790247291906)\/"
+                       },
+                       {
+                           "Name":  "tm.sys",
+                           "Length":  150960,
+                           "LastWriteTimeUtc":  "\/Date(1790247252939)\/"
+                       },
+                       {
+                           "Name":  "tpm.sys",
+                           "Length":  259528,
+                           "LastWriteTimeUtc":  "\/Date(1790247197956)\/"
+                       },
+                       {
+                           "Name":  "TsUsbGD.sys",
+                           "Length":  37888,
+                           "LastWriteTimeUtc":  "\/Date(1790247197143)\/"
+                       },
+                       {
+                           "Name":  "tsusbhub.sys",
+                           "Length":  137728,
+                           "LastWriteTimeUtc":  "\/Date(1790247199003)\/"
+                       },
+                       {
+                           "Name":  "uaspstor.sys",
+                           "Length":  83824,
+                           "LastWriteTimeUtc":  "\/Date(1790247197409)\/"
+                       },
+                       {
+                           "Name":  "UCPD.sys",
+                           "Length":  118784,
+                           "LastWriteTimeUtc":  "\/Date(1790247210315)\/"
+                       },
+                       {
+                           "Name":  "udfs.sys",
+                           "Length":  349184,
+                           "LastWriteTimeUtc":  "\/Date(1790247306274)\/"
+                       },
+                       {
+                           "Name":  "usb8023.sys",
+                           "Length":  24064,
+                           "LastWriteTimeUtc":  "\/Date(1790247266175)\/"
+                       },
+                       {
+                           "Name":  "USBAUDIO.sys",
+                           "Length":  207872,
+                           "LastWriteTimeUtc":  "\/Date(1790247196003)\/"
+                       },
+                       {
+                           "Name":  "usbccgp.sys",
+                           "Length":  191872,
+                           "LastWriteTimeUtc":  "\/Date(1790247197690)\/"
+                       },
+                       {
+                           "Name":  "usbd.sys",
+                           "Length":  34192,
+                           "LastWriteTimeUtc":  "\/Date(1790247197815)\/"
+                       },
+                       {
+                           "Name":  "usbehci.sys",
+                           "Length":  87424,
+                           "LastWriteTimeUtc":  "\/Date(1790247197800)\/"
+                       },
+                       {
+                           "Name":  "usbhub.sys",
+                           "Length":  527232,
+                           "LastWriteTimeUtc":  "\/Date(1790247197784)\/"
+                       },
+                       {
+                           "Name":  "USBHUB3.SYS",
+                           "Length":  649600,
+                           "LastWriteTimeUtc":  "\/Date(1790247197722)\/"
+                       },
+                       {
+                           "Name":  "usbohci.sys",
+                           "Length":  30208,
+                           "LastWriteTimeUtc":  "\/Date(1790247197737)\/"
+                       },
+                       {
+                           "Name":  "usbport.sys",
+                           "Length":  474512,
+                           "LastWriteTimeUtc":  "\/Date(1790247197768)\/"
+                       },
+                       {
+                           "Name":  "usbprint.sys",
+                           "Length":  43008,
+                           "LastWriteTimeUtc":  "\/Date(1790247197003)\/"
+                       },
+                       {
+                           "Name":  "USBSTOR.SYS",
+                           "Length":  139632,
+                           "LastWriteTimeUtc":  "\/Date(1790247197847)\/"
+                       },
+                       {
+                           "Name":  "usbuhci.sys",
+                           "Length":  39424,
+                           "LastWriteTimeUtc":  "\/Date(1790247197800)\/"
+                       },
+                       {
+                           "Name":  "USBXHCI.SYS",
+                           "Length":  620472,
+                           "LastWriteTimeUtc":  "\/Date(1790247197878)\/"
+                       },
+                       {
+                           "Name":  "vhdmp.sys",
+                           "Length":  833424,
+                           "LastWriteTimeUtc":  "\/Date(1790247197440)\/"
+                       },
+                       {
+                           "Name":  "Vid.sys",
+                           "Length":  642992,
+                           "LastWriteTimeUtc":  "\/Date(1790247198300)\/"
+                       },
+                       {
+                           "Name":  "vmbkmcl.sys",
+                           "Length":  119200,
+                           "LastWriteTimeUtc":  "\/Date(1790247306961)\/"
+                       },
+                       {
+                           "Name":  "vmbus.sys",
+                           "Length":  169344,
+                           "LastWriteTimeUtc":  "\/Date(1790247198565)\/"
+                       },
+                       {
+                           "Name":  "vpci.sys",
+                           "Length":  91504,
+                           "LastWriteTimeUtc":  "\/Date(1790247198612)\/"
+                       },
+                       {
+                           "Name":  "wcifs.sys",
+                           "Length":  210352,
+                           "LastWriteTimeUtc":  "\/Date(1790247237174)\/"
+                       },
+                       {
+                           "Name":  "Wdf01000.sys",
+                           "Length":  829880,
+                           "LastWriteTimeUtc":  "\/Date(1790247251924)\/"
+                       },
+                       {
+                           "Name":  "WdiWiFi.sys",
+                           "Length":  967168,
+                           "LastWriteTimeUtc":  "\/Date(1790247214347)\/"
+                       },
+                       {
+                           "Name":  "werkernel.sys",
+                           "Length":  54664,
+                           "LastWriteTimeUtc":  "\/Date(1790247250861)\/"
+                       },
+                       {
+                           "Name":  "wfplwfs.sys",
+                           "Length":  183208,
+                           "LastWriteTimeUtc":  "\/Date(1790247235971)\/"
+                       },
+                       {
+                           "Name":  "WindowsTrustedRT.sys",
+                           "Length":  84056,
+                           "LastWriteTimeUtc":  "\/Date(1790247237799)\/"
+                       },
+                       {
+                           "Name":  "winhv.sys",
+                           "Length":  42368,
+                           "LastWriteTimeUtc":  "\/Date(1790247306914)\/"
+                       },
+                       {
+                           "Name":  "winhvr.sys",
+                           "Length":  100320,
+                           "LastWriteTimeUtc":  "\/Date(1790247292281)\/"
+                       },
+                       {
+                           "Name":  "winnat.sys",
+                           "Length":  261632,
+                           "LastWriteTimeUtc":  "\/Date(1790247208487)\/"
+                       },
+                       {
+                           "Name":  "WUDFPf.sys",
+                           "Length":  136192,
+                           "LastWriteTimeUtc":  "\/Date(1790247259347)\/"
+                       },
+                       {
+                           "Name":  "WUDFRd.sys",
+                           "Length":  315904,
+                           "LastWriteTimeUtc":  "\/Date(1790247259347)\/"
+                       },
+                       {
+                           "Name":  "xboxgip.sys",
+                           "Length":  340480,
+                           "LastWriteTimeUtc":  "\/Date(1790247195847)\/"
+                       },
+                       {
+                           "Name":  "xinputhid.sys",
+                           "Length":  61952,
+                           "LastWriteTimeUtc":  "\/Date(1790247195878)\/"
+                       }
+                   ],
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "b527979b-ef09-4d19-9505-c4471bdd2e7a",
+    "PSShowComputerName":  true
+}

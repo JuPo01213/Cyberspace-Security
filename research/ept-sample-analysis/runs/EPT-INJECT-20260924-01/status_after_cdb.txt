@@ -1,0 +1,204 @@
+﻿{
+    "root":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01",
+    "files":  [
+                  {
+                      "Name":  "cdb.err.txt",
+                      "Length":  0,
+                      "LastWriteTimeUtc":  "\/Date(1790251174823)\/"
+                  },
+                  {
+                      "Name":  "cdb.log",
+                      "Length":  4550,
+                      "LastWriteTimeUtc":  "\/Date(1790251175573)\/"
+                  },
+                  {
+                      "Name":  "cdb_command.txt",
+                      "Length":  266,
+                      "LastWriteTimeUtc":  "\/Date(1790251174667)\/"
+                  },
+                  {
+                      "Name":  "child_honest.cdb",
+                      "Length":  1130,
+                      "LastWriteTimeUtc":  "\/Date(1790251045180)\/"
+                  },
+                  {
+                      "Name":  "done.json",
+                      "Length":  860,
+                      "LastWriteTimeUtc":  "\/Date(1790251341571)\/"
+                  },
+                  {
+                      "Name":  "events.ndjson",
+                      "Length":  143207,
+                      "LastWriteTimeUtc":  "\/Date(1790251341602)\/"
+                  },
+                  {
+                      "Name":  "file_changes.json",
+                      "Length":  947,
+                      "LastWriteTimeUtc":  "\/Date(1790251341555)\/"
+                  },
+                  {
+                      "Name":  "forge_license_response_284.bin",
+                      "Length":  284,
+                      "LastWriteTimeUtc":  "\/Date(1790251045259)\/"
+                  },
+                  {
+                      "Name":  "heartbeat.json",
+                      "Length":  353,
+                      "LastWriteTimeUtc":  "\/Date(1790251331361)\/"
+                  },
+                  {
+                      "Name":  "injected_runner.ps1",
+                      "Length":  14667,
+                      "LastWriteTimeUtc":  "\/Date(1790251044946)\/"
+                  },
+                  {
+                      "Name":  "network.ndjson",
+                      "Length":  187278,
+                      "LastWriteTimeUtc":  "\/Date(1790251334920)\/"
+                  },
+                  {
+                      "Name":  "phase.json",
+                      "Length":  273,
+                      "LastWriteTimeUtc":  "\/Date(1790251341586)\/"
+                  },
+                  {
+                      "Name":  "post.json",
+                      "Length":  228156,
+                      "LastWriteTimeUtc":  "\/Date(1790251341539)\/"
+                  },
+                  {
+                      "Name":  "pre.json",
+                      "Length":  226462,
+                      "LastWriteTimeUtc":  "\/Date(1790251152886)\/"
+                  },
+                  {
+                      "Name":  "target.stderr.txt",
+                      "Length":  0,
+                      "LastWriteTimeUtc":  "\/Date(1790251154089)\/"
+                  },
+                  {
+                      "Name":  "target.stdout.txt",
+                      "Length":  22,
+                      "LastWriteTimeUtc":  "\/Date(1790251336027)\/"
+                  }
+              ],
+    "phase":  {
+                  "value":  "{\r\n    \"run_id\":  \"EPT-INJECT-20260924-01\",\r\n    \"phase\":  \"DONE\",\r\n    \"utc\":  \"2026-09-24T12:02:21.5712166Z\",\r\n    \"evidence_scope\":  \"real_sample_guest_run_injected_io\",\r\n    \"response_injection\":  \"NOT_ATTACHED\",\r\n    \"status\":  \"OBSERVER_COMPLETE_INJECTION_PENDING\"\r\n}",
+                  "PSPath":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01\\phase.json",
+                  "PSParentPath":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01",
+                  "PSChildName":  "phase.json",
+                  "PSDrive":  {
+                                  "Used":  22514581504,
+                                  "Free":  46202793984,
+                                  "CurrentLocation":  "Users\\<VM_USER>\\Documents",
+                                  "Name":  "C",
+                                  "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                  "Root":  "C:\\",
+                                  "Description":  "Windows",
+                                  "MaximumSize":  null,
+                                  "Credential":  {
+                                                     "UserName":  null,
+                                                     "Password":  null
+                                                 },
+                                  "DisplayRoot":  null
+                              },
+                  "PSProvider":  {
+                                     "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                     "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                     "Name":  "FileSystem",
+                                     "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                     "ModuleName":  "Microsoft.PowerShell.Core",
+                                     "Module":  null,
+                                     "Description":  "",
+                                     "Capabilities":  "Filter, ShouldProcess, Credentials",
+                                     "Home":  "<HOST_PATH>\\Users\\<USER>",
+                                     "Drives":  [
+                                                    {
+                                                        "Used":  22514581504,
+                                                        "Free":  46202793984,
+                                                        "CurrentLocation":  "Users\\<VM_USER>\\Documents",
+                                                        "Name":  "C",
+                                                        "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                                        "Root":  "C:\\",
+                                                        "Description":  "Windows",
+                                                        "MaximumSize":  null,
+                                                        "Credential":  {
+                                                                           "UserName":  null,
+                                                                           "Password":  null
+                                                                       },
+                                                        "DisplayRoot":  null
+                                                    },
+                                                    "A",
+                                                    "D"
+                                                ]
+                                 },
+                  "ReadCount":  1
+              },
+    "done":  {
+                 "value":  "{\r\n    \"run_id\":  \"EPT-INJECT-20260924-01\",\r\n    \"status\":  \"OBSERVER_COMPLETE_INJECTION_PENDING\",\r\n    \"mode\":  \"real_sample_guest_run_injected_io\",\r\n    \"evidence_scope\":  \"real_sample_guest_run_injected_io\",\r\n    \"completed_utc\":  \"2026-09-24T12:02:21.5712166Z\",\r\n    \"target_path\":  \"C:\\\\ept_core\\\\Hardware.exe\",\r\n    \"target_pid\":  3736,\r\n    \"target_native_return\":  \"NOT_OBSERVED\",\r\n    \"target_caller_diff_bytes\":  \"NOT_OBSERVED\",\r\n    \"rc06_entry\":  \"NOT_OBSERVED\",\r\n    \"rc06_return\":  \"NOT_OBSERVED\",\r\n    \"post_decode_behavior\":  \"OBSERVATION_WINDOW_COMPLETED_INJECTION_NOT_ATTACHED\",\r\n    \"response_injection\":  \"NOT_ATTACHED\",\r\n    \"input_state\":  \"synthetic_invalid_card_no_secret\",\r\n    \"deadline_seconds\":  180,\r\n    \"runner_sha256\":  \"AD7C1F506C7CF8CE7A4938C70923236DC2F007445D9BB743F0EF71C3C148CE02\",\r\n    \"errors\":  [\r\n\r\n               ]\r\n}",
+                 "PSPath":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01\\done.json",
+                 "PSParentPath":  "C:\\ept_obs\\spool\\EPT-INJECT-20260924-01",
+                 "PSChildName":  "done.json",
+                 "PSDrive":  {
+                                 "Used":  22514581504,
+                                 "Free":  46202793984,
+                                 "CurrentLocation":  "Users\\<VM_USER>\\Documents",
+                                 "Name":  "C",
+                                 "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                 "Root":  "C:\\",
+                                 "Description":  "Windows",
+                                 "MaximumSize":  null,
+                                 "Credential":  {
+                                                    "UserName":  null,
+                                                    "Password":  null
+                                                },
+                                 "DisplayRoot":  null
+                             },
+                 "PSProvider":  {
+                                    "ImplementingType":  "Microsoft.PowerShell.Commands.FileSystemProvider",
+                                    "HelpFile":  "System.Management.Automation.dll-Help.xml",
+                                    "Name":  "FileSystem",
+                                    "PSSnapIn":  "Microsoft.PowerShell.Core",
+                                    "ModuleName":  "Microsoft.PowerShell.Core",
+                                    "Module":  null,
+                                    "Description":  "",
+                                    "Capabilities":  "Filter, ShouldProcess, Credentials",
+                                    "Home":  "<HOST_PATH>\\Users\\<USER>",
+                                    "Drives":  [
+                                                   {
+                                                       "Used":  22514581504,
+                                                       "Free":  46202793984,
+                                                       "CurrentLocation":  "Users\\<VM_USER>\\Documents",
+                                                       "Name":  "C",
+                                                       "Provider":  "Microsoft.PowerShell.Core\\FileSystem",
+                                                       "Root":  "C:\\",
+                                                       "Description":  "Windows",
+                                                       "MaximumSize":  null,
+                                                       "Credential":  {
+                                                                          "UserName":  null,
+                                                                          "Password":  null
+                                                                      },
+                                                       "DisplayRoot":  null
+                                                   },
+                                                   "A",
+                                                   "D"
+                                               ]
+                                },
+                 "ReadCount":  1
+             },
+    "processes":  [
+                      {
+                          "Id":  8940,
+                          "ProcessName":  "cdb",
+                          "Path":  "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe"
+                      },
+                      {
+                          "Id":  368,
+                          "ProcessName":  "Hardware",
+                          "Path":  "C:\\ept_core\\Hardware.exe"
+                      }
+                  ],
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "eb1a8d3a-f3ff-4c5d-9c39-74363d804753",
+    "PSShowComputerName":  true
+}

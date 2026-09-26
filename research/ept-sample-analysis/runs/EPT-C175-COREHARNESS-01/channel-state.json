@@ -1,0 +1,27 @@
+{
+  "run_id": "EPT-C175-COREHARNESS-01",
+  "control_plane": {
+    "kind": "PowerShell Direct",
+    "target_vm": "<VM_LABEL>",
+    "auth_user": "<VM_USER>",
+    "auth_source": "<HOST_PATH>/VMs/<VM_LABEL>/host-secrets/<VM_USER>.password.txt (read at runtime, not persisted)",
+    "status": "PROVEN_THIS_RUN",
+    "probe_rounds_done": 2,
+    "note": "两轮短探针控制面全通；PSSession Copy-Item 数据面送达并 Host 回收割核验一致。"
+  },
+  "data_plane": {
+    "kind": "PSSession Copy-Item + Guest spool",
+    "guest_spool_root": "C:\\ept_obs\\spool",
+    "status": "VERIFIED_THIS_RUN",
+    "note": "python313.tar.gz/捕获件/forge件送达；Guest SHA-256 与 Host authority 一致；Host 收割件复算一致。"
+  },
+  "completion_plane": {
+    "kind": "Guest done.json + Host harvest",
+    "status": "CLOSED",
+    "note": "done.json 落盘；run_meta.json + 所有产物已 Host 收割并 HOST_VERIFIED。"
+  },
+  "probe_rounds_required": 2,
+  "probe_rounds_done": 2,
+  "last_canary_seq": 0,
+  "notes": "PowerShell Direct 此前在 C173-gen1-comm-20260924-01 已验证；本次运行重新做两轮短探针。"
+}

@@ -1,0 +1,70 @@
+== C63 壳判据关键词在核心捕获面里的位置与编码形态 ==
+question=核心是否真的打出这些字样；若打出，在哪一块、什么编码、与已知弹框串的相对位置
+
+-- stream_C6/stream_text.bin  8257536 B  sha256=5ae354e2983a5bf4
+   base=0x140000000  来源=embedded PE header (e_lfanew=0x80) ImageBase  复核地标=gate cmp #1 字节@0x1407a30b2
+   \u7ed1\u5b9a gbk       4 处: 0x1407df027, 0x1407df05a, 0x1407df079, 0x1407df117
+        上下文 gbk=\u5e38\u72b6\u51b5\uff0c\u65e0\u6cd5\u767b\u5f55\xb7\u65e0\u6cd5\u6fc0\u6d3b\u5361\u5bc6\xb7\u5f53\u524d\u8bbe\u5907\u4fe1\u606f\u4e0e\u5361\u53f7\u7ed1\u5b9a\u4fe1\u606f\u4e0d
+        上下文 gbk=\u3110\u7554\u2489\u7070\u6062\ufffd\xb7\u8bfb\u53d6\u5361\u5bc6\u5c5e\u6027\u65f6\u51fa\u9519\xb7\u5361\u5bc6/\u8d26\u53f7\u6ca1\u6709\u8bbe\u7f6e\u7ed1\u5b9a\u4fe1\u606f\u621
+   \u5176\u4ed6\u673a\u5668 gbk       1 处: 0x1407def5c
+        上下文 gbk=\u6f5c\u73af\ufffd\u52a1\u5668\u4e3b\u52a8\u8e22\u4e0b\u7ebf\u6216\u88ab\u5176\u4ed6\u8fde\u63a5\u767b\u5f55\u6324\u4e0b\u7ebf\uff09\xb7\u5df2\u5728\u5176\u4ed6\u673a\u5668\u4e
+
+-- stream_C6/stream_rdata.bin  262144 B  sha256=fb63581ccc65d4dc
+   地标① ASCII "yz.hwid001.com" 命中 3 处，首个 off=0x12688 -> 反解 base=0x140f80000（候选 ['0x140f80000', '0x1407db000', '0x140f9e000']）
+      地标反解 base=0x140f80000；与段表候选 ['0x140f80000', '0x1407db000', '0x140f9e000'] 的交=0x140f80000
+      round-trip: VA->offset->VA = 0x140f92688 -> 0x12688 -> 0x140f92688  OK
+   base=0x140f80000  来源=ASCII landmark yz.hwid001.com@0x140f92688  复核地标=yz.hwid001.com@0x140f92688, 弹框标题 GBK@0x140f924f8
+   \u7ed1\u5b9a gbk       1 处: 0x140f93022
+        上下文 gbk=\u8fc7\u671f!\xb7\u6388\u6743\u7801\u5df2\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5
+   \u6388\u6743\u7801\u5df2\u7ed1 gbk       1 处: 0x140f9301a
+        上下文 gbk=\u6743\u7801\u5df2\u7ecf\u8fc7\u671f!\xb7\u6388\u6743\u7801\u5df2\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5
+   \u5176\u4ed6\u673a\u5668 gbk       2 处: 0x140f93026, 0x140f93068
+        上下文 gbk=!\xb7\u6388\u6743\u7801\u5df2\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5668\uff0c\u8
+        上下文 gbk=\u6743\u7801\uff01\xb7\xb7\u6388\u6743\u72b6\u6001\u5df2\u5931\u6548\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\uff01\xb7\xb7\xb7\xb7\u6388\u6743\u5df2\u5728\u5176\u4ed6\u673a\u5668\u
+   \u66f4\u6362\u6388\u6743\u7801 gbk       1 处: 0x140f93032
+        上下文 gbk=\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5668\uff0c\u8bf7\u66f4\u6362\u6388\u6743\u7801\u
+   \u8bf7\u66f4\u6362 gbk       1 处: 0x140f93030
+        上下文 gbk=\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5668\uff0c\u8bf7\u66f4\u6362\u6388\u6743\u
+   \u6388\u6743\u9a8c\u8bc1 gbk       1 处: 0x140f924f8
+        上下文 gbk=\u5f02\u5e38\uff0c\u672c\u5730\u914d\u7f6e\u4e0e\u56fa\u5b9a\u90e8\u7f72\u5df2\u6e05\u7406\u3002\xb7\u9519\u8bef\u7801\uff1a%d\xb7\xb7\xb7\xb7\xb7\u6388\u6743\u9a8c\u8bc1\xb7\x
+   \u672c\u5730\u914d\u7f6e gbk       4 处: 0x140f90176, 0x140f924ce, 0x140f930c8, 0x140f93260
+        上下文 gbk=\u88c5/\u90e8\u7f72\xb7\xb7\xb7NspSetupWindow\xb7\xb7\u521d\u59cb\u5316\u914d\u7f6e\u754c\u9762\xb7\xb7\u5df2\u8bfb\u53d6\u672c\u5730\u914d\u7f6e\u6863\u6848\xb7\xb7\xb7\xb7\xb
+        上下文 gbk=:\\Windows\\System32\\HardwareLogs"\xb7\xb7\u6388\u6743\u72b6\u6001\u5f02\u5e38\uff0c\u672c\u5730\u914d\u7f6e\u4e0e\u56fa\u5b9a\u90e8\u7f72\u5df2\u6e05\u7406\u3002\xb7\u9519\u8
+   [弹框正文前缀] \u6388\u6743\u72b6\u6001\u5f02\u5e38 @ 0x140f924c0  形态=gbk
+   [弹框标题] \u6388\u6743\u9a8c\u8bc1 @ 0x140f924f8  形态=gbk
+
+-- stream_C6/stream_rdatafront.bin  1048576 B  sha256=87bf94ecb38d5c02
+   基址未证明：本块不声明 VA，只报存在性与块内偏移
+   \u7ed1\u5b9a gbk       4 处: off 0x4027, off 0x405a, off 0x4079, off 0x4117
+        上下文 gbk=\u5e38\u72b6\u51b5\uff0c\u65e0\u6cd5\u767b\u5f55\xb7\u65e0\u6cd5\u6fc0\u6d3b\u5361\u5bc6\xb7\u5f53\u524d\u8bbe\u5907\u4fe1\u606f\u4e0e\u5361\u53f7\u7ed1\u5b9a\u4fe1\u606f\u4e0d
+        上下文 gbk=\u3110\u7554\u2489\u7070\u6062\ufffd\xb7\u8bfb\u53d6\u5361\u5bc6\u5c5e\u6027\u65f6\u51fa\u9519\xb7\u5361\u5bc6/\u8d26\u53f7\u6ca1\u6709\u8bbe\u7f6e\u7ed1\u5b9a\u4fe1\u606f\u621
+   \u5176\u4ed6\u673a\u5668 gbk       1 处: off 0x3f5c
+        上下文 gbk=\u6f5c\u73af\ufffd\u52a1\u5668\u4e3b\u52a8\u8e22\u4e0b\u7ebf\u6216\u88ab\u5176\u4ed6\u8fde\u63a5\u767b\u5f55\u6324\u4e0b\u7ebf\uff09\xb7\u5df2\u5728\u5176\u4ed6\u673a\u5668\u4e
+
+-- RG2_region_0x140e00000.bin  4194304 B  sha256=09d8d5de60596799
+   地标① ASCII "yz.hwid001.com" 命中 3 处，首个 off=0x192688 -> 反解 base=0x140e00000（候选 ['0x140e00000']）
+      地标反解 base=0x140e00000；与段表候选 ['0x140e00000'] 的交=0x140e00000
+      round-trip: VA->offset->VA = 0x140f92688 -> 0x192688 -> 0x140f92688  OK
+   base=0x140e00000  来源=ASCII landmark yz.hwid001.com@0x140f92688  复核地标=yz.hwid001.com@0x140f92688, 弹框标题 GBK@0x140f924f8
+   \u7ed1\u5b9a gbk       1 处: 0x140f93022
+        上下文 gbk=\u8fc7\u671f!\xb7\u6388\u6743\u7801\u5df2\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5
+   \u6388\u6743\u7801\u5df2\u7ed1 gbk       1 处: 0x140f9301a
+        上下文 gbk=\u6743\u7801\u5df2\u7ecf\u8fc7\u671f!\xb7\u6388\u6743\u7801\u5df2\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5
+   \u5176\u4ed6\u673a\u5668 gbk       2 处: 0x140f93026, 0x140f93068
+        上下文 gbk=!\xb7\u6388\u6743\u7801\u5df2\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5668\uff0c\u8
+        上下文 gbk=\u6743\u7801\uff01\xb7\xb7\u6388\u6743\u72b6\u6001\u5df2\u5931\u6548\uff0c\u8bf7\u91cd\u65b0\u767b\u5f55\uff01\xb7\xb7\xb7\xb7\u6388\u6743\u5df2\u5728\u5176\u4ed6\u673a\u5668\u
+   \u66f4\u6362\u6388\u6743\u7801 gbk       1 处: 0x140f93032
+        上下文 gbk=\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5668\uff0c\u8bf7\u66f4\u6362\u6388\u6743\u7801\u
+   \u8bf7\u66f4\u6362 gbk       1 处: 0x140f93030
+        上下文 gbk=\u88ab\u5c01\u505c!\xb7\u7981\u6b62\u540c\u65f6\u5728\u7ebf!\xb7\xb7\xb7\u6b64\u6388\u6743\u7801\u5df2\u7ed1\u5b9a\u5176\u4ed6\u673a\u5668\uff0c\u8bf7\u66f4\u6362\u6388\u6743\u
+   \u6388\u6743\u9a8c\u8bc1 gbk       1 处: 0x140f924f8
+        上下文 gbk=\u5f02\u5e38\uff0c\u672c\u5730\u914d\u7f6e\u4e0e\u56fa\u5b9a\u90e8\u7f72\u5df2\u6e05\u7406\u3002\xb7\u9519\u8bef\u7801\uff1a%d\xb7\xb7\xb7\xb7\xb7\u6388\u6743\u9a8c\u8bc1\xb7\x
+   \u672c\u5730\u914d\u7f6e gbk       4 处: 0x140f90176, 0x140f924ce, 0x140f930c8, 0x140f93260
+        上下文 gbk=\u88c5/\u90e8\u7f72\xb7\xb7\xb7NspSetupWindow\xb7\xb7\u521d\u59cb\u5316\u914d\u7f6e\u754c\u9762\xb7\xb7\u5df2\u8bfb\u53d6\u672c\u5730\u914d\u7f6e\u6863\u6848\xb7\xb7\xb7\xb7\xb
+        上下文 gbk=:\\Windows\\System32\\HardwareLogs"\xb7\xb7\u6388\u6743\u72b6\u6001\u5f02\u5e38\uff0c\u672c\u5730\u914d\u7f6e\u4e0e\u56fa\u5b9a\u90e8\u7f72\u5df2\u6e05\u7406\u3002\xb7\u9519\u8
+   [弹框正文前缀] \u6388\u6743\u72b6\u6001\u5f02\u5e38 @ 0x140f924c0  形态=gbk
+   [弹框标题] \u6388\u6743\u9a8c\u8bc1 @ 0x140f924f8  形态=gbk
+
+-- 结论口径（自动算，不写死）--
+见上方各行的命中数：任何关键词在**任何一块**里命中数=0 且该块基址未证明，只能写
+"该捕获面未见"，不能写"核心不打这些字"。

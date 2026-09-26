@@ -1,0 +1,1308 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.063 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_30A552CF_A0532B52.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(1018.8c4): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:003> .echo STATIC_FATAL_REGION_BEGIN
+STATIC_FATAL_REGION_BEGIN
+0:003> u 0x1407aa640 L16
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_30A552CF_A0532B52.exe
+EPT_30A552CF_A0532B52+0x7aa640:
+00000001`407aa640 0000            add     byte ptr [rax],al
+00000001`407aa642 0000            add     byte ptr [rax],al
+00000001`407aa644 0000            add     byte ptr [rax],al
+00000001`407aa646 0000            add     byte ptr [rax],al
+00000001`407aa648 0000            add     byte ptr [rax],al
+00000001`407aa64a 0000            add     byte ptr [rax],al
+00000001`407aa64c 0000            add     byte ptr [rax],al
+00000001`407aa64e 0000            add     byte ptr [rax],al
+00000001`407aa650 0000            add     byte ptr [rax],al
+00000001`407aa652 0000            add     byte ptr [rax],al
+00000001`407aa654 0000            add     byte ptr [rax],al
+00000001`407aa656 0000            add     byte ptr [rax],al
+00000001`407aa658 0000            add     byte ptr [rax],al
+00000001`407aa65a 0000            add     byte ptr [rax],al
+00000001`407aa65c 0000            add     byte ptr [rax],al
+00000001`407aa65e 0000            add     byte ptr [rax],al
+00000001`407aa660 0000            add     byte ptr [rax],al
+00000001`407aa662 0000            add     byte ptr [rax],al
+00000001`407aa664 0000            add     byte ptr [rax],al
+00000001`407aa666 0000            add     byte ptr [rax],al
+00000001`407aa668 0000            add     byte ptr [rax],al
+00000001`407aa66a 0000            add     byte ptr [rax],al
+0:003> u 0x1407aa694 L10
+EPT_30A552CF_A0532B52+0x7aa694:
+00000001`407aa694 0000            add     byte ptr [rax],al
+00000001`407aa696 0000            add     byte ptr [rax],al
+00000001`407aa698 0000            add     byte ptr [rax],al
+00000001`407aa69a 0000            add     byte ptr [rax],al
+00000001`407aa69c 0000            add     byte ptr [rax],al
+00000001`407aa69e 0000            add     byte ptr [rax],al
+00000001`407aa6a0 0000            add     byte ptr [rax],al
+00000001`407aa6a2 0000            add     byte ptr [rax],al
+00000001`407aa6a4 0000            add     byte ptr [rax],al
+00000001`407aa6a6 0000            add     byte ptr [rax],al
+00000001`407aa6a8 0000            add     byte ptr [rax],al
+00000001`407aa6aa 0000            add     byte ptr [rax],al
+00000001`407aa6ac 0000            add     byte ptr [rax],al
+00000001`407aa6ae 0000            add     byte ptr [rax],al
+00000001`407aa6b0 0000            add     byte ptr [rax],al
+00000001`407aa6b2 0000            add     byte ptr [rax],al
+0:003> u 0x1407b1090 L6
+EPT_30A552CF_A0532B52+0x7b1090:
+00000001`407b1090 0000            add     byte ptr [rax],al
+00000001`407b1092 0000            add     byte ptr [rax],al
+00000001`407b1094 0000            add     byte ptr [rax],al
+00000001`407b1096 0000            add     byte ptr [rax],al
+00000001`407b1098 0000            add     byte ptr [rax],al
+00000001`407b109a 0000            add     byte ptr [rax],al
+0:003> .echo STATIC_FATAL_REGION_END
+STATIC_FATAL_REGION_END
+0:003> .echo RUN58_STAGE_FORCE_BEGIN
+RUN58_STAGE_FORCE_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:003> sxi av
+0:003> sxi c0000005
+0:003> sxi e06d7363
+0:003> sxi 80000003
+0:003> sxi 80000004
+0:003> sxi c000001d
+0:003> sxi c0000094
+0:003> sxi e0434352
+0:003> sxi 6d9
+0:003> .echo EXCEPTION_PASSTHROUGH_ARMED
+EXCEPTION_PASSTHROUGH_ARMED
+0:003> eb 0x1403b34d0 33 c0 c3
+0:003> eb 0x1403b3280 33 c0 c3
+0:003> eb 0x1403c47e0 33 c0 c3
+0:003> eb 0x1403b3d30 33 c0 c3
+0:003> eb 0x1403c49d0 33 c0 c3
+0:003> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:003> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:003> bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; r rip=poi(rsp); r rsp=rsp+8; g"
+breakpoint 3 redefined
+0:003> bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+0:003> bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+0:003> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:003> bu kernel32!WriteFile ".echo WFW; r rcx; r r8; !handle @rcx f; db @rdx L8; j (@r8 > 0x100000) 'db @rdx+@r8-8 L8; !address @rdx; !address @rdx+@r8-8; g' 'g'"
+0:003> bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+0:003> bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+0:003> bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+0:003> bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+0:003> bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+0:003> bu kernelbase!GetFileSizeEx ".echo GFS; r rcx; g"
+0:003> bu kernelbase!SetFilePointerEx ".echo SFP; r rcx; g"
+0:003> bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+0:003> ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+0:003> ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+0:003> ba e 1 14171f567 ".echo FATAL_THUNK; k L12; dd @rsp L4; r rsp=@$t0; r rbx=0; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b109b; r eax=1; g"
+0:003> .echo HWBP_ARMED_SYNTHRET
+HWBP_ARMED_SYNTHRET
+0:003> g
+ModLoad: 00007ffb`d9bc0000 00007ffb`d9bcc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffb`da3b0000 00007ffb`da432000   C:\Windows\System32\bcryptPrimitives.dll
+SCHED_CALLSITE
+CFW
+00000000`005f8670  "C:\Windows\System32\Hardware"
+KB_CFW
+00000000`005f8670  "C:\Windows\System32\Hardware"
+WFW
+rcx=00000000000001bc
+r8=0000000000000016
+Handle 1bc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145b70  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001bc
+r8=000000000000000f
+Handle 1bc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65538
+  No Object Specific Information available
+00000001`40f92e50  53 65 74 75 70 46 6c 6f                          SetupFlo
+WFW
+rcx=00000000000001bc
+r8=0000000000000002
+Handle 1bc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+ModLoad: 00007ffb`cd4b0000 00007ffb`cd4c7000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffb`cc4e0000 00007ffb`cc4fb000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffb`d4040000 00007ffb`d405d000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffb`d4fe0000 00007ffb`d4ffd000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffb`d99b0000 00007ffb`d9a1a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffb`d96d0000 00007ffb`d979a000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffb`dac90000 00007ffb`dac98000   C:\Windows\System32\NSI.dll
+KB_CFW
+00007ffb`dac932a0  "\\.\Nsi"
+ModLoad: 00007ffb`caaf0000 00007ffb`cab02000   C:\Windows\System32\winrnr.dll
+KB_CFW
+00000000`00144060  "C:\Windows\Globalization\Sorting"
+00000000`001440a0  "\sortdefault.nls"
+ModLoad: 00007ffb`d2a20000 00007ffb`d2aa0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffb`d1f00000 00007ffb`d1f0a000   C:\Windows\System32\rasadhlp.dll
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145920  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002c4
+r8=0000000000000030
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000000`00145c10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT
+rbx=0000000000000000
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145b70  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002c4
+r8=0000000000000021
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f92e88  53 65 74 75 70 2e 53 65                          Setup.Se
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+SLEEP_OBSERVER
+rcx=00000000000003e8
+SLEEP_OBSERVER
+rcx=00000000000003e8
+SLEEP_OBSERVER
+rcx=00000000000003e8
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145920  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002c4
+r8=0000000000000042
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`00145c10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT
+rbx=00000000fffffffd
+SLEEP_OBSERVER
+rcx=00000000000003e8
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145920  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002c4
+r8=000000000000003c
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`00145c10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT
+rbx=00000000fffffffd
+SLEEP_OBSERVER
+rcx=00000000000003e8
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145b70  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002c4
+r8=0000000000000060
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`001481c0  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+Handle 2c4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+CWEXA_OBS
+00000001`40f8fa40  "ª„?Îï¬›®y?ª››C˜
+00000001`40f8fa60  "ùÒ??????
+CWEXA_OBS
+00000001`40f8f974  "ß½…Í
+00000001`40f8f930  "???????ùÒ???????üª??ùá?????®ä???.
+00000001`40f8f970  ""
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8ebc0  "??ùÓ?????????????????????????.¨Ê.
+00000001`40f8ec00  "??????????????.?????????????????"
+00000001`40f8ec40  "????¨Ê???????????????????????????
+00000001`40f8ec80  "??????????????????þê???..??üÀ????
+00000001`40f8ecc0  ".????.??¦o?????®ä?????®Û?????..?¦
+00000001`40f8ed00  "??????..¡å????????.????.??ùá???¬·
+00000001`40f8ed40  "?????.???.????üÀ?.??..??????..???
+00000001`40f8ed80  "??????üÀ???????????????????????ùÓ
+00000001`40f8edc0  "??.???????????..¡ä?..????????????
+00000001`40f8ee00  "?¦S¬´????????.?????????üÀ??????¦S
+00000001`40f8ee40  ".?????.????¨œ?.????¨œ???..¡å?????
+00000001`40f8ee80  "?????????..?????????????????????"
+KB_CFW
+00000000`00143510  "C:\Windows\Fonts\staticcache.dat"
+00000000`00143550  ""
+GFS
+rcx=00000000000002cc
+RDF
+rcx=00000000000002cc
+r8=000000000000003c
+ModLoad: 00007ffb`cb610000 00007ffb`cb6bc000   C:\Windows\SYSTEM32\TextShaping.dll
+CWEXA_OBS
+00000001`40f8f974  "ß½…Í
+00000001`40f8f990  ".???????????????????????????????"
+00000001`40f8f9d0  "???.?ùÌ??????.???????¨¿???ùá?????
+00000001`40f8fa10  "??"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8fa18  "?ùá???
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8fa30  "??ùá???
+CWEXA_OBS
+00000001`40f90150  "ª„Ó¡¬Áé
+00000001`40f8eba8  "‚£?´È“·¿¶ÇÃ
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff34  "-"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff38  "X"
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8cb58  ""
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff3c  "??"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff44  "??"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff4c  "??"
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8cb58  ""
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff58  "??.????"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff68  "??.????"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff78  "??.????"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff88  "??£??
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8ff94  "1"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8cb58  ""
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff98  ".????"
+CWEXA_OBS
+00000001`40f8fc28  "äó›K˜NªŸË
+00000000`00000000  "????????????????????????????????"
+00000000`00000040  "????????????????????????????????"
+00000000`00000080  "????????????????????????????????"
+00000000`000000c0  "????????????????????????????????"
+00000000`00000100  "????????????????????????????????"
+00000000`00000140  "????????????????????????????????"
+00000000`00000180  "????????????????????????????????"
+00000000`000001c0  "????????????????????????????????"
+00000000`00000200  "????????????????????????????????"
+00000000`00000240  "????????????????????????????????"
+00000000`00000280  "????????????????????????????????"
+00000000`000002c0  "????????????????????????????????"
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145920  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d4
+r8=000000000000003b
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`00145c10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT
+rbx=00000000ffffffeb
+SLEEP_OBSERVER
+rcx=0000000000000064
+SLEEP_OBSERVER
+rcx=0000000000000064
+SLEEP_OBSERVER
+rcx=0000000000000064
+SLEEP_OBSERVER
+rcx=0000000000000064
+SLEEP_OBSERVER
+rcx=0000000000000064
+ModLoad: 00007ffb`d9ba0000 00007ffb`d9bb8000   C:\Windows\SYSTEM32\CRYPTSP.dll
+ModLoad: 00007ffb`d92d0000 00007ffb`d9308000   C:\Windows\system32\rsaenh.dll
+WFW
+rcx=00000000000002d4
+r8=0000000000000004
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145ec8  80 03 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002d4
+r8=0000000000000380
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65538
+  No Object Specific Information available
+00000000`0014b590  fe 00 74 cf 78 f0 90 b3                          ..t.x...
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d4
+r8=000000000000001e
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`00145d10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=00000000000002d4
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d4
+r8=0000000000000036
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000000`00145d10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000001
+SLEEP_OBSERVER
+rcx=0000000000001388
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000002d4
+r8=0000000000000025
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`00145d10  73 74 61 67 65 3d 53 65                          stage=Se
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+Handle 2d4
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000000
+CPW_OBS
+00000000`00614af0  "cmd.exe /d /c wmic baseboard get"
+00000000`00614b30  " SerialNumber /format:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000003f
+CPW_OBS
+00000000`005f5790  "cmd.exe /d /c wmic csproduct get"
+00000000`005f57d0  " UUID /format:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000003b
+CPW_OBS
+00000000`005f5790  "cmd.exe /d /c wmic csproduct get"
+00000000`005f57d0  " Name /format:list"
+RDF
+rcx=00000000000002dc
+r8=0000000000000026
+CPW_OBS
+00000000`005f5790  "cmd.exe /d /c wmic bios get Seri"
+00000000`005f57d0  "alNumber /format:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000003f
+CPW_OBS
+00000000`00614af0  "cmd.exe /d /c wmic diskdrive get"
+00000000`00614b30  " SerialNumber /format:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000001f
+CPW_OBS
+00000000`005f5790  "cmd.exe /d /c wmic cpu get Proce"
+00000000`005f57d0  "ssorId /format:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000002e
+CPW_OBS
+00000000`005f5790  "cmd.exe /d /c wmic cpu get Seria"
+00000000`005f57d0  "lNumber /format:list"
+RDF
+rcx=00000000000002dc
+r8=0000000000000023
+CPW_OBS
+00000000`00631f50  "cmd.exe /d /c wmic path Win32_Vi"
+00000000`00631f90  "deoController get Name /format:l"
+00000000`00631fd0  "ist"
+RDF
+rcx=00000000000002dc
+r8=000000000000002e
+CPW_OBS
+00000000`00614ca0  "cmd.exe /d /c wmic memorychip ge"
+00000000`00614ce0  "t SerialNumber /format:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000003d
+CPW_OBS
+00000000`00631f50  "cmd.exe /d /c wmic path Win32_Ne"
+00000000`00631f90  "tworkAdapterConfiguration where "
+00000000`00631fd0  "IPEnabled=True get MACAddress /f"
+00000000`00632010  "ormat:list"
+RDF
+rcx=00000000000002dc
+r8=000000000000002e
+CPW_OBS
+00000000`00631f50  "cmd.exe /d /c wmic path Win32_Ne"
+00000000`00631f90  "tworkAdapterConfiguration where "
+00000000`00631fd0  "IPEnabled=True get DefaultIPGate"
+00000000`00632010  "way /format:list"
+RDF
+rcx=00000000000002dc
+r8=0000000000000033
+CPW_OBS
+00000000`006138d0  "cmd.exe /d /c ipconfig /all"
+RDF
+rcx=00000000000002dc
+r8=000000000000040b
+CPA_OBS
+00000000`00145ce0  "sc.exe config "AntiCheatExpert P"
+00000000`00145d00  "rotection" start= delayed-auto"
+CPA_OBS
+00000000`00145d10  "sc.exe config "AntiCheatExpert S"
+00000000`00145d30  "ervice" start= delayed-auto"
+ModLoad: 00007ffb`c6750000 00007ffb`c683c000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65534
+  No Object Specific Information available
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000001fc
+r8=0000000000000ab8
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65533
+  No Object Specific Information available
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+ModLoad: 00007ffb`c7430000 00007ffb`c751c000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000001fc
+r8=0000000000001000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65534
+  No Object Specific Information available
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000001fc
+r8=0000000000000ab8
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65533
+  No Object Specific Information available
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+WFW
+rcx=00000000000001fc
+r8=0000000000000016
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00145a30  5b 32 30 32 36 2d 30 39                          [2026-09
+WFW
+rcx=00000000000001fc
+r8=0000000000000037
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65537
+  No Object Specific Information available
+00000000`00145d10  73 74 61 67 65 3d 52 75                          stage=Ru
+WFW
+rcx=00000000000001fc
+r8=0000000000000002
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000001`40f8e2a4  0d 0a 00 00 73 74 61 67                          ....stag
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000000
+WFW
+rcx=00000000000001fc
+r8=000000000000001e
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000001`40f8cf90  54 69 6d 65 2c 54 79 70                          Time,Typ
+WFW
+rcx=00000000000001fc
+r8=00000000000000a3
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x100084:
+         Synch
+         Append/SubDir/CreatePipe,ReadAttr
+  HandleCount  	2
+  PointerCount 	65538
+  No Object Specific Information available
+00000000`001454d0  22 32 30 32 36 2d 30 39                          "2026-09
+CFW
+00000000`0060ac90  "C:\Windows\TEMP\UPFyBwHhrPLQcIjx"
+00000000`0060acd0  "Xyg"
+KB_CFW
+00000000`0060ac90  "C:\Windows\TEMP\UPFyBwHhrPLQcIjx"
+00000000`0060acd0  "Xyg"
+WFW
+rcx=00000000000001fc
+r8=0000000000799000
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000000`049a2060  4d 5a 90 00 03 00 00 00                          MZ......
+00000000`0513b058  00 00 00 00 00 00 00 00                          ........
+
+Building memory map: 0000000000000000Building memory map: 0000000000010000Building memory map: 0000000000020000Building memory map: 0000000000022000Building memory map: 0000000000030000Building memory map: 000000000004d000Building memory map: 0000000000050000Building memory map: 0000000000129000Building memory map: 000000000012c000Building memory map: 0000000000150000Building memory map: 0000000000154000Building memory map: 0000000000160000Building memory map: 0000000000161000Building memory map: 0000000000170000Building memory map: 0000000000172000Building memory map: 0000000000180000Building memory map: 0000000000182000Building memory map: 0000000000190000Building memory map: 0000000000191000Building memory map: 00000000001a0000Building memory map: 00000000001a2000Building memory map: 00000000001a7000Building memory map: 00000000001b0000Building memory map: 00000000001b4000Building memory map: 00000000001b8000Building memory map: 00000000001c0000Building memory map: 00000000001c1000Building memory map: 00000000001c7000Building memory map: 00000000001d0000Building memory map: 00000000001d1000Building memory map: 00000000001d7000Building memory map: 00000000001e0000Building memory map: 00000000001e1000Building memory map: 00000000001f0000Building memory map: 00000000001f1000Building memory map: 0000000000200000Building memory map: 0000000000350000Building memory map: 0000000000357000Building memory map: 0000000000359000Building memory map: 000000000035d000Building memory map: 0000000000400000Building memory map: 00000000004c9000Building memory map: 00000000004d0000Building memory map: 00000000005cc000Building memory map: 00000000005cf000Building memory map: 00000000005d0000Building memory map: 00000000005d1000Building memory map: 00000000005e0000Building memory map: 0000000000617000Building memory map: 0000000000618000Building memory map: 0000000000666000Building memory map: 0000000000668000Building memory map: 000000000066c000Building memory map: 0000000000679000Building memory map: 000000000067b000Building memory map: 0000000000683000Building memory map: 0000000000687000Building memory map: 0000000000696000Building memory map: 00000000006a7000Building memory map: 00000000006d6000Building memory map: 00000000006d9000Building memory map: 00000000006e0000Building memory map: 00000000007dc000Building memory map: 00000000007df000Building memory map: 00000000007e0000Building memory map: 00000000007e2000Building memory map: 00000000009e0000Building memory map: 0000000000b61000Building memory map: 0000000000b70000Building memory map: 0000000000b84000Building memory map: 0000000000c31000Building memory map: 0000000000c40000Building memory map: 0000000000c41000Building memory map: 0000000000d40000Building memory map: 0000000000d41000Building memory map: 0000000000d50000Building memory map: 0000000000d51000Building memory map: 0000000000d60000Building memory map: 0000000000d61000Building memory map: 0000000000da0000Building memory map: 0000000000da7000Building memory map: 0000000000db0000Building memory map: 0000000000dc0000Building memory map: 0000000000dc5000Building memory map: 0000000000dd0000Building memory map: 0000000000e30000Building memory map: 0000000000e37000Building memory map: 0000000000e40000Building memory map: 0000000001178000Building memory map: 0000000001180000Building memory map: 00000000023e0000Building memory map: 00000000024dc000Building memory map: 00000000024df000Building memory map: 00000000024e0000Building memory map: 00000000025dc000Building memory map: 00000000025df000Building memory map: 00000000025e0000Building memory map: 0000000002f60000Building memory map: 0000000002f61000Building memory map: 0000000003053000Building memory map: 0000000003054000Building memory map: 0000000003060000Building memory map: 0000000003061000Building memory map: 000000000316d000Building memory map: 000000000316e000Building memory map: 00000000031fe000Building memory map: 0000000003202000Building memory map: 000000000325d000Building memory map: 000000000325f000Building memory map: 0000000003260000Building memory map: 0000000003580000Building memory map: 0000000003581000Building memory map: 00000000038cd000Building memory map: 00000000038ce000Building memory map: 000000000396f000Building memory map: 0000000003970000Building memory map: 0000000003980000Building memory map: 0000000003d90000Building memory map: 0000000003d91000Building memory map: 00000000040b6000Building memory map: 00000000040c8000Building memory map: 00000000040c9000Building memory map: 00000000040ca000Building memory map: 00000000040ce000Building memory map: 00000000040cf000Building memory map: 00000000040ec000Building memory map: 00000000040ed000Building memory map: 000000000411a000Building memory map: 000000000411b000Building memory map: 0000000004590000Building memory map: 0000000004595000Building memory map: 0000000004996000Building memory map: 0000000004997000Building memory map: 00000000049a0000Building memory map: 00000000049a2000Building memory map: 0000000005508000Building memory map: 0000000005509000Building memory map: 000000007ffe0000Building memory map: 000000007ffe1000Building memory map: 000000007ffe3000Building memory map: 000000007ffe4000Building memory map: 0000000140000000Building memory map: 0000000140001000Building memory map: 00000001407db000Building memory map: 0000000140f9e000Building memory map: 000000014116d000Building memory map: 0000000141174000Building memory map: 00000001411a8000Building memory map: 00000001411ae000Building memory map: 000000014205a000Building memory map: 000000014205b000Building memory map: 0000000143f65000Building memory map: 0000000143f83000Building memory map: 00007ff4fde80000Building memory map: 00007ff4fde85000Building memory map: 00007ff4fdf80000Building memory map: 00007ff5fdfa0000Building memory map: 00007ff5fffa0000Building memory map: 00007ff5fffa1000Building memory map: 00007ff5fffb0000Building memory map: 00007ff5fffb1000Building memory map: 00007ff5fffc0000Building memory map: 00007ff5ffff3000Building memory map: 00007ffbc82a0000Building memory map: 00007ffbc82a1000Building memory map: 00007ffbc832a000Building memory map: 00007ffbc8337000Building memory map: 00007ffbc833b000Building memory map: 00007ffbc8350000Building memory map: 00007ffbcaaf0000Building memory map: 00007ffbcaaf1000Building memory map: 00007ffbcaafa000Building memory map: 00007ffbcaafd000Building memory map: 00007ffbcaafe000Building memory map: 00007ffbcab02000Building memory map: 00007ffbcb610000Building memory map: 00007ffbcb611000Building memory map: 00007ffbcb65c000Building memory map: 00007ffbcb6b7000Building memory map: 00007ffbcb6b8000Building memory map: 00007ffbcb6bc000Building memory map: 00007ffbcc4e0000Building memory map: 00007ffbcc4e1000Building memory map: 00007ffbcc4f2000Building memory map: 00007ffbcc4f6000Building memory map: 00007ffbcc4f7000Building memory map: 00007ffbcc4fb000Building memory map: 00007ffbcd4b0000Building memory map: 00007ffbcd4b1000Building memory map: 00007ffbcd4be000Building memory map: 00007ffbcd4c2000Building memory map: 00007ffbcd4c3000Building memory map: 00007ffbcd4c7000Building memory map: 00007ffbd1f00000Building memory map: 00007ffbd1f01000Building memory map: 00007ffbd1f03000Building memory map: 00007ffbd1f05000Building memory map: 00007ffbd1f06000Building memory map: 00007ffbd1f0a000Building memory map: 00007ffbd2a20000Building memory map: 00007ffbd2a21000Building memory map: 00007ffbd2a67000Building memory map: 00007ffbd2a95000Building memory map: 00007ffbd2a96000Building memory map: 00007ffbd2aa0000Building memory map: 00007ffbd4040000Building memory map: 00007ffbd4041000Building memory map: 00007ffbd4053000Building memory map: 00007ffbd4058000Building memory map: 00007ffbd4059000Building memory map: 00007ffbd405d000Building memory map: 00007ffbd4fe0000Building memory map: 00007ffbd4fe1000Building memory map: 00007ffbd4ff2000Building memory map: 00007ffbd4ff7000Building memory map: 00007ffbd4ff8000Building memory map: 00007ffbd4ffd000Building memory map: 00007ffbd78f0000Building memory map: 00007ffbd78f1000Building memory map: 00007ffbd7942000Building memory map: 00007ffbd7965000Building memory map: 00007ffbd7968000Building memory map: 00007ffbd7984000Building memory map: 00007ffbd92d0000Building memory map: 00007ffbd92d1000Building memory map: 00007ffbd92f7000Building memory map: 00007ffbd92ff000Building memory map: 00007ffbd9300000Building memory map: 00007ffbd9308000Building memory map: 00007ffbd9690000Building memory map: 00007ffbd9691000Building memory map: 00007ffbd96ba000Building memory map: 00007ffbd96c5000Building memory map: 00007ffbd96c6000Building memory map: 00007ffbd96cb000Building memory map: 00007ffbd96d0000Building memory map: 00007ffbd96d1000Building memory map: 00007ffbd9763000Building memory map: 00007ffbd9785000Building memory map: 00007ffbd9787000Building memory map: 00007ffbd979a000Building memory map: 00007ffbd99b0000Building memory map: 00007ffbd99b1000Building memory map: 00007ffbd9a04000Building memory map: 00007ffbd9a12000Building memory map: 00007ffbd9a14000Building memory map: 00007ffbd9a1a000Building memory map: 00007ffbd9ba0000Building memory map: 00007ffbd9ba1000Building memory map: 00007ffbd9bad000Building memory map: 00007ffbd9bb3000Building memory map: 00007ffbd9bb4000Building memory map: 00007ffbd9bb8000Building memory map: 00007ffbd9bc0000Building memory map: 00007ffbd9bc1000Building memory map: 00007ffbd9bc4000Building memory map: 00007ffbd9bc7000Building memory map: 00007ffbd9bc8000Building memory map: 00007ffbd9bcc000Building memory map: 00007ffbda3b0000Building memory map: 00007ffbda3b1000Building memory map: 00007ffbda415000Building memory map: 00007ffbda42b000Building memory map: 00007ffbda42c000Building memory map: 00007ffbda432000Building memory map: 00007ffbda440000Building memory map: 00007ffbda441000Building memory map: 00007ffbda44c000Building memory map: 00007ffbda45b000Building memory map: 00007ffbda45c000Building memory map: 00007ffbda462000Building memory map: 00007ffbda470000Building memory map: 00007ffbda471000Building memory map: 00007ffbda525000Building memory map: 00007ffbda55f000Building memory map: 00007ffbda562000Building memory map: 00007ffbda570000Building memory map: 00007ffbda571000Building memory map: 00007ffbda5c5000Building memory map: 00007ffbda601000Building memory map: 00007ffbda602000Building memory map: 00007ffbda605000Building memory map: 00007ffbda60d000Building memory map: 00007ffbda660000Building memory map: 00007ffbda661000Building memory map: 00007ffbda67b000Building memory map: 00007ffbda681000Building memory map: 00007ffbda682000Building memory map: 00007ffbda687000Building memory map: 00007ffbda690000Building memory map: 00007ffbda691000Building memory map: 00007ffbda7c2000Building memory map: 00007ffbda945000Building memory map: 00007ffbda94a000Building memory map: 00007ffbda986000Building memory map: 00007ffbda990000Building memory map: 00007ffbda991000Building memory map: 00007ffbdaa35000Building memory map: 00007ffbdaa87000Building memory map: 00007ffbdaa8c000Building memory map: 00007ffbdaaa9000Building memory map: 00007ffbdaab0000Building memory map: 00007ffbdaab1000Building memory map: 00007ffbdabbd000Building memory map: 00007ffbdabf5000Building memory map: 00007ffbdabfc000Building memory map: 00007ffbdac0d000Building memory map: 00007ffbdac90000Building memory map: 00007ffbdac91000Building memory map: 00007ffbdac93000Building memory map: 00007ffbdac94000Building memory map: 00007ffbdac95000Building memory map: 00007ffbdac98000Building memory map: 00007ffbdaca0000Building memory map: 00007ffbdaca1000Building memory map: 00007ffbdad7d000Building memory map: 00007ffbdada8000Building memory map: 00007ffbdadaa000Building memory map: 00007ffbdadc0000Building memory map: 00007ffbdaf20000Building memory map: 00007ffbdaf21000Building memory map: 00007ffbdb15a000Building memory map: 00007ffbdb220000Building memory map: 00007ffbdb226000Building memory map: 00007ffbdb274000Building memory map: 00007ffbdb430000Building memory map: 00007ffbdb431000Building memory map: 00007ffbdb49b000Building memory map: 00007ffbdb4d3000Building memory map: 00007ffbdb4d4000Building memory map: 00007ffbdb4d5000Building memory map: 00007ffbdb4d7000Building memory map: 00007ffbdb4d8000Building memory map: 00007ffbdb4e1000Building memory map: 00007ffbdb4f0000Building memory map: 00007ffbdb4f1000Building memory map: 00007ffbdb572000Building memory map: 00007ffbdb5a7000Building memory map: 00007ffbdb5a9000Building memory map: 00007ffbdb5b2000Building memory map: 00007ffbdb5d0000Building memory map: 00007ffbdb5d1000Building memory map: 00007ffbdbb7c000Building memory map: 00007ffbdbccd000Building memory map: 00007ffbdbcd5000Building memory map: 00007ffbdbcd7000Building memory map: 00007ffbdbd40000Building memory map: 00007ffbdbdb0000Building memory map: 00007ffbdbdb1000Building memory map: 00007ffbdbdcf000Building memory map: 00007ffbdbdd5000Building memory map: 00007ffbdbdd6000Building memory map: 00007ffbdbddf000Building memory map: 00007ffbdc3c0000Building memory map: 00007ffbdc3c1000Building memory map: 00007ffbdc452000Building memory map: 00007ffbdc473000Building memory map: 00007ffbdc475000Building memory map: 00007ffbdc561000Building memory map: 00007ffbdc6a0000Building memory map: 00007ffbdc6a1000Building memory map: 00007ffbdc6b0000Building memory map: 00007ffbdc6c4000Building memory map: 00007ffbdc6c5000Building memory map: 00007ffbdc6cb000Building memory map: 00007ffbdc6d0000Building memory map: 00007ffbdc6d1000Building memory map: 00007ffbdc79d000Building memory map: 00007ffbdc7cf000Building memory map: 00007ffbdc7d1000Building memory map: 00007ffbdc7d2000Building memory map: 00007ffbdc7fb000Building memory map: 00007ffbdc800000Building memory map: 00007ffbdc801000Building memory map: 00007ffbdc845000Building memory map: 00007ffbdc852000Building memory map: 00007ffbdc853000Building memory map: 00007ffbdc86b000Building memory map: 00007ffbdc950000Building memory map: 00007ffbdc951000Building memory map: 00007ffbdc9c6000Building memory map: 00007ffbdc9df000Building memory map: 00007ffbdc9e1000Building memory map: 00007ffbdc9e4000Building memory map: 00007ffbdc9e6000Building memory map: 00007ffbdc9e7000Building memory map: 00007ffbdc9ee000Building memory map: 00007ffbdcb90000Building memory map: 00007ffbdcb91000Building memory map: 00007ffbdcbf8000Building memory map: 00007ffbdcc21000Building memory map: 00007ffbdcc25000Building memory map: 00007ffbdcc2f000Building memory map: 00007ffbdcc70000Building memory map: 00007ffbdcc71000Building memory map: 00007ffbdcd8d000Building memory map: 00007ffbdcdd6000Building memory map: 00007ffbdcdd7000Building memory map: 00007ffbdcdd9000Building memory map: 00007ffbdcde2000Building memory map: 00007ffbdce68000Building memory map: 00007ffbdce70000Building memory map: 00007ffbdce71000Building memory map: 00007ffbdce72000                                     
+Mapping file section regions...
+Mapping module regions...
+Mapping PEB regions...
+Mapping TEB and stack regions...
+Mapping heap regions...
+Mapping page heap regions...
+Mapping other regions...
+Mapping stack trace database regions...
+Mapping activation context regions...
+
+Usage:                  Heap
+Base Address:           00000000`049a2000
+End Address:            00000000`05508000
+Region Size:            00000000`00b66000 (  11.398 MB)
+State:                  00001000          MEM_COMMIT
+Protect:                00000004          PAGE_READWRITE
+Type:                   00020000          MEM_PRIVATE
+Allocation Base:        00000000`049a0000
+Allocation Protect:     00000004          PAGE_READWRITE
+More info:              heap owning the address: 5e0000">!heap -s -h 0x5e0000
+More info:              heap large/virtual block
+More info:              heap entry containing the address: 49a2060">!heap -x 0x49a2060
+
+
+Content source: 1 (target), length: b65fa0
+
+Usage:                  Heap
+Base Address:           00000000`049a2000
+End Address:            00000000`05508000
+Region Size:            00000000`00b66000 (  11.398 MB)
+State:                  00001000          MEM_COMMIT
+Protect:                00000004          PAGE_READWRITE
+Type:                   00020000          MEM_PRIVATE
+Allocation Base:        00000000`049a0000
+Allocation Protect:     00000004          PAGE_READWRITE
+More info:              heap owning the address: 5e0000">!heap -s -h 0x5e0000
+More info:              heap large/virtual block
+More info:              heap entry containing the address: 513b058">!heap -x 0x513b058
+
+
+Content source: 1 (target), length: 3ccfa8
+WFW
+rcx=00000000000001fc
+r8=0000000000000358
+Handle 1fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000000`00616d70  00 c0 4d 00 0c 00 00 00                          ..M.....
+SLEEP_OBSERVER
+rcx=0000000000000078
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+ModLoad: 00007ffb`c7430000 00007ffb`c751c000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000002fc
+r8=0000000000001000
+Handle 2fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	32769
+  No Object Specific Information available
+00000000`00144bf0  4d 5a 90 00 03 00 00 00                          MZ......
+WFW
+rcx=00000000000002fc
+r8=0000000000001000
+Handle 2fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65536
+  No Object Specific Information available
+00000000`00144bf0  72 69 76 65 72 5c 73 77                          river\sw
+WFW
+rcx=00000000000002fc
+r8=0000000000001000
+Handle 2fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65535
+  No Object Specific Information available
+00000000`00144bf0  00 00 00 00 00 00 00 00                          ........
+WFW
+rcx=00000000000002fc
+r8=0000000000001000
+Handle 2fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65534
+  No Object Specific Information available
+00000000`00144bf0  2c 9b 09 75 48 44 33 49                          ,..uHD3I
+WFW
+rcx=00000000000002fc
+r8=0000000000000ab8
+Handle 2fc
+  Type         	File
+  Attributes   	0
+  GrantedAccess	0x120196:
+         ReadControl,Synch
+         Write/Add,Append/SubDir/CreatePipe,WriteEA,ReadAttr,WriteAttr
+  HandleCount  	2
+  PointerCount 	65533
+  No Object Specific Information available
+00000000`00144bf0  44 5d 5e 16 9c 01 05 4f                          D]^....O
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+SLEEP_OBSERVER
+rcx=000000000000001e
+FATAL_THUNK
+Child-SP          RetAddr               Call Site
+00000000`00145e20 00000001`407aa694     EPT_30A552CF_A0532B52+0x171f567
+00000000`00145e28 00000000`00000000     EPT_30A552CF_A0532B52+0x7aa694
+00000000`00145e20  407aa694 00000001 00000001 00000000
+ntdll!NtTerminateProcess+0x14:
+00007ffb`dcd0db24 c3              ret
+0:000> .echo RUN58_STOP
+RUN58_STOP
+0:000> ~*k
+
+.  0  Id: 1018.13ac Suspend: 0 Teb: 00000000`00351000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0014feb8 00007ffb`dcccef88     ntdll!NtTerminateProcess+0x14
+00000000`0014fec0 00007ffb`dccbec85     ntdll!RtlExitUserProcess+0xb8
+00000000`0014fef0 00007ffb`db50737d     ntdll!RtlExitUserThread+0x55
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x1d
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo RUN58_END
+RUN58_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

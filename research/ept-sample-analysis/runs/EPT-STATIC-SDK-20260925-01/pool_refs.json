@@ -1,0 +1,1647 @@
+{
+ "0x140f8cb90": {
+  "str": ".sys",
+  "refs": [
+   "0x140789015"
+  ]
+ },
+ "0x140f8cba0": {
+  "str": "HP_WKS_SWTOOLS_DRIVER.sys helper",
+  "refs": [
+   "0x140789106"
+  ]
+ },
+ "0x140f8cb60": {
+  "str": "RtlGetVersion",
+  "refs": [
+   "0x140789276"
+  ]
+ },
+ "0x140f8cbc8": {
+  "str": "Reading %s at address 0x%.16I64X...",
+  "refs": [
+   "0x1407897d0",
+   "0x140789c52"
+  ]
+ },
+ "0x140f8cbf0": {
+  "str": "Can't read %s at address 0x%.16I64X...",
+  "refs": [
+   "0x14078985c",
+   "0x1407898c2",
+   "0x140789d78",
+   "0x140789df2"
+  ]
+ },
+ "0x140f8ced8": {
+  "str": "bad cast",
+  "refs": [
+   "0x14078a030"
+  ]
+ },
+ "0x140f92550": {
+  "str": "<REDACTED_EMBEDDED_VERIFY_TOKEN>",
+  "refs": [
+   "0x14078a0c3",
+   "0x1407a311f"
+  ]
+ },
+ "0x140f8cee8": {
+  "str": "string too long",
+  "refs": [
+   "0x14078a0e4"
+  ]
+ },
+ "0x140f8cf00": {
+  "str": "iostream",
+  "refs": [
+   "0x14078a470"
+  ]
+ },
+ "0x140f8ce98": {
+  "str": "iostream stream error",
+  "refs": [
+   "0x14078a4a6"
+  ]
+ },
+ "0x140f8cf10": {
+  "str": "bad locale name",
+  "refs": [
+   "0x14078a73f",
+   "0x1407af917"
+  ]
+ },
+ "0x140f8cf20": {
+  "str": "ios_base::badbit set",
+  "refs": [
+   "0x14078a9df"
+  ]
+ },
+ "0x140f8cf38": {
+  "str": "ios_base::failbit set",
+  "refs": [
+   "0x14078a9eb"
+  ]
+ },
+ "0x140f8cf50": {
+  "str": "ios_base::eofbit set",
+  "refs": [
+   "0x14078a9f2"
+  ]
+ },
+ "0x140f8cf68": {
+  "str": "\\\\.\\",
+  "refs": [
+   "0x14078de9c"
+  ]
+ },
+ "0x140f8d160": {
+  "str": "CI00 open_auth begin path=%s comm=%s ioctlAuth=0x%08lX magic=0x%08lX",
+  "refs": [
+   "0x14078df47"
+  ]
+ },
+ "0x140f8d1b0": {
+  "str": "CI01 open_failed gle=%lu path=%s comm=%s",
+  "refs": [
+   "0x14078e019"
+  ]
+ },
+ "0x140f8d300": {
+  "str": "CI04 auth_success comm=%s session=0x%08lX ioctlRun=0x%08lX",
+  "refs": [
+   "0x14078e2d2"
+  ]
+ },
+ "0x140f8d270": {
+  "str": "CI03 auth_stage1_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu session=0x%08lX comm=%s ioctlAuth=0x%08lX",
+  "refs": [
+   "0x14078e383"
+  ]
+ },
+ "0x140f8d1e0": {
+  "str": "CI02 auth_stage0_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu nonce=0x%08lX comm=%s ioctlAuth=0x%08lX",
+  "refs": [
+   "0x14078e42e"
+  ]
+ },
+ "0x140f8d340": {
+  "str": "SYSTEM\\CurrentControlSet\\Services",
+  "refs": [
+   "0x14078e50f"
+  ]
+ },
+ "0x140f8d370": {
+  "str": "CI06 scan_existing attached service=%s comm=%s ioctlRun=0x%08lX session=0x%08lX",
+  "refs": [
+   "0x14078e8a2"
+  ]
+ },
+ "0x140f8d3c8": {
+  "str": "CI08 comm_init begin h=%p session=0x%08lX comm=%s",
+  "refs": [
+   "0x14078e93c"
+  ]
+ },
+ "0x140f8d400": {
+  "str": "CI09 comm_init reuse_current comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078e9bc"
+  ]
+ },
+ "0x140f8d440": {
+  "str": "CI10 comm_init attached_existing comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078ea62"
+  ]
+ },
+ "0x140f8d480": {
+  "str": "CI11 comm_init direct_open_ok comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078eaec"
+  ]
+ },
+ "0x140f8d4c0": {
+  "str": "CI13 comm_init driver_load_failed driverStage=%s win32=%lu nt=0x%08lX driver=%s comm=%s",
+  "refs": [
+   "0x14078eb97"
+  ]
+ },
+ "0x140f8d520": {
+  "str": "CI15 comm_init open_after_load_failed commStage=%s win32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX driver=%s comm=%s",
+  "refs": [
+   "0x14078ec61"
+  ]
+ },
+ "0x140f8d5a0": {
+  "str": "CI16 comm_init new_load_ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX",
+  "refs": [
+   "0x14078ecb9"
+  ]
+ },
+ "0x140f8d7b0": {
+  "str": "RC00 send mode=%lu serialMode=%d diskLen=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX",
+  "refs": [
+   "0x14078ed97"
+  ]
+ },
+ "0x140f8d870": {
+  "str": "RC03 decode_failed ret=%lu marker=0x%08lX comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s",
+  "refs": [
+   "0x14078eec2"
+  ]
+ },
+ "0x140f8d8d0": {
+  "str": "RC04 session_mismatch ret=%lu response=0x%08lX expected=0x%08lX comm=%s ioctlRun=0x%08lX driver=%s",
+  "refs": [
+   "0x14078ef2b"
+  ]
+ },
+ "0x140f8d940": {
+  "str": "RC06 success ret=%lu common=0x%08lX mode=%lu serialMode=%d comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078efd1"
+  ]
+ },
+ "0x140f8d810": {
+  "str": "RC02 ioctl_failed gle=%lu ret=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s",
+  "refs": [
+   "0x14078f019"
+  ]
+ },
+ "0x140f8d760": {
+  "str": "RC01 invalid_state h=%p in=%p session=0x%08lX comm=%s ioctlRun=0x%08lX",
+  "refs": [
+   "0x14078f035"
+  ]
+ },
+ "0x140f8d9a0": {
+  "str": "HS00 begin mode=%lu serialMode=%d diskLen=%lu comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078f113"
+  ]
+ },
+ "0x140f8d9f0": {
+  "str": "HS01 register_failed mode=%lu serialMode=%d commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX",
+  "refs": [
+   "0x14078f198"
+  ]
+ },
+ "0x140f8da70": {
+  "str": "HS02 common_mismatch common=0x%08lX expected=0x12345678 mode=%lu serialMode=%d comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078f1e3"
+  ]
+ },
+ "0x140f8dad8": {
+  "str": "HS03 success mode=%lu serialMode=%d comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078f208"
+  ]
+ },
+ "0x140f8db20": {
+  "str": "HS11 first_failed reopen_fresh commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX",
+  "refs": [
+   "0x14078f2a9"
+  ]
+ },
+ "0x140f8d5f0": {
+  "str": "CI17 close_comm h=%p session=0x%08lX comm=%s",
+  "refs": [
+   "0x14078f2d9"
+  ]
+ },
+ "0x140f8d630": {
+  "str": "CI18 reopen_fresh driver_load_failed driverStage=%s win32=%lu nt=0x%08lX driver=%s",
+  "refs": [
+   "0x14078f3ed"
+  ]
+ },
+ "0x140f8d690": {
+  "str": "CI19 reopen_fresh open_auth_failed commStage=%s win32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX driver=%s comm=%s",
+  "refs": [
+   "0x14078f4a2"
+  ]
+ },
+ "0x140f8db90": {
+  "str": "HS12 reopen_failed commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX",
+  "refs": [
+   "0x14078f4df"
+  ]
+ },
+ "0x140f8d710": {
+  "str": "CI20 reopen_fresh ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX",
+  "refs": [
+   "0x14078f51a"
+  ]
+ },
+ "0x140f8dbf0": {
+  "str": "HS13 second_attempt mode=%lu serialMode=%d comm=%s session=0x%08lX",
+  "refs": [
+   "0x14078f532"
+  ]
+ },
+ "0x140f8e030": {
+  "str": "SP_NOERROR",
+  "refs": [
+   "0x14078fafa"
+  ]
+ },
+ "0x140f8e040": {
+  "str": "SP_NOINIT",
+  "refs": [
+   "0x14078fb02"
+  ]
+ },
+ "0x140f8e050": {
+  "str": "SP_WSAFAILED",
+  "refs": [
+   "0x14078fb0a"
+  ]
+ },
+ "0x140f8e060": {
+  "str": "SP_CONNECTFAILED",
+  "refs": [
+   "0x14078fb12"
+  ]
+ },
+ "0x140f8e078": {
+  "str": "SP_DATAERROR",
+  "refs": [
+   "0x14078fb1a"
+  ]
+ },
+ "0x140f8e088": {
+  "str": "SP_NOLOADCLOUDDLL",
+  "refs": [
+   "0x14078fb22"
+  ]
+ },
+ "0x140f8e0a0": {
+  "str": "SP_FAILEDWRITE",
+  "refs": [
+   "0x14078fb2a"
+  ]
+ },
+ "0x140f8e0b0": {
+  "str": "SP_EXPIREDTOKEN",
+  "refs": [
+   "0x14078fb32"
+  ]
+ },
+ "0x140f8e0c0": {
+  "str": "SP_UNKNOWNERRROR",
+  "refs": [
+   "0x14078fb3a"
+  ]
+ },
+ "0x140f8e0d8": {
+  "str": "SP_INVALIDCARD",
+  "refs": [
+   "0x14078fb42"
+  ]
+ },
+ "0x140f8e0e8": {
+  "str": "SP_EXPIREDCARD",
+  "refs": [
+   "0x14078fb4a"
+  ]
+ },
+ "0x140f8e0f8": {
+  "str": "SP_BANNEDCARD",
+  "refs": [
+   "0x14078fb52"
+  ]
+ },
+ "0x140f8e108": {
+  "str": "SP_INVALIDAGENT",
+  "refs": [
+   "0x14078fb5a"
+  ]
+ },
+ "0x140f8e118": {
+  "str": "SP_BANNEDAGENT",
+  "refs": [
+   "0x14078fb62"
+  ]
+ },
+ "0x140f8e128": {
+  "str": "SP_MAXONLINE",
+  "refs": [
+   "0x14078fb6a"
+  ]
+ },
+ "0x140f8e138": {
+  "str": "SP_OFFLINE",
+  "refs": [
+   "0x14078fb72"
+  ]
+ },
+ "0x140f8e148": {
+  "str": "SP_ANOTHERUSERUNBIND",
+  "refs": [
+   "0x14078fb7a"
+  ]
+ },
+ "0x140f8e160": {
+  "str": "SP_INVALIDPARAM",
+  "refs": [
+   "0x14078fb82"
+  ]
+ },
+ "0x140f8e170": {
+  "str": "SP_FYINOTENOUGH",
+  "refs": [
+   "0x14078fb8a"
+  ]
+ },
+ "0x140f8e180": {
+  "str": "SP_NOACTIVATEDCARD",
+  "refs": [
+   "0x14078fb92"
+  ]
+ },
+ "0x140f8e198": {
+  "str": "SP_LOGINEXCEPTION",
+  "refs": [
+   "0x14078fb9a"
+  ]
+ },
+ "0x140f8e1b0": {
+  "str": "SP_FAILEDACTIVATECARD",
+  "refs": [
+   "0x14078fba2"
+  ]
+ },
+ "0x140f8e1c8": {
+  "str": "SP_BINDMSGDIFF",
+  "refs": [
+   "0x14078fbaa"
+  ]
+ },
+ "0x140f8e1d8": {
+  "str": "SP_FAILEDGETCARD",
+  "refs": [
+   "0x14078fbb2"
+  ]
+ },
+ "0x140f8e1f0": {
+  "str": "SP_NOBIND",
+  "refs": [
+   "0x14078fbba"
+  ]
+ },
+ "0x140f8e200": {
+  "str": "SP_MAXUNBINDCOUNT",
+  "refs": [
+   "0x14078fbc2"
+  ]
+ },
+ "0x140f8e218": {
+  "str": "SP_DISABLELOGIN",
+  "refs": [
+   "0x14078fbca"
+  ]
+ },
+ "0x140f8e228": {
+  "str": "SP_UNKNOWN_CODE",
+  "refs": [
+   "0x14078fbd2"
+  ]
+ },
+ "0x140f8e238": {
+  "str": "%s\\SysWOW64\\SPVerifyDiag.log",
+  "refs": [
+   "0x14078fd05"
+  ]
+ },
+ "0x140f8e280": {
+  "str": "[%04u-%02u-%02u %02u:%02u:%02u] ",
+  "refs": [
+   "0x14078fdad"
+  ]
+ },
+ "0x140f8e2a8": {
+  "str": "stage=%s ret=%d name=%s",
+  "refs": [
+   "0x14078febd",
+   "0x1407a314a",
+   "0x1407a31cf",
+   "0x1407a3234"
+  ]
+ },
+ "0x140f8e2c0": {
+  "str": "stage=%s value=%d",
+  "refs": [
+   "0x14078ff49",
+   "0x1407a30f8",
+   "0x1407a32f1"
+  ]
+ },
+ "0x140f8e2d8": {
+  "str": "user32.dll",
+  "refs": [
+   "0x14078ff94"
+  ]
+ },
+ "0x140f8e2e8": {
+  "str": "MessageBoxTimeoutA",
+  "refs": [
+   "0x14078ffa6"
+  ]
+ },
+ "0x140f8e308": {
+  "str": "HWID虚拟化已完成！",
+  "refs": [
+   "0x14078ffd7",
+   "0x14078fff2"
+  ]
+ },
+ "0x140f8d130": {
+  "str": "C:\\Windows\\System32",
+  "refs": [
+   "0x14079001e",
+   "0x140791b4e",
+   "0x140791c6b",
+   "0x140792c2d",
+   "0x140792c96",
+   "0x14079a92a",
+   "0x14079f7e7",
+   "0x1407a13ae",
+   "0x1407a1432",
+   "0x1407a14d8",
+   "0x1407a1532",
+   "0x1407a1b00",
+   "0x1407a1b5f",
+   "0x1407a1bc6",
+   "0x1407a1c1a",
+   "0x1407a1c93",
+   "0x1407a1cdb",
+   "0x1407a1d38",
+   "0x1407a1d87",
+   "0x1407a1de4",
+   "0x1407a2d09",
+   "0x1407a2d68",
+   "0x1407a3586",
+   "0x1407a35f8",
+   "0x1407a4e92",
+   "0x1407a51e9",
+   "0x1407a5243",
+   "0x1407a58af"
+  ]
+ },
+ "0x140f8d148": {
+  "str": "<HOST_PATH>\<DIR>",
+  "refs": [
+   "0x140790034",
+   "0x140791b64",
+   "0x140791c81",
+   "0x140792c43",
+   "0x140792cac",
+   "0x14079a940",
+   "0x14079f7fd",
+   "0x1407a13c4",
+   "0x1407a1448",
+   "0x1407a14ee",
+   "0x1407a1548",
+   "0x1407a1b16",
+   "0x1407a1b75",
+   "0x1407a1bdc",
+   "0x1407a1c30",
+   "0x1407a1ca9",
+   "0x1407a1cf1",
+   "0x1407a1d4e",
+   "0x1407a1d9d",
+   "0x1407a1dfa",
+   "0x1407a2d1f",
+   "0x1407a2d7e",
+   "0x1407a359c",
+   "0x1407a360e",
+   "0x1407a4eac",
+   "0x1407a51ff",
+   "0x1407a5259",
+   "0x1407a58c5"
+  ]
+ },
+ "0x140f8e3b8": {
+  "str": "<HOST_PATH>\<DIR>rdware",
+  "refs": [
+   "0x14079005c",
+   "0x14079a964",
+   "0x1407a2d9e",
+   "0x1407a35c7",
+   "0x1407a51bc",
+   "0x1407a5288",
+   "0x1407a58f4"
+  ]
+ },
+ "0x140f8e3d8": {
+  "str": "C:\\Windows\\System32\\Hardware",
+  "refs": [
+   "0x140790063",
+   "0x14079a96b",
+   "0x1407a2da5",
+   "0x1407a35ce",
+   "0x1407a51c3",
+   "0x1407a58ed"
+  ]
+ },
+ "0x140f8dc38": {
+  "str": "EPT Hardware Console - 硬件配置档管理客户端 | 本机授权校验",
+  "refs": [
+   "0x1407939e0"
+  ]
+ },
+ "0x140f8eb68": {
+  "str": "VERMSG=",
+  "refs": [
+   "0x140793ecb"
+  ]
+ },
+ "0x140f8eb70": {
+  "str": "公告内容由服务端同步，配置前请确认 KEY 与功能模式。",
+  "refs": [
+   "0x1407940ee"
+  ]
+ },
+ "0x140f8dc78": {
+  "str": "当前版本与客户端不一致!",
+  "refs": [
+   "0x1407941e8"
+  ]
+ },
+ "0x140f8fa30": {
+  "str": "不同意并退出",
+  "refs": [
+   "0x140794449"
+  ]
+ },
+ "0x140f8f974": {
+  "str": "STATIC",
+  "refs": [
+   "0x1407944ef",
+   "0x1407945ec"
+  ]
+ },
+ "0x140f8f97c": {
+  "str": "EDIT",
+  "refs": [
+   "0x14079455a",
+   "0x140794ebc"
+  ]
+ },
+ "0x140f8f910": {
+  "str": "Microsoft YaHei UI",
+  "refs": [
+   "0x14079468b",
+   "0x140794c33",
+   "0x140794d23",
+   "0x140794e13",
+   "0x140794f77",
+   "0x140795b17",
+   "0x140796f04",
+   "0x140798673"
+  ]
+ },
+ "0x140f8fa24": {
+  "str": "BUTTON",
+  "refs": [
+   "0x1407946e4",
+   "0x14079474f",
+   "0x140798819",
+   "0x140798895",
+   "0x140798938",
+   "0x1407989af",
+   "0x140798a26",
+   "0x140798acb",
+   "0x140798b42",
+   "0x140798bb9",
+   "0x140798c2e",
+   "0x140798cd7",
+   "0x140798d4e"
+  ]
+ },
+ "0x140f8fa40": {
+  "str": "NspFirstRunDisclaimerWindow",
+  "refs": [
+   "0x140794a36"
+  ]
+ },
+ "0x140f8fa70": {
+  "str": "请阅读并同意免责及使用协议后继续使用。",
+  "refs": [
+   "0x140794af3"
+  ]
+ },
+ "0x140f8fab0": {
+  "str": "HWID虚拟化初始化",
+  "refs": [
+   "0x1407951b6"
+  ]
+ },
+ "0x140f8fad0": {
+  "str": "完成后将自动退出",
+  "refs": [
+   "0x140795490"
+  ]
+ },
+ "0x140f8fb18": {
+  "str": "手动输入功能模式编号，用于测试或指定特殊配置",
+  "refs": [
+   "0x14079613f"
+  ]
+ },
+ "0x140f8fb98": {
+  "str": "常规覆盖设备标识与网络链路，跳过 GPU 修改以提升兼容性",
+  "refs": [
+   "0x14079616c"
+  ]
+ },
+ "0x140f8fbd0": {
+  "str": "仅处理核心磁盘、主板与网络标识，减少系统改动范围",
+  "refs": [
+   "0x14079617e"
+  ]
+ },
+ "0x140f8fc08": {
+  "str": "按当前功能模式编号写入配置",
+  "refs": [
+   "0x14079618b"
+  ]
+ },
+ "0x140f8fb50": {
+  "str": "全量覆盖注册表、磁盘、网络、GPU、TPM、主板标识，适合完整环境重置",
+  "refs": [
+   "0x140796198"
+  ]
+ },
+ "0x140f8fc28": {
+  "str": "tooltips_class32",
+  "refs": [
+   "0x140796230"
+  ]
+ },
+ "0x140f8fcd0": {
+  "str": "请输入KEY授权码。",
+  "refs": [
+   "0x1407968b0"
+  ]
+ },
+ "0x140f8fce8": {
+  "str": "请填写自定义模式数字。",
+  "refs": [
+   "0x1407968e1"
+  ]
+ },
+ "0x140f8fd20": {
+  "str": "自定义模式数字必须大于 0。",
+  "refs": [
+   "0x14079695a"
+  ]
+ },
+ "0x140f8fd00": {
+  "str": "自定义模式只能填写数字。",
+  "refs": [
+   "0x140796995"
+  ]
+ },
+ "0x140f8fae8": {
+  "str": "正在验证 KEY 授权...",
+  "refs": [
+   "0x140796a68"
+  ]
+ },
+ "0x140f8eba8": {
+  "str": "EPT Hardware Console",
+  "refs": [
+   "0x140796f7f"
+  ]
+ },
+ "0x140f8fd40": {
+  "str": "配置编辑模式 · 可修改 KEY、序列模式与功能模式",
+  "refs": [
+   "0x140796fa9"
+  ]
+ },
+ "0x140f8fd70": {
+  "str": "本机授权校验 · 设备环境配置客户端",
+  "refs": [
+   "0x140796fb2"
+  ]
+ },
+ "0x140f8fd98": {
+  "str": "管理员权限",
+  "refs": [
+   "0x14079711e"
+  ]
+ },
+ "0x140f8fda8": {
+  "str": "普通权限",
+  "refs": [
+   "0x140797127"
+  ]
+ },
+ "0x140f8fdb4": {
+  "str": "公告",
+  "refs": [
+   "0x140797300"
+  ]
+ },
+ "0x140f8fe08": {
+  "str": "KEY 信息",
+  "refs": [
+   "0x140797692"
+  ]
+ },
+ "0x140f8fe18": {
+  "str": "License Key",
+  "refs": [
+   "0x1407976f2"
+  ]
+ },
+ "0x140f8fe40": {
+  "str": "序列模式",
+  "refs": [
+   "0x1407977cb"
+  ]
+ },
+ "0x140f8fe50": {
+  "str": "静态值（仅静态模式可填）",
+  "refs": [
+   "0x14079782b"
+  ]
+ },
+ "0x140f8fc40": {
+  "str": "默认以KEY码作为固定标识写入，也可自定义修改。",
+  "refs": [
+   "0x1407978bf"
+  ]
+ },
+ "0x140f8fc70": {
+  "str": "每次加载配置或运行都随机一次序列码",
+  "refs": [
+   "0x1407978c8"
+  ]
+ },
+ "0x140f8fc98": {
+  "str": "根据当前机器实例，进行跨位仿真虚拟化修改。",
+  "refs": [
+   "0x1407978d4"
+  ]
+ },
+ "0x140f8fe90": {
+  "str": "功能模式",
+  "refs": [
+   "0x14079795c"
+  ]
+ },
+ "0x140f8fea0": {
+  "str": "准备就绪",
+  "refs": [
+   "0x140797af2",
+   "0x1407998ac"
+  ]
+ },
+ "0x140f8feb0": {
+  "str": "等待初始化执行轨迹",
+  "refs": [
+   "0x140797cb3"
+  ]
+ },
+ "0x140f8fec8": {
+  "str": "正在执行",
+  "refs": [
+   "0x140797f13"
+  ]
+ },
+ "0x140f8fee0": {
+  "str": "同时安装/部署",
+  "refs": [
+   "0x14079817c"
+  ]
+ },
+ "0x140f8fef0": {
+  "str": "点击取消任务计划",
+  "refs": [
+   "0x1407981c6"
+  ]
+ },
+ "0x140f8fed4": {
+  "str": "自定义",
+  "refs": [
+   "0x1407983c6"
+  ]
+ },
+ "0x140f90088": {
+  "str": "安装/部署成功",
+  "refs": [
+   "0x1407990a8"
+  ]
+ },
+ "0x140f90098": {
+  "str": "已安装/部署计划任务",
+  "refs": [
+   "0x1407990b4"
+  ]
+ },
+ "0x140f900c0": {
+  "str": "安装/部署 成功！",
+  "refs": [
+   "0x1407990d0"
+  ]
+ },
+ "0x140f900d8": {
+  "str": "已取消安装/部署",
+  "refs": [
+   "0x1407990f5",
+   "0x140799156"
+  ]
+ },
+ "0x140f900e8": {
+  "str": "已取消安装/部署计划任务",
+  "refs": [
+   "0x140799115"
+  ]
+ },
+ "0x140f90100": {
+  "str": "已勾选安装/部署",
+  "refs": [
+   "0x14079914f"
+  ]
+ },
+ "0x140f90110": {
+  "str": "配置完成后将自动安装/部署",
+  "refs": [
+   "0x140799194"
+  ]
+ },
+ "0x140f90130": {
+  "str": "已取消配置完成后自动安装/部署",
+  "refs": [
+   "0x14079919b"
+  ]
+ },
+ "0x140f90000": {
+  "str": "功能模式已更新",
+  "refs": [
+   "0x1407992ec"
+  ]
+ },
+ "0x140f90010": {
+  "str": "已切换功能模式：深度方案",
+  "refs": [
+   "0x140799303"
+  ]
+ },
+ "0x140f90030": {
+  "str": "已切换功能模式：标准方案",
+  "refs": [
+   "0x140799312"
+  ]
+ },
+ "0x140f90050": {
+  "str": "已切换功能模式：最小化修改",
+  "refs": [
+   "0x14079931e"
+  ]
+ },
+ "0x140f90070": {
+  "str": "已切换功能模式：自定义",
+  "refs": [
+   "0x140799325"
+  ]
+ },
+ "0x140f8ffa8": {
+  "str": "序列模式已更新",
+  "refs": [
+   "0x140799453"
+  ]
+ },
+ "0x140f8ffb8": {
+  "str": "已切换序列模式：静态",
+  "refs": [
+   "0x140799465"
+  ]
+ },
+ "0x140f8ffd0": {
+  "str": "已切换序列模式：动态",
+  "refs": [
+   "0x140799472"
+  ]
+ },
+ "0x140f8ffe8": {
+  "str": "已切换序列模式：微改",
+  "refs": [
+   "0x140799479"
+  ]
+ },
+ "0x140f90150": {
+  "str": "NspSetupWindow",
+  "refs": [
+   "0x140799671",
+   "0x140799968"
+  ]
+ },
+ "0x140f90160": {
+  "str": "初始化配置界面",
+  "refs": [
+   "0x1407998bf"
+  ]
+ },
+ "0x140f90170": {
+  "str": "已读取本地配置档案",
+  "refs": [
+   "0x1407998d3"
+  ]
+ },
+ "0x140f90188": {
+  "str": "检测到已安装部署任务",
+  "refs": [
+   "0x1407998e8"
+  ]
+ },
+ "0x140f901a0": {
+  "str": "等待确认 KEY 与功能模式",
+  "refs": [
+   "0x1407998f7"
+  ]
+ },
+ "0x140f901c0": {
+  "str": "配置窗口创建失败。",
+  "refs": [
+   "0x14079998a"
+  ]
+ },
+ "0x140f901d8": {
+  "str": "0123456789ABCDEFHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+  "refs": [
+   "0x140799bbb"
+  ]
+ },
+ "0x140f90238": {
+  "str": "获取重启权限失败！将在3秒后自动重启...",
+  "refs": [
+   "0x14079a13d"
+  ]
+ },
+ "0x140f90260": {
+  "str": "SeShutdownPrivilege",
+  "refs": [
+   "0x14079a15c"
+  ]
+ },
+ "0x140f902a8": {
+  "str": "配置文件创建失败！错误码：",
+  "refs": [
+   "0x14079aa83",
+   "0x1407a6c74"
+  ]
+ },
+ "0x140f902c8": {
+  "str": "加密服务初始化失败！错误码：",
+  "refs": [
+   "0x14079af0e",
+   "0x1407a6ea0"
+  ]
+ },
+ "0x140f902e8": {
+  "str": "密钥导入失败！错误码：",
+  "refs": [
+   "0x14079b1be",
+   "0x1407a6f7d",
+   "0x1407a76db"
+  ]
+ },
+ "0x140f90300": {
+  "str": "加密模式设置失败！错误码：",
+  "refs": [
+   "0x14079b43e",
+   "0x1407a701f"
+  ]
+ },
+ "0x140f90320": {
+  "str": "加密向量设置失败！错误码：",
+  "refs": [
+   "0x14079b6be",
+   "0x1407a70ca"
+  ]
+ },
+ "0x140f90340": {
+  "str": "数据加密失败！错误码：",
+  "refs": [
+   "0x14079b958",
+   "0x1407a718d"
+  ]
+ },
+ "0x140f90368": {
+  "str": "配置文件写入失败！",
+  "refs": [
+   "0x14079bb65",
+   "0x1407a7304"
+  ]
+ },
+ "0x140f90358": {
+  "str": "加密数据无效！",
+  "refs": [
+   "0x14079bbae",
+   "0x1407a7349"
+  ]
+ },
+ "0x140f90920": {
+  "str": "SOFTWARE\\Policies\\Microsoft\\Windows Defender",
+  "refs": [
+   "0x14079d8b1"
+  ]
+ },
+ "0x140f90970": {
+  "str": "SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Real-Time Protection",
+  "refs": [
+   "0x14079d8d8",
+   "0x14079d8ff",
+   "0x14079d926",
+   "0x14079d94d"
+  ]
+ },
+ "0x140f90a18": {
+  "str": "SYSTEM\\CurrentControlSet\\Services\\SecurityHealthService",
+  "refs": [
+   "0x14079d974"
+  ]
+ },
+ "0x140f90a60": {
+  "str": "Software\\Policies\\Microsoft\\Windows NT\\SystemRestore",
+  "refs": [
+   "0x14079d99b"
+  ]
+ },
+ "0x140f90aa8": {
+  "str": "SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows",
+  "refs": [
+   "0x14079d9bf"
+  ]
+ },
+ "0x140f90b10": {
+  "str": "SOFTWARE\\Microsoft\\WindowsUpdate\\UX\\Settings",
+  "refs": [
+   "0x14079da04",
+   "0x14079da48",
+   "0x14079dacd",
+   "0x14079db11",
+   "0x14079db96",
+   "0x14079dbd3",
+   "0x14079dc58",
+   "0x14079dc95",
+   "0x14079dd1a",
+   "0x14079dd57",
+   "0x14079dddc",
+   "0x14079de19",
+   "0x14079de80"
+  ]
+ },
+ "0x140f90af0": {
+  "str": "PauseFeatureUpdatesStartTime",
+  "refs": [
+   "0x14079da76"
+  ]
+ },
+ "0x140f90b58": {
+  "str": "PauseFeatureUpdatesEndTime",
+  "refs": [
+   "0x14079db3f"
+  ]
+ },
+ "0x140f90b78": {
+  "str": "PauseQualityUpdatesStartTime",
+  "refs": [
+   "0x14079dc01"
+  ]
+ },
+ "0x140f90b98": {
+  "str": "PauseQualityUpdatesEndTime",
+  "refs": [
+   "0x14079dcc3"
+  ]
+ },
+ "0x140f90bb8": {
+  "str": "PauseUpdatesStartTime",
+  "refs": [
+   "0x14079dd85"
+  ]
+ },
+ "0x140f90bd0": {
+  "str": "PauseUpdatesExpiryTime",
+  "refs": [
+   "0x14079de47"
+  ]
+ },
+ "0x140f90c20": {
+  "str": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Memory Management",
+  "refs": [
+   "0x14079dea7",
+   "0x14079dece",
+   "0x14079def5"
+  ]
+ },
+ "0x140f90ca0": {
+  "str": "SYSTEM\\CurrentControlSet\\Control\\DeviceGuard\\Scenarios\\HypervisorEnforcedCodeIntegrity",
+  "refs": [
+   "0x14079df19"
+  ]
+ },
+ "0x140f90d18": {
+  "str": "SYSTEM\\CurrentControlSet\\Control\\CI\\Policy",
+  "refs": [
+   "0x14079df3d"
+  ]
+ },
+ "0x140f90d58": {
+  "str": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+  "refs": [
+   "0x14079df61",
+   "0x14079df85",
+   "0x14079dfd0",
+   "0x14079e2be",
+   "0x14079e2fb"
+  ]
+ },
+ "0x140f90dd0": {
+  "str": "SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Power",
+  "refs": [
+   "0x14079dfa9",
+   "0x14079e1f3",
+   "0x14079e230"
+  ]
+ },
+ "0x140f90db8": {
+  "str": "HiberbootEnabled",
+  "refs": [
+   "0x14079e262"
+  ]
+ },
+ "0x140f90e08": {
+  "str": "ShutdownWithoutLogon",
+  "refs": [
+   "0x14079e32d"
+  ]
+ },
+ "0x140f91df8": {
+  "str": "C:\\Windows\\Temp\\HardwareTask.xml",
+  "refs": [
+   "0x1407a165b",
+   "0x1407a1676",
+   "0x1407a1683",
+   "0x1407a1693",
+   "0x1407a16aa"
+  ]
+ },
+ "0x140f91e20": {
+  "str": "<HOST_PATH>\<DIR>reTask.xml",
+  "refs": [
+   "0x1407a16c1",
+   "0x1407a16dc",
+   "0x1407a16e9",
+   "0x1407a16f9",
+   "0x1407a1710"
+  ]
+ },
+ "0x140f904c0": {
+  "str": "HardwareTask.xml",
+  "refs": [
+   "0x1407a17e1"
+  ]
+ },
+ "0x140f8e528": {
+  "str": "<HOST_PATH>\<DIR>id.cmd",
+  "refs": [
+   "0x1407a1b3a"
+  ]
+ },
+ "0x140f8e548": {
+  "str": "C:\\Windows\\System32\\hwid.cmd",
+  "refs": [
+   "0x1407a1b41"
+  ]
+ },
+ "0x140f8e5c8": {
+  "str": "C:\\Windows\\System32\\EPT.cmd.tmp",
+  "refs": [
+   "0x1407a1ba0"
+  ]
+ },
+ "0x140f8e588": {
+  "str": "C:\\Windows\\System32\\ept.cmd",
+  "refs": [
+   "0x1407a1c5b"
+  ]
+ },
+ "0x140f8e508": {
+  "str": "C:\\Windows\\System32\\EPT.cmd",
+  "refs": [
+   "0x1407a1c79"
+  ]
+ },
+ "0x140f8dca0": {
+  "str": "--nsp-runtime-child",
+  "refs": [
+   "0x1407a1ff0",
+   "0x1407a4c04",
+   "0x1407a4d44",
+   "0x1407a4de0",
+   "0x1407a5428"
+  ]
+ },
+ "0x140f8e3f8": {
+  "str": "<HOST_PATH>\<DIR>rdware.exe",
+  "refs": [
+   "0x1407a2d3f",
+   "0x1407a522a"
+  ]
+ },
+ "0x140f8e420": {
+  "str": "C:\\Windows\\System32\\Hardware.exe",
+  "refs": [
+   "0x1407a2d46",
+   "0x1407a5231"
+  ]
+ },
+ "0x140f92410": {
+  "str": "rmdir /s /q \"C:\\Windows\\System32\\Logs\"",
+  "refs": [
+   "0x1407a2def"
+  ]
+ },
+ "0x140f92438": {
+  "str": "rmdir /s /q \"C:\\Windows\\System32\\HardwareLogs\"",
+  "refs": [
+   "0x1407a2e64"
+  ]
+ },
+ "0x140f92468": {
+  "str": "rmdir /s /q \"<HOST_PATH>\<DIR>gs\"",
+  "refs": [
+   "0x1407a2ed9"
+  ]
+ },
+ "0x140f92490": {
+  "str": "rmdir /s /q \"<HOST_PATH>\<DIR>rdwareLogs\"",
+  "refs": [
+   "0x1407a2f4e"
+  ]
+ },
+ "0x140f92508": {
+  "str": "StoredVerify.begin",
+  "refs": [
+   "0x1407a30a6"
+  ]
+ },
+ "0x140f92660": {
+  "str": "StoredVerify.init_failed_soft_allow",
+  "refs": [
+   "0x1407a3176"
+  ]
+ },
+ "0x140f92688": {
+  "str": "yz.hwid001.com",
+  "refs": [
+   "0x1407a3193"
+  ]
+ },
+ "0x140f92698": {
+  "str": "StoredVerify.SetHost yz.hwid001.com:1029",
+  "refs": [
+   "0x1407a319f"
+  ]
+ },
+ "0x140f926f0": {
+  "str": "StoredVerify.option_failed_soft_allow",
+  "refs": [
+   "0x1407a31fb"
+  ]
+ },
+ "0x140f92770": {
+  "str": "StoredVerify.cardlogin_failed_soft_allow",
+  "refs": [
+   "0x1407a32a3"
+  ]
+ },
+ "0x140f92740": {
+  "str": "StoredVerify.cardlogin_denied_clear_or_block",
+  "refs": [
+   "0x1407a32b6"
+  ]
+ },
+ "0x140f927c0": {
+  "str": "StoredVerify.islogin_failed_soft_allow",
+  "refs": [
+   "0x1407a330e"
+  ]
+ },
+ "0x140f927e8": {
+  "str": "stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s",
+  "refs": [
+   "0x1407a3365"
+  ]
+ },
+ "0x140f92820": {
+  "str": "StoredVerify.beat_hard_deny_clear_or_block",
+  "refs": [
+   "0x1407a33b5"
+  ]
+ },
+ "0x140f92850": {
+  "str": "StoredVerify.beat_not_soft_allow_clear_or_block",
+  "refs": [
+   "0x1407a33f0"
+  ]
+ },
+ "0x140f92880": {
+  "str": "StoredVerify.allow",
+  "refs": [
+   "0x1407a3407"
+  ]
+ },
+ "0x140f903a0": {
+  "str": "配置文件大小异常！",
+  "refs": [
+   "0x1407a3879",
+   "0x1407a5bb0",
+   "0x1407a7500"
+  ]
+ },
+ "0x140f903d0": {
+  "str": "配置文件已损坏！",
+  "refs": [
+   "0x1407a38c8",
+   "0x1407a5bfa",
+   "0x1407a754b"
+  ]
+ },
+ "0x140f903e8": {
+  "str": "配置数据读取失败！",
+  "refs": [
+   "0x1407a46d2",
+   "0x1407a739c",
+   "0x1407a7b21"
+  ]
+ },
+ "0x140f903b8": {
+  "str": "配置文件格式错误！",
+  "refs": [
+   "0x1407a46db",
+   "0x1407a73a5",
+   "0x1407a7b2a"
+  ]
+ },
+ "0x140f92920": {
+  "str": "固定部署失败！",
+  "refs": [
+   "0x1407a4882"
+  ]
+ },
+ "0x140f928a8": {
+  "str": "未找到有效配置，请先使用 -k 完成授权配置！",
+  "refs": [
+   "0x1407a48b1"
+  ]
+ },
+ "0x140f92930": {
+  "str": "sc.exe config \"AntiCheatExpert Protection\" start= delayed-auto",
+  "refs": [
+   "0x1407a4a94"
+  ]
+ },
+ "0x140f92970": {
+  "str": "sc.exe config \"AntiCheatExpert Service\" start= delayed-auto",
+  "refs": [
+   "0x1407a4aa0"
+  ]
+ },
+ "0x140f929b0": {
+  "str": "SeDebugPrivilege",
+  "refs": [
+   "0x1407a4ae7"
+  ]
+ },
+ "0x140f8dc90": {
+  "str": "--shift-open",
+  "refs": [
+   "0x1407a4bf0",
+   "0x1407a4d30",
+   "0x1407a4d70",
+   "0x1407a5410"
+  ]
+ },
+ "0x140f92328": {
+  "str": "-reboot",
+  "refs": [
+   "0x1407a4c18",
+   "0x1407a4d00",
+   "0x1407a54e5"
+  ]
+ },
+ "0x140f9233c": {
+  "str": "-ins",
+  "refs": [
+   "0x1407a4cb0",
+   "0x1407a5440"
+  ]
+ },
+ "0x140f92ae0": {
+  "str": "MAIN startup admin=%d cfgMissing=%d cfgPath=%s exePath=%s",
+  "refs": [
+   "0x1407a52ac"
+  ]
+ },
+ "0x140f92b50": {
+  "str": "-now",
+  "refs": [
+   "0x1407a54c7"
+  ]
+ },
+ "0x140f92c40": {
+  "str": "参数错误：-now 和 -reboot 不能同时使用！",
+  "refs": [
+   "0x1407a568f"
+  ]
+ },
+ "0x140f92b30": {
+  "str": "参数错误：-h 缺少自定义序列号！",
+  "refs": [
+   "0x1407a56b4"
+  ]
+ },
+ "0x140f92b60": {
+  "str": "参数错误：-k 缺少授权卡密！",
+  "refs": [
+   "0x1407a56d9"
+  ]
+ },
+ "0x140f92b80": {
+  "str": "参数错误：-n 需要序列模式数字！",
+  "refs": [
+   "0x1407a56fe"
+  ]
+ },
+ "0x140f92ba8": {
+  "str": "参数错误：-m 需要功能模式数字！",
+  "refs": [
+   "0x1407a5723"
+  ]
+ },
+ "0x140f92c70": {
+  "str": "参数错误：-now 只能配合 -h / -n / -m 使用！",
+  "refs": [
+   "0x1407a57b6"
+  ]
+ },
+ "0x140f92d10": {
+  "str": "CliConfigUpdate.begin",
+  "refs": [
+   "0x1407a5899"
+  ]
+ },
+ "0x140f90380": {
+  "str": "配置文件读取失败！错误码：",
+  "refs": [
+   "0x1407a59e6",
+   "0x1407a7498"
+  ]
+ },
+ "0x140f90400": {
+  "str": "解密服务初始化失败！错误码：",
+  "refs": [
+   "0x1407a5d4e",
+   "0x1407a760b"
+  ]
+ },
+ "0x140f90420": {
+  "str": "解密模式设置失败！错误码：",
+  "refs": [
+   "0x1407a62b3",
+   "0x1407a7772"
+  ]
+ },
+ "0x140f90440": {
+  "str": "解密向量设置失败！错误码：",
+  "refs": [
+   "0x1407a6543",
+   "0x1407a7813"
+  ]
+ },
+ "0x140f90460": {
+  "str": "数据解密失败！错误码：",
+  "refs": [
+   "0x1407a67ec",
+   "0x1407a78dc"
+  ]
+ },
+ "0x140f90488": {
+  "str": "配置数据不完整！预期：",
+  "refs": [
+   "0x1407a6885",
+   "0x1407a7975"
+  ]
+ },
+ "0x140f92d28": {
+  "str": "CliConfigUpdate.LoadConfig",
+  "refs": [
+   "0x1407a6a2c",
+   "0x1407a73cc"
+  ]
+ },
+ "0x140f92d48": {
+  "str": "CliConfigUpdate.StoredAuthorizationUsable",
+  "refs": [
+   "0x1407a6a3a",
+   "0x1407a73da"
+  ]
+ },
+ "0x140f92da0": {
+  "str": "CliConfigUpdate.VerifyStoredCardStatusBeforeUse",
+  "refs": [
+   "0x1407a6a5e"
+  ]
+ },
+ "0x140f92cc0": {
+  "str": "参数错误：-h 只支持静态序列号模式（-n 1）！",
+  "refs": [
+   "0x1407a6ade"
+  ]
+ },
+ "0x140f92ca0": {
+  "str": "参数错误：-n 只能是 0、1 或 2！",
+  "refs": [
+   "0x1407a6b03"
+  ]
+ },
+ "0x140f92cf0": {
+  "str": "参数错误：-m 不能为负数！",
+  "refs": [
+   "0x1407a6b3f"
+  ]
+ },
+ "0x140f92dd8": {
+  "str": "Dynamic serial generate failed.",
+  "refs": [
+   "0x1407a6be7"
+  ]
+ },
+ "0x140f92df8": {
+  "str": "配置保存失败！",
+  "refs": [
+   "0x1407a7384"
+  ]
+ },
+ "0x140f92d78": {
+  "str": "本地授权配置无效，无法修改配置！",
+  "refs": [
+   "0x1407a73f3"
+  ]
+ },
+ "0x140f93688": {
+  "str": "invalid string position",
+  "refs": [
+   "0x1407ad554"
+  ]
+ }
+}

@@ -1,0 +1,51 @@
+== C50: every instruction carrying immediate 0x100 in recovered .text, by owning function ==
+   window 0x140001000..0x1407da900 (8231168 B); decoded 1993973 instructions; covered 8220120 B (99.9 %); stepped over 11048 B
+   C1 coverage is the bound on the negative below; sites found: 111 in 58 distinct functions
+
+-- functions of the delivery chain that contain a 0x100 immediate --
+   0x1407a1fa0 (1517 B, 3 sites): 0x1407a21c0, 0x1407a21d7, 0x1407a21ff
+      around 0x1407a21c0:
+        0x1407a21b6  shr eax, cl                            d3e8
+        0x1407a21b8  mov byte ptr [rbx], al                 8803
+        0x1407a21ba  inc edi                                ffc7
+        0x1407a21bc  lea rbx, [rbx + 1]                     488d5b01
+        0x1407a21c0  cmp edi, 0x100                         81ff00010000  <== here
+      around 0x1407a21d7:
+        0x1407a21cd  mov qword ptr [rsp + 0x20], r12        4c89642420
+        0x1407a21d2  lea r9, [rsp + 0x48]                   4c8d4c2448
+        0x1407a21d7  mov r8d, 0x100                         41b800010000  <== here
+      around 0x1407a21ff:
+        0x1407a21f5  loopne 0x1407a223f                     e048
+        0x1407a21f7  lea edi, [rbp + 0x230]                 8dbd30020000
+        0x1407a21fd  xor eax, eax                           33c0
+        0x1407a21ff  mov ecx, 0x100                         b900010000  <== here
+   0x1407a3080 (675 B, 2 sites): 0x1407a30e2, 0x1407a32d8
+      around 0x1407a30e2:
+        0x1407a30d8  jmp 0x1407a30dc                        eb02
+        0x1407a30da  xor bl, bl                             32db
+        0x1407a30dc  xor edx, edx                           33d2
+        0x1407a30de  lea rcx, [rbp - 0x70]                  488d4d90
+        0x1407a30e2  mov r8d, 0x100                         41b800010000  <== here
+      around 0x1407a32d8:
+        0x1407a32ce  call 0x1403c49d0                       e8fd16c2ff
+        0x1407a32d3  xor edx, edx                           33d2
+        0x1407a32d5  movzx ebx, al                          0fb6d8
+        0x1407a32d8  mov r8d, 0x100                         41b800010000  <== here
+   C2 chain functions with a 0x100 site: 2 of 8 listed in CHAIN
+
+-- the 15 densest functions overall (candidates ranked by site count) --
+   0x0           10 site(s)  0x1402ed0e2, 0x140309676, 0x14047e729, 0x14048e97c, 0x1404a63d9, 0x1407ba85b, 0x1407baad2, 0x1407babdf
+   0x1407b48f0   10 site(s)  0x1407b4a77, 0x1407b4a98, 0x1407b4b26, 0x1407b4b2d, 0x1407b4b34, 0x1407b4b3b, 0x1407b4c56, 0x1407b4c5d
+   0x1400019d0    7 site(s)  0x140003ed5, 0x140005a08, 0x14000c7af, 0x140011390, 0x140012e31, 0x140015b73, 0x14001a7d6
+   0x14002a6f0    6 site(s)  0x14002d932, 0x14002f8c9, 0x140034ba6, 0x14003ad0b, 0x14003b476, 0x14003e46d
+   0x14078e589    4 site(s)  0x14078e5f2, 0x14078e624, 0x14078e6fb, 0x14078e703
+   0x140071910    3 site(s)  0x14008598a, 0x14009a479, 0x14009ed02
+   0x1401934b0    3 site(s)  0x1401948e9, 0x140195e6d, 0x1401970c8
+   0x14079f030    3 site(s)  0x14079f081, 0x14079f0fd, 0x14079f18c
+   0x1407a1fa0    3 site(s)  0x1407a21c0, 0x1407a21d7, 0x1407a21ff
+   0x1407206a0    2 site(s)  0x140756966, 0x140756973
+   0x14076bdc0    2 site(s)  0x14076bdc3, 0x14076c360
+   0x140790fc0    2 site(s)  0x140790fd0, 0x140791432
+   0x140792e40    2 site(s)  0x140792e8e, 0x140792f4e
+   0x1407a3080    2 site(s)  0x1407a30e2, 0x1407a32d8
+   0x1407a4972    2 site(s)  0x1407a4995, 0x1407a49f4

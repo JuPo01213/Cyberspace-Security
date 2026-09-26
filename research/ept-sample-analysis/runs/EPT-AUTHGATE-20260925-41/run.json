@@ -1,0 +1,16 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-41",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "hypothesis": "在部署函数的 FatalExit thunk（0x14171F567，硬件断点）做合成返回（用 0x1407b108f 处 $t0-$t8 捕获恢复调度器 rsp/寄存器，rip=0x1407b1094，eax=0），调度器继续执行 -> Run/Cloud_Beat 调度启动 -> 样本越过部署失败终点向 RC00 区域推进。",
+  "instrument_note": "仅使用已验证安全类别：映像内硬件断点+寄存器翻转/伪寄存器保存；无代码字节写入；38/39 的 1407aa68c 断点地址禁用（n=1 相关致死，机制未明）。",
+  "acceptance_fields": {
+    "sched_callsite_captured": null,
+    "fatal_thunk_hit": null,
+    "synthetic_return_executed": null,
+    "scheduler_continued": null,
+    "new_stage_logs": null,
+    "rc00_region_evidence": null,
+    "process_alive_after": null
+  },
+  "deadline_sec": 720
+}

@@ -1,0 +1,11 @@
+{
+    "path":  "C:\\Windows\\Temp\\EPT_2C6E782E_8FCCB950.exe",
+    "before":  null,
+    "after":  {
+                  "path":  "C:\\Windows\\Temp\\EPT_2C6E782E_8FCCB950.exe",
+                  "length":  32671488,
+                  "last_write_utc":  "2026-09-24T12:36:41.2716261Z",
+                  "sha256":  "721FF6777E2D4887AB0089CF6D9344729ABD34C035C5CB0004DF046C4D6E867D",
+                  "attributes":  "Archive"
+              }
+}

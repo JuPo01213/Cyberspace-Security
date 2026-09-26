@@ -1,0 +1,4 @@
+.echo [S18_LATE_START]
+s -a 140000000 L?3f83000 "StoredAuthorizationUsable"
+.echo [S18_SCAN1]
+.echo [S18_LATE_DONE]

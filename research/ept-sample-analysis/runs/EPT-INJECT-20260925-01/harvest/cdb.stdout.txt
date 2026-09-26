@@ -1,0 +1,206 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.079 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+(c24.414): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ffe`c5260860 cc              int     3
+0:000> .echo [INJ2_PARENT_READY]
+[INJ2_PARENT_READY]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> bu 1407a3080 ".echo [AUTH_PARENT_ENTRY]; r rip; r rsp; r rcx; r rdx; r r8; r r9; dq @rsp L4; k; g"
+0:000> bu 1407a6a53 ".echo [AUTH_PARENT_RETURN_A]; r eax; k; g"
+0:000> bu 1407a7b14 ".echo [AUTH_PARENT_RETURN_B]; r eax; k; g"
+0:000> bu 14078ee73 ".echo [AUTH_PARENT_RC00]; r rcx; r rdx; r r8; r r9; dq @rsp L10; k; g"
+0:000> sxe -c "$$><child.cdb" cpr
+0:000> sxe -c ".echo [INJ2_PARENT_AV]; .lastevent; r; k; g" av
+0:000> g
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+ModLoad: 00007ffe`c20e0000 00007ffe`c20ec000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffe`c2b20000 00007ffe`c2ba2000   C:\Windows\System32\bcryptPrimitives.dll
+ModLoad: 00007ffe`c1a40000 00007ffe`c1a73000   C:\Windows\SYSTEM32\ntmarta.dll
+ModLoad: 00007ffe`c46b0000 00007ffe`c475d000   C:\Windows\System32\SHCORE.dll
+ModLoad: 00007ffe`c4cc0000 00007ffe`c4d1b000   C:\Windows\System32\shlwapi.dll
+ModLoad: 00007ffe`c08b0000 00007ffe`c1055000   C:\Windows\SYSTEM32\windows.storage.dll
+ModLoad: 00007ffe`c2170000 00007ffe`c219b000   C:\Windows\SYSTEM32\Wldp.dll
+ModLoad: 00007ffe`c45e0000 00007ffe`c46ad000   C:\Windows\System32\OLEAUT32.dll
+ModLoad: 00007ffe`c06b0000 00007ffe`c06c2000   C:\Windows\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ffe`bd880000 00007ffe`bd974000   C:\Windows\SYSTEM32\PROPSYS.dll
+ModLoad: 00007ffe`c4d20000 00007ffe`c4dc9000   C:\Windows\System32\clbcatq.dll
+ModLoad: 00007ffe`c2750000 00007ffe`c2774000   C:\Windows\SYSTEM32\profapi.dll
+ModLoad: 00007ffe`c2820000 00007ffe`c286e000   C:\Windows\System32\CFGMGR32.dll
+ModLoad: 00007ffe`b16e0000 00007ffe`b1704000   C:\Windows\SYSTEM32\edputil.dll
+ModLoad: 00007ffe`b81e0000 00007ffe`b83d2000   C:\Windows\SYSTEM32\urlmon.dll
+ModLoad: 00007ffe`c1d10000 00007ffe`c1d1c000   C:\Windows\SYSTEM32\netutils.dll
+ModLoad: 00007ffe`b7e60000 00007ffe`b811f000   C:\Windows\SYSTEM32\iertutil.dll
+ModLoad: 00007ffe`bdbb0000 00007ffe`bdbd8000   C:\Windows\SYSTEM32\srvcli.dll
+ModLoad: 00007ffe`b4a30000 00007ffe`b4b76000   C:\Windows\System32\Windows.StateRepositoryPS.dll
+ModLoad: 00007ffe`c26d0000 00007ffe`c2702000   C:\Windows\SYSTEM32\SspiCli.dll
+ModLoad: 00007ffe`bd9c0000 00007ffe`bd9d3000   C:\Windows\SYSTEM32\virtdisk.dll
+ModLoad: 00007ffe`bdb80000 00007ffe`bdb8b000   C:\Windows\SYSTEM32\FLTLIB.DLL
+ModLoad: 00007ffe`bf710000 00007ffe`bf867000   C:\Windows\System32\wintypes.dll
+ModLoad: 00007ffe`acce0000 00007ffe`acd74000   C:\Windows\System32\appresolver.dll
+ModLoad: 00007ffe`c1320000 00007ffe`c1349000   C:\Windows\System32\SLC.dll
+ModLoad: 00007ffe`c2710000 00007ffe`c273e000   C:\Windows\System32\USERENV.dll
+ModLoad: 00007ffe`c12f0000 00007ffe`c1315000   C:\Windows\System32\sppc.dll
+ModLoad: 00007ffe`b5240000 00007ffe`b529b000   C:\Windows\System32\Bcp47Langs.dll
+onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(1) tid(12cc) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(2) tid(12cc) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(3) tid(12cc) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFEBD89460D: (caller: 00007FFEBD89300F) ReturnHr(4) tid(12cc) 80070490 找不到元ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\system32\apphelp.dll
+ModLoad: 00007ffe`aea10000 00007ffe`aea30000   C:\Windows\SYSTEM32\pcacli.dll
+ModLoad: 00007ffe`ae9f0000 00007ffe`aea0d000   C:\Windows\SYSTEM32\MPR.dll
+ModLoad: 00007ffe`b2380000 00007ffe`b2392000   C:\Windows\System32\sfc_os.dll
+ModLoad: 00007ffe`c40b0000 00007ffe`c4520000   C:\Windows\System32\SETUPAPI.dll
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: srv*
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+[AUTH_CHILD_ATTACHED]
+Reloading current modules
+.
+[AUTH_CHILD_BPS_ARMED]
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+[CHILD_ENTRY]
+*** WARNING: Unable to verify checksum for image00000001`40000000
+Child-SP          RetAddr               Call Site
+00000000`0014ff28 00000000`0000030c     image00000001_40000000+0x235f67b
+00000000`00150098 00000c1c`32ceeacd     0x30c
+00000000`001500a0 00000c60`00000042     0x00000c1c`32ceeacd
+00000000`001500a8 00000000`00000342     0x00000c60`00000042
+00000000`001500b0 00000fa4`38505fc8     0x342
+00000000`001500b8 00001004`0000005e     0x00000fa4`38505fc8
+00000000`001500c0 00000000`00000374     0x00001004`0000005e
+00000000`001500c8 00001378`b1280544     0x374
+00000000`001500d0 000013d0`00000056     0x00001378`b1280544
+00000000`001500d8 00000010`000003a4     0x000013d0`00000056
+00000000`001500e0 000000ec`00000009     0x00000010`000003a4
+00000000`001500e8 00000001`00000002     0x000000ec`00000009
+00000000`001500f0 00001630`0000017c     0x00000001`00000002
+00000000`001500f8 00000002`00000001     0x00001630`0000017c
+00000000`00150100 000004b4`000017ac     0x00000002`00000001
+00000000`00150108 00000003`00000001     0x000004b4`000017ac
+00000000`00150110 00000e8c`00001c60     0x00000003`00000001
+00000000`00150118 00000004`00000001     0x00000e8c`00001c60
+00000000`00150120 00000314`00002aec     0x00000004`00000001
+00000000`00150128 00000005`00000002     0x00000314`00002aec
+00000000`00150130 00000098`00002e00     0x00000005`00000002
+00000000`00150138 00000006`00000002     0x00000098`00002e00
+00000000`00150140 000000cc`00002e98     0x00000006`00000002
+00000000`00150148 00000007`00000002     0x000000cc`00002e98
+00000000`00150150 000000f0`00002f64     0x00000007`00000002
+00000000`00150158 00000009`00000001     0x000000f0`00002f64
+00000000`00150160 00000028`00003054     0x00000009`00000001
+00000000`00150168 0000000b`00000002     0x00000028`00003054
+00000000`00150170 00000008`0000307c     0x0000000b`00000002
+00000000`00150178 64487353`00000001     0x00000008`0000307c
+00000000`00150180 00000001`0000002c     0x64487353`00000001
+00000000`00150188 00000001`00000001     0x00000001`0000002c
+00000000`00150190 0000008c`00000006     0x00000001`00000001
+00000000`00150198 000015f8`00000001     0x0000008c`00000006
+00000000`001501a0 0000005e`0000002c     0x000015f8`00000001
+00000000`001501a8 00000000`0000005e     0x0000005e`0000002c
+00000000`001501b0 00000000`00000000     0x5e
+权限状态: 管理员模式
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

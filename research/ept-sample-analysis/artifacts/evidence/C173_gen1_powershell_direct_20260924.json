@@ -1,0 +1,70 @@
+{
+  "run_id": "C173-gen1-comm-20260924-01",
+  "vm_name": "<VM_LABEL>",
+  "generation": 1,
+  "state": "Running",
+  "uptime": "00:07:00.0130000",
+  "secure_boot": "not_applicable_gen1",
+  "network_switch": "Default Switch",
+  "mac_address": "00155D380102",
+  "host_ip_addresses": [
+    "<PRIVATE_IP>",
+    "fe80::a112:3f9c:172:4929"
+  ],
+  "guest": {
+    "hostname": "<VM_LABEL>",
+    "user": "<VM_USER>",
+    "os_caption": "Microsoft Windows 10 专业版",
+    "os_version": "10.0.19045",
+    "marker_path": "C:\\<VM_LABEL>_guest_ready.txt",
+    "marker_present": true,
+    "marker_sha256": "96432741452CE53C5C640F0E14C0ECA64FCF6B9E29B3A592793246110E01AEC8",
+    "system_drive_free_bytes": 54927228928,
+    "ps_version": "5.1.19041.3803",
+    "PSComputerName": "<VM_LABEL>",
+    "RunspaceId": "5f901deb-aba9-4b95-a36f-6ffc5a08abca",
+    "PSShowComputerName": true
+  },
+  "integration_services": [
+    {
+      "Name": "来宾服务接口",
+      "Enabled": false,
+      "PrimaryStatusDescription": "确定",
+      "SecondaryStatusDescription": null
+    },
+    {
+      "Name": "检测信号",
+      "Enabled": true,
+      "PrimaryStatusDescription": "确定",
+      "SecondaryStatusDescription": null
+    },
+    {
+      "Name": "键值对交换",
+      "Enabled": true,
+      "PrimaryStatusDescription": "确定",
+      "SecondaryStatusDescription": null
+    },
+    {
+      "Name": "关闭",
+      "Enabled": true,
+      "PrimaryStatusDescription": "确定",
+      "SecondaryStatusDescription": null
+    },
+    {
+      "Name": "时间同步",
+      "Enabled": true,
+      "PrimaryStatusDescription": "确定",
+      "SecondaryStatusDescription": null
+    },
+    {
+      "Name": "VSS",
+      "Enabled": true,
+      "PrimaryStatusDescription": "确定",
+      "SecondaryStatusDescription": null
+    }
+  ],
+  "sample_launch_requested": false,
+  "sample_identity_check": "not_started",
+  "channel": "PowerShell Direct",
+  "password_value_recorded": false
+}

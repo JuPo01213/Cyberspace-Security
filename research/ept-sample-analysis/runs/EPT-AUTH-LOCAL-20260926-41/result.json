@@ -1,0 +1,11 @@
+﻿{
+    "mode":  "offline_dump_only",
+    "input_sha256":  "CA0FFCEC87A8580E9BFDEF4DAAF90C97FB06A53D597028020FE1EC714830E60D",
+    "sample_launched":  false,
+    "patches_applied":  false,
+    "completed":  true,
+    "exit_code":  0,
+    "elapsed_sec":  0.21864309999999998,
+    "cdb_version":  "10.0.26100.9169 (WinBuild.160101.0800)",
+    "stdout_sha256":  "F9E86FFC2925CEFEB29F0CDA3E01181BB8602088CBFC9499520058FBEFCB0541"
+}

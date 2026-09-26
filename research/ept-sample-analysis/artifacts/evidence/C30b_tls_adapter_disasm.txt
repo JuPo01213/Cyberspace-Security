@@ -1,0 +1,209 @@
+# C30b - the TLS-adapter classes the sample mounts into its requests Sessions
+
+# This is what decides whether 旧文 §10.4 的 "verify=False" 是对缺陷的正确描述。
+
+=== <module>._wv2_download_bootstrapper._TLSAdapter  (argnames=()) ===
+    co_names: ['__name__', '__module__', '__qualname__', '__firstlineno__', 'init_poolmanager', '__static_attributes__', '__classcell__']
+      @0    COPY_FREE_VARS         
+      @2    MAKE_CELL              __class__
+      @4    RESUME                 
+      @6    LOAD_NAME              __name__
+      @8    STORE_NAME             __module__
+      @10   LOAD_CONST             '_wv2_download_bootstrapper.<locals>._TLSAdapter'
+      @12   STORE_NAME             __qualname__
+      @14   LOAD_CONST             613
+      @16   STORE_NAME             __firstlineno__
+      @18   LOAD_FAST              __class__
+      @20   LOAD_FAST              _ssl2
+      @22   LOAD_FAST              create_urllib3_context
+      @24   BUILD_TUPLE            
+      @26   LOAD_CONST             <code object init_poolmanager at 0x0000014CA69E79B0, fil
+      @28   MAKE_FUNCTION          
+      @30   SET_FUNCTION_ATTRIBUTE closure
+      @32   STORE_NAME             init_poolmanager
+      @34   LOAD_CONST             ()
+      @36   STORE_NAME             __static_attributes__
+      @38   LOAD_FAST              __class__
+      @40   COPY                   
+      @42   STORE_NAME             __classcell__
+      @44   RETURN_VALUE           
+    consts: ['_wv2_download_bootstrapper.<locals>._TLSAdapter', 613, ()]
+
+=== <module>._wv2_download_bootstrapper._TLSAdapter.init_poolmanager  (argnames=('self', 'args', 'kwargs', 'ctx')) ===
+    co_names: ['TLSVersion', 'TLSv1_2', 'minimum_version', 'check_hostname', 'CERT_NONE', 'verify_mode', 'super', 'init_poolmanager']
+      @0    COPY_FREE_VARS         
+      @2    RESUME                 
+      @4    LOAD_DEREF             create_urllib3_context
+      @6    PUSH_NULL              
+      @8    CALL                   
+      @16   STORE_FAST             ctx
+      @18   LOAD_DEREF             _ssl2
+      @20   LOAD_ATTR              TLSVersion
+      @40   LOAD_ATTR              TLSv1_2
+      @60   LOAD_FAST              ctx
+      @62   STORE_ATTR             minimum_version
+      @72   LOAD_CONST             False
+      @74   LOAD_FAST              ctx
+      @76   STORE_ATTR             check_hostname
+      @86   LOAD_DEREF             _ssl2
+      @88   LOAD_ATTR              CERT_NONE
+      @108  LOAD_FAST              ctx
+      @110  STORE_ATTR             verify_mode
+      @120  LOAD_FAST_LOAD_FAST    ctx, kwargs
+      @122  LOAD_CONST             'ssl_context'
+      @124  STORE_SUBSCR           
+      @128  LOAD_GLOBAL            super
+      @138  LOAD_DEREF             __class__
+      @140  LOAD_FAST              self
+      @142  LOAD_SUPER_ATTR        init_poolmanager
+      @146  PUSH_NULL              
+      @148  LOAD_FAST              args
+      @150  BUILD_MAP              
+      @152  LOAD_FAST              kwargs
+      @154  DICT_MERGE             
+      @156  CALL_FUNCTION_EX       
+      @158  RETURN_VALUE           
+    consts: [None, False, 'ssl_context']
+
+=== <module>._fetch_feishu_notice.TLSAdapter  (argnames=()) ===
+    co_names: ['__name__', '__module__', '__qualname__', '__firstlineno__', 'init_poolmanager', '__static_attributes__', '__classcell__']
+      @0    COPY_FREE_VARS         
+      @2    MAKE_CELL              __class__
+      @4    RESUME                 
+      @6    LOAD_NAME              __name__
+      @8    STORE_NAME             __module__
+      @10   LOAD_CONST             '_fetch_feishu_notice.<locals>.TLSAdapter'
+      @12   STORE_NAME             __qualname__
+      @14   LOAD_CONST             3266
+      @16   STORE_NAME             __firstlineno__
+      @18   LOAD_FAST              __class__
+      @20   LOAD_FAST              create_urllib3_context
+      @22   LOAD_FAST              ssl
+      @24   BUILD_TUPLE            
+      @26   LOAD_CONST             <code object init_poolmanager at 0x0000014CA6D885F0, fil
+      @28   MAKE_FUNCTION          
+      @30   SET_FUNCTION_ATTRIBUTE closure
+      @32   STORE_NAME             init_poolmanager
+      @34   LOAD_CONST             ()
+      @36   STORE_NAME             __static_attributes__
+      @38   LOAD_FAST              __class__
+      @40   COPY                   
+      @42   STORE_NAME             __classcell__
+      @44   RETURN_VALUE           
+    consts: ['_fetch_feishu_notice.<locals>.TLSAdapter', 3266, ()]
+
+=== <module>._fetch_feishu_notice.TLSAdapter.init_poolmanager  (argnames=('self', 'args', 'kwargs', 'ctx')) ===
+    co_names: ['TLSVersion', 'TLSv1_2', 'minimum_version', 'check_hostname', 'CERT_NONE', 'verify_mode', 'super', 'init_poolmanager']
+      @0    COPY_FREE_VARS         
+      @2    RESUME                 
+      @4    LOAD_DEREF             create_urllib3_context
+      @6    PUSH_NULL              
+      @8    CALL                   
+      @16   STORE_FAST             ctx
+      @18   LOAD_DEREF             ssl
+      @20   LOAD_ATTR              TLSVersion
+      @40   LOAD_ATTR              TLSv1_2
+      @60   LOAD_FAST              ctx
+      @62   STORE_ATTR             minimum_version
+      @72   LOAD_CONST             False
+      @74   LOAD_FAST              ctx
+      @76   STORE_ATTR             check_hostname
+      @86   LOAD_DEREF             ssl
+      @88   LOAD_ATTR              CERT_NONE
+      @108  LOAD_FAST              ctx
+      @110  STORE_ATTR             verify_mode
+      @120  LOAD_FAST_LOAD_FAST    ctx, kwargs
+      @122  LOAD_CONST             'ssl_context'
+      @124  STORE_SUBSCR           
+      @128  LOAD_GLOBAL            super
+      @138  LOAD_DEREF             __class__
+      @140  LOAD_FAST              self
+      @142  LOAD_SUPER_ATTR        init_poolmanager
+      @146  PUSH_NULL              
+      @148  LOAD_FAST              args
+      @150  BUILD_MAP              
+      @152  LOAD_FAST              kwargs
+      @154  DICT_MERGE             
+      @156  CALL_FUNCTION_EX       
+      @158  RETURN_VALUE           
+    consts: [None, False, 'ssl_context']
+
+=== <module>._parse_feishu_links.TLSAdapter  (argnames=()) ===
+    co_names: ['__name__', '__module__', '__qualname__', '__firstlineno__', 'init_poolmanager', '__static_attributes__', '__classcell__']
+      @0    COPY_FREE_VARS         
+      @2    MAKE_CELL              __class__
+      @4    RESUME                 
+      @6    LOAD_NAME              __name__
+      @8    STORE_NAME             __module__
+      @10   LOAD_CONST             '_parse_feishu_links.<locals>.TLSAdapter'
+      @12   STORE_NAME             __qualname__
+      @14   LOAD_CONST             1844
+      @16   STORE_NAME             __firstlineno__
+      @18   LOAD_FAST              __class__
+      @20   LOAD_FAST              create_urllib3_context
+      @22   LOAD_FAST              ssl
+      @24   BUILD_TUPLE            
+      @26   LOAD_CONST             <code object init_poolmanager at 0x0000014CA6DB4830, fil
+      @28   MAKE_FUNCTION          
+      @30   SET_FUNCTION_ATTRIBUTE closure
+      @32   STORE_NAME             init_poolmanager
+      @34   LOAD_CONST             ()
+      @36   STORE_NAME             __static_attributes__
+      @38   LOAD_FAST              __class__
+      @40   COPY                   
+      @42   STORE_NAME             __classcell__
+      @44   RETURN_VALUE           
+    consts: ['_parse_feishu_links.<locals>.TLSAdapter', 1844, ()]
+
+=== <module>._parse_feishu_links.TLSAdapter.init_poolmanager  (argnames=('self', 'args', 'kwargs', 'ctx')) ===
+    co_names: ['TLSVersion', 'TLSv1_2', 'minimum_version', 'options', 'OP_NO_SSLv2', 'OP_NO_SSLv3', 'OP_NO_TLSv1', 'OP_NO_TLSv1_1', 'check_hostname', 'CERT_NONE', 'verify_mode', 'super', 'init_poolmanager']
+      @0    COPY_FREE_VARS         
+      @2    RESUME                 
+      @4    LOAD_DEREF             create_urllib3_context
+      @6    PUSH_NULL              
+      @8    CALL                   
+      @16   STORE_FAST             ctx
+      @18   LOAD_DEREF             ssl
+      @20   LOAD_ATTR              TLSVersion
+      @40   LOAD_ATTR              TLSv1_2
+      @60   LOAD_FAST              ctx
+      @62   STORE_ATTR             minimum_version
+      @72   LOAD_FAST              ctx
+      @74   COPY                   
+      @76   LOAD_ATTR              options
+      @96   LOAD_DEREF             ssl
+      @98   LOAD_ATTR              OP_NO_SSLv2
+      @118  LOAD_DEREF             ssl
+      @120  LOAD_ATTR              OP_NO_SSLv3
+      @140  BINARY_OP              |
+      @144  LOAD_DEREF             ssl
+      @146  LOAD_ATTR              OP_NO_TLSv1
+      @166  BINARY_OP              |
+      @170  LOAD_DEREF             ssl
+      @172  LOAD_ATTR              OP_NO_TLSv1_1
+      @192  BINARY_OP              |
+      @196  BINARY_OP              |=
+      @200  SWAP                   
+      @202  STORE_ATTR             options
+      @212  LOAD_CONST             False
+      @214  LOAD_FAST              ctx
+      @216  STORE_ATTR             check_hostname
+      @226  LOAD_DEREF             ssl
+      @228  LOAD_ATTR              CERT_NONE
+      @248  LOAD_FAST              ctx
+      @250  STORE_ATTR             verify_mode
+      @260  LOAD_FAST_LOAD_FAST    ctx, kwargs
+      @262  LOAD_CONST             'ssl_context'
+      @264  STORE_SUBSCR           
+      @268  LOAD_GLOBAL            super
+      @278  LOAD_DEREF             __class__
+      @280  LOAD_FAST              self
+      @282  LOAD_SUPER_ATTR        init_poolmanager
+      @286  PUSH_NULL              
+      @288  LOAD_FAST              args
+      @290  BUILD_MAP              
+      @292  LOAD_FAST              kwargs
+      @294  DICT_MERGE             
+      @296  CALL_FUNCTION_EX       
+      @298  RETURN_VALUE           
+    consts: [None, False, 'ssl_context']

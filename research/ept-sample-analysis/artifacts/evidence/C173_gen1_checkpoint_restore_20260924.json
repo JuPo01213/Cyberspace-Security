@@ -1,0 +1,31 @@
+{
+  "run_id": "C173-gen1-comm-20260924-01",
+  "vm_name": "<VM_LABEL>",
+  "snapshot_name": "C173-gen1-comm-ready",
+  "snapshot_type": "Standard",
+  "snapshot_exists": true,
+  "restore_sequence": [
+    "created C:\\<VM_LABEL>_after_checkpoint.txt before checkpoint",
+    "created C:\\<VM_LABEL>_post_checkpoint_mutation.txt after checkpoint and removed prior file",
+    "stopped VM",
+    "restored C173-gen1-comm-ready",
+    "started VM",
+    "verified PowerShell Direct"
+  ],
+  "expected_after_restore": {
+    "post_checkpoint_mutation": false,
+    "checkpoint_file": true,
+    "ready_marker": true
+  },
+  "observed_after_restore": {
+    "hostname": "<VM_LABEL>",
+    "ready_marker": true,
+    "checkpoint_file": true,
+    "post_checkpoint_mutation": false,
+    "PSComputerName": "<VM_LABEL>",
+    "RunspaceId": "b5984eb9-de53-4aec-9128-7b19e01e511c",
+    "PSShowComputerName": true
+  },
+  "restore_verified": true,
+  "sample_launch_requested": false
+}

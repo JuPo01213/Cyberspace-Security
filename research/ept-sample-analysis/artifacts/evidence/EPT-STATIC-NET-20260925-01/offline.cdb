@@ -1,0 +1,18 @@
+.echo STATIC_DUMP_ONLY_BEGIN
+lm
+.echo PE_HEADERS
+!dh 140000000 -f
+.echo CARDLOGIN_CANDIDATE_START
+u 1403b3d30 L30
+.echo UPPER_CALLER_CANDIDATE
+u 1407a320e L10
+.echo IMAGE_IAT_SLOTS
+dps 14205a000 L1f
+.echo WINSOCK_EXPORTS
+x ws2_32!socket
+x ws2_32!connect
+x ws2_32!send
+x ws2_32!recv
+x ws2_32!WSAStartup
+.echo STATIC_DUMP_ONLY_END
+q

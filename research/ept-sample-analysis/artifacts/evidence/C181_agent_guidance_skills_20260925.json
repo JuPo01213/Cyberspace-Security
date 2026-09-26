@@ -1,0 +1,41 @@
+{
+  "case_id": "C181",
+  "utc_date": "2026-09-25",
+  "type": "agent_guidance_skill_installation",
+  "status": "INSTALLED_LOCAL_ADAPTERS",
+  "official_companion_files_found": false,
+  "interpretation": "Upstream projects provide README, MCP handshake instructions, tools/resources/prompts and development guidance rather than directly installable SKILL.md files.",
+  "installed": [
+    {
+      "name": "remnux-mcp-workbench",
+      "path": "<HOST_PATH>/Users/<USER>/.codebuddy/skills/remnux-mcp-workbench/SKILL.md",
+      "package": "@remnux/mcp-server@0.1.75",
+      "scope": "REMnux MCP static triage, artifact collection, evidence_scope and isolation boundaries"
+    },
+    {
+      "name": "ghidra-mcp-workbench",
+      "path": "<HOST_PATH>/Users/<USER>/.codebuddy/skills/ghidra-mcp-workbench/SKILL.md",
+      "package": "Ghidra 12.1.4 + GhidrAssistMCP 2.11.0",
+      "scope": "headless Ghidra MCP read-only reverse engineering, prompts, xrefs and evidence collection"
+    },
+    {
+      "name": "agent-static-analysis-workflow",
+      "path": "method/AGENT_STATIC_ANALYSIS_WORKFLOW.md",
+      "scope": "REMnux/Ghidra/Windows Guest node selection and EPT evidence routing"
+    }
+  ],
+  "verification": {
+    "agent_toolchain_json_parse": "PASS",
+    "remnux_skill_key_constraints": "PASS",
+    "ghidra_skill_key_constraints": "PASS",
+    "project_workflow_key_constraints": "PASS",
+    "official_versions_recorded": true,
+    "sample_launch_requested": false,
+    "launch_state": "SAMPLE_LAUNCH_HELD"
+  },
+  "limitations": [
+    "REMnux host package smoke does not prove a REMnux execution node or tool inventory.",
+    "Ghidra/GhidrAssist benign smoke does not prove EPT dynamic behavior.",
+    "The local files are project adapter guidance, not upstream official SKILL.md files."
+  ]
+}

@@ -1,0 +1,114 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\ept_obs\spool\EPT-AUTHGATE-20260925-16\child_full.dmp]
+User Mini Dump File: Only registers, stack and portions of memory are available
+
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Version 19045 MP (2 procs) Free x64
+Product: WinNt, suite: SingleUserTS
+Edition build lab: 19041.1.amd64fre.vb_release.191206-1406
+Debug session time: Fri Sep 25 15:07:35.000 2026 (UTC + 8:00)
+System Uptime: not available
+Process Uptime: 0 days 0:01:03.000
+.....................................
+For analysis of this file, run !analyze -v
+win32u!NtUserWaitMessage+0x14:
+00007ffe`c2af11c4 c3              ret
+0:000> .echo DUMP_BEGIN
+DUMP_BEGIN
+0:000> ~*
+.  0  Id: e24.30c Suspend: 0 Teb: 00000000`002fe000 Unfrozen
+      Priority: 0  Priority class: 16384
+   1  Id: e24.1384 Suspend: 0 Teb: 00000000`00300000 Unfrozen
+      Priority: 0  Priority class: 16384
+   2  Id: e24.10c4 Suspend: 0 Teb: 00000000`00302000 Unfrozen
+      Priority: 0  Priority class: 16384
+   3  Id: e24.12d4 Suspend: 0 Teb: 00000000`00306000 Unfrozen
+      Priority: 0  Priority class: 16384
+   4  Id: e24.f48 Suspend: 0 Teb: 00000000`00308000 Unfrozen
+      Priority: 0  Priority class: 16384
+0:000> .echo THREADS_DONE
+THREADS_DONE
+0:000> ~*k
+
+.  0  Id: e24.30c Suspend: 0 Teb: 00000000`002fe000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00145888 00007ffe`c4a6e341     win32u!NtUserWaitMessage+0x14
+00000000`00145890 00007ffe`c4a6e0b1     user32!DialogBoxIndirectParamAorW+0x431
+00000000`00145930 00007ffe`c4abd01b     user32!DialogBoxIndirectParamAorW+0x1a1
+00000000`00145990 00007ffe`c4abb935     user32!SoftModalMessageBox+0x85b
+00000000`00145ae0 00007ffe`c4abc727     user32!DrawStateA+0x1e25
+00000000`00145c90 00007ffe`c4abc518     user32!MessageBoxTimeoutW+0x1a7
+00000000`00145d90 00007ffe`c4abc12e     user32!MessageBoxTimeoutA+0x108
+*** WARNING: Unable to verify checksum for EPT_BA5A4961_F180DDD7.exe
+00000000`00145df0 00000001`4203770c     user32!MessageBoxA+0x4e
+00000000`00145e30 00000000`00000000     EPT_BA5A4961_F180DDD7+0x203770c
+
+   1  Id: e24.1384 Suspend: 0 Teb: 00000000`00300000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0074fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0074fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0074ff30 00007ffe`c51dcc91     kernel32!BaseThreadInitThunk+0x14
+00000000`0074ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   2  Id: e24.10c4 Suspend: 0 Teb: 00000000`00302000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0084fc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`0084fc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`0084ff30 00007ffe`c51dcc91     kernel32!BaseThreadInitThunk+0x14
+00000000`0084ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   3  Id: e24.12d4 Suspend: 0 Teb: 00000000`00306000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00dafc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`00dafc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`00daff30 00007ffe`c51dcc91     kernel32!BaseThreadInitThunk+0x14
+00000000`00daff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+
+   4  Id: e24.f48 Suspend: 0 Teb: 00000000`00308000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`00edfc28 00007ffe`c51dd407     ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00000000`00edfc30 00007ffe`c4c07374     ntdll!TpReleaseCleanupGroupMembers+0x747
+00000000`00edff30 00007ffe`c51dcc91     kernel32!BaseThreadInitThunk+0x14
+00000000`00edff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo STACKS_DONE
+STACKS_DONE
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

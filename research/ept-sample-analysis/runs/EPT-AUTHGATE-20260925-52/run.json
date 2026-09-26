@@ -1,0 +1,39 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-52",
+  "evidence_scope": "real_sample_guest_run",
+  "sample_lineage": {
+    "guest_path": "C:\\ept_core\\Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "derived_from": "<HOST_PATH>\\EPT\\artifacts\\captures\\hardware_guest_test.exe",
+    "original_sample": "<HOST_PATH>\\EPT\\sample\\EPT专业游戏维修工具箱V5.1.exe (CA6B4C6A...)"
+  },
+  "vm_state": {
+    "vm": "<VM_LABEL>",
+    "checkpoint": "C173-gen1-ready2 (2026-09-26 02:18 +08:00)",
+    "baseline_changes_registered": [
+      "Windows Update 服务包周期已完成 (RebootPending=False)",
+      "wuauserv/UsoSvc/BITS 已禁用, DoSvc 已停止(配置受保护无法禁用)",
+      "bcdedit testsigning=Yes (更新重启后复核有效)",
+      "hosts 钉扎移除, run51 计划任务注销, 无残留 payload",
+      "内置任务 DetectHardwareChange/RemediateHardwareChange 为 Microsoft Autopilot 组件, 非样本产物, 不清除"
+    ]
+  },
+  "hypothesis": "run 51 及此前多轮『秒死』的主因是 Windows Update 服务包触发的计划内重启(事件1074, svchost/TrustedInstaller 发起)。在更新服务已禁用、testsigning 有效、每轮检查点恢复的条件下, 强推管线(入口闸门释放+SDK五阶段置零+调度器二道闸强制)将完整走完: 7.9MB payload 的 WriteFile 落地 >0 字节, 服务创建/启动被观测, 且若部署组件(R3.exe 等)启动则出现首个解码后自然行为点。",
+  "new_information_vs_prior": "首次在无更新干扰 + testsigning + 干净检查点三条件齐备下跑完整链条; 首次能区分『管线自身失败』与『宿主重启打断』。",
+  "acceptance_fields": {
+    "payload_file_bytes": "POST: 最大非EPT_ Temp 无扩展名文件字节数, >0 且 ~7.9MB 为强通过",
+    "services_created": "HP/SWTOOLS/Hardware 相关服务名与状态列表",
+    "startsvc_result": "STARTSVC* 标记与后续 OpenService 命中",
+    "deployed_component_process": "R3/Hardware 子进程或新 EPT_* 出现与否",
+    "cdb_markers": "STAGE_FORCE_POINT/STAGE_FORCE_POINT2_TRUE/SCHED_CALLSITE/FATAL_THUNK/EXIT_PROCESS 计数与次序",
+    "update_reboot_interference": "运行窗口内事件1074数量, 必须=0",
+    "target_native_return": "预期 NOT_OBSERVED (RC00 由部署组件承载, 本轮若出现则升级记录)",
+    "target_caller_diff_bytes": "预期 NOT_OBSERVED",
+    "rc06_stage": "预期 NOT_OBSERVED"
+  },
+  "verdict": "PENDING",
+  "verdicts": {},
+  "deadline": "发射后 25 分钟无条件收割",
+  "stop_loss": "cdb.stdout 5 分钟增长 <100 字节且 payload 文件无增长 → 杀 cdb 收割, 归为新假设(非本轮失败流程重试)",
+  "cleanup_commitments": "harvest 后: 杀 cdb/样本进程, 移除 hosts 钉扎, 注销任务, 复查 1074 事件"
+}

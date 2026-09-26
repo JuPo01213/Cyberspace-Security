@@ -1,0 +1,28 @@
+# C33 - §11 前端阶段计数的代码侧对照（十步 / 八项 / 线路默认 / VT 勾选 / V5.0 对照件）
+# 离线只读；前端为静态 HTML，仅文本检索；未执行样本
+
+== 1) 十步解码流程 ==
+  index.html 内 DECODE_STEPS 出现 2 次；首个定义片段:
+    DECODE_STEPS = [ { key: 'card_verify', name: '卡密验证', icon: '🔑' }, { key: 'status_check', name: '状态检测', icon: '🔍' }, { key: 'get_link', name: '获取链接', icon: '🔗' }, { key: 'download', name: '下载程序', icon: '⬇️' }, { key: 'launch', name: '启动程序', icon: '🚀' }, { key: 'password', name: '输入密码', icon: '🔐' }, { key: 'auto_input', name: '自动输入', icon: '⌨️' }, { key: 'deploy', name: '部署配置', icon: '⚙️' }, { key: 'mac_clean', name: '清理痕迹', icon: '🧹' }, { key: 'restart', name: '完成重启', icon: '✅' }, ]; async function startDecode
+  解出的步骤标签（前 12 个）: []
+  步数 = 0
+
+== 2) 八个优化项 ==
+  TASK_CONFIG 定义位置: []
+  最大候选 tuple 长度 = 23，元素: ['防火墙', '墙策略', '墙设置', '墙规则', '墙配', '墙已', '墙+ ', '墙- ']
+  前端优化项标签命中（去重）: ['DX修复', '关快速启动', '关闭更新', '关闭杀毒', '其他优化', '删多余PE', '系统优化', '系统激活', '装驱动']
+  八项对应实现名命中: []
+  run_optimize 定义于 <module>.PyWebViewAPI.run_optimize，co_names=['task_runner', 'run_all', '_on_progress']
+
+== 3) 线路默认值：界面 vs 代码兜底 ==
+  前端首个线路上下文: 'line1" onclick="selectOption(this, \'lineSelect\')">'
+  <module>.get_download_url 字符串常量: ["根据前端选择的线路+版本，从飞书页面获取对应下载直链\n\nArgs:\n    line_select: 'line1'(线路一) | 'line2'(线路二)\n    version: 'universal'(通杀版) | 'compat'(兼容1) | 'compat2'(兼容2)\n\nReturns:\n    str: 下载直链URL，或None(解析失败)\n", 'line1', 'line2', ', url=']
+  co_varnames(参数默认名): ('line_select', 'version', 'all_links', 'e', 'key', 'dl_url')
+  前端 checked/selected 的线路选项: []
+
+== 4) chkSkipVT 默认勾选 ==
+  r;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;"> <input type="checkbox" id="chkSkipVT" checked style="width:14px;height:14px;accent-color:#c084fc;cursor:pointer;margin:0;" onchange="var lbl=this.p
+
+== 5) V5.0 对照件是否还在（§11.9 能否重跑）==
+  候选文件: ['<HOST_PATH>/CTF/_reference/EPT\\v5.0_sample']
+  <HOST_PATH>/CTF/_reference/EPT\v5.0_sample 读取失败 [Errno 13] Permission denied: '<HOST_PATH>/CTF/_reference/EPT\\v5.0_sample'

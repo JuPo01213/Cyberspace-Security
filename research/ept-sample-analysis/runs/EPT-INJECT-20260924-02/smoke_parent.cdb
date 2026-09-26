@@ -1,0 +1,8 @@
+.echo [SMOKE_PARENT_READY]
+.childdbg 1
+sxd ibp
+sxd epr
+sxe av
+sxe -c "$$><smoke_child.cdb;g" cpr
+sxe -c ".echo [SMOKE_PARENT_AV]; .lastevent; r; k; g" av
+g

@@ -1,0 +1,24 @@
+.echo [XREF2_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; dU @rcx L40; dU @rdx L40; k L8; g"
+bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; dU @rcx L40; dU @rdx L40; k L8; $$><late.cdb; g"
+bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L40; k L6; g"
+bu ws2_32!connect ".echo [NET_CONNECT]; r rcx; db @rdx L8; k L12; g"
+bu ws2_32!WSAConnect ".echo [NET_WSACONNECT]; r rcx; db @rdx L8; k L12; g"
+bu ws2_32!GetAddrInfoW ".echo [NET_GAI_W]; r rcx; dU @rcx L48; k L12; g"
+bu ws2_32!getaddrinfo ".echo [NET_GAI_A]; r rcx; da @rcx L48; k L12; g"
+bu wininet!InternetOpenUrlW ".echo [NET_INETURL]; r rdx; dU @rdx L48; k L12; g"
+bu wininet!HttpSendRequestW ".echo [NET_HTTPSEND]; r rcx; k L12; g"
+bu winhttp!WinHttpSendRequest ".echo [NET_WH_SEND]; r rcx; k L12; g"
+bu winhttp!WinHttpConnect ".echo [NET_WH_CONN]; r rdx; dU @rdx L48; k L12; g"
+bu urlmon!URLDownloadToFileW ".echo [NET_DL]; r rcx; r rdx; dU @rcx L48; dU @rdx L48; k L12; g"
+bp ntdll!NtSetValueKey ".if (@$t9 < 40) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [REG_SET]; r rcx; r rdx; k L12; r @$t9=@$t9+1 } } } ; g"
+bp kernel32!CreateProcessW ".echo [PROC_CREATE_W]; r rcx; r rdx; dU @rcx L40; dU @rdx L40; k L12; g"
+bp kernel32!CreateProcessA ".echo [PROC_CREATE_A]; r rcx; r rdx; da @rcx L40; da @rdx L40; k L12; g"
+sxe -c ".echo [S17_AV]; .lastevent; r; k; g" av
+g

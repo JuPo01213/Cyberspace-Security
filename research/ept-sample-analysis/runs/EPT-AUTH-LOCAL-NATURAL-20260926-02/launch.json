@@ -1,0 +1,32 @@
+﻿{
+    "run_id":  "EPT-AUTH-LOCAL-NATURAL-20260926-02",
+    "vm":  "<VM_LABEL>",
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-NATURAL-20260926-02",
+    "target":  "C:\\ept_core\\Hardware.exe",
+    "target_sha256":  "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "baseline":  "C173-gen1-ready2",
+    "observation_mode":  "natural",
+    "evidence_scope":  "real_sample_guest_run",
+    "network_scope":  "excluded",
+    "debugger":  "none",
+    "memory_writes":  "none",
+    "input_state":  "FORMAT_TEST_INVALID_CARD",
+    "card_value":  "REDACTED_FORMAT_TEST",
+    "card_length":  32,
+    "series_mode":  0,
+    "run_mode":  1,
+    "control_nonce":  "ae65420969ff4e57837fd8a02d7a788d",
+    "runner_sha256":  "70F38E0D57F82AD6B11F7FAEA271C49E5992E3B3D450DEC3A854D6D9D3C53308",
+    "task":  {
+                 "run_id":  "EPT-AUTH-LOCAL-NATURAL-20260926-02",
+                 "task_name":  "EPT-EPT-AUTH-LOCAL-NATURAL-20260926-02",
+                 "state":  "Running",
+                 "guest_root":  "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-NATURAL-20260926-02",
+                 "runner_sha256":  "70F38E0D57F82AD6B11F7FAEA271C49E5992E3B3D450DEC3A854D6D9D3C53308",
+                 "started_utc":  "2026-09-26T14:35:39.1184224Z",
+                 "PSComputerName":  "<VM_LABEL>",
+                 "RunspaceId":  "40e2cdb3-d423-40df-b63c-f762111b426f",
+                 "PSShowComputerName":  true
+             },
+    "dispatched_utc":  "2026-09-26T14:35:39.1447615Z"
+}

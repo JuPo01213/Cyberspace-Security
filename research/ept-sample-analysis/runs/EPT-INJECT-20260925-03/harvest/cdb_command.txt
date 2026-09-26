@@ -1,0 +1,9 @@
+.echo [INJ2_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+sxe -c ".echo [INJ2_PARENT_AV]; .lastevent; r; k; g" av
+g

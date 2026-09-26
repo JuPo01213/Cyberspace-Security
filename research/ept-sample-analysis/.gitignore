@@ -1,0 +1,46 @@
+# 仓库定位：这是"文档 + 小体量证据件"的版本库。
+# 恶意样本、内存镜像、抓包等大二进制一律不入库（只在 artifacts/CHECKSUMS.sha256 里留哈希），
+# 且本仓库不配置任何 remote —— 样本字节不得离开本机。
+
+# 样本本体与解包树
+sample/
+*_extracted/
+
+# 脱壳工作产物（派生物，可由 scripts/upx-unpack 说明重建）
+unpack/
+
+# 大块捕获物：4 MB / 8 MB 内存窗口、301 MB 抓包
+artifacts/captures/
+
+# 工具与编辑器残渣
+__pycache__/
+*.pyc
+.GhidraWork/
+*.tmp
+
+# 搬迁前的原始位置（同上规则，写死是为了让"搬迁前快照"那次提交也不含大二进制）
+/EPT专业游戏维修工具箱V5.1.exe
+/ept_clean.exe
+/ept_dump_base.bin
+/artifacts/pcap/
+/artifacts/stream_C6/
+/artifacts/mem/RG2_region_0x140e00000.bin
+/artifacts/mem/C13_static_highentropy_region.bin
+
+
+
+# ==== 2026-09-27 上传前排除规则 ====
+# 大内存转储（体积大且含样本内存字节）：只保留哈希/摘要在证据件中
+runs/**/*.dmp
+runs/**/*.zip
+# 样本自身拷贝（自身部署产物 EPT_*.exe / SYS32_Hardware.exe.bin 等）：样本字节不得外传
+runs/**/*.exe
+runs/**/*.exe.bin
+runs/**/captured/*.bin
+runs/**/captured/**/*.bin
+# Ghidra 工程仓库与导出的二进制区段（体积大/含样本字节）
+artifacts/agent/ghidra/**/*.rep/
+artifacts/agent/**/*.bin
+# 代理本地状态
+.pi/
+.zcode/

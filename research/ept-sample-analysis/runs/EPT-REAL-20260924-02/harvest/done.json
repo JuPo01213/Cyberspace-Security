@@ -1,0 +1,19 @@
+{
+    "run_id":  "EPT-REAL-20260924-02",
+    "status":  "NATURAL_BASELINE_COMPLETE",
+    "mode":  "real_sample_guest_run",
+    "evidence_scope":  "real_sample_guest_run",
+    "completed_utc":  "2026-09-24T15:05:59.0308617Z",
+    "target_path":  "C:\\ept_core\\Hardware.exe",
+    "target_pid":  4784,
+    "target_native_return":  "NOT_OBSERVED",
+    "target_caller_diff_bytes":  "NOT_OBSERVED",
+    "rc06_entry":  "NOT_OBSERVED",
+    "rc06_return":  "NOT_OBSERVED",
+    "post_decode_behavior":  "NOT_OBSERVED",
+    "input_state":  "synthetic_invalid_card_no_secret",
+    "deadline_seconds":  180,
+    "errors":  [
+
+               ]
+}

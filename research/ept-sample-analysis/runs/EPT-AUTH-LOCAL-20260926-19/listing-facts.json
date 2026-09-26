@@ -1,0 +1,50 @@
+{
+  "evidence_scope": "offline_historical_dump_listing_verification",
+  "input_dump_sha256": "CA0FFCEC87A8580E9BFDEF4DAAF90C97FB06A53D597028020FE1EC714830E60D",
+  "listing_sha256": "E98BDD8F001500AFA49EAFA6C00316933EE180D1A83E07B57147CBC462A60103",
+  "verified_instruction_count": 12,
+  "configuration_base": "0x141154980",
+  "plaintext_length_bytes": 890,
+  "copy_extent_exclusive": "0x141154cfa",
+  "fields": [
+    {
+      "va": "0x141154ae7",
+      "offset": "0x167",
+      "width": 1,
+      "meaning_boundary": "nonzero first byte; also passed by address to CardLogin candidate"
+    },
+    {
+      "va": "0x141154ce9",
+      "offset": "0x369",
+      "width": 4,
+      "meaning_boundary": "nonzero field; semantic type unresolved"
+    },
+    {
+      "va": "0x141154ced",
+      "offset": "0x36d",
+      "width": 4,
+      "meaning_boundary": "compared with 1"
+    },
+    {
+      "va": "0x141154cf1",
+      "offset": "0x371",
+      "width": 4,
+      "meaning_boundary": "compared with 1"
+    },
+    {
+      "va": "0x141154cf6",
+      "offset": "0x376",
+      "width": 4,
+      "meaning_boundary": "mode candidate; compared with 2 in save-entry listing"
+    }
+  ],
+  "sample_launched": false,
+  "validation_result_modified": false,
+  "authorization_status": "AUTH_GATE_UNRESOLVED",
+  "limitations": [
+    "Historical snapshot, not an execution trace of the listed path.",
+    "No proof of a valid license or natural state production.",
+    "Protected crypto-wrapper API targets remain unresolved.",
+    "Exact byte assertions do not validate control flow outside the selected blocks."
+  ]
+}

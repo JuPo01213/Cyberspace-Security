@@ -1,0 +1,256 @@
+# genB runtime-decrypted vocabulary block
+# source: VM guest RAM region dump, pid 9120 (EPT_3C9F3CEF_69BB4F9F.exe), arm RG2
+# snapshot qoder-armed-20260919, 2026-09-19 15:20 (+08:00)
+# image base 0x140000000; block 0x140f8c800-0x140f99000; extracted from base64 channel only
+# NOTE: this is decrypted *data*, from the host's point of view never written as raw memory.
+0x140f8cb60  RtlGetVersion
+0x140f8cb7c  HpSvc
+0x140f8cb84  HpDrv
+0x140f8cba0  HP_WKS_SWTOOLS_DRIVER.sys helper
+0x140f8cbc8  Reading %s at address 0x%.16I64X...
+0x140f8cbf0  Can't read %s at address 0x%.16I64X...
+0x140f8cd16  tcx5GQU
+0x140f8cd40  ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+0x140f8cdc0  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+0x140f8cdf8  iSkHFCcUNQBU
+0x140f8ce50  abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+0x140f8ce98  iostream stream error
+0x140f8cec0  0123456789ABCDEF
+0x140f8ced8  bad cast
+0x140f8cee8  string too long
+0x140f8cf00  iostream
+0x140f8cf10  bad locale name
+0x140f8cf20  ios_base::badbit set
+0x140f8cf38  ios_base::failbit set
+0x140f8cf50  ios_base::eofbit set
+0x140f8cf78  %sEPT_runtime_hash.csv
+0x140f8d130  C:\Windows\System32
+0x140f8d148  <HOST_PATH>\<DIR>
+0x140f8d160  CI00 open_auth begin path=%s comm=%s ioctlAuth=0x%08lX magic=0x%08lX
+0x140f8d1b0  CI01 open_failed gle=%lu path=%s comm=%s
+0x140f8d1e0  CI02 auth_stage0_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu nonce=0x%08lX comm=%s ioctlAuth=0x%08lX
+0x140f8d270  CI03 auth_stage1_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu session=0x%08lX comm=%s ioctlAuth=0x%08lX
+0x140f8d300  CI04 auth_success comm=%s session=0x%08lX ioctlRun=0x%08lX
+0x140f8d340  SYSTEM\CurrentControlSet\Services
+0x140f8d370  CI06 scan_existing attached service=%s comm=%s ioctlRun=0x%08lX session=0x%08lX
+0x140f8d3c8  CI08 comm_init begin h=%p session=0x%08lX comm=%s
+0x140f8d400  CI09 comm_init reuse_current comm=%s session=0x%08lX
+0x140f8d440  CI10 comm_init attached_existing comm=%s session=0x%08lX
+0x140f8d480  CI11 comm_init direct_open_ok comm=%s session=0x%08lX
+0x140f8d4c0  CI13 comm_init driver_load_failed driverStage=%s win32=%lu nt=0x%08lX driver=%s comm=%s
+0x140f8d520  CI15 comm_init open_after_load_failed commStage=%s win32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX driver=%s comm=%s
+0x140f8d5a0  CI16 comm_init new_load_ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX
+0x140f8d5f0  CI17 close_comm h=%p session=0x%08lX comm=%s
+0x140f8d630  CI18 reopen_fresh driver_load_failed driverStage=%s win32=%lu nt=0x%08lX driver=%s
+0x140f8d690  CI19 reopen_fresh open_auth_failed commStage=%s win32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX driver=%s comm=%s
+0x140f8d710  CI20 reopen_fresh ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX
+0x140f8d760  RC01 invalid_state h=%p in=%p session=0x%08lX comm=%s ioctlRun=0x%08lX
+0x140f8d7b0  RC00 send mode=%lu serialMode=%d diskLen=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX
+0x140f8d810  RC02 ioctl_failed gle=%lu ret=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s
+0x140f8d870  RC03 decode_failed ret=%lu marker=0x%08lX comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s
+0x140f8d8d0  RC04 session_mismatch ret=%lu response=0x%08lX expected=0x%08lX comm=%s ioctlRun=0x%08lX driver=%s
+0x140f8d940  RC06 success ret=%lu common=0x%08lX mode=%lu serialMode=%d comm=%s session=0x%08lX
+0x140f8d9a0  HS00 begin mode=%lu serialMode=%d diskLen=%lu comm=%s session=0x%08lX
+0x140f8d9f0  HS01 register_failed mode=%lu serialMode=%d commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX
+0x140f8da70  HS02 common_mismatch common=0x%08lX expected=0x12345678 mode=%lu serialMode=%d comm=%s session=0x%08lX
+0x140f8dad8  HS03 success mode=%lu serialMode=%d comm=%s session=0x%08lX
+0x140f8db20  HS11 first_failed reopen_fresh commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX
+0x140f8db90  HS12 reopen_failed commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX
+0x140f8dbf0  HS13 second_attempt mode=%lu serialMode=%d comm=%s session=0x%08lX
+0x140f8dc38  EPT Hardware Console - 
+0x140f8dc90  --shift-open
+0x140f8dca0  --nsp-runtime-child
+0x140f8dd95   HVCI
+0x140f8dddb  DSE-%lu
+0x140f8de0f   HVCI
+0x140f8e030  SP_NOERROR
+0x140f8e040  SP_NOINIT
+0x140f8e050  SP_WSAFAILED
+0x140f8e060  SP_CONNECTFAILED
+0x140f8e078  SP_DATAERROR
+0x140f8e088  SP_NOLOADCLOUDDLL
+0x140f8e0a0  SP_FAILEDWRITE
+0x140f8e0b0  SP_EXPIREDTOKEN
+0x140f8e0c0  SP_UNKNOWNERRROR
+0x140f8e0d8  SP_INVALIDCARD
+0x140f8e0e8  SP_EXPIREDCARD
+0x140f8e0f8  SP_BANNEDCARD
+0x140f8e108  SP_INVALIDAGENT
+0x140f8e118  SP_BANNEDAGENT
+0x140f8e128  SP_MAXONLINE
+0x140f8e138  SP_OFFLINE
+0x140f8e148  SP_ANOTHERUSERUNBIND
+0x140f8e160  SP_INVALIDPARAM
+0x140f8e170  SP_FYINOTENOUGH
+0x140f8e180  SP_NOACTIVATEDCARD
+0x140f8e198  SP_LOGINEXCEPTION
+0x140f8e1b0  SP_FAILEDACTIVATECARD
+0x140f8e1c8  SP_BINDMSGDIFF
+0x140f8e1d8  SP_FAILEDGETCARD
+0x140f8e1f0  SP_NOBIND
+0x140f8e200  SP_MAXUNBINDCOUNT
+0x140f8e218  SP_DISABLELOGIN
+0x140f8e228  SP_UNKNOWN_CODE
+0x140f8e238  %s\SysWOW64\SPVerifyDiag.log
+0x140f8e258  C:\Windows\SysWOW64\SPVerifyDiag.log
+0x140f8e2a8  stage=%s ret=%d name=%s
+0x140f8e2c0  stage=%s value=%d
+0x140f8e2d8  user32.dll
+0x140f8e2e8  MessageBoxTimeoutA
+0x140f8e3b8  <HOST_PATH>\<DIR>ware
+0x140f8e3d8  C:\Windows\System32\Hardware
+0x140f8e3f8  <HOST_PATH>\<DIR>ware.exe
+0x140f8e420  C:\Windows\System32\Hardware.exe
+0x140f8e4e8  <HOST_PATH>\<DIR>cmd
+0x140f8e508  C:\Windows\System32\EPT.cmd
+0x140f8e528  <HOST_PATH>\<DIR>.cmd
+0x140f8e548  C:\Windows\System32\hwid.cmd
+0x140f8e568  <HOST_PATH>\<DIR>cmd
+0x140f8e588  C:\Windows\System32\ept.cmd
+0x140f8e5a8  <HOST_PATH>\<DIR>cmd.tmp
+0x140f8e5c8  C:\Windows\System32\EPT.cmd.tmp
+0x140f8eb54  TITLE=
+0x140f8eb68  VERMSG=
+0x140f8eb92   KEY 
+0x140f8eba8  EPT Hardware Console
+0x140f8f910  Microsoft YaHei UI
+0x140f8f974  STATIC
+0x140f8fa24  BUTTON
+0x140f8fa40  NspFirstRunDisclaimerWindow
+0x140f8faf0   KEY 
+0x140f8fbb8   GPU 
+0x140f8fc28  tooltips_class32
+0x140f8fddc   KEY 
+0x140f8fe18  License Key
+0x140f90150  NspSetupWindow
+0x140f901a8   KEY 
+0x140f901d8  0123456789ABCDEFHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+0x140f90260  SeShutdownPrivilege
+0x140f904a8  cmd.exe /d /s /c "
+0x140f904c0  HardwareTask.xml
+0x140f90908  DisableAntiSpyware
+0x140f90920  SOFTWARE\Policies\Microsoft\Windows Defender
+0x140f90950  DisableBehaviorMonitoring
+0x140f90970  SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection
+0x140f909b8  DisableIOAVProtection
+0x140f909d0  DisableOnAccessProtection
+0x140f909f0  DisableRealtimeMonitoring
+0x140f90a0c  Start
+0x140f90a18  SYSTEM\CurrentControlSet\Services\SecurityHealthService
+0x140f90a50  DisableSR
+0x140f90a60  Software\Policies\Microsoft\Windows NT\SystemRestore
+0x140f90a98  CEIPEnable
+0x140f90aa8  SOFTWARE\Policies\Microsoft\SQMClient\Windows
+0x140f90af0  PauseFeatureUpdatesStartTime
+0x140f90b10  SOFTWARE\Microsoft\WindowsUpdate\UX\Settings
+0x140f90b58  PauseFeatureUpdatesEndTime
+0x140f90b78  PauseQualityUpdatesStartTime
+0x140f90b98  PauseQualityUpdatesEndTime
+0x140f90bb8  PauseUpdatesStartTime
+0x140f90bd0  PauseUpdatesExpiryTime
+0x140f90be8  FlightSettingsMaxPauseDays
+0x140f90c08  FeatureSettingsOverride
+0x140f90c20  SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+0x140f90c68  FeatureSettingsOverrideMask
+0x140f90c88  FeatureSettings
+0x140f90c98  Enabled
+0x140f90ca0  SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity
+0x140f90cf8  VerifiedAndReputablePolicyState
+0x140f90d18  SYSTEM\CurrentControlSet\Control\CI\Policy
+0x140f90d48  EnableLUA
+0x140f90d58  SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+0x140f90d98  FilterAdministratorToken
+0x140f90db8  HiberbootEnabled
+0x140f90dd0  SYSTEM\CurrentControlSet\Control\Session Manager\Power
+0x140f90e08  ShutdownWithoutLogon
+0x140f91df8  C:\Windows\Temp\HardwareTask.xml
+0x140f91e20  <HOST_PATH>\<DIR>Task.xml
+0x140f91e58  chcp 65001 >nul
+0x140f91e70  setlocal
+0x140f91ea0  echo Usage: EPT del
+0x140f91eb8  exit /b 1
+0x140f91ec8  :clear
+0x140f91ef0  if errorlevel 1 (
+0x140f91f10      powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process -FilePath '%~f0' -ArgumentList 'del' -Verb RunAs -Wait"
+0x140f91f98      exit /b %errorlevel%
+0x140f91fb8  taskkill /f /im Hardware.exe >nul 2>nul
+0x140f91fe8  taskkill /f /im R3.exe >nul 2>nul
+0x140f92010  schtasks /Delete /TN "\Microsoft\Hardware" /F >nul 2>nul
+0x140f92050  del /f /q "C:\Windows\System32\Hardware.exe" >nul 2>nul
+0x140f92090  del /f /q "C:\Windows\System32\Hardware" >nul 2>nul
+0x140f920c8  del /f /q "<HOST_PATH>\<DIR>ware.exe" >nul 2>nul
+0x140f92108  del /f /q "<HOST_PATH>\<DIR>ware" >nul 2>nul
+0x140f92140  del /f /q "C:\Windows\Temp\HardwareTask.xml" >nul 2>nul
+0x140f92180  del /f /q "<HOST_PATH>\<DIR>Task.xml" >nul 2>nul
+0x140f92230  rmdir /s /q "C:\Windows\System32\HardwareLogs" >nul 2>nul
+0x140f922a8  rmdir /s /q "<HOST_PATH>\<DIR>wareLogs" >nul 2>nul
+0x140f922e8  echo [OK] HWID deployment data cleared
+0x140f92318  exit /b 0
+0x140f92328  -reboot
+0x140f92410  rmdir /s /q "C:\Windows\System32\Logs"
+0x140f92438  rmdir /s /q "C:\Windows\System32\HardwareLogs"
+0x140f92468  rmdir /s /q "<HOST_PATH>\<DIR>"
+0x140f92490  rmdir /s /q "<HOST_PATH>\<DIR>wareLogs"
+0x140f92508  StoredVerify.begin
+0x140f92520  StoredVerify.StoredAuthorizationUsable
+0x140f92550  <REDACTED_EMBEDDED_VERIFY_TOKEN>
+0x140f92640  StoredVerify.SP_Verify_Init
+0x140f92660  StoredVerify.init_failed_soft_allow
+0x140f92688  yz.hwid001.com
+0x140f92698  StoredVerify.SetHost yz.hwid001.com:1029
+0x140f926c8  StoredVerify.SP_Verify_GetServerOption
+0x140f926f0  StoredVerify.option_failed_soft_allow
+0x140f92718  StoredVerify.SP_Verify_CardLogin
+0x140f92740  StoredVerify.cardlogin_denied_clear_or_block
+0x140f92770  StoredVerify.cardlogin_failed_soft_allow
+0x140f927a0  StoredVerify.SP_Verify_IsLogin
+0x140f927c0  StoredVerify.islogin_failed_soft_allow
+0x140f927e8  stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s
+0x140f92820  StoredVerify.beat_hard_deny_clear_or_block
+0x140f92850  StoredVerify.beat_not_soft_allow_clear_or_block
+0x140f92880  StoredVerify.allow
+0x140f92930  sc.exe config "AntiCheatExpert Protection" start= delayed-auto
+0x140f92970  sc.exe config "AntiCheatExpert Service" start= delayed-auto
+0x140f929b0  SeDebugPrivilege
+0x140f92ae0  MAIN startup admin=%d cfgMissing=%d cfgPath=%s exePath=%s
+0x140f92c1f   -now -reboot -ins -c 
+0x140f92c37   ept del
+0x140f92c4a  -now 
+0x140f92c51   -reboot 
+0x140f92c7a  -now 
+0x140f92d10  CliConfigUpdate.begin
+0x140f92d28  CliConfigUpdate.LoadConfig
+0x140f92d48  CliConfigUpdate.StoredAuthorizationUsable
+0x140f92da0  CliConfigUpdate.VerifyStoredCardStatusBeforeUse
+0x140f92dd0  Error
+0x140f92dd8  Dynamic serial generate failed.
+0x140f92e50  SetupFlow.begin
+0x140f92e60  Setup.SP_Verify_Init
+0x140f92e88  Setup.SetHost yz.hwid001.com:1029
+0x140f92eb0  Setup.SP_Verify_GetServerOption
+0x140f92ee8  Setup.SP_Verify_GetNotice
+0x140f92f10  stage=Setup.SP_Verify_GetLastestVersionInfo ret=%d name=%s self=%d server=%d force=%d
+0x140f92fb8  Setup.SP_Verify_CardLogin
+0x140f930d9  Dynamic serial: 
+0x140f93108  Setup.SaveConfig
+0x140f93140  Setup.StoredAuthorizationUsableAfterSave
+0x140f93190  Setup.SP_Verify_IsLogin
+0x140f93208  StoredFlow.begin
+0x140f93220  StoredFlow.LoadConfig
+0x140f93238  StoredFlow.StoredAuthorizationUsable
+0x140f93288  Dynamic serial save failed.
+0x140f932a8  Dynamic serial: 
+0x140f932c0  StoredFlow.VerifyStoredCardStatusBeforeUse
+0x140f93350  RUN dse_read ret=%lu captured=%d method=%d provider=%s line=%lu
+0x140f933b0  RUN dse_disable ret=%lu method=%d provider=%s startRc=%d startWin32=%lu helper=%d line=%lu
+0x140f93420  Run.StoredAuthorizationUsableBeforeDriver
+0x140f93470  RUN comm_init result=%d commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX driver=%s comm=%s ioctlRun=0x%08lX session=0x%08lX
+0x140f93500  Dynamic serial is empty.
+0x140f93560   HWID 
+0x140f93570  RUN apply soft_success dynamic=%d cliSwitch=%d commStage=%s driverStage=%s
+0x140f93609  HWID-RUN-FAILED
+0x140f93620  Run.skip_driver_load_because_authorization_not_usable
+0x140f93688  invalid string position
+0x140f93868  MWR1S
+0x140f9386e  LySPQR
+0x140f97cdd  jdldn

@@ -1,0 +1,6 @@
+.echo STACKDUMP_BEGIN
+~*
+.echo THREADS_DONE
+~*k
+.echo STACKS_DONE
+qd

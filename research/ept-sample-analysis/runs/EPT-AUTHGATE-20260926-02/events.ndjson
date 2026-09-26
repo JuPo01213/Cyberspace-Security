@@ -1,0 +1,9 @@
+﻿{"state":"        STATE              : 4  RUNNING ","create":"[SC] CreateService 成功","utc":"2026-09-26T05:04:57.0630129Z","type":"DRIVER_PRELOADED","start":" SERVICE_NAME: HpDrvPre          TYPE               : 1  KERNEL_DRIVER           STATE              : 4  RUNNING                                  (STOPPABLE, NOT_PAUSABLE, IGNORES_SHUTDOWN)         WIN32_EXIT_CODE    : 0  (0x0)         SERVICE_EXIT_CODE  : 0  (0x0)         CHECKPOINT         : 0x0         WAIT_HINT          : 0x0         PID                : 0         FLAGS              : "}
+{"pid":5784,"type":"MOCK_LISTENER_STARTED","utc":"2026-09-26T05:04:59.3442773Z"}
+{"utc":"2026-09-26T05:04:59.3755656Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":5896,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-26T05:04:59.6567607Z"}
+{"pid":5896,"type":"ATTACH_PARENT_NO_CHILD","utc":"2026-09-26T05:05:19.8598845Z"}
+{"target_pid":5896,"debugger_pid":5016,"type":"CDB_ATTACHED","utc":"2026-09-26T05:05:20.0005096Z"}
+{"pid":3080,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-26T05:05:20.1255099Z"}
+{"pid":4764,"type":"WATCHER_STARTED","utc":"2026-09-26T05:05:20.2505098Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-26T05:05:20.2505098Z"}

@@ -1,0 +1,123 @@
+{
+  "cloud_strings": {
+    "SP_CloudComputing_Callback": {
+      "count": 1,
+      "vas": [
+        "0x1407dee56"
+      ]
+    },
+    "CloudComputing": {
+      "count": 1,
+      "vas": [
+        "0x1407dee59"
+      ]
+    },
+    "cloudcomputing": {
+      "count": 0,
+      "vas": []
+    },
+    "CloudComputing.dll": {
+      "count": 0,
+      "vas": []
+    },
+    "SP_Cloud": {
+      "count": 2,
+      "vas": [
+        "0x1407dee56",
+        "0x140f927fb"
+      ]
+    },
+    ".dll": {
+      "count": 12,
+      "vas": [
+        "0x1407ea2ad",
+        "0x140f8e2de",
+        "0x142380053",
+        "0x142380594",
+        "0x14252c856",
+        "0x142542787",
+        "0x1425a2894",
+        "0x142d80bf5",
+        "0x142d87ba0",
+        "0x142dadfd5",
+        "0x1439fe59e",
+        "0x143a2c217"
+      ]
+    },
+    "LoadLibrary": {
+      "count": 1,
+      "vas": [
+        "0x14234b0a2"
+      ]
+    },
+    "SP_Cloud_Beat": {
+      "count": 1,
+      "vas": [
+        "0x140f927fb"
+      ]
+    },
+    "GetLastestVersionInfo": {
+      "count": 1,
+      "vas": [
+        "0x140f92f26"
+      ]
+    },
+    "GetNotice": {
+      "count": 1,
+      "vas": [
+        "0x140f92ef8"
+      ]
+    },
+    "SP_Verify_CardLogin": {
+      "count": 2,
+      "vas": [
+        "0x140f92725",
+        "0x140f92fbe"
+      ]
+    },
+    "SP_Verify_Init": {
+      "count": 2,
+      "vas": [
+        "0x140f9264d",
+        "0x140f92e66"
+      ]
+    },
+    "SP_Verify_IsLogin": {
+      "count": 2,
+      "vas": [
+        "0x140f927ad",
+        "0x140f93196"
+      ]
+    },
+    "SP_Verify_GetServerOption": {
+      "count": 2,
+      "vas": [
+        "0x140f926d5",
+        "0x140f92eb6"
+      ]
+    },
+    "StoredVerify.SetHost": {
+      "count": 1,
+      "vas": [
+        "0x140f92698"
+      ]
+    },
+    "StoredAuthorizationUsable": {
+      "count": 5,
+      "vas": [
+        "0x140f9252d",
+        "0x140f92d58",
+        "0x140f93146",
+        "0x140f93243",
+        "0x140f93424"
+      ]
+    },
+    "skip_driver_load": {
+      "count": 1,
+      "vas": [
+        "0x140f93624"
+      ]
+    }
+  },
+  "dll_candidates": {}
+}

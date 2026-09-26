@@ -1,0 +1,11 @@
+.echo [S22_CHILD_ATTACHED]
+$$ CHILD is the working payload -> watch HWID modification signals here (registry writes, file writes, process creation)
+$$ SYSTEM-DLL breakpoints only (sample code is anti-debug: both 0xCC and DR registers are detected)
+bu advapi32!RegOpenKeyExW ".if (@$t0 < 60) { .echo [C_REG_OPEN]; r rdx; dU @rdx L48; k L12; r @$t0=@$t0+1 } ; g"
+bu advapi32!RegSetValueExW ".if (@$t1 < 60) { .echo [C_REG_SET]; r rdx; dU @rdx L48; r r9; k L12; r @$t1=@$t1+1 } ; g"
+bu advapi32!RegQueryValueExW ".if (@$t2 < 40) { .echo [C_REG_QUERY]; r rdx; dU @rdx L48; k L12; r @$t2=@$t2+1 } ; g"
+bp kernel32!CreateFileW ".if (@$t3 < 60) { .echo [C_FILE_OPEN]; r rcx; dU @rcx L48; k L10; r @$t3=@$t3+1 } ; g"
+bp kernel32!WriteFile ".if (@$t4 < 40) { .echo [C_FILE_WRITE]; k L10; r @$t4=@$t4+1 } ; g"
+bp kernel32!CreateProcessW ".echo [C_PROC_CREATE]; r rcx; r rdx; dU @rcx L48; dU @rdx L48; k L12; g"
+bp kernel32!DeleteFileW ".if (@$t11 < 40) { .echo [C_FILE_DELETE]; r rcx; dU @rcx L48; k L10; r @$t11=@$t11+1 } ; g"
+.echo [S22_CHILD_BPS_ARMED]

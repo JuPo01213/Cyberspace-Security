@@ -1,0 +1,266 @@
+            0x14078fe00      invalid
+            0x14078fe01      mov   rcx, rbx
+            0x14078fe04      call  0x1418b8a7a
+            0x14078fe09      invalid
+            0x14078fe0a      mov   rcx, rdi
+            0x14078fe0d      call  0x14117c2c4
+        ,=< 0x14078fe12      loope 0x14078fe60
+        |   0x14078fe14      lea   ecx, qword [rsp+0x40]
+        |   0x14078fe18      mov   qword [rsp+0x20], rsi
+        |   0x14078fe1d      mov   r8d, eax
+        |   0x14078fe20      mov   rdx, rdi
+        |   0x14078fe23      mov   rcx, rbx
+        |   0x14078fe26      call  0x141a873f3
+        |   0x14078fe2b      invalid
+        |   0x14078fe2c      lea   r9, qword [rsp+0x40]
+        |   0x14078fe31      mov   qword [rsp+0x20], rsi
+        |   0x14078fe36      lea   r8d, qword [rsi+0x02]
+        |   0x14078fe3a      mov   rcx, rbx
+        |   0x14078fe3d      lea   rdx, qword [0x140f8e2a4]            ; "\r\n"
+        |   0x14078fe44      push  rdx
+        |   0x14078fe45      call  0x14146f97c
+        |   0x14078fe4a      mov   rcx, rbx
+        |   0x14078fe4d      call  0x14171ceba
+        |   0x14078fe52      mov   rcx, qword [rbp+0x200]
+        |   0x14078fe5a      xor   rcx, rsp
+        |   0x14078fe5d      call  0x1407b06b0
+            0x14078fe62      lea   r11, qword [rsp+0x310]
+            0x14078fe6a      mov   rbx, qword [r11+0x18]
+            0x14078fe6e      mov   rsi, qword [r11+0x20]
+            0x14078fe72      mov   rdi, qword [r11+0x28]
+            0x14078fe76      mov   rsp, r11
+            0x14078fe79      pop   rbp
+            0x14078fe7a      ret
+            0x14078fe7b      int3
+            0x14078fe7c      int3
+            0x14078fe7d      int3
+            0x14078fe7e      int3
+            0x14078fe7f      int3
+            0x14078fe80      mov   qword [rsp+0x18], rbx
+            0x14078fe85      push  rdi
+            0x14078fe86      sub   rsp, 0x240
+            0x14078fe8d      mov   rax, qword [0x140f9e010]            ; [0x140f9e010:8]=0x945919614feb
+            0x14078fe94      xor   rax, rsp
+            0x14078fe97      mov   qword [rsp+0x230], rax
+            0x14078fe9f      mov   edi, edx
+            0x14078fea1      mov   rbx, rcx
+            0x14078fea4      xor   edx, edx
+            0x14078fea6      lea   rcx, qword [rsp+0x30]
+            0x14078feab      mov   r8d, 0x200                          ; 512
+            0x14078feb1      call  0x1407b4700
+            0x14078feb6      mov   ecx, edi
+            0x14078feb8      call  0x14078fad0
+            0x14078febd      lea   rdx, qword [0x140f8e2a8]            ; "stage=%s ret=%d name=%s"
+            0x14078fec4      mov   qword [rsp+0x20], rax
+            0x14078fec9      lea   rcx, qword [rsp+0x30]
+            0x14078fece      mov   r9d, edi
+            0x14078fed1      mov   r8, rbx
+            0x14078fed4      call  0x1407adae0
+            0x14078fed9      lea   rcx, qword [rsp+0x30]
+            0x14078fede      call  0x14078fc90
+            0x14078fee3      mov   rcx, qword [rsp+0x230]
+            0x14078feeb      xor   rcx, rsp
+            0x14078feee      call  0x1407b06b0
+            0x14078fef3      mov   rbx, qword [rsp+0x260]
+            0x14078fefb      add   rsp, 0x240
+            0x14078ff02      pop   rdi
+            0x14078ff03      ret
+            0x14078ff04      int3
+            0x14078ff05      int3
+            0x14078ff06      int3
+            0x14078ff07      int3
+            0x14078ff08      int3
+            0x14078ff09      int3
+            0x14078ff0a      int3
+            0x14078ff0b      int3
+            0x14078ff0c      int3
+            0x14078ff0d      int3
+            0x14078ff0e      int3
+            0x14078ff0f      int3
+            0x14078ff10      mov   qword [rsp+0x18], rbx
+            0x14078ff15      push  rdi
+            0x14078ff16      sub   rsp, 0x130
+            0x14078ff1d      mov   rax, qword [0x140f9e010]            ; [0x140f9e010:8]=0x945919614feb
+            0x14078ff24      xor   rax, rsp
+            0x14078ff27      mov   qword [rsp+0x120], rax
+            0x14078ff2f      mov   edi, edx
+            0x14078ff31      mov   rbx, rcx
+            0x14078ff34      xor   edx, edx
+            0x14078ff36      lea   rcx, qword [rsp+0x20]
+            0x14078ff3b      mov   r8d, 0x100                          ; 256
+            0x14078ff41      call  0x1407b4700
+            0x14078ff46      mov   r9d, edi
+            0x14078ff49      lea   rdx, qword [0x140f8e2c0]            ; "stage=%s value=%d"
+            0x14078ff50      mov   r8, rbx
+            0x14078ff53      lea   rcx, qword [rsp+0x20]
+            0x14078ff58      call  0x1407adb40
+            0x14078ff5d      lea   rcx, qword [rsp+0x20]
+            0x14078ff62      call  0x14078fc90
+            0x14078ff67      mov   rcx, qword [rsp+0x120]
+            0x14078ff6f      xor   rcx, rsp
+            0x14078ff72      call  0x1407b06b0
+            0x14078ff77      mov   rbx, qword [rsp+0x150]
+            0x14078ff7f      add   rsp, 0x130
+            0x14078ff86      pop   rdi
+            0x14078ff87      ret
+            0x14078ff88      int3
+            0x14078ff89      int3
+            0x14078ff8a      int3
+            0x14078ff8b      int3
+            0x14078ff8c      int3
+            0x14078ff8d      int3
+            0x14078ff8e      int3
+            0x14078ff8f      int3
+            0x14078ff90      sub   rsp, 0x38
+            0x14078ff94      lea   rcx, qword [0x140f8e2d8]            ; "user32.dll"
+            0x14078ff9b      call  0x1411883c0
+            0x14078ffa0      mov   bh, 0x48                            ; 'H' ; 72
+            0x14078ffa2      test  eax, eax
+        ,=< 0x14078ffa4      jz    0x14078ffe5
+        |   0x14078ffa6      lea   rdx, qword [0x140f8e2e8]            ; "MessageBoxTimeoutA"
+        |   0x14078ffad      mov   rcx, rax
+        |   0x14078ffb0      push  rax
+        |   0x14078ffb1      call  0x1417bebff
+        |   0x14078ffb6      test  rax, rax
+       ,==< 0x14078ffb9      jz    0x14078ffe5
+       ||   0x14078ffbb      xor   ecx, ecx
+       ||   0x14078ffbd      mov   dword [rsp+0x28], 0xbb8             ; [0xbb8:4]=-1 ; 3000
+       ||   0x14078ffc5      mov   r9d, 0x40040                        ; '@'
+       ||   0x14078ffcb      mov   word [rsp+0x20], cx
+       ||   0x14078ffd0      lea   r8, qword [0x140f8e2fc]
+       ||   0x14078ffd7      lea   rdx, qword [0x140f8e308]
+       ||   0x14078ffde      call  rax
+       ||   0x14078ffe0      add   rsp, 0x38
+       ||   0x14078ffe4      ret
+       ``-> 0x14078ffe5      mov   r9d, 0x40040                        ; '@'
+            0x14078ffeb      lea   r8, qword [0x140f8e2fc]
+            0x14078fff2      lea   rdx, qword [0x140f8e308]
+            0x14078fff9      xor   ecx, ecx
+            0x14078fffb      add   rsp, 0x38
+            0x14078ffff      push  rbx
+            0x140790001      call  0x1414a0bc0
+            0x140790006      int3
+            0x140790007      int3
+            0x140790008      int3
+            0x140790009      int3
+            0x14079000a      int3
+            0x14079000b      int3
+            0x14079000c      int3
+            0x14079000d      int3
+            0x14079000e      int3
+            0x14079000f      int3
+            0x140790010      sub   rsp, 0x28
+            0x140790014      mov   ecx, dword [0x141154d10]            ; [0x141154d10:4]=0
+            0x14079001a      test  ecx, ecx
+        ,=< 0x14079001c      jns   0x140790059
+        |   0x14079001e      lea   rcx, qword [0x140f8d130]            ; "C:\Windows\System32"
+        |   0x140790025      call  0x1415444e8
+        |   0x14079002a      movsd
+        |   0x14079002b      cmp   eax, 0xffffffff                     ; -1
+       ,==< 0x14079002e      jz    0x140790034
+       ||   0x140790030      test  al, 0x10                            ; 16
+      ,===< 0x140790032      jnz   0x140790051
+      |`--> 0x140790034      lea   rcx, qword [0x140f8d148]            ; "<HOST_PATH>\<DIR>"
+      | |   0x14079003b      push  rbx
+      | |   0x14079003c      call  0x1415e08af
+      | |   0x140790041      cmp   eax, 0xffffffff                     ; -1
+      |,==< 0x140790044      jz    0x140790051
+      |||   0x140790046      test  al, 0x10                            ; 16
+     ,====< 0x140790048      jz    0x140790051
+     ||||   0x14079004a      mov   ecx, 0x01
+    ,=====< 0x14079004f      jmp   0x140790053
+    |```--> 0x140790051      xor   ecx, ecx
+    `-----> 0x140790053      mov   dword [0x141154d10], ecx            ; [0x141154d10:4]=0
+        `-> 0x140790059      cmp   ecx, 0x01                           ; 1
+            0x14079005c      lea   rdx, qword [0x140f8e3b8]            ; "<HOST_PATH>\<DIR>ware"
+            0x140790063      lea   rax, qword [0x140f8e3d8]            ; "C:\Windows\System32\Hardware"
+            0x14079006a      cmovz rax, rdx
+            0x14079006e      add   rsp, 0x28
+            0x140790072      ret
+            0x140790073      int3
+            0x140790074      int3
+            0x140790075      int3
+            0x140790076      int3
+            0x140790077      int3
+            0x140790078      int3
+            0x140790079      int3
+            0x14079007a      int3
+            0x14079007b      int3
+            0x14079007c      int3
+            0x14079007d      int3
+            0x14079007e      int3
+            0x14079007f      int3
+            0x140790080      mov   qword [rsp+0x18], rbx
+            0x140790085      mov   qword [rsp+0x20], rsi
+            0x14079008a      push  rdi
+            0x14079008b      sub   rsp, 0x20
+            0x14079008f      mov   rbx, rdx
+            0x140790092      mov   rdi, rcx
+            0x140790095      cmp   qword [rdx+0x10], 0x00
+        ,=< 0x14079009a      jz    0x140790158
+        |   0x1407900a0      mov   esi, 0xfeff
+       .--> 0x1407900a5      mov   rax, rbx
+       :|   0x1407900a8      cmp   qword [rbx+0x18], 0x08
+      ,===< 0x1407900ad      jb    0x1407900b2
+      |:|   0x1407900af      mov   rax, qword [rbx]
+      `---> 0x1407900b2      movzx ecx, word [rax]
+       :|   0x1407900b5      call  0x1407bf998
+       :|   0x1407900ba      test  eax, eax
+      ,===< 0x1407900bc      jnz   0x1407900d4
+      |:|   0x1407900be      mov   rax, rbx
+      |:|   0x1407900c1      cmp   qword [rbx+0x18], 0x08
+     ,====< 0x1407900c6      jb    0x1407900cb
+     ||:|   0x1407900c8      mov   rax, qword [rbx]
+     `----> 0x1407900cb      cmp   word [rax], si
+     ,====< 0x1407900ce      jnz   0x140790158
+     |`---> 0x1407900d4      mov   rcx, qword [rbx+0x18]
+     | :|   0x1407900d8      cmp   rcx, 0x08                           ; 8
+     |,===< 0x1407900dc      jb    0x1407900e3
+     ||:|   0x1407900de      mov   r8, qword [rbx]
+    ,=====< 0x1407900e1      jmp   0x1407900e8
+    ||`---> 0x1407900e3      mov   r8, rbx
+    ||,===< 0x1407900e6      jb    0x140790106
+    `-----> 0x1407900e8      sub   r8, qword [rbx]
+     ||:|   0x1407900eb      sar   r8, 0x01
+     ||:|   0x1407900ee      mov   r9, qword [rbx+0x10]
+     ||:|   0x1407900f2      mov   rax, r9
+     ||:|   0x1407900f5      sub   rax, r8
+     ||:|   0x1407900f8      mov   edx, 0x01
+     ||:|   0x1407900fd      cmp   rax, rdx
+     ||:|   0x140790100      cmovb rdx, rax
+    ,=====< 0x140790104      jmp   0x14079012b
+    ||`---> 0x140790106      sub   r8, rbx
+    || :|   0x140790109      sar   r8, 0x01
+    || :|   0x14079010c      mov   r9, qword [rbx+0x10]
+    || :|   0x140790110      mov   rax, r9
+    || :|   0x140790113      sub   rax, r8
+    || :|   0x140790116      mov   edx, 0x01
+    || :|   0x14079011b      cmp   rax, rdx
+    || :|   0x14079011e      cmovb rdx, rax
+    || :|   0x140790122      mov   rax, rbx
+    || :|   0x140790125      cmp   rcx, 0x08                           ; 8
+    ||,===< 0x140790129      jb    0x14079012e
+    `-----> 0x14079012b      mov   rax, qword [rbx]
+     |`---> 0x14079012e      lea   rcx, qword [rax+r8*2]
+     | :|   0x140790132      sub   r9, rdx
+     | :|   0x140790135      mov   qword [rbx+0x10], r9
+     | :|   0x140790139      lea   rdx, qword [rcx+rdx*2]
+     | :|   0x14079013d      sub   r9, r8
+     | :|   0x140790140      lea   r8, qword [r9*2+0x02]
+     | :|   0x140790148      call  0x1407b48f0
+     | :|   0x14079014d      cmp   qword [rbx+0x10], 0x00
+     | `==< 0x140790152      jnz   0x1407900a5
+     `--`-> 0x140790158      xor   esi, esi
+            0x14079015a      cmp   qword [rbx+0x10], rsi
+        ,=< 0x14079015e      jz    0x140790196
+        |   0x140790160      mov   rcx, rbx
+        |   0x140790163      call  0x1407abe40
+        |   0x140790168      movzx ecx, word [rax]
+        |   0x14079016b      call  0x1407bf998
+        |   0x140790170      test  eax, eax
+       ,==< 0x140790172      jz    0x140790196
+       ||   0x140790174      mov   rcx, qword [rbx+0x10]
+       ||   0x140790178      dec   rcx
+       ||   0x14079017b      mov   rax, rbx
+       ||   0x14079017e      cmp   qword [rbx+0x18], 0x08
+       ||   0x140790183      invalid

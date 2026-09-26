@@ -1,0 +1,77 @@
+== C52: does xor r12d,r12d at 0x1407a7449 dominate the gate? ==
+   covering pass: 6323 instructions, 22944/23424 B covered (98.0 %), 480 undecoded bytes
+   849 basic blocks from 664 direct transfers, 3 indirect; 274 blocks reachable from 0x1407a4b90
+
+-- controls --
+   C1 transfers whose target is 0x1407a7b4f (the gate jump): ['0x1407a74e7 jmp', '0x1407a765b jmp', '0x1407a7735 jmp', '0x1407a77d8 jmp', '0x1407a7879 jmp', '0x1407a7942 jmp', '0x1407a7a2c jmp', '0x1407a7af3 jne', '0x1407a7afb jne', '0x1407a7b04 je', '0x1407a7b0d je', '0x1407a7b16 jne']
+   C2 0x1407a7449 is an instruction start, decodes as `xor r12d, r12d` (bytes 4533e4), op_str correct: True
+   C3 entry block dominates all 274 reachable blocks: True
+   C4 indirect transfers inside main: 3 ['0x1407a9583', '0x1407a9665', '0x1407a9cea']
+   C5 0x1407a7aec: in a block: True ; that block reachable from the function entry: False
+   C5 0x1407a7af5: in a block: True ; that block reachable from the function entry: False
+   C5 0x1407a7afd: in a block: True ; that block reachable from the function entry: False
+   C5 0x1407a7b06: in a block: True ; that block reachable from the function entry: False
+   C5 0x1407a7449: in a block: True ; that block reachable from the function entry: True
+   C5 0x1407a7a13: in a block: True ; that block reachable from the function entry: False
+   C6 orphan blocks (no decoded branch and no decoded fall-through into them): 78 of 849
+
+-- the tree, where it can speak --
+   gate 0x1407a7aec (cmp dword ptr [rip + 0x9ad1fa], r11d  ) block 426  dominated by xor-block 397 : n/a - block not reachable in the decoded CFG
+   gate 0x1407a7af5 (cmp dword ptr [rip + 0x9ad1f6], ebx   ) block 427  dominated by xor-block 397 : n/a - block not reachable in the decoded CFG
+   gate 0x1407a7afd (cmp byte ptr [rip + 0x9acfe3], r12b   ) block 428  dominated by xor-block 397 : n/a - block not reachable in the decoded CFG
+   gate 0x1407a7b06 (cmp dword ptr [rip + 0x9ad1dc], r12d  ) block 429  dominated by xor-block 397 : n/a - block not reachable in the decoded CFG
+   transfers targeting any of the four gate instructions: none
+
+-- where the gate's decoded ancestry actually bottoms out --
+   `ret 0x41cc` (bytes c2 cc 41) appears 1 time(s) in main: 0x1407a56ca
+   438 calls inside main, 275 distinct targets; where they go: .text elsewhere x211, .Sq> (only its head is held) x210, other mapped x17
+   orphan heads: 78 ; named by a decoded direct branch: 0 ; by a call from inside main: 0
+   immediately before each orphan head sits a block ending in: jmp x42, ret x36
+   reachable blocks with no successor: 6 ; of those, directly above unreachable code: 3
+      0x1407a56ca `ret 0x41cc` bytes c2cc41
+      0x1407a6ef7 `jmp 0x1407a7377` bytes e97b040000
+      0x1407a7bef `ret 8` bytes c20800
+   => the orphan islands are neither nested functions (no intra-main call) nor cases named by
+      a branch. They are heads of regions entered by a transfer these bytes do not contain.
+
+-- what r12 is actually written to inside main, in address order --
+   0x1407a4b98  push r12
+   0x1407a4bd6  mov r12d, eax
+   0x1407a4c79  inc r12d
+   0x1407a4d64  xor r12b, r12b
+   0x1407a4ee2  mov r12b, 1
+   0x1407a531e  mov r12d, dword ptr [rsp + 0x70]
+   0x1407a5370  pop r12
+   0x1407a566a  lea r12d, [r15 - 0x1a]
+   0x1407a6f3b  mov r12d, 1
+   0x1407a7449  xor r12d, r12d
+   0x1407a88ae  add r12d, dword ptr fs:[r9 + 0x17]
+   0x1407a8bc9  xor r12, rax
+   0x1407a9153  movabs r12, 0x588ec310ca977fb7
+   0x1407a915d  lea r12, [r12 + r12 + 0x6506008c]
+   0x1407a916e  mov r12, qword ptr [rsp + 8]
+   0x1407a9675  mov r12b, 0xa7
+   0x1407a98bf  xchg r12, rax
+   0x1407aa1c4  mov r12b, 0xc5
+   0x1407aa6a8  push r12
+   0x1407aa6bd  movabs r12, 0x63b76b8dc9838231
+   20 destination-writes; strictly inside (0x1407a7449, 0x1407a7afd]: none
+   (C48 had used "r12 anywhere in the text", which also matched stores that READ r12; the
+    filter here is destination-only, which is what the claim needs.)
+
+-- verdict: undecidable from main's bytes, and now the reason is measured, not assumed --
+   Not a hole in the edge model: 6 reachable blocks end with no successor, 3 of them sit
+   directly above unreachable code, and all 78 orphan heads have a decoded reason for having
+   no in-main predecessor. The reason is structural: main decodes to 849 basic blocks whose 438
+   calls ALL leave the function range, it holds 3 indirect transfers, and 78 island heads are
+   named by neither. The edges that would prove "the xor ran before the gate" are held by code
+   outside these bytes - in `.Sq>`, exactly where P4 4.16-6 puts the rest of the unknowns.
+     (a) Stands anyway: destination-filtered, none of main's 20 r12 writes falls inside
+         (0x1407a7449, 0x1407a7afd]. So C48's "last write in address order before the gate" is now a CHECKED
+         negative rather than an assumption - bounded by decode completeness (98.0 %).
+     (b) Ruled out in BOTH directions: no decoded direct branch in main targets any of the
+         four gate instructions. So no visible branch inside main either selects the gate or
+         bypasses the xor; an argument of either shape is wrong.
+     (c) The xor block IS reachable, so the question is not vacuous - just not answerable from
+         .text alone. Upgrading it needs the indirect-transfer targets (a `.Sq>` capture, i.e.
+         BR7's window list) or one controlled run that observes the comparison itself.

@@ -1,0 +1,35 @@
+{
+  "run_id": "C173-gen1-cdb-benign-smoke-20260924-02",
+  "vm_name": "<VM_LABEL>",
+  "guest_name": "<VM_LABEL>",
+  "sample_launch_requested": false,
+  "sample_opened": false,
+  "target_process": "ping.exe",
+  "target_process_is_sample": false,
+  "guest_summary": {
+    "run_id": "C173-gen1-cdb-benign-smoke-20260924-02",
+    "guest": "<VM_LABEL>",
+    "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe",
+    "target": "ping.exe",
+    "sample_launch_requested": false,
+    "cdb_started": true,
+    "cdb_exit_code": null,
+    "cdb_wait_state": "EXITED",
+    "ping_pid": 5212,
+    "cdb_pid": 3084,
+    "stdout_path": "C:\\<VM_LABEL>_cdb_benign_smoke_20260924_02\\cdb.stdout.txt",
+    "stderr_path": "C:\\<VM_LABEL>_cdb_benign_smoke_20260924_02\\cdb.stderr.txt",
+    "command_file": "C:\\<VM_LABEL>_cdb_benign_smoke_20260924_02\\smoke.cdb",
+    "error": null,
+    "stdout_exists": true,
+    "stderr_exists": true,
+    "stderr_length": 0,
+    "command_file_sha256": "92CCC95B0D6221BAD002E62161A52BBBA659A91AD223026556349CC70BC9C04D"
+  },
+  "copied_files": [
+    "cdb.stderr.txt",
+    "cdb.stdout.txt",
+    "smoke.cdb",
+    "summary.json"
+  ]
+}

@@ -1,0 +1,76 @@
+va	string
+0x140f8cb7c	HpSvc
+0x140f8cb84	HpDrv
+0x140f8cba0	HP_WKS_SWTOOLS_DRIVER.sys helper
+0x140f8cd40	ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+0x140f8ce50	abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+0x140f8cec0	0123456789ABCDEF
+0x140f8cf78	%sEPT_runtime_hash.csv
+0x140f8d160	CI00 open_auth begin path=%s comm=%s ioctlAuth=0x%08lX magic=0x%08lX
+0x140f8d1e0	CI02 auth_stage0_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu nonce=0x%08lX comm=%s ioctlAuth=0x%08lX
+0x140f8d270	CI03 auth_stage1_failed ioctl=%d gle=%lu ret=%lu decode=%d stage=%lu packetPid=%lu pid=%lu session=0x%08lX comm=%s ioctlAuth=0x%08lX
+0x140f8d300	CI04 auth_success comm=%s session=0x%08lX ioctlRun=0x%08lX
+0x140f8d370	CI06 scan_existing attached service=%s comm=%s ioctlRun=0x%08lX session=0x%08lX
+0x140f8d5a0	CI16 comm_init new_load_ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX
+0x140f8d710	CI20 reopen_fresh ok driver=%s comm=%s session=0x%08lX ioctlRun=0x%08lX
+0x140f8d760	RC01 invalid_state h=%p in=%p session=0x%08lX comm=%s ioctlRun=0x%08lX
+0x140f8d7b0	RC00 send mode=%lu serialMode=%d diskLen=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX
+0x140f8d810	RC02 ioctl_failed gle=%lu ret=%lu comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s
+0x140f8d870	RC03 decode_failed ret=%lu marker=0x%08lX comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s
+0x140f8d8d0	RC04 session_mismatch ret=%lu response=0x%08lX expected=0x%08lX comm=%s ioctlRun=0x%08lX driver=%s
+0x140f8da70	HS02 common_mismatch common=0x%08lX expected=0x12345678 mode=%lu serialMode=%d comm=%s session=0x%08lX
+0x140f8dc90	--shift-open
+0x140f8dca0	--nsp-runtime-child
+0x140f8e030	SP_NOERROR
+0x140f8e0d8	SP_INVALIDCARD
+0x140f8e128	SP_MAXONLINE
+0x140f8e138	SP_OFFLINE
+0x140f8e1c8	SP_BINDMSGDIFF
+0x140f8e238	%s\SysWOW64\SPVerifyDiag.log
+0x140f8e258	C:\Windows\SysWOW64\SPVerifyDiag.log
+0x140f8e4e8	<HOST_PATH>\<DIR>cmd
+0x140f8e508	C:\Windows\System32\EPT.cmd
+0x140f8e528	<HOST_PATH>\<DIR>.cmd
+0x140f8e548	C:\Windows\System32\hwid.cmd
+0x140f8e568	<HOST_PATH>\<DIR>cmd
+0x140f8e588	C:\Windows\System32\ept.cmd
+0x140f8e5a8	<HOST_PATH>\<DIR>cmd.tmp
+0x140f8e5c8	C:\Windows\System32\EPT.cmd.tmp
+0x140f901d8	0123456789ABCDEFHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+0x140f92520	StoredVerify.StoredAuthorizationUsable
+0x140f92640	StoredVerify.SP_Verify_Init
+0x140f92660	StoredVerify.init_failed_soft_allow
+0x140f92688	yz.hwid001.com
+0x140f92698	StoredVerify.SetHost yz.hwid001.com:1029
+0x140f926c8	StoredVerify.SP_Verify_GetServerOption
+0x140f926f0	StoredVerify.option_failed_soft_allow
+0x140f92718	StoredVerify.SP_Verify_CardLogin
+0x140f92740	StoredVerify.cardlogin_denied_clear_or_block
+0x140f92770	StoredVerify.cardlogin_failed_soft_allow
+0x140f927a0	StoredVerify.SP_Verify_IsLogin
+0x140f927c0	StoredVerify.islogin_failed_soft_allow
+0x140f927e8	stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s
+0x140f92820	StoredVerify.beat_hard_deny_clear_or_block
+0x140f92850	StoredVerify.beat_not_soft_allow_clear_or_block
+0x140f92930	sc.exe config "AntiCheatExpert Protection" start= delayed-auto
+0x140f92970	sc.exe config "AntiCheatExpert Service" start= delayed-auto
+0x140f92ae0	MAIN startup admin=%d cfgMissing=%d cfgPath=%s exePath=%s
+0x140f92d48	CliConfigUpdate.StoredAuthorizationUsable
+0x140f92e60	Setup.SP_Verify_Init
+0x140f92e88	Setup.SetHost yz.hwid001.com:1029
+0x140f92eb0	Setup.SP_Verify_GetServerOption
+0x140f92ee8	Setup.SP_Verify_GetNotice
+0x140f92f10	stage=Setup.SP_Verify_GetLastestVersionInfo ret=%d name=%s self=%d server=%d force=%d
+0x140f92fb8	Setup.SP_Verify_CardLogin
+0x140f93108	Setup.SaveConfig
+0x140f93140	Setup.StoredAuthorizationUsableAfterSave
+0x140f93190	Setup.SP_Verify_IsLogin
+0x140f93238	StoredFlow.StoredAuthorizationUsable
+0x140f93350	RUN dse_read ret=%lu captured=%d method=%d provider=%s line=%lu
+0x140f933b0	RUN dse_disable ret=%lu method=%d provider=%s startRc=%d startWin32=%lu helper=%d line=%lu
+0x140f93420	Run.StoredAuthorizationUsableBeforeDriver
+0x140f93470	RUN comm_init result=%d commStage=%s commWin32=%lu driverStage=%s driverWin32=%lu nt=0x%08lX driver=%s comm=%s ioctlRun=0x%08lX session=0x%08lX
+0x140f93570	RUN apply soft_success dynamic=%d cliSwitch=%d commStage=%s driverStage=%s
+0x140f93620	Run.skip_driver_load_because_authorization_not_usable
+0x14115b120	<HOST_PATH>\Users\<USER>\AppData\Local\Temp\EPT_3C9F3CEF_69BB4F9F.exe
+0x14112f350	.?AVCSLock@@

@@ -1,0 +1,84 @@
+== 1) two-level jump table, decoded as the bytes address it ==
+   A: dword table @0x7a3440 = ['0x1407a32b6', '0x1407a3285']   byte table @0x7a3448..0x7a3471 (41 entries), values seen [0, 1]
+      layout tiling: dword table ends at 0x7a3448 == byte table start 0x7a3448 -> CONSISTENT
+      -> 0x1407a3285  34 codes: [-60, -59, -58, -57, -56, -55, -54, -53, -52, -51, -50, -49, -48, -47, -46, -45, -44, -43, -42, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -26, -25, -24]
+      -> 0x1407a32b6   7 codes: [-61, -41, -28, -27, -23, -22, -21]
+      guard range: rbx+0x3d in [0,0x28] => codes -0x3d..-0x15 (41 values)
+   B: dword table @0x7a3474 = ['0x1407a32a3', '0x1407a32b6']   byte table @0x7a347c..0x7a34a4 (40 entries), values seen [0, 1]
+      layout tiling: dword table ends at 0x7a347c == byte table start 0x7a347c -> CONSISTENT
+      -> 0x1407a32b6  32 codes: [-37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5]
+      -> 0x1407a32a3   8 codes: [-39, -38, -16, -4, -3, -2, -1, 0]
+      guard range: rbx+0x27 in [0,0x27] => codes -0x27..0x0 (40 values)
+   cross-check against the writeup: "8 codes -> mov al,1 leaf 0x1407a32a3", "-39,-38,-16,-4,-3,-2,-1,0"
+   note A-level codes are -61..-21 and B-level -39..0, so an "-39/-38/-16" set can only come from B; -61..-21 all come from A
+
+== 2) naming format strings: hit VAs with context ==
+   EPT_%08X_%08X      u rdata-tail   VA=0x140f9234c  ctx=6570740064656c002d696e730000000000000000250073004500500054005f0025003000380058005f0025003000380058002e0065007800650000002d002d006e00730070002d00720075006e00
+                           text='.t.l......%sEPT_%08X_%08X.exe.--nsp-run'
+   EPT_%08X_%08X      u rg2-4MB      VA=0x140f9234c  ctx=6570740064656c002d696e730000000000000000250073004500500054005f0025003000380058005f0025003000380058002e0065007800650000002d002d006e00730070002d00720075006e00
+                           text='.t.l......%sEPT_%08X_%08X.exe.--nsp-run'
+   %08X_%08X          u rdata-tail   VA=0x140f92354  ctx=2d696e730000000000000000250073004500500054005f0025003000380058005f0025003000380058002e0065007800650000002d002d006e00730070002d00720075006e00
+                           text='......%sEPT_%08X_%08X.exe.--nsp-run'
+   %08X_%08X          u rg2-4MB      VA=0x140f92354  ctx=2d696e730000000000000000250073004500500054005f0025003000380058005f0025003000380058002e0065007800650000002d002d006e00730070002d00720075006e00
+                           text='......%sEPT_%08X_%08X.exe.--nsp-run'
+   EPT_%              u rdata-tail   VA=0x140f9234c  ctx=6570740064656c002d696e730000000000000000250073004500500054005f0025003000380058005f0025003000380058002e0065007800650000002d00
+                           text='.t.l......%sEPT_%08X_%08X.exe.-'
+   EPT_%              u rg2-4MB      VA=0x140f9234c  ctx=6570740064656c002d696e730000000000000000250073004500500054005f0025003000380058005f0025003000380058002e0065007800650000002d00
+                           text='.t.l......%sEPT_%08X_%08X.exe.-'
+   Temp\              a rdata-tail   VA=0x140f91e03  ctx=002e0074006d00700000000000433a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c0000000000000000443a5c57
+                           text='...t.m.p.....C:\\Windows\\Temp\\HardwareTask.xml........<HOST_PATH>\<DIR>'
+   Temp\              a rdata-tail   VA=0x140f91e2b  ctx=6b2e786d6c0000000000000000443a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c000000000000000040656368
+                           text='k.xml........<HOST_PATH>\<DIR>reTask.xml........@ech'
+   Temp\              a rdata-tail   VA=0x140f92156  ctx=000064656c202f66202f712022433a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c22203e6e756c20323e6e756c
+                           text='..del /f /q "C:\\Windows\\Temp\\HardwareTask.xml" >nul 2>nul'
+   Temp\              a rdata-tail   VA=0x140f92196  ctx=000064656c202f66202f712022443a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c22203e6e756c20323e6e756c
+                           text='..del /f /q "<HOST_PATH>\<DIR>reTask.xml" >nul 2>nul'
+   Temp\              a rg2-4MB      VA=0x140f91e03  ctx=002e0074006d00700000000000433a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c0000000000000000443a5c57
+                           text='...t.m.p.....C:\\Windows\\Temp\\HardwareTask.xml........<HOST_PATH>\<DIR>'
+   Temp\              a rg2-4MB      VA=0x140f91e2b  ctx=6b2e786d6c0000000000000000443a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c000000000000000040656368
+                           text='k.xml........<HOST_PATH>\<DIR>reTask.xml........@ech'
+   Temp\              a rg2-4MB      VA=0x140f92156  ctx=000064656c202f66202f712022433a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c22203e6e756c20323e6e756c
+                           text='..del /f /q "C:\\Windows\\Temp\\HardwareTask.xml" >nul 2>nul'
+   Temp\              a rg2-4MB      VA=0x140f92196  ctx=000064656c202f66202f712022443a5c57696e646f77735c54656d705c48617264776172655461736b2e786d6c22203e6e756c20323e6e756c
+                           text='..del /f /q "<HOST_PATH>\<DIR>reTask.xml" >nul 2>nul'
+   Temp\              a rg2-4MB      VA=0x14115b145  ctx=6e6973747261746f725c417070446174615c4c6f63616c5c54656d705c4550545f33433946334345465f36394242344639462e657865000000
+                           text='nistrator\\AppData\\Local\\Temp\\EPT_3C9F3CEF_69BB4F9F.exe...'
+   Temp\              a rg2-4MB      VA=0x1411aba25  ctx=6e6973747261746f725c417070446174615c4c6f63616c5c54656d705c4550545f33433946334345465f36394242344639462e657865000000
+                           text='nistrator\\AppData\\Local\\Temp\\EPT_3C9F3CEF_69BB4F9F.exe...'
+   how many ascii "Temp\" hits and where:
+      rdata-tail   VA=0x140f91e03  ''
+      rdata-tail   VA=0x140f91e2b  'Temp\\HardwareTask.xml'
+      rdata-tail   VA=0x140f92156  'e" >nul 2>nul\r\n'
+      rdata-tail   VA=0x140f92196  'nul 2>nul\r\n'
+      rg2-4MB      VA=0x140f91e03  ''
+      rg2-4MB      VA=0x140f91e2b  'Temp\\HardwareTask.xml'
+      rg2-4MB      VA=0x140f92156  'e" >nul 2>nul\r\n'
+      rg2-4MB      VA=0x140f92196  'nul 2>nul\r\n'
+      rg2-4MB      VA=0x14115b145  ''
+      rg2-4MB      VA=0x1411aba25  ''
+
+== 3) C22 (validated CFG dump) - what the file itself summarises ==
+   9 summary-ish lines, first 26:
+     # C22 - cfg_dump.py v2 (two-phase, BAD-SEED-gated) dumps of the two authorization-gate carriers
+     # a BAD-SEED = a jump operand landing on an interior byte of an already-decoded instruction; no block is walked from it
+     ===== function 0x1407a3080 .. 0x1407a3323 (675 bytes) =====
+     instruction starts: 154   decoded: 675 B = 100.0% of the body
+     blocks: 21
+     ===== function 0x1407a3510 .. 0x1407a493d (5165 bytes) =====
+     instruction starts: 1313   decoded: 5134 B = 99.4% of the body
+     blocks: 208
+     BAD-SEED targets (operand lands INSIDE an already-decoded instruction). Either the source decode or the host decode is misaligned - both decodes are p
+   literal BAD-SEED lines:
+     # C22 - cfg_dump.py v2 (two-phase, BAD-SEED-gated) dumps of the two authorization-gate carriers
+     # a BAD-SEED = a jump operand landing on an interior byte of an already-decoded instruction; no block is walked from it
+     BAD-SEED targets (operand lands INSIDE an already-decoded instruction). Either the source decode or the host decode is misaligned - both decodes are p
+
+== 4) C12 main windows, correct column ==
+   header: lo page_entropy printable_ratio insns avg_insn_len undecodable
+   page_entropy range 5.072 .. 7.546 over 46 windows; avg_insn_len range 2.62 .. 5.18
+   windows with entropy>=7.0: 19  (avg_insn_len there: [2.62, 2.64, 2.65, 2.73, 2.75, 2.83, 2.84, 2.87, 2.98, 3.0, 3.01, 3.06, 3.07, 3.09, 3.17, 3.23, 3.5, 4.31])
+   windows with entropy<6.0 : 20  (avg_insn_len there: [3.59, 4.06, 4.1, 4.13, 4.18, 4.2, 4.24, 4.29, 4.3, 4.35, 4.39, 4.41, 4.43, 4.44, 4.49, 4.5, 4.65, 4.7, 5.18])
+   the gate function is not inside main's window list; control re-measured per 512 B:
+     0x1407a3080 entropy=5.779
+     0x1407a3280 entropy=5.646
+   control claim was 5.646-5.779 (that was Ghidra-side windowing); the gate body measured here: 5.841

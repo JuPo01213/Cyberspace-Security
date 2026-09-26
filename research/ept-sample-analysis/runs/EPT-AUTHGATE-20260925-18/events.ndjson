@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T07:10:20.9981146Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":4616,"type":"PARENT_STARTED","utc":"2026-09-25T07:10:21.0918779Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_28CAA292_1EFDCD2D.exe","pid":2668,"ppid":4616,"type":"CHILD_FOUND","utc":"2026-09-25T07:10:23.9981464Z"}
+{"child_pid":2668,"utc":"2026-09-25T07:10:24.0137400Z","debugger_pid":112,"type":"CDB_ATTACHED"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T07:10:24.0449863Z"}

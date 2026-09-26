@@ -1,0 +1,17 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-43",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "instrument_fix": "run42 froze at uncovered first-chance exception prompt (cdb default breaks on first-chance AV). Added sxi av / sxi c0000005 so AVs pass to the app's own SEH; completion plane no longer hangs.",
+  "run42_findings": "clean-baseline path diverges: SCHED_CALLSITE fires EARLY (pre-stage-chain), sample enters setupapi/COM/NetSetup phase and self-reads its PE file (CFW on child path); GUI not reached before freeze.",
+  "hypothesis": "sxi 修复提示符冻结后，干净基线全链走完；FATAL_THUNK 命中时合成返回（最新 $t 捕获），调度器继续进入 Run 调度。",
+  "acceptance_fields": {
+    "no_prompt_hang": null,
+    "gui_path_reached": null,
+    "sched_callsite_count": null,
+    "fatal_thunk_hit": null,
+    "synthetic_return_executed": null,
+    "scheduler_continued": null,
+    "rc00_region_evidence": null
+  },
+  "deadline_sec": 720
+}

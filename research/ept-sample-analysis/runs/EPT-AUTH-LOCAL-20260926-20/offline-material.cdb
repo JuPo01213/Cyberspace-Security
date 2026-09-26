@@ -1,0 +1,14 @@
+.echo LOCAL_CONFIG_MATERIAL_BEGIN
+.echo INPUT_IDENTITY
+lm m EPT*
+.echo CONFIG_EXPORTS
+.writemem C:/ept_obs/spool/EPT-AUTH-LOCAL-20260926-20/embedded-key.bin 0x1407f3910 L0n16
+.writemem C:/ept_obs/spool/EPT-AUTH-LOCAL-20260926-20/embedded-iv.bin 0x140f8cb30 L0n16
+.writemem C:/ept_obs/spool/EPT-AUTH-LOCAL-20260926-20/config-memory.bin 0x141154980 L0n890
+.echo SAVE_COPY_AND_CRYPTO
+u 0x14079acd2 L0n72
+u 0x14079b0a0 L0n50
+.echo CONFIG_CLEAR_HELPER
+u 0x1407a2ff6 L0n40
+.echo LOCAL_CONFIG_MATERIAL_END
+q

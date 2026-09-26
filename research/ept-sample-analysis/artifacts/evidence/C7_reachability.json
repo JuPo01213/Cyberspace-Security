@@ -1,0 +1,33 @@
+{
+ "reachable_from_main_count": 246,
+ "targets_reachable": {
+  "0x14078de50": false,
+  "0x14078e823": false,
+  "0x14078e8c0": false,
+  "0x14078ed39": false,
+  "0x14078ee89": false,
+  "0x14078ef02": false,
+  "0x14078f025": false,
+  "0x14078f0ad": false,
+  "0x1407a3080": true,
+  "0x1407a3000": true,
+  "0x14078b650": false,
+  "0x1407a1880": true,
+  "0x1407c1f44": false
+ },
+ "ancestors": {
+  "0x1407a3080": [
+   "0x1407a4b90",
+   "0x1407b0f88",
+   "0x1407b1104"
+  ],
+  "0x1407a1880": [
+   "0x140798760",
+   "0x1407a3510",
+   "0x1407a4b90",
+   "0x1407b0f88",
+   "0x1407b1104"
+  ],
+  "0x14078e8c0": []
+ }
+}

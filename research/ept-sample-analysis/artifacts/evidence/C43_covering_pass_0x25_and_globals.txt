@@ -1,0 +1,35 @@
+== 0) coverage of this pass ==
+   window RVA 0x1000..0x7da900 = 8231168 B; instructions=1993973
+   bytes inside a decoded instruction = 8220120 (99.9%); un-decoded gaps = 11048 B
+   control: 6/6 known sites decoded as themselves (0x1407a1f27:ok, 0x1407a30b2:ok, 0x1407a30bb:ok, 0x1407a30c4:ok, 0x1407a30cd:ok, 0x1407a320e:ok)
+
+== A) literal 0x25 compares over the covering pass ==
+   8 site(s)
+      0x1401bfaf1  cmp eax, 0x25
+      0x1403adf9b  sub al, 0x25
+      0x1403b8190  cmp al, 0x25
+      0x1403c2df8  sub byte ptr [rdx], 0x25
+      0x140779756  cmp al, 0x25
+      0x1407a7eae  sub al, 0x25
+      0x1407bd597  cmp al, 0x25
+      0x1407bd80c  cmp al, 0x25
+
+== B) RIP references to the five gate globals ==
+   g_ae7 0x141154ae7: 6 refs  {'cmp': 3, 'lea (address taken)': 1, 'other read': 2}
+        direct writes : NONE
+        address taken : 0x1407a320e
+   g_ce9 0x141154ce9: 5 refs  {'cmp': 3, 'other read': 2}
+        direct writes : NONE
+        address taken : NONE
+   g_ced 0x141154ced: 4 refs  {'cmp': 4}
+        direct writes : NONE
+        address taken : NONE
+   g_cf1 0x141154cf1: 5 refs  {'cmp': 5}
+        direct writes : NONE
+        address taken : NONE
+   g5_d10 0x141154d10: 56 refs  {'other read': 24, 'mov WRITE': 32}
+        direct writes : 0x140790053, 0x140791b83, 0x140791c9f, 0x140792c61, 0x140792cca, 0x14079a95e, 0x14079f81b, 0x1407a13e3, 0x1407a1467, 0x1407a150d, 0x1407a1567, 0x1407a1b34, 0x1407a1b93, 0x1407a1bfa, 0x1407a1c4e, 0x1407a1cc7, 0x1407a1d0f, 0x1407a1d6c, 0x1407a1dbb, 0x1407a1e18, 0x1407a2d39, 0x1407a2d98, 0x1407a35b7, 0x1407a35c1, 0x1407a3629, 0x1407a3633, 0x1407a4ecf, 0x1407a51b6, 0x1407a521a, 0x1407a5224, 0x1407a5278, 0x1407a58e4
+        address taken : NONE
+
+== B2) address-taken sites and the first call that can consume them ==
+   0x1407a320e  rcx, [rip + 0x9b18d2] -> 0x141154ae7 (g_ae7)   first call: +7 B  call bytearray(b'\xe8\x16\x0b\xc1\xff')

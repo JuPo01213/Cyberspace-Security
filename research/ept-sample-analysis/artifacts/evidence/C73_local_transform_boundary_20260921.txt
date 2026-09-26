@@ -1,0 +1,269 @@
+C73 — local transform boundary (offline, read-only)
+date=2026-09-21
+text=<HOST_PATH>\EPT\artifacts\captures\stream_C6\stream_text.bin bytes=8257536 sha256=5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757
+mapping=VA 0x140000000 + stream_text_offset; end_exclusive=0x1407e0000
+pdata_text_functions=1694 decoded_instructions=984070
+standing_boundary=0x140f92550 embedded authorization token not decoded or used
+
+=== direct call-site census ===
+target=0x14078ce60 label=in-place 0x10c-byte transform candidate direct_call_sites=2
+  caller=0x14078ed39 site=0x14078ee27 caller_span=0x14078ed39..0x14078ee89
+    0x00014078ee04: 0f 11 42 e0                  movups   xmmword ptr [rdx - 0x20], xmm0
+    0x00014078ee08: 0f 10 49 f0                  movups   xmm1, xmmword ptr [rcx - 0x10]
+    0x00014078ee0c: 0f 11 4a f0                  movups   xmmword ptr [rdx - 0x10], xmm1
+    0x00014078ee10: 48 83 e8 01                  sub      rax, 1
+    0x00014078ee14: 75 ad                        jne      0x14078edc3
+    0x00014078ee16: 48 8b 01                     mov      rax, qword ptr [rcx]
+    0x00014078ee19: 48 89 02                     mov      qword ptr [rdx], rax
+    0x00014078ee1c: 8b 41 08                     mov      eax, dword ptr [rcx + 8]
+    0x00014078ee1f: 48 8d 4c 24 60               lea      rcx, [rsp + 0x60]
+    0x00014078ee24: 89 42 08                     mov      dword ptr [rdx + 8], eax
+    0x00014078ee27: e8 34 e0 ff ff               call     0x14078ce60  ; direct_target=0x14078ce60
+    0x00014078ee2c: 48 8d 4c 24 50               lea      rcx, [rsp + 0x50]
+    0x00014078ee31: e8 ca ea ff ff               call     0x14078d900  ; direct_target=0x14078d900
+    0x00014078ee36: 48 c7 44 24 38 00 00 00 00   mov      qword ptr [rsp + 0x38], 0
+    0x00014078ee3f: 48 8d 44 24 40               lea      rax, [rsp + 0x40]
+    0x00014078ee44: 48 89 44 24 30               mov      qword ptr [rsp + 0x30], rax
+    0x00014078ee49: 4c 8d 44 24 50               lea      r8, [rsp + 0x50]
+    0x00014078ee4e: 48 8d 44 24 50               lea      rax, [rsp + 0x50]
+    0x00014078ee53: c7 44 24 28 1c 01 00 00      mov      dword ptr [rsp + 0x28], 0x11c
+    0x00014078ee5b: 41 b9 1c 01 00 00            mov      r9d, 0x11c
+    0x00014078ee61: 48 89 44 24 20               mov      qword ptr [rsp + 0x20], rax
+  caller=0x14078ef02 site=0x14078ef47 caller_span=0x14078ef02..0x14078f025
+    0x00014078ef18: 48 8d 0d 61 d4 9c 00         lea      rcx, [rip + 0x9cd461]  ; rip_ref=0x14115c380 [rg2 +0x35c380, non-printable/requires data interpretation]
+    0x00014078ef1f: 8b 54 24 40                  mov      edx, dword ptr [rsp + 0x40]
+    0x00014078ef23: 44 8b ce                     mov      r9d, esi
+    0x00014078ef26: 48 89 4c 24 30               mov      qword ptr [rsp + 0x30], rcx
+    0x00014078ef2b: 48 8d 0d 9e e9 7f 00         lea      rcx, [rip + 0x7fe99e]  ; rip_ref=0x140f8d8d0 [rg2 ASCII 'RC04 session_mismatch ret=%lu response=0x%08lX expected=0x%08lX comm=%s ioctlRun=0x%08lX driver=%s']
+    0x00014078ef32: 89 44 24 28                  mov      dword ptr [rsp + 0x28], eax
+    0x00014078ef36: 48 89 7c 24 20               mov      qword ptr [rsp + 0x20], rdi
+    0x00014078ef3b: e8 20 de ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+    0x00014078ef40: eb 9a                        jmp      0x14078eedc  ; direct_target=0x14078eedc
+    0x00014078ef42: 48 8d 4c 24 60               lea      rcx, [rsp + 0x60]
+    0x00014078ef47: e8 14 df ff ff               call     0x14078ce60  ; direct_target=0x14078ce60
+    0x00014078ef4c: 49 8b 0e                     mov      rcx, qword ptr [r14]
+    0x00014078ef4f: 48 8d 54 24 60               lea      rdx, [rsp + 0x60]
+    0x00014078ef54: 48 8d 89 80 00 00 00         lea      rcx, [rcx + 0x80]
+    0x00014078ef5b: 0f 10 02                     movups   xmm0, xmmword ptr [rdx]
+    0x00014078ef5e: 48 8d 92 80 00 00 00         lea      rdx, [rdx + 0x80]
+    0x00014078ef65: 0f 11 41 80                  movups   xmmword ptr [rcx - 0x80], xmm0
+    0x00014078ef69: 0f 10 4a 90                  movups   xmm1, xmmword ptr [rdx - 0x70]
+    0x00014078ef6d: 0f 11 49 90                  movups   xmmword ptr [rcx - 0x70], xmm1
+    0x00014078ef71: 0f 10 42 a0                  movups   xmm0, xmmword ptr [rdx - 0x60]
+    0x00014078ef75: 0f 11 41 a0                  movups   xmmword ptr [rcx - 0x60], xmm0
+target=0x14078d900 label=response/checksum helper candidate direct_call_sites=1
+  caller=0x14078ed39 site=0x14078ee31 caller_span=0x14078ed39..0x14078ee89
+    0x00014078ee0c: 0f 11 4a f0                  movups   xmmword ptr [rdx - 0x10], xmm1
+    0x00014078ee10: 48 83 e8 01                  sub      rax, 1
+    0x00014078ee14: 75 ad                        jne      0x14078edc3
+    0x00014078ee16: 48 8b 01                     mov      rax, qword ptr [rcx]
+    0x00014078ee19: 48 89 02                     mov      qword ptr [rdx], rax
+    0x00014078ee1c: 8b 41 08                     mov      eax, dword ptr [rcx + 8]
+    0x00014078ee1f: 48 8d 4c 24 60               lea      rcx, [rsp + 0x60]
+    0x00014078ee24: 89 42 08                     mov      dword ptr [rdx + 8], eax
+    0x00014078ee27: e8 34 e0 ff ff               call     0x14078ce60  ; direct_target=0x14078ce60
+    0x00014078ee2c: 48 8d 4c 24 50               lea      rcx, [rsp + 0x50]
+    0x00014078ee31: e8 ca ea ff ff               call     0x14078d900  ; direct_target=0x14078d900
+    0x00014078ee36: 48 c7 44 24 38 00 00 00 00   mov      qword ptr [rsp + 0x38], 0
+    0x00014078ee3f: 48 8d 44 24 40               lea      rax, [rsp + 0x40]
+    0x00014078ee44: 48 89 44 24 30               mov      qword ptr [rsp + 0x30], rax
+    0x00014078ee49: 4c 8d 44 24 50               lea      r8, [rsp + 0x50]
+    0x00014078ee4e: 48 8d 44 24 50               lea      rax, [rsp + 0x50]
+    0x00014078ee53: c7 44 24 28 1c 01 00 00      mov      dword ptr [rsp + 0x28], 0x11c
+    0x00014078ee5b: 41 b9 1c 01 00 00            mov      r9d, 0x11c
+    0x00014078ee61: 48 89 44 24 20               mov      qword ptr [rsp + 0x20], rax
+    0x00014078ee66: 8b d5                        mov      edx, ebp
+    0x00014078ee68: c7 44 24 40 00 00 00 00      mov      dword ptr [rsp + 0x40], 0
+target=0x14078db80 label=marker/response validator candidate direct_call_sites=1
+  caller=0x14078ee89 site=0x14078ee9b caller_span=0x14078ee89..0x14078eee6
+    0x00014078ee89: 48 8d 54 24 44               lea      rdx, [rsp + 0x44]
+    0x00014078ee8e: c7 44 24 44 00 00 00 00      mov      dword ptr [rsp + 0x44], 0
+    0x00014078ee96: 48 8d 4c 24 50               lea      rcx, [rsp + 0x50]
+    0x00014078ee9b: e8 e0 ec ff ff               call     0x14078db80  ; direct_target=0x14078db80
+    0x00014078eea0: 85 c0                        test     eax, eax
+    0x00014078eea2: 75 5e                        jne      0x14078ef02
+    0x00014078eea4: 8b 05 96 d4 9c 00            mov      eax, dword ptr [rip + 0x9cd496]  ; rip_ref=0x14115c340 [rg2 +0x35c340, non-printable/requires data interpretation]
+    0x00014078eeaa: 48 8d 0d cf d4 9c 00         lea      rcx, [rip + 0x9cd4cf]  ; rip_ref=0x14115c380 [rg2 +0x35c380, non-printable/requires data interpretation]
+    0x00014078eeb1: 44 8b 44 24 50               mov      r8d, dword ptr [rsp + 0x50]
+    0x00014078eeb6: 4c 8b cf                     mov      r9, rdi
+    0x00014078eeb9: 8b 54 24 40                  mov      edx, dword ptr [rsp + 0x40]
+    0x00014078eebd: 48 89 4c 24 30               mov      qword ptr [rsp + 0x30], rcx
+    0x00014078eec2: 48 8d 0d a7 e9 7f 00         lea      rcx, [rip + 0x7fe9a7]  ; rip_ref=0x140f8d870 [rg2 ASCII 'RC03 decode_failed ret=%lu marker=0x%08lX comm=%s ioctlRun=0x%08lX session=0x%08lX driver=%s']
+    0x00014078eec9: 89 44 24 28                  mov      dword ptr [rsp + 0x28], eax
+target=0x14078cd70 label=unmapped helper target used by response/checksum helper direct_call_sites=2
+  caller=0x14078d900 site=0x14078d91c caller_span=0x14078d900..0x14078db79
+    0x00014078d900: 48 89 6c 24 08               mov      qword ptr [rsp + 8], rbp
+    0x00014078d905: 48 89 74 24 10               mov      qword ptr [rsp + 0x10], rsi
+    0x00014078d90a: 48 89 7c 24 18               mov      qword ptr [rsp + 0x18], rdi
+    0x00014078d90f: 41 56                        push     r14
+    0x00014078d911: 48 83 ec 20                  sub      rsp, 0x20
+    0x00014078d915: 4c 8b f1                     mov      r14, rcx
+    0x00014078d918: 48 83 c1 10                  add      rcx, 0x10
+    0x00014078d91c: e8 4f f4 ff ff               call     0x14078cd70  ; direct_target=0x14078cd70
+    0x00014078d921: 8b 2d 1d ea 9c 00            mov      ebp, dword ptr [rip + 0x9cea1d]  ; rip_ref=0x14115c344 [rg2 +0x35c344, non-printable/requires data interpretation]
+    0x00014078d927: 44 8b d0                     mov      r10d, eax
+    0x00014078d92a: 44 8b 05 17 ea 9c 00         mov      r8d, dword ptr [rip + 0x9cea17]  ; rip_ref=0x14115c348 [rg2 +0x35c348, non-printable/requires data interpretation]
+    0x00014078d931: be fb ff ff ff               mov      esi, 0xfffffffb
+    0x00014078d936: 44 33 c5                     xor      r8d, ebp
+    0x00014078d939: 41 81 f0 4a 19 cf 4b         xor      r8d, 0x4bcf194a
+    0x00014078d940: 41 8b d0                     mov      edx, r8d
+    0x00014078d943: c1 ea 10                     shr      edx, 0x10
+    0x00014078d946: 41 33 d0                     xor      edx, r8d
+    0x00014078d949: 69 ca 2d 35 eb 7f            imul     ecx, edx, 0x7feb352d
+  caller=0x14078dc4a site=0x14078ddb7 caller_span=0x14078dc4a..0x14078ddf1
+    0x00014078dd90: 69 c1 8b a6 6c 84            imul     eax, ecx, 0x846ca68b
+    0x00014078dd96: 49 8d 4a 10                  lea      rcx, [r10 + 0x10]
+    0x00014078dd9a: 44 8b e0                     mov      r12d, eax
+    0x00014078dd9d: 41 c1 ec 10                  shr      r12d, 0x10
+    0x00014078dda1: 45 33 62 0c                  xor      r12d, dword ptr [r10 + 0xc]
+    0x00014078dda5: 44 33 e0                     xor      r12d, eax
+    0x00014078dda8: 8b c2                        mov      eax, edx
+    0x00014078ddaa: c1 e8 1b                     shr      eax, 0x1b
+    0x00014078ddad: 83 e0 0f                     and      eax, 0xf
+    0x00014078ddb0: 89 84 24 80 00 00 00         mov      dword ptr [rsp + 0x80], eax
+    0x00014078ddb7: e8 b4 ef ff ff               call     0x14078cd70  ; direct_target=0x14078cd70
+    0x00014078ddbc: 33 c5                        xor      eax, ebp
+    0x00014078ddbe: 8b d7                        mov      edx, edi
+    0x00014078ddc0: 48 8b 6c 24 40               mov      rbp, qword ptr [rsp + 0x40]
+    0x00014078ddc5: 41 33 c5                     xor      eax, r13d
+    0x00014078ddc8: 41 8b cf                     mov      ecx, r15d
+    0x00014078ddcb: 83 f0 02                     xor      eax, 2
+    0x00014078ddce: 2b cb                        sub      ecx, ebx
+    0x00014078ddd0: 83 e1 1f                     and      ecx, 0x1f
+    0x00014078ddd3: d3 e2                        shl      edx, cl
+    0x00014078ddd5: 8d 4b 05                     lea      ecx, [rbx + 5]
+target=0x141757acd label=external communication call target in RC00 direct_call_sites=1
+  caller=0x14078ed39 site=0x14078ee73 caller_span=0x14078ed39..0x14078ee89
+    0x00014078ee3f: 48 8d 44 24 40               lea      rax, [rsp + 0x40]
+    0x00014078ee44: 48 89 44 24 30               mov      qword ptr [rsp + 0x30], rax
+    0x00014078ee49: 4c 8d 44 24 50               lea      r8, [rsp + 0x50]
+    0x00014078ee4e: 48 8d 44 24 50               lea      rax, [rsp + 0x50]
+    0x00014078ee53: c7 44 24 28 1c 01 00 00      mov      dword ptr [rsp + 0x28], 0x11c
+    0x00014078ee5b: 41 b9 1c 01 00 00            mov      r9d, 0x11c
+    0x00014078ee61: 48 89 44 24 20               mov      qword ptr [rsp + 0x20], rax
+    0x00014078ee66: 8b d5                        mov      edx, ebp
+    0x00014078ee68: c7 44 24 40 00 00 00 00      mov      dword ptr [rsp + 0x40], 0
+    0x00014078ee70: 48 8b ce                     mov      rcx, rsi
+    0x00014078ee73: e8 55 8c fc 00               call     0x141757acd  ; direct_target=0x141757acd
+    0x00014078ee78: 00 48 8b                     add      byte ptr [rax - 0x75], cl
+    0x00014078ee7b: ac                           lodsb    al, byte ptr [rsi]
+    0x00014078ee7c: 24 b0                        and      al, 0xb0
+    0x00014078ee7e: 01 00                        add      dword ptr [rax], eax
+    0x00014078ee80: 00 85 c0 0f 84 60            add      byte ptr [rbp + 0x60840fc0], al
+    0x00014078ee86: 01 00                        add      dword ptr [rax], eax
+
+=== transform candidate span ===
+span=0x14078ce60..0x14078cf14 bytes=180 decoded=51
+observed structural markers:
+  0x00014078ce60: 48 89 5c 24 08               mov      qword ptr [rsp + 8], rbx
+  0x00014078ce78: 4c 8b c9                     mov      r9, rcx
+  0x00014078ce81: 81 f2 f0 e1 d2 c3            xor      edx, 0xc3d2e1f0
+  0x00014078cea8: 44 33 d1                     xor      r10d, ecx
+  0x00014078cefe: 41 30 11                     xor      byte ptr [r9], dl
+  0x00014078cf07: 3d 0c 01 00 00               cmp      eax, 0x10c
+  0x00014078cf13: c3                           ret      
+all instructions:
+  0x00014078ce60: 48 89 5c 24 08               mov      qword ptr [rsp + 8], rbx
+  0x00014078ce65: 8b 15 e5 f4 9c 00            mov      edx, dword ptr [rip + 0x9cf4e5]  ; rip_ref=0x14115c350 [rg2 +0x35c350, non-printable/requires data interpretation]
+  0x00014078ce6b: 48 8d 1d d6 f4 9c 00         lea      rbx, [rip + 0x9cf4d6]  ; rip_ref=0x14115c348 [rg2 +0x35c348, non-printable/requires data interpretation]
+  0x00014078ce72: 33 15 c8 f4 9c 00            xor      edx, dword ptr [rip + 0x9cf4c8]  ; rip_ref=0x14115c340 [rg2 +0x35c340, non-printable/requires data interpretation]
+  0x00014078ce78: 4c 8b c9                     mov      r9, rcx
+  0x00014078ce7b: 33 15 c3 f4 9c 00            xor      edx, dword ptr [rip + 0x9cf4c3]  ; rip_ref=0x14115c344 [rg2 +0x35c344, non-printable/requires data interpretation]
+  0x00014078ce81: 81 f2 f0 e1 d2 c3            xor      edx, 0xc3d2e1f0
+  0x00014078ce87: 8b c2                        mov      eax, edx
+  0x00014078ce89: c1 e8 10                     shr      eax, 0x10
+  0x00014078ce8c: 33 c2                        xor      eax, edx
+  0x00014078ce8e: 69 d0 2d 35 eb 7f            imul     edx, eax, 0x7feb352d
+  0x00014078ce94: 8b c2                        mov      eax, edx
+  0x00014078ce96: c1 e8 0f                     shr      eax, 0xf
+  0x00014078ce99: 33 c2                        xor      eax, edx
+  0x00014078ce9b: 69 c8 8b a6 6c 84            imul     ecx, eax, 0x846ca68b
+  0x00014078cea1: 44 8b d1                     mov      r10d, ecx
+  0x00014078cea4: 41 c1 ea 10                  shr      r10d, 0x10
+  0x00014078cea8: 44 33 d1                     xor      r10d, ecx
+  0x00014078ceab: 33 c0                        xor      eax, eax
+  0x00014078cead: 44 8b d8                     mov      r11d, eax
+  0x00014078ceb0: 44 8b c0                     mov      r8d, eax
+  0x00014078ceb3: 41 83 e0 03                  and      r8d, 3
+  0x00014078ceb7: 75 36                        jne      0x14078ceef
+  0x00014078ceb9: 49 8b cb                     mov      rcx, r11
+  0x00014078cebc: 48 c1 e9 02                  shr      rcx, 2
+  0x00014078cec0: 83 e1 03                     and      ecx, 3
+  0x00014078cec3: 8b 14 8b                     mov      edx, dword ptr [rbx + rcx*4]
+  0x00014078cec6: 03 d0                        add      edx, eax
+  0x00014078cec8: 41 03 d2                     add      edx, r10d
+  0x00014078cecb: 8b ca                        mov      ecx, edx
+  0x00014078cecd: c1 e9 10                     shr      ecx, 0x10
+  0x00014078ced0: 33 ca                        xor      ecx, edx
+  0x00014078ced2: 69 d1 2d 35 eb 7f            imul     edx, ecx, 0x7feb352d
+  0x00014078ced8: 8b ca                        mov      ecx, edx
+  0x00014078ceda: c1 e9 0f                     shr      ecx, 0xf
+  0x00014078cedd: 33 ca                        xor      ecx, edx
+  0x00014078cedf: 69 d1 8b a6 6c 84            imul     edx, ecx, 0x846ca68b
+  0x00014078cee5: 44 8b d2                     mov      r10d, edx
+  0x00014078cee8: 41 c1 ea 10                  shr      r10d, 0x10
+  0x00014078ceec: 44 33 d2                     xor      r10d, edx
+  0x00014078ceef: 42 8d 0c c5 00 00 00 00      lea      ecx, [r8*8]
+  0x00014078cef7: 41 8b d2                     mov      edx, r10d
+  0x00014078cefa: d3 ea                        shr      edx, cl
+  0x00014078cefc: ff c0                        inc      eax
+  0x00014078cefe: 41 30 11                     xor      byte ptr [r9], dl
+  0x00014078cf01: 49 ff c3                     inc      r11
+  0x00014078cf04: 49 ff c1                     inc      r9
+  0x00014078cf07: 3d 0c 01 00 00               cmp      eax, 0x10c
+  0x00014078cf0c: 72 a2                        jb       0x14078ceb0
+  0x00014078cf0e: 48 8b 5c 24 08               mov      rbx, qword ptr [rsp + 8]
+  0x00014078cf13: c3                           ret      
+direct_calls_in_span=0 (the captured span contains no CALL instruction)
+write_shape=byte ptr [r9],dl after mov r9,rcx; loop guard cmp eax,0x10c
+input_output_shape=in-place buffer; no distinct output pointer is materialized inside the span
+
+=== captured seed/table window ===
+window=0x14115c340..0x14115c380 bytes=64
+  0x14115c340: bytes=00 00 00 00 dword=0x00000000
+  0x14115c344: bytes=00 00 00 00 dword=0x00000000
+  0x14115c348: bytes=00 00 00 00 dword=0x00000000
+  0x14115c34c: bytes=00 00 00 00 dword=0x00000000
+  0x14115c350: bytes=00 00 00 00 dword=0x00000000
+  0x14115c354: bytes=00 00 00 00 dword=0x00000000
+  0x14115c358: bytes=00 00 00 00 dword=0x00000000
+  0x14115c35c: bytes=00 00 00 00 dword=0x00000000
+  0x14115c360: bytes=00 00 00 00 dword=0x00000000
+  0x14115c364: bytes=00 00 00 00 dword=0x00000000
+  0x14115c368: bytes=00 00 00 00 dword=0x00000000
+  0x14115c36c: bytes=00 00 00 00 dword=0x00000000
+  0x14115c370: bytes=00 00 00 00 dword=0x00000000
+  0x14115c374: bytes=00 00 00 00 dword=0x00000000
+  0x14115c378: bytes=00 00 00 00 dword=0x00000000
+  0x14115c37c: bytes=00 00 00 00 dword=0x00000000
+
+=== logical communication block ===
+range=0x14078ece0..0x14078f246 bytes=1382; .pdata splits this range into multiple entries
+decoded_instructions=338
+  0x00014078ed2e: 48 8d 41 08                  lea      rax, [rcx + 8]
+  0x00014078eda7: e8 b4 df ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078ee27: e8 34 e0 ff ff               call     0x14078ce60  ; direct_target=0x14078ce60
+  0x00014078ee31: e8 ca ea ff ff               call     0x14078d900  ; direct_target=0x14078d900
+  0x00014078ee73: e8 55 8c fc 00               call     0x141757acd  ; direct_target=0x141757acd
+  0x00014078ee9b: e8 e0 ec ff ff               call     0x14078db80  ; direct_target=0x14078db80
+  0x00014078eed7: e8 84 de ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078eef1: e8 ba 17 02 00               call     0x1407b06b0  ; direct_target=0x1407b06b0
+  0x00014078ef3b: e8 20 de ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078ef47: e8 14 df ff ff               call     0x14078ce60  ; direct_target=0x14078ce60
+  0x00014078efdc: e8 7f dd ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078efe9: e8 aa 45 34 01               call     0x141ad3598  ; direct_target=0x141ad3598
+  0x00014078f04b: e8 10 dd ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078f093: e8 68 56 02 00               call     0x1407b4700  ; direct_target=0x1407b4700
+  0x00014078f124: e8 37 dc ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078f17e: e8 5d fb ff ff               call     0x14078ece0  ; direct_target=0x14078ece0
+  0x00014078f1c4: e8 97 db ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078f1f5: e8 66 db ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078f211: e8 4a db ff ff               call     0x14078cd60  ; direct_target=0x14078cd60
+  0x00014078f236: e8 75 14 02 00               call     0x1407b06b0  ; direct_target=0x1407b06b0
+
+=== bounded classification ===
+1. 0x14078ce60 is a byte-supported in-place transform candidate: it reads recovered global/table state and writes exactly 0x10c bytes through RCX-derived R9.
+2. Its observed call sites are inside the communication block; this proves placement in the local request/response path, not yet semantic direction (encode vs decode).
+3. RC00 copies 0x10c bytes into a stack buffer, calls 0x14078ce60, then calls 0x14078d900 and an out-of-capture target 0x141757acd; the last boundary is not executable from C6 alone.
+4. 0x14078db80 is a separate marker/response-validation candidate and has a non-ret tail at its .pdata end; it cannot be treated as an independent callable harness entry without its continuation context.
+5. The minimum honest harness target is therefore the pure transform function plus an explicit 0x10c-byte input and captured state window; a full driver-free end-to-end decode still requires direction/meaning and the missing communication target to be closed.

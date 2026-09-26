@@ -1,0 +1,25 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-71",
+  "evidence_scope": "real_sample_guest_run",
+  "response_source_annotation": {
+    "framework": "AGENTS.md",
+    "classification": "real_sample_guest_run",
+    "rationale": "驱动(样本自投放的真实 HpDrv*.sys, SHA bf07c46e...)由实验预载——属环境预置(与 hosts 钉扎同类); 驱动对样本请求的响应=真实驱动自然响应, 无任何受控注入/篡改。若观察到 DIOC 且响应为驱动自然产物, 本轮保持 real_sample_guest_run 分类; 若我们伪造/替换驱动响应才降级为 real_sample_guest_run_injected_io。"
+  },
+  "hypothesis": "HWID 阶段的输入来源 = 驱动响应(RC00): 预载 \\Device\\HP_WKS_SWTOOLS_DRIVER(C188 契约)后, 样本 HWID 阶段将发出 DeviceIoControl(IOCTL 0x9c40xxxx 族)到该设备; 若 HWID 阶段因获得驱动响应而通过, FATAL@0x1407aa694 消失且 payload 主体物质化。",
+  "falsifiable_predictions": {
+    "P1_confirmed": "DIOC 观察者命中, rdx(IOCTL) ∈ 0x9c4020xx/0x9c4060xx/0x9c40a0xx 族, 且 FATAL 消失或后移",
+    "P1_refuted_variant_A": "无 DIOC 且 FATAL 照旧 ⇒ HWID 输入不是驱动(转向网络源假设 E-2: mock yz.hwid001.com)",
+    "P1_refuted_variant_B": "DIOC 命中但 FATAL 照旧 ⇒ 驱动响应被获得但校验不过(响应内容/长度问题, 转入响应契约逆向)"
+  },
+  "acceptance_fields": {
+    "dioc_hits": "DIOC 标记计数及 rdx IOCTL 值列表",
+    "driver_preloaded": "DRIVER_PRELOADED 事件中 state=RUNNING",
+    "fatal_present": "FATAL_THUNK 是否仍出现",
+    "payload_bytes": "Temp payload 文件终态尺寸",
+    "target_native_return": "预期 NOT_OBSERVED",
+    "target_caller_diff_bytes": "预期 NOT_OBSERVED"
+  },
+  "deadline": "发射后 25 分钟无条件收割; 最多 2 轮循环",
+  "stop_loss": "连续 2 轮秒死且无 DIOC ⇒ 停止该分支, 归档 E-1 结果"
+}

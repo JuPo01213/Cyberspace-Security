@@ -1,0 +1,1088 @@
+
+===== function 0x1407a3080 .. 0x1407a3323 (675 bytes) =====
+
+  BLOCK 0x1407a3080  (11 insns, ends 0x1407a30b9)
+     1407a3080  mov qword ptr [rsp + 0x10], rbx
+     1407a3085  push rbp
+     1407a3086  lea rbp, [rsp - 0x2a0]
+     1407a308e  sub rsp, 0x3a0
+     1407a3095  mov rax, qword ptr [rip + 0x7faf74]   ; ->0x140f9e010
+     1407a309c  xor rax, rsp
+     1407a309f  mov qword ptr [rbp + 0x290], rax
+     1407a30a6  lea rcx, [rip + 0x7ef45b]   ; ->0x140f92508
+     1407a30ad  call 0x14078fc90
+     1407a30b2  cmp dword ptr [rip + 0x9b1c34], 1   ; ->0x141154ced
+     1407a30b9  jne 0x1407a30da
+     jne on ? : TRUE -> 0x1407a30da   FALSE -> 0x1407a30bb
+
+  BLOCK 0x1407a30bb  (2 insns, ends 0x1407a30c2)
+     1407a30bb  cmp dword ptr [rip + 0x9b1c2f], 1   ; ->0x141154cf1
+     1407a30c2  jne 0x1407a30da
+     jne on ? : TRUE -> 0x1407a30da   FALSE -> 0x1407a30c4
+
+  BLOCK 0x1407a30c4  (2 insns, ends 0x1407a30cb)
+     1407a30c4  cmp byte ptr [rip + 0x9b1a1c], 0   ; ->0x141154ae7
+     1407a30cb  je 0x1407a30da
+     je on ? : TRUE -> 0x1407a30da   FALSE -> 0x1407a30cd
+
+  BLOCK 0x1407a30cd  (2 insns, ends 0x1407a30d4)
+     1407a30cd  cmp dword ptr [rip + 0x9b1c15], 0   ; ->0x141154ce9
+     1407a30d4  je 0x1407a30da
+     je on ? : TRUE -> 0x1407a30da   FALSE -> 0x1407a30d6
+
+  BLOCK 0x1407a30d6  (2 insns, ends 0x1407a30d8)
+     1407a30d6  mov bl, 1
+     1407a30d8  jmp 0x1407a30dc
+     -> 0x1407a30dc
+
+  BLOCK 0x1407a30da  (14 insns, ends 0x1407a3113)
+     1407a30da  xor bl, bl
+     1407a30dc  xor edx, edx
+     1407a30de  lea rcx, [rbp - 0x70]
+     1407a30e2  mov r8d, 0x100
+     1407a30e8  call 0x1407b4700
+     1407a30ed  movzx r9d, bl
+     1407a30f1  lea r8, [rip + 0x7ef428]   ; ->0x140f92520
+     1407a30f8  lea rdx, [rip + 0x7eb1c1]   ; ->0x140f8e2c0
+     1407a30ff  lea rcx, [rbp - 0x70]
+     1407a3103  call 0x1407adb40
+     1407a3108  lea rcx, [rbp - 0x70]
+     1407a310c  call 0x14078fc90
+     1407a3111  test bl, bl
+     1407a3113  jne 0x1407a311c
+     jne on ? : TRUE -> 0x1407a311c   FALSE -> 0x1407a3115
+
+  BLOCK 0x1407a30dc  (13 insns, ends 0x1407a3113)
+     1407a30dc  xor edx, edx
+     1407a30de  lea rcx, [rbp - 0x70]
+     1407a30e2  mov r8d, 0x100
+     1407a30e8  call 0x1407b4700
+     1407a30ed  movzx r9d, bl
+     1407a30f1  lea r8, [rip + 0x7ef428]   ; ->0x140f92520
+     1407a30f8  lea rdx, [rip + 0x7eb1c1]   ; ->0x140f8e2c0
+     1407a30ff  lea rcx, [rbp - 0x70]
+     1407a3103  call 0x1407adb40
+     1407a3108  lea rcx, [rbp - 0x70]
+     1407a310c  call 0x14078fc90
+     1407a3111  test bl, bl
+     1407a3113  jne 0x1407a311c
+     jne on ? : TRUE -> 0x1407a311c   FALSE -> 0x1407a3115
+
+  BLOCK 0x1407a3115  (2 insns, ends 0x1407a3117)
+     1407a3115  xor al, al
+     1407a3117  jmp 0x1407a341d
+     -> 0x1407a341d
+
+  BLOCK 0x1407a311c  (21 insns, ends 0x1407a3174)
+     1407a311c  xor r8d, r8d
+     1407a311f  lea rcx, [rip + 0x7ef42a]   ; ->0x140f92550
+     1407a3126  mov edx, 0x7530
+     1407a312b  call 0x1403b34d0
+     1407a3130  xor edx, edx
+     1407a3132  lea rcx, [rbp - 0x70]
+     1407a3136  mov r8d, 0x200
+     1407a313c  mov ebx, eax
+     1407a313e  call 0x1407b4700
+     1407a3143  mov ecx, ebx
+     1407a3145  call 0x14078fad0
+     1407a314a  lea rdx, [rip + 0x7eb157]   ; ->0x140f8e2a8
+     1407a3151  mov qword ptr [rsp + 0x20], rax
+     1407a3156  lea rcx, [rbp - 0x70]
+     1407a315a  mov r9d, ebx
+     1407a315d  lea r8, [rip + 0x7ef4dc]   ; ->0x140f92640
+     1407a3164  call 0x1407adae0
+     1407a3169  lea rcx, [rbp - 0x70]
+     1407a316d  call 0x14078fc90
+     1407a3172  test ebx, ebx
+     1407a3174  je 0x1407a3189
+     je on ? : TRUE -> 0x1407a3189   FALSE -> 0x1407a3176
+
+  BLOCK 0x1407a3176  (4 insns, ends 0x1407a3184)
+     1407a3176  lea rcx, [rip + 0x7ef4e3]   ; ->0x140f92660
+     1407a317d  call 0x14078fc90
+     1407a3182  mov al, 1
+     1407a3184  jmp 0x1407a341d
+     -> 0x1407a341d
+
+  BLOCK 0x1407a3189  (25 insns, ends 0x1407a31f9)
+     1407a3189  call 0x1405a03d0
+     1407a318e  mov edx, 0x405
+     1407a3193  lea rcx, [rip + 0x7ef4ee]   ; ->0x140f92688
+     1407a319a  call 0x1403b3280
+     1407a319f  lea rcx, [rip + 0x7ef4f2]   ; ->0x140f92698
+     1407a31a6  call 0x14078fc90
+     1407a31ab  lea rcx, [rsp + 0x40]
+     1407a31b0  call 0x1403c47e0
+     1407a31b5  xor edx, edx
+     1407a31b7  lea rcx, [rbp - 0x70]
+     1407a31bb  mov r8d, 0x200
+     1407a31c1  mov ebx, eax
+     1407a31c3  call 0x1407b4700
+     1407a31c8  mov ecx, ebx
+     1407a31ca  call 0x14078fad0
+     1407a31cf  lea rdx, [rip + 0x7eb0d2]   ; ->0x140f8e2a8
+     1407a31d6  mov qword ptr [rsp + 0x20], rax
+     1407a31db  lea rcx, [rbp - 0x70]
+     1407a31df  mov r9d, ebx
+     1407a31e2  lea r8, [rip + 0x7ef4df]   ; ->0x140f926c8
+     1407a31e9  call 0x1407adae0
+     1407a31ee  lea rcx, [rbp - 0x70]
+     1407a31f2  call 0x14078fc90
+     1407a31f7  test ebx, ebx
+     1407a31f9  je 0x1407a320e
+     je on ? : TRUE -> 0x1407a320e   FALSE -> 0x1407a31fb
+
+  BLOCK 0x1407a31fb  (4 insns, ends 0x1407a3209)
+     1407a31fb  lea rcx, [rip + 0x7ef4ee]   ; ->0x140f926f0
+     1407a3202  call 0x14078fc90
+     1407a3207  mov al, 1
+     1407a3209  jmp 0x1407a341d
+     -> 0x1407a341d
+
+  BLOCK 0x1407a320e  (19 insns, ends 0x1407a325e)
+     1407a320e  lea rcx, [rip + 0x9b18d2]   ; ->0x141154ae7
+     1407a3215  call 0x1403b3d30
+     1407a321a  xor edx, edx
+     1407a321c  lea rcx, [rbp - 0x70]
+     1407a3220  mov r8d, 0x200
+     1407a3226  mov ebx, eax
+     1407a3228  call 0x1407b4700
+     1407a322d  mov ecx, ebx
+     1407a322f  call 0x14078fad0
+     1407a3234  lea rdx, [rip + 0x7eb06d]   ; ->0x140f8e2a8
+     1407a323b  mov qword ptr [rsp + 0x20], rax
+     1407a3240  lea rcx, [rbp - 0x70]
+     1407a3244  mov r9d, ebx
+     1407a3247  lea r8, [rip + 0x7ef4ca]   ; ->0x140f92718
+     1407a324e  call 0x1407adae0
+     1407a3253  lea rcx, [rbp - 0x70]
+     1407a3257  call 0x14078fc90
+     1407a325c  test ebx, ebx
+     1407a325e  je 0x1407a32ce
+     je on ? : TRUE -> 0x1407a32ce   FALSE -> 0x1407a3260
+
+  BLOCK 0x1407a3260  (4 insns, ends 0x1407a326d)
+     1407a3260  lea eax, [rbx + 0x3d]
+     1407a3263  lea rdx, [rip - 0x7a326a]   ; ->0x140000000
+     1407a326a  cmp eax, 0x28
+     1407a326d  ja 0x1407a3285
+     ja on ? : TRUE -> 0x1407a3285   FALSE -> 0x1407a326f
+
+  BLOCK 0x1407a326f  (5 insns, ends 0x1407a3283)
+     1407a326f  cdqe 
+     1407a3271  movzx eax, byte ptr [rdx + rax + 0x7a3448]
+     1407a3279  mov ecx, dword ptr [rdx + rax*4 + 0x7a3440]
+     1407a3280  add rcx, rdx
+     1407a3283  jmp rcx
+     UNRESOLVED-jmp rcx
+
+  BLOCK 0x1407a3285  (3 insns, ends 0x1407a328b)
+     1407a3285  lea eax, [rbx + 0x27]
+     1407a3288  cmp eax, 0x27
+     1407a328b  ja 0x1407a32b6
+     ja on ? : TRUE -> 0x1407a32b6   FALSE -> 0x1407a328d
+
+  BLOCK 0x1407a328d  (5 insns, ends 0x1407a32a1)
+     1407a328d  cdqe 
+     1407a328f  movzx eax, byte ptr [rdx + rax + 0x7a347c]
+     1407a3297  mov ecx, dword ptr [rdx + rax*4 + 0x7a3474]
+     1407a329e  add rcx, rdx
+     1407a32a1  jmp rcx
+     UNRESOLVED-jmp rcx
+
+  BLOCK 0x1407a32b6  (5 insns, ends 0x1407a32c9)
+     1407a32b6  lea rcx, [rip + 0x7ef483]   ; ->0x140f92740
+     1407a32bd  call 0x14078fc90
+     1407a32c2  mov ecx, ebx
+     1407a32c4  call 0x1407a3000
+     1407a32c9  jmp 0x1407a341d
+     -> 0x1407a341d
+
+  BLOCK 0x1407a32ce  (15 insns, ends 0x1407a330c)
+     1407a32ce  call 0x1403c49d0
+     1407a32d3  xor edx, edx
+     1407a32d5  movzx ebx, al
+     1407a32d8  mov r8d, 0x100
+     1407a32de  lea rcx, [rbp - 0x70]
+     1407a32e2  call 0x1407b4700
+     1407a32e7  mov r9d, ebx
+     1407a32ea  lea r8, [rip + 0x7ef4af]   ; ->0x140f927a0
+     1407a32f1  lea rdx, [rip + 0x7eafc8]   ; ->0x140f8e2c0
+     1407a32f8  lea rcx, [rbp - 0x70]
+     1407a32fc  call 0x1407adb40
+     1407a3301  lea rcx, [rbp - 0x70]
+     1407a3305  call 0x14078fc90
+     1407a330a  test ebx, ebx
+     1407a330c  jne 0x1407a3321
+     jne on ? : TRUE -> 0x1407a3321   FALSE -> 0x1407a330e
+
+  BLOCK 0x1407a330e  (4 insns, ends 0x1407a331c)
+     1407a330e  lea rcx, [rip + 0x7ef4ab]   ; ->0x140f927c0
+     1407a3315  call 0x14078fc90
+     1407a331a  mov al, 1
+     1407a331c  jmp 0x1407a341d
+     -> 0x1407a341d
+
+  BLOCK 0x1407a3321  (1 insns, ends 0x1407a3321)
+     1407a3321  xor ebx, ebx
+
+===== function 0x1407a3510 .. 0x1407a493d (5165 bytes) =====
+
+  BLOCK 0x1407a3510  (16 insns, ends 0x1407a3556)
+     1407a3510  mov qword ptr [rsp + 8], rbx
+     1407a3515  mov qword ptr [rsp + 0x10], rsi
+     1407a351a  mov qword ptr [rsp + 0x18], rdi
+     1407a351f  mov qword ptr [rsp + 0x20], r13
+     1407a3524  push rbp
+     1407a3525  push r14
+     1407a3527  push r15
+     1407a3529  lea rbp, [rsp - 0x1560]
+     1407a3531  mov eax, 0x1660
+     1407a3536  call 0x1407d8190
+     1407a353b  sub rsp, rax
+     1407a353e  mov rax, qword ptr [rip + 0x7faacb]   ; ->0x140f9e010
+     1407a3545  xor rax, rsp
+     1407a3548  mov qword ptr [rbp + 0x1550], rax
+     1407a354f  cmp dword ptr [rip + 0x9b1797], 1   ; ->0x141154ced
+     1407a3556  jne 0x1407a357a
+     jne on ? : TRUE -> 0x1407a357a   FALSE -> 0x1407a3558
+
+  BLOCK 0x1407a352d  (8 insns, ends 0x1407a3556)
+     1407a352d  movabs al, byte ptr [0x1660b8ffffea]
+     1407a3536  call 0x1407d8190
+     1407a353b  sub rsp, rax
+     1407a353e  mov rax, qword ptr [rip + 0x7faacb]   ; ->0x140f9e010
+     1407a3545  xor rax, rsp
+     1407a3548  mov qword ptr [rbp + 0x1550], rax
+     1407a354f  cmp dword ptr [rip + 0x9b1797], 1   ; ->0x141154ced
+     1407a3556  jne 0x1407a357a
+     jne on ? : TRUE -> 0x1407a357a   FALSE -> 0x1407a3558
+
+  BLOCK 0x1407a3558  (2 insns, ends 0x1407a355f)
+     1407a3558  cmp dword ptr [rip + 0x9b1792], 1   ; ->0x141154cf1
+     1407a355f  jne 0x1407a357a
+     jne on ? : TRUE -> 0x1407a357a   FALSE -> 0x1407a3561
+
+  BLOCK 0x1407a3561  (3 insns, ends 0x1407a356a)
+     1407a3561  movzx eax, byte ptr [rip + 0x9b157f]   ; ->0x141154ae7
+     1407a3568  test al, al
+     1407a356a  je 0x1407a357a
+     je on ? : TRUE -> 0x1407a357a   FALSE -> 0x1407a356c
+
+  BLOCK 0x1407a356c  (3 insns, ends 0x1407a3574)
+     1407a356c  mov ecx, dword ptr [rip + 0x9b1777]   ; ->0x141154ce9
+     1407a3572  test ecx, ecx
+     1407a3574  jne 0x1407a4727
+     jne on ? : TRUE -> 0x1407a4727   FALSE -> 0x1407a357a
+
+  BLOCK 0x1407a357a  (4 insns, ends 0x1407a3584)
+     1407a357a  xor ebx, ebx
+     1407a357c  mov eax, dword ptr [rip + 0x9b178e]   ; ->0x141154d10
+     1407a3582  test eax, eax
+     1407a3584  jns 0x1407a35c7
+     jns on ? : TRUE -> 0x1407a35c7   FALSE -> 0x1407a3586
+
+  BLOCK 0x1407a3586  (5 insns, ends 0x1407a3596)
+     1407a3586  lea rcx, [rip + 0x7e9ba3]   ; ->0x140f8d130
+     1407a358d  push rbp
+     1407a358e  call 0x14191b5c8
+     1407a3593  cmp eax, -1
+     1407a3596  je 0x1407a359c
+     je on ? : TRUE -> 0x1407a359c   FALSE -> 0x1407a3598
+
+  BLOCK 0x1407a3598  (2 insns, ends 0x1407a359a)
+     1407a3598  test al, 0x10
+     1407a359a  jne 0x1407a35bf
+     jne on ? : TRUE -> 0x1407a35bf   FALSE -> 0x1407a359c
+
+  BLOCK 0x1407a359c  (3 insns, ends 0x1407a35a8)
+     1407a359c  lea rcx, [rip + 0x7e9ba5]   ; ->0x140f8d148
+     1407a35a3  call 0x1415877fa
+     1407a35a8  jb 0x1407a352d
+     jb on ? : TRUE -> 0x1407a352d   FALSE -> 0x1407a35aa
+
+  BLOCK 0x1407a35aa  (7 insns, ends 0x1407a35bd)
+     1407a35aa  clc 
+     1407a35ab  push qword ptr [rcx + rdx - 0x58]
+     1407a35af  adc byte ptr [rbp + rcx - 0x48], dh
+     1407a35b3  add dword ptr [rax], eax
+     1407a35b5  add byte ptr [rax], al
+     1407a35b7  mov dword ptr [rip + 0x9b1753], eax   ; ->0x141154d10
+     1407a35bd  jmp 0x1407a35c7
+     -> 0x1407a35c7
+
+  BLOCK 0x1407a35bf  (11 insns, ends 0x1407a35e8)
+     1407a35bf  mov eax, ebx
+     1407a35c1  mov dword ptr [rip + 0x9b1749], ebx   ; ->0x141154d10
+     1407a35c7  lea rsi, [rip + 0x7eadea]   ; ->0x140f8e3b8
+     1407a35ce  lea rdi, [rip + 0x7eae03]   ; ->0x140f8e3d8
+     1407a35d5  mov rcx, rdi
+     1407a35d8  cmp eax, 1
+     1407a35db  cmove rcx, rsi
+     1407a35df  call 0x1413e87e7
+     1407a35e4  lahf 
+     1407a35e5  cmp eax, -1
+     1407a35e8  je 0x1407a4700
+     je on ? : TRUE -> 0x1407a4700   FALSE -> 0x1407a35ee
+
+  BLOCK 0x1407a35c7  (9 insns, ends 0x1407a35e8)
+     1407a35c7  lea rsi, [rip + 0x7eadea]   ; ->0x140f8e3b8
+     1407a35ce  lea rdi, [rip + 0x7eae03]   ; ->0x140f8e3d8
+     1407a35d5  mov rcx, rdi
+     1407a35d8  cmp eax, 1
+     1407a35db  cmove rcx, rsi
+     1407a35df  call 0x1413e87e7
+     1407a35e4  lahf 
+     1407a35e5  cmp eax, -1
+     1407a35e8  je 0x1407a4700
+     je on ? : TRUE -> 0x1407a4700   FALSE -> 0x1407a35ee
+
+  BLOCK 0x1407a35ee  (3 insns, ends 0x1407a35f6)
+     1407a35ee  mov eax, dword ptr [rip + 0x9b171c]   ; ->0x141154d10
+     1407a35f4  test eax, eax
+     1407a35f6  jns 0x1407a3639
+     jns on ? : TRUE -> 0x1407a3639   FALSE -> 0x1407a35f8
+
+  BLOCK 0x1407a35f8  (4 insns, ends 0x1407a3608)
+     1407a35f8  lea rcx, [rip + 0x7e9b31]   ; ->0x140f8d130
+     1407a35ff  call 0x141812b9f
+     1407a3604  cmp r8d, -1
+     1407a3608  je 0x1407a360e
+     je on ? : TRUE -> 0x1407a360e   FALSE -> 0x1407a360a
+
+  BLOCK 0x1407a360a  (2 insns, ends 0x1407a360c)
+     1407a360a  test al, 0x10
+     1407a360c  jne 0x1407a3631
+     jne on ? : TRUE -> 0x1407a3631   FALSE -> 0x1407a360e
+
+  BLOCK 0x1407a360e  (5 insns, ends 0x1407a361e)
+     1407a360e  lea rcx, [rip + 0x7e9b33]   ; ->0x140f8d148
+     1407a3615  push rdx
+     1407a3616  call 0x14118b070
+     1407a361b  cmp eax, -1
+     1407a361e  je 0x1407a3631
+     je on ? : TRUE -> 0x1407a3631   FALSE -> 0x1407a3620
+
+  BLOCK 0x1407a3620  (2 insns, ends 0x1407a3622)
+     1407a3620  test al, 0x10
+     1407a3622  je 0x1407a3631
+     je on ? : TRUE -> 0x1407a3631   FALSE -> 0x1407a3624
+
+  BLOCK 0x1407a3624  (3 insns, ends 0x1407a362f)
+     1407a3624  mov eax, 1
+     1407a3629  mov dword ptr [rip + 0x9b16e1], eax   ; ->0x141154d10
+     1407a362f  jmp 0x1407a3639
+     -> 0x1407a3639
+
+  BLOCK 0x1407a3631  (16 insns, ends 0x1407a3671)
+     1407a3631  mov eax, ebx
+     1407a3633  mov dword ptr [rip + 0x9b16d7], ebx   ; ->0x141154d10
+     1407a3639  cmp eax, 1
+     1407a363c  cmove rdi, rsi
+     1407a3640  mov qword ptr [rsp + 0x30], rbx
+     1407a3645  mov dword ptr [rsp + 0x28], 0x80
+     1407a364d  mov dword ptr [rsp + 0x20], 3
+     1407a3655  xor r9d, r9d
+     1407a3658  mov edx, 0x80000000
+     1407a365d  lea r8d, [r9 + 7]
+     1407a3661  mov rcx, rdi
+     1407a3664  push rsi
+     1407a3665  call 0x1419a096d
+     1407a366a  mov rdi, rax
+     1407a366d  cmp rax, -1
+     1407a3671  jne 0x1407a3865
+     jne on ? : TRUE -> 0x1407a3865   FALSE -> 0x1407a3677
+
+  BLOCK 0x1407a3639  (14 insns, ends 0x1407a3671)
+     1407a3639  cmp eax, 1
+     1407a363c  cmove rdi, rsi
+     1407a3640  mov qword ptr [rsp + 0x30], rbx
+     1407a3645  mov dword ptr [rsp + 0x28], 0x80
+     1407a364d  mov dword ptr [rsp + 0x20], 3
+     1407a3655  xor r9d, r9d
+     1407a3658  mov edx, 0x80000000
+     1407a365d  lea r8d, [r9 + 7]
+     1407a3661  mov rcx, rdi
+     1407a3664  push rsi
+     1407a3665  call 0x1419a096d
+     1407a366a  mov rdi, rax
+     1407a366d  cmp rax, -1
+     1407a3671  jne 0x1407a3865
+     jne on ? : TRUE -> 0x1407a3865   FALSE -> 0x1407a3677
+
+  BLOCK 0x1407a3677  (19 insns, ends 0x1407a36b8)
+     1407a3677  call 0x14118e15d
+     1407a367c  mov r8d, eax
+     1407a3680  lea r9, [rbp - 0x43]
+     1407a3684  nop dword ptr [rax]
+     1407a3688  nop dword ptr [rax + rax]
+     1407a3690  dec r9
+     1407a3693  mov eax, 0xcccccccd
+     1407a3698  mul r8d
+     1407a369b  shr edx, 3
+     1407a369e  movzx eax, dl
+     1407a36a1  shl al, 2
+     1407a36a4  lea ecx, [rax + rdx]
+     1407a36a7  add cl, cl
+     1407a36a9  sub r8b, cl
+     1407a36ac  add r8b, 0x30
+     1407a36b0  mov byte ptr [r9], r8b
+     1407a36b3  mov r8d, edx
+     1407a36b6  test edx, edx
+     1407a36b8  jne 0x1407a3690
+     jne on ? : TRUE -> 0x1407a3690   FALSE -> 0x1407a36ba
+
+  BLOCK 0x1407a3690  (14 insns, ends 0x1407a36b8)
+     1407a3690  dec r9
+     1407a3693  mov eax, 0xcccccccd
+     1407a3698  mul r8d
+     1407a369b  shr edx, 3
+     1407a369e  movzx eax, dl
+     1407a36a1  shl al, 2
+     1407a36a4  lea ecx, [rax + rdx]
+     1407a36a7  add cl, cl
+     1407a36a9  sub r8b, cl
+     1407a36ac  add r8b, 0x30
+     1407a36b0  mov byte ptr [r9], r8b
+     1407a36b3  mov r8d, edx
+     1407a36b6  test edx, edx
+     1407a36b8  jne 0x1407a3690
+     jne on ? : TRUE -> 0x1407a3690   FALSE -> 0x1407a36ba
+
+  BLOCK 0x1407a36ba  (9 insns, ends 0x1407a36db)
+     1407a36ba  mov qword ptr [rsp + 0x68], rbx
+     1407a36bf  mov r8, rbx
+     1407a36c2  mov qword ptr [rsp + 0x78], rbx
+     1407a36c7  mov ecx, 0xf
+     1407a36cc  mov qword ptr [rbp - 0x80], rcx
+     1407a36d0  mov byte ptr [rsp + 0x68], bl
+     1407a36d4  lea rax, [rbp - 0x43]
+     1407a36d8  cmp r9, rax
+     1407a36db  je 0x1407a36fa
+     je on ? : TRUE -> 0x1407a36fa   FALSE -> 0x1407a36dd
+
+  BLOCK 0x1407a36dd  (13 insns, ends 0x1407a370f)
+     1407a36dd  lea r8, [rbp - 0x43]
+     1407a36e1  sub r8, r9
+     1407a36e4  mov rdx, r9
+     1407a36e7  lea rcx, [rsp + 0x68]
+     1407a36ec  call 0x1407ad020
+     1407a36f1  mov rcx, qword ptr [rbp - 0x80]
+     1407a36f5  mov r8, qword ptr [rsp + 0x78]
+     1407a36fa  mov rax, rcx
+     1407a36fd  sub rax, r8
+     1407a3700  mov edi, 0x1a
+     1407a3705  lea r15, [rip + 0x7ecc74]   ; ->0x140f90380
+     1407a370c  cmp rax, rdi
+     1407a370f  jb 0x1407a378d
+     jb on ? : TRUE -> 0x1407a378d   FALSE -> 0x1407a3711
+
+  BLOCK 0x1407a36fa  (6 insns, ends 0x1407a370f)
+     1407a36fa  mov rax, rcx
+     1407a36fd  sub rax, r8
+     1407a3700  mov edi, 0x1a
+     1407a3705  lea r15, [rip + 0x7ecc74]   ; ->0x140f90380
+     1407a370c  cmp rax, rdi
+     1407a370f  jb 0x1407a378d
+     jb on ? : TRUE -> 0x1407a378d   FALSE -> 0x1407a3711
+
+  BLOCK 0x1407a3711  (8 insns, ends 0x1407a3733)
+     1407a3711  lea rax, [r8 + 0x1a]
+     1407a3715  mov qword ptr [rsp + 0x78], rax
+     1407a371a  lea rsi, [rsp + 0x68]
+     1407a371f  cmp rcx, 0x10
+     1407a3723  cmovae rsi, qword ptr [rsp + 0x68]
+     1407a3729  lea rax, [rip + 0x7ecc6a]   ; ->0x140f9039a
+     1407a3730  cmp rax, rsi
+     1407a3733  jbe 0x1407a3750
+     jbe on ? : TRUE -> 0x1407a3750   FALSE -> 0x1407a3735
+
+  BLOCK 0x1407a3735  (3 insns, ends 0x1407a373c)
+     1407a3735  lea rax, [rsi + r8]
+     1407a3739  cmp r15, rax
+     1407a373c  ja 0x1407a3750
+     ja on ? : TRUE -> 0x1407a3750   FALSE -> 0x1407a373e
+
+  BLOCK 0x1407a373e  (2 insns, ends 0x1407a3741)
+     1407a373e  cmp rsi, r15
+     1407a3741  ja 0x1407a3748
+     ja on ? : TRUE -> 0x1407a3748   FALSE -> 0x1407a3743
+
+  BLOCK 0x1407a3743  (2 insns, ends 0x1407a3746)
+     1407a3743  mov r14, rbx
+     1407a3746  jmp 0x1407a3753
+     -> 0x1407a3753
+
+  BLOCK 0x1407a3748  (3 insns, ends 0x1407a374e)
+     1407a3748  mov r14, rsi
+     1407a374b  sub r14, r15
+     1407a374e  jmp 0x1407a3753
+     -> 0x1407a3753
+
+  BLOCK 0x1407a3750  (17 insns, ends 0x1407a378b)
+     1407a3750  mov r14, rdi
+     1407a3753  inc r8
+     1407a3756  lea rcx, [rsi + 0x1a]
+     1407a375a  mov rdx, rsi
+     1407a375d  call 0x1407b48f0
+     1407a3762  mov r8, r14
+     1407a3765  mov rdx, r15
+     1407a3768  mov rcx, rsi
+     1407a376b  call 0x1407b48f0
+     1407a3770  sub rdi, r14
+     1407a3773  lea rdx, [r15 + 0x1a]
+     1407a3777  add rdx, r14
+     1407a377a  lea rcx, [rsi + r14]
+     1407a377e  mov r8, rdi
+     1407a3781  call 0x1407b48f0
+     1407a3786  lea rax, [rsp + 0x68]
+     1407a378b  jmp 0x1407a37a4
+     -> 0x1407a37a4
+
+  BLOCK 0x1407a3753  (16 insns, ends 0x1407a378b)
+     1407a3753  inc r8
+     1407a3756  lea rcx, [rsi + 0x1a]
+     1407a375a  mov rdx, rsi
+     1407a375d  call 0x1407b48f0
+     1407a3762  mov r8, r14
+     1407a3765  mov rdx, r15
+     1407a3768  mov rcx, rsi
+     1407a376b  call 0x1407b48f0
+     1407a3770  sub rdi, r14
+     1407a3773  lea rdx, [r15 + 0x1a]
+     1407a3777  add rdx, r14
+     1407a377a  lea rcx, [rsi + r14]
+     1407a377e  mov r8, rdi
+     1407a3781  call 0x1407b48f0
+     1407a3786  lea rax, [rsp + 0x68]
+     1407a378b  jmp 0x1407a37a4
+     -> 0x1407a37a4
+
+  BLOCK 0x1407a378d  (15 insns, ends 0x1407a37ca)
+     1407a378d  mov qword ptr [rsp + 0x28], rdi
+     1407a3792  mov qword ptr [rsp + 0x20], r15
+     1407a3797  mov rdx, rdi
+     1407a379a  lea rcx, [rsp + 0x68]
+     1407a379f  call 0x1407b0420
+     1407a37a4  movups xmm0, xmmword ptr [rax]
+     1407a37a7  movups xmmword ptr [rbp - 0x78], xmm0
+     1407a37ab  movups xmm1, xmmword ptr [rax + 0x10]
+     1407a37af  movups xmmword ptr [rbp - 0x68], xmm1
+     1407a37b3  mov qword ptr [rax + 0x10], rbx
+     1407a37b7  mov qword ptr [rax + 0x18], 0xf
+     1407a37bf  mov byte ptr [rax], 0
+     1407a37c2  mov rdx, qword ptr [rbp - 0x80]
+     1407a37c6  cmp rdx, 0x10
+     1407a37ca  jb 0x1407a37fe
+     jb on ? : TRUE -> 0x1407a37fe   FALSE -> 0x1407a37cc
+
+  BLOCK 0x1407a37a4  (10 insns, ends 0x1407a37ca)
+     1407a37a4  movups xmm0, xmmword ptr [rax]
+     1407a37a7  movups xmmword ptr [rbp - 0x78], xmm0
+     1407a37ab  movups xmm1, xmmword ptr [rax + 0x10]
+     1407a37af  movups xmmword ptr [rbp - 0x68], xmm1
+     1407a37b3  mov qword ptr [rax + 0x10], rbx
+     1407a37b7  mov qword ptr [rax + 0x18], 0xf
+     1407a37bf  mov byte ptr [rax], 0
+     1407a37c2  mov rdx, qword ptr [rbp - 0x80]
+     1407a37c6  cmp rdx, 0x10
+     1407a37ca  jb 0x1407a37fe
+     jb on ? : TRUE -> 0x1407a37fe   FALSE -> 0x1407a37cc
+
+  BLOCK 0x1407a37cc  (5 insns, ends 0x1407a37de)
+     1407a37cc  inc rdx
+     1407a37cf  mov rcx, qword ptr [rsp + 0x68]
+     1407a37d4  mov rax, rcx
+     1407a37d7  cmp rdx, 0x1000
+     1407a37de  jb 0x1407a37f9
+     jb on ? : TRUE -> 0x1407a37f9   FALSE -> 0x1407a37e0
+
+  BLOCK 0x1407a37e0  (6 insns, ends 0x1407a37f3)
+     1407a37e0  add rdx, 0x27
+     1407a37e4  mov rcx, qword ptr [rcx - 8]
+     1407a37e8  sub rax, rcx
+     1407a37eb  add rax, -8
+     1407a37ef  cmp rax, 0x1f
+     1407a37f3  ja 0x1407a4919
+     ja on ? : TRUE -> 0x1407a4919   FALSE -> 0x1407a37f9
+
+  BLOCK 0x1407a37f9  (17 insns, ends 0x1407a3840)
+     1407a37f9  call 0x1407b06d0
+     1407a37fe  lea rdx, [rbp - 0x78]
+     1407a3802  cmp qword ptr [rbp - 0x60], 0x10
+     1407a3807  cmovae rdx, qword ptr [rbp - 0x78]
+     1407a380c  mov r9d, 0x10
+     1407a3812  lea r8, [rip + 0x7ec99f]   ; ->0x140f901b8
+     1407a3819  xor ecx, ecx
+     1407a381b  call 0x141692bbe
+     1407a3820  add ecx, dword ptr [rax - 0x75]
+     1407a3823  push rbp
+     1407a3824  movabs al, byte ptr [0xed1820f10fa8348]
+     1407a382d  add byte ptr [rax], al
+     1407a382f  inc rdx
+     1407a3832  mov rcx, qword ptr [rbp - 0x78]
+     1407a3836  mov rax, rcx
+     1407a3839  cmp rdx, 0x1000
+     1407a3840  jb 0x1407a385b
+     jb on ? : TRUE -> 0x1407a385b   FALSE -> 0x1407a3842
+
+  BLOCK 0x1407a37fe  (16 insns, ends 0x1407a3840)
+     1407a37fe  lea rdx, [rbp - 0x78]
+     1407a3802  cmp qword ptr [rbp - 0x60], 0x10
+     1407a3807  cmovae rdx, qword ptr [rbp - 0x78]
+     1407a380c  mov r9d, 0x10
+     1407a3812  lea r8, [rip + 0x7ec99f]   ; ->0x140f901b8
+     1407a3819  xor ecx, ecx
+     1407a381b  call 0x141692bbe
+     1407a3820  add ecx, dword ptr [rax - 0x75]
+     1407a3823  push rbp
+     1407a3824  movabs al, byte ptr [0xed1820f10fa8348]
+     1407a382d  add byte ptr [rax], al
+     1407a382f  inc rdx
+     1407a3832  mov rcx, qword ptr [rbp - 0x78]
+     1407a3836  mov rax, rcx
+     1407a3839  cmp rdx, 0x1000
+     1407a3840  jb 0x1407a385b
+     jb on ? : TRUE -> 0x1407a385b   FALSE -> 0x1407a3842
+
+  BLOCK 0x1407a3842  (6 insns, ends 0x1407a3855)
+     1407a3842  add rdx, 0x27
+     1407a3846  mov rcx, qword ptr [rcx - 8]
+     1407a384a  sub rax, rcx
+     1407a384d  add rax, -8
+     1407a3851  cmp rax, 0x1f
+     1407a3855  ja 0x1407a491f
+     ja on ? : TRUE -> 0x1407a491f   FALSE -> 0x1407a385b
+
+  BLOCK 0x1407a385b  (2 insns, ends 0x1407a3860)
+     1407a385b  call 0x1407b06d0
+     1407a3860  jmp 0x1407a4700
+     -> 0x1407a4700
+
+  BLOCK 0x1407a3865  (6 insns, ends 0x1407a3877)
+     1407a3865  xor edx, edx
+     1407a3867  mov rcx, rdi
+     1407a386a  call 0x1419b0199
+     1407a386f  movsxd r14, eax
+     1407a3873  cmp r14d, -1
+     1407a3877  jne 0x1407a3885
+     jne on ? : TRUE -> 0x1407a3885   FALSE -> 0x1407a3879
+
+  BLOCK 0x1407a3879  (2 insns, ends 0x1407a3880)
+     1407a3879  lea rdx, [rip + 0x7ecb20]   ; ->0x140f903a0
+     1407a3880  jmp 0x1407a46e2
+     -> 0x1407a46e2
+
+  BLOCK 0x1407a3885  (11 insns, ends 0x1407a38b4)
+     1407a3885  mov dword ptr [rsp + 0x40], ebx
+     1407a3889  mov qword ptr [rsp + 0x20], rbx
+     1407a388e  lea r9, [rsp + 0x58]
+     1407a3893  mov r8d, 4
+     1407a3899  lea rdx, [rsp + 0x40]
+     1407a389e  mov rcx, rdi
+     1407a38a1  call 0x1413cc504
+     1407a38a6  add byte ptr [rbp + 0x2c840fc0], 0xe
+     1407a38ad  add byte ptr [rax], al
+     1407a38af  cmp dword ptr [rsp + 0x58], 4
+     1407a38b4  jne 0x1407a46db
+     jne on ? : TRUE -> 0x1407a46db   FALSE -> 0x1407a38ba
+
+  BLOCK 0x1407a38ba  (4 insns, ends 0x1407a38c6)
+     1407a38ba  movsxd rsi, dword ptr [rsp + 0x40]
+     1407a38bf  lea rcx, [rsi + 4]
+     1407a38c3  cmp r14, rcx
+     1407a38c6  je 0x1407a38d4
+     je on ? : TRUE -> 0x1407a38d4   FALSE -> 0x1407a38c8
+
+  BLOCK 0x1407a38c8  (2 insns, ends 0x1407a38cf)
+     1407a38c8  lea rdx, [rip + 0x7ecb01]   ; ->0x140f903d0
+     1407a38cf  jmp 0x1407a46e2
+     -> 0x1407a46e2
+
+  BLOCK 0x1407a38d4  (6 insns, ends 0x1407a38ee)
+     1407a38d4  xor edx, edx
+     1407a38d6  mov r8d, 0xa6e
+     1407a38dc  lea rcx, [rbp + 0xae0]
+     1407a38e3  call 0x1407b4700
+     1407a38e8  cmp esi, 0xa6e
+     1407a38ee  ja 0x1407a46d2
+     ja on ? : TRUE -> 0x1407a46d2   FALSE -> 0x1407a38f4
+
+  BLOCK 0x1407a38f4  (8 insns, ends 0x1407a3913)
+     1407a38f4  mov qword ptr [rsp + 0x20], rbx
+     1407a38f9  lea r9, [rsp + 0x58]
+     1407a38fe  mov r8d, esi
+     1407a3901  lea rdx, [rbp + 0xae0]
+     1407a3908  mov rcx, rdi
+     1407a390b  call 0x14199ba4f
+     1407a3910  test eax, eax
+     1407a3913  je 0x1407a46d2
+     je on ? : TRUE -> 0x1407a46d2   FALSE -> 0x1407a3919
+
+  BLOCK 0x1407a3919  (3 insns, ends 0x1407a3921)
+     1407a3919  mov eax, dword ptr [rsp + 0x40]
+     1407a391d  cmp dword ptr [rsp + 0x58], eax
+     1407a3921  jne 0x1407a46d2
+     jne on ? : TRUE -> 0x1407a46d2   FALSE -> 0x1407a3927
+
+  BLOCK 0x1407a3927  (18 insns, ends 0x1407a3975)
+     1407a3927  mov rcx, rdi
+     1407a392a  call 0x14170bb2a
+     1407a392f  xor r10, r10
+     1407a3932  mov r8d, 0xa6e
+     1407a3938  lea rcx, [rbp + 0x70]
+     1407a393c  call 0x1407b4700
+     1407a3941  mov eax, dword ptr [rsp + 0x40]
+     1407a3945  mov dword ptr [rsp + 0x5c], eax
+     1407a3949  mov qword ptr [rsp + 0x50], rbx
+     1407a394e  mov qword ptr [rsp + 0x48], rbx
+     1407a3953  mov dword ptr [rsp + 0x20], 0xf0000000
+     1407a395b  mov r9d, 0x18
+     1407a3961  xor r8d, r8d
+     1407a3964  xor edx, edx
+     1407a3966  lea rcx, [rsp + 0x50]
+     1407a396b  call 0x141713a41
+     1407a3970  sbb eax, 0x850fc085
+     1407a3975  jmp 0x1407a3978
+     -> 0x1407a3978
+
+  BLOCK 0x1407a393d  (13 insns, ends 0x1407a3975)
+     1407a393d  mov edi, 0x8b00010d
+     1407a3942  and al, 0x40
+     1407a3945  mov dword ptr [rsp + 0x5c], eax
+     1407a3949  mov qword ptr [rsp + 0x50], rbx
+     1407a394e  mov qword ptr [rsp + 0x48], rbx
+     1407a3953  mov dword ptr [rsp + 0x20], 0xf0000000
+     1407a395b  mov r9d, 0x18
+     1407a3961  xor r8d, r8d
+     1407a3964  xor edx, edx
+     1407a3966  lea rcx, [rsp + 0x50]
+     1407a396b  call 0x141713a41
+     1407a3970  sbb eax, 0x850fc085
+     1407a3975  jmp 0x1407a3978
+     -> 0x1407a3978
+
+  BLOCK 0x1407a3978  (2 insns, ends 0x1407a397b)
+     1407a3978  add byte ptr [rax - 0x18], dl
+     1407a397b  jmp 0x1407a393d
+     -> 0x1407a393d
+
+  BLOCK 0x1407a46d2  (2 insns, ends 0x1407a46d9)
+     1407a46d2  lea rdx, [rip + 0x7ebd0f]   ; ->0x140f903e8
+     1407a46d9  jmp 0x1407a46e2
+     -> 0x1407a46e2
+
+  BLOCK 0x1407a46db  (10 insns, ends 0x1407a4707)
+     1407a46db  lea rdx, [rip + 0x7ebcd6]   ; ->0x140f903b8
+     1407a46e2  mov r9d, 0x10
+     1407a46e8  lea r8, [rip + 0x7ebac9]   ; ->0x140f901b8
+     1407a46ef  xor ecx, ecx
+     1407a46f1  call 0x141929220
+     1407a46f6  mov rcx, rdi
+     1407a46fa  push rax
+     1407a46fb  call 0x141869279
+     1407a4700  cmp dword ptr [rip + 0x9b05e6], 1   ; ->0x141154ced
+     1407a4707  jne 0x1407a48a4
+     jne on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a470d
+
+  BLOCK 0x1407a46e2  (9 insns, ends 0x1407a4707)
+     1407a46e2  mov r9d, 0x10
+     1407a46e8  lea r8, [rip + 0x7ebac9]   ; ->0x140f901b8
+     1407a46ef  xor ecx, ecx
+     1407a46f1  call 0x141929220
+     1407a46f6  mov rcx, rdi
+     1407a46fa  push rax
+     1407a46fb  call 0x141869279
+     1407a4700  cmp dword ptr [rip + 0x9b05e6], 1   ; ->0x141154ced
+     1407a4707  jne 0x1407a48a4
+     jne on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a470d
+
+  BLOCK 0x1407a4700  (2 insns, ends 0x1407a4707)
+     1407a4700  cmp dword ptr [rip + 0x9b05e6], 1   ; ->0x141154ced
+     1407a4707  jne 0x1407a48a4
+     jne on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a470d
+
+  BLOCK 0x1407a470d  (2 insns, ends 0x1407a4714)
+     1407a470d  cmp dword ptr [rip + 0x9b05dd], 1   ; ->0x141154cf1
+     1407a4714  jne 0x1407a48a4
+     jne on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a471a
+
+  BLOCK 0x1407a471a  (4 insns, ends 0x1407a4729)
+     1407a471a  mov ecx, dword ptr [rip + 0x9b05c9]   ; ->0x141154ce9
+     1407a4720  movzx eax, byte ptr [rip + 0x9b03c0]   ; ->0x141154ae7
+     1407a4727  test al, al
+     1407a4729  je 0x1407a48a4
+     je on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a472f
+
+  BLOCK 0x1407a4727  (2 insns, ends 0x1407a4729)
+     1407a4727  test al, al
+     1407a4729  je 0x1407a48a4
+     je on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a472f
+
+  BLOCK 0x1407a472f  (2 insns, ends 0x1407a4731)
+     1407a472f  test ecx, ecx
+     1407a4731  je 0x1407a48a4
+     je on ? : TRUE -> 0x1407a48a4   FALSE -> 0x1407a4737
+
+  BLOCK 0x1407a4737  (6 insns, ends 0x1407a4748)
+     1407a4737  call 0x1407a1340
+     1407a473c  test al, al
+     1407a473e  setne bl
+     1407a4741  call 0x1407a1880
+     1407a4746  test al, al
+     1407a4748  je 0x1407a4753
+     je on ? : TRUE -> 0x1407a4753   FALSE -> 0x1407a474a
+
+  BLOCK 0x1407a474a  (2 insns, ends 0x1407a474c)
+     1407a474a  test bl, bl
+     1407a474c  je 0x1407a4753
+     je on ? : TRUE -> 0x1407a4753   FALSE -> 0x1407a474e
+
+  BLOCK 0x1407a474e  (2 insns, ends 0x1407a4751)
+     1407a474e  mov dil, 1
+     1407a4751  jmp 0x1407a4756
+     -> 0x1407a4756
+
+  BLOCK 0x1407a4753  (6 insns, ends 0x1407a4765)
+     1407a4753  xor dil, dil
+     1407a4756  lea rcx, [rbp - 0x18]
+     1407a475a  call 0x14079f560
+     1407a475f  nop 
+     1407a4760  cmp qword ptr [rbp - 8], 0
+     1407a4765  je 0x1407a4873
+     je on ? : TRUE -> 0x1407a4873   FALSE -> 0x1407a476b
+
+  BLOCK 0x1407a4756  (5 insns, ends 0x1407a4765)
+     1407a4756  lea rcx, [rbp - 0x18]
+     1407a475a  call 0x14079f560
+     1407a475f  nop 
+     1407a4760  cmp qword ptr [rbp - 8], 0
+     1407a4765  je 0x1407a4873
+     je on ? : TRUE -> 0x1407a4873   FALSE -> 0x1407a476b
+
+  BLOCK 0x1407a476b  (4 insns, ends 0x1407a4776)
+     1407a476b  lea rcx, [rbp - 0x18]
+     1407a476f  call 0x14079f760
+     1407a4774  test al, al
+     1407a4776  je 0x1407a4873
+     je on ? : TRUE -> 0x1407a4873   FALSE -> 0x1407a477c
+
+  BLOCK 0x1407a477c  (54 insns, ends 0x1407a4844)
+     1407a477c  lea rdx, [rbp - 0x18]
+     1407a4780  lea rcx, [rbp - 0x58]
+     1407a4784  call 0x14079e800
+     1407a4789  mov rbx, rax
+     1407a478c  lea rdx, [rip + 0x7ebd45]   ; ->0x140f904d8
+     1407a4793  lea rcx, [rbp + 8]
+     1407a4797  call 0x1407abf70
+     1407a479c  nop 
+     1407a479d  lea rdx, [rbp + 8]
+     1407a47a1  lea rcx, [rbp - 0x38]
+     1407a47a5  call 0x14079e800
+     1407a47aa  nop 
+     1407a47ab  mov r8, rax
+     1407a47ae  lea rdx, [rip + 0x7ee133]   ; ->0x140f928e8
+     1407a47b5  lea rcx, [rsp + 0x68]
+     1407a47ba  call 0x1407ad8d0
+     1407a47bf  nop 
+     1407a47c0  lea r8, [rip + 0x7ee111]   ; ->0x140f928d8
+     1407a47c7  mov rdx, rax
+     1407a47ca  lea rcx, [rbp + 0x28]
+     1407a47ce  call 0x1407ad7d0
+     1407a47d3  nop 
+     1407a47d4  mov r8, rbx
+     1407a47d7  mov rdx, rax
+     1407a47da  lea rcx, [rbp + 0x48]
+     1407a47de  call 0x1407ad8b0
+     1407a47e3  nop 
+     1407a47e4  lea r8, [rip + 0x7edbad]   ; ->0x140f92398
+     1407a47eb  mov rdx, rax
+     1407a47ee  lea rcx, [rbp - 0x78]
+     1407a47f2  call 0x1407ad7d0
+     1407a47f7  nop 
+     1407a47f8  lea rcx, [rbp + 0x48]
+     1407a47fc  call 0x1407abe60
+     1407a4801  nop 
+     1407a4802  lea rcx, [rbp + 0x28]
+     1407a4806  call 0x1407abe60
+     1407a480b  nop 
+     1407a480c  lea rcx, [rsp + 0x68]
+     1407a4811  call 0x1407abe60
+     1407a4816  nop 
+     1407a4817  lea rcx, [rbp - 0x38]
+     1407a481b  call 0x1407abe60
+     1407a4820  nop 
+     1407a4821  lea rcx, [rbp + 8]
+     1407a4825  call 0x1407abe60
+     1407a482a  nop 
+     1407a482b  lea rcx, [rbp - 0x58]
+     1407a482f  call 0x1407abe60
+     1407a4834  mov edx, 0x7530
+     1407a4839  lea rcx, [rbp - 0x78]
+     1407a483d  call 0x14079bc10
+     1407a4842  test al, al
+     1407a4844  je 0x1407a484f
+     je on ? : TRUE -> 0x1407a484f   FALSE -> 0x1407a4846
+
+  BLOCK 0x1407a4846  (2 insns, ends 0x1407a4849)
+     1407a4846  test dil, dil
+     1407a4849  je 0x1407a484f
+     je on ? : TRUE -> 0x1407a484f   FALSE -> 0x1407a484b
+
+  BLOCK 0x1407a484b  (2 insns, ends 0x1407a484d)
+     1407a484b  mov bl, 1
+     1407a484d  jmp 0x1407a4851
+     -> 0x1407a4851
+
+  BLOCK 0x1407a484f  (11 insns, ends 0x1407a486f)
+     1407a484f  xor bl, bl
+     1407a4851  lea rcx, [rbp - 0x18]
+     1407a4855  call 0x1407abe30
+     1407a485a  mov rcx, rax
+     1407a485d  push rax
+     1407a485e  call 0x14117440c
+     1407a4863  nop 
+     1407a4864  lea rcx, [rbp - 0x78]
+     1407a4868  call 0x1407abe60
+     1407a486d  test bl, bl
+     1407a486f  jne 0x1407a4891
+     jne on ? : TRUE -> 0x1407a4891   FALSE -> 0x1407a4871
+
+  BLOCK 0x1407a4851  (10 insns, ends 0x1407a486f)
+     1407a4851  lea rcx, [rbp - 0x18]
+     1407a4855  call 0x1407abe30
+     1407a485a  mov rcx, rax
+     1407a485d  push rax
+     1407a485e  call 0x14117440c
+     1407a4863  nop 
+     1407a4864  lea rcx, [rbp - 0x78]
+     1407a4868  call 0x1407abe60
+     1407a486d  test bl, bl
+     1407a486f  jne 0x1407a4891
+     jne on ? : TRUE -> 0x1407a4891   FALSE -> 0x1407a4871
+
+  BLOCK 0x1407a4871  (1 insns, ends 0x1407a4871)
+     1407a4871  jmp 0x1407a4875
+     -> 0x1407a4875
+
+  BLOCK 0x1407a4873  (7 insns, ends 0x1407a4890)
+     1407a4873  xor bl, bl
+     1407a4875  mov r9d, 0x10
+     1407a487b  lea r8, [rip + 0x7ee016]   ; ->0x140f92898
+     1407a4882  lea rdx, [rip + 0x7ee097]   ; ->0x140f92920
+     1407a4889  xor ecx, ecx
+     1407a488b  call 0x1411821ed
+     1407a4890  jae 0x1407a48a1
+     jae on ? : TRUE -> 0x1407a48a1   FALSE -> 0x1407a4892
+
+  BLOCK 0x1407a4875  (6 insns, ends 0x1407a4890)
+     1407a4875  mov r9d, 0x10
+     1407a487b  lea r8, [rip + 0x7ee016]   ; ->0x140f92898
+     1407a4882  lea rdx, [rip + 0x7ee097]   ; ->0x140f92920
+     1407a4889  xor ecx, ecx
+     1407a488b  call 0x1411821ed
+     1407a4890  jae 0x1407a48a1
+     jae on ? : TRUE -> 0x1407a48a1   FALSE -> 0x1407a4892
+
+  BLOCK 0x1407a4891  (6 insns, ends 0x1407a48a2)
+     1407a4891  movzx ebx, bl
+     1407a4894  xor ebx, 1
+     1407a4897  lea rcx, [rbp - 0x18]
+     1407a489b  call 0x1407abe60
+     1407a48a0  mov eax, ebx
+     1407a48a2  jmp 0x1407a48c5
+     -> 0x1407a48c5
+
+  BLOCK 0x1407a4892  (6 insns, ends 0x1407a48a2)
+     1407a4892  mov dh, 0xdb
+     1407a4894  xor ebx, 1
+     1407a4897  lea rcx, [rbp - 0x18]
+     1407a489b  call 0x1407abe60
+     1407a48a0  mov eax, ebx
+     1407a48a2  jmp 0x1407a48c5
+     -> 0x1407a48c5
+
+  BLOCK 0x1407a48a1  (1 insns, ends 0x1407a48a1)
+     1407a48a1  ret 
+     ret 
+
+  BLOCK 0x1407a48a4  (20 insns, ends 0x1407a48f4)
+     1407a48a4  mov r9d, 0x10
+     1407a48aa  lea r8, [rip + 0x7edfe7]   ; ->0x140f92898
+     1407a48b1  lea rdx, [rip + 0x7edff0]   ; ->0x140f928a8
+     1407a48b8  xor ecx, ecx
+     1407a48ba  call 0x14117a2c5
+     1407a48bf  cmc 
+     1407a48c0  mov eax, 1
+     1407a48c5  mov rcx, qword ptr [rbp + 0x1550]
+     1407a48cc  xor rcx, rsp
+     1407a48cf  call 0x1407b06b0
+     1407a48d4  lea r11, [rsp + 0x1660]
+     1407a48dc  mov rbx, qword ptr [r11 + 0x20]
+     1407a48e0  mov rsi, qword ptr [r11 + 0x28]
+     1407a48e4  mov rdi, qword ptr [r11 + 0x30]
+     1407a48e8  mov r13, qword ptr [r11 + 0x38]
+     1407a48ec  mov rsp, r11
+     1407a48ef  pop r15
+     1407a48f1  pop r14
+     1407a48f3  pop rbp
+     1407a48f4  ret 
+     ret 
+
+  BLOCK 0x1407a48c5  (13 insns, ends 0x1407a48f4)
+     1407a48c5  mov rcx, qword ptr [rbp + 0x1550]
+     1407a48cc  xor rcx, rsp
+     1407a48cf  call 0x1407b06b0
+     1407a48d4  lea r11, [rsp + 0x1660]
+     1407a48dc  mov rbx, qword ptr [r11 + 0x20]
+     1407a48e0  mov rsi, qword ptr [r11 + 0x28]
+     1407a48e4  mov rdi, qword ptr [r11 + 0x30]
+     1407a48e8  mov r13, qword ptr [r11 + 0x38]
+     1407a48ec  mov rsp, r11
+     1407a48ef  pop r15
+     1407a48f1  pop r14
+     1407a48f3  pop rbp
+     1407a48f4  ret 
+     ret 
+
+  BLOCK 0x1407a4919  (2 insns, ends 0x1407a491e)
+     1407a4919  call 0x1407b8bd4
+     1407a491e  int3 
+     int3 
+
+  BLOCK 0x1407a491f  (2 insns, ends 0x1407a4924)
+     1407a491f  call 0x1407b8bd4
+     1407a4924  int3 
+     int3 
+
+===== function 0x1407a3000 .. 0x1407a307d (125 bytes) =====
+
+  BLOCK 0x1407a3000  (27 insns, ends 0x1407a307c)
+     1407a3000  push rbx
+     1407a3002  sub rsp, 0x130
+     1407a3009  mov rax, qword ptr [rip + 0x7fb000]   ; ->0x140f9e010
+     1407a3010  xor rax, rsp
+     1407a3013  mov qword ptr [rsp + 0x120], rax
+     1407a301b  mov ebx, ecx
+     1407a301d  call 0x1407a2a90
+     1407a3022  xor edx, edx
+     1407a3024  lea rcx, [rsp + 0x20]
+     1407a3029  mov r8d, 0x100
+     1407a302f  call 0x1407b4700
+     1407a3034  mov r8d, ebx
+     1407a3037  lea rdx, [rip + 0x7ef482]   ; ->0x140f924c0
+     1407a303e  lea rcx, [rsp + 0x20]
+     1407a3043  call 0x1407adb40
+     1407a3048  mov r9d, 0x10
+     1407a304e  lea r8, [rip + 0x7ef4a3]   ; ->0x140f924f8
+     1407a3055  lea rdx, [rsp + 0x20]
+     1407a305a  xor ecx, ecx
+     1407a305c  call 0x141a1ff1b
+     1407a3061  xor byte ptr [rdx], 0xc0
+     1407a3064  mov rcx, qword ptr [rsp + 0x120]
+     1407a306c  xor rcx, rsp
+     1407a306f  call 0x1407b06b0
+     1407a3074  add rsp, 0x130
+     1407a307b  pop rbx
+     1407a307c  ret 
+     ret 

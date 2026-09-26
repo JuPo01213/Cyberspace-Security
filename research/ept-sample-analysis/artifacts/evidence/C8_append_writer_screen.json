@@ -1,0 +1,3178 @@
+{
+ "functions_screened": 1694,
+ "decode_units": 984070,
+ "main_reachable": 246,
+ "criteria": "F1 helper-call OR (F2 imm 0x100 AND F3 path-like string)",
+ "candidates": [
+  {
+   "fn": "0x140796600",
+   "size": 1633,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers",
+    "0x1407d86e0=bounded string copy (used by -k handler)"
+   ],
+   "imm256": 10,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140795c50",
+   "size": 1102,
+   "helpers": [
+    "0x140789fd0=format-into-buffer (used by csv writer)",
+    "0x1407ad180=string-append (used by cmd builder)",
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 5,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140793a50",
+   "size": 1876,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 11,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079cf50",
+   "size": 2198,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 11,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079f030",
+   "size": 1320,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 10,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x140793000",
+   "size": 1598,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 9,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a1fa0",
+   "size": 1517,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 7,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14079a290",
+   "size": 1129,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)",
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 5,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14078a1d0",
+   "size": 416,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)",
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140799b60",
+   "size": 440,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)",
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407941b0",
+   "size": 239,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)",
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1400f6eb0",
+   "size": 640498,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 171,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14069eaa0",
+   "size": 190210,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 41,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140791c30",
+   "size": 4624,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 37,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140619940",
+   "size": 172444,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 35,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1406dacb0",
+   "size": 285159,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 32,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407206a0",
+   "size": 241048,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 31,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405e8220",
+   "size": 201934,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 19,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1400431b0",
+   "size": 22033,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 15,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079f760",
+   "size": 7125,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 15,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c4dec",
+   "size": 1604,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 14,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1400019d0",
+   "size": 107541,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 13,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14005d9b0",
+   "size": 80758,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 13,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140665910",
+   "size": 110692,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 13,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14002a6f0",
+   "size": 101052,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 11,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14004cf60",
+   "size": 68169,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 11,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079e8e0",
+   "size": 1861,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 10,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x140384a80",
+   "size": 146267,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 9,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140680980",
+   "size": 122902,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 9,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a2a90",
+   "size": 1382,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 9,
+   "pathish_strings": [
+    "C:\\Windows\\System32\\Hardware.exe",
+    "<HOST_PATH>\<DIR>rdware.exe"
+   ],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1405c1780",
+   "size": 70986,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 8,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140790fc0",
+   "size": 1198,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 8,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14001bdf0",
+   "size": 59634,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 7,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1401934b0",
+   "size": 16530,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 7,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403aea80",
+   "size": 15970,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 6,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079a790",
+   "size": 5241,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 6,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407a2590",
+   "size": 680,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 6,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140643ae0",
+   "size": 138193,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 5,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407915e0",
+   "size": 965,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 5,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d6460",
+   "size": 73149,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078c300",
+   "size": 1467,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140790b50",
+   "size": 643,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140793810",
+   "size": 563,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079bf20",
+   "size": 784,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a2840",
+   "size": 581,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d30e0",
+   "size": 4735,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1400487d0",
+   "size": 18166,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140197d50",
+   "size": 65089,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140372900",
+   "size": 19402,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078ba10",
+   "size": 1169,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407901e0",
+   "size": 734,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140793640",
+   "size": 450,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140799e30",
+   "size": 712,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14079bc10",
+   "size": 780,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14079d7f0",
+   "size": 2352,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1403774d0",
+   "size": 22196,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1406cd1b0",
+   "size": 56050,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078bf50",
+   "size": 931,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140791470",
+   "size": 356,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140792e40",
+   "size": 433,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079c230",
+   "size": 464,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079c400",
+   "size": 468,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079cb50",
+   "size": 1014,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b2e80",
+   "size": 344,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078a8d0",
+   "size": 216,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078b110",
+   "size": 400,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078ff10",
+   "size": 120,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [
+    "stage=%s value=%d"
+   ],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x140790de0",
+   "size": 476,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140791b20",
+   "size": 268,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079c6d0",
+   "size": 410,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079c870",
+   "size": 514,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079e190",
+   "size": 1313,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14079e800",
+   "size": 220,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407a3000",
+   "size": 125,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407ab200",
+   "size": 719,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b1b64",
+   "size": 225,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407843a0",
+   "size": 538,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078b6af",
+   "size": 398,
+   "helpers": [
+    "0x140789fd0=format-into-buffer (used by csv writer)",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "%sEPT_runtime_hash.csv"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078b83d",
+   "size": 402,
+   "helpers": [
+    "0x140789fd0=format-into-buffer (used by csv writer)",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "\"%04u-%02u-%02u %02u:%02u:%02u.%03u\",\"runtime-driver-image\","
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078fe80",
+   "size": 132,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "stage=%s ret=%d name=%s"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079f560",
+   "size": 510,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c3368",
+   "size": 1153,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c40e4",
+   "size": 507,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cd0a4",
+   "size": 712,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cf7c8",
+   "size": 399,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers",
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x140071910",
+   "size": 546148,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 70,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405a0700",
+   "size": 135119,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 21,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a3510",
+   "size": 5165,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 12,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14076b250",
+   "size": 618,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 11,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078e589",
+   "size": 640,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407957f0",
+   "size": 381,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ccb08",
+   "size": 501,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d0f7c",
+   "size": 640,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 4,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14075e430",
+   "size": 19997,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140768320",
+   "size": 9761,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b6094",
+   "size": 1275,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cff74",
+   "size": 754,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 3,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407919b0",
+   "size": 357,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140799560",
+   "size": 1457,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a3080",
+   "size": 675,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [
+    "stage=%s ret=%d name=%s",
+    "stage=%s value=%d"
+   ],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407a4972",
+   "size": 224,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ace80",
+   "size": 406,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407ae540",
+   "size": 444,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ae700",
+   "size": 455,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ae8d0",
+   "size": 444,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b0048",
+   "size": 267,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c30d8",
+   "size": 356,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 2,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140784b20",
+   "size": 91,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140784ba0",
+   "size": 86,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407855f0",
+   "size": 52,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140785630",
+   "size": 88,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140789e2b",
+   "size": 125,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078de50",
+   "size": 1655,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [
+    "CI00 open_auth begin path=%s comm=%s ioctlAuth=0x%08lX magic",
+    "CI01 open_failed gle=%lu path=%s comm=%s",
+    "\\\\.\\"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a3323",
+   "size": 250,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [
+    "stage=StoredVerify.SP_Cloud_Beat ok=%d ret=%d name=%s"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407aaa60",
+   "size": 93,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407aaac0",
+   "size": 87,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407aab20",
+   "size": 103,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407aab90",
+   "size": 103,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407abe60",
+   "size": 97,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407abed0",
+   "size": 148,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407abfb0",
+   "size": 242,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407ac130",
+   "size": 94,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407ac190",
+   "size": 148,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ac280",
+   "size": 220,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ad2a0",
+   "size": 65,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ad580",
+   "size": 88,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ad5e0",
+   "size": 61,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407adcf0",
+   "size": 228,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407afa80",
+   "size": 542,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407afca0",
+   "size": 313,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407afe20",
+   "size": 502,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407b05f0",
+   "size": 102,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c10e4",
+   "size": 618,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c7ba0",
+   "size": 445,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407ca7a0",
+   "size": 264,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407cad2c",
+   "size": 390,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cc820",
+   "size": 462,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cca70",
+   "size": 152,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d0268",
+   "size": 234,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d0c2c",
+   "size": 264,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 1,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140001030",
+   "size": 75,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1400010c0",
+   "size": 69,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14004ced0",
+   "size": 131,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403aea20",
+   "size": 94,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403b2f10",
+   "size": 114,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403b2f90",
+   "size": 336,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403b30e0",
+   "size": 336,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403b3be0",
+   "size": 84,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403b3c40",
+   "size": 114,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403c42b0",
+   "size": 71,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403c4300",
+   "size": 402,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1403c47e0",
+   "size": 493,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1403c49d0",
+   "size": 151,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1405a04b0",
+   "size": 152,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405c1700",
+   "size": 114,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d2cd0",
+   "size": 102,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d2da0",
+   "size": 153,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d2ea0",
+   "size": 158,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d35c0",
+   "size": 351,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d39c0",
+   "size": 192,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d4090",
+   "size": 523,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d4690",
+   "size": 85,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d4780",
+   "size": 826,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d4b00",
+   "size": 103,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d4d20",
+   "size": 213,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d4f70",
+   "size": 109,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d55e0",
+   "size": 103,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d5b70",
+   "size": 122,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1405d5bf0",
+   "size": 76,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1406196f0",
+   "size": 589,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1406656c0",
+   "size": 577,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14075b440",
+   "size": 269,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14075b550",
+   "size": 11936,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140763290",
+   "size": 266,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140763620",
+   "size": 164,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140763b30",
+   "size": 266,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407641d0",
+   "size": 9980,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407668d0",
+   "size": 6731,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076ac70",
+   "size": 603,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076af80",
+   "size": 268,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076b4c0",
+   "size": 410,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076bd10",
+   "size": 162,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076c470",
+   "size": 149,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076c890",
+   "size": 459,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076caf0",
+   "size": 610,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076cd60",
+   "size": 179,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076ce20",
+   "size": 378,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076cfa0",
+   "size": 318,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076d0e0",
+   "size": 241,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076d1e0",
+   "size": 451,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076d640",
+   "size": 162,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076db40",
+   "size": 371,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076e2a0",
+   "size": 332,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14076e580",
+   "size": 5754,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140770060",
+   "size": 467,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078415a",
+   "size": 25,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140784180",
+   "size": 535,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078508e",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140785235",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407858f0",
+   "size": 58,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140785b84",
+   "size": 30,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140785dc7",
+   "size": 26,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407860d0",
+   "size": 25,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140787550",
+   "size": 104,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407879dc",
+   "size": 30,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140787d50",
+   "size": 621,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078809c",
+   "size": 225,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407881a1",
+   "size": 30,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140788f6b",
+   "size": 319,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407890aa",
+   "size": 25,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407890d0",
+   "size": 214,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "HP_WKS_SWTOOLS_DRIVER.sys helper",
+    "\\\\.\\HP_WKS_SWTOOLS_DRIVER"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078aae0",
+   "size": 160,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14078ab80",
+   "size": 179,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14078b2a0",
+   "size": 770,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078b9d7",
+   "size": 30,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078e809",
+   "size": 26,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078eee6",
+   "size": 28,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f060",
+   "size": 77,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f22b",
+   "size": 27,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f590",
+   "size": 76,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f5dc",
+   "size": 557,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f809",
+   "size": 25,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f86e",
+   "size": 285,
+   "helpers": [
+    "0x140789fd0=format-into-buffer (used by csv writer)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "\u00c7\u00fd\u00b6\u00af\u00bc\u00d3\u00d4\u00d8\u00ca\u00a7\u00b0\u00dc\u00a1\u00a3\n\n\u00b4\u00a6\u00c0\u00ed\u00b7\u00bd\u00b0\u00b8\u00a3\u00ba\n\u00b9\u00d8\u00b1\u00d5 HVCI\u00c4\u00da\u00b4\u00e6\u00cd\u00ea\u00d5\u00fb\u00d0\u00d4 / \u00c4\u00da\u00ba\u00cb\u00b8\u00f4\u00c0\u00eb / ",
+    "\u00c7\u00fd\u00b6\u00af\u00ca\u00cd\u00b7\u00c5\u00ca\u00a7\u00b0\u00dc\u00a3\u00ba\u00ce\u00c4\u00bc\u00fe\u00d0\u00b4\u00c8\u00eb\u00bb\u00f2\u00d5\u00bc\u00d3\u00c3\u00d2\u00ec\u00b3\u00a3\u00a1\u00a3\n\n\u00b4\u00a6\u00c0\u00ed\u00b7\u00bd\u00b0\u00b8\u00a3\u00ba\n\u00b9\u00d8\u00b1\u00d5\u00b7\u00c0\u00bb\u00a4\u00c8\u00ed\u00bc\u00fe\u00a3"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078f98b",
+   "size": 249,
+   "helpers": [
+    "0x140789fd0=format-into-buffer (used by csv writer)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "\u00c7\u00fd\u00b6\u00af\u00cd\u00a8\u00d1\u00b6\u00ca\u00a7\u00b0\u00dc\u00a3\u00ba\u00c4\u00da\u00ba\u00cb\u00c4\u00a3\u00bf\u00e9\u00ce\u00b4\u00cf\u00ec\u00d3\u00a6\u00a1\u00a3\n\n\u00b4\u00a6\u00c0\u00ed\u00b7\u00bd\u00b0\u00b8\u00a3\u00ba\n\u00d6\u00d8\u00c6\u00f4\u00cf\u00b5\u00cd\u00b3\u00a3\u00ac\u00c8\u00b7\u00c8\u00cf\u00b3\u00cc\u00d0"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078fa89",
+   "size": 58,
+   "helpers": [
+    "0x140789fd0=format-into-buffer (used by csv writer)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "\u00b3\u00cc\u00d0\u00f2\u00d6\u00b4\u00d0\u00d0\u00d2\u00ec\u00b3\u00a3\u00a1\u00a3\n\n\u00b4\u00a6\u00c0\u00ed\u00b7\u00bd\u00b0\u00b8\u00a3\u00ba\n\u00b1\u00a3\u00c1\u00f4\u00b5\u00b1\u00c7\u00b0\u00bd\u00d8\u00cd\u00bc\u00a3\u00ac\u00cc\u00e1\u00bd\u00bb\u00b4\u00ed\u00ce\u00f3\u00c2\u00eb\u00b4\u00a6\u00c0\u00ed\u00a1\u00a3\n\n\u00b4"
+   ],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14078fc90",
+   "size": 491,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "%s\\SysWOW64\\SPVerifyDiag.log",
+    "C:\\Windows\\SysWOW64\\SPVerifyDiag.log"
+   ],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407904c0",
+   "size": 368,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140794ba0",
+   "size": 233,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140794c90",
+   "size": 233,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140794d80",
+   "size": 233,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x140795580",
+   "size": 112,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x140795a40",
+   "size": 514,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407960a0",
+   "size": 115,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407963ab",
+   "size": 23,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407964f3",
+   "size": 102,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x14079e120",
+   "size": 106,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a1340",
+   "size": 638,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407a1880",
+   "size": 1662,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [
+    "C:\\Windows\\System32\\EPT.cmd",
+    "C:\\Windows\\System32\\EPT.cmd.tmp",
+    "C:\\Windows\\System32\\ept.cmd",
+    "C:\\Windows\\System32\\hwid.cmd",
+    "<HOST_PATH>\<DIR>T.cmd",
+    "<HOST_PATH>\<DIR>T.cmd.tmp"
+   ],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407a341d",
+   "size": 235,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407a4a52",
+   "size": 47,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a4ab0",
+   "size": 214,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ab7a3",
+   "size": 30,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ac715",
+   "size": 95,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ac7b2",
+   "size": 21,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ace6b",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ad170",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ad770",
+   "size": 93,
+   "helpers": [
+    "0x1407ad180=string-append (used by cmd builder)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407ae0a0",
+   "size": 383,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ae3a3",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407ae531",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407aedea",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407aef81",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407af192",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407af307",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407af48e",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407af532",
+   "size": 6,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407af5c8",
+   "size": 6,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407af77e",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b0159",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b03ff",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b0585",
+   "size": 12,
+   "helpers": [
+    "0x1407b8bd4=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b1310",
+   "size": 331,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b2894",
+   "size": 115,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b2fd8",
+   "size": 123,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b3a54",
+   "size": 259,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b3b58",
+   "size": 287,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b5bcc",
+   "size": 1221,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b7ba0",
+   "size": 742,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407b88e8",
+   "size": 365,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407b8c8c",
+   "size": 431,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407b8e3c",
+   "size": 438,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407baeec",
+   "size": 284,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407bc36c",
+   "size": 1336,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407bc8a4",
+   "size": 1133,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407bcd14",
+   "size": 1397,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407be2b8",
+   "size": 593,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c1370",
+   "size": 165,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c3ae4",
+   "size": 661,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c3d7c",
+   "size": 870,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c5acc",
+   "size": 135,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c6a48",
+   "size": 915,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c719c",
+   "size": 333,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c7840",
+   "size": 432,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c8198",
+   "size": 253,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407c95ac",
+   "size": 1171,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c9b48",
+   "size": 283,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407c9c64",
+   "size": 372,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407cc394",
+   "size": 862,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cdb50",
+   "size": 149,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407cfd64",
+   "size": 165,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d0414",
+   "size": 106,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d16d0",
+   "size": 831,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d21c8",
+   "size": 379,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d2344",
+   "size": 456,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d250c",
+   "size": 817,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d46e0",
+   "size": 146,
+   "helpers": [
+    "0x1407b4700=zero-fill buffer (memset)"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d4a58",
+   "size": 32,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d4a80",
+   "size": 154,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d5748",
+   "size": 339,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407d6b60",
+   "size": 307,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x1407d75fc",
+   "size": 911,
+   "helpers": [
+    "0x1407b06b0=unknown helper used by both writers"
+   ],
+   "imm256": 0,
+   "pathish_strings": [],
+   "reachable_from_main": false
+  },
+  {
+   "fn": "0x1407a4b90",
+   "size": 23424,
+   "helpers": [],
+   "imm256": 3,
+   "pathish_strings": [
+    "C:\\Windows\\System32\\Hardware.exe",
+    "<HOST_PATH>\<DIR>rdware.exe",
+    "MAIN startup admin=%d cfgMissing=%d cfgPath=%s exePath=%s"
+   ],
+   "reachable_from_main": true
+  },
+  {
+   "fn": "0x14078ed39",
+   "size": 336,
+   "helpers": [],
+   "imm256": 1,
+   "pathish_strings": [
+    "RC00 send mode=%lu serialMode=%d diskLen=%lu comm=%s ioctlRu"
+   ],
+   "reachable_from_main": false
+  }
+ ]
+}

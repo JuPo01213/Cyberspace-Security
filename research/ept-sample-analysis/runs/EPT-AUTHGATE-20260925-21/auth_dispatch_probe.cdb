@@ -1,0 +1,21 @@
+.echo RUN21_DISPATCHER_BEGIN
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo ENTRY_GATE_RELEASED_ONLY
+bu user32!MessageBoxA ".echo MSGBOXA; da rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxW ".echo MSGBOXW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxTimeoutW ".echo MSGBOXTOW; du rdx; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernel32!FatalExit ".echo FATALEXIT; k L8; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+ba e 1 1407b1094 ".echo DISPATCHER_HIT; r; k L18; u @rip L50; db @rsp L80; g"
+ba e 1 14078de50 ".echo HIT_OPEN_AUTH; k L10; g"
+ba e 1 14078e8c0 ".echo HIT_COMM_INIT; k L10; g"
+ba e 1 14078ed97 ".echo HIT_RC00; k L10; g"
+.echo HWBP_ARMED
+g
+.echo RUN21_STOP
+~*k
+.echo RUN21_DISPATCHER_END
+q

@@ -1,0 +1,10 @@
+{
+    "run_id":  "EPT-INJECT-20260925-17",
+    "phase":  "DONE",
+    "utc":  "2026-09-24T19:24:06.3417784Z",
+    "evidence_scope":  "real_sample_guest_run_injected_io",
+    "process_model":  "debugger_launch",
+    "status":  "OBSERVER_COMPLETE_DEBUGGER_LAUNCH",
+    "target_pid":  5040,
+    "debugger_pid":  4284
+}

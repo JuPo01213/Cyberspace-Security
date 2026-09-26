@@ -1,0 +1,1 @@
+claim_id,claim,claim_type,scope,input_hash,tool_or_script,tool_version,query_or_pattern,result_count,artifact_path,artifact_hash,timestamp,coverage,uncovered_regions,false_negative_sources,confidence,status,next_discriminating_check

@@ -1,0 +1,17 @@
+== 0) control ==
+   0x1407a3111 -> test bl, bl  (OK)
+   RIP-formula control 0x1407a1f27 -> 0x14116c540 (want 0x14116c540) OK
+
+== 0x1407a1340 ==
+   body 356 B, 84 ins, forms={'mov': 16, 'lea': 13, 'call': 10, 'xor': 6, 'test': 6, 'cmp': 5, 'push': 4, 'add': 3}
+   RIP-referenced addresses (7): 0x140f8d130, 0x140f8d148, 0x140f8e450, 0x140f8e4a0, 0x140f91de8, 0x140f9e010, 0x141154d10
+   callees (9): 0x140789eb0, 0x1407b4700, 0x1407bee80, 0x141179e58, 0x14117d0e3, 0x14151e8e6, 0x14181b3ac, 0x141a20eb8, 0x141adad9f
+   memory writes: 4
+   E8-rel32 callers in captured .text (2): 0x1407a4737, 0x1407a5306
+
+== 0x14079a100 ==
+   body 104 B, 24 ins, forms={'lea': 5, 'mov': 4, 'call': 4, 'test': 2, 'and': 2, 'add': 2, 'sub': 1, 'xor': 1}
+   RIP-referenced addresses (4): 0x140f8fcc8, 0x140f90238, 0x140f90260, 0x140f9e010
+   callees (4): 0x1414901eb, 0x14177df2c, 0x14181adf8, 0x1419674c6
+   memory writes: 1
+   E8-rel32 callers in captured .text (3): 0x1407a5345, 0x1407a72d2, 0x1407aa687

@@ -1,0 +1,52 @@
+# C26 - RIP-relative references from decrypted .text to the exit messages / cleanup command lines
+# slide over RVA 0x1000..0x7da900 = 8231168 decode attempts, 99 s; hits deduplicated by instruction address
+# scope: only decrypted .text is scanned; refs from un-decrypted pages, from other sections,
+# or by computed address arithmetic are NOT covered by this census.
+
+0x140f92410  rmdir /s /q "C:\Windows\System32\Logs"                      refs=2
+      at 0x1407a2def  lea rdx, [rip + 0x7ef61a]   [entry 0x1407a2a90..0x1407a2ff6]
+      at 0x1407a2df0  lea edx, [rip + 0x7ef61a]   [entry 0x1407a2a90..0x1407a2ff6]
+0x140f92438  rmdir /s /q "C:\Windows\System32\HardwareLogs"              refs=2
+      at 0x1407a2e64  lea rdx, [rip + 0x7ef5cd]   [entry 0x1407a2a90..0x1407a2ff6]
+      at 0x1407a2e65  lea edx, [rip + 0x7ef5cd]   [entry 0x1407a2a90..0x1407a2ff6]
+0x140f92468  rmdir /s /q "<HOST_PATH>\<DIR>"                      refs=2
+      at 0x1407a2ed9  lea rdx, [rip + 0x7ef588]   [entry 0x1407a2a90..0x1407a2ff6]
+      at 0x1407a2eda  lea edx, [rip + 0x7ef588]   [entry 0x1407a2a90..0x1407a2ff6]
+0x140f92490  rmdir /s /q "<HOST_PATH>\<DIR>wareLogs"              refs=2
+      at 0x1407a2f4e  lea rdx, [rip + 0x7ef53b]   [entry 0x1407a2a90..0x1407a2ff6]
+      at 0x1407a2f4f  lea edx, [rip + 0x7ef53b]   [entry 0x1407a2a90..0x1407a2ff6]
+0x140f924c0  GBK 授权状态异常，本地配置与固定部署已清理。                                    refs=2
+      at 0x1407a3037  lea rdx, [rip + 0x7ef482]   [entry 0x1407a3000..0x1407a307d]
+      at 0x1407a3038  lea edx, [rip + 0x7ef482]   [entry 0x1407a3000..0x1407a307d]
+0x140f924e9  GBK 错误码：%d                                                  refs=0
+0x140f924f8  GBK 授权验证 (caption used by FUN_1407a3000)                    refs=2
+      at 0x1407a304e  lea r8, [rip + 0x7ef4a3]   [entry 0x1407a3000..0x1407a307d]
+      at 0x1407a304f  lea eax, [rip + 0x7ef4a3]   [entry 0x1407a3000..0x1407a307d]
+0x140f92688  yz.hwid001.com (host string - reference census only, never  refs=2
+      at 0x1407a3193  lea rcx, [rip + 0x7ef4ee]   [entry 0x1407a3080..0x1407a3323]
+      at 0x1407a3194  lea ecx, [rip + 0x7ef4ee]   [entry 0x1407a3080..0x1407a3323]
+0x140f92898  GBK 固定部署 (caption at carrier sink 0x1407a48a4)              refs=4
+      at 0x1407a487b  lea r8, [rip + 0x7ee016]   [entry 0x1407a3510..0x1407a493d]
+      at 0x1407a487c  lea eax, [rip + 0x7ee016]   [entry 0x1407a3510..0x1407a493d]
+      at 0x1407a48aa  lea r8, [rip + 0x7edfe7]   [entry 0x1407a3510..0x1407a493d]
+      at 0x1407a48ab  lea eax, [rip + 0x7edfe7]   [entry 0x1407a3510..0x1407a493d]
+0x140f928a8  GBK 未找到有效配置，请先使用 -k 完成授权配置！                                 refs=2
+      at 0x1407a48b1  lea rdx, [rip + 0x7edff0]   [entry 0x1407a3510..0x1407a493d]
+      at 0x1407a48b2  lea edx, [rip + 0x7edff0]   [entry 0x1407a3510..0x1407a493d]
+0x140f92920  GBK 固定部署失败！                                                 refs=2
+      at 0x1407a4882  lea rdx, [rip + 0x7ee097]   [entry 0x1407a3510..0x1407a493d]
+      at 0x1407a4883  lea edx, [rip + 0x7ee097]   [entry 0x1407a3510..0x1407a493d]
+0x140f92930  sc.exe config "AntiCheatExpert Protection" start= delayed-  refs=2
+      at 0x1407a4a94  lea rcx, [rip + 0x7ede95]   [entry 0x1407a4a90..0x1407a4ab0]
+      at 0x1407a4a95  lea ecx, [rip + 0x7ede95]   [entry 0x1407a4a90..0x1407a4ab0]
+0x140f92970  sc.exe config "AntiCheatExpert Service" start= delayed-aut  refs=2
+      at 0x1407a4aa0  lea rcx, [rip + 0x7edec9]   [entry 0x1407a4a90..0x1407a4ab0]
+      at 0x1407a4aa1  lea ecx, [rip + 0x7edec9]   [entry 0x1407a4a90..0x1407a4ab0]
+0x140f92ae0  CONTROL MAIN startup admin=%d cfgMissing=%d cfgPath=%s exe  refs=2
+      at 0x1407a52ac  lea rcx, [rip + 0x7ed82d]   [entry 0x1407a4b90..0x1407aa710]
+      at 0x1407a52ad  lea ecx, [rip + 0x7ed82d]   [entry 0x1407a4b90..0x1407aa710]
+0x140f92b60  GBK 参数错误：-k 缺少授权卡密！                                         refs=2
+      at 0x1407a56d9  lea rdx, [rip + 0x7ed480]   [entry 0x1407a4b90..0x1407aa710]
+      at 0x1407a56da  lea edx, [rip + 0x7ed480]   [entry 0x1407a4b90..0x1407aa710]
+
+CONTROL (MAIN startup format string referenced from 0x1407a52ac): FOUND - the census is alive

@@ -1,0 +1,345 @@
+﻿
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.000 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\ept_obs\spool\EPT-AUTH-LOCAL-20260926-18\input.dmp]
+User Mini Dump File with Full Memory: Only application data is available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\ept_obs\spool\EPT-AUTH-LOCAL-20260926-21
+Symbol search path is: C:\ept_obs\spool\EPT-AUTH-LOCAL-20260926-21
+Executable search path is: 
+Windows 10 Version 19045 MP (2 procs) Free x64
+Product: WinNt, suite: SingleUserTS
+Edition build lab: 19041.1.amd64fre.vb_release.191206-1406
+Debug session time: Sat Sep 26 10:51:09.000 2026 (UTC + 8:00)
+System Uptime: 0 days 0:55:10.611
+Process Uptime: 0 days 0:02:37.000
+....................................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+This dump file has a breakpoint exception stored in it.
+The stored exception information can be accessed via .ecxr.
+For analysis of this file, run !analyze -v
+*** WARNING: Unable to verify checksum for EPT_0C7D4CED_D1AE35BE.exe
+ws2_32!recv:
+00007ffb`b9e41d90 48895c2408      mov     qword ptr [rsp+8],rbx ss:00000000`00141020=0000000000000004
+0:000> .echo LOCAL_STATE_PRODUCERS_BEGIN
+LOCAL_STATE_PRODUCERS_BEGIN
+0:000> .echo CONFIG_PRE_SAVE_HELPER
+CONFIG_PRE_SAVE_HELPER
+0:000> u 0x14079a700 L0n36
+EPT_0C7D4CED_D1AE35BE+0x79a700:
+00000001`4079a700 33c0            xor     eax,eax
+00000001`4079a702 488d0d77a29b00  lea     rcx,[EPT_0C7D4CED_D1AE35BE+0x1154980 (00000001`41154980)]
+00000001`4079a709 0f1f8000000000  nop     dword ptr [rax]
+00000001`4079a710 80bc016602000000 cmp     byte ptr [rcx+rax+266h],0
+00000001`4079a718 7463            je      EPT_0C7D4CED_D1AE35BE+0x79a77d (00000001`4079a77d)
+00000001`4079a71a 80bc016702000000 cmp     byte ptr [rcx+rax+267h],0
+00000001`4079a722 7456            je      EPT_0C7D4CED_D1AE35BE+0x79a77a (00000001`4079a77a)
+00000001`4079a724 80bc016802000000 cmp     byte ptr [rcx+rax+268h],0
+00000001`4079a72c 7440            je      EPT_0C7D4CED_D1AE35BE+0x79a76e (00000001`4079a76e)
+00000001`4079a72e 80bc016902000000 cmp     byte ptr [rcx+rax+269h],0
+00000001`4079a736 742a            je      EPT_0C7D4CED_D1AE35BE+0x79a762 (00000001`4079a762)
+00000001`4079a738 80bc016a02000000 cmp     byte ptr [rcx+rax+26Ah],0
+00000001`4079a740 7414            je      EPT_0C7D4CED_D1AE35BE+0x79a756 (00000001`4079a756)
+00000001`4079a742 4883c005        add     rax,5
+00000001`4079a746 483dff000000    cmp     rax,0FFh
+00000001`4079a74c 72c2            jb      EPT_0C7D4CED_D1AE35BE+0x79a710 (00000001`4079a710)
+00000001`4079a74e 4883f814        cmp     rax,14h
+00000001`4079a752 0f93c0          setae   al
+00000001`4079a755 c3              ret
+00000001`4079a756 4883c004        add     rax,4
+00000001`4079a75a 4883f814        cmp     rax,14h
+00000001`4079a75e 0f93c0          setae   al
+00000001`4079a761 c3              ret
+00000001`4079a762 4883c003        add     rax,3
+00000001`4079a766 4883f814        cmp     rax,14h
+00000001`4079a76a 0f93c0          setae   al
+00000001`4079a76d c3              ret
+00000001`4079a76e 4883c002        add     rax,2
+00000001`4079a772 4883f814        cmp     rax,14h
+00000001`4079a776 0f93c0          setae   al
+00000001`4079a779 c3              ret
+00000001`4079a77a 48ffc0          inc     rax
+00000001`4079a77d 4883f814        cmp     rax,14h
+00000001`4079a781 0f93c0          setae   al
+00000001`4079a784 c3              ret
+00000001`4079a785 cc              int     3
+0:000> .echo CONFIG_SAVE_PREPARE
+CONFIG_SAVE_PREPARE
+0:000> u 0x14079a8d1 L0n55
+EPT_0C7D4CED_D1AE35BE+0x79a8d1:
+00000001`4079a8d1 498bcc          mov     rcx,r12
+00000001`4079a8d4 488d1da5a09b00  lea     rbx,[EPT_0C7D4CED_D1AE35BE+0x1154980 (00000001`41154980)]
+00000001`4079a8db 0f1f440000      nop     dword ptr [rax+rax]
+00000001`4079a8e0 0fb6840da0040000 movzx   eax,byte ptr [rbp+rcx+4A0h]
+00000001`4079a8e8 83e00f          and     eax,0Fh
+00000001`4079a8eb 0fb68405b8040000 movzx   eax,byte ptr [rbp+rax+4B8h]
+00000001`4079a8f3 88841966020000  mov     byte ptr [rcx+rbx+266h],al
+00000001`4079a8fa 48ffc1          inc     rcx
+00000001`4079a8fd 4883f918        cmp     rcx,18h
+00000001`4079a901 7cdd            jl      EPT_0C7D4CED_D1AE35BE+0x79a8e0 (00000001`4079a8e0)
+00000001`4079a903 448825f4a29b00  mov     byte ptr [EPT_0C7D4CED_D1AE35BE+0x1154bfe (00000001`41154bfe)],r12b
+00000001`4079a90a e8f1fdffff      call    EPT_0C7D4CED_D1AE35BE+0x79a700 (00000001`4079a700)
+00000001`4079a90f 84c0            test    al,al
+00000001`4079a911 0f84c7120000    je      EPT_0C7D4CED_D1AE35BE+0x79bbde (00000001`4079bbde)
+00000001`4079a917 4084f6          test    sil,sil
+00000001`4079a91a 0f8406120000    je      EPT_0C7D4CED_D1AE35BE+0x79bb26 (00000001`4079bb26)
+00000001`4079a920 8b05eaa39b00    mov     eax,dword ptr [EPT_0C7D4CED_D1AE35BE+0x1154d10 (00000001`41154d10)]
+00000001`4079a926 85c0            test    eax,eax
+00000001`4079a928 793a            jns     EPT_0C7D4CED_D1AE35BE+0x79a964 (00000001`4079a964)
+00000001`4079a92a 488d0dff277f00  lea     rcx,[EPT_0C7D4CED_D1AE35BE+0xf8d130 (00000001`40f8d130)]
+00000001`4079a931 50              push    rax
+00000001`4079a932 e880ddef00      call    EPT_0C7D4CED_D1AE35BE+0x16986b7 (00000001`416986b7)
+00000001`4079a937 83f8ff          cmp     eax,0FFFFFFFFh
+00000001`4079a93a 7404            je      EPT_0C7D4CED_D1AE35BE+0x79a940 (00000001`4079a940)
+00000001`4079a93c a810            test    al,10h
+00000001`4079a93e 751b            jne     EPT_0C7D4CED_D1AE35BE+0x79a95b (00000001`4079a95b)
+00000001`4079a940 488d0d01287f00  lea     rcx,[EPT_0C7D4CED_D1AE35BE+0xf8d148 (00000001`40f8d148)]
+00000001`4079a947 50              push    rax
+00000001`4079a948 e8f4b1f000      call    EPT_0C7D4CED_D1AE35BE+0x16a5b41 (00000001`416a5b41)
+00000001`4079a94d 83f8ff          cmp     eax,0FFFFFFFFh
+00000001`4079a950 7409            je      EPT_0C7D4CED_D1AE35BE+0x79a95b (00000001`4079a95b)
+00000001`4079a952 a810            test    al,10h
+00000001`4079a954 b801000000      mov     eax,1
+00000001`4079a959 7503            jne     EPT_0C7D4CED_D1AE35BE+0x79a95e (00000001`4079a95e)
+00000001`4079a95b 418bc4          mov     eax,r12d
+00000001`4079a95e 8905aca39b00    mov     dword ptr [EPT_0C7D4CED_D1AE35BE+0x1154d10 (00000001`41154d10)],eax
+00000001`4079a964 488d0d4d3a7f00  lea     rcx,[EPT_0C7D4CED_D1AE35BE+0xf8e3b8 (00000001`40f8e3b8)]
+00000001`4079a96b 488d35663a7f00  lea     rsi,[EPT_0C7D4CED_D1AE35BE+0xf8e3d8 (00000001`40f8e3d8)]
+00000001`4079a972 83f801          cmp     eax,1
+00000001`4079a975 480f44f1        cmove   rsi,rcx
+00000001`4079a979 418bfc          mov     edi,r12d
+00000001`4079a97c 488bce          mov     rcx,rsi
+00000001`4079a97f e85cf8ffff      call    EPT_0C7D4CED_D1AE35BE+0x79a1e0 (00000001`4079a1e0)
+00000001`4079a984 0f1f4000        nop     dword ptr [rax]
+00000001`4079a988 0f1f840000000000 nop     dword ptr [rax+rax]
+00000001`4079a990 4c89642430      mov     qword ptr [rsp+30h],r12
+00000001`4079a995 c744242880000000 mov     dword ptr [rsp+28h],80h
+00000001`4079a99d c744242002000000 mov     dword ptr [rsp+20h],2
+00000001`4079a9a5 4533c9          xor     r9d,r9d
+00000001`4079a9a8 ba00000040      mov     edx,40000000h
+00000001`4079a9ad 458d4101        lea     r8d,[r9+1]
+00000001`4079a9b1 488bce          mov     rcx,rsi
+00000001`4079a9b4 57              push    rdi
+00000001`4079a9b5 e8bf660401      call    EPT_0C7D4CED_D1AE35BE+0x17e1079 (00000001`417e1079)
+00000001`4079a9ba 4c8bf8          mov     r15,rax
+0:000> .echo GUI_KEY_VALIDATE
+GUI_KEY_VALIDATE
+0:000> u 0x140796a20 L0n75
+EPT_0C7D4CED_D1AE35BE+0x796a20:
+00000001`40796a20 27              ???
+00000001`40796a21 488d542460      lea     rdx,[rsp+60h]
+00000001`40796a26 48837c247810    cmp     qword ptr [rsp+78h],10h
+00000001`40796a2c 480f43542460    cmovae  rdx,qword ptr [rsp+60h]
+00000001`40796a32 41b8fe000000    mov     r8d,0FEh
+00000001`40796a38 e8a31c0400      call    EPT_0C7D4CED_D1AE35BE+0x7d86e0 (00000001`407d86e0)
+00000001`40796a3d c6834e01000000  mov     byte ptr [rbx+14Eh],0
+00000001`40796a44 c6430d01        mov     byte ptr [rbx+0Dh],1
+00000001`40796a48 c6430c01        mov     byte ptr [rbx+0Ch],1
+00000001`40796a4c 807b1100        cmp     byte ptr [rbx+11h],0
+00000001`40796a50 0f84d7000000    je      EPT_0C7D4CED_D1AE35BE+0x796b2d (00000001`40796b2d)
+00000001`40796a56 c6431001        mov     byte ptr [rbx+10h],1
+00000001`40796a5a 44897314        mov     dword ptr [rbx+14h],r14d
+00000001`40796a5e 488d4b18        lea     rcx,[rbx+18h]
+00000001`40796a62 41b814000000    mov     r8d,14h
+00000001`40796a68 488d1579907f00  lea     rdx,[EPT_0C7D4CED_D1AE35BE+0xf8fae8 (00000001`40f8fae8)]
+00000001`40796a6f e8ac650100      call    EPT_0C7D4CED_D1AE35BE+0x7ad020 (00000001`407ad020)
+00000001`40796a74 660f6f0514cd7f00 movdqa  xmm0,xmmword ptr [EPT_0C7D4CED_D1AE35BE+0xf93790 (00000001`40f93790)]
+00000001`40796a7c f30f7f45a0      movdqu  xmmword ptr [rbp-60h],xmm0
+00000001`40796a81 660f6f0d27cd7f00 movdqa  xmm1,xmmword ptr [EPT_0C7D4CED_D1AE35BE+0xf937b0 (00000001`40f937b0)]
+00000001`40796a89 f30f7f4db0      movdqu  xmmword ptr [rbp-50h],xmm1
+00000001`40796a8e 660f6f050acd7f00 movdqa  xmm0,xmmword ptr [EPT_0C7D4CED_D1AE35BE+0xf937a0 (00000001`40f937a0)]
+00000001`40796a96 f30f7f45c0      movdqu  xmmword ptr [rbp-40h],xmm0
+00000001`40796a9b c745d04e2f0000  mov     dword ptr [rbp-30h],2F4Eh
+00000001`40796aa2 c745d4552f0000  mov     dword ptr [rbp-2Ch],2F55h
+00000001`40796aa9 488d5da0        lea     rbx,[rbp-60h]
+00000001`40796aad 0f1f00          nop     dword ptr [rax]
+00000001`40796ab0 8b13            mov     edx,dword ptr [rbx]
+00000001`40796ab2 488bcf          mov     rcx,rdi
+00000001`40796ab5 e80484e600      call    EPT_0C7D4CED_D1AE35BE+0x15feebe (00000001`415feebe)
+00000001`40796aba 6f              outs    dx,dword ptr [rsi]
+00000001`40796abb 4885c0          test    rax,rax
+00000001`40796abe 740b            je      EPT_0C7D4CED_D1AE35BE+0x796acb (00000001`40796acb)
+00000001`40796ac0 33d2            xor     edx,edx
+00000001`40796ac2 488bc8          mov     rcx,rax
+00000001`40796ac5 57              push    rdi
+00000001`40796ac6 e826f5e000      call    EPT_0C7D4CED_D1AE35BE+0x15a5ff1 (00000001`415a5ff1)
+00000001`40796acb 4883c304        add     rbx,4
+00000001`40796acf 488d45d8        lea     rax,[rbp-28h]
+00000001`40796ad3 483bd8          cmp     rbx,rax
+00000001`40796ad6 75d8            jne     EPT_0C7D4CED_D1AE35BE+0x796ab0 (00000001`40796ab0)
+00000001`40796ad8 ba452f0000      mov     edx,2F45h
+00000001`40796add 488bcf          mov     rcx,rdi
+00000001`40796ae0 e8a094de00      call    EPT_0C7D4CED_D1AE35BE+0x157ff85 (00000001`4157ff85)
+00000001`40796ae5 4c              ???
+00000001`40796ae6 4885c0          test    rax,rax
+00000001`40796ae9 740b            je      EPT_0C7D4CED_D1AE35BE+0x796af6 (00000001`40796af6)
+00000001`40796aeb 33d2            xor     edx,edx
+00000001`40796aed 488bc8          mov     rcx,rax
+00000001`40796af0 e80570d500      call    EPT_0C7D4CED_D1AE35BE+0x14edafa (00000001`414edafa)
+00000001`40796af5 fb              sti
+00000001`40796af6 488bcf          mov     rcx,rdi
+00000001`40796af9 e882eaffff      call    EPT_0C7D4CED_D1AE35BE+0x795580 (00000001`40795580)
+00000001`40796afe 488bcf          mov     rcx,rdi
+00000001`40796b01 e89af5ffff      call    EPT_0C7D4CED_D1AE35BE+0x7960a0 (00000001`407960a0)
+00000001`40796b06 ba4b2f0000      mov     edx,2F4Bh
+00000001`40796b0b 488bcf          mov     rcx,rdi
+00000001`40796b0e 53              push    rbx
+00000001`40796b0f e8db6e9f00      call    EPT_0C7D4CED_D1AE35BE+0x118d9ef (00000001`4118d9ef)
+00000001`40796b14 488bc8          mov     rcx,rax
+00000001`40796b17 4533c0          xor     r8d,r8d
+00000001`40796b1a 33d2            xor     edx,edx
+00000001`40796b1c e813289f00      call    EPT_0C7D4CED_D1AE35BE+0x1189334 (00000001`41189334)
+00000001`40796b21 cd48            int     48h
+00000001`40796b23 8bcf            mov     ecx,edi
+00000001`40796b25 50              push    rax
+00000001`40796b26 e8eefbe300      call    EPT_0C7D4CED_D1AE35BE+0x15d6719 (00000001`415d6719)
+00000001`40796b2b eb09            jmp     EPT_0C7D4CED_D1AE35BE+0x796b36 (00000001`40796b36)
+00000001`40796b2d 488bcf          mov     rcx,rdi
+00000001`40796b30 e898dfc700      call    EPT_0C7D4CED_D1AE35BE+0x1414acd (00000001`41414acd)
+00000001`40796b35 a5              movs    dword ptr [rdi],dword ptr [rsi]
+00000001`40796b36 b301            mov     bl,1
+00000001`40796b38 488b542458      mov     rdx,qword ptr [rsp+58h]
+00000001`40796b3d 4883fa10        cmp     rdx,10h
+00000001`40796b41 7232            jb      EPT_0C7D4CED_D1AE35BE+0x796b75 (00000001`40796b75)
+0:000> .echo CONFIG_INIT_HELPER
+CONFIG_INIT_HELPER
+0:000> u 0x14079a1e0 L0n90
+EPT_0C7D4CED_D1AE35BE+0x79a1e0:
+00000001`4079a1e0 48895c2408      mov     qword ptr [rsp+8],rbx
+00000001`4079a1e5 57              push    rdi
+00000001`4079a1e6 4883ec40        sub     rsp,40h
+00000001`4079a1ea 488bf9          mov     rdi,rcx
+00000001`4079a1ed 33db            xor     ebx,ebx
+00000001`4079a1ef 90              nop
+00000001`4079a1f0 488bcf          mov     rcx,rdi
+00000001`4079a1f3 e84e70c700      call    EPT_0C7D4CED_D1AE35BE+0x1411246 (00000001`41411246)
+00000001`4079a1f8 ef              out     dx,eax
+00000001`4079a1f9 85c0            test    eax,eax
+00000001`4079a1fb 757f            jne     EPT_0C7D4CED_D1AE35BE+0x79a27c (00000001`4079a27c)
+00000001`4079a1fd 8d4864          lea     ecx,[rax+64h]
+00000001`4079a200 53              push    rbx
+00000001`4079a201 e8d22dc300      call    EPT_0C7D4CED_D1AE35BE+0x13ccfd8 (00000001`413ccfd8)
+00000001`4079a206 ffc3            inc     ebx
+00000001`4079a208 83fb05          cmp     ebx,5
+00000001`4079a20b 7ce3            jl      EPT_0C7D4CED_D1AE35BE+0x79a1f0 (00000001`4079a1f0)
+00000001`4079a20d 4533c9          xor     r9d,r9d
+00000001`4079a210 48c744243000000000 mov   qword ptr [rsp+30h],0
+00000001`4079a219 c744242880000004 mov     dword ptr [rsp+28h],4000080h
+00000001`4079a221 ba00000080      mov     edx,80000000h
+00000001`4079a226 488bcf          mov     rcx,rdi
+00000001`4079a229 c744242003000000 mov     dword ptr [rsp+20h],3
+00000001`4079a231 458d4107        lea     r8d,[r9+7]
+00000001`4079a235 e802c0d000      call    EPT_0C7D4CED_D1AE35BE+0x14a623c (00000001`414a623c)
+00000001`4079a23a f6              ???
+00000001`4079a23b 4883f8ff        cmp     rax,0FFFFFFFFFFFFFFFFh
+00000001`4079a23f 742e            je      EPT_0C7D4CED_D1AE35BE+0x79a26f (00000001`4079a26f)
+00000001`4079a241 488bc8          mov     rcx,rax
+00000001`4079a244 e8f8e52001      call    EPT_0C7D4CED_D1AE35BE+0x19a8841 (00000001`419a8841)
+00000001`4079a249 d6              ???
+00000001`4079a24a b996000000      mov     ecx,96h
+00000001`4079a24f 51              push    rcx
+00000001`4079a250 e86d573401      call    EPT_0C7D4CED_D1AE35BE+0x1adf9c2 (00000001`41adf9c2)
+00000001`4079a255 488bcf          mov     rcx,rdi
+00000001`4079a258 50              push    rax
+00000001`4079a259 e8c41fd500      call    EPT_0C7D4CED_D1AE35BE+0x14ec222 (00000001`414ec222)
+00000001`4079a25e 83f8ff          cmp     eax,0FFFFFFFFh
+00000001`4079a261 0f94c0          sete    al
+00000001`4079a264 488b5c2450      mov     rbx,qword ptr [rsp+50h]
+00000001`4079a269 4883c440        add     rsp,40h
+00000001`4079a26d 5f              pop     rdi
+00000001`4079a26e c3              ret
+00000001`4079a26f 32c0            xor     al,al
+00000001`4079a271 488b5c2450      mov     rbx,qword ptr [rsp+50h]
+00000001`4079a276 4883c440        add     rsp,40h
+00000001`4079a27a 5f              pop     rdi
+00000001`4079a27b c3              ret
+00000001`4079a27c 488b5c2450      mov     rbx,qword ptr [rsp+50h]
+00000001`4079a281 b001            mov     al,1
+00000001`4079a283 4883c440        add     rsp,40h
+00000001`4079a287 5f              pop     rdi
+00000001`4079a288 c3              ret
+00000001`4079a289 cc              int     3
+00000001`4079a28a cc              int     3
+00000001`4079a28b cc              int     3
+00000001`4079a28c cc              int     3
+00000001`4079a28d cc              int     3
+00000001`4079a28e cc              int     3
+00000001`4079a28f cc              int     3
+00000001`4079a290 48895c2418      mov     qword ptr [rsp+18h],rbx
+00000001`4079a295 55              push    rbp
+00000001`4079a296 56              push    rsi
+00000001`4079a297 57              push    rdi
+00000001`4079a298 4154            push    r12
+00000001`4079a29a 4155            push    r13
+00000001`4079a29c 4156            push    r14
+00000001`4079a29e 4157            push    r15
+00000001`4079a2a0 488d6c24b0      lea     rbp,[rsp-50h]
+00000001`4079a2a5 4881ec50010000  sub     rsp,150h
+00000001`4079a2ac 488b055d3d8000  mov     rax,qword ptr [EPT_0C7D4CED_D1AE35BE+0xf9e010 (00000001`40f9e010)]
+00000001`4079a2b3 4833c4          xor     rax,rsp
+00000001`4079a2b6 48894540        mov     qword ptr [rbp+40h],rax
+00000001`4079a2ba 448be2          mov     r12d,edx
+00000001`4079a2bd 488bf1          mov     rsi,rcx
+00000001`4079a2c0 0f57c0          xorps   xmm0,xmm0
+00000001`4079a2c3 33c0            xor     eax,eax
+00000001`4079a2c5 0f114590        movups  xmmword ptr [rbp-70h],xmm0
+00000001`4079a2c9 0f1145a0        movups  xmmword ptr [rbp-60h],xmm0
+00000001`4079a2cd 0f1145b0        movups  xmmword ptr [rbp-50h],xmm0
+00000001`4079a2d1 0f1145c0        movups  xmmword ptr [rbp-40h],xmm0
+00000001`4079a2d5 0f1145d0        movups  xmmword ptr [rbp-30h],xmm0
+00000001`4079a2d9 0f1145e0        movups  xmmword ptr [rbp-20h],xmm0
+00000001`4079a2dd 488945f0        mov     qword ptr [rbp-10h],rax
+00000001`4079a2e1 c7459068000000  mov     dword ptr [rbp-70h],68h
+00000001`4079a2e8 c745cc01000000  mov     dword ptr [rbp-34h],1
+00000001`4079a2ef 4533ed          xor     r13d,r13d
+00000001`4079a2f2 6644896dd0      mov     word ptr [rbp-30h],r13w
+00000001`4079a2f7 0f11442458      movups  xmmword ptr [rsp+58h],xmm0
+00000001`4079a2fc 4889442468      mov     qword ptr [rsp+68h],rax
+0:000> .echo LOCAL_STATE_PRODUCERS_END
+LOCAL_STATE_PRODUCERS_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

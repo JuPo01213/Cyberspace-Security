@@ -1,0 +1,14 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-57",
+  "evidence_scope": "real_sample_guest_run",
+  "sample_lineage": {
+    "guest_path": "C:\\ept_core\\Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "vm_state": {
+    "vm": "<VM_LABEL>",
+    "checkpoint": "C173-gen1-ready2 恢复(已地面判据验证)"
+  },
+  "hypothesis": "修复 watcher(文件尺寸曲线, 500ms) 与 kernelbase!CreateFileW 盲区观察者后重跑完整链条, 判定: (a) 7.9MB MZ 写入是否瞬时落盘(watcher 曲线) 还是 API 层即失败; (b) 19KB 分块写入的目标文件身份; (c) 失败决策 0x1407aa694 前的完整 API 序列。",
+  "verdict": "PENDING"
+}

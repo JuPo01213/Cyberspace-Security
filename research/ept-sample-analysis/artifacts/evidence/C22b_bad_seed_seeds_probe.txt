@@ -1,0 +1,36 @@
+--- C22 appendix: what the five BAD-SEED addresses produce when used as linear seeds (the pre-rewrite behaviour). .text ends at 0x1407e0000 ---
+seed 0x1407a352d
+   1407a352d  movabs al, byte ptr [0x1660b8ffffea]
+   1407a3536  call 0x1407d8190
+   1407a353b  sub rsp, rax
+   1407a353e  mov rax, qword ptr [rip + 0x7faacb]
+   1407a3545  xor rax, rsp
+   1407a3548  mov qword ptr [rbp + 0x1550], rax
+seed 0x1407a3978
+   1407a3978  add byte ptr [rax - 0x18], dl
+   1407a397b  jmp 0x1407a393d
+   1407a397d  sbb al, 1
+   1407a397f  mov r8d, eax
+   1407a3982  lea r9, [rbp - 0x43]
+   1407a3986  nop word ptr [rax + rax]
+seed 0x1407a428b
+   1407a428b  add byte ptr [rax - 0x77], cl
+   1407a428e  or byte ptr [r8 + 0x4868245c], 0x8d
+   1407a4296  mov r13d, 0x74c83b4c
+   1407a429c  sbb eax, 0xbd458d4c
+   1407a42a1  sub r8, r9
+   1407a42a4  mov rdx, r9
+seed 0x1407a4891
+   1407a4891  movzx ebx, bl
+   1407a4894  xor ebx, 1
+   1407a4897  lea rcx, [rbp - 0x18]
+   1407a489b  call 0x1407abe60
+   1407a48a0  mov eax, ebx
+   1407a48a2  jmp 0x1407a48c5
+seed 0x1407a48a1
+   1407a48a1  ret 
+   1407a48a2  jmp 0x1407a48c5
+   1407a48a4  mov r9d, 0x10
+   1407a48aa  lea r8, [rip + 0x7edfe7]
+   1407a48b1  lea rdx, [rip + 0x7edff0]
+   1407a48b8  xor ecx, ecx

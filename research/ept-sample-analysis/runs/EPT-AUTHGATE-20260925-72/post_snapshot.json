@@ -1,0 +1,34 @@
+﻿{
+    "hardware_dir":  [
+                         "Hardware 900"
+                     ],
+    "drivers":  [
+
+                ],
+    "procs":  [
+
+              ],
+    "utc":  "2026-09-25T21:18:58.3519740Z",
+    "svc_paths":  [
+                      "perceptionsimulation | C:\\Windows\\system32\\PerceptionSimulation\\PerceptionSimulationService.exe | Stopped"
+                  ],
+    "log_dirs":  [
+                     "C:\\Windows\\System32\\Logs"
+                 ],
+    "files":  [
+                  "C:\\Windows\\System32\\Hardware.exe",
+                  "C:\\Windows\\System32\\Hardware.ini",
+                  "C:\\Windows\\System32\\EPT.cmd"
+              ],
+    "temp_payloads":  [
+
+                      ],
+    "tasks":  [
+                  "DetectHardwareChange",
+                  "RemediateHardwareChange"
+              ],
+    "services":  [
+                     "ShellHWDetection:Running",
+                     "shpamsvc:Stopped"
+                 ]
+}

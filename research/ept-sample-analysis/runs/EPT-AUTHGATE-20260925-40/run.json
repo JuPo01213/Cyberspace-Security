@@ -1,0 +1,11 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-40",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "purpose": "DISCRIMINATOR: exact run37 cdb replay (no 1407aa68c bp, no DeleteFileW bp) on current guest state. Dies instantly -> state trigger (config phantom prime suspect); survives -> 38/39 additions were the trigger.",
+  "acceptance_fields": {
+    "survived_init": null,
+    "death_signature": null,
+    "chain_reached": null
+  },
+  "deadline_sec": 600
+}

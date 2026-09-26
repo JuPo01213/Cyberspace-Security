@@ -1,0 +1,13 @@
+[
+  {
+    "va": "0x140000000",
+    "offset": "0x0",
+    "machine": "0x8664",
+    "nsec": 10,
+    "timestamp": "0x6aaab543",
+    "optsize": "0xf0",
+    "magic": "0x20b",
+    "size_of_image": "0x3f83000",
+    "entry_rva": "0x235f67b"
+  }
+]

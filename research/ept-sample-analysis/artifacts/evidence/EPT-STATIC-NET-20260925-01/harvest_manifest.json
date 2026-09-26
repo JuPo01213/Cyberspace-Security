@@ -1,0 +1,22 @@
+[
+  {
+    "name": "cdb.stderr.txt",
+    "bytes": 3,
+    "sha256": "F1945CD6C19E56B3C1C78943EF5EC18116907A4CA1EFC40A57D48AB1DB7ADFC5"
+  },
+  {
+    "name": "cdb.stdout.txt",
+    "bytes": 14728,
+    "sha256": "F13D8EB3BD88A7DEFD5845ADF0B3F223624D760CE91119DD7BDA03E94903483C"
+  },
+  {
+    "name": "offline.cdb",
+    "bytes": 349,
+    "sha256": "7319F9AA913572FF3B44C762320B66DDB03C3DB181629EE6A38553CE3CAAC97B"
+  },
+  {
+    "name": "summary.json",
+    "bytes": 1228,
+    "sha256": "AD9CF1A38718828121A51C7F9BD23A77284E8465E22DD321B618149E3293ABBA"
+  }
+]

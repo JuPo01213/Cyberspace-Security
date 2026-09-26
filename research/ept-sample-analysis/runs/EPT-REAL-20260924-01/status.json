@@ -1,0 +1,122 @@
+{
+    "run_id":  "EPT-REAL-20260924-01",
+    "guest_host":  "<VM_LABEL>",
+    "utc":  "2026-09-24T10:33:20.8466399Z",
+    "task":  null,
+    "processes":  [
+                      {
+                          "pid":  9040,
+                          "name":  "conhost",
+                          "path":  "C:\\Windows\\system32\\conhost.exe",
+                          "start_utc":  "2026-09-24T10:33:17.8298205Z"
+                      },
+                      {
+                          "pid":  5944,
+                          "name":  "powershell",
+                          "path":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                          "start_utc":  "2026-09-24T10:33:17.8271616Z"
+                      }
+                  ],
+    "files":  [
+                  {
+                      "Name":  "done.json",
+                      "Length":  3285,
+                      "LastWriteTimeUtc":  "\/Date(1790245929748)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "events.ndjson",
+                      "Length":  1255,
+                      "LastWriteTimeUtc":  "\/Date(1790245929764)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "file_changes.json",
+                      "Length":  1444,
+                      "LastWriteTimeUtc":  "\/Date(1790245929732)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "natural_runner.ps1",
+                      "Length":  14105,
+                      "LastWriteTimeUtc":  "\/Date(1790245796761)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "phase.json",
+                      "Length":  156,
+                      "LastWriteTimeUtc":  "\/Date(1790245929748)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "post.json",
+                      "Length":  227843,
+                      "LastWriteTimeUtc":  "\/Date(1790245929701)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "pre.json",
+                      "Length":  227739,
+                      "LastWriteTimeUtc":  "\/Date(1790245831787)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "RUNNER_READY.canary",
+                      "Length":  22,
+                      "LastWriteTimeUtc":  "\/Date(1790245797058)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "target.stderr.txt",
+                      "Length":  0,
+                      "LastWriteTimeUtc":  "\/Date(1790245832646)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  },
+                  {
+                      "Name":  "target.stdout.txt",
+                      "Length":  0,
+                      "LastWriteTimeUtc":  "\/Date(1790245832646)\/",
+                      "Attributes":  {
+                                         "value":  32,
+                                         "Value":  "Archive"
+                                     }
+                  }
+              ],
+    "phase":  {
+                  "run_id":  "EPT-REAL-20260924-01",
+                  "phase":  "DONE",
+                  "utc":  "2026-09-24T10:32:09.7484605Z",
+                  "status":  "NATURAL_BASELINE_COMPLETE"
+              },
+    "done":  null,
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "3e986b59-23fc-4dc4-b0e7-1ab8f049a1ca",
+    "PSShowComputerName":  true
+}

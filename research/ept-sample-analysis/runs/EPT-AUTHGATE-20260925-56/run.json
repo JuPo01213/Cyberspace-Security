@@ -1,0 +1,36 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-56",
+  "evidence_scope": "real_sample_guest_run",
+  "sample_lineage": {
+    "guest_path": "C:\\ept_core\\Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "vm_state": {"vm": "<VM_LABEL>", "checkpoint": "C173-gen1-ready2 恢复(已地面判据验证)"},
+  "hypothesis": "在干净恢复基线上补齐 ReadFile/GetFileSizeEx/SetFilePointerEx 观察者与文件尺寸 watcher, 判定 7.9MB payload 写入是 API 层失败还是事后被清理。",
+  "results": {
+    "verdict": "PARTIAL_OBSERVED",
+    "io_timeline": [
+      "CFW C:\\Windows\\System32\\Hardware (900B 日志文件, 句柄 0x1fc 首用)",
+      "GFS+RDF h=0x2cc n=60 — 读回 Hardware.ini",
+      "RDF h=0x2dc ×13 (60B 粒度+1035B) — wmic 管道输出读取, 指纹采集回流",
+      "WFW h=0x2f0 4096x4+2744 ×2 — 19KB 分块写入, 但 0x2f0 无 kernel32!CreateFileW 来源 ⇒ 样本经 kernelbase 绕过 kernel32 开文件(仪器盲区)",
+      "CFW C:\\Windows\\TEMP\\NHFTwBUmYHlXSsjNJdzXRevJ ×2 (payload 文件, 打开两次)",
+      "WFW h=0x1fc n=7966720 — 7.9MB MZ(4d5a9000) payload 写入尝试",
+      "WFW h=0x2bc 4096x4+2744 — 第三段 19KB 分块写入(同为 kernelbase 盲区句柄)",
+      "FATAL_THUNK ← 0x1407aa694 (与 52/53/55 完全一致)"
+    ],
+    "key_facts": [
+      "7.9MB 写入尝试后无任何 ReadFile/GetFileSizeEx 校验动作, 120 行后直接致命包装 ⇒ 0x1407aa694 的失败决策不在文件回读校验",
+      "Defender 实时防护开启但零检测记录(1116/1117 无) ⇒ 排除文档性拦截",
+      "Hardware.ini 本轮被样本更新(02:56:04): BoardId/Uuid/BrandModel=Virtual Machine/BiosSerial/DiskSerials=None/CpuIds/Gpus=Hyper-V Video/Macs/Gateways 全量指纹落地",
+      "EPT.cmd 同轮更新(02:55:27)",
+      "AntiCheatExpert Protection/Service 服务与注册表键不存在 ⇒ sc.exe config 打在不存在的服务上(其创建步骤依赖 payload 安装成功)",
+      "样本日志 C:\\Windows\\System32\\Hardware (900B) 为加密体: 4字节长度前缀 0x380 + 896B 密文",
+      "watcher.ps1 未执行: guest_launch 中 powershell.exe 路径 \\v 被转义为 0x0B(heredoc 转义类问题第二次发生) ⇒ watcher 证据缺失"
+    ],
+    "instrument_lessons": [
+      "heredoc 内联 python 的反斜杠序列(\\10/\\v)会被转义层吃掉一层 ⇒ 一切含反斜杠的脚本修改必须走 Write 工具",
+      "kernelbase!CreateFileW 盲区已确认, 下一轮补观察者"
+    ]
+  }
+}

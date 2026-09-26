@@ -1,0 +1,5 @@
+.echo [S17_CHILD_ATTACHED]
+$$ child: sample-frame filtered API trace (no sample 0xCC, no memory deref)
+bp kernelbase!CreateFileW ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S17C_CREATEFILEW]; r rcx; dU @rcx L10; k L14 } } ; g"
+bp ntdll!NtDeviceIoControlFile ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S17C_DIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14 } } ; g"
+.echo [S17_CHILD_BPS_ARMED]

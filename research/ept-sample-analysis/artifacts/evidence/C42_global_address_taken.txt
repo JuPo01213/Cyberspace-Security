@@ -1,0 +1,9 @@
+== 0) scope + control ==
+   decoded 867326 instructions over RVA 0x1000..0x7da900
+   0x1407a30b2 want cmp  MISSING
+   0x1407a30bb want cmp  MISSING
+   0x1407a30c4 want cmp  MISSING
+   0x1407a30cd want cmp  MISSING
+   0x1407a320e want lea  MISSING
+   control 0/5
+   ABORT

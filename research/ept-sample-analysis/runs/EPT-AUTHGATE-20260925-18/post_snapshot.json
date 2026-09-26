@@ -1,0 +1,20 @@
+﻿{
+    "drivers":  [
+
+                ],
+    "procs":  [
+
+              ],
+    "utc":  "2026-09-25T07:11:15.0420413Z",
+    "log_dirs":  [
+
+                 ],
+    "files":  [
+                  "C:\\Windows\\System32\\Hardware.exe",
+                  "C:\\Windows\\System32\\EPT.cmd"
+              ],
+    "tasks":  [
+                  "DetectHardwareChange",
+                  "RemediateHardwareChange"
+              ]
+}

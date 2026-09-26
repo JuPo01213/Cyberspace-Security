@@ -1,0 +1,7 @@
+$$ AUTHGATE-2: hardware READ breakpoints on decrypted authorization strings
+$$ addresses from SCAN run EPT-INJECT-20260925-09 (module base 0x140000000, fixed layout)
+.echo [XREF_ARM_START]
+ba r 1 140f93624 ".echo [XREF_SKIP_DRIVER_LOAD]; r rip; r rcx; r rdx; r r8; r r9; k L14; g"
+ba r 1 140f9252d ".echo [XREF_STORED_AUTH_USABLE]; r rip; r rcx; r rdx; r r8; r r9; k L14; g"
+ba r 1 140f92508 ".echo [XREF_STOREDVERIFY_BEGIN]; r rip; r rcx; r rdx; r r8; r r9; k L14; g"
+.echo [XREF_ARM_DONE]

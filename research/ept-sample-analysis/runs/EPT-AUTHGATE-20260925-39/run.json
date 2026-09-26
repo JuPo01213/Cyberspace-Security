@@ -1,0 +1,16 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-39",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "instrument_fix": "run38 lesson: in-image software bp (0xCC) triggered plaintext-integrity-check instant FatalExit from 0x143ae5d57 (new anti-tamper evidence). DR slots reallocated: drop wrapper-1 force (never fired in GUI path runs 36-37), arm 1407aa68c as HARDWARE bp for FATAL_TAIL observation.",
+  "hypothesis": "无映像内 0xCC 时目标不再被完整性校验拦截，重走 Setup GUI 全链；到达明文 fatal 尾点 0x1407aa68c 时硬件断点捕获决定性条件寄存器与栈。",
+  "acceptance_fields": {
+    "no_instant_fatal": null,
+    "gui_path_reached": null,
+    "fatal_tail_registers": null,
+    "fatal_tail_k": null,
+    "payload_files": null,
+    "deletefilew_observed": null,
+    "service_names": null
+  },
+  "deadline_sec": 720
+}

@@ -1,0 +1,10 @@
+﻿{"seq":1,"utc":"2026-09-24T10:30:27.0839741Z","type":"PHASE","phase":"RUNNER_READY"}
+{"seq":2,"utc":"2026-09-24T10:30:27.1152257Z","type":"RUNNER_READY","target_path":"C:\\ept_core\\Hardware.exe","input_state":"synthetic_invalid_card_no_secret"}
+{"seq":3,"utc":"2026-09-24T10:30:31.9902386Z","type":"PROCESS_SEEN","name":"ApplicationFrameHost","ppid":840,"start_utc":"2026-09-24T00:18:51.7418342Z","pid":8092,"path":"C:\\Windows\\system32\\ApplicationFrameHost.exe","command_line":"C:\\Windows\\system32\\ApplicationFrameHost.exe -Embedding"}
+{"seq":4,"utc":"2026-09-24T10:30:32.6152736Z","type":"PHASE","phase":"TARGET_STARTING"}
+{"seq":5,"utc":"2026-09-24T10:30:33.2871047Z","type":"TARGET_STARTED","args":["-k","[REDACTED]","-n","2","-m","1"],"pid":2828,"ppid":3648,"input_state":"synthetic_invalid_card_no_secret"}
+{"seq":6,"utc":"2026-09-24T10:30:33.3027729Z","type":"PHASE","phase":"RUNNING"}
+{"seq":7,"utc":"2026-09-24T10:32:04.0157136Z","type":"DEADLINE_REACHED","deadline_seconds":90}
+{"seq":8,"utc":"2026-09-24T10:32:04.0157136Z","type":"PHASE","phase":"CLEANUP"}
+{"seq":9,"utc":"2026-09-24T10:32:04.0626103Z","type":"PROCESS_STOP_REQUESTED","pid":2828}
+{"seq":10,"utc":"2026-09-24T10:32:09.7640860Z","type":"PHASE","phase":"DONE"}

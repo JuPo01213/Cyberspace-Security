@@ -1,0 +1,54 @@
+.echo SAME_ROUND_CAPTURE_BEGIN
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo ENTRY_GATE_RELEASED
+sxi av
+sxi c0000005
+sxi e06d7363
+sxi 80000003
+sxi 80000004
+sxi c000001d
+sxi c0000094
+sxi e0434352
+sxi 6d9
+.echo EXCEPTION_PASSTHROUGH_ARMED
+eb 0x1403b34d0 33 c0 c3
+eb 0x1403b3280 33 c0 c3
+eb 0x1403c47e0 33 c0 c3
+eb 0x1403b3d30 33 c0 c3
+eb 0x1403c49d0 33 c0 c3
+.echo SDK_STAGES_PATCHED_RETURN_ZERO
+bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; .dump /ma C:/ept_obs/spool/EPT-AUTHGATE-20260926-15/early_death.dmp; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+bu kernel32!WriteFile ".echo WFW; r rcx; r r8; db @rdx L16; g"
+bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+bu ws2_32!connect ".echo CONN; db @rdx L10; g"
+bu ws2_32!WSAConnect ".echo WSACONN; db @rdx L10; g"
+bu ws2_32!getaddrinfo ".echo GAI_A; da @rcx; g"
+bu ws2_32!GetAddrInfoW ".echo GAI; du @rcx; g"
+bu ws2_32!send ".echo SEND_OBS; r rcx; r rdx; r r8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/sendbuf_at_send.bin @rdx @rdx+0x200; .echo SEND_BUF_DUMPED; u poi(@rsp) L12; g"
+bu ws2_32!WSASend ".echo WSASEND_OBS; r rcx; r rdx; r r8; dd @rsp L1; u poi(@rsp) L10; g"
+bu ws2_32!recv ".echo RECV; r rcx; r r8; r $t10=@rdx; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/recvbuf_at_recv.bin @rdx @rdx+0x200; .echo RECV_BUF_DUMPED; u poi(@rsp) L12; g"
+bu ws2_32!WSARecv ".echo WSARECV; r rcx; dd @rsp L1; u poi(@rsp) L10; g"
+bu kernelbase!DeviceIoControl ".echo DIOC; r rcx; r rdx; r r8; dd @rsp+20 L4; g"
+bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+ba e 1 14078e6ac ".echo KEY_DERIVER_DONE; dd 0x14115c340 L8; db 0x14115c3f0 L28; g"
+ba e 1 14078ee73 ".echo RC00_CALLSITE; r rcx; r rdx; r r8; r r9; dd @rsp+20 L8; dd 0x14115c340 L8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/rc00_request_284.bin @rsp+0x50 @rsp+0x50+0x11c; .echo RC00_REQUEST_DUMPED; g"
+ba e 1 14078ee9b ".echo RC03_VALIDATOR_CALLSITE; r rcx; r rdx; r r8; r r9; dd @rsp+0x50 L8; dd 0x14115c340 L8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/rc00_response_284.bin @rsp+0x50 @rsp+0x50+0x11c; .echo RC03_RESPONSE_DUMPED; g"
+ba e 1 14171f567 ".echo FATAL_THUNK_OBS; k L12; g"
+.echo SAME_ROUND_CAPTURE_ARMED
+g
+.echo SAME_ROUND_CAPTURE_STOP
+~*k
+.echo SAME_ROUND_CAPTURE_END
+q

@@ -1,0 +1,63 @@
+== C57 independent stream address provenance ==
+instrument=<HOST_PATH>/vmctl/verify_stream_address_provenance.py
+input=<HOST_PATH>\EPT\artifacts\captures\stream_C6\stream_text.bin
+input_bytes=8257536 sha256=5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757
+scope=embedded PE header, exact byte anchors, full E8/cmp-pattern scans
+claim_scope=coordinate correction only; no branch execution claim
+
+-- PE identity at stream offset 0 --
+head=4d5a9000 e_lfanew=0x80 machine=0x8664 nsec=10 opt_size=240
+image_base=0x140000000 size_of_image=0x3f83000
+stream_offset_0=PE header, therefore VA(stream_offset)=image_base+stream_offset
+This is a process-memory span; the PE section VA 0x1000 is not the stream base.
+section_table:
+  .text    RVA=0x1000 VA=0x140001000 vsize=0x7d992c raw_ptr=0x0 raw_size=0x0 chars=0x60000020
+  .rdata   RVA=0x7db000 VA=0x1407db000 vsize=0x7c2dd0 raw_ptr=0x0 raw_size=0x0 chars=0x40000040
+  .data    RVA=0xf9e000 VA=0x140f9e000 vsize=0x1ce70c raw_ptr=0x0 raw_size=0x0 chars=0xc0000040
+  .pdata   RVA=0x116d000 VA=0x14116d000 vsize=0x4f80 raw_ptr=0x0 raw_size=0x0 chars=0x40000040
+  _RDATA   RVA=0x1172000 VA=0x141172000 vsize=0xfc raw_ptr=0x0 raw_size=0x0 chars=0x40000040
+  .fptable RVA=0x1173000 VA=0x141173000 vsize=0x100 raw_ptr=0x0 raw_size=0x0 chars=0xc0000040
+  .Sq>     RVA=0x1174000 VA=0x141174000 vsize=0xee55f0 raw_ptr=0x0 raw_size=0x0 chars=0x60000020
+  .bs]     RVA=0x205a000 VA=0x14205a000 vsize=0xf88 raw_ptr=0x400 raw_size=0x1000 chars=0xc0000040
+  .)Bu     RVA=0x205b000 VA=0x14205b000 vsize=0x1f09b30 raw_ptr=0x1400 raw_size=0x1f09c00 chars=0x68000060
+  .rsrc    RVA=0x3f65000 VA=0x143f65000 vsize=0x1d445 raw_ptr=0x1f0b000 raw_size=0x1d600 chars=0x40000040
+
+-- absolute landmarks under the corrected formula --
+E8 target from old C55 premise: stream_offset=0x7a305c VA=0x1407a305c bytes=e8bace27018032c0 E8_target=0x141a1ff1b old_mapper_VA=0x1407a405c
+gate cmp #1: stream_offset=0x7a30b2 VA=0x1407a30b2 bytes=833d341c9b000175 cmp_target=0x141154ced old_mapper_VA=0x1407a40b2
+carrier cmp #1: stream_offset=0x7a354f VA=0x1407a354f bytes=833d97179b000175 cmp_target=0x141154ced old_mapper_VA=0x1407a454f
+call gate: stream_offset=0x7a6a4e VA=0x1407a6a4e bytes=e82dc6ffff0fb6d8 E8_target=0x1407a3080 old_mapper_VA=0x1407a7a4e
+main branch call: stream_offset=0x7a7b1b VA=0x1407a7b1b bytes=e8da97fb00cc488d E8_target=0x1417612fa old_mapper_VA=0x1407a8b1b
+round_trip=all landmark VA->stream_offset conversions returned the original offsets
+
+-- full-byte signature scans --
+scan_coverage=8257536/8257536 bytes (100.0%) for both signatures
+cmp83_3d_imm1_total=7 in_image=6 outside_image=1
+  cmp_target=0x141154ced sites=3: 0x1407a30b2, 0x1407a354f, 0x1407a4700
+    owner 0x1407a30b2 .text@0x1407a3080..0x1407a3323
+    owner 0x1407a354f .text@0x1407a3510..0x1407a493d
+    owner 0x1407a4700 .text@0x1407a3510..0x1407a493d
+  cmp_target=0x141154cf1 sites=3: 0x1407a30bb, 0x1407a3558, 0x1407a470d
+    owner 0x1407a30bb .text@0x1407a3080..0x1407a3323
+    owner 0x1407a3558 .text@0x1407a3510..0x1407a493d
+    owner 0x1407a470d .text@0x1407a3510..0x1407a493d
+  exact_cmp_target_count[0x141154ced]=3
+  exact_cmp_target_count[0x141154cf1]=3
+  exact_cmp_target_count[0x141154ae7]=0
+  exact_cmp_target_count[0x141154ce9]=0
+  exact_cmp_target_count[0x141154d10]=0
+  exact_cmp_target_count[0x141155ced]=0
+  exact_cmp_target_count[0x141155cf1]=0
+  exact_cmp_target_count[0x141155ae7]=0
+  exact_cmp_target_count[0x141155ce9]=0
+  exact_cmp_target_count[0x141155d10]=0
+E8_signature_total=37919; selected target counts:
+  e8_target=0x1407a3080 sites=2: 0x1407a6a4e, 0x1407a7b0f
+  e8_target=0x141a1ff1b sites=1: 0x1407a305c
+  e8_target=0x1417612fa sites=1: 0x1407a7b1b
+
+-- correction --
+The prior C56/C55 mapper value BASE=0x140001000 reports every stream offset +0x1000.
+For this input, offset 0 is the embedded PE header at ImageBase 0x140000000.
+Therefore prior addresses and targets derived with BASE=0x140001000 are retracted pending rerun with the corrected formula.
+confidence=HIGH for the coordinate correction; NOT evidence that either execution branch was reached

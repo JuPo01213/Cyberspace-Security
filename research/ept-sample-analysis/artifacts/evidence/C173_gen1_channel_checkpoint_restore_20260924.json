@@ -1,0 +1,14 @@
+{
+  "run_id": "C173-GEN1-ACK-20260924-04",
+  "vm_name": "<VM_LABEL>",
+  "snapshot_name": "<VM_LABEL>-gen1-channel-ready",
+  "snapshot_type": "Standard",
+  "mutation_before_restore": true,
+  "ready_before_restore": true,
+  "ack_before_restore": true,
+  "mutation_after_restore": false,
+  "ready_after_restore": true,
+  "ack_after_restore": true,
+  "restore_verified": true,
+  "sample_launch_requested": false
+}

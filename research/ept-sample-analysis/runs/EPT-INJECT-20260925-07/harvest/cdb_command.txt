@@ -1,0 +1,12 @@
+.echo [RECON5_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+bp kernel32!CreateFileW ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON6_PCREATEFILEW]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp kernel32!CreateFileA ".if (@rcx!=0) { .if (by(@rcx)==0x5c) { .echo [RECON6_PCREATEFILEA]; r rcx; dU @rcx L16 } .else { g } } .else { g }"
+bp ntdll!NtDeviceIoControlFile ".echo [RECON6_PDIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14; g"
+sxe -c ".echo [RECON6_PARENT_AV]; .lastevent; r; k; g" av
+g

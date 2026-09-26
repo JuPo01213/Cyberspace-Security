@@ -1,0 +1,776 @@
+== C60 壳侧"解码动作分支"的字节码分离（判据 S1-S5 见文件头，先冻结后取数）==
+input=<HOST_PATH>/EPT/sample/EPT专业游戏维修工具箱V5.1.exe_extracted/PYZ.pyz_extracted/auto_decode.pyc
+input_bytes=208484 sha256=414476eacb0f3eee219b073eb3c3e85bbe5ac562af85e357fa80e499bd56dba2
+pyc_magic=f30d0d0a expected=f30d0d0a MATCH
+interpreter=3.13.15 dis=<HOST_PATH>\Users\<USER>\AppData\Local\Programs\Python\Python313\Lib\dis.py
+code_objects_total=145
+inspected=<module>.DecodeEngine._log, <module>.DecodeEngine.run_decode, <module>.DecodeEngine.run_decode.<lambda>, <module>.DecodeEngine.run_decode._do_download, <module>.DecodeEngine.run_decode._do_download.<lambda>, <module>.DecodeEngine.run_decode_from_exe, <module>._call_spoofer_commandline, <module>._detect_bind_error_dialog, <module>._detect_bind_error_dialog.<genexpr>, <module>._detect_bind_error_dialog.cb_enum, <module>._detect_bind_error_dialog.ct_cb, <module>._detect_bind_error_dialog.enum_children_ctypes, <module>._detect_bind_error_dialog.enum_children_ctypes._worker, <module>._detect_bind_error_dialog.find_target_pid, <module>._detect_bind_error_dialog.get_class_name, <module>._detect_bind_error_dialog.get_window_text_raw, <module>._detect_bind_error_dialog.read_child_texts_pywinauto, <module>._detect_bind_error_dialog.send_message_gettext
+
+-- 0. 覆盖率闸（S3）：每个被检 code object 必须 100 % --
+   全模块 145 个 code object 上 `sum(end_offset-offset) == len(co_code)` 不成立的有 0 个 []
+   <module>.DecodeEngine._log                     bytes=  468 covered=  468  100.00 %  insns=  72  (naive-2B=144)
+   <module>.DecodeEngine.run_decode               bytes= 5906 covered= 5906  100.00 %  insns=1302  (naive-2B=2604)
+   <module>.DecodeEngine.run_decode.<lambda>      bytes=  140 covered=  140  100.00 %  insns=  31  (naive-2B=62)
+   <module>.DecodeEngine.run_decode._do_download  bytes=   60 covered=   60  100.00 %  insns=  19  (naive-2B=38)
+   <module>.DecodeEngine.run_decode._do_download.<lambda> bytes=  166 covered=  166  100.00 %  insns=  41  (naive-2B=82)
+   <module>.DecodeEngine.run_decode_from_exe      bytes= 3224 covered= 3224  100.00 %  insns= 634  (naive-2B=1268)
+   <module>._call_spoofer_commandline             bytes= 1544 covered= 1544  100.00 %  insns= 357  (naive-2B=714)
+   <module>._detect_bind_error_dialog             bytes= 3550 covered= 3550  100.00 %  insns= 937  (naive-2B=1874)
+   <module>._detect_bind_error_dialog.<genexpr>   bytes=   64 covered=   64  100.00 %  insns=  18  (naive-2B=36)
+   <module>._detect_bind_error_dialog.cb_enum     bytes=  198 covered=  198  100.00 %  insns=  55  (naive-2B=110)
+   <module>._detect_bind_error_dialog.ct_cb       bytes=  276 covered=  276  100.00 %  insns=  62  (naive-2B=124)
+   <module>._detect_bind_error_dialog.enum_children_ctypes bytes=  242 covered=  242  100.00 %  insns=  67  (naive-2B=134)
+   <module>._detect_bind_error_dialog.enum_children_ctypes._worker bytes=  302 covered=  302  100.00 %  insns=  79  (naive-2B=158)
+   <module>._detect_bind_error_dialog.find_target_pid bytes=  584 covered=  584  100.00 %  insns= 128  (naive-2B=256)
+   <module>._detect_bind_error_dialog.get_class_name bytes=  134 covered=  134  100.00 %  insns=  29  (naive-2B=58)
+   <module>._detect_bind_error_dialog.get_window_text_raw bytes=  156 covered=  156  100.00 %  insns=  38  (naive-2B=76)
+   <module>._detect_bind_error_dialog.read_child_texts_pywinauto bytes=  114 covered=  114  100.00 %  insns=  37  (naive-2B=74)
+   <module>._detect_bind_error_dialog.send_message_gettext bytes=  232 covered=  232  100.00 %  insns=  52  (naive-2B=104)
+   COVERAGE_GATE=100 % on all 18 inspected
+   GATE_SELFTEST: discriminates cache slots=True ; truncated copy: covered=454 total=452 -> gate RED (ok)
+
+-- 1. 条件转移清单（谁把控制流分成两条）--
+   <module>.DecodeEngine._log: 4 条转移/分支
+   <module>.DecodeEngine.run_decode: 56 条转移/分支
+   <module>.DecodeEngine.run_decode.<lambda>: 1 条转移/分支
+   <module>.DecodeEngine.run_decode._do_download: 0 条转移/分支
+   <module>.DecodeEngine.run_decode._do_download.<lambda>: 1 条转移/分支
+   <module>.DecodeEngine.run_decode_from_exe: 23 条转移/分支
+   <module>._call_spoofer_commandline: 15 条转移/分支
+   <module>._detect_bind_error_dialog: 33 条转移/分支
+   <module>._detect_bind_error_dialog.<genexpr>: 0 条转移/分支
+   <module>._detect_bind_error_dialog.cb_enum: 4 条转移/分支
+   <module>._detect_bind_error_dialog.ct_cb: 4 条转移/分支
+   <module>._detect_bind_error_dialog.enum_children_ctypes: 2 条转移/分支
+   <module>._detect_bind_error_dialog.enum_children_ctypes._worker: 7 条转移/分支
+   <module>._detect_bind_error_dialog.find_target_pid: 4 条转移/分支
+   <module>._detect_bind_error_dialog.get_class_name: 1 条转移/分支
+   <module>._detect_bind_error_dialog.get_window_text_raw: 2 条转移/分支
+   <module>._detect_bind_error_dialog.read_child_texts_pywinauto: 1 条转移/分支
+   <module>._detect_bind_error_dialog.send_message_gettext: 2 条转移/分支
+
+-- 2. SEAM：绑定检测的返回值在哪被消费、CardKeyBoundError 在哪 raise --
+   SEAM-REF   <module>                                             off=  622 line=None  STORE_NAME _detect_bind_error_dialog
+   SEAM-REF   <module>.DecodeEngine                                off=   38 line=None  STORE_NAME CardKeyBoundError
+   SEAM-REF   <module>.DecodeEngine.run_decode                     off= 4022 line=489  LOAD_GLOBAL _detect_bind_error_dialog + NULL
+   SEAM-REF   <module>.DecodeEngine.run_decode                     off= 4220 line=None  LOAD_CONST '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'
+   SEAM-REF   <module>.DecodeEngine.run_decode                     off= 4242 line=None  LOAD_ATTR CardKeyBoundError + NULL|self
+   SEAM-REF   <module>.DecodeEngine.run_decode                     off= 4262 line=None  LOAD_CONST '此授权码已绑定其他机器'
+   RAISE      <module>.DecodeEngine.run_decode                     off= 4272 line=None
+     4180  POP_TOP                                                               
+     4182  LOAD_FAST                      bind_error                              ; line 491
+     4184  TO_BOOL                                                               
+     4192  POP_JUMP_IF_FALSE              to L37                                        
+     4196  LOAD_DEREF                     self                              ; line 492
+     4198  LOAD_ATTR                      _log + NULL|self                                        
+     4218  LOAD_CONST                     'ERROR'                                        
+     4220  LOAD_CONST                     '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'                                        
+     4222  CALL                                                                  
+     4230  POP_TOP                                                               
+     4232  LOAD_GLOBAL                    DecodeEngine                              ; line 493
+     4242  LOAD_ATTR                      CardKeyBoundError + NULL|self                                        
+     4262  LOAD_CONST                     '此授权码已绑定其他机器'                                        
+     4264  CALL                                                                  
+     4272  RAISE_VARARGS                                                         
+     4274  LOAD_DEREF                     self                              ; line 495
+   SEAM-REF   <module>.DecodeEngine.run_decode                     off= 5648 line=None  LOAD_ATTR CardKeyBoundError
+   SEAM-REF   <module>.DecodeEngine.run_decode_from_exe            off= 1642 line=643  LOAD_GLOBAL _detect_bind_error_dialog + NULL
+   SEAM-REF   <module>.DecodeEngine.run_decode_from_exe            off= 1840 line=None  LOAD_CONST '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'
+   SEAM-REF   <module>.DecodeEngine.run_decode_from_exe            off= 1862 line=None  LOAD_ATTR CardKeyBoundError + NULL|self
+   SEAM-REF   <module>.DecodeEngine.run_decode_from_exe            off= 1882 line=None  LOAD_CONST '此授权码已绑定其他机器'
+   RAISE      <module>.DecodeEngine.run_decode_from_exe            off= 1892 line=None
+     1800  POP_TOP                                                               
+     1802  LOAD_FAST                      bind_error                              ; line 645
+     1804  TO_BOOL                                                               
+     1812  POP_JUMP_IF_FALSE              to L9                                        
+     1816  LOAD_FAST                      self                              ; line 646
+     1818  LOAD_ATTR                      _log + NULL|self                                        
+     1838  LOAD_CONST                     'ERROR'                                        
+     1840  LOAD_CONST                     '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'                                        
+     1842  CALL                                                                  
+     1850  POP_TOP                                                               
+     1852  LOAD_GLOBAL                    DecodeEngine                              ; line 647
+     1862  LOAD_ATTR                      CardKeyBoundError + NULL|self                                        
+     1882  LOAD_CONST                     '此授权码已绑定其他机器'                                        
+     1884  CALL                                                                  
+     1892  RAISE_VARARGS                                                         
+     1894  LOAD_FAST                      self                              ; line 651
+   SEAM-REF   <module>.DecodeEngine.run_decode_from_exe            off= 2966 line=None  LOAD_ATTR CardKeyBoundError
+   SEAM-REF   <module>.DecodeEngine._check_stopped                 off=   60 line=None  LOAD_CONST '→ 用户请求停止解码操作'
+   SEAM-REF   <module>.DecodeEngine.reject_disclaimer              off=   26 line=None  LOAD_CONST '⚠ 用户不同意免责协议，正在停止解码程序...'
+   SEAM-REF   <module>.DecodeEngine.reject_disclaimer              off=  164 line=None  LOAD_CONST '✓ 已停止解码流程（用户不同意免责协议）'
+   RAISE      <module>._add_hidden_auto_start._try_create_task     off=   50 line=None
+        0  COPY_FREE_VARS                                                        
+        2  RESUME                                                     ; line 1262
+        4  NOP                                                        ; line 1265
+        6  LOAD_DEREF                     _write_temp_xml                             ; line 1266
+        8  PUSH_NULL                                                             
+       10  CALL                                                                  
+       18  TO_BOOL                                                               
+       26  POP_JUMP_IF_TRUE               to L1                                        
+       30  LOAD_GLOBAL                    RuntimeError + NULL                             ; line 1267
+       40  LOAD_CONST                     '无法写入临时XML'                                        
+       42  CALL                                                                  
+       50  RAISE_VARARGS                                                         
+       52  LOAD_DEREF                     _sp                             ; line 1270
+   SEAM-REF   <module>._wait_and_type_password                     off= 1362 line=4035  LOAD_GLOBAL _detect_bind_error_dialog + NULL
+   SEAM-REF   <module>._wait_and_type_password                     off= 1404 line=None  LOAD_CONST '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'
+   SEAM-REF   <module>._wait_and_type_password                     off= 1426 line=None  LOAD_ATTR CardKeyBoundError + NULL|self
+   SEAM-REF   <module>._wait_and_type_password                     off= 1446 line=None  LOAD_CONST '此授权码已绑定其他机器'
+   RAISE      <module>._wait_and_type_password                     off= 1456 line=None
+     1382  STORE_FAST                     bind_error                                        
+     1384  LOAD_FAST                      bind_error                             ; line 4036
+     1386  TO_BOOL                                                               
+     1394  POP_JUMP_IF_FALSE              to L12                                        
+     1398  LOAD_FAST                      log_func                             ; line 4038
+     1400  PUSH_NULL                                                             
+     1402  LOAD_CONST                     'ERROR'                                        
+     1404  LOAD_CONST                     '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'                                        
+     1406  CALL                                                                  
+     1414  POP_TOP                                                               
+     1416  LOAD_GLOBAL                    DecodeEngine                             ; line 4041
+     1426  LOAD_ATTR                      CardKeyBoundError + NULL|self                                        
+     1446  LOAD_CONST                     '此授权码已绑定其他机器'                                        
+     1448  CALL                                                                  
+     1456  RAISE_VARARGS                                                         
+     1458  NOP                                                        ; line 4036
+   SEAM-REF   <module>._wait_and_type_password                     off= 3094 line=None  LOAD_ATTR CardKeyBoundError
+   RAISE      <module>._wait_and_type_password                     off= 3122 line=4045
+     3066  POP_TOP                                                               
+     3068  POP_EXCEPT                                                 ; line 4008
+     3070  EXTENDED_ARG                                                          
+     3072  JUMP_BACKWARD_NO_INTERRUPT     to L8                                        
+     3074  RERAISE                                                    ; line 4007
+     3076  COPY                                                                  
+     3078  POP_EXCEPT                                                            
+     3080  RERAISE                                                               
+     3082  PUSH_EXC_INFO                                                         
+     3084  LOAD_GLOBAL                    DecodeEngine                             ; line 4043
+     3094  LOAD_ATTR                      CardKeyBoundError                                        
+     3114  CHECK_EXC_MATCH                                                       
+     3116  POP_JUMP_IF_FALSE              to L30                                        
+     3120  POP_TOP                                                               
+     3122  RAISE_VARARGS                                              ; line 4045
+     3124  LOAD_GLOBAL                    Exception                             ; line 4046
+   RAISE_sites=5 SEAM_ref_sites=20
+
+-- 3. 正对照（S4）：run_decode 里"空卡密 -> return failed"那条必须被同一走查找到 --
+       58  TO_BOOL                                                               
+       94  TO_BOOL                                                               
+      162  TO_BOOL                                                               
+      324  TO_BOOL                                                               
+      374  LOAD_CONST                     '未输入卡密'                                        
+      514  TO_BOOL                                                               
+   POSITIVE_CONTROL=found
+
+-- 4. 负对照（S5）：已知的无 raise 函数必须报 0 --
+   <module>.DecodeEngine._log               RAISE=0  OK
+   NEGATIVE_CONTROL=ok
+
+-- 5. 异常表（3.13 用 EH 表，不用 SETUP_FINALLY）--
+   <module>.DecodeEngine._log                     find_exception_blocks -> AttributeError
+   <module>.DecodeEngine.run_decode               find_exception_blocks -> AttributeError
+   <module>.DecodeEngine.run_decode.<lambda>      find_exception_blocks -> AttributeError
+   <module>.DecodeEngine.run_decode._do_download  find_exception_blocks -> AttributeError
+   <module>.DecodeEngine.run_decode._do_download.<lambda> find_exception_blocks -> AttributeError
+   <module>.DecodeEngine.run_decode_from_exe      find_exception_blocks -> AttributeError
+   <module>._call_spoofer_commandline             find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog             find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.<genexpr>   find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.cb_enum     find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.ct_cb       find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.enum_children_ctypes find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.enum_children_ctypes._worker find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.find_target_pid find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.get_class_name find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.get_window_text_raw find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.read_child_texts_pywinauto find_exception_blocks -> AttributeError
+   <module>._detect_bind_error_dialog.send_message_gettext find_exception_blocks -> AttributeError
+
+-- 6. 两条出口的窗口（S1：把 E_cont 与 E_abort 分开的那条条件指令必须在段内可见）--
+
+   === DecodeEngine.run_decode  off 3980..4420 ===
+     3980  LOAD_GLOBAL                time                                     line=488
+     3990  LOAD_ATTR                  time                                     line=None
+     4010  PUSH_NULL                                                           line=None
+     4012  CALL                                                                line=None  <<< CALL
+     4020  STORE_FAST                 _t_b                                     line=None
+     4022  LOAD_GLOBAL                _detect_bind_error_dialog + NULL         line=489
+     4032  LOAD_DEREF                 self                                     line=None
+     4034  LOAD_ATTR                  _log                                     line=None
+     4054  LOAD_DEREF                 self                                     line=None
+     4056  LOAD_ATTR                  _check_stopped                           line=None
+     4076  CALL                                                                line=None  <<< CALL
+     4084  STORE_FAST                 bind_error                               line=None
+     4086  LOAD_DEREF                 self                                     line=490
+     4088  LOAD_ATTR                  _log + NULL|self                         line=None
+     4108  LOAD_CONST                 'DEBUG'                                  line=None
+     4110  LOAD_CONST                 '[MAIN-BIND] <<< _detect_bind_error_dialog 返回=' line=None
+     4112  LOAD_FAST                  bind_error                               line=None
+     4114  FORMAT_SIMPLE                                                       line=None
+     4116  LOAD_CONST                 ' 耗时='                                   line=None
+     4118  LOAD_GLOBAL                time                                     line=None
+     4128  LOAD_ATTR                  time                                     line=None
+     4148  PUSH_NULL                                                           line=None
+     4150  CALL                                                                line=None  <<< CALL
+     4158  LOAD_FAST                  _t_b                                     line=None
+     4160  BINARY_OP                  -                                        line=None
+     4164  LOAD_CONST                 '.2f'                                    line=None
+     4166  FORMAT_WITH_SPEC                                                    line=None
+     4168  LOAD_CONST                 's'                                      line=None
+     4170  BUILD_STRING                                                        line=None
+     4172  CALL                                                                line=None  <<< CALL
+     4180  POP_TOP                                                             line=None
+     4182  LOAD_FAST                  bind_error                               line=491
+     4184  TO_BOOL                                                             line=None
+     4192  POP_JUMP_IF_FALSE          to L37                                   line=None  <<< POP_JUMP_IF_FALSE
+     4196  LOAD_DEREF                 self                                     line=492
+     4198  LOAD_ATTR                  _log + NULL|self                         line=None
+     4218  LOAD_CONST                 'ERROR'                                  line=None
+     4220  LOAD_CONST                 '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'              line=None
+     4222  CALL                                                                line=None  <<< CALL
+     4230  POP_TOP                                                             line=None
+     4232  LOAD_GLOBAL                DecodeEngine                             line=493
+     4242  LOAD_ATTR                  CardKeyBoundError + NULL|self            line=None
+     4262  LOAD_CONST                 '此授权码已绑定其他机器'                            line=None
+     4264  CALL                                                                line=None  <<< CALL
+     4272  RAISE_VARARGS                                                       line=None  <<< RAISE_VARARGS
+     4274  LOAD_DEREF                 self                                     line=495
+     4276  LOAD_ATTR                  _check_stopped + NULL|self               line=None
+     4296  CALL                                                                line=None  <<< CALL
+     4304  TO_BOOL                                                             line=None
+     4312  POP_JUMP_IF_FALSE          to L38                                   line=None  <<< POP_JUMP_IF_FALSE
+     4316  LOAD_CONST                 'final_status'                           line=None
+     4318  LOAD_CONST                 'stopped'                                line=None
+     4320  BUILD_MAP                                                           line=None
+     4322  RETURN_VALUE                                                        line=None  <<< RETURN_VALUE
+     4324  LOAD_FAST                  params                                   line=498
+     4326  LOAD_ATTR                  get + NULL|self                          line=None
+     4346  LOAD_CONST                 'versionSelect'                          line=None
+     4348  LOAD_CONST                 'universal'                              line=None
+     4350  CALL                                                                line=None  <<< CALL
+     4358  STORE_FAST                 version_select                           line=None
+     4360  LOAD_FAST                  version_select                           line=499
+     4362  LOAD_CONST                 'compat2'                                line=None
+     4364  COMPARE_OP                 bool(==)                                 line=None
+     4368  POP_JUMP_IF_FALSE          to L42                                   line=None  <<< POP_JUMP_IF_FALSE
+     4372  LOAD_DEREF                 self                                     line=500
+     4374  LOAD_ATTR                  _log + NULL|self                         line=None
+     4394  LOAD_CONST                 'INFO'                                   line=None
+     4396  LOAD_CONST                 '兼容二版本清理中，请耐心等待...'                      line=None
+     4398  CALL                                                                line=None  <<< CALL
+     4406  POP_TOP                                                             line=None
+     4408  LOAD_CONST                 180                                      line=501
+     4410  STORE_FAST                 cleanup_total                            line=None
+     4412  LOAD_CONST                 30                                       line=502
+     4414  STORE_FAST                 interval                                 line=None
+     4416  LOAD_DEREF                 step                                     line=503
+     4418  LOAD_CONST                 100                                      line=None
+
+   === DecodeEngine.run_decode  off 5600..5940 ===
+     5602  POP_TOP                                                             line=None
+     5604  LOAD_CONST                 None                                     line=420
+     5606  STORE_FAST                 exe_path                                 line=None
+     5608  POP_EXCEPT                                                          line=None
+     5610  LOAD_CONST                 None                                     line=None
+     5612  STORE_FAST                 _dl_err2                                 line=None
+     5614  DELETE_FAST                _dl_err2                                 line=None
+     5616  EXTENDED_ARG                                                        line=None
+     5618  JUMP_BACKWARD_NO_INTERRUPT to L23                                   line=None  <<< JUMP_BACKWARD_NO_INTERRUPT
+     5620  LOAD_CONST                 None                                     line=None
+     5622  STORE_FAST                 _dl_err2                                 line=None
+     5624  DELETE_FAST                _dl_err2                                 line=None
+     5626  RERAISE                                                             line=None
+     5628  RERAISE                                                             line=418
+     5630  COPY                                                                line=None
+     5632  POP_EXCEPT                                                          line=None
+     5634  RERAISE                                                             line=None
+     5636  PUSH_EXC_INFO                                                       line=None
+     5638  LOAD_GLOBAL                DecodeEngine                             line=550
+     5648  LOAD_ATTR                  CardKeyBoundError                        line=None
+     5668  CHECK_EXC_MATCH                                                     line=None
+     5670  POP_JUMP_IF_FALSE          to L51                                   line=None  <<< POP_JUMP_IF_FALSE
+     5674  STORE_FAST                 e                                        line=None
+     5676  LOAD_CONST                 False                                    line=551
+     5678  LOAD_DEREF                 self                                     line=None
+     5680  STORE_ATTR                 is_running                               line=None
+     5690  LOAD_DEREF                 self                                     line=552
+     5692  LOAD_ATTR                  _log + NULL|self                         line=None
+     5712  LOAD_CONST                 'ERROR'                                  line=None
+     5714  LOAD_CONST                 '⛔ 卡密验证失败: '                             line=None
+     5716  LOAD_FAST                  e                                        line=None
+     5718  FORMAT_SIMPLE                                                       line=None
+     5720  BUILD_STRING                                                        line=None
+     5722  CALL                                                                line=None  <<< CALL
+     5730  POP_TOP                                                             line=None
+     5732  LOAD_CONST                 'card_bound'                             line=553
+     5734  LOAD_GLOBAL                str + NULL                               line=None
+     5744  LOAD_FAST                  e                                        line=None
+     5746  CALL                                                                line=None  <<< CALL
+     5754  LOAD_CONST                 ('final_status', 'error')                line=None
+     5756  BUILD_CONST_KEY_MAP                                                 line=None
+     5758  SWAP                                                                line=None
+     5760  POP_EXCEPT                                                          line=None
+     5762  LOAD_CONST                 None                                     line=None
+     5764  STORE_FAST                 e                                        line=None
+     5766  DELETE_FAST                e                                        line=None
+     5768  RETURN_VALUE                                                        line=None  <<< RETURN_VALUE
+     5770  LOAD_CONST                 None                                     line=None
+     5772  STORE_FAST                 e                                        line=None
+     5774  DELETE_FAST                e                                        line=None
+     5776  RERAISE                                                             line=None
+     5778  LOAD_GLOBAL                Exception                                line=555
+     5788  CHECK_EXC_MATCH                                                     line=None
+     5790  POP_JUMP_IF_FALSE          to L52                                   line=None  <<< POP_JUMP_IF_FALSE
+     5794  STORE_FAST                 e                                        line=None
+     5796  LOAD_CONST                 False                                    line=556
+     5798  LOAD_DEREF                 self                                     line=None
+     5800  STORE_ATTR                 is_running                               line=None
+     5810  LOAD_DEREF                 self                                     line=557
+     5812  LOAD_ATTR                  _log + NULL|self                         line=None
+     5832  LOAD_CONST                 'ERROR'                                  line=None
+     5834  LOAD_CONST                 '解码过程异常: '                               line=None
+     5836  LOAD_FAST                  e                                        line=None
+     5838  FORMAT_SIMPLE                                                       line=None
+     5840  BUILD_STRING                                                        line=None
+     5842  CALL                                                                line=None  <<< CALL
+     5850  POP_TOP                                                             line=None
+     5852  LOAD_CONST                 'failed'                                 line=558
+     5854  LOAD_GLOBAL                str + NULL                               line=None
+     5864  LOAD_FAST                  e                                        line=None
+     5866  CALL                                                                line=None  <<< CALL
+     5874  LOAD_CONST                 ('final_status', 'error')                line=None
+     5876  BUILD_CONST_KEY_MAP                                                 line=None
+     5878  SWAP                                                                line=None
+     5880  POP_EXCEPT                                                          line=None
+     5882  LOAD_CONST                 None                                     line=None
+     5884  STORE_FAST                 e                                        line=None
+     5886  DELETE_FAST                e                                        line=None
+     5888  RETURN_VALUE                                                        line=None  <<< RETURN_VALUE
+     5890  LOAD_CONST                 None                                     line=None
+     5892  STORE_FAST                 e                                        line=None
+     5894  DELETE_FAST                e                                        line=None
+     5896  RERAISE                                                             line=None
+     5898  RERAISE                                                             line=555
+     5900  COPY                                                                line=None
+     5902  POP_EXCEPT                                                          line=None
+     5904  RERAISE                                                             line=None
+
+   === DecodeEngine.run_decode_from_exe  off 1600..2020 ===
+     1600  LOAD_GLOBAL                time                                     line=642
+     1610  LOAD_ATTR                  time                                     line=None
+     1630  PUSH_NULL                                                           line=None
+     1632  CALL                                                                line=None  <<< CALL
+     1640  STORE_FAST                 _t_b                                     line=None
+     1642  LOAD_GLOBAL                _detect_bind_error_dialog + NULL         line=643
+     1652  LOAD_FAST                  self                                     line=None
+     1654  LOAD_ATTR                  _log                                     line=None
+     1674  LOAD_FAST                  self                                     line=None
+     1676  LOAD_ATTR                  _check_stopped                           line=None
+     1696  CALL                                                                line=None  <<< CALL
+     1704  STORE_FAST                 bind_error                               line=None
+     1706  LOAD_FAST                  self                                     line=644
+     1708  LOAD_ATTR                  _log + NULL|self                         line=None
+     1728  LOAD_CONST                 'DEBUG'                                  line=None
+     1730  LOAD_CONST                 '[MAIN-BIND] <<< _detect_bind_error_dialog 返回=' line=None
+     1732  LOAD_FAST                  bind_error                               line=None
+     1734  FORMAT_SIMPLE                                                       line=None
+     1736  LOAD_CONST                 ' 耗时='                                   line=None
+     1738  LOAD_GLOBAL                time                                     line=None
+     1748  LOAD_ATTR                  time                                     line=None
+     1768  PUSH_NULL                                                           line=None
+     1770  CALL                                                                line=None  <<< CALL
+     1778  LOAD_FAST                  _t_b                                     line=None
+     1780  BINARY_OP                  -                                        line=None
+     1784  LOAD_CONST                 '.2f'                                    line=None
+     1786  FORMAT_WITH_SPEC                                                    line=None
+     1788  LOAD_CONST                 's'                                      line=None
+     1790  BUILD_STRING                                                        line=None
+     1792  CALL                                                                line=None  <<< CALL
+     1800  POP_TOP                                                             line=None
+     1802  LOAD_FAST                  bind_error                               line=645
+     1804  TO_BOOL                                                             line=None
+     1812  POP_JUMP_IF_FALSE          to L9                                    line=None  <<< POP_JUMP_IF_FALSE
+     1816  LOAD_FAST                  self                                     line=646
+     1818  LOAD_ATTR                  _log + NULL|self                         line=None
+     1838  LOAD_CONST                 'ERROR'                                  line=None
+     1840  LOAD_CONST                 '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'              line=None
+     1842  CALL                                                                line=None  <<< CALL
+     1850  POP_TOP                                                             line=None
+     1852  LOAD_GLOBAL                DecodeEngine                             line=647
+     1862  LOAD_ATTR                  CardKeyBoundError + NULL|self            line=None
+     1882  LOAD_CONST                 '此授权码已绑定其他机器'                            line=None
+     1884  CALL                                                                line=None  <<< CALL
+     1892  RAISE_VARARGS                                                       line=None  <<< RAISE_VARARGS
+     1894  LOAD_FAST                  self                                     line=651
+     1896  LOAD_ATTR                  _check_stopped + NULL|self               line=None
+     1916  CALL                                                                line=None  <<< CALL
+     1924  TO_BOOL                                                             line=None
+     1932  POP_JUMP_IF_FALSE          to L10                                   line=None  <<< POP_JUMP_IF_FALSE
+     1936  LOAD_CONST                 'final_status'                           line=None
+     1938  LOAD_CONST                 'stopped'                                line=None
+     1940  BUILD_MAP                                                           line=None
+     1942  RETURN_VALUE                                                        line=None  <<< RETURN_VALUE
+     1944  LOAD_FAST                  params                                   line=654
+     1946  LOAD_ATTR                  get + NULL|self                          line=None
+     1966  LOAD_CONST                 'versionSelect'                          line=None
+     1968  LOAD_CONST                 'universal'                              line=None
+     1970  CALL                                                                line=None  <<< CALL
+     1978  STORE_FAST                 version_select                           line=None
+     1980  LOAD_FAST                  version_select                           line=655
+     1982  LOAD_CONST                 'compat2'                                line=None
+     1984  COMPARE_OP                 bool(==)                                 line=None
+     1988  POP_JUMP_IF_FALSE          to L14                                   line=None  <<< POP_JUMP_IF_FALSE
+     1992  LOAD_FAST                  self                                     line=656
+     1994  LOAD_ATTR                  _log + NULL|self                         line=None
+     2014  LOAD_CONST                 'INFO'                                   line=None
+     2016  LOAD_CONST                 '兼容二版本清理中，请耐心等待...'                      line=None
+     2018  CALL                                                                line=None  <<< CALL
+
+   === DecodeEngine.run_decode_from_exe  off 2930..3230 ===
+     2932  CHECK_EXC_MATCH                                                     line=None
+     2934  POP_JUMP_IF_FALSE          to L19                                   line=None  <<< POP_JUMP_IF_FALSE
+     2938  POP_TOP                                                             line=None
+     2940  POP_EXCEPT                                                          line=584
+     2942  EXTENDED_ARG                                                        line=None
+     2944  JUMP_BACKWARD_NO_INTERRUPT to L2                                    line=None  <<< JUMP_BACKWARD_NO_INTERRUPT
+     2946  RERAISE                                                             line=583
+     2948  COPY                                                                line=None
+     2950  POP_EXCEPT                                                          line=None
+     2952  RERAISE                                                             line=None
+     2954  PUSH_EXC_INFO                                                       line=None
+     2956  LOAD_GLOBAL                DecodeEngine                             line=703
+     2966  LOAD_ATTR                  CardKeyBoundError                        line=None
+     2986  CHECK_EXC_MATCH                                                     line=None
+     2988  POP_JUMP_IF_FALSE          to L20                                   line=None  <<< POP_JUMP_IF_FALSE
+     2992  STORE_FAST                 e                                        line=None
+     2994  LOAD_CONST                 False                                    line=704
+     2996  LOAD_FAST                  self                                     line=None
+     2998  STORE_ATTR                 is_running                               line=None
+     3008  LOAD_FAST                  self                                     line=705
+     3010  LOAD_ATTR                  _log + NULL|self                         line=None
+     3030  LOAD_CONST                 'ERROR'                                  line=None
+     3032  LOAD_CONST                 '⛔ 卡密验证失败: '                             line=None
+     3034  LOAD_FAST                  e                                        line=None
+     3036  FORMAT_SIMPLE                                                       line=None
+     3038  BUILD_STRING                                                        line=None
+     3040  CALL                                                                line=None  <<< CALL
+     3048  POP_TOP                                                             line=None
+     3050  LOAD_CONST                 'card_bound'                             line=706
+     3052  LOAD_GLOBAL                str + NULL                               line=None
+     3062  LOAD_FAST                  e                                        line=None
+     3064  CALL                                                                line=None  <<< CALL
+     3072  LOAD_CONST                 ('final_status', 'error')                line=None
+     3074  BUILD_CONST_KEY_MAP                                                 line=None
+     3076  SWAP                                                                line=None
+     3078  POP_EXCEPT                                                          line=None
+     3080  LOAD_CONST                 None                                     line=None
+     3082  STORE_FAST                 e                                        line=None
+     3084  DELETE_FAST                e                                        line=None
+     3086  RETURN_VALUE                                                        line=None  <<< RETURN_VALUE
+     3088  LOAD_CONST                 None                                     line=None
+     3090  STORE_FAST                 e                                        line=None
+     3092  DELETE_FAST                e                                        line=None
+     3094  RERAISE                                                             line=None
+     3096  LOAD_GLOBAL                Exception                                line=708
+     3106  CHECK_EXC_MATCH                                                     line=None
+     3108  POP_JUMP_IF_FALSE          to L21                                   line=None  <<< POP_JUMP_IF_FALSE
+     3112  STORE_FAST                 e                                        line=None
+     3114  LOAD_CONST                 False                                    line=709
+     3116  LOAD_FAST                  self                                     line=None
+     3118  STORE_ATTR                 is_running                               line=None
+     3128  LOAD_FAST                  self                                     line=710
+     3130  LOAD_ATTR                  _log + NULL|self                         line=None
+     3150  LOAD_CONST                 'ERROR'                                  line=None
+     3152  LOAD_CONST                 '继续解码过程异常: '                             line=None
+     3154  LOAD_FAST                  e                                        line=None
+     3156  FORMAT_SIMPLE                                                       line=None
+     3158  BUILD_STRING                                                        line=None
+     3160  CALL                                                                line=None  <<< CALL
+     3168  POP_TOP                                                             line=None
+     3170  LOAD_CONST                 'failed'                                 line=711
+     3172  LOAD_GLOBAL                str + NULL                               line=None
+     3182  LOAD_FAST                  e                                        line=None
+     3184  CALL                                                                line=None  <<< CALL
+     3192  LOAD_CONST                 ('final_status', 'error')                line=None
+     3194  BUILD_CONST_KEY_MAP                                                 line=None
+     3196  SWAP                                                                line=None
+     3198  POP_EXCEPT                                                          line=None
+     3200  LOAD_CONST                 None                                     line=None
+     3202  STORE_FAST                 e                                        line=None
+     3204  DELETE_FAST                e                                        line=None
+     3206  RETURN_VALUE                                                        line=None  <<< RETURN_VALUE
+     3208  LOAD_CONST                 None                                     line=None
+     3210  STORE_FAST                 e                                        line=None
+     3212  DELETE_FAST                e                                        line=None
+     3214  RERAISE                                                             line=None
+     3216  RERAISE                                                             line=708
+     3218  COPY                                                                line=None
+     3220  POP_EXCEPT                                                          line=None
+     3222  RERAISE                                                             line=None
+
+   === _wait_and_type_password  off 1330..1730 ===
+     1348  PUSH_NULL                                                           line=None
+     1350  LOAD_CONST                 10                                       line=None
+     1352  CALL                                                                line=None  <<< CALL
+     1360  POP_TOP                                                             line=None
+     1362  LOAD_GLOBAL                _detect_bind_error_dialog + NULL         line=4035
+     1372  LOAD_FAST_LOAD_FAST        log_func, stopped_check                  line=None
+     1374  CALL                                                                line=None  <<< CALL
+     1382  STORE_FAST                 bind_error                               line=None
+     1384  LOAD_FAST                  bind_error                               line=4036
+     1386  TO_BOOL                                                             line=None
+     1394  POP_JUMP_IF_FALSE          to L12                                   line=None  <<< POP_JUMP_IF_FALSE
+     1398  LOAD_FAST                  log_func                                 line=4038
+     1400  PUSH_NULL                                                           line=None
+     1402  LOAD_CONST                 'ERROR'                                  line=None
+     1404  LOAD_CONST                 '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'              line=None
+     1406  CALL                                                                line=None  <<< CALL
+     1414  POP_TOP                                                             line=None
+     1416  LOAD_GLOBAL                DecodeEngine                             line=4041
+     1426  LOAD_ATTR                  CardKeyBoundError + NULL|self            line=None
+     1446  LOAD_CONST                 '此授权码已绑定其他机器'                            line=None
+     1448  CALL                                                                line=None  <<< CALL
+     1456  RAISE_VARARGS                                                       line=None  <<< RAISE_VARARGS
+     1458  NOP                                                                 line=4036
+     1460  LOAD_FAST                  log_func                                 line=4051
+     1462  PUSH_NULL                                                           line=None
+     1464  LOAD_CONST                 'INFO'                                   line=None
+     1466  LOAD_CONST                 '等待序列号模式选择...'                           line=None
+     1468  CALL                                                                line=None  <<< CALL
+     1476  POP_TOP                                                             line=None
+     1478  LOAD_GLOBAL                time                                     line=4052
+     1488  LOAD_ATTR                  sleep                                    line=None
+     1508  PUSH_NULL                                                           line=None
+     1510  LOAD_CONST                 0.8                                      line=None
+     1512  CALL                                                                line=None  <<< CALL
+     1520  POP_TOP                                                             line=None
+     1522  LOAD_FAST                  params                                   line=4053
+     1524  LOAD_ATTR                  get + NULL|self                          line=None
+     1544  LOAD_CONST                 'codeType'                               line=None
+     1546  LOAD_CONST                 'static'                                 line=None
+     1548  CALL                                                                line=None  <<< CALL
+     1556  STORE_FAST                 code_type                                line=None
+     1558  LOAD_FAST                  code_type                                line=4054
+     1560  LOAD_CONST                 'static'                                 line=None
+     1562  COMPARE_OP                 bool(==)                                 line=None
+     1566  POP_JUMP_IF_FALSE          to L13                                   line=None  <<< POP_JUMP_IF_FALSE
+     1570  LOAD_CONST                 '0'                                      line=None
+     1572  JUMP_FORWARD               to L14                                   line=None  <<< JUMP_FORWARD
+     1574  LOAD_CONST                 '2'                                      line=None
+     1576  STORE_FAST                 mode_val                                 line=None
+     1578  LOAD_FAST                  code_type                                line=4055
+     1580  LOAD_CONST                 'static'                                 line=None
+     1582  COMPARE_OP                 bool(==)                                 line=None
+     1586  POP_JUMP_IF_FALSE          to L15                                   line=None  <<< POP_JUMP_IF_FALSE
+     1590  LOAD_CONST                 '静态序列号'                                  line=None
+     1592  JUMP_FORWARD               to L16                                   line=None  <<< JUMP_FORWARD
+     1594  LOAD_CONST                 '动态序列号'                                  line=None
+     1596  STORE_FAST                 mode_label                               line=None
+     1598  NOP                                                                 line=4056
+     1600  LOAD_FAST                  hwid_dlg                                 line=4057
+     1602  LOAD_ATTR                  set_focus + NULL|self                    line=None
+     1622  CALL                                                                line=None  <<< CALL
+     1630  POP_TOP                                                             line=None
+     1632  LOAD_GLOBAL                time                                     line=4058
+     1642  LOAD_ATTR                  sleep                                    line=None
+     1662  PUSH_NULL                                                           line=None
+     1664  LOAD_CONST                 0.3                                      line=None
+     1666  CALL                                                                line=None  <<< CALL
+     1674  POP_TOP                                                             line=None
+     1676  LOAD_FAST                  hwid_dlg                                 line=4059
+     1678  LOAD_ATTR                  type_keys + NULL|self                    line=None
+     1698  LOAD_FAST                  mode_val                                 line=None
+     1700  LOAD_CONST                 0.05                                     line=None
+     1702  LOAD_CONST                 ('pause',)                               line=None
+     1704  CALL_KW                                                             line=None  <<< CALL_KW
+     1706  POP_TOP                                                             line=None
+     1708  LOAD_FAST                  log_func                                 line=4060
+     1710  PUSH_NULL                                                           line=None
+     1712  LOAD_CONST                 'INFO'                                   line=None
+     1714  LOAD_CONST                 '已输入序列号模式: '                             line=None
+     1716  LOAD_FAST                  mode_label                               line=None
+     1718  FORMAT_SIMPLE                                                       line=None
+     1720  LOAD_CONST                 ' ('                                     line=None
+     1722  LOAD_FAST                  mode_val                                 line=None
+     1724  FORMAT_SIMPLE                                                       line=None
+     1726  LOAD_CONST                 ')'                                      line=None
+     1728  BUILD_STRING                                                        line=None
+
+   === _wait_and_type_password  off 3060..3360 ===
+     3060  CHECK_EXC_MATCH                                                     line=None
+     3062  POP_JUMP_IF_FALSE          to L29                                   line=None  <<< POP_JUMP_IF_FALSE
+     3066  POP_TOP                                                             line=None
+     3068  POP_EXCEPT                                                          line=4008
+     3070  EXTENDED_ARG                                                        line=None
+     3072  JUMP_BACKWARD_NO_INTERRUPT to L8                                    line=None  <<< JUMP_BACKWARD_NO_INTERRUPT
+     3074  RERAISE                                                             line=4007
+     3076  COPY                                                                line=None
+     3078  POP_EXCEPT                                                          line=None
+     3080  RERAISE                                                             line=None
+     3082  PUSH_EXC_INFO                                                       line=None
+     3084  LOAD_GLOBAL                DecodeEngine                             line=4043
+     3094  LOAD_ATTR                  CardKeyBoundError                        line=None
+     3114  CHECK_EXC_MATCH                                                     line=None
+     3116  POP_JUMP_IF_FALSE          to L30                                   line=None  <<< POP_JUMP_IF_FALSE
+     3120  POP_TOP                                                             line=None
+     3122  RAISE_VARARGS                                                       line=4045  <<< RAISE_VARARGS
+     3124  LOAD_GLOBAL                Exception                                line=4046
+     3134  CHECK_EXC_MATCH                                                     line=None
+     3136  POP_JUMP_IF_FALSE          to L31                                   line=None  <<< POP_JUMP_IF_FALSE
+     3140  STORE_FAST                 e                                        line=None
+     3142  LOAD_FAST                  log_func                                 line=4047
+     3144  PUSH_NULL                                                           line=None
+     3146  LOAD_CONST                 'ERROR'                                  line=None
+     3148  LOAD_CONST                 '输入卡密失败: '                               line=None
+     3150  LOAD_FAST                  e                                        line=None
+     3152  FORMAT_SIMPLE                                                       line=None
+     3154  BUILD_STRING                                                        line=None
+     3156  CALL                                                                line=None  <<< CALL
+     3164  POP_TOP                                                             line=None
+     3166  POP_EXCEPT                                                          line=4048
+     3168  LOAD_CONST                 None                                     line=None
+     3170  STORE_FAST                 e                                        line=None
+     3172  DELETE_FAST                e                                        line=None
+     3174  RETURN_CONST               False                                    line=None  <<< RETURN_CONST
+     3176  LOAD_CONST                 None                                     line=None
+     3178  STORE_FAST                 e                                        line=None
+     3180  DELETE_FAST                e                                        line=None
+     3182  RERAISE                                                             line=None
+     3184  RERAISE                                                             line=4046
+     3186  COPY                                                                line=None
+     3188  POP_EXCEPT                                                          line=None
+     3190  RERAISE                                                             line=None
+     3192  PUSH_EXC_INFO                                                       line=None
+     3194  LOAD_GLOBAL                Exception                                line=4064
+     3204  CHECK_EXC_MATCH                                                     line=None
+     3206  POP_JUMP_IF_FALSE          to L32                                   line=None  <<< POP_JUMP_IF_FALSE
+     3210  STORE_FAST                 e                                        line=None
+     3212  LOAD_FAST                  log_func                                 line=4065
+     3214  PUSH_NULL                                                           line=None
+     3216  LOAD_CONST                 'ERROR'                                  line=None
+     3218  LOAD_CONST                 '序列号模式选择失败: '                            line=None
+     3220  LOAD_FAST                  e                                        line=None
+     3222  FORMAT_SIMPLE                                                       line=None
+     3224  BUILD_STRING                                                        line=None
+     3226  CALL                                                                line=None  <<< CALL
+     3234  POP_TOP                                                             line=None
+     3236  POP_EXCEPT                                                          line=None
+     3238  LOAD_CONST                 None                                     line=None
+     3240  STORE_FAST                 e                                        line=None
+     3242  DELETE_FAST                e                                        line=None
+     3244  EXTENDED_ARG                                                        line=None
+     3246  JUMP_BACKWARD_NO_INTERRUPT to L17                                   line=None  <<< JUMP_BACKWARD_NO_INTERRUPT
+     3248  LOAD_CONST                 None                                     line=None
+     3250  STORE_FAST                 e                                        line=None
+     3252  DELETE_FAST                e                                        line=None
+     3254  RERAISE                                                             line=None
+     3256  RERAISE                                                             line=4064
+     3258  COPY                                                                line=None
+     3260  POP_EXCEPT                                                          line=None
+     3262  RERAISE                                                             line=None
+     3264  PUSH_EXC_INFO                                                       line=None
+     3266  LOAD_GLOBAL                Exception                                line=4083
+     3276  CHECK_EXC_MATCH                                                     line=None
+     3278  POP_JUMP_IF_FALSE          to L33                                   line=None  <<< POP_JUMP_IF_FALSE
+     3282  STORE_FAST                 e                                        line=None
+     3284  LOAD_FAST                  log_func                                 line=4084
+     3286  PUSH_NULL                                                           line=None
+     3288  LOAD_CONST                 'ERROR'                                  line=None
+     3290  LOAD_CONST                 '解码模式选择失败: '                             line=None
+     3292  LOAD_FAST                  e                                        line=None
+     3294  FORMAT_SIMPLE                                                       line=None
+     3296  BUILD_STRING                                                        line=None
+     3298  CALL                                                                line=None  <<< CALL
+     3306  POP_TOP                                                             line=None
+     3308  POP_EXCEPT                                                          line=None
+     3310  LOAD_CONST                 None                                     line=None
+     3312  STORE_FAST                 e                                        line=None
+     3314  DELETE_FAST                e                                        line=None
+     3316  EXTENDED_ARG                                                        line=None
+     3318  JUMP_BACKWARD_NO_INTERRUPT to L18                                   line=None  <<< JUMP_BACKWARD_NO_INTERRUPT
+     3320  LOAD_CONST                 None                                     line=None
+     3322  STORE_FAST                 e                                        line=None
+     3324  DELETE_FAST                e                                        line=None
+     3326  RERAISE                                                             line=None
+     3328  RERAISE                                                             line=4083
+     3330  COPY                                                                line=None
+     3332  POP_EXCEPT                                                          line=None
+     3334  RERAISE                                                             line=None
+     3336  PUSH_EXC_INFO                                                       line=None
+     3338  LOAD_GLOBAL                Exception                                line=4100
+     3348  CHECK_EXC_MATCH                                                     line=None
+     3350  POP_JUMP_IF_FALSE          to L34                                   line=None  <<< POP_JUMP_IF_FALSE
+     3354  STORE_FAST                 e                                        line=None
+     3356  LOAD_FAST                  log_func                                 line=4101
+     3358  PUSH_NULL                                                           line=None
+
+-- 7. 判据来历：`_detect_bind_error_dialog` 靠什么把"弹窗"变成 True --
+   <module>._detect_bind_error_dialog: 判定类指令 15 处（各带前两条指令作为上下文）
+     off=  654 line=None  COMPARE_OP     bool(<)                        前两条: STORE_FAST check_count | LOAD_FAST_LOAD_FAST waited, max_wait
+     off=  666 line=None  COMPARE_OP     bool(<)                        前两条: POP_JUMP_IF_FALSE to L28 | LOAD_FAST_LOAD_FAST check_count, max_checks
+     off=  786 line=None  COMPARE_OP     bool(<)                        前两条: LOAD_FAST waited | LOAD_CONST 5
+     off= 1198 line=None  COMPARE_OP     bool(>)                        前两条: LOAD_FAST _enum_dur | LOAD_CONST 2.0
+     off= 1512 line=None  COMPARE_OP     bool(>)                        前两条: LOAD_FAST _b_dur | LOAD_CONST 1.0
+     off= 1930 line=3086  LOAD_CONST     ('绑定', '授权码已绑', '其他机器')        前两条: LOAD_CONST False | STORE_FAST is_match
+     off= 1944 line=None  CONTAINS_OP                                   前两条: LOAD_FAST kw | LOAD_FAST dlg_title
+     off= 1994 line=3094  LOAD_CONST     ('绑定', '其他机器', '更换授权码', '请更换')   前两条: TO_BOOL  | POP_JUMP_IF_TRUE to L22
+     off= 2008 line=None  CONTAINS_OP                                   前两条: LOAD_FAST kw | LOAD_FAST all_child_text
+     off= 2110 line=None  COMPARE_OP     >                              前两条: LOAD_FAST static_count | LOAD_CONST 0
+     off= 2698 line=None  LOAD_CONST     '[BIND] <<< 返回 True (检测到已绑定弹窗)'   前两条: PUSH_NULL  | LOAD_CONST 'DEBUG'
+     off= 2774 line=None  COMPARE_OP     bool(<)                        前两条: STORE_FAST waited | LOAD_FAST_LOAD_FAST waited, max_wait
+     off= 2784 line=None  COMPARE_OP     bool(<)                        前两条: POP_JUMP_IF_FALSE to L28 | LOAD_FAST_LOAD_FAST check_count, max_checks
+     off= 2810 line=None  LOAD_CONST     '次检测均未命中，放行（无绑定弹窗）'            前两条: LOAD_FAST max_checks | FORMAT_SIMPLE 
+     off= 2830 line=None  LOAD_CONST     '[BIND] <<< 返回 False (未检测到绑定弹窗)'   前两条: PUSH_NULL  | LOAD_CONST 'DEBUG'
+   <module>._detect_bind_error_dialog: 返回站点 3 处 = RETURN_CONST@732(line 2983), RETURN_CONST@2712(line None), RETURN_CONST@2842(line 3140)
+   §7b 计数器自照：同一函数 RETURN_VALUE=0 + RETURN_CONST=3；第一版只数前者 -> 印出假 0
+
+-- 8. 判据 S1-S5 逐条判定（全部由字节码算出，不写死判词）--
+   DecodeEngine.run_decode      store=bind_error @4084   分岔=POP_JUMP_IF_FALSE@4192(line None) to L37 | 真值支首个 RAISE_VARARGS@4272(line None)
+   DecodeEngine.run_decode_from_exe store=bind_error @1704   分岔=POP_JUMP_IF_FALSE@1812(line None) to L9 | 真值支首个 RAISE_VARARGS@1892(line None)
+   _wait_and_type_password      store=bind_error @1382   分岔=POP_JUMP_IF_FALSE@1394(line None) to L12 | 真值支首个 RAISE_VARARGS@1456(line None)
+
+   出口状态字母表（两种编译形态都找：`BUILD_CONST_KEY_MAP` 的 keys 元组，以及 dict 字面量的
+   `LOAD_CONST 'final_status'` + `BUILD_MAP`。第一版只认前者，于是把 5 处出口数成 2 处——
+   形态不全是探针缺陷，不是样本事实）：
+     命中 2 个 code object，出口构造点 34 处
+     <module>.DecodeEngine.run_decode               off=376   line=None  BUILD_CONST_KEY_MAP  常量=["'⚠ 请先输入卡密！'", "'failed'", "'未输入卡密'"]
+     <module>.DecodeEngine.run_decode               off=526   line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=722   line=None  BUILD_CONST_KEY_MAP  常量=["'⚠ 检测到电脑未联网！'", "'no_network'", "'检测到电脑未联网，请连接网络后重新操作'"]
+     <module>.DecodeEngine.run_decode               off=806   line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=1122  line=314   BUILD_CONST_KEY_MAP  常量=['True', "'msg'", "''"]
+     <module>.DecodeEngine.run_decode               off=1206  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=1886  line=370   BUILD_CONST_KEY_MAP  常量=["'⚠ 云下发解析失败，需要用户手动下载'", "'need_manual_download'", "'下载链接解析失败'"]
+     <module>.DecodeEngine.run_decode               off=1970  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=2616  line=424   BUILD_CONST_KEY_MAP  常量=["'need_manual_download'", "'两条线路'", "'，请手动下载'"]
+     <module>.DecodeEngine.run_decode               off=2688  line=432   BUILD_CONST_KEY_MAP  常量=["'need_manual_download'", "'链接获取失败，请手动下载'"]
+     <module>.DecodeEngine.run_decode               off=2820  line=None  BUILD_CONST_KEY_MAP  常量=["'解码程序下载失败！文件不完整或无效'", "'failed'", "'下载失败(文件无效)'"]
+     <module>.DecodeEngine.run_decode               off=2904  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=3086  line=None  BUILD_CONST_KEY_MAP  常量=["'failed'", "'解码程序部署失败'"]
+     <module>.DecodeEngine.run_decode               off=3134  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=3784  line=476   BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=4316  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=4494  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=4960  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=5202  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode               off=5300  line=548   BUILD_MAP            常量=["'completed'"]
+     <module>.DecodeEngine.run_decode               off=5754  line=None  BUILD_CONST_KEY_MAP  常量=["'card_bound'"]
+     <module>.DecodeEngine.run_decode               off=5874  line=None  BUILD_CONST_KEY_MAP  常量=["'failed'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=424   line=None  BUILD_CONST_KEY_MAP  常量=["'桌面上找不到解码程序(.exe)，请确认已将文件放置桌面'", "'failed'", "'桌面上找不到解码程序，请确认已将文件放置桌面'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=642   line=None  BUILD_CONST_KEY_MAP  常量=["'桌面上找不到解码程序'", "'failed'", "'找不到桌面上的解码程序(.exe)，请确认已将下载的解码程序放置到桌面'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=708   line=None  BUILD_CONST_KEY_MAP  常量=["'failed'", "'解码程序部署失败'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=756   line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=1404  line=630   BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=1936  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=2114  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=2576  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=2816  line=None  BUILD_MAP            常量=["'stopped'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=2912  line=701   BUILD_MAP            常量=["'completed'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=3072  line=None  BUILD_CONST_KEY_MAP  常量=["'card_bound'"]
+     <module>.DecodeEngine.run_decode_from_exe      off=3192  line=None  BUILD_CONST_KEY_MAP  常量=["'failed'"]
+
+   S1(三处 seam 各自的分岔指令都算出来了)=PASS
+   S2(真值支以 RAISE_VARARGS 收尾、假值支走另一条 final_status 出口)=PASS
+   S3(覆盖率闸 + 可 RED 自检)=PASS
+   S4(正对照=空卡密出口)=found   S5(负对照=_log 无 raise)=PASS
+   VERDICT 壳侧解码动作分支 = SEPARATED

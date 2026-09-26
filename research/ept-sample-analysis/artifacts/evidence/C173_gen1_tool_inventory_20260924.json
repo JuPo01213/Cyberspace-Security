@@ -1,0 +1,140 @@
+{
+  "run_id": "C173-GEN1-ACK-20260924-01",
+  "vm_name": "<VM_LABEL>",
+  "guest_name": "<VM_LABEL>",
+  "channel": "PowerShell Direct",
+  "inventory_captured_utc": "2026-09-24T00:48:21.6897028Z",
+  "tools": [
+    {
+      "name": "powershell.exe",
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "present": true,
+      "sha256": "64DD55E1C2373DEED25C2776F553C632E58C45E56A0E4639DFD54EE97EAB9C19",
+      "length_bytes": 493568,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "cmd.exe",
+      "path": "C:\\Windows\\system32\\cmd.exe",
+      "present": true,
+      "sha256": "265B69033CEA7A9F8214A34CD9B17912909AF46C7A47395DD7BB893A24507E59",
+      "length_bytes": 289792,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "tasklist.exe",
+      "path": "C:\\Windows\\system32\\tasklist.exe",
+      "present": true,
+      "sha256": "BE7241A74FE9A9D30E0631E41533A362B21C8F7AAE3E5B6AD319CC15C024EC3F",
+      "length_bytes": 106496,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "certutil.exe",
+      "path": "C:\\Windows\\system32\\certutil.exe",
+      "present": true,
+      "sha256": "BF072F9A6A15B550B13AE86A4FBD3FA809D2A13236847AE9FA9A68F41386106E",
+      "length_bytes": 1679872,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "tar.exe",
+      "path": "C:\\Windows\\system32\\tar.exe",
+      "present": true,
+      "sha256": "DFEF7A04A700B8C9A1D6249DC995C2E91A4BE7583D5B534ED4C9AEC546616478",
+      "length_bytes": 54784,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "cdb.exe",
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe",
+      "present": true,
+      "sha256": "B27BEEAB332294D3B043095D727DC5ACA2A53AE609EEC9223BC4276531595B6E",
+      "length_bytes": 178616,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "windbg.exe",
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\windbg.exe",
+      "present": true,
+      "sha256": "2A5FDEE7826717970AF38AA509F32D94C2FB8866B16DE6ACE752D5D31FD8EEF2",
+      "length_bytes": 604584,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "ntsd.exe",
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\ntsd.exe",
+      "present": true,
+      "sha256": "8ED79EBE62FA94D534B7F161DA0030BA78203239A700EF64563963AFD3A81A11",
+      "length_bytes": 178624,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "kd.exe",
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\kd.exe",
+      "present": true,
+      "sha256": "7AD58BDF0F970387F4A6EBF3A5895B686B67452A7610C4C81B866B8C16DD348D",
+      "length_bytes": 207304,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "7z.exe",
+      "path": "C:\\HexPatch\\tools\\7zip\\7z.exe",
+      "present": true,
+      "sha256": "6EE3C0ED0B27663C1B948AE85A7C0BB073AED1498983182F3F0DF1F6A8C30B2F",
+      "length_bytes": 577536,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "rizin.exe",
+      "path": "C:\\HexPatch\\tools\\Rizin\\bin\\rizin.exe",
+      "present": true,
+      "sha256": "4E23543E17D41242152CD38F8BBEAFD161CE50AF970848794DE407F86CC5CCA7",
+      "length_bytes": 11776,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    },
+    {
+      "name": "python.exe",
+      "path": "<HOST_PATH>\\Users\\<USER>\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+      "present": true,
+      "sha256": null,
+      "length_bytes": 0,
+      "PSComputerName": "<VM_LABEL>",
+      "RunspaceId": "5e3654e2-7de5-494b-98a6-4c2ca81ac7c4",
+      "PSShowComputerName": true
+    }
+  ],
+  "sample_exposed": false,
+  "sample_root": "not_exposed",
+  "sample_identity_check": "deferred_until_read_only_channel",
+  "sample_launch_requested": false,
+  "win_sdk_installer_sha256": "680AA29DCFA806D35B4E93EA05A3FA2BDCF2935B65295F996C8E944584DD2836",
+  "source_notes": [
+    "cdb/windbg/ntsd/kd installed by Microsoft Windows SDK Desktop Debuggers feature",
+    "7z.exe and 7z.dll copied from host C:\\Program Files\\7-Zip to Guest C:\\HexPatch\\tools\\7zip",
+    "Rizin bin copied from host C:\\Program Files\\Rizin\\bin to Guest C:\\HexPatch\\tools\\Rizin\\bin",
+    "EPT sample was not copied or executed"
+  ]
+}

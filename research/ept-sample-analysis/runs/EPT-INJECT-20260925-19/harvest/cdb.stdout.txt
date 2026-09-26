@@ -1,0 +1,108 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.031 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.047 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+(c8c.7f4): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ffe`c5260860 cc              int     3
+0:000> .echo [XREF2_PARENT_READY]
+[XREF2_PARENT_READY]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> sxe -c "$$><child.cdb" cpr
+0:000> bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+0:000> bp kernel32!CopyFileExW ".echo [COPYEXW]; r rcx; r rdx; r r8; r r9; dU @rcx L60; dU @rdx L60; k L10; g"
+0:000> bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; $$><late.cdb; g"
+0:000> bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L60; k L8; g"
+0:000> .echotime
+Debugger (not debuggee) time: Fri Sep 25 03:28:08.385 2026 (UTC + 8:00)
+0:000> ba e 1 1407a30a6 ".if (@$t5 < 20) { .echo [AUTH_STOREDVERIFY_BEGIN]; r rip; r rcx; r rdx; r r8; r r9; k L16; r @$t5=@$t5+1 } ; g"
+0:000> ba e 1 1407a311f ".if (@$t6 < 20) { .echo [AUTH_STOREDAUTH_USABLE]; r rip; r rcx; r rdx; r r8; r r9; k L16; r @$t6=@$t6+1 } ; g"
+0:000> ba e 1 1407a315d ".if (@$t7 < 20) { .echo [AUTH_SP_STATE]; r rip; r rcx; r rdx; r r8; r r9; k L16; r @$t7=@$t7+1 } ; g"
+0:000> ba e 1 1407ad554 ".if (@$t8 < 20) { .echo [AUTH_SKIP_DRIVER_LOAD]; r rip; r rcx; r rdx; r r8; r r9; k L16; r @$t8=@$t8+1 } ; g"
+0:000> bp kernelbase!CreateFileW ".if (@$t9 < 30) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [PCREATEFILEW]; r rcx; dU @rcx L10; k L12; r @$t9=@$t9+1 } } } ; g"
+0:000> bp ntdll!NtQueryValueKey ".if (@$ta < 30) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [PNTQVK]; r rcx; r rdx; k L12; r @$ta=@$ta+1 } } } ; g"
+0:000> bp user32!MessageBoxW ".echo [MSGBOXW]; r rcx; r rdx; dU @rdx L10; k L16 ; g"
+0:000> bp ntdll!NtWaitForSingleObject 400 ".echo [SNAP_400]; ~* k L18; g"
+0:000> bp ntdll!NtWaitForSingleObject 1600 ".echo [SNAP_1600]; ~* k L18; g"
+breakpoint 11 redefined
+0:000> sxe -c ".echo [XREF2_PARENT_AV]; .lastevent; r; k; g" av
+0:000> g
+Bad register error at '@$ta < 30) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [PNTQVK]; r rcx; r rdx; k L12; r @$ta=@$ta+1 } } } ; g'
+ntdll!NtQueryValueKey:
+00007ffe`c522d870 4c8bd1          mov     r10,rcx
+0:000> NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

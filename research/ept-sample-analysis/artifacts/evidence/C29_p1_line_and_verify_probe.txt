@@ -1,0 +1,115 @@
+# C29 - 两处 C28 未能确认的断言的定向探针（离线只读，不执行样本字节码，仅 marshal+dis）
+
+== (a) 行信息到底有没有 ==
+  <module>.DecodeEngine.run_decode: co_lines()=228 项, 其中非 None 行号 207 个, 跨度 252..558
+     dis 指令 1302 条, 带 starts_line 的 228 条
+     旧文引注的行号是否真的存在: {287: True, 288: True, 289: True, 290: True, 291: True, 550: True, 551: True, 552: True, 553: True}
+     卡密分支上下文（按指令序号 68，不按源码行）:
+          62  LOAD_FAST card_key
+          63  TO_BOOL 
+          64  POP_JUMP_IF_TRUE to L3
+          65  LOAD_DEREF self
+          66  LOAD_ATTR _log + NULL|self
+          67  LOAD_CONST 'WARN'
+          68  LOAD_CONST '⚠ 请先输入卡密！'
+          69  CALL 
+          70  POP_TOP 
+          71  LOAD_CONST 'failed'
+          72  LOAD_CONST '未输入卡密'
+          73  LOAD_CONST ('final_status', 'error')
+          74  BUILD_CONST_KEY_MAP 
+          75  RETURN_VALUE 
+          76  LOAD_DEREF self
+          77  LOAD_ATTR _log + NULL|self
+          78  LOAD_CONST 'INFO'
+          79  LOAD_CONST '[步骤 '
+
+== (b) verify=False / 下载即执行 的真实位置 ==
+  main           <module>                                                   verify=False  names=['subprocess']
+  main           <module>._get_desktop_path                                 verify=False  names=['get']
+  main           <module>.DualModeLogger._emit                              verify=False  names=['get']
+  main           <module>._verify_webview2_files                            verify=False  names=['get']
+  main           <module>._wv2_download_bootstrapper                        verify=False  names=['get', 'requests']
+  main           <module>._update_webview2_silently                         verify=False  names=['subprocess']
+  main           <module>.install_webview2                                  verify=False  names=['subprocess']
+  main           <module>.get_system_version_info                           verify=False  names=['get', 'subprocess']
+  main           <module>.TaskRunner.run_task                               verify=False  names=['get']
+  main           <module>.TaskRunner.run_all                                verify=False  names=['get']
+  main           <module>.PyWebViewAPI.run_single_task                      verify=False  names=['get']
+  main           <module>.PyWebViewAPI.install_mac_tool                     verify=False  names=['subprocess']
+  main           <module>.PyWebViewAPI.install_winrar_silent                verify=False  names=['subprocess']
+  main           <module>.PyWebViewAPI.enable_windows_update                verify=False  names=['get']
+  main           <module>.PyWebViewAPI.get_machine_code                     verify=False  names=['subprocess']
+  main           <module>.PyWebViewAPI.view_machine_code                    verify=False  names=['Popen', 'subprocess']
+  main           <module>.PyWebViewAPI.manual_swap_code                     verify=False  names=['ShellExecute', 'get']
+  main           <module>.PyWebViewAPI.run_decode                           verify=False  names=['get']
+  main           <module>.PyWebViewAPI.run_decode_exec                      verify=False  names=['get']
+  main           <module>.PyWebViewAPI.continue_decode_after_manual         verify=False  names=['get']
+  main           <module>.PyWebViewAPI.restart_computer                     verify=False  names=['subprocess']
+  main           <module>.SplashScreen._on_confirm                          verify=False  names=['get']
+  main           <module>.SplashScreen.set_status                           verify=False  names=['get']
+  main           <module>.SplashScreen.switch_to_loading                    verify=False  names=['get']
+  main           <module>._fetch_feishu_notice                              verify=False  names=['get', 'requests']
+  main           <module>._release_bat_to_desktop                           verify=False  names=['startfile']
+  main           <module>.main_entry                                        verify=False  names=['get']
+  main           <module>.main_entry._check_startup_status                  verify=False  names=['get']
+  auto_decode    <module>                                                   verify=False  names=['requests', 'subprocess']
+  auto_decode    <module>._get_desktop_path                                 verify=False  names=['get']
+  auto_decode    <module>.DecodeEngine.run_decode                           verify=False  names=['get']
+  auto_decode    <module>.DecodeEngine.run_decode_from_exe                  verify=False  names=['get']
+  auto_decode    <module>._check_auto_start                                 verify=False  names=['get', 'subprocess']
+  auto_decode    <module>._remove_auto_start                                verify=False  names=['get', 'subprocess']
+  auto_decode    <module>._get_current_user_sid                             verify=False  names=['subprocess']
+  auto_decode    <module>._verify_task_exists                               verify=False  names=['subprocess']
+  auto_decode    <module>._add_hidden_auto_start                            verify=False  names=['get', 'subprocess']
+  auto_decode    <module>._add_hidden_auto_start._try_create_task           verify=False  names=['ShellExecute']
+  auto_decode    <module>._get_current_boot_delay                           verify=False  names=['subprocess']
+  auto_decode    <module>._modify_boot_delay                                verify=False  names=['subprocess']
+  auto_decode    <module>._kill_process                                     verify=False  names=['subprocess']
+  auto_decode    <module>._force_delete                                     verify=False  names=['subprocess']
+  auto_decode    <module>._enable_firewall                                  verify=False  names=['ShellExecute', 'subprocess']
+  auto_decode    <module>._disable_firewall                                 verify=False  names=['ShellExecute', 'subprocess']
+  auto_decode    <module>._add_firewall_block_rule                          verify=False  names=['ShellExecute', 'subprocess']
+  auto_decode    <module>._verify_firewall_rules_simple                     verify=False  names=['subprocess']
+  auto_decode    <module>._remove_firewall_rules                            verify=False  names=['subprocess']
+  auto_decode    <module>._parse_feishu_links                               verify=False  names=['get', 'requests']
+  auto_decode    <module>.get_download_url                                  verify=False  names=['get']
+  auto_decode    <module>._download_file                                    verify=False  names=['get', 'requests']
+  auto_decode    <module>.PasswordWindowDetector                            verify=False  names=['get']
+  auto_decode    <module>.PasswordWindowDetector.detect_and_lock            verify=False  names=['get']
+  auto_decode    <module>.PasswordWindowDetector._get_process_info_fallback verify=False  names=['subprocess']
+  auto_decode    <module>.PasswordWindowDetector._validate_target           verify=False  names=['get']
+  auto_decode    <module>.PasswordWindowDetector._print_lock_report         verify=False  names=['get']
+  auto_decode    <module>.PasswordWindowDetector.hwnd                       verify=False  names=['get']
+  auto_decode    <module>.PasswordWindowDetector.pid                        verify=False  names=['get']
+  auto_decode    <module>._detect_bind_error_dialog.find_target_pid         verify=False  names=['subprocess']
+  auto_decode    <module>._detect_disclaimer_dialog.find_target_pid         verify=False  names=['subprocess']
+  auto_decode    <module>._check_internet_connection                        verify=False  names=['urlopen']
+  auto_decode    <module>._check_intel_vt                                   verify=False  names=['subprocess']
+  auto_decode    <module>._call_spoofer_commandline                         verify=False  names=['Popen', 'get', 'subprocess']
+  auto_decode    <module>._wait_and_type_password                           verify=False  names=['get']
+  auto_decode    <module>._tc_files                                         verify=False  names=['get']
+  auto_decode    <module>._tc_firewall_rules                                verify=False  names=['subprocess']
+  auto_decode    <module>._tc_wer                                           verify=False  names=['get']
+  auto_decode    <module>._tc_explorer_traces                               verify=False  names=['get']
+  auto_decode    <module>._tc_own_temp                                      verify=False  names=['get']
+  auto_decode    <module>._tc_event_logs                                    verify=False  names=['subprocess']
+  auto_decode    <module>._reboot_computer                                  verify=False  names=['subprocess', 'system']
+  cli_mode       <module>._init_console                                     verify=False  names=['get']
+  cli_mode       <module>._reopen_std_handles._open_con                     verify=False  names=['get']
+  cli_mode       <module>._out                                              verify=False  names=['get']
+  cli_mode       <module>._print_banner.<genexpr>                           verify=False  names=['get']
+  cli_mode       <module>._run_optimize_tasks                               verify=False  names=['get']
+  cli_mode       <module>.run_cli_mode                                      verify=False  names=['get']
+  dx_repair      <module>                                                   verify=False  names=['subprocess']
+  dx_repair      <module>.DXRepairAutomation.launch_program                 verify=False  names=['Popen', 'subprocess']
+  dx_repair      <module>.DXRepairAutomation._kill_existing                 verify=False  names=['subprocess']
+  dx_repair      <module>.DXRepairAutomation._is_process_alive              verify=False  names=['subprocess']
+  dx_repair      <module>.DXRepairAutomation.force_kill                     verify=False  names=['subprocess']
+
+== (c) 哪些函数会"下载后立刻执行"==
+  main           <module>
+  main           <module>._update_webview2_silently
+  main           <module>.install_webview2
+  main           <module>.PyWebViewAPI.install_mac_tool._do_download_and_run
+  auto_decode    <module>

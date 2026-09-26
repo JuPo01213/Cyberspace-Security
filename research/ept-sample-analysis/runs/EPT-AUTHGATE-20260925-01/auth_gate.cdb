@@ -1,0 +1,11 @@
+.echo AUTH_GATE_RUN_BEGIN
+.childdbg 1
+sxd ibp
+sxe av
+bu 14235f67 ".echo PARENT_ENTRY; k L8; g"
+ba e 1 143c17fb0 ".echo PARENT_DISPATCH; r rcx; r rdx; r r8; r r9; k L12; g"
+ba e 1 143c3deae ".echo PARENT_DISPATCH_2; r rcx; r rdx; r r8; r r9; k L12; g"
+sxe -c ".echo CHILD_EVENT; eb 1407a3080 b8 01 00 00 00 c3; eb 1407a6a6a 90 90 90 90 90 90; .echo AUTH_GATE_AND_MAIN_BRANCH_PATCHED; db 1407a3080 L6; db 1407a6a6a L6; ba e 1 1407a4b90; ba e 1 1407a6a6a; ba e 1 1407a7aec; ba e 1 14078f060; .echo CHILD_BREAKPOINTS_ARMED; g" cpr:EPT_*.exe
+g
+.echo AUTH_GATE_RUN_END
+q

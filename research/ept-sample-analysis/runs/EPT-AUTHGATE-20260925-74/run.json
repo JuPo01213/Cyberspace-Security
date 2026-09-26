@@ -1,0 +1,15 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-74",
+  "evidence_scope": "real_sample_guest_run (Phase A: 监听器仅记录原始字节, 不发送任何响应 — 纯自然观测)",
+  "experiment": "E-2c Phase A: 127.0.0.1:1029 TCP 监听, 记录样本发送的原始协议字节(帧 hex+ascii 双格式落盘), 观察重连/超时行为与 FATAL 时序",
+  "hypothesis": "样本将向 127.0.0.1:1029 发送一帧以上结构化数据(HWID/卡密上报帧); 连接建立但无响应时样本表现为等待-超时-重试或带错误状态进入 FATAL, 与此前 SYN_SENT 即失败(无监听)的行为可区分",
+  "acceptance_fields": {
+    "frames_captured": "frame_*.hex 内容(RX 字节/帧)",
+    "connection_behavior": "ACCEPT/READ_TIMEOUT/EOF 序列",
+    "fatal_timing": "FATAL 相对连接建立的时序",
+    "target_native_return": "预期 NOT_OBSERVED"
+  },
+ "phase_b_plan": "依据 Phase A 捕获的帧结构构造响应(Respond=1 echo / Respond=2 ack0), 该轮标注 real_sample_guest_run_injected_io",
+  "deadline": "2 轮循环, 每轮 25 分钟",
+  "stop_loss": "2 轮秒死无连接 ⇒ 归档"
+}

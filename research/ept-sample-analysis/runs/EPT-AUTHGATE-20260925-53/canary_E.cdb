@@ -1,0 +1,20 @@
+.echo CANARY_E_BEGIN
+.echo --- X_ADV_OPEN ---
+x advapi32!OpenService*
+.echo --- X_ADV_START ---
+x advapi32!StartService*
+.echo --- X_ADV_CREATE ---
+x advapi32!CreateService*
+.echo --- X_ADV_PDB ---
+lm m advapi32
+.echo --- FORM_TESTS ---
+bu advapi32!OpenServiceA ".echo HIT_OSA; g"
+.echo F1_DONE
+bu advapi32!StartServiceA ".echo HIT_SSA; g"
+.echo F2_DONE
+bu advapi32!CreateServiceA ".echo HIT_CSA; g"
+.echo F3_DONE
+bp kernel32!ExitProcessImplementation ".echo HIT_EXITIMPL; g"
+.echo F4_DONE
+.echo CANARY_E_STOP
+q

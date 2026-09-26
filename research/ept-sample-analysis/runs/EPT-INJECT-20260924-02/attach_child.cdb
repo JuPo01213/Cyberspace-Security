@@ -1,0 +1,21 @@
+.echo [INJ2_ATTACHED]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+.echo [INJ2_CHILD_BPS_ARMING]
+bu 14078ee73 ".echo [INJ2_DEVICE_CALLSITE]; r rcx; r rdx; r r8; r r9; g"
+bu 141757acd ".echo [INJ2_DEVICE_ENTRY]; r rcx; r rdx; r r8; r r9; g"
+bu kernel32!DeviceIoControl ".echo [INJ2_DEVICEIO_ENTRY]; r rcx; r rdx; r r8; r r9; g"
+bu 14078ee78 ".echo [INJ2_DEVICE_RETURN]; r rax; r rsp; .writemem C:\ept_obs\spool\EPT-INJECT-20260924-02\response_before_inject.bin @rsp+50 L11c; .readmem C:\ept_obs\spool\EPT-INJECT-20260924-02\forge_license_response_284.bin @rsp+50; .writemem C:\ept_obs\spool\EPT-INJECT-20260924-02\response_after_inject.bin @rsp+50 L11c; db @rsp+50 L11c; g"
+bu 14078ee9b ".echo [INJ2_RC03_ENTRY]; r rcx; db @rcx L11c; .writemem C:\ept_obs\spool\EPT-INJECT-20260924-02\globals_at_rc03.bin 14115c340 L18; dd 14115c340 L6; g"
+bu 14078ef02 ".echo [INJ2_MARKER_CHECK]; r r8; r rsi; dd 14115c340 L6; g"
+bu 14078ef42 ".echo [INJ2_RC06_ENTRY]; r r14; .writemem C:\ept_obs\spool\EPT-INJECT-20260924-02\caller_before.bin poi(@r14)+80 L10c; db poi(@r14)+80 L10c; g"
+bu 14078ef4c ".echo [INJ2_RC06_AFTER_TRANSFORM]; r r14; db poi(@r14)+80 L10c; g"
+bu 14078efb3 ".echo [INJ2_CALLER_AFTER_COPY]; r r14; .writemem C:\ept_obs\spool\EPT-INJECT-20260924-02\caller_after.bin poi(@r14)+80 L10c; db poi(@r14)+80 L10c; g"
+bu 14078efe1 ".echo [INJ2_NATIVE_RETURN_PRE]; r eax; r r14; g"
+bu 14078efe4 ".echo [INJ2_NATIVE_RETURN]; r eax; r r14; db poi(@r14)+80 L10c; g"
+sxe -c ".echo [INJ2_AV]; .lastevent; r; k; g" av
+.echo [INJ2_CHILD_BPS_ARMED]
+g

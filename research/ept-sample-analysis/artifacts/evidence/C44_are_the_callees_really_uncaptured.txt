@@ -1,0 +1,68 @@
+
+== stream_C6/C6_rebuilt.exe (8253952 B) ==
+   .text     va=0x140001000  vsize=0x7d992c    raw=8253440  /512       BYTES PRESENT
+   callee_of_block_return 0x141a1ff1b 0x141a1ff1b -> not covered
+   callee_of_terminate 0x1417612fa  0x1417612fa -> not covered
+   C48: gate operand r11d comes from call 0x1415a6087 0x1415a6087 -> not covered
+   C48: call just before it 0x14144a1c7 0x14144a1c7 -> not covered
+   sq_lo 0x141174000                0x141174000 -> not covered
+   sq_hi 0x1420595f0                0x1420595f0 -> not covered
+
+== stream_C6/C6_multi.exe (9564672 B) ==
+   text      va=0x140001000  vsize=0x7d992c    raw=8253440  /512       BYTES PRESENT
+   rd0       va=0x1407db000  vsize=0x100000    raw=1048576  /8253952   BYTES PRESENT
+   rd1       va=0x140f80000  vsize=0x40000     raw=262144   /9302528   BYTES PRESENT
+   callee_of_block_return 0x141a1ff1b 0x141a1ff1b -> not covered
+   callee_of_terminate 0x1417612fa  0x1417612fa -> not covered
+   C48: gate operand r11d comes from call 0x1415a6087 0x1415a6087 -> not covered
+   C48: call just before it 0x14144a1c7 0x14144a1c7 -> not covered
+   sq_lo 0x141174000                0x141174000 -> not covered
+   sq_hi 0x1420595f0                0x1420595f0 -> not covered
+
+== stream_C6/stream_text.bin (8257536 B) ==
+   .text     va=0x140001000  vsize=0x7d992c    raw=0        /0         no on-disk bytes
+   .rdata    va=0x1407db000  vsize=0x7c2dd0    raw=0        /0         no on-disk bytes
+   .data     va=0x140f9e000  vsize=0x1ce70c    raw=0        /0         no on-disk bytes
+   .pdata    va=0x14116d000  vsize=0x4f80      raw=0        /0         no on-disk bytes
+   _RDATA    va=0x141172000  vsize=0xfc        raw=0        /0         no on-disk bytes
+   .fptable  va=0x141173000  vsize=0x100       raw=0        /0         no on-disk bytes
+   .Sq>      va=0x141174000  vsize=0xee55f0    raw=0        /0         no on-disk bytes
+   .bs]      va=0x14205a000  vsize=0xf88       raw=4096     /1024      BYTES PRESENT
+   .)Bu      va=0x14205b000  vsize=0x1f09b30   raw=32545792 /5120      no on-disk bytes
+   .rsrc     va=0x143f65000  vsize=0x1d445     raw=120320   /32550912  no on-disk bytes
+   callee_of_block_return 0x141a1ff1b 0x141a1ff1b -> not covered
+   callee_of_terminate 0x1417612fa  0x1417612fa -> not covered
+   C48: gate operand r11d comes from call 0x1415a6087 0x1415a6087 -> not covered
+   C48: call just before it 0x14144a1c7 0x14144a1c7 -> not covered
+   sq_lo 0x141174000                0x141174000 -> not covered
+   sq_hi 0x1420595f0                0x1420595f0 -> not covered
+
+== stream_C6/stream_rdata.bin (262144 B) ==
+   raw blob: covered VA 0x140f8c800..0x140fcc800
+   callee_of_block_return 0x141a1ff1b 0x141a1ff1b -> not covered
+   callee_of_terminate 0x1417612fa  0x1417612fa -> not covered
+   C48: gate operand r11d comes from call 0x1415a6087 0x1415a6087 -> not covered
+   C48: call just before it 0x14144a1c7 0x14144a1c7 -> not covered
+   sq_lo 0x141174000                0x141174000 -> not covered
+   sq_hi 0x1420595f0                0x1420595f0 -> not covered
+
+== stream_C6/stream_rdatafront.bin (1048576 B) ==
+   raw blob: covered VA 0x140e00000..0x140f00000
+   callee_of_block_return 0x141a1ff1b 0x141a1ff1b -> not covered
+   callee_of_terminate 0x1417612fa  0x1417612fa -> not covered
+   C48: gate operand r11d comes from call 0x1415a6087 0x1415a6087 -> not covered
+   C48: call just before it 0x14144a1c7 0x14144a1c7 -> not covered
+   sq_lo 0x141174000                0x141174000 -> not covered
+   sq_hi 0x1420595f0                0x1420595f0 -> not covered
+
+== RG2_region_0x140e00000.bin (4194304 B) ==
+   raw blob: covered VA 0x140e00000..0x141200000
+   callee_of_block_return 0x141a1ff1b 0x141a1ff1b -> not covered
+   callee_of_terminate 0x1417612fa  0x1417612fa -> not covered
+   C48: gate operand r11d comes from call 0x1415a6087 0x1415a6087 -> not covered
+   C48: call just before it 0x14144a1c7 0x14144a1c7 -> not covered
+   sq_lo 0x141174000                0x141174000 -> INSIDE THIS BLOB
+   sq_hi 0x1420595f0                0x1420595f0 -> not covered
+
+== C13_static_highentropy_region.bin (10240 B) ==
+   raw blob with no recorded base - cannot attribute VAs

@@ -1,0 +1,44 @@
+=== ATTEMPT 1 ===
+CTRL_CANARY: CTRL_CANARY_OK CN-38e460545759 <VM_LABEL> <VM_USER>
+SYM_CACHE_KEPT pdbs=0
+TEMP_CLEANED count=1
+CDB_COPY_VERIFIED
+CANARY_PASS
+PREFLIGHT_BEGIN
+PREFLIGHT_PASS
+PREFLIGHT_END
+WATCHTEST_BEGIN
+WATCHTEST_CSV=True
+WATCHTEST_END
+TASK_STARTED
+  {"state":"        STATE              : 4  RUNNING ","create":"[SC] CreateService 失败 1073:  指定的服务已存在。 ","utc":"2026-09-26T10:46:54.7340046Z","type":"DRIVER_PRELOADED","start":"[SC] StartService 失败 1056:  服务的实例已在运行中。 "}
+  {"path":"C:\\Windows\\TEMP\\EPT_8E5863F6_06390C08.exe","pid":5100,"ppid":4608,"type":"CHILD_FOUND","utc":"2026-09-26T10:46:57.4683725Z"}
+  {"target_pid":5100,"debugger_pid":1988,"type":"CDB_ATTACHED","utc":"2026-09-26T10:46:57.4839996Z"}
+PREP_DONE
+  poll1 cdb=0 tgt=0 log=9688
+  poll2 cdb=0 tgt=0 log=9688
+  poll3 cdb=0 tgt=0 log=9688
+  attempt 1 positives:  (none)
+=== ATTEMPT 2 ===
+CTRL_CANARY: CTRL_CANARY_OK CN-daf21ebe027b <VM_LABEL> <VM_USER>
+SYM_CACHE_KEPT pdbs=0
+TEMP_CLEANED count=1
+CDB_COPY_VERIFIED
+CANARY_PASS
+PREFLIGHT_BEGIN
+PREFLIGHT_PASS
+PREFLIGHT_END
+WATCHTEST_BEGIN
+WATCHTEST_CSV=True
+WATCHTEST_END
+TASK_STARTED
+  {"state":"        STATE              : 4  RUNNING ","create":"[SC] CreateService 失败 1073:  指定的服务已存在。 ","utc":"2026-09-26T10:48:21.2181134Z","type":"DRIVER_PRELOADED","start":"[SC] StartService 失败 1056:  服务的实例已在运行中。 "}
+  {"path":"C:\\Windows\\TEMP\\EPT_F0D6D07A_BFCAC451.exe","pid":3556,"ppid":4088,"type":"CHILD_FOUND","utc":"2026-09-26T10:48:23.9368648Z"}
+  {"target_pid":3556,"debugger_pid":1532,"type":"CDB_ATTACHED","utc":"2026-09-26T10:48:23.9524896Z"}
+PREP_DONE
+  poll1 cdb=0 tgt=0 log=41891
+  poll2 cdb=0 tgt=0 log=41891
+  poll3 cdb=0 tgt=0 log=41891
+  attempt 2 positives: CONN,KB_CFW,MSGBOXA_SKIPPED,DIOC (none)
+POSITIVE_ATTEMPT=2 markers=CONN,KB_CFW,MSGBOXA_SKIPPED,DIOC
+LOOP16_DONE

@@ -1,0 +1,608 @@
+        :   0x1403b34d0      push  rbp
+        :   0x1403b34d1      sub   rsp, 0x380
+        :   0x1403b34d8      lea   rbp, qword [rsp+0x80]
+        :   0x1403b34e0      mov   qword [rbp+0x2f8], 0xfffffffffffffffe
+        :   0x1403b34eb      and   r8b, 0x01
+        :   0x1403b34ef      mov   byte [rbp+0x2f3], r8b
+        :   0x1403b34f6      mov   dword [rbp+0x2ec], edx
+        :   0x1403b34fc      mov   qword [rbp+0x2e0], rcx
+        :   0x1403b3503      lea   rcx, qword [0x1407dd445]
+        :   0x1403b350a      call  0x14166f7ba
+        :   0x1403b350f      fadd  dword [rbp+0x6b715024]
+        :   0x1403b3515      fcomp dword [rsi+0x2f]
+        :   0x1403b3518      add   eax, 0x2f1a943d
+        :   0x1403b351d      invalid
+        :   0x1403b351e      add   eax, 0x2f5a4584
+        :   0x1403b3523      invalid
+        :   0x1403b3524      add   eax, 0x2f724dac
+        :   0x1403b3529      invalid
+        :   0x1403b352a      add   eax, 0x2f924cac
+        :   0x1403b352f      invalid
+        :   0x1403b3530      add   eax, 0x2fba4504
+        :   0x1403b3535      invalid
+        :   0x1403b3536      add   eax, 0x2e44050c
+        :   0x1403b353b      pop   rbp
+        :   0x1403b353c      mov   edi, gs
+        :   0x1403b353e      xor   dl, ch
+        :   0x1403b3540      cli
+        :   0x1403b3541      invalid
+        :   0x1403b3542      xchg  edx, eax
+        :   0x1403b3543      invalid
+        :   0x1403b3544      cli
+       .--> 0x1403b3545      mov   ch, 0x4c                            ; 'L' ; 76
+       ::   0x1403b3547      add   dl, cl
+       `==< 0x1403b3549      loopne 0x1403b3545
+        :   0x1403b354b      sub   eax, 0xaddda1dc
+        :   0x1403b3550      adc   spl, dil
+        :   0x1403b3553      iretd
+        :   0x1403b3554      lea   ebp, qword [rbx-0x11]
+        :   0x1403b3557      cmp   dword [rdi+0x58], 0xffffffb7
+       ,==< 0x1403b355b      jnz   0x1403b35b3
+       |:   0x1403b355d      pop   rbp
+       |:   0x1403b355e      or    al, 0x8e                            ; 142
+       |:   0x1403b3560      push  0xffffffffffffffe8                  ; 0xe8 ; 232
+       |:   0x1403b3562      adc   dword [rax-0x58], 0x4a
+       |:   0x1403b3566      in    eax, 0x98
+       |:   0x1403b3568      shl   dword [rcx-0x16], cl
+       |:   0x1403b356b      rol   dword [0x17bca927c], 0x01
+       |:   0x1403b3571      pop   rsi
+      ,===< 0x1403b3572      jb    0x1403b358e
+      ||:   0x1403b3574      add   esi, esi
+      ||:   0x1403b3576      out   0x29, eax
+      ||:   0x1403b3578      leave
+      ||:   0x1403b3579      or    ah, dl
+     ,====< 0x1403b357b      js    0x1403b35eb
+     |||:   0x1403b357d      xor   byte [rbp-0x6f8511fe], cl
+     |||:   0x1403b3584      lahf
+     |||:   0x1403b3586      fldcw word [rsi]
+     |||:   0x1403b3588      sahf
+     |||:   0x1403b3589      invalid
+     |||:   0x1403b358a      lahf
+     |||:   0x1403b358d      fld   st2
+     |.---> 0x1403b358f      mov   dh, 0xd6                            ; 214
+     |:|:   0x1403b3591      sbb   byte [rbx-0x61], cl
+     |:|:   0x1403b3594      fst   dword [rdx-0x7dd08c7e]
+     |:|:   0x1403b359a      mov   ch, 0x81                            ; 129
+     |`===< 0x1403b359c      jle   0x1403b358f
+     | |:   0x1403b359e      stosd
+     | |:   0x1403b359f      out   0xe9, al
+     | |:   0x1403b35a1      and   eax, 0xa979e741
+     |.---> 0x1403b35a6      invalid
+     |:|:   0x1403b35a7      cmp   byte [rsi+0x7fb0c9e6], bl
+     |:|:   0x1403b35ad      cmp   byte [rsi+0x4949c9e6], bl
+     |:`--> 0x1403b35b3      fmul  st0, st2
+     |: :   0x1403b35b5      or    eax, 0x8e9f95b3
+     |: :   0x1403b35ba      invalid
+     |: :   0x1403b35bb      invalid
+     |: :   0x1403b35bc      std
+     |: :   0x1403b35bf      sahf
+     |: :   0x1403b35c0      cmpsb
+     |: :   0x1403b35c1      mov   ebp, 0xc9da579f
+     |: :   0x1403b35c6      invalid
+     |: :   0x1403b35c7      sbb   dword [rbx-0x7b], ebx
+     |: :   0x1403b35ca      pop   rbp
+     |: :   0x1403b35cb      sbb   dword [rbp+0x1969c6eb], ebx
+     |: :   0x1403b35d2      hlt
+     |: :   0x1403b35d3      lea   edx, qword [0x126cc2a87]
+     |: :   0x1403b35d9      nop
+     |: :   0x1403b35da      mov   r14b, 0xb1                          ; 177
+     |: :   0x1403b35dd      sub   bl, dl
+     |: :   0x1403b35df      mov   r10, qword [rax]
+     |: :   0x1403b35e2      xrelease mov dword [rcx-0x2b31f593], edx
+     |: :   0x1403b35e9      add   byte [rcx+0x223528b3], cl
+      :::   0x1403b35ef      xchg  ebx, eax
+      :::   0x1403b35f0      call  0x153cddd9b
+      :::   0x1403b35f5      and   eax, 0xe2f6f9d7
+      :`==< 0x1403b35fa      jle   0x1403b35ec
+      : :   0x1403b35fc      int   0x98
+      : :   0x1403b35fe      fstp  dword [rdx-0x6796ed42]
+      `===< 0x1403b3604      jnl   0x1403b35a6
+        :   0x1403b3606      invalid
+        :   0x1403b3607      mov   bl, 0xed                            ; 237
+        :   0x1403b3609      invalid
+        :   0x1403b360a      int1
+        :   0x1403b360b      xchg  ebp, eax
+        :   0x1403b360c      fst   dword [rdx+rsi*4+0x32b3c4b5]
+        :   0x1403b3613      xor   ebx, dword [rdi+rsi*8]
+        :   0x1403b3616      sahf
+        :   0x1403b3617      xchg  esi, eax
+        :   0x1403b3618      invalid
+        :   0x1403b3619      lock  xor byte [rbp+0x6a8478b8], cl
+        :   0x1403b3620      lahf
+        :   0x1403b3622      fldcw word [rsp+rdx*2]
+        :   0x1403b3625      shr   dword [rdx+rax*4], 0xb5
+        :   0x1403b3629      fwait
+        :   0x1403b362a      mov   byte [rax-0x145d66f0], ch
+        :   0x1403b3630      add   ebx, dword [rcx-0xaf906b8]
+        :   0x1403b3636      cdq
+        :   0x1403b3638      cmp   dword [rax-0x26781d30], ecx
+        :   0x1403b363e      invalid
+        :   0x1403b363f      invalid
+        :   0x1403b3640      invalid
+        :   0x1403b3641      in    eax, 0x66
+        :   0x1403b3646      mov   al, byte [0x4e80e966d10bee51]       ; [0x4e80e966d10bee51:1]=255
+        :   0x1403b364f      or    edx, ecx
+        :   0x1403b3651      mov   byte [rcx+0x42f9e948], dl
+        :   0x1403b3658      xor   ecx, dword [rsp+rbp*4+0x73ed6b9f]
+        :   0x1403b365f      cdq
+        :   0x1403b3660      enter 0x8108, 0xaf
+        :   0x1403b3664      mov   edi, 0x22fe8830
+        :   0x1403b3669      xor   al, 0x9f                            ; 159
+        :   0x1403b366b      in    al, 0x94
+       ::   0x1403b366d      mov   word [rbp-0x2b], gs
+       ::   0x1403b3670      pop   rdx
+       `==< 0x1403b3671      jnb   0x1403b366c
+        :   0x1403b3673      invalid
+        :   0x1403b3674      xor   byte [rdx-0x1c], al
+        :   0x1403b3677      and   dl, byte [rdx-0x22]
+        :   0x1403b367a      adc   al, 0x4b
+        :   0x1403b367c      shr   byte [rbp-0x28], 0x32
+        :   0x1403b3680      adc   ecx, dword [rbx-0x45]
+        :   0x1403b3683      pop   rbp
+        :   0x1403b3684      pop   rdx
+        :   0x1403b3685      invalid
+        :   0x1403b3686      movsb
+        :   0x1403b3688      pop   rax
+        :   0x1403b3689      mov   eax, 0x970d63ce
+       ::   0x1403b368e      invalid
+       ::   0x1403b368f      xchg  ebp, eax
+       ::   0x1403b3690      xor   edx, dword [rdx+0x21]
+       ::   0x1403b3693      xor   dword [rdx+rcx*8-0x12], edx
+      ,===< 0x1403b3697      jns   0x1403b36f3
+      |::   0x1403b3699      sbb   edi, ebp
+      |::   0x1403b369b      fwait
+      |::   0x1403b369c      mov   cl, 0x24                            ; '$' ; 36
+      |::   0x1403b369e      pop   rdx
+      |::   0x1403b369f      test  dword [rdi-0x3e], edx
+     .----> 0x1403b36a2      not   byte [rbx+0x14]
+     :|::   0x1403b36a5      invalid
+     :|`==< 0x1403b36a6      jnl   0x1403b368d
+     :| :   0x1403b36a9      invalid
+     :| :   0x1403b36aa      and   dl, al
+     :| :   0x1403b36ac      mov   bh, 0xbb                            ; 187
+     :| :   0x1403b36ae      invalid
+     :| :   0x1403b36af      invalid
+     :| :   0x1403b36b0      invalid
+     :| :   0x1403b36b1      invalid
+     :| :   0x1403b36b2      or    eax, 0x9e46c00b
+     :| :   0x1403b36b7      sbb   ebp, ecx
+     :| :   0x1403b36b9      mov   ecx, 0x335c0e6e
+     :|::   0x1403b36be      invalid
+     :|::   0x1403b36bf      fst   dword [rdi]
+     :|::   0x1403b36c1      xor   ebx, esi
+     :|::   0x1403b36c4      xor   byte [rcx+0x3613dd7a], bh
+    ::|::   0x1403b36ca      invalid
+    ::|::   0x1403b36cb      mov   dl, 0xf9                            ; 249
+    ::|::   0x1403b36cd      sub   dword [rax-0x3b93683c], eax
+    ::|::   0x1403b36d3      and   dword [rcx], esp
+    ::|::   0x1403b36d5      in    al, dx
+    :`====< 0x1403b36d6      jnz   0x1403b36a2
+    : |::   0x1403b36d8      mov   dword [rdx+0x2f], eax
+    : |::   0x1403b36db      in    eax, 0xa6
+    : |::   0x1403b36dd      xchg  ebp, eax
+    : |::   0x1403b36de      sub   al, r13b
+    : |::   0x1403b36e1      invalid
+    : |::   0x1403b36e2      clc
+    :.----> 0x1403b36e3      std
+    ::|::   0x1403b36e4      mov   al, 0x7c                            ; '|' ; 124
+    ::|::   0x1403b36e6      adc   dl, byte [r10]
+    ::|::   0x1403b36e9      mov   esp, 0x4489ca74
+    ::|::   0x1403b36ee      pop   rsp
+    ::|::   0x1403b36ef      invalid
+    ::|::   0x1403b36f0      or    dword [rbx-0x46], eax
+   ,==`---> 0x1403b36f3      jnz   0x1403b3718
+   |:: ::   0x1403b36f5      invalid
+   |:: ::   0x1403b36f6      rcr   dword [rdx], 0x95
+   |:: ::   0x1403b36f9      invalid
+   |:: ::   0x1403b36fa      invalid
+   |:: ::   0x1403b36fb      std
+   |`=====< 0x1403b36fc      jnz   0x1403b36c8
+   | :.---> 0x1403b36fe      mov   dword [rsi-0x65], eax
+   | ::::   0x1403b3701      stc
+   | ::::   0x1403b3703      pop   rsp
+   | ::::   0x1403b3704      xor   dh, byte [rdx+rcx*2-0x2e]
+   | ::::   0x1403b3708      mov   dh, 0x49                            ; 'I' ; 73
+   | ::`==< 0x1403b370a      jle   0x1403b36bb
+   | :: :   0x1403b370c      and   al, 0x15                            ; 21
+   | :: :   0x1403b370e      invalid
+   | :: :   0x1403b370f      push  rcx
+   | :: :   0x1403b3710      std
+   | :: :   0x1403b3711      adc   al, 0xc7
+   | :: :   0x1403b3713      lodsd
+   | :: :   0x1403b3714      pop   rdx
+   | :: :   0x1403b3715      adc   byte [rsp], dh
+   `------> 0x1403b3718      invalid
+     :: :   0x1403b3719      invalid
+     :: :   0x1403b371a      invalid
+     :: :   0x1403b371b      invalid
+     :: :   0x1403b371c      push  rbx
+     :: :   0x1403b371d      ret   far
+     :: :   0x1403b371e      outsb
+     :: :   0x1403b371f      add   byte [rdx+rax*1], dl
+     :: :   0x1403b3722      fwait
+     :: :   0x1403b3723      cmpsd
+     `====< 0x1403b3725      jrcxz 0x1403b36e3
+      : :   0x1403b3727      xchg  ecx, eax
+      : :   0x1403b3728      invalid
+      : :   0x1403b3729      ret
+      : :   0x1403b372a      and   dword [rdi+0x27], 0xffffff81        ; [0xffffff81:4]=-1 ; 4294967169
+      : :   0x1403b372e      ret
+      : :   0x1403b372f      ret   far 0x551a
+      :,==< 0x1403b3732      jno   0x1403b3788
+      :|:   0x1403b3734      mov   ah, 0x99                            ; 153
+      :|:   0x1403b3736      shl   dword [rbp+0x2b64b04b], 0x01
+      :|:   0x1403b373c      mov   gs, word [rbx+0x3857bf4b]
+      :|:   0x1403b3742      int1
+      :|:   0x1403b3743      adc   dword [rcx-0x12], eax
+    ,=====< 0x1403b3746      jo    0x1403b37ae
+    |::|:   0x1403b3748      add   eax, 0x84dd74a4
+    |::|:   0x1403b374d      ret
+    |::|:   0x1403b374f      xchg  ecx, eax
+    |::|:   0x1403b3750      invalid
+    |::|:   0x1403b3751      inc   byte [rbx+0x74]
+    |::|:   0x1403b3754      ret   far 0x4a89
+    |:`===< 0x1403b3757      jp    0x1403b36fe
+    |:,===< 0x1403b3759      jns   0x1403b3795
+    |:||:   0x1403b375b      mov   ecx, 0xc8d34353
+    |:||:   0x1403b3760      push  rsp
+    |:||:   0x1403b3761      mov   r10b, 0x79                          ; 'y' ; 121
+    |:||:   0x1403b3764      mov   ebx, 0xca7572e1
+    |:||:   0x1403b3769      mov   dword [rsp+0x7c], ecx
+   .------> 0x1403b376d      cli
+   :|:||:   0x1403b376e      lea   ebx, qword [rdx]
+   :|:||:   0x1403b3770      lodsb
+   :|:||:   0x1403b3771      sub   al, 0xd8                            ; 216
+   :|:||:   0x1403b3773      xor   dl, ah
+   :|:||:   0x1403b3775      xchg  edx, eax
+   :|:||:   0x1403b3776      sub   bh, byte [rbp+0x33]
+   :|`====< 0x1403b3779      jz    0x1403b3745
+   :| ||:   0x1403b377b      mov   dword [rsi+0x3d], ecx
+   :| ||:   0x1403b377e      xchg  ebp, eax
+   :| ||:   0x1403b377f      call  0x14c92262f
+   :| ||:   0x1403b3784      add   ecx, dword [rsi+0x9bdd16a]
+   :| | :   0x1403b378a      or    al, 0x5d                            ; 93
+   :| | :   0x1403b378c      or    eax, ebx
+   :| |,==< 0x1403b378e      jb    0x1403b3805
+   :| ||:   0x1403b3790      ret   far 0x5089
+   :| ||:   0x1403b3793      invalid
+   :| ||:   0x1403b3794      invalid
+   :|.`---> 0x1403b3795      mul   dword [rbp+0x62]
+   :|: |:   0x1403b3798      mov   dl, 0x17                            ; 23
+   :|: |:   0x1403b379a      fistp qword [rbp-0x336ad97a]
+   `======< 0x1403b37a1      jz    0x1403b376d
+    |: |:   0x1403b37a3      mov   dword [rdx-0x4b], edx
+    |: |:   0x1403b37a6      pop   rbp
+    |: |:   0x1403b37a8      mov   dl, 0x91                            ; 145
+    |: |:   0x1403b37aa      fisub dword [rbx]
+    |::|:   0x1403b37ac      fdiv  st0, st3
+    `-----> 0x1403b37ae      xor   dword fs:[rcx], esi
+     ::|:   0x1403b37b1      test  al, 0x03                            ; 3
+     ::|:   0x1403b37b3      xchg  ecx, eax
+     ::|:   0x1403b37b4      invalid
+     ::|:   0x1403b37b5      lea   esi, qword [rbp-0x36]
+     ::|:   0x1403b37b9      mov   dword [rsp+rdi*2+0x0a], edx
+     ::|:   0x1403b37bd      cmp   dword [rsi+0xd0ab8a9], esi
+     ::|:   0x1403b37c3      cmpsb
+     ::|:   0x1403b37c4      imul  ecx, edx, 0xcca352
+     ::|:   0x1403b37ca      or    al, 0xe6                            ; 230
+     ::|:   0x1403b37cc      out   dx, al
+    .-----> 0x1403b37cd      in    eax, dx
+    :::|`=< 0x1403b37ce      jmp   0xeb07a681
+    :::|    0x1403b37d3      xor   eax, 0x5e01592c
+    :::|    0x1403b37d8      invalid
+    :::|    0x1403b37d9      invalid
+    :::|    0x1403b37da      and   al, byte [rdi]
+    :::|    0x1403b37dc      invalid
+    :::|    0x1403b37dd      mov   ah, cl
+    ::`===< 0x1403b37df      jz    0x1403b37ab
+    :: |    0x1403b37e1      mov   dword [rax-0x64], ebx
+    :: |    0x1403b37e4      sub   eax, 0x30c00eb2
+    :: |:   0x1403b37e9      invalid
+    :`====< 0x1403b37ea      jnb   0x1403b3795
+    :  |:   0x1403b37ec      cmp   ebx, esp
+    :  |:   0x1403b37ee      mov   dh, 0x02
+    :  |:   0x1403b37f0      cmp   al, bl
+    :  |:   0x1403b37f2      xor   esi, dword [rbp-0x36]
+    :  |:   0x1403b37f5      mov   dword [rdx-0x41], ebx
+    :  |:   0x1403b37f8      mov   byte [0x8d9d8d21d3672bbd], al
+    `=====< 0x1403b3801      jz    0x1403b37cd
+       |:   0x1403b3803      mov   dword [rbx+rdx*4-0x69], ebx
+       ,==< 0x1403b3807      jb    0x1403b3832
+       |:   0x1403b3809      or    eax, 0xfeca775c
+       |:   0x1403b380e      push  rdx
+       |:   0x1403b380f      invalid
+       |:   0x1403b3810      or    al, 0x0f                            ; 0xf ; 15
+      .---> 0x1403b3812      invalid
+      :|:   0x1403b3813      sub   dl, byte [rdx-0x5f]
+      :|:   0x1403b3816      fdiv  qword [rbx]
+      :|`=< 0x1403b3819      jnz   0x1403b37e5
+      :|    0x1403b381b      mov   dword [rsi+0x07], ebx
+      :|    0x1403b381e      mov   ch, 0x36                            ; '6' ; 54
+      :|    0x1403b3820      invalid
+      :|,=< 0x1403b3821      jmp   0x1403b3853
+      :||   0x1403b3823      in    eax, 0x16
+      :||   0x1403b3825      and   eax, 0x762ecd0c
+     ::||   0x1403b382a      sub   dword [rcx-0x2c], esp
+     ::||   0x1403b382d      movsxd eax, dword [rsi+0x748d88f5]
+     :: |   0x1403b3833      ret   far 0xa289
+     :: |   0x1403b3836      invalid
+     :: |   0x1403b3837      invalid
+     :: |   0x1403b3838      mov   al, 0xe2                            ; 226
+     :: |   0x1403b383a      stc
+     :: |   0x1403b383b      cmpsb
+     ::,==< 0x1403b383c      jmp   0x161a3037a
+     ::||   0x1403b3842      pop   rsi
+     ::||   0x1403b3843      invalid
+     ::||   0x1403b3844      in    al, dx
+     :`===< 0x1403b3845      jnz   0x1403b3812
+     : ||   0x1403b3848      mov   dword [rsi-0x7d79ba18], esp
+     ::||   0x1403b384f      rcr   byte [rdi], 0x01
+     ::||   0x1403b3851      mov   gs, word [0x16de8f97c]              ; [0x16de8f97c:2]=0xffff
+     ::|    0x1403b3857      outsb
+     ::|    0x1403b3858      movsxd ecx, dword [rsi]
+     ::|    0x1403b385a      invalid
+     ::|    0x1403b385b      sbb   al, 0x59
+     ::|    0x1403b385d      xchg  edx, eax
+     ::|.-> 0x1403b385e      adc   al, 0x77
+     ::|:   0x1403b3860      or    ecx, dword [0x1a40a5930]            ; [0x1a40a5930:4]=-1
+     ::|:   0x1403b3866      call  0x1442eff63
+     ::|:   0x1403b386b      add   al, 0x74                            ; 116
+     ::|:   0x1403b386d      ret   far 0xa889
+     ::|:   0x1403b3870      in    eax, 0x07
+     ::|:   0x1403b3872      insb
+     `====< 0x1403b3873      jle   0x1403b3827
+      :|:   0x1403b3875      invalid
+      :|:   0x1403b3876      out   0x05, eax
+      :|:   0x1403b3878      mov   cl, byte [rsi+0x61d9d012]
+     ::|:   0x1403b387e      mov   al, 0x10                            ; 16
+     :`===< 0x1403b3880      jnz   0x1403b384c
+     : |:   0x1403b3882      mov   dword [rdx-0x1054593c], ebp
+     : |:   0x1403b3888      mov   edx, 0x63d33305
+     : |:   0x1403b388d      mov   dh, 0x6b                            ; 'k' ; 107
+     : |:   0x1403b388f      and   dword [rcx+rdx*2], ebp
+     : |`=< 0x1403b3892      jz    0x1403b385e
+     : |    0x1403b3894      mov   dword [rbx+rcx*2+0x18e12108], ebp
+     : |    0x1403b389b      cmp   al, 0x95                            ; 149
+     : |    0x1403b389d      fwait
+     : |    0x1403b389e      lea   edi, qword [rcx-0x8cbb8a9]
+     : |    0x1403b38a4      fsub  qword [rsi-0x7f]
+     : |    0x1403b38a7      pop   rdi
+     : |    0x1403b38a8      out   0x87, al
+     : |.-> 0x1403b38aa      sbb   dword [rcx+rcx*8+0x3a1de77d], edx
+     : |:   0x1403b38b1      invalid
+     : |:   0x1403b38b2      invalid
+     : |:   0x1403b38b3      fild  word [rdi+0x507a55e7]
+     : |:   0x1403b38b9      sbb   dword [rcx-0x269b9f89], eax
+     ::|:   0x1403b38bf      in    eax, dx
+     ::|:   0x1403b38c0      or    dword [0xcb9a95f6], esp             ; [0xcb9a95f6:4]=-1
+     ::|:   0x1403b38c6      popfq
+     ::|:   0x1403b38c7      sbb   al, 0x94
+     ::|:   0x1403b38c9      or    esi, dword [rbx+rbp*1-0x239048ea]
+     ::|:   0x1403b38d0      xor   esi, dword [rax+rbx*4]
+     `====< 0x1403b38d3      jnbe  0x1403b387d
+      :|:   0x1403b38d6      cmp   al, 0x47                            ; 'G' ; 71
+     ,====< 0x1403b38d8      jnp   0x1403b38db
+     |:|:   0x1403b38da      popfq
+     `----> 0x1403b38db      shl   dword [rdi], cl
+      :|:   0x1403b38dd      out   dx, eax
+      :|`=< 0x1403b38de      jnz   0x1403b38aa
+      :|    0x1403b38e0      mov   dword [rax+0x2aba058d], esi
+      :|    0x1403b38e6      and   al, 0xea                            ; 234
+      :|    0x1403b38e8      lodsd
+      :|    0x1403b38e9      lodsd
+      :|,=< 0x1403b38ea      loope 0x1403b38fe
+      :||   0x1403b38ed      push  0xffffffffed15e20e                  ; 0xed15e20e
+      `===< 0x1403b38f2      jz    0x1403b38be
+      .---> 0x1403b38f4      mov   dword [rdx-0x7813ddef], esi
+      :||   0x1403b38fa      add   eax, 0xa37dbd47
+      :|    0x1403b38ff      invalid
+      :|    0x1403b3900      sub   byte [rcx+0x07], cl
+      :|    0x1403b3903      movsxd ebx, dword [rdi]
+      :|    0x1403b3905      movsxd edi, dword [rcx+0x38eab24a]
+      :|    0x1403b390b      add   eax, 0xc474e778
+      :|    0x1403b3910      add   eax, 0x24a643a3
+      :|    0x1403b3915      adc   byte [rbp+0x0a], ch
+      :|    0x1403b3918      nop
+      :|,=< 0x1403b3919      jle   0x1403b396e
+      :||   0x1403b391b      cmpsd
+      :||   0x1403b391c      mov   bh, 0x17                            ; 23
+     ::||   0x1403b391f      xchg  esp, eax
+     ::||   0x1403b3920      sub   eax, 0x1bac912d
+     ::||   0x1403b3925      sbb   al, 0x5f
+     ::||   0x1403b3927      push  rbx
+     :`===< 0x1403b3928      jnz   0x1403b38f4
+     : ||   0x1403b392a      mov   dword [rdx-0x4d09584], edi
+     ::||   0x1403b3930      popfq
+     ::||   0x1403b3931      adc   edi, eax
+     ::||   0x1403b3933      mov   ebx, 0xa7c230c
+     ::||   0x1403b3938      movsd
+    ,=====< 0x1403b3939      jnb   0x1403b39b8
+    |::||   0x1403b393b      invalid
+    |::||   0x1403b393c      mov   eax, 0x22daaa20
+    |::||   0x1403b3941      and   eax, 0xc1f9c4d1
+    |::||   0x1403b3946      int1
+    |::||   0x1403b3947      ret   0xfaa0
+    |::||   0x1403b394b      pop   rcx
+    |::||   0x1403b394c      leave
+    |::||   0x1403b394d      mov   eax, dword [0xdda292dd2bf1d157]
+    |::||   0x1403b3956      xor   eax, 0x967fea38
+    |::||   0x1403b395b      sbb   ebx, dword [rax-0x10f771bb]
+    |::||   0x1403b3961      invalid
+    |::||   0x1403b3962      mov   esi, edx
+    |::||   0x1403b3964      cmp   al, 0xd3                            ; 211
+    |::||   0x1403b3966      sti
+    |::||   0x1403b3967      std
+    |:`===< 0x1403b3968      jl    0x1403b392c
+    |: ||   0x1403b396a      imul  edx, dword [rsi], 0xffffff80
+    |: ||   0x1403b396d      invalid
+    |: |`-> 0x1403b396e      ret   0xe19c
+    |::|:   0x1403b3972      lahf
+    |:`===< 0x1403b3973      jns   0x1403b396f
+    |:.---> 0x1403b3975      xchg  ebp, eax
+    |::|:   0x1403b3976      mov   ch, 0x8c                            ; 140
+    |::|:   0x1403b3978      mov   eax, dword [0x7471e14bb4d2ff90]     ; [0x7471e14bb4d2ff90:4]=-1
+    |::|:   0x1403b3981      int1
+    |::|:   0x1403b3982      xor   di, word [rsi]
+    |::|:   0x1403b3985      push  rsi
+    |::|:   0x1403b3986      push  0xffffffffffffff8b                  ; 0x8b ; 139
+    |::|:   0x1403b3989      cmc
+    |::|:   0x1403b398a      call  qword [rbp-0x7b]
+    |::|:   0x1403b398d      mov   byte [0x3366f035ec8685d2], al
+   :|::|:   0x1403b3996      cmp   byte [rbp-0x6c], dl
+   :|`====< 0x1403b3999      loopne 0x1403b391d
+   :| :|:   0x1403b399b      rol   dword [rcx], 0xd5
+   :|,====< 0x1403b399e      loope 0x1403b3a08
+   `======< 0x1403b39a0      jz    0x1403b3993
+    ||:|:   0x1403b39a2      ret   0x894
+   ,======< 0x1403b39a6      jno   0x1403b39cf
+   |||:|:   0x1403b39a8      mov   ch, 0xe7                            ; 231
+   |||:|:   0x1403b39aa      sti
+   |||:|:   0x1403b39ab      mov   ecx, dword [rdi]
+   |||:|:   0x1403b39ad      xor   eax, 0x300f66f0
+   |||:|:   0x1403b39b2      mov   bl, 0x59                            ; 'Y' ; 89
+   |||:|:   0x1403b39b4      push  rbp
+   |||:|:   0x1403b39b5      lea   edx, qword [rsi+0x37912e55]
+   | |:|:   0x1403b39bb      neg   byte [rdi-0x80]
+   | |:|:   0x1403b39be      fistp word [rdi-0x01]
+   | |:|:   0x1403b39c2      fwait
+   | |:|:   0x1403b39c3      or    ecx, dword [rbx]
+   |,=====< 0x1403b39c6      loopne 0x1403b3a25
+   |||:|`=< 0x1403b39c8      jbe   0x1403b396f
+   |||:|    0x1403b39ca      fstp  dword [rdi]
+   |||:|    0x1403b39cc      sub   ah, byte [rax]
+   `------> 0x1403b39cf      mov   eax, 0xa843775a
+    ||:|    0x1403b39d4      pop   rsp
+    ||:|    0x1403b39d5      invalid
+    ||:|.-> 0x1403b39d6      outsb
+    ||:|:   0x1403b39d7      mov   esi, 0x793e5e3e                     ; '>^>y'
+    ||:|:   0x1403b39dc      xor   dword [rax], edi
+    ||:|:   0x1403b39de      sub   ebp, dword [rsi]
+    ||:|:   0x1403b39e0      invalid
+    ||:|:   0x1403b39e1      adc   bl, byte [rdi-0x2c]
+    ||:|:   0x1403b39e4      adc   dword [rbp-0x2f6e8bc4], ebx
+    ||:|:   0x1403b39ea      adc   al, 0x8a
+   ,======< 0x1403b39ec      loop  0x1403b3a33
+   |||:|:   0x1403b39ee      push  rdi
+   |||:|:   0x1403b39ef      xchg  edx, eax
+   |||`===< 0x1403b39f0      jrcxz 0x1403b3975
+   |||:|:   0x1403b39f2      sbb   eax, 0x6da1c2c6
+   |||:|:   0x1403b39f7      mov   dh, 0x1e                            ; 30
+   |||:|:   0x1403b39f9      invalid
+   |||:|:   0x1403b39fa      invalid
+   |||:|:   0x1403b39fb      pop   rbp
+   |||:|:   0x1403b39fc      mov   eax, dword [0xf6cfa7bcee62115b]
+   |||:|:   0x1403b3a05      cmp   dword [rdx+0x5fa57d30], esp
+   || :|:   0x1403b3a0b      hlt
+   || :|`=< 0x1403b3a0c      loop  0x1403b39d6
+   || :|    0x1403b3a0e      add   edx, dword [rbx+0x6b]
+   || :|    0x1403b3a11      cmc
+   || :|    0x1403b3a12      xor   al, 0x8d                            ; 141
+   || :|    0x1403b3a14      fldcw word [rdi+0x1b]
+   || :|,=< 0x1403b3a17      jnbe  0x1403b3a8d
+   || :||   0x1403b3a1a      pop   rax
+   || :||   0x1403b3a1b      rcl   byte [rdx], 0x01
+   || :||   0x1403b3a1d      in    al, 0xe4
+   || :||   0x1403b3a20      mov   ebx, 0x35c1533f
+   |`-----> 0x1403b3a25      invalid
+   |  :||   0x1403b3a26      cmp   byte [rax-0x26a87724], bl
+   |  :||   0x1403b3a2c      mov   cl, 0x35                            ; '5' ; 53
+   | ,====< 0x1403b3a2e      jrcxz 0x1403b3a74
+   | |:||   0x1403b3a30      lahf
+   | |:||   0x1403b3a31      fstp  dword [rbp-0x7ddf2fd7]
+     |:||   0x1403b3a37      mov   ch, 0x49                            ; 'I' ; 73
+     |:||   0x1403b3a39      invalid
+     |:||   0x1403b3a3a      mov   ebp, dword [rax-0x369aea17]
+     |:||   0x1403b3a40      mov   esp, 0xf1577836
+     |:||   0x1403b3a45      xor   dword [rdx+rsi*4+0x69], ecx
+     |:||   0x1403b3a49      push  rsi
+     |:||   0x1403b3a4a      invalid
+     |`===< 0x1403b3a4b      loope 0x1403b39f1
+     | ||   0x1403b3a4d      mov   dl, 0x69                            ; 'i' ; 105
+     | ||   0x1403b3a4f      push  rsi
+     | ||   0x1403b3a50      imul  ebp, dword [rcx-0x1c], 0xd95669b2
+     | ||   0x1403b3a57      push  rcx
+     | ||   0x1403b3a58      add   al, 0xb2                            ; 178
+     | ||   0x1403b3a5a      imul  edx, dword [rsi-0x37], 0x69b29c39
+     |.---> 0x1403b3a61      push  rsi
+     |:||   0x1403b3a62      mov   eax, dword [0x85c4415669b27c19]
+     |:||   0x1403b3a6b      call  0x1504f18ab
+     |:||   0x1403b3a70      add   byte [rbx-0x38577cc0], ah
+      `===< 0x1403b3a76      loop  0x1403b3a61
+       ||   0x1403b3a78      cmc
+       ||   0x1403b3a7a      mov   ecx, 0x53d9c0b1
+       ||   0x1403b3a7f      invalid
+       ||   0x1403b3a80      fadd  qword [rcx-0x53af1189]
+       ||   0x1403b3a86      lahf
+       ||   0x1403b3a87      mov   ds, word [rdx-0x43]
+       ||   0x1403b3a8a      and   dh, dh
+       ||   0x1403b3a8c      cmp   spl, r13b
+       |    0x1403b3a8f      test  dword [rcx-0x6d2b53d1], 0xdaf71658
+       |    0x1403b3a99      andnps xmm7, xmmword [rcx+rbx*2-0x58e50906]
+       |    0x1403b3aa1      push  rsp
+       |    0x1403b3aa2      mov   esp, 0xaaf75e59
+       |    0x1403b3aa7      iretd
+       |    0x1403b3aa8      push  rbp
+       |    0x1403b3aa9      mov   esp, 0x4ff62259
+       |    0x1403b3aae      push  rsp
+       |    0x1403b3aaf      add   eax, 0x3208275c
+       |    0x1403b3ab4      xor   rdx, qword [rbp-0x55077867]
+       |    0x1403b3abb      push  rdx
+       |,=< 0x1403b3abc      js    0x1403b3afa
+       ||   0x1403b3abe      cli
+       ||   0x1403b3abf      pop   r13
+       ||   0x1403b3ac1      mov   byte [0x380d41321d99cb53], al
+       ||   0x1403b3aca      stc
+       ||   0x1403b3acb      mov   al, byte [0x36a01171896614]         ; [0x36a01171896614:1]=255
+       ||   0x1403b3ad4      or    dword [r9-0x60], 0xd1d90036         ; [0xd1d90036:4]=-1
+       ||   0x1403b3adc      mov   dword [rax+0x49f90036], esp
+       ||   0x1403b3ae2      cmp   byte [rbp-0x28], ch
+       ||   0x1403b3ae5      movsb
+       ||   0x1403b3ae6      popfq
+       ||   0x1403b3ae8      in    al, 0x00
+       ||   0x1403b3aea      sub   dl, ah
+       ||   0x1403b3aec      cmp   al, byte [rax]
+      ,===< 0x1403b3aee      js    0x1403b3b29
+      |||   0x1403b3af0      in    eax, 0xa0
+      |||   0x1403b3af2      invalid
+      |||   0x1403b3af3      in    eax, 0xe8
+      |||   0x1403b3af5      and   ecx, dword [rdi-0x36a020f1]
+      ||    0x1403b3afb      jmp   far fword [rdi-0x45d24f29]
+      ||    0x1403b3b01      mov   ah, 0x48                            ; 'H' ; 72
+      ||    0x1403b3b03      lea   esp, qword [rsp+0x10]
+      ||    0x1403b3b07      ret
+      ||    0x1403b3b08      shr   qword [rsp+0x28], 0x3e
+      ||    0x1403b3b0e      test  dword [rsp+0x28], 0xb3191aa
+      ||    0x1403b3b16      push  qword [rsp+0x30]
+      ||    0x1403b3b1a      popfq
+      ||    0x1403b3b1b      lea   rsp, qword [rsp+0x38]
+      ||    0x1403b3b20      ret
+      ||    0x1403b3b21      push  qword [rsp+0x30]
+      ||    0x1403b3b25      popfq
+      ||    0x1403b3b26      lea   rsp, qword [rsp+0x40]
+       |    0x1403b3b2b      ret
+       |    0x1403b3b2c      mov   rsi, 0xe434538c6c1b363d
+       |    0x1403b3b36      mov   rsi, qword [rsp+0x18]
+       |    0x1403b3b3b      mov   qword [rsp+0x18], 0x2ac616d5        ; [0x2ac616d5:8]=-1
+       |    0x1403b3b44      lea   rsp, qword [rsp+0x18]
+       |    0x1403b3b49      call  0x141e68765
+       |    0x1403b3b4e      cwde
+       |    0x1403b3b4f      int   0x18
+       |    0x1403b3b51      enter 0x7fbb, 0x25
+       |    0x1403b3b55      invalid
+       |    0x1403b3b56      mov   qword [rsp+0x08], 0x7b098c69        ; [0x7b098c69:8]=-1
+       |    0x1403b3b5f      lea   rsp, qword [rsp+0x08]
+       |    0x1403b3b64      call  0x141eb74db
+       |    0x1403b3b69      call  0x141926a6a
+       |    0x1403b3b6e      call  0x1403b7cc8
+       |    0x1403b3b73      push  rbx
+       |    0x1403b3b74      call  0x141501c2f
+       |    0x1403b3b79      add   byte [rax], dl
+       |    0x1403b3b7b      sbb   eax, dword [rcx]
+       |    0x1403b3b7d      mov   dword [rbp+0x2f4], 0x00
+       |    0x1403b3b87      mov   dword [rbp+0x08], 0x01
+       |    0x1403b3b8e      lea   rcx, qword [rbp+0x28]
+       |    0x1403b3b92      call  0x1403b3cf0
+       |    0x1403b3b97      mov   eax, dword [rbp+0x2f4]
+       |    0x1403b3b9d      add   rsp, 0x380
+       |    0x1403b3ba4      pop   rbp
+       |    0x1403b3ba5      ret

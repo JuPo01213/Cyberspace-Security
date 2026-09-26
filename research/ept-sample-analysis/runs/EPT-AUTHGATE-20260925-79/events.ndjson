@@ -1,0 +1,9 @@
+﻿{"state":"        STATE              : 1  STOPPED ","create":"[SC] CreateService 失败 1073:  指定的服务已存在。 ","utc":"2026-09-25T22:44:37.3217753Z","type":"DRIVER_PRELOADED","start":"[SC] StartService 失败 183:  当文件已存在时，无法创建该文件。 "}
+{"pid":1844,"type":"MOCK_LISTENER_STARTED","utc":"2026-09-25T22:44:37.4155258Z"}
+{"utc":"2026-09-25T22:44:37.4155258Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":1492,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T22:44:37.4311513Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_D04F5FA6_4A3BC20D.exe","pid":2240,"ppid":1492,"type":"CHILD_FOUND","utc":"2026-09-25T22:44:40.2280271Z"}
+{"target_pid":2240,"debugger_pid":776,"type":"CDB_ATTACHED","utc":"2026-09-25T22:44:40.2436518Z"}
+{"pid":5056,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-25T22:44:40.2592757Z"}
+{"pid":4636,"type":"WATCHER_STARTED","utc":"2026-09-25T22:44:40.2905263Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T22:44:40.2905263Z"}

@@ -1,0 +1,104 @@
+{
+    "completed_utc":  "2026-09-24T07:34:42.8644130Z",
+    "guest_user":  "<VM_USER>",
+    "notes":  "caller/injection-level harness run; no Hardware.exe, no device, no network",
+    "guest_host":  "<VM_LABEL>",
+    "modes":  {
+                  "input_268":  {
+                                    "report":  {
+                                                   "status":  "completed",
+                                                   "semantic_role":  "genB_user_mode_decode_success_seam",
+                                                   "synthetic_response":  true,
+                                                   "response_bytes":  284,
+                                                   "response_before_decode_sha256":  "bfa525e78731beaaa2ebf1c64e993fcd933ac43d60b7a6e3d1f61576c78b0cc8",
+                                                   "validator_rax":  "0x00000001",
+                                                   "validator_marker":  "0x13579bdf",
+                                                   "validator_accepted":  true,
+                                                   "marker_matches_g340":  true,
+                                                   "rc03_branch":  "RC06 success",
+                                                   "decoded_output_bytes":  268,
+                                                   "decoded_output_sha256":  "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e",
+                                                   "decoded_matches_input":  true,
+                                                   "encrypted_payload_sha256":  "6f6a7d1c1434b53ceb3e5152e303b43cedb641fcbb10119c75ba8314b62471c3",
+                                                   "caller_structure_bytes":  396,
+                                                   "caller_output_offset":  "0x80",
+                                                   "caller_output_sha256":  "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e",
+                                                   "caller_output_written":  true,
+                                                   "synthetic_globals":  {
+                                                                             "g340":  "0x13579bdf",
+                                                                             "g344":  "0x2468ace0",
+                                                                             "g348":  "0x01020304",
+                                                                             "g34c":  "0x11223344",
+                                                                             "g350":  "0x55667788",
+                                                                             "g354":  "0x99aabbcc"
+                                                                         },
+                                                   "external_dependencies":  [
+
+                                                                             ],
+                                                   "side_effects":  [
+                                                                        "caller_structure+0x80[0x10c]"
+                                                                    ],
+                                                   "external_side_effects":  [
+
+                                                                             ],
+                                                   "elapsed_ms":  33.473,
+                                                   "input_bytes":  268,
+                                                   "input_sha256":  "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e"
+                                               },
+                                    "pid":  7344,
+                                    "ppid":  5412,
+                                    "exit_code":  0
+                                },
+                  "self_test":  {
+                                    "stdout":  "{\n  \"status\": \"self_test_passed\",\n  \"vectors\": [\n    \"38bba6186c2e0320d30f77c0985a842e25c44c67341a2d6b5a522a4bcd067a1d\",\n    \"7f28e601d3aec2fc26036a7feadc99a732c9715422c1055cad941befa7f1b843\"\n  ],\n  \"validator_rax\": [\n    \"0x00000001\",\n    \"0x00000001\"\n  ],\n  \"decoded_matches_input\": [\n    true,\n    true\n  ],\n  \"negative_control_branch\": \"RC03 decode_failed\",\n  \"marker_mismatch_control_branch\": \"RC04 session_mismatch\"\n}",
+                                    "pid":  2788,
+                                    "ppid":  5412,
+                                    "exit_code":  0
+                                },
+                  "response_284":  {
+                                       "report":  {
+                                                      "status":  "completed",
+                                                      "semantic_role":  "genB_user_mode_response_decoder",
+                                                      "synthetic_response":  false,
+                                                      "response_bytes":  284,
+                                                      "response_before_decode_sha256":  "bfa525e78731beaaa2ebf1c64e993fcd933ac43d60b7a6e3d1f61576c78b0cc8",
+                                                      "validator_rax":  "0x00000001",
+                                                      "validator_marker":  "0x13579bdf",
+                                                      "validator_accepted":  true,
+                                                      "marker_matches_g340":  true,
+                                                      "rc03_branch":  "RC06 success",
+                                                      "decoded_output_bytes":  268,
+                                                      "decoded_output_sha256":  "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e",
+                                                      "decoded_matches_input":  null,
+                                                      "encrypted_payload_sha256":  "6f6a7d1c1434b53ceb3e5152e303b43cedb641fcbb10119c75ba8314b62471c3",
+                                                      "caller_structure_bytes":  396,
+                                                      "caller_output_offset":  "0x80",
+                                                      "caller_output_sha256":  "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e",
+                                                      "caller_output_written":  true,
+                                                      "synthetic_globals":  {
+                                                                                "g340":  "0x13579bdf",
+                                                                                "g344":  "0x2468ace0",
+                                                                                "g348":  "0x01020304",
+                                                                                "g34c":  "0x11223344",
+                                                                                "g350":  "0x55667788",
+                                                                                "g354":  "0x99aabbcc"
+                                                                            },
+                                                      "external_dependencies":  [
+
+                                                                                ],
+                                                      "side_effects":  [
+                                                                           "caller_structure+0x80[0x10c]"
+                                                                       ],
+                                                      "external_side_effects":  [
+
+                                                                                ],
+                                                      "elapsed_ms":  30.937,
+                                                      "response_input_sha256":  "bfa525e78731beaaa2ebf1c64e993fcd933ac43d60b7a6e3d1f61576c78b0cc8"
+                                                  },
+                                       "pid":  3084,
+                                       "ppid":  5412,
+                                       "exit_code":  0
+                                   }
+              },
+    "run_id":  "EPT-C175-COREHARNESS-01"
+}

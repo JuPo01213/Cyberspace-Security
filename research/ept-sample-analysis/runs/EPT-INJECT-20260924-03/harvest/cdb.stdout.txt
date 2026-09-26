@@ -1,0 +1,169 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.031 seconds
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll
+ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ff9`20cf0000 00007ff9`20e8e000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ff9`201a0000 00007ff9`201c2000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ff9`21450000 00007ff9`2147c000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ff9`20010000 00007ff9`2012a000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ff9`201d0000 00007ff9`2026d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ff9`1f8f0000 00007ff9`1f9f0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ff9`20320000 00007ff9`203cf000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ff9`21690000 00007ff9`2172e000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ff9`20c50000 00007ff9`20cec000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ff9`21cc0000 00007ff9`21de6000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ff9`20500000 00007ff9`20c45000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ff9`203d0000 00007ff9`204fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ff9`210f0000 00007ff9`21444000   C:\Windows\System32\combase.dll
+ModLoad: 00007ff9`21480000 00007ff9`214eb000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ff9`1feb0000 00007ff9`2000d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ff9`10330000 00007ff9`103e0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.3636_none_7931fb75243f97c8\COMCTL32.dll
+ModLoad: 00007ff9`1ecb0000 00007ff9`1eceb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+(186c.a78): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ff9`222e0730 cc              int     3
+0:000> .echo [INJ2_PARENT_READY]
+[INJ2_PARENT_READY]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+.....................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> sxe -c "$$><child.cdb;g" cpr
+0:000> sxe -c ".echo [INJ2_PARENT_AV]; .lastevent; r; k; g" av
+0:000> g
+ModLoad: 00007ff9`221a0000 00007ff9`221d0000   C:\Windows\System32\imm32.dll
+ModLoad: 00007ff9`1f1d0000 00007ff9`1f1dc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ff9`1fe20000 00007ff9`1fea2000   C:\Windows\System32\bcryptPrimitives.dll
+ModLoad: 00007ff9`1ea10000 00007ff9`1ea43000   C:\Windows\SYSTEM32\ntmarta.dll
+ModLoad: 00007ff9`20270000 00007ff9`2031d000   C:\Windows\System32\SHCORE.dll
+ModLoad: 00007ff9`22070000 00007ff9`220c5000   C:\Windows\System32\shlwapi.dll
+ModLoad: 00007ff9`1d9d0000 00007ff9`1e16b000   C:\Windows\SYSTEM32\windows.storage.dll
+ModLoad: 00007ff9`1f260000 00007ff9`1f28d000   C:\Windows\SYSTEM32\Wldp.dll
+ModLoad: 00007ff9`1d210000 00007ff9`1d222000   C:\Windows\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ff9`1b3a0000 00007ff9`1b496000   C:\Windows\SYSTEM32\PROPSYS.dll
+ModLoad: 00007ff9`21fa0000 00007ff9`2206d000   C:\Windows\System32\OLEAUT32.dll
+ModLoad: 00007ff9`21730000 00007ff9`217d9000   C:\Windows\System32\clbcatq.dll
+ModLoad: 00007ff9`1f820000 00007ff9`1f845000   C:\Windows\SYSTEM32\profapi.dll
+ModLoad: 00007ff9`1f9f0000 00007ff9`1fa3e000   C:\Windows\System32\CFGMGR32.dll
+ModLoad: 00007ff9`10bf0000 00007ff9`10c14000   C:\Windows\SYSTEM32\edputil.dll
+ModLoad: 00007ff9`13820000 00007ff9`13a0d000   C:\Windows\SYSTEM32\urlmon.dll
+ModLoad: 00007ff9`134b0000 00007ff9`1376c000   C:\Windows\SYSTEM32\iertutil.dll
+ModLoad: 00007ff9`16a70000 00007ff9`16a98000   C:\Windows\SYSTEM32\srvcli.dll
+ModLoad: 00007ff9`1edc0000 00007ff9`1edcc000   C:\Windows\SYSTEM32\netutils.dll
+ModLoad: 00007ff9`14a30000 00007ff9`14b76000   C:\Windows\System32\Windows.StateRepositoryPS.dll
+ModLoad: 00007ff9`1f750000 00007ff9`1f782000   C:\Windows\SYSTEM32\SspiCli.dll
+ModLoad: 00007ff9`16a50000 00007ff9`16a63000   C:\Windows\SYSTEM32\virtdisk.dll
+ModLoad: 00007ff9`16a40000 00007ff9`16a4b000   C:\Windows\SYSTEM32\FLTLIB.DLL
+ModLoad: 00007ff9`1c530000 00007ff9`1c685000   C:\Windows\System32\wintypes.dll
+ModLoad: 00007ff9`054f0000 00007ff9`05580000   C:\Windows\System32\appresolver.dll
+ModLoad: 00007ff9`18b40000 00007ff9`18b9b000   C:\Windows\System32\Bcp47Langs.dll
+ModLoad: 00007ff9`1e430000 00007ff9`1e459000   C:\Windows\System32\SLC.dll
+ModLoad: 00007ff9`1f790000 00007ff9`1f7be000   C:\Windows\System32\USERENV.dll
+ModLoad: 00007ff9`1e400000 00007ff9`1e425000   C:\Windows\System32\sppc.dll
+onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FF91B3B460D: (caller: 00007FF91B3B3013) ReturnHr(1) tid(11c4) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FF91B3B460D: (caller: 00007FF91B3B3013) ReturnHr(2) tid(11c4) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FF91B3B460D: (caller: 00007FF91B3B3013) ReturnHr(3) tid(11c4) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FF91B3B460D: (caller: 00007FF91B3B3013) ReturnHr(4) tid(11c4) 80070490 找不到元ModLoad: 00007ff9`0d5d0000 00007ff9`0d64f000   C:\Windows\System32\OneCoreCommonProxyStub.dll
+ModLoad: 00007ff9`1a2a0000 00007ff9`1aa70000   C:\Windows\System32\OneCoreUAPCommonProxyStub.dll
+ModLoad: 00007ff9`1d230000 00007ff9`1d2c0000   C:\Windows\system32\apphelp.dll
+ModLoad: 00007ff9`10890000 00007ff9`108a6000   C:\Windows\SYSTEM32\pcacli.dll
+ModLoad: 00007ff9`10870000 00007ff9`1088d000   C:\Windows\SYSTEM32\MPR.dll
+ModLoad: 00007ff9`10850000 00007ff9`10862000   C:\Windows\System32\sfc_os.dll
+ModLoad: 00007ff9`217f0000 00007ff9`21c5e000   C:\Windows\System32\SETUPAPI.dll
+ModLoad: 00007ff9`1fd40000 00007ff9`1fd67000   C:\Windows\System32\bcrypt.dll
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: srv*
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+[INJ2_CHILD_ATTACHED]
+Reloading current modules
+.
+[INJ2_CHILD_BPS_ARMING]
+[INJ2_CHILD_BPS_ARMED]
+Some commands were skipped because previous commands caused target execution inside an event handler.ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll
+ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ff9`1d230000 00007ff9`1d2c0000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ff9`20cf0000 00007ff9`20e8e000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ff9`201a0000 00007ff9`201c2000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ff9`21450000 00007ff9`2147c000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ff9`20010000 00007ff9`2012a000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ff9`201d0000 00007ff9`2026d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ff9`1f8f0000 00007ff9`1f9f0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ff9`20320000 00007ff9`203cf000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ff9`21690000 00007ff9`2172e000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ff9`20c50000 00007ff9`20cec000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ff9`21cc0000 00007ff9`21de6000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ff9`20500000 00007ff9`20c45000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ff9`203d0000 00007ff9`204fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ff9`210f0000 00007ff9`21444000   C:\Windows\System32\combase.dll
+ModLoad: 00007ff9`21480000 00007ff9`214eb000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ff9`1feb0000 00007ff9`2000d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ff9`10330000 00007ff9`103e0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.3636_none_7931fb75243f97c8\COMCTL32.dll
+ModLoad: 00007ff9`1ecb0000 00007ff9`1eceb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ff9`221a0000 00007ff9`221d0000   C:\Windows\System32\imm32.dll
+ModLoad: 00007ff9`1f1d0000 00007ff9`1f1dc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ff9`1fe20000 00007ff9`1fea2000   C:\Windows\System32\bcryptPrimitives.dll
+[INJ2_DEVICEIO_ENTRY]
+rcx=00000000000000b0
+rdx=0000000000390008
+r8=0000000000000000
+r9=0000000000000000
+ModLoad: 00007ff9`16770000 00007ff9`16787000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ff9`16750000 00007ff9`1676b000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ff9`05640000 00007ff9`05655000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ff9`16c00000 00007ff9`16c1d000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ff9`1efc0000 00007ff9`1f02a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ff9`1ecf0000 00007ff9`1edba000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ff9`220d0000 00007ff9`220d8000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ff9`13370000 00007ff9`13382000   C:\Windows\System32\winrnr.dll
+ModLoad: 00007ff9`19090000 00007ff9`1909a000   C:\Windows\System32\rasadhlp.dll
+ModLoad: 00007ff9`1b700000 00007ff9`1b7ac000   C:\Windows\SYSTEM32\TextShaping.dll

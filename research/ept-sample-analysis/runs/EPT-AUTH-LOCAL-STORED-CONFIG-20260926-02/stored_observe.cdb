@@ -1,0 +1,13 @@
+.echo RUN_STORED_OBSERVE_BEGIN
+sxe av
+bu 0x1407adae0 ".echo STAGE_LOG; da @r8; r r9d; g"
+ba e 1 0x1407adb40 ".echo STAGE_LOG2; r r8; r r9d; g"
+bu kernelbase!CreateFileW ".echo KB_CFW; du @rcx; g"
+bu kernelbase!CreateProcessW ".echo KB_CPW; du @rdx; g"
+bu kernelbase!ExitProcessImplementation ".echo EXIT_OBS; k 10; g"
+bu kernelbase!TerminateProcess ".echo TERM_OBS; r rcx; r rdx; k 10; g"
+.echo OBSERVER_ARMED
+ g
+.echo RUN_STORED_OBSERVE_END
+~*k
+q

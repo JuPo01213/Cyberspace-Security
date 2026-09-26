@@ -1,0 +1,148 @@
+Name:                        <OTHER_VM_LABEL>
+Encryption:                  disabled
+Groups:                      /
+Platform Architecture:       x86
+Guest OS:                    Windows 10 (64-bit)
+UUID:                        8d0b85c0-ed29-47c7-9fe1-21bc706a057a
+Config file:                 <HOST_PATH>\VMs\<OTHER_VM_LABEL>\<OTHER_VM_LABEL>.vbox
+Snapshot folder:             <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots
+Log folder:                  <HOST_PATH>\VMs\<OTHER_VM_LABEL>\Logs
+Hardware UUID:               8d0b85c0-ed29-47c7-9fe1-21bc706a057a
+Memory size:                 3072MB
+Page Fusion:                 disabled
+VRAM size:                   128MB
+CPU exec cap:                100%
+CPUProfile:                  host
+Chipset:                     piix3
+Firmware:                    BIOS
+Number of CPUs:              4
+HPET:                        disabled
+PAE:                         disabled
+Long Mode:                   enabled
+Triple Fault Reset:          disabled
+APIC:                        enabled
+X2APIC:                      disabled
+Nested VT-x/AMD-V:           disabled
+CPUID overrides:             None
+Hardware Virtualization:     enabled
+Nested Paging:               enabled
+Large Pages:                 enabled
+VT-x VPID:                   enabled
+VT-x Unrestricted Exec.:     enabled
+AMD-V Virt. Vmsave/Vmload:   enabled
+CPUID Portability Level:     0
+Boot menu mode:              message and menu
+Boot Device 1:               HardDisk
+Boot Device 2:               DVD
+Boot Device 3:               Floppy
+Boot Device 4:               Not Assigned
+ACPI:                        enabled
+IOAPIC:                      enabled
+BIOS APIC mode:              APIC
+Time offset:                 0ms
+BIOS NVRAM File:             <HOST_PATH>\VMs\<OTHER_VM_LABEL>\<OTHER_VM_LABEL>.nvram
+RTC:                         UTC
+IOMMU:                       None
+Paravirt. Provider:          Default
+Effective Paravirt. Prov.:   HyperV
+State:                       powered off (since 2026-09-22T17:31:56.000000000)
+Graphics Controller:         VBoxSVGA
+Monitor count:               1
+3D Acceleration:             disabled
+Teleporter Enabled:          disabled
+Teleporter Port:             0
+Teleporter Address:          
+Teleporter Password:         
+Tracing Enabled:             disabled
+Allow Tracing to Access VM:  disabled
+Tracing Configuration:       
+Autostart Enabled:           disabled
+Autostart Delay:             0
+Default Frontend:            
+VM process priority:         default
+Storage Controllers:
+#0: 'SATA', Type: IntelAhci, Instance: 0, Ports: 2 (max 30), Bootable
+  Port 0, Unit 0: UUID: 1c1ec786-08a2-4caa-af3d-719c5b832e3e
+    Location: "<HOST_PATH>\VMs\<OTHER_VM_LABEL>\Snapshots/{1c1ec786-08a2-4caa-af3d-719c5b832e3e}.vdi"
+  Port 1, Unit 0: UUID: a6523fab-0fe6-4ec2-94d6-49670303e148
+    Location: "<HOST_PATH>\VMs\<OTHER_VM_LABEL>\Unattended-8d0b85c0-ed29-47c7-9fe1-21bc706a057a-aux-iso.viso"
+#1: 'IDE', Type: PIIX4, Instance: 0, Ports: 2 (max 2), Bootable
+NIC 1:                       MAC: 08002720D035, Attachment: NAT, Cable connected: on, Trace: off (file: none), Type: 82540EM, Reported speed: 0 Mbps, Boot priority: 0, Promisc Policy: deny, Bandwidth group: none
+NIC 1 Settings:
+	MTU: 0, Socket (send: 64, receive: 64), TCP Window (send:64, receive: 64),
+	LocalhostReachable: 1, ForwardBroadcast: 0, EnableTFTP: 0
+NIC 1 Rule(0):   name = ssh, protocol = tcp, host ip = 127.0.0.1, host port = 2222, guest ip = , guest port = 22
+NIC 2:                       disabled
+NIC 3:                       disabled
+NIC 4:                       disabled
+NIC 5:                       disabled
+NIC 6:                       disabled
+NIC 7:                       disabled
+NIC 8:                       disabled
+Pointing Device:             PS/2 Mouse
+Keyboard Device:             PS/2 Keyboard
+UART 1:                      I/O address: 0x03f8, IRQ: 4, attached to pipe (server) '\\.\pipe\kd_hex', 16550A
+UART 2:                      disabled
+UART 3:                      disabled
+UART 4:                      disabled
+LPT 1:                       disabled
+LPT 2:                       disabled
+Audio:                       disabled
+Audio playback:              disabled
+Audio capture:               disabled
+Clipboard Mode:              disabled
+Clipboard file transfers:    disabled
+Drag and drop Mode:          disabled
+VRDE:                        disabled
+OHCI USB:                    disabled
+EHCI USB:                    disabled
+xHCI USB:                    disabled
+USB Device Filters:          <none>
+Bandwidth groups:            <none>
+Shared folders:              
+
+Name: 'HexPatch', Host path: '<HOST_PATH>\HexPatch' (machine mapping), writable, auto-mount
+
+Recording status:            stopped
+Recording enabled:           no
+Recording screens:           1
+ Screen 0:
+    Enabled:                 yes
+    ID:                      0
+    Record video:            yes
+    Record audio:            no
+    Destination:             File
+    File:                    <HOST_PATH>\VMs\<OTHER_VM_LABEL>\<OTHER_VM_LABEL>-screen0.webm
+    Options:                 ac_profile=med
+    Video dimensions:        1024x768
+    Video rate:              512kbps
+    Video FPS:               25fps
+* Snapshots:
+   Name: base (UUID: 48491bc7-c0e7-4dea-b51d-39839b561eea)
+   Description: win10-pro-22H2 GA7.2.16 OpenSSH server first-working-state
+      Name: post-bootstrap (UUID: ca4a46e5-6303-4c85-99e8-34d1bd3fcc8d)
+      Description: GA7.2.16 OpenSSH sshd running guestcontrol verified
+         Name: pre-ept (UUID: 541531cd-c5e0-44fb-b30d-0a487d673ff6)
+         Description: clean state before EPT capture run
+            Name: a2-run (UUID: 099eab25-8203-4c5e-a390-e589db49f416)
+            Name: b-run (UUID: 96892e8b-3b58-45ea-9e29-87e9583059d8)
+               Name: post-real-run (UUID: ec7bcf5c-48fe-4b49-b0ac-9de088a02e39)
+            Name: c2-pre (UUID: 9be816e8-06cf-4549-9308-5f3a1e036400)
+               Name: pre-drvload-20260913 (UUID: 4dd3fc70-9d9e-4e32-b477-c2249e733e55)
+               Description: before EPT container driver signing/load experiment
+                  Name: pre-hexpatch-build-20260914 (UUID: 56f4122b-a907-4299-9223-b743331414cb)
+                     Name: pre-current-driver-lifecycle-20260914 (UUID: 5d802327-5a6b-459b-a5cf-a80f0da50c6c)
+                        Name: pre-vtpm-20260914 (UUID: 911bd9a4-9d59-461d-8bb0-507b31073ab8)
+                           Name: qoder-armed-20260919 (UUID: ad2c4f36-3640-432e-8ac8-39a7ecb15b39) *
+                           Description: store+wu disabled via policy; genB staged at C:\ept_core\Hardware.exe cfa6998e; runA.ps1 in C:\ept_obs
+                              Name: qoder-clean-20260920 (UUID: ec1a5369-26a4-43e3-a09a-aea591461edf)
+                              Description: clean boot after reset; SSH+GA verified; no sample staged
+                                 Name: qoder-baked-20260921k (UUID: 7e081e09-7b83-4adb-b54d-c35a50f5b6fa)
+                                 Description: arm22c.ps1 baked + EPTARM22 boot task via XML; channel-free arms
+                              Name: pre-ept-run-20260922 (UUID: 2755ce42-dde4-4d3d-b511-15bded0238c0)
+                              Description: safety snapshot before decode-core run
+                              Name: ept-real-decode-20260922H5-postmortem (UUID: ab8c9a33-df87-4804-bf15-e86180241f49)
+                              Description: H5 breakpoint action syntax failure before runtime ret patch; not completion evidence
+* Guest:
+Configured memory balloon:   0MB
+

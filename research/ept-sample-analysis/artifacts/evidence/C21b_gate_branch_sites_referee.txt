@@ -1,0 +1,19 @@
+CONTROL    0x1407a4700  CMP dword ptr [0x141154ced],0x1
+c1_j2      0x1407a3556  JNZ 0x1407a357a
+c1_cmp2    0x1407a3558  CMP dword ptr [0x141154cf1],0x1
+c1_ld3     0x1407a3561  MOVZX EAX,byte ptr [0x141154ae7]
+c1_t3      0x1407a3568  TEST AL,AL
+c1_j3      0x1407a356a  JZ 0x1407a357a
+c1_ld4     0x1407a356c  MOV ECX,dword ptr [0x141154ce9]
+c1_t4      0x1407a3572  TEST ECX,ECX
+c1_j4      0x1407a3574  JNZ 0x1407a4727
+c1_sink    0x1407a357a  XOR EBX,EBX
+c1_sink2   0x1407a357c  MOV EAX,dword ptr [0x141154d10]
+c2_j1      0x1407a4707  JNZ 0x1407a48a4
+c2_j2      0x1407a4714  JNZ 0x1407a48a4
+c2_t3      0x1407a472f  TEST ECX,ECX
+c2_j3      0x1407a4731  JZ 0x1407a48a4
+c2_true    0x1407a4737  CALL 0x1407a1340
+callee_ep  0x1407a48c5  MOV RCX,qword ptr [RBP + 0x1550]
+ep_ret     0x1407a48f4  RET 
+c1_true    0x1407a35c7  LEA RSI,[0x140f8e3b8]

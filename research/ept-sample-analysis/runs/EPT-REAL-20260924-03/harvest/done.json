@@ -1,0 +1,8 @@
+{
+    "run_id":  "EPT-REAL-20260924-03",
+    "status":  "RUNNER_FINALIZE_FAILED",
+    "completed_utc":  "2026-09-24T15:39:44.3412067Z",
+    "errors":  [
+                   "参数类型不匹配"
+               ]
+}

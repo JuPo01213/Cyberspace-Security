@@ -1,0 +1,13 @@
+.echo [AUTH_CHILD_ATTACHED]
+.symfix
+.reload
+sxd ibp
+sxd epr
+sxe av
+ba e 1 1407a3080 ".echo [AUTH_CHILD_ENTRY]; r rip; r rsp; r rcx; r rdx; r r8; r r9; dq @rsp L4; k; g"
+ba e 1 1407a6a53 ".echo [AUTH_CHILD_RETURN_A]; r eax; r rcx; r rdx; r r8; r r9; r eax=1; .echo [AUTH_CHILD_FORCED_A]; r eax; g"
+ba e 1 1407a7b14 ".echo [AUTH_CHILD_RETURN_B]; r eax; r rcx; r rdx; r r8; r r9; r eax=1; .echo [AUTH_CHILD_FORCED_B]; r eax; g"
+ba e 1 14078ee73 ".echo [AUTH_CHILD_RC00_CALLSITE]; r rcx; r rdx; r r8; r r9; dq @rsp L10; k; g"
+sxe -c ".echo [AUTH_CHILD_AV]; .lastevent; r; k; g" av
+.echo [AUTH_CHILD_BPS_ARMED]
+g

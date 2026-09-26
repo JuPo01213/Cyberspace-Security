@@ -1,0 +1,40 @@
+== C49: do the gate globals have readable runtime values in the RG2 capture? ==
+   blob RG2_region_0x140e00000.bin, 4194304 B, covers 0x140e00000..0x141200000
+   caveat that governs everything below: a value here is the value AT RG2 CAPTURE TIME, in a
+   run whose input key is not this one, and only if its page was plaintext then. It is a
+   witness of what those bytes CAN hold, not a statement about the branch in a fresh run.
+
+g_ced                          0x141154ced  dword = 0x00000000 (0)   compared against r11d    jne
+    page 0x141154000: non-zero 1361/4096 (33.2 %), entropy 2.958  => plaintext page - the dword is readable as bytes
+    context -16..+16: 0000000000000000000000000000000000000000000000000000000000000000
+    8 dwords around (aligned view): 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+
+g_cf1                          0x141154cf1  dword = 0x00000000 (0)   compared against ebx     jne
+    page 0x141154000: non-zero 1361/4096 (33.2 %), entropy 2.958  => plaintext page - the dword is readable as bytes
+    context -16..+16: 0000000000000000000000000000000000000000000000000000000000000070
+    8 dwords around (aligned view): 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+
+g_ae7                          0x141154ae7  dword = 0x00000000 (0)   compared against r12b    je
+    page 0x141154000: non-zero 1361/4096 (33.2 %), entropy 2.958  => plaintext page - the dword is readable as bytes
+    context -16..+16: 0000000000000000000000000000000000000000000000000000000000000000
+    8 dwords around (aligned view): 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+
+g_ce9                          0x141154ce9  dword = 0x00000000 (0)   compared against r12d    je
+    page 0x141154000: non-zero 1361/4096 (33.2 %), entropy 2.958  => plaintext page - the dword is readable as bytes
+    context -16..+16: 0000000000000000000000000000000000000000000000000000000000000000
+    8 dwords around (aligned view): 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+
+g5_d10 (state word, §4.14)     0x141154d10  dword = 0x00000000 (0)   compared against r12d?   n/a
+    page 0x141154000: non-zero 1361/4096 (33.2 %), entropy 2.958  => plaintext page - the dword is readable as bytes
+    context -16..+16: 70bd7d40010000000500000000000000000000000000000078ba7d4001000000
+    8 dwords around (aligned view): 0x407dbd70, 0x1, 0x5, 0x0, 0x0, 0x0, 0x407dba78, 0x1
+
+entropy state 0x14116c540      0x14116c540  dword = 0x273a8bee (658148334)   compared against -       control
+    page 0x14116c000: non-zero 7/4096 (0.2 %), entropy 0.023  => plaintext page - the dword is readable as bytes
+    context -16..+16: 0000000000000000a0bd610000000000ee8b3a27000000000000000000000000
+    8 dwords around (aligned view): 0x0, 0x0, 0x61bda0, 0x0, 0x273a8bee, 0x0, 0x0, 0x0
+
+control page 0x141154000 : non-zero 1361/4096 (33.2 %), entropy 2.958, first 32 B 0000000000000000000000000000000000000000000000000000000000000000
+control page 0x141155000 : non-zero 892/4096 (21.8 %), entropy 1.792, first 32 B 6465637674404444555f4d627374617465744040407374644040000000000000
+control page 0x14116c000 : non-zero 7/4096 (0.2 %), entropy 0.023, first 32 B 0000000000000000000000000000000000000000000000000000000000000000
+in page 0x141154000: 622/1024 dwords are exactly zero

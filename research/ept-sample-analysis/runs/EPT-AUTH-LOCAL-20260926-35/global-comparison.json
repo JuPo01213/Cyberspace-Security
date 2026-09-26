@@ -1,0 +1,133 @@
+{
+  "scope": "offline_historical_dump_comparison",
+  "dumps": [
+    {
+      "path": "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-20260926-35\\recv2.dmp",
+      "sha256": "CA0FFCEC87A8580E9BFDEF4DAAF90C97FB06A53D597028020FE1EC714830E60D",
+      "ranges": 227,
+      "bytes": 106835968,
+      "0x141154980": {
+        "read": 890,
+        "mapped": true,
+        "all_zero": false,
+        "bytes": null
+      },
+      "0x141154ae7": {
+        "read": 1,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00"
+      },
+      "0x141154ce9": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154ced": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154cf1": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154cf6": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      }
+    },
+    {
+      "path": "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-20260926-35\\early-death.dmp",
+      "sha256": "EFCC940D0E4FB1E2DD46CCDDC3622D48B78BB4072CB9ABFE3E28DA7A8774631E",
+      "ranges": 168,
+      "bytes": 100204544,
+      "0x141154980": {
+        "read": 890,
+        "mapped": true,
+        "all_zero": false,
+        "bytes": null
+      },
+      "0x141154ae7": {
+        "read": 1,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00"
+      },
+      "0x141154ce9": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154ced": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154cf1": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154cf6": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      }
+    },
+    {
+      "path": "C:\\ept_obs\\spool\\EPT-AUTH-LOCAL-20260926-35\\mem-parent.dmp",
+      "sha256": "A73C875C4E08A8319D9FE85EA4B4DFD94EA83A7C046F48A99426C0D2467F8F22",
+      "ranges": 177,
+      "bytes": 100171776,
+      "0x141154980": {
+        "read": 890,
+        "mapped": true,
+        "all_zero": false,
+        "bytes": null
+      },
+      "0x141154ae7": {
+        "read": 1,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00"
+      },
+      "0x141154ce9": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154ced": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154cf1": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      },
+      "0x141154cf6": {
+        "read": 4,
+        "mapped": true,
+        "all_zero": true,
+        "bytes": "00000000"
+      }
+    }
+  ],
+  "authorization_proven": false,
+  "sample_executed": false
+}

@@ -1,0 +1,7 @@
+.echo [S15_CHILD_ATTACHED]
+$$ child: sample-frame filtered API trace (no sample 0xCC, no memory deref)
+bp kernelbase!CreateFileW ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15C_CREATEFILEW]; r rcx; dU @rcx L10; k L14 } } ; g"
+bp ntdll!NtDeviceIoControlFile ".if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15C_DIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L12; k L14 } } ; g"
+bp ntdll!NtDelayExecution ".if (@$t5 < 20) { .if (@$ra >= 0x140000000) { .if (@$ra <= 0x143f83000) { .echo [S15C_SLEEP]; k L20; r @$t5=@$t5+1 } } } ; g"
+bp ntdll!NtWaitForSingleObject 200 ".echo [S15C_SNAP_200]; ~* k L25; g"
+.echo [S15_CHILD_BPS_ARMED]

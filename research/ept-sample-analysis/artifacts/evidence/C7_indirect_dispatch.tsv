@@ -1,0 +1,14 @@
+target	desc	abs_ptr_aligned	abs_ptr_unaligned	rva32	addrtaken_lea	first_insn
+0x14078de50	driver auth handshake (CI00/02/03/04)	0	0	0	0	mov qword ptr [rsp + 8], rbx
+0x14078e823	CI06 scan_existing	0	0	0	0	mov rcx, qword ptr [rsp + 0x48]
+0x14078e8c0	CI16 comm_init	0	0	0	0	mov qword ptr [rsp + 8], rbx
+0x14078ed39	RC00 send	0	0	4	0	mov qword ptr [r11 + 0x18], rbp
+0x14078ee89	RC03 decode_failed	0	0	0	0	lea rdx, [rsp + 0x44]
+0x14078ef02	RC02 ioctl_failed + RC04 session_mismatch	0	0	0	0	mov r8d, dword ptr [rsp + 0x44]
+0x14078f025	RC01 invalid_state	0	0	0	0	mov eax, dword ptr [rip + 0x9cd33d]
+0x14078f0ad	HS02 expected=0x12345678	0	0	4	0	mov qword ptr [rsp + 0x190], rdi
+0x1407a3080	StoredAuthorizationUsable producer	0	0	4	0	mov qword ptr [rsp + 0x10], rbx
+0x1407a3000	block action (clear_or_block)	0	0	0	0	push rbx
+0x14078b650	EPT_runtime_hash.csv writer	0	0	6	0	push rbp
+0x1407a1880	uninstall-script builder	0	0	0	0	mov qword ptr [rsp + 8], rbx
+0x1407c1f44	temp drop path user	0	0	0	0	mov qword ptr [rsp + 8], rbx

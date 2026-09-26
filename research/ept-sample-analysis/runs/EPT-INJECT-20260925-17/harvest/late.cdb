@@ -1,0 +1,8 @@
+$$ POST-DEPLOY: self-deployment finished -> rescan auth strings + arm read watchpoints
+$$ (earlier XREF runs armed these too early / wrong phase)
+.echo [PD_ARM_START]
+s -a 140000000 L?3f83000 "StoredAuthorizationUsable"
+s -a 140000000 L?3f83000 "skip_driver_load"
+ba r 1 140f93624 ".echo [PD_SKIPDRIVER]; r rip; r rcx; r rdx; r r8; r r9; k L14; g"
+ba r 1 140f9252d ".echo [PD_STOREDAUTH]; r rip; r rcx; r rdx; r r8; r r9; k L14; g"
+.echo [PD_ARM_DONE]

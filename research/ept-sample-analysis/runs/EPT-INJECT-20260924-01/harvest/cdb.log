@@ -1,0 +1,89 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.015 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.172 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+CommandLine: C:\ept_core\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 2 -m 1 
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   image00000001`40000000
+ModLoad: 00007ff9`22210000 00007ff9`22408000   ntdll.dll
+ModLoad: 00007ff9`20e90000 00007ff9`20f4d000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ff9`1fa40000 00007ff9`1fd36000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ff9`20cf0000 00007ff9`20e8e000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ff9`201a0000 00007ff9`201c2000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ff9`21450000 00007ff9`2147c000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ff9`20010000 00007ff9`2012a000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ff9`201d0000 00007ff9`2026d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ff9`1f8f0000 00007ff9`1f9f0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ff9`20320000 00007ff9`203cf000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ff9`21690000 00007ff9`2172e000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ff9`20c50000 00007ff9`20cec000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ff9`21cc0000 00007ff9`21de6000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ff9`20500000 00007ff9`20c45000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ff9`203d0000 00007ff9`204fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ff9`210f0000 00007ff9`21444000   C:\Windows\System32\combase.dll
+ModLoad: 00007ff9`21480000 00007ff9`214eb000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ff9`1feb0000 00007ff9`2000d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ff9`10330000 00007ff9`103e0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.3636_none_7931fb75243f97c8\COMCTL32.dll
+ModLoad: 00007ff9`1ecb0000 00007ff9`1eceb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+(170.17fc): Break instruction exception - code 80000003 (first chance)
+ntdll!LdrInitShimEngineDynamic+0x360:
+00007ff9`222e0730 cc              int     3
+0:000> .echo [INJ_PARENT_ATTACH]
+[INJ_PARENT_ATTACH]
+0:000> .symfix
+0:000> .reload
+Reloading current modules
+.....................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+0:000> .childdbg 1
+Processes created by the current process will be debugged
+0:000> sxd ibp
+0:000> sxe av
+0:000> sxe -c "$$><
+                  ^ Trailing quote missing in 'sxe -c "$$><'
+0:000> C:\ept_obs\spool\EPT-INJECT-20260924-01\child_honest.cdb
+Address expression missing from ':\ept_obs\spool\EPT-INJECT-20260924-01\child_honest.cdb'
+0:000> ;g" cpr
+        ^ addresses must be preceeded by whitespace error in ';g" cpr'
+0:000> sxe -c ".echo [INJ_PARENT_AV]; .lastevent; r; k; g" av
+0:000> bu 14235f67b ".echo [INJ_PARENT_ENTRY]; r rip; g"
+0:000> g
+ModLoad: 00007ff9`221a0000 00007ff9`221d0000   C:\Windows\System32\imm32.dll
+[INJ_PARENT_ENTRY]
+rip=000000014235f67b
+ntdll!NtTerminateProcess+0x14:
+00007ff9`222ad564 c3              ret
+0:000> 

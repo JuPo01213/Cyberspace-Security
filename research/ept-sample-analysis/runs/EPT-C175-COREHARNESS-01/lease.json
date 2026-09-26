@@ -1,0 +1,9 @@
+{
+  "lease_id": "LEASE-C175-COREHARNESS-01",
+  "resource": "<VM_LABEL> (VM lifecycle, file deploy, harness run, debugger session)",
+  "owner_agent": "guest-communication-workbench@EPT",
+  "mode": "EXCLUSIVE_WRITE",
+  "acquired_at": "2026-09-24T15:23:00+08:00",
+  "expires_at": "2026-09-24T18:23:00+08:00",
+  "notes": "本轮唯一写 lease 持有者；任何 VM 启动/恢复/投递/运行前必须持有此 lease。"
+}

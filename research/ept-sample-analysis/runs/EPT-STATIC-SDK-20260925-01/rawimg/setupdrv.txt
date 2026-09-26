@@ -1,0 +1,310 @@
+       ::   0x142037500      or    al, ch
+       ::   0x142037502      sub   dword [rbx], esi
+       ::   0x142037504      fdivp st7, st0
+       ::   0x142037506      pop   rsp
+       ::   0x142037507      push  rcx
+       ::   0x142037508      pushfq
+       ::   0x142037509      mov   rcx, 0xaa35f13e6b8fb539
+       ::   0x142037513      shr   rcx, 0x91
+       ::   0x142037517      cmp   cl, 0x2f                            ; '/' ; 47
+       ::   0x14203751a      push  rbp
+       ::   0x14203751b      mov   rcx, qword [rsp+0x10]
+       ::   0x142037520      mov   qword [rsp+0x10], 0xffffffffdc7d1916
+       ::   0x142037529      push  qword [rsp+0x08]
+       ::   0x14203752d      popfq
+       ::   0x14203752e      lea   rsp, qword [rsp+0x10]
+       ::   0x142037533      call  0x141c7b1f8
+      :::   0x142037538      popfq
+      :::   0x142037539      call  0x1418ce06c
+      :::   0x14203753e      mov   dword [rcx+0x52], 0x4cebdee8        ; [0x4cebdee8:4]=-1
+      :::   0x142037545      invalid
+      :::   0x142037546      fld   dword [rcx+0x52]
+      :::   0x142037549      call  0x14142eaeb
+      :::   0x14203754e      call  0x1419aef6d
+      :::   0x142037554      imul  ebp, dword [rdx], 0xffffffed
+      :::   0x142037557      fld   qword [0xce070045]
+     ::::   0x14203755d      jmp   far fword [rbx]
+     ::::   0x14203755f      adc   dword [rbp-0x13], ebx
+     ::::   0x142037562      push  rax
+     ::::   0x142037563      pushfq
+     ::::   0x142037564      mov   r15, 0xdc9506941d0b5158
+    ,=====< 0x14203756e      jmp   0x177968eb8
+    |::::   0x142037573      push  rax
+   ,======< 0x142037574      jno   0x1420375da
+   ||:`===< 0x142037576      jnb   0x142037537
+   ||:,===< 0x142037578      jrcxz 0x142037586
+   ||:|::   0x14203757a      mov   esi, 0x678af557
+   ||:|::   0x14203757f      invalid
+  .-------> 0x142037580      xor   ah, dl
+  ========< 0x142037582      loopne 0x14203758b
+  :||:|::   0x142037584      and   ecx, eax
+  :||:`---> 0x142037586      fcomp st3
+  :||: ::   0x142037588      stosd
+  :||: ::   0x142037589      test  al, 0xb8                            ; 184
+  :||:,===< 0x14203758c      jno   0x1420375c9
+  :||:|::   0x14203758e      out   dx, al
+  :||:|::   0x14203758f      iretd
+  :||:|::   0x142037590      mov   bl, 0x20                            ; 32
+  :||`====< 0x142037592      jnbe  0x14203755c
+  :|| |::   0x142037594      and   rax, 0xffffffffc9de5863
+  :|| |::   0x14203759a      adc   dword [rsi], 0xffffff87
+  :|| |::   0x14203759d      insb
+  :|| |::   0x14203759e      invalid
+  :|| |::   0x14203759f      mov   dh, byte [rsi+rax*1-0x78]
+  :|| |::   0x1420375a3      test  al, 0x4c                            ; 76
+  :|| |::   0x1420375a5      mov   ch, cl
+  :|| |::   0x1420375a7      ret
+  :|| |::   0x1420375a8      invalid
+  :|| |::   0x1420375a9      nop
+  :|| |::   0x1420375aa      cld
+  :|| |::   0x1420375ab      mov   eax, dword [0x130f4cbb419dc4e2]     ; [0x130f4cbb419dc4e2:4]=-1
+  :|| |::   0x1420375b4      adc   byte [rcx+rdx*1], ch
+  :|| |::   0x1420375b7      push  0x26885d3e
+  :||,====< 0x1420375bc      loopne 0x1420375e0
+  `=======< 0x1420375be      jl    0x142037580
+   ||||::   0x1420375c0      invalid
+   ||||::   0x1420375c1      cdq
+   ||||::   0x1420375c2      movsxd esp, dword [rbp+0x2f]
+   ||||::   0x1420375c5      nop
+   ||||::   0x1420375c6      mov   byte [0x3e632d41519bc678], al
+   |||,===< 0x1420375cf      loop  0x14203761d
+   ||||::   0x1420375d1      xor   eax, 0x7f0ce08c
+   ||||::   0x1420375d7      and   dword [rdi], ebp
+   `------> 0x1420375da      test  eax, 0x87fea2fe
+    |||::   0x1420375df      shr   eax, 0x01
+    | |::   0x1420375e1      scasb
+    | |::   0x1420375e2      shr   byte [rsi-0x60177f01], cl
+    | |::   0x1420375e8      sbb   al, byte [rdi+rdi*8+0x2a]
+    |.----> 0x1420375ec      push  rbx
+    |:|::   0x1420375ed      pushfq
+    |:|::   0x1420375ee      mov   rbx, 0x273ef6af4314c21b
+    |:|::   0x1420375f8      cmp   bl, 0xbc                            ; 188
+    |`====< 0x1420375fb      jo    0x1420375ec
+    | |::   0x142037601      setnb bl
+    | |::   0x142037604      mov   rbx, qword [rsp+0x08]
+    | |::   0x142037609      mov   qword [rsp+0x08], 0xffffffffdbf75050
+    | |::   0x142037612      push  qword [rsp]
+    | |::   0x142037616      popfq
+    | |::   0x142037617      lea   rsp, qword [rsp+0x08]
+    | |::   0x14203761c      call  0x141d28f76
+    |  ::   0x142037621      sub   ebp, eax
+    |  ::   0x142037623      mov   byte [0x55415241edff468a], al
+    |  ::   0x14203762c      mov   r10, 0x81370a0c53305900
+    |  ::   0x142037636      push  rbx
+    |  ::   0x142037637      bswap r10d
+    |  ::   0x14203763a      mov   r10, qword [rsp+r10*4-0x164c13c]
+    |  ::   0x142037642      mov   qword [rsp+0x10], 0xfffffffff7968e73
+    |  ::   0x14203764b      lea   rsp, qword [rsp+0x10]
+    |  ::   0x142037650      call  0x141de89e3
+    |  ::   0x142037655      add   al, byte [rcx+0x56]
+    |  ::   0x142037658      push  rcx
+    |  ::   0x142037659      pushfq
+    |  ::   0x14203765a      mov   rcx, 0x581ede0cd730f52b
+    |  ::   0x142037664      mov   r14, 0xc7b66491b9bcddb2
+    |  ::   0x14203766e      lea   rcx, qword [rcx+r14*4+0x51948e9f]
+    |  ::   0x142037676      call  0x1415ff9d8
+    |  ::   0x14203767b      invalid
+    |  ::   0x14203767c      push  r11
+    |  ::   0x14203767e      pushfq
+    |  ::   0x14203767f      mov   r11, 0x2ebced01142c22b9
+    |  ::   0x142037689      not   r11w
+    |  ::   0x14203768d      lea   r11, qword [r11+r11*1-0x68fb5a51]
+    |  ::   0x142037695      xor   r11b, r11b
+    |  `==< 0x142037698      jnl   0x14158794a
+    |   :   0x14203769e      out   0x41, eax
+    |   :   0x1420376a0      push  rsp
+    |   :   0x1420376a1      mov   r12, 0x7a34ab35090b9499
+    |   :   0x1420376ab      call  0x1414930f2
+    |   :   0x1420376b0      outsb
+    |   :   0x1420376b1      call  0x141825904
+    |   :   0x1420376b6      not   dword [rcx+0x41]
+    |  ::   0x1420376b9      push  rbp
+    |  ::   0x1420376ba      mov   rcx, 0x1f28dd106d9aca9f
+    | :::   0x1420376c4      call  0x141b126a6
+    | :::   0x1420376c9      xor   ebp, eax
+    | :::   0x1420376cb      pop   rsp
+    | :::   0x1420376cc      insd
+    | :::   0x1420376ce      invalid
+    | :::   0x1420376cf      invalid
+    | :::   0x1420376d0      call  0x1407a7dd2
+    | `===< 0x1420376d5      jle   0x1420376bf
+    |  ::   0x1420376d7      out   dx, eax
+    |  ::   0x1420376d8      int3
+    |  ::   0x1420376d9      invalid
+    |  ::   0x1420376da      call  rdi
+    |  ::   0x1420376dc      call  0x1419e419f
+    | ,===< 0x1420376e1      jnb   0x142037724
+    | |::   0x1420376e3      push  rax
+    | |::   0x1420376e4      push  rcx
+    | |::   0x1420376e5      mov   r8, 0xf1b70981c3848b27
+    | |::   0x1420376ef      pushfq
+    | |::   0x1420376f0      mov   rcx, 0xeba3672e8f12a7bc
+    | |::   0x1420376fa      call  0x1414c9afd
+    | |::   0x1420376ff      fsubp st0, st0
+    | |::   0x142037701      lodsd
+    | |::   0x142037702      stosb
+    | |::   0x142037703      cmp   edi, edi
+    | |::   0x142037705      pop   rcx
+    | |::   0x142037706      call  0x14196dcdc
+    | |::   0x14203770b      xor   ebp, eax
+    | |::   0x14203770d      add   al, 0x92                            ; 146
+    |,====< 0x14203770f      jo    0x142037710
+    | |::   0x142037711      and   al, ch
+    | |`==< 0x142037713      loop  0x1420376b8
+    | | :   0x142037715      push  qword [r9-0x46b6aebf]
+    | | :   0x14203771c      xchg  byte [rsi], ah
+    | | :   0x14203771e      adc   cl, dh
+    | | :   0x142037720      mov   edi, 0x9cc43560
+    |   :   0x142037725      shl   r9b, 0x77
+    |   :   0x142037729      test  r9b, r9b
+    |   :   0x14203772c      push  r8
+    |   :   0x14203772e      not   r9
+    |   :   0x142037731      mov   r9, qword [rsp+0x10]
+    |   :   0x142037736      mov   qword [rsp+0x10], 0xffffffffe033b0bf
+    |   :   0x14203773f      push  qword [rsp+0x08]
+    |   :   0x142037743      popfq
+    |   :   0x142037744      lea   rsp, qword [rsp+0x10]
+    |   :   0x142037749      call  0x141e1a82f
+    |   :   0x14203774e      sub   ebp, eax
+    |   :   0x142037750      adc   dword [rcx+rbx*4-0x01], esp
+    |   :   0x142037754      sub   dword [rdi-0x64], edx
+    |   :   0x142037757      mov   rdi, 0x559e6c2a14842f81
+    |   :   0x142037761      push  r8
+    |   :   0x142037763      mov   r8, 0xe73493209daa3033
+    |   :   0x14203776d      mov   rdi, qword [rsp+0x10]
+    |   :   0x142037772      mov   qword [rsp+0x10], 0x1d6e7fbf        ; [0x1d6e7fbf:8]=-1
+    |   :   0x14203777b      mov   r8, qword [rsp]
+    |   :   0x142037780      call  0x1414654c1
+    |   :   0x142037785      call  0x1416291f1
+    |   :   0x14203778b      xchg  ecx, eax
+    |   :   0x14203778c      call  0x1416dc815
+    |   :   0x142037791      cli
+    |   :   0x142037792      call  0x14037f15d
+    |   :   0x142037797      cmp   al, 0xe8                            ; 232
+    |   :   0x142037799      sub   bh, dh
+    |   :   0x14203779b      invalid
+    |   :   0x14203779c      invalid
+    |   :   0x14203779d      sti
+    |   :   0x14203779e      push  r12
+    |   :   0x1420377a0      pushfq
+    |   :   0x1420377a1      mov   r12, 0xf5ae4a9970811b2a
+    |   :   0x1420377ab      test  r12d, 0x990982a
+    |   :   0x1420377b2      mov   r12d, 0x2b0ee0b0
+    |   :   0x1420377b8      setl  r12b
+    |   :   0x1420377bc      shr   r12b, 0x2d
+    |   :   0x1420377c0      mov   r12, qword [rsp+r12*2-0x561dbff8]
+    |   :   0x1420377c8      mov   qword [rsp+0x08], 0xffffffffc57ff956
+    |   :   0x1420377d1      push  qword [rsp]
+    |   :   0x1420377d5      popfq
+    |   :   0x1420377d6      lea   rsp, qword [rsp+0x08]
+    |   :   0x1420377db      call  0x141ecfc4a
+    |   :   0x1420377e0      invalid
+    |   :   0x1420377e1      push  r10
+    |   :   0x1420377e3      pushfq
+    |   :   0x1420377e4      mov   r10, 0x9a16631907a20cb1
+    |   :   0x1420377ee      push  0x25b2f187
+    |   :   0x1420377f3      cmp   r10d, 0x4f085c8a
+    |  .--> 0x1420377fa      mov   dword [rsp], r10d
+    |  `==< 0x1420377ff      jz    0x1420377fa
+    |   :   0x142037805      mov   r10, qword [rsp+0x10]
+    |   :   0x14203780a      mov   qword [rsp+0x10], 0x1dd370bf        ; [0x1dd370bf:8]=-1
+    |  ::   0x142037813      push  qword [rsp+0x08]
+    |  ::   0x142037817      popfq
+    |  ::   0x142037818      lea   rsp, qword [rsp+0x10]
+    |  ::   0x14203781d      call  0x141e1a82f
+    |  `==< 0x142037822      jmp   0x14203780c
+    |   :   0x142037824      cmc
+    |   :   0x142037825      mov   bl, byte [rbp-0x01]
+    |   :   0x142037828      mov   byte [rcx+0x57], 0x49               ; 'I'
+    |   :                                                              ; [0x49:1]=255 ; 73
+    |  ::   0x14203782c      mov   edi, 0x47114bb4
+    |  ::   0x142037831      xchg  esp, eax
+    |  ::   0x142037832      mov   byte [rcx], cl
+    |  ::   0x142037834      invalid
+    |  ::   0x142037835      push  rdx
+    |  ::   0x142037836      pushfq
+    |  ::   0x142037837      mov   rdx, r15
+    |  ::   0x14203783a      not   r15
+    | .---> 0x14203783d      sub   r15w, 0xc2a0
+    | :`==< 0x142037843      jns   0x14203782b
+    | : :   0x142037849      sets  r15b
+    | : :   0x14203784d      mov   r15, qword [rsp+0x10]
+    | : :   0x142037852      mov   qword [rsp+0x10], 0x70e702b2        ; [0x70e702b2:8]=-1
+    | : :   0x14203785b      mov   rdx, qword [rsp+0x08]
+    | `===< 0x142037860      jns   0x14203783d
+    |   `=< 0x142037866      jb    0x141189ebc
+    |       0x14203786c      push  r10
+    |       0x14203786f      pushfq
+    |       0x142037870      mov   r10, 0x6ebe2a2ffea63b2b
+    |       0x14203787a      sub   r10d, 0x192a8c1b
+    |       0x142037881      shr   r10d, 0x95
+    |       0x142037885      push  r9
+    |       0x142037887      push  rbx
+    |       0x142037888      lea   r10, qword [r10*2-0x7a5c374f]
+    |       0x142037890      mov   r10, qword [rsp+r10*1+0x7a5c2911]
+    |       0x142037898      mov   qword [rsp+0x18], 0x409f9455        ; [0x409f9455:8]=-1
+    |       0x1420378a1      push  qword [rsp+0x10]
+    |       0x1420378a5      popfq
+    |       0x1420378a6      lea   rsp, qword [rsp+0x18]
+    |       0x1420378ab      call  0x141e68765
+    |       0x1420378b0      test  eax, 0xbd489c55
+    |       0x1420378b5      cmp   eax, 0xcd8a7883
+    |       0x1420378bb      invalid
+    |       0x1420378bc      invalid
+    |       0x1420378bd      mov   rbp, 0x4e1e9027cf14363e
+    |       0x1420378c7      lea   rbp, qword [rbp*2+0x31225515]
+    |       0x1420378cf      mov   rbp, qword [rsp+0x08]
+    |       0x1420378d4      mov   qword [rsp+0x08], 0x5f8716f5        ; [0x5f8716f5:8]=-1
+    |       0x1420378dd      push  qword [rsp]
+    |       0x1420378e1      popfq
+    |       0x1420378e2      lea   rsp, qword [rsp+0x08]
+    |       0x1420378e7      call  0x141e68765
+    |       0x1420378ec      push  0x1b8d2231
+    |       0x1420378f2      push  r14
+    |       0x1420378f4      call  0x141917eb3
+    |       0x1420378f9      mov   bl, 0xe8                            ; 232
+    |       0x1420378fb      adc   eax, 0xecff5de9
+    |       0x142037900      call  0x1419cdc87
+    |       0x142037905      mov   ecx, 0xbb489c53
+    |       0x14203790a      xchg  esi, eax
+    |       0x14203790b      sbb   dword [rsi], edx
+    |       0x14203790d      invalid
+    |       0x14203790e      and   eax, edi
+    |       0x142037910      invalid
+    |       0x142037911      int1
+    |       0x142037912      push  r12
+    |       0x142037914      mov   r12, 0x689d953516274191
+    |       0x14203791e      mov   rbx, qword [rsp+0x10]
+    |       0x142037923      mov   qword [rsp+0x10], 0x33039515        ; [0x33039515:8]=-1
+    |       0x14203792c      mov   r12, qword [rsp]
+    |       0x142037931      call  0x141996a97
+    |       0x142037936      call  0xe8c2c192
+    |       0x14203793b      mov   edx, 0x6d8d7995
+    |       0x142037940      sub   al, 0xfc                            ; 252
+    |       0x142037942      call  0x1419a06aa
+    |       0x142037947      stosd
+    |       0x142037948      push  rbx
+    |       0x142037949      pushfq
+    |       0x14203794a      mov   rbx, 0xef0dd3266dbd9518
+    |       0x142037954      push  r13
+    |       0x142037956      mov   r13, rbx
+    |       0x142037959      push  rbx
+    |       0x14203795a      push  r12
+    |       0x14203795c      mov   r12, r13
+    |       0x14203795f      mov   rbx, qword [rsp+0x20]
+    |       0x142037964      mov   qword [rsp+0x20], 0x7d7155af        ; [0x7d7155af:8]=-1
+    |       0x14203796d      mov   r12, qword [rsp]
+    |       0x142037972      and   r13d, 0xc49c7c0f
+    |       0x142037979      call  0x1419ae52b
+    |       0x14203797e      psubsb mm2, qword [rbx-0x18]
+    |   ,=< 0x142037982      jnbe  0x142037983
+    |       0x142037984      sbb   eax, 0x8bb4853
+    |       0x142037989      sbb   al, byte [rbx-0x543dde71]
+    |       0x14203798f      rcr   byte [rsi-0x8172409], cl
+    |       0x142037996      rcr   byte [rbp-0x01], cl
+    |       0x142037999      out   0x52, al
+    |       0x14203799b      pushfq
+    |       0x14203799c      mov   rdx, 0x5e8e58977a07d2b2
+    |       0x1420379a6      lea   rdx, qword [rdx+0x238acc90]
+    |       0x1420379ae      invalid
+    |       0x1420379af      invalid

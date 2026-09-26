@@ -1,0 +1,8 @@
+{
+    "run_id":  "EPT-INJECT-20260924-01",
+    "phase":  "DONE",
+    "utc":  "2026-09-24T12:02:21.5712166Z",
+    "evidence_scope":  "real_sample_guest_run_injected_io",
+    "response_injection":  "NOT_ATTACHED",
+    "status":  "OBSERVER_COMPLETE_INJECTION_PENDING"
+}

@@ -1,0 +1,18 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-38",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "vm": "<VM_LABEL> (running on differencing .avhdx; stale NTFS index entry for System32\\Hardware\\Hardware documented, content unrecoverable/regenerable)",
+  "config_disposal": "900B config MFT record lost pre-run (storage-layer inconsistency, registered); phantom entry undeletable; sample CreateFile will fail -> config-absent Setup GUI path expected",
+  "hypothesis": "配置不可打开后样本重走 run36 同款 Setup GUI 路径（免责->主GUI->KEY->应用并启动->CardLogin链->配置重建->服务轮次->TEMP载荷写盘）；在明文 fatal 尾点 0x1407aa68c 用软件断点当场捕获决定性条件寄存器（r15d/eax/r13b/ebx），并以 DeleteFileW 观测判定样本是否自清理 TEMP 载荷。",
+  "acceptance_fields": {
+    "gui_path_reached": null,
+    "fatal_tail_registers": null,
+    "fatal_tail_k": null,
+    "payload_files": null,
+    "deletefilew_observed": null,
+    "service_names": null,
+    "config_regenerated": null
+  },
+  "deadline_sec": 720,
+  "stop_loss": "若 FATAL_TAIL 未命中或 GUI 未达成（winproc agree=0），记录实际路径并按新差异重新设计；环境读数一律双方法复核。"
+}

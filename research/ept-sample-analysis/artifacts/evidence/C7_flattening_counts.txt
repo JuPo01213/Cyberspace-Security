@@ -1,0 +1,6 @@
+stack_slot_code_addr_stores=40
+inside_this_function=40
+distinct_targets=40
+switch=0
+LAB_labels=24
+lines=2878

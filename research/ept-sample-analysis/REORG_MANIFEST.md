@@ -1,0 +1,83 @@
+# 结构整理 move-manifest
+
+生成：`python <HOST_PATH>/vmctl/move_reorg.py --apply`（本文件由脚本写出，逐条可回退：把两列对调执行即可）。
+前一次提交 `b4f7614` 是整理前快照，任何一步都可 `git checkout b4f7614 -- <路径>` 单独还原。
+
+| 原路径 | 新路径 | 跟踪方式 |
+|---|---|---|
+| `EPT专业游戏维修工具箱V5.1.exe` | `sample/EPT专业游戏维修工具箱V5.1.exe` | mv (未入库) |
+| `EPT专业游戏维修工具箱V5.1.exe_extracted` | `sample/EPT专业游戏维修工具箱V5.1.exe_extracted` | mv (未入库) |
+| `upx3.py` | `unpack/upx3.py` | git mv |
+| `build_clean_pe.py` | `unpack/build_clean_pe.py` | git mv |
+| `ept_clean.exe` | `unpack/ept_clean.exe` | mv (未入库) |
+| `ept_dump_base.bin` | `unpack/ept_dump_base.bin` | mv (未入库) |
+| `EPT_V5.1_初步Writeup.md` | `archive/EPT_V5.1_初步Writeup.md` | mv (未入库) |
+| `artifacts/stream_C6` | `artifacts/captures/stream_C6` | mv (未入库) |
+| `artifacts/pcap` | `artifacts/captures/pcap` | mv (未入库) |
+| `artifacts/mem/RG2_region_0x140e00000.bin` | `artifacts/captures/RG2_region_0x140e00000.bin` | mv (未入库) |
+| `artifacts/mem/C13_static_highentropy_region.bin` | `artifacts/captures/C13_static_highentropy_region.bin` | mv (未入库) |
+| `artifacts/mem/_INVALID_decoy-pdata-parse_do-not-use.tsv` | `artifacts/deprecated/_INVALID_decoy-pdata-parse_do-not-use.tsv` | git mv |
+| `artifacts/mem/C10_xref_crosscheck.txt` | `artifacts/evidence/C10_xref_crosscheck.txt` | git mv |
+| `artifacts/mem/C10b_capstone_only_sites.txt` | `artifacts/evidence/C10b_capstone_only_sites.txt` | git mv |
+| `artifacts/mem/C10b_xref_disagreement_classes.txt` | `artifacts/evidence/C10b_xref_disagreement_classes.txt` | git mv |
+| `artifacts/mem/C10c_decode_arbitration.txt` | `artifacts/evidence/C10c_decode_arbitration.txt` | git mv |
+| `artifacts/mem/C11_decompiled_n_consumer.c` | `artifacts/evidence/C11_decompiled_n_consumer.c` | git mv |
+| `artifacts/mem/C11_main_slot_slice.json` | `artifacts/evidence/C11_main_slot_slice.json` | git mv |
+| `artifacts/mem/C12_control_gate.tsv` | `artifacts/evidence/C12_control_gate.tsv` | git mv |
+| `artifacts/mem/C12_main_code_or_data.tsv` | `artifacts/evidence/C12_main_code_or_data.tsv` | git mv |
+| `artifacts/mem/C13_probe_output.txt` | `artifacts/evidence/C13_probe_output.txt` | git mv |
+| `artifacts/mem/C14_cluster_entry_search.json` | `artifacts/evidence/C14_cluster_entry_search.json` | git mv |
+| `artifacts/mem/C15_rdata_pointer_table.tsv` | `artifacts/evidence/C15_rdata_pointer_table.tsv` | git mv |
+| `artifacts/mem/C16_slide_ref_scan.txt` | `artifacts/evidence/C16_slide_ref_scan.txt` | git mv |
+| `artifacts/mem/C17_pe_directories.txt` | `artifacts/evidence/C17_pe_directories.txt` | git mv |
+| `artifacts/mem/C18_immediate_code_addrs.txt` | `artifacts/evidence/C18_immediate_code_addrs.txt` | git mv |
+| `artifacts/mem/C19_gate_readers.json` | `artifacts/evidence/C19_gate_readers.json` | git mv |
+| `artifacts/mem/C19_gate_readers.tsv` | `artifacts/evidence/C19_gate_readers.tsv` | git mv |
+| `artifacts/mem/C20_gate_cfg.txt` | `artifacts/evidence/C20_gate_cfg.txt` | git mv |
+| `artifacts/mem/C21_carrier_boundary_referee.txt` | `artifacts/evidence/C21_carrier_boundary_referee.txt` | git mv |
+| `artifacts/mem/C21b_gate_branch_sites_referee.txt` | `artifacts/evidence/C21b_gate_branch_sites_referee.txt` | git mv |
+| `artifacts/mem/C21c_caller_sites_referee.txt` | `artifacts/evidence/C21c_caller_sites_referee.txt` | git mv |
+| `artifacts/mem/C22_cfg_boundary_validated.txt` | `artifacts/evidence/C22_cfg_boundary_validated.txt` | git mv |
+| `artifacts/mem/C22b_bad_seed_seeds_probe.txt` | `artifacts/evidence/C22b_bad_seed_seeds_probe.txt` | git mv |
+| `artifacts/mem/C23_call_site_arbitration.txt` | `artifacts/evidence/C23_call_site_arbitration.txt` | git mv |
+| `artifacts/mem/C24_exit_log_strings.txt` | `artifacts/evidence/C24_exit_log_strings.txt` | git mv |
+| `artifacts/mem/C24b_exit_messages_decoded.txt` | `artifacts/evidence/C24b_exit_messages_decoded.txt` | git mv |
+| `artifacts/mem/C25_operator_messages.txt` | `artifacts/evidence/C25_operator_messages.txt` | git mv |
+| `artifacts/mem/C26_message_xrefs.txt` | `artifacts/evidence/C26_message_xrefs.txt` | git mv |
+| `artifacts/mem/C27_gate_readers_fulltext.json` | `artifacts/evidence/C27_gate_readers_fulltext.json` | git mv |
+| `artifacts/mem/C27_gate_readers_fulltext.tsv` | `artifacts/evidence/C27_gate_readers_fulltext.tsv` | git mv |
+| `artifacts/mem/C28_p1_bytecode_ledger.txt` | `artifacts/evidence/C28_p1_bytecode_ledger.txt` | git mv |
+| `artifacts/mem/C29_p1_line_and_verify_probe.txt` | `artifacts/evidence/C29_p1_line_and_verify_probe.txt` | git mv |
+| `artifacts/mem/C30_webview2_download_disasm.txt` | `artifacts/evidence/C30_webview2_download_disasm.txt` | git mv |
+| `artifacts/mem/C30b_tls_adapter_disasm.txt` | `artifacts/evidence/C30b_tls_adapter_disasm.txt` | git mv |
+| `artifacts/mem/C31_p1_physical_facts.txt` | `artifacts/evidence/C31_p1_physical_facts.txt` | git mv |
+| `artifacts/mem/C32_p2_ui_ledger.txt` | `artifacts/evidence/C32_p2_ui_ledger.txt` | git mv |
+| `artifacts/mem/C32b_three_fails_resolved.txt` | `artifacts/evidence/C32b_three_fails_resolved.txt` | git mv |
+| `artifacts/mem/C33_p2_frontend_counts.txt` | `artifacts/evidence/C33_p2_frontend_counts.txt` | git mv |
+| `artifacts/mem/C33b_tasks_config.txt` | `artifacts/evidence/C33b_tasks_config.txt` | git mv |
+| `artifacts/mem/C34_v50_v51_diff.txt` | `artifacts/evidence/C34_v50_v51_diff.txt` | git mv |
+| `artifacts/mem/C35_pcap_census.txt` | `artifacts/evidence/C35_pcap_census.txt` | git mv |
+| `artifacts/mem/C36_p3_offline_rederive.txt` | `artifacts/evidence/C36_p3_offline_rederive.txt` | git mv |
+| `artifacts/mem/C36b_p3_gap_closure.txt` | `artifacts/evidence/C36b_p3_gap_closure.txt` | git mv |
+| `artifacts/mem/C37_p4_rederive.txt` | `artifacts/evidence/C37_p4_rederive.txt` | git mv |
+| `artifacts/mem/C37b_p4_open_items.txt` | `artifacts/evidence/C37b_p4_open_items.txt` | git mv |
+| `artifacts/mem/C37c_naming_format_xrefs.txt` | `artifacts/evidence/C37c_naming_format_xrefs.txt` | git mv |
+| `artifacts/mem/C37d_fun_1407a1fa0_sites.txt` | `artifacts/evidence/C37d_fun_1407a1fa0_sites.txt` | git mv |
+| `artifacts/mem/C6_anchor_xrefs.tsv` | `artifacts/evidence/C6_anchor_xrefs.tsv` | git mv |
+| `artifacts/mem/C6_callgraph.tsv` | `artifacts/evidence/C6_callgraph.tsv` | git mv |
+| `artifacts/mem/C6_decompiled_gate.c` | `artifacts/evidence/C6_decompiled_gate.c` | git mv |
+| `artifacts/mem/C6_decompiled_orchestrator.c` | `artifacts/evidence/C6_decompiled_orchestrator.c` | git mv |
+| `artifacts/mem/C6_rdatafront_strings.tsv` | `artifacts/evidence/C6_rdatafront_strings.tsv` | git mv |
+| `artifacts/mem/C7_flattening_counts.txt` | `artifacts/evidence/C7_flattening_counts.txt` | git mv |
+| `artifacts/mem/C7_indirect_dispatch.json` | `artifacts/evidence/C7_indirect_dispatch.json` | git mv |
+| `artifacts/mem/C7_indirect_dispatch.tsv` | `artifacts/evidence/C7_indirect_dispatch.tsv` | git mv |
+| `artifacts/mem/C7_reachability.json` | `artifacts/evidence/C7_reachability.json` | git mv |
+| `artifacts/mem/C8_append_writer_screen.json` | `artifacts/evidence/C8_append_writer_screen.json` | git mv |
+| `artifacts/mem/C9_decompiled_identity_collector.c` | `artifacts/evidence/C9_decompiled_identity_collector.c` | git mv |
+| `artifacts/mem/C9_utf16_identity.json` | `artifacts/evidence/C9_utf16_identity.json` | git mv |
+| `artifacts/mem/C9_utf16_identity.tsv` | `artifacts/evidence/C9_utf16_identity.tsv` | git mv |
+| `artifacts/mem/RG2_region_strings_full.tsv` | `artifacts/evidence/RG2_region_strings_full.tsv` | git mv |
+| `artifacts/mem/anchors_for_xref.tsv` | `artifacts/evidence/anchors_for_xref.tsv` | git mv |
+| `artifacts/mem/genB_functions_from_pdata.tsv` | `artifacts/evidence/genB_functions_from_pdata.tsv` | git mv |
+| `artifacts/mem/genB_runtime_vocab_0x140f8c800-0x140f99000.txt` | `artifacts/evidence/genB_runtime_vocab_0x140f8c800-0x140f99000.txt` | git mv |
+| `artifacts/mem/genB_static_imports.tsv` | `artifacts/evidence/genB_static_imports.tsv` | git mv |

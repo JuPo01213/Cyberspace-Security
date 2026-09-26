@@ -1,0 +1,32 @@
+Ghidra rows=96 anchors_with_refs=50 (embedded CR in string column: 183)
+capstone rows=67 anchors_with_refs=57 (embedded CR in string column: 68)
+union=58  intersection=49  ghidra_only=1  capstone_only=8
+
+--- anchors only Ghidra resolves ---
+  0x140f8ce50  ['FUN_14078ac40']
+--- anchors only capstone resolves ---
+  0x140f8cd40  ['FUN_14078873f']
+  0x140f8d1e0  ['FUN_14078de50']
+  0x140f8d270  ['FUN_14078de50']
+  0x140f8d300  ['FUN_14078de50']
+  0x140f8d5a0  ['FUN_14078e8c0']
+  0x140f8d810  ['FUN_14078ef02']
+  0x140f901d8  ['FUN_140799b60']
+  0x14115b120  ['FUN_1407c1f44']
+
+shared anchors=49  of which function-sets overlap=34  disagree=15
+  0x140f8cf78  ghidra=['FUN_14078b650']  capstone=['FUN_14078b6af']
+  0x140f8d370  ghidra=['FUN_14078e4d0']  capstone=['FUN_14078e823']
+  0x140f8d760  ghidra=['FUN_14078ece0']  capstone=['FUN_14078f025']
+  0x140f8d7b0  ghidra=['FUN_14078ece0']  capstone=['FUN_14078ed39']
+  0x140f8d870  ghidra=['FUN_14078ece0']  capstone=['FUN_14078ee89']
+  0x140f8d8d0  ghidra=['FUN_14078ece0']  capstone=['FUN_14078ef02']
+  0x140f8da70  ghidra=['FUN_14078f060']  capstone=['FUN_14078f0ad']
+  0x140f8e030  ghidra=['FUN_14078fad0']  capstone=['GAP']
+  0x140f8e0d8  ghidra=['FUN_14078fad0']  capstone=['GAP']
+  0x140f8e128  ghidra=['FUN_14078fad0']  capstone=['GAP']
+  0x140f8e138  ghidra=['FUN_14078fad0']  capstone=['GAP']
+  0x140f8e1c8  ghidra=['FUN_14078fad0']  capstone=['GAP']
+  0x140f927e8  ghidra=['FUN_1407a3080']  capstone=['FUN_1407a3323']
+  0x140f92820  ghidra=['FUN_1407a3080']  capstone=['FUN_1407a3323']
+  0x140f92850  ghidra=['FUN_1407a3080']  capstone=['FUN_1407a3323']

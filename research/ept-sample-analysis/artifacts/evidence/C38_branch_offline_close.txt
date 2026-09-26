@@ -1,0 +1,141 @@
+== 1) where do the two 32-bit name components come from? ==
+
+== helper 0x1407a1f00 (called twice at 0x1407a2090/0x1407a2097)  0x1407a1f00..0x1407a1fa0 ==
+   0x1407a1f00  push      rbx                                   
+   0x1407a1f02  sub       rsp, 0x20                             
+   0x1407a1f06  lea       rcx, [rsp + 0x30]                     
+   0x1407a1f0b  push      rdi                                   
+   0x1407a1f0c  call      0x1413ec58f                           
+   0x1407a1f11  push      rax                                   
+   0x1407a1f12  call      0x1416a5c8c                           
+   0x1407a1f17  mov       ebx, eax                              
+   0x1407a1f19  push      rsi                                   
+   0x1407a1f1a  call      0x1415099cb                           
+   0x1407a1f1f  xor       ebx, eax                              
+   0x1407a1f21  push      rcx                                   
+   0x1407a1f22  call      0x1419d0758                           
+   0x1407a1f27  mov       edx, dword ptr [rip + 0x9ca613]         -> 0x14116c540 [RG2 window (captured)]
+   0x1407a1f2d  mov       r9d, 0xd00dfeed                       
+   0x1407a1f33  mov       r8d, eax                              
+   0x1407a1f36  lea       rax, [rsp + 0x30]                     
+   0x1407a1f3b  xor       r8d, ebx                              
+   0x1407a1f3e  xor       r8d, dword ptr [rsp + 0x34]           
+   0x1407a1f43  xor       r8d, dword ptr [rsp + 0x30]           
+   0x1407a1f48  xor       r8d, eax                              
+   0x1407a1f4b  test      edx, edx                              
+   0x1407a1f4d  jne       0x1407a1f55                           
+   0x1407a1f4f  mov       edx, r8d                              
+   0x1407a1f52  xor       edx, r9d                              
+   0x1407a1f55  mov       eax, edx                              
+   0x1407a1f57  mov       ecx, edx                              
+   0x1407a1f59  shr       ecx, 2                                
+   0x1407a1f5c  shl       eax, 6                                
+   0x1407a1f5f  add       eax, 0x9e3779b9                       
+   0x1407a1f64  add       eax, r8d                              
+   0x1407a1f67  add       ecx, eax                              
+   0x1407a1f69  xor       edx, ecx                              
+   0x1407a1f6b  mov       ecx, edx                              
+   0x1407a1f6d  mov       dword ptr [rip + 0x9ca5cd], edx         -> 0x14116c540 [RG2 window (captured)]
+   0x1407a1f73  shr       ecx, 0x10                             
+   0x1407a1f76  xor       ecx, edx                              
+   0x1407a1f78  imul      edx, ecx, 0x7feb352d                  
+   0x1407a1f7e  mov       ecx, edx                              
+   0x1407a1f80  shr       ecx, 0xf                              
+   0x1407a1f83  xor       ecx, edx                              
+   0x1407a1f85  imul      edx, ecx, 0x846ca68b                  
+   0x1407a1f8b  mov       ecx, edx                              
+   0x1407a1f8d  shr       ecx, 0x10                             
+   0x1407a1f90  xor       edx, ecx                              
+   0x1407a1f92  cmovne    r9d, edx                              
+   0x1407a1f96  mov       eax, r9d                              
+   0x1407a1f99  add       rsp, 0x20                             
+   0x1407a1f9d  pop       rbx                                   
+   0x1407a1f9e  ret                                             
+   0x1407a1f9f  int3                                            
+   width=160 B, 51 instructions, forms={'push': 5, 'sub': 1, 'lea': 2, 'call': 4, 'mov': 12, 'xor': 10, 'test': 1, 'jne': 1, 'shr': 4, 'shl': 1, 'add': 4, 'imul': 2, 'cmovne': 1, 'pop': 1, 'ret': 1, 'int3': 1}
+   rdtsc present: False   | calls out: ['0x1413ec58f', '0x1415099cb', '0x1416a5c8c', '0x1419d0758']
+   RIP ref 0x1407a1f27 -> 0x14116c540 [RG2 window (captured)]
+   RIP ref 0x1407a1f6d -> 0x14116c540 [RG2 window (captured)]
+
+== naming block  0x1407a2090..0x1407a20c0 ==
+   0x1407a2090  call      0x1407a1f00                           
+   0x1407a2095  mov       edi, eax                              
+   0x1407a2097  call      0x1407a1f00                           
+   0x1407a209c  mov       dword ptr [rsp + 0x28], eax           
+   0x1407a20a0  mov       dword ptr [rsp + 0x20], edi           
+   0x1407a20a4  lea       r9, [rbp + 0x330]                     
+   0x1407a20ab  lea       r8, [rip + 0x7f0296]                    -> 0x140f92348 [.rdata tail (captured)]
+   0x1407a20b2  mov       edx, 0x104                            
+   0x1407a20b7  lea       rcx, [rbp + 0x20]                     
+   0x1407a20bb  call      0x140789eb0                           
+   naming-block RIP ref 0x1407a20ab -> 0x140f92348 [.rdata tail (captured)]
+
+== 2) is 0x140789eb0 a wide-format routine? ==
+   first 26 instructions:
+   0x140789eb0  mov       qword ptr [rsp + 0x18], r8            
+   0x140789eb5  mov       qword ptr [rsp + 0x20], r9            
+   0x140789eba  push      rbx                                   
+   0x140789ebb  push      rbp                                   
+   0x140789ebc  push      rsi                                   
+   0x140789ebd  push      rdi                                   
+   0x140789ebe  sub       rsp, 0x38                             
+   0x140789ec2  mov       rsi, r8                               
+   0x140789ec5  lea       rbp, [rsp + 0x78]                     
+   0x140789eca  mov       rbx, rdx                              
+   0x140789ecd  mov       rdi, rcx                              
+   0x140789ed0  call      0x140786c20                           
+   0x140789ed5  mov       qword ptr [rsp + 0x28], rbp           
+   0x140789eda  mov       r9, rsi                               
+   0x140789edd  mov       r8, rbx                               
+   0x140789ee0  mov       qword ptr [rsp + 0x20], 0             
+   0x140789ee9  mov       rdx, rdi                              
+   0x140789eec  mov       rcx, qword ptr [rax]                  
+   0x140789eef  call      0x1407be620                           
+   0x140789ef4  test      eax, eax                              
+   0x140789ef6  mov       ecx, 0xffffffff                       
+   0x140789efb  cmovs     eax, ecx                              
+   0x140789efe  add       rsp, 0x38                             
+   0x140789f02  pop       rdi                                   
+   0x140789f03  pop       rsi                                   
+   0x140789f04  pop       rbp                                   
+   calls made by it: ['0x140786c20', '0x14078a030', '0x1407b4068', '0x1407b4628', '0x1407bdfd0', '0x1407be0f4', '0x1407be50c', '0x1407be620', '0x1407bed50']
+   256 (0x100) immediates inside: []
+
+== 3) last writer of r11d/ebx/r12b/r12d before 0x1407a7aec (backward over decoded code) ==
+   window 0x1407a7900..0x1407a7aec decoded 119 instructions
+   ebx   last apparent write in window: none (set earlier or by caller)
+   r11   last apparent write in window: none (set earlier or by caller)
+   r11d  last apparent write in window: none (set earlier or by caller)
+   r12   last apparent write in window: none (set earlier or by caller)
+   r12b  last apparent write in window: none (set earlier or by caller)
+   caveat: a window-local backward scan only proves "no write inside this window";
+          a value may arrive in the register from before 0x1407a7900 or via the caller frame.
+
+== 4) callees of the naming/relaunch function 0x1407a1fa0..0x1407a258d ==
+   369 decoded instructions, 41 direct call sites, 31 distinct callees
+     0x1407b06d0  x4   [.text (captured)]
+     0x1407b4700  x3   [.text (captured)]
+     0x1407a1f00  x3   [.text (captured)]
+     0x1407b8bd4  x3   [.text (captured)]
+     0x1407af5d0  x2   [.text (captured)]
+     0x1407be830  x1   [.text (captured)]
+     0x1414c9aeb  x1   [.Sq> (NOT captured)]
+     0x1415c46c8  x1   [.Sq> (NOT captured)]
+     0x140789eb0  x1   [.text (captured)]
+     0x141677922  x1   [.Sq> (NOT captured)]
+     0x14160daaa  x1   [.Sq> (NOT captured)]
+     0x1413fa341  x1   [.Sq> (NOT captured)]
+     0x1407b06b0  x1   [.text (captured)]
+     0x1407ace80  x1   [.text (captured)]
+     0x14166d369  x1   [.Sq> (NOT captured)]
+     0x14117c32e  x1   [RG2 window (captured)]
+     0x1416221de  x1   [.Sq> (NOT captured)]
+     0x140799d20  x1   [.text (captured)]
+     0x1418a6ef8  x1   [.Sq> (NOT captured)]
+     0x14117489d  x1   [RG2 window (captured)]
+     0x14186dc26  x1   [.Sq> (NOT captured)]
+     0x1407aeba0  x1   [.text (captured)]
+     0x1407abfb0  x1   [.text (captured)]
+     0x140799e30  x1   [.text (captured)]
+   immediates equal to 256 (append-block candidate marker): ['0x1407a21c0', '0x1407a21d7', '0x1407a21ff']
+   RIP refs into captured .rdata strings (first 10): ['0x1407a1fc1->0x140f9e010', '0x1407a1ff0->0x140f8dca0', '0x1407a20ab->0x140f92348', '0x1407a22a4->0x140f90218', '0x1407a23e7->0x140f90234', '0x1407a2435->0x140f92370', '0x1407a2451->0x140f92370']

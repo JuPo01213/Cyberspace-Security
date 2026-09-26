@@ -1,0 +1,25 @@
+   ... 1 MB slid, 15 s, 0 hits
+   ... 2 MB slid, 30 s, 0 hits
+   ... 3 MB slid, 45 s, 0 hits
+   ... 4 MB slid, 60 s, 0 hits
+   ... 5 MB slid, 75 s, 0 hits
+   ... 6 MB slid, 89 s, 0 hits
+   ... 7 MB slid, 104 s, 0 hits
+
+slide covered RVA 0x1000..0x7da900 (8231168 bytes, 117 s, 0.1 MB/s)
+candidate-table          0x140f95e00..0x140f97900 : 0 distinct referencing instructions
+CONTROL-anchors          0x140f8cb00..0x140f8d000 : 167 distinct referencing instructions
+     140787343 lea -> 0x140f8cb58
+     140787344 lea -> 0x140f8cb58
+     140787d7d lea -> 0x140f8cb58
+     140787d7e lea -> 0x140f8cb58
+     140787db6 lea -> 0x140f8cb70
+     140787db7 lea -> 0x140f8cb70
+     140787f2b lea -> 0x140f8cb74
+     140787f2c lea -> 0x140f8cb74
+     140787fee lea -> 0x140f8cb58
+     140787fef lea -> 0x140f8cb58
+     140788022 lea -> 0x140f8cb78
+     140788023 lea -> 0x140f8cb78
+main-unreached-cluster   0x1407a5b9e..0x1407a6ad1 : 0 distinct referencing instructions
+EXIT=0

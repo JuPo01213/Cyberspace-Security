@@ -1,0 +1,6 @@
+﻿{"cls":"NspFirstRunDisclaimerWindow","hwnd":"655444","type":"FOUND","utc":"2026-09-25T18:20:04.6855319Z"}
+{"hwnd":"2424956","result":true,"type":"CLICK_AGREE","utc":"2026-09-25T18:20:04.7948768Z"}
+{"cls":"NspSetupWindow","hwnd":"720980","type":"FOUND","utc":"2026-09-25T18:20:07.8105580Z"}
+{"hwnd":"1769574","result":1,"type":"KEY_SETTEXT","utc":"2026-09-25T18:20:07.8261938Z"}
+{"hwnd":"9371792","result":true,"type":"CLICK_APPSTART","utc":"2026-09-25T18:20:07.8261938Z"}
+{"type":"WINPROC_EXIT","utc":"2026-09-25T18:20:17.8573497Z","agree":1,"edits":1,"app":1,"keyset":1}

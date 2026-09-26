@@ -1,0 +1,15 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-51",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "instrument_fix": "run50 froze on Unknown exception 000006d9 (first chance) in setupapi/COM phase — cdb breaks on unrecognized codes; added sxi 6d9.",
+  "hypothesis": "透传集补齐后全链不再冻结 → GUI 链 → 载荷写入（这次带 rcx 句柄观测）→ fatal/thunk → 合成返回路径。",
+  "acceptance_fields": {
+    "no_freeze": null,
+    "gui_chain": null,
+    "wfw_799000_handle": null,
+    "payload_written": null,
+    "synthret": null,
+    "post_behaviors": null
+  },
+  "deadline_sec": 720
+}

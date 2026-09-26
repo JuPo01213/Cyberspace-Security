@@ -1,0 +1,10 @@
+.echo [RECON2_CHILD_ATTACHED]
+.symfix
+.reload
+sxd ibp
+sxd epr
+sxe av
+bu kernel32!DeviceIoControl ".echo [RECON2_DIOC]; r rcx; r rdx; r r8; r r9; dq @rsp L8; k; g"
+sxe -c ".echo [RECON2_CHILD_AV]; .lastevent; r; k; g" av
+.echo [RECON2_CHILD_BPS_ARMED]
+g

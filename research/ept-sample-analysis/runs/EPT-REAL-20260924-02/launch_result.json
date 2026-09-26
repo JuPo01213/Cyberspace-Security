@@ -1,0 +1,11 @@
+{
+    "run_id":  "EPT-REAL-20260924-02",
+    "task_name":  "EPT-EPT-REAL-20260924-02",
+    "state":  "Running",
+    "task_path":  null,
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-REAL-20260924-02",
+    "started_utc":  "2026-09-24T15:02:46.1722718Z",
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "d43fed3c-0f39-4795-8bd2-e44e25a773b2",
+    "PSShowComputerName":  true
+}

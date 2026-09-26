@@ -1,0 +1,24 @@
+{
+    "run_id":  "EPT-AUTH-LOCAL-STORED-CONFIG-20260926-02",
+    "status":  "NATURAL_STORED_CONFIG_CONSUMER_COMPLETE",
+    "mode":  "real_sample_guest_run",
+    "evidence_scope":  "real_sample_guest_run",
+    "completed_utc":  "2026-09-26T15:16:54.4543124Z",
+    "target_path":  "C:\\ept_core\\Hardware.exe",
+    "target_pid":  5052,
+    "target_native_return":  "NOT_OBSERVED",
+    "target_caller_diff_bytes":  "NOT_OBSERVED",
+    "rc06_entry":  "NOT_OBSERVED",
+    "rc06_return":  "NOT_OBSERVED",
+    "post_decode_behavior":  "NOT_OBSERVED",
+    "authorization_state":  "NOT_PROVEN_HISTORICAL_CONFIG",
+    "input_state":  "HISTORICAL_STORED_CONFIG_CONSUMER",
+    "historical_config":  "C:\\Windows\\System32\\Hardware\\Hardware",
+    "network_observer":  "DISABLED",
+    "debugger":  "NONE",
+    "memory_writes":  "NONE",
+    "deadline_seconds":  180,
+    "errors":  [
+
+               ]
+}

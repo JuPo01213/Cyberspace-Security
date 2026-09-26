@@ -1,0 +1,99 @@
+{
+  "scope": "offline_historical_minidump_configuration_global",
+  "dump_sha256": "ca0ffcec87a8580e9bfdef4daaf90c97fb06a53d597028020fe1ec714830e60d",
+  "va_base": "0x141154980",
+  "requested_bytes": 890,
+  "read_bytes": 890,
+  "mapped": true,
+  "sha256": "ad0212a910eec79c3b4aac53fffb239069c4380c1e78d18d5fe0a9bce953dd07",
+  "all_zero": false,
+  "field_reads": {
+    "0x141154980": {
+      "requested": 890,
+      "read": 890,
+      "mapped": true,
+      "sha256": "ad0212a910eec79c3b4aac53fffb239069c4380c1e78d18d5fe0a9bce953dd07",
+      "all_zero": false,
+      "values": null
+    },
+    "0x141154ae7": {
+      "requested": 1,
+      "read": 1,
+      "mapped": true,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "all_zero": true,
+      "values": [
+        0
+      ]
+    },
+    "0x141154ce9": {
+      "requested": 4,
+      "read": 4,
+      "mapped": true,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "all_zero": true,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "0x141154ced": {
+      "requested": 4,
+      "read": 4,
+      "mapped": true,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "all_zero": true,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "0x141154cf1": {
+      "requested": 4,
+      "read": 4,
+      "mapped": true,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "all_zero": true,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "0x141154cf6": {
+      "requested": 4,
+      "read": 4,
+      "mapped": true,
+      "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+      "all_zero": true,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "0x141154cfa": {
+      "requested": 1,
+      "read": 1,
+      "mapped": true,
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "all_zero": true,
+      "values": [
+        0
+      ]
+    }
+  },
+  "ranges": 227,
+  "limitations": [
+    "Historical snapshot only; no runtime reachability.",
+    "A zero or unmapped global is not authorization failure.",
+    "No raw license material emitted.",
+    "No sample execution or validation modification."
+  ]
+}

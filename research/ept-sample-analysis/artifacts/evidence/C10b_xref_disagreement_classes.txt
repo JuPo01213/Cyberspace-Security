@@ -1,0 +1,20 @@
+0x140f8cf78  ghidra=['FUN_14078b650']@['0x14078b81b']  capstone=['FUN_14078b6af']@['0x14078b81b']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8d370  ghidra=['FUN_14078e4d0']@['0x14078e8a2']  capstone=['FUN_14078e823']@['0x14078e8a2']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8d760  ghidra=['FUN_14078ece0']@['0x14078f035']  capstone=['FUN_14078f025']@['0x14078f035']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8d7b0  ghidra=['FUN_14078ece0']@['0x14078ed97']  capstone=['FUN_14078ed39']@['0x14078ed97']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8d870  ghidra=['FUN_14078ece0']@['0x14078eec2']  capstone=['FUN_14078ee89']@['0x14078eec2']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8d8d0  ghidra=['FUN_14078ece0']@['0x14078ef2b']  capstone=['FUN_14078ef02']@['0x14078ef2b']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8da70  ghidra=['FUN_14078f060']@['0x14078f1e3']  capstone=['FUN_14078f0ad']@['0x14078f1e3']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f8e030  ghidra=['FUN_14078fad0']@['0x14078fafa']  capstone=['GAP']@['0x14078fafa']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+0x140f8e0d8  ghidra=['FUN_14078fad0']@['0x14078fb42']  capstone=['GAP']@['0x14078fb42']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+0x140f8e128  ghidra=['FUN_14078fad0']@['0x14078fb6a']  capstone=['GAP']@['0x14078fb6a']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+0x140f8e138  ghidra=['FUN_14078fad0']@['0x14078fb72']  capstone=['GAP']@['0x14078fb72']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+0x140f8e1c8  ghidra=['FUN_14078fad0']@['0x14078fbaa']  capstone=['GAP']@['0x14078fbaa']  -> SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE
+0x140f927e8  ghidra=['FUN_1407a3080']@['0x1407a3365']  capstone=['FUN_1407a3323']@['0x1407a3365']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f92820  ghidra=['FUN_1407a3080']@['0x1407a33b5']  capstone=['FUN_1407a3323']@['0x1407a33b5']  -> SAME_ADDR_BOUNDARY_ONLY
+0x140f92850  ghidra=['FUN_1407a3080']@['0x1407a33f0']  capstone=['FUN_1407a3323']@['0x1407a33f0']  -> SAME_ADDR_BOUNDARY_ONLY
+
+anchors: ghidra=50 capstone=57 shared=49 ghidra_only=1 capstone_only=8
+shared-anchor disagreement classes: {'agree': 34, 'SAME_ADDR_BOUNDARY_ONLY': 10, 'SAME_ADDR_GHIDRA_REF_IN_PDATA_HOLE': 5}
+ghidra_only=['0x140f8ce50']
+capstone_only=['0x140f8cd40', '0x140f8d1e0', '0x140f8d270', '0x140f8d300', '0x140f8d5a0', '0x140f8d810', '0x140f901d8', '0x14115b120']

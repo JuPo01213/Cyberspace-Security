@@ -1,0 +1,39 @@
+{
+  "run_id": "C173-post-debugger-preflight-20260924-01",
+  "vm_name": "<VM_LABEL>",
+  "vm_state": "Running",
+  "channel_checkpoint_present": true,
+  "guest": {
+    "guest": "<VM_LABEL>",
+    "user": "<VM_USER>",
+    "ready_marker": true,
+    "sample_root": "\\<PRIVATE_IP>\\C173_EPTSample",
+    "sample_count": 0,
+    "sample_hash": null,
+    "sample_path": null,
+    "sample_access_error": "找不到路径“C:\\<PRIVATE_IP>\\C173_EPTSample”，因为该路径不存在。",
+    "ept_launch_requested": false,
+    "relevant_process_count": 0,
+    "relevant_processes": [],
+    "temp_smoke_01_absent": true,
+    "temp_smoke_02_absent": true,
+    "PSComputerName": "<VM_LABEL>",
+    "RunspaceId": "6fb54680-46c2-455e-90bd-2b5bdd49d5cd",
+    "PSShowComputerName": true
+  },
+  "host_relevant_process_count": 0,
+  "host_relevant_processes": [],
+  "sample_expected_sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+  "sample_hash_matches": null,
+  "sample_launch_requested": false,
+  "sample_opened": false,
+  "gate": "SAMPLE_LAUNCH_HELD",
+  "sample_hash_state": "DEFERRED_TO_EXISTING_ACK",
+  "sample_reconfirmation": {
+    "host_authoritative_sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+    "existing_guest_ack_sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+    "existing_guest_ack_hash_state": "HASHED",
+    "existing_guest_ack_matches": true,
+    "current_powershell_direct_access": "UNAVAILABLE: <VM_USER> session does not hold the separate C173SampleReader SMB mapping"
+  }
+}

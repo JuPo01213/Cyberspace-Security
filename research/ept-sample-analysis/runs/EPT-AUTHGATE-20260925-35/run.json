@@ -1,0 +1,47 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-35",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "objective": "Run the tool own pipeline as a natural user would: auto-click agree, set the KEY edit field (the KEY is the hardware-identifier value the tool writes, per pool string: the KEY code is written as the fixed identifier by default) to a placeholder digit value via WM_SETTEXT, click appstart, and capture the pipeline behavior (config write, driver/service activity, process spawn, tasks/logs) plus any remaining validation gates.",
+  "hypothesis": "With the cloud/stored authorization gate already released (globals + stage forces + SDK stage functions patched to return 0 in case the GUI validation calls them), a well-formed digit KEY passes the appstart validation and the tool proceeds into its real modification pipeline.",
+  "discriminator": "chain advances (new stage tags beyond GetNotice, e.g. CardLogin/IsLogin/SaveConfig/StoredAuthorizationUsableAfterSave) vs chain stalls at GetNotice or earlier (no new tags).",
+  "changed_variable_vs_run24": "run26 j-based conditional force replaced by run24-proven unconditional force at shared wrapper ret 0x14078ff03 (r rbx logged, then r eax=0; r ebx=0); no new command syntax, instrumentation canary waived because every action form (echo/da/r/k/g on bu/ba) was proven in run 24 and the syntax canary of run 26",
+  "observation_mode": "attach-after-launch (CDB attaches natural EPT_* temp child started by parent C:/ept_core/Hardware.exe under SYSTEM scheduled task)",
+  "acceptance": [
+    "stage log captured with original codes per stage (STAGE_LOG lines)",
+    "presence/absence of stage tags beyond GetNotice recorded",
+    "every forced stage marked FORCED_ZERO with the forcing site fixed at 0x14078ff03",
+    "post_snapshot flags: tasks/log_dirs/files/hardware_dir/services/drivers/procs",
+    "no response injection, no card value fabrication, in-memory writes only"
+  ],
+  "control_adapter": "Hyper-V PowerShell Direct (<VM_USER>)",
+  "data_adapter": "Copy-Item ToSession/FromSession over the same PSSession",
+  "completion_source": "cdb.stdout.txt + events.ndjson + post_snapshot.json",
+  "writer_lock": "exclusive scheduled task name EPT-EPT-AUTHGATE-20260925-26; prep kills leftover Hardware/EPT_/cdb processes; single operator session",
+  "vm": "<VM_LABEL> (Windows 10 Pro 19045, Gen1, adapter disconnected)",
+  "target": {
+    "path": "C:/ept_core/Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "authority_sample": {
+    "path": "<HOST_PATH>/EPT/sample/EPT专业游戏维修工具箱V5.1.exe",
+    "sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2"
+  },
+  "instrument_canary": "canary_syntax.cdb run against benign cmd.exe before task registration; task not registered unless all markers present and no Syntax error",
+  "expected_duration_sec": 240,
+  "deadline_sec": 300,
+  "timeout_action": "host kills cdb at harvest; run classified INCONCLUSIVE if no stage evidence",
+  "stop_conditions": [
+    "deadline",
+    "process exit",
+    "FatalExit hit (observer-only)",
+    "debugger stall"
+  ],
+  "predecessor": "EPT-AUTHGATE-20260925-34 (empty-key appstart reached the plaintext empty-input check 0x14079689c with msgbox caller 0x1407968c0 and handler 0x1407991e1; KEY identified as the written identifier value, not a license credential)",
+  "changed_variable_vs_run27": "logger2 bp becomes stack-capturing observer; second forcer added at wrapper-2 ret 0x14078ff87; HIT_COMM_INIT bp dropped to stay within 4 hardware breakpoints; SoftModalMessageBox/DialogBoxIndirectParamW skips added for the session-0 UI wait.",
+  "changed_variable_vs_run28": "fixed-site force at 0x142037792 replaces the wrapper-2-ret probe (0x14078ff87 forcer dropped: run 28 proved logger2 is called directly by the driver, not through wrapper-2).",
+  "changed_variable_vs_run29": "added CreateWindowExW observer + GetMessageW/A, WaitMessage, MsgWaitForMultipleObjectsEx skip actions + Sleep/SleepEx/WaitForSingleObject observers; target forces unchanged.",
+  "changed_variable_vs_run30": "dialog handled at DialogBoxParamA/W level (skip with eax=1) instead of GetMessage-level WM_QUIT cut; FatalExit changed from observer to skip; A-family window creation observers added; Sleep observer now prints rcx (real duration register).",
+  "changed_variable_vs_run31": "message-pump skip removed (GetMessage observers only); FatalExit back to observer-only (no skip: the disagree path must not be walked); session-0 helper clicks agree button via BM_CLICK; window inventory logged to winproc.ndjson.",
+  "changed_variable_vs_run33": "winproc helper v2 (EnumChildWindows-based, variant-agnostic; auto agree + delayed appstart click); msgbox breakpoints now capture caller stacks before skipping; all stage forces unchanged.",
+  "changed_variable_vs_run34": "KEY edit field set to 1234567890 before appstart; SDK stage functions patched xor eax,eax;ret at 0x1403b34d0/0x1403b3280/0x1403c47e0/0x1403b3d30/0x1403c49d0 (C179-proven in-memory technique); CreateProcess/StartService observers added; GetMessage spam observers removed."
+}

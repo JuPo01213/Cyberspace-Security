@@ -1,0 +1,119 @@
+{
+  "evidence_id": "C176",
+  "date": "2026-09-25",
+  "evidence_scope": "offline_existing_dump_static_analysis",
+  "runs": [
+    "EPT-STATIC-NET-20260925-01",
+    "EPT-STATIC-NET-20260925-02",
+    "EPT-STATIC-NET-20260925-03"
+  ],
+  "environment": {
+    "vm": "<VM_LABEL>",
+    "guest": "<VM_LABEL>",
+    "guest_os": "Windows 10 build 19045",
+    "control_plane": "Hyper-V PowerShell Direct",
+    "guest_network_adapter": "disconnected",
+    "sample_launch_requested": false,
+    "network_request_sent": false,
+    "patch_applied": false
+  },
+  "identity": {
+    "authoritative_sample_sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+    "guest_derived_target": "C:/ept_core/Hardware.exe",
+    "guest_derived_target_sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "source_dump": "C:/ept_obs/spool/EPT-INJECT-20260925-23/ept_obsspoolEPT-INJECT-20260925-23mem_parent.dmp",
+    "source_dump_sha256": "A73C875C4E08A8319D9FE85EA4B4DFD94EA83A7C046F48A99426C0D2467F8F22"
+  },
+  "instrument": {
+    "tool": "cdb.exe",
+    "version": "10.0.26100.9169 (WinBuild.160101.0800)",
+    "sha256": "B27BEEAB332294D3B043095D727DC5ACA2A53AE609EEC9223BC4276531595B6E",
+    "all_runs_exit_code": 0,
+    "all_runs_completed_marker": true,
+    "target_hash_unchanged": true,
+    "dump_hash_unchanged": true,
+    "post_relevant_process_count": 0
+  },
+  "observations": {
+    "pe_runtime_module": "Hardware at 0x140000000..0x143f83000",
+    "iat_runtime_slots": {
+      "0x14205a060": "ws2_32!setsockopt",
+      "0x14205a0d8": "kernel32!LoadLibraryA",
+      "0x14205a0e0": "kernel32!GetModuleHandleA",
+      "0x14205a0e8": "kernel32!GetProcAddress"
+    },
+    "iat_negative_for_direct_winsock_calls": [
+      "socket",
+      "connect",
+      "send",
+      "recv",
+      "WSAStartup"
+    ],
+    "runtime_string_hits": {
+      "host": [
+        "0x140f92688 yz.hwid001.com",
+        "0x140f926ad yz.hwid001.com:1029",
+        "0x140f92e96 yz.hwid001.com:1029"
+      ],
+      "stages": [
+        "0x140f92508 StoredVerify.begin",
+        "0x140f92725 SP_Verify_CardLogin",
+        "0x140f927fb SP_Cloud_Beat"
+      ],
+      "dynamic_resolution": [
+        "0x14251699c GetProcAddress",
+        "0x1407dedb7 WSAStartup"
+      ]
+    },
+    "string_search_negative_or_non_specific": {
+      "no_hit_in_dump": [
+        "WSASend",
+        "WSARecv",
+        "getaddrinfo",
+        "gethostbyname",
+        "inet_addr",
+        "htons",
+        "closesocket",
+        "ws2_32.dll",
+        "winhttp",
+        "wininet",
+        "recv"
+      ],
+      "connect_hits": "Only generic status strings such as connected, connection abort, connection refused, and connection reset; not a call-site proof."
+    },
+    "cardlogin_code_readability": {
+      "candidate_range": "0x1403b3d30..0x1403c42ac",
+      "entry_observation": "0x1403b3d30 has a readable prologue and one internal call through 0x1403b3d88; subsequent linear bytes become undecodable/garbled in this dump.",
+      "known_percent_sites": ["0x1403b8190", "0x1403c2df8"],
+      "interpretation": "The two addresses are not reliable CDB linear-disassembly evidence in this capture; do not infer request formatting from the garbage output."
+    }
+  },
+  "capture_quality_control": {
+    "source": "artifacts/captures/stream_C6/stream_text.bin",
+    "regions": {
+      "cardlogin_entry_512b": {"offset": "0x3b3d30", "bytes": 512, "entropy": 7.4261, "printable_ratio": 0.3535},
+      "cardlogin_full_pdata_span": {"offset": "0x3b3d30", "bytes": 66716, "entropy": 7.9720, "printable_ratio": 0.3764},
+      "control_gate_512b": {"offset": "0x7a3080", "bytes": 512, "entropy": 5.7795, "printable_ratio": 0.2695}
+    },
+    "interpretation": "The CardLogin .pdata span is high-entropy and behaves unlike the known readable gate control window; it is not safe to treat linear decode output as a call graph.",
+    "capstone_host_module": "not installed; no host disassembly was substituted for the registered CDB/raw-byte evidence"
+  },
+  "conclusion": {
+    "static_network_api_path": "PARTIALLY_RECOVERED_DYNAMIC_RESOLUTION",
+    "cardlogin_request_buffer": "UNRESOLVED",
+    "cardlogin_request_length": "UNRESOLVED",
+    "response_buffer_and_length": "UNRESOLVED",
+    "runtime_cardlogin_return_code": "NOT_OBSERVED",
+    "runtime_cloud_beat_return_code": "NOT_OBSERVED",
+    "tcp_1029_handshake": "NOT_OBSERVED",
+    "real_license_response": "NOT_OBSERVED",
+    "post_auth_behavior": "NOT_OBSERVED",
+    "negative_scope": "No C2 connection, sample launch, patch, or response injection occurred in C176."
+  },
+  "raw_evidence": [
+    "artifacts/evidence/EPT-STATIC-NET-20260925-01/cdb.stdout.txt",
+    "artifacts/evidence/EPT-STATIC-NET-20260925-02/cdb.stdout.txt",
+    "artifacts/evidence/EPT-STATIC-NET-20260925-03/cdb.stdout.txt",
+    "artifacts/evidence/EPT-STATIC-NET-20260925-03/harvest_manifest.json"
+  ]
+}

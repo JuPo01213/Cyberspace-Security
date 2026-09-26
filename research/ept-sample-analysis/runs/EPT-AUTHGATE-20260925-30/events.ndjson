@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T12:17:17.4840487Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":4444,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-25T12:17:17.5621388Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_FFDF873E_04967DE2.exe","pid":1900,"ppid":4444,"type":"CHILD_FOUND","utc":"2026-09-25T12:17:22.0626418Z"}
+{"target_pid":1900,"debugger_pid":1916,"type":"CDB_ATTACHED","utc":"2026-09-25T12:17:22.0782794Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T12:17:22.1095141Z"}

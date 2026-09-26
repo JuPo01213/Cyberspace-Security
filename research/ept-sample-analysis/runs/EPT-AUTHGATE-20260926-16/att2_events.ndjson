@@ -1,0 +1,9 @@
+﻿{"utc":"2026-09-26T10:48:21.0618691Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"state":"        STATE              : 4  RUNNING ","create":"[SC] CreateService 失败 1073:  指定的服务已存在。 ","utc":"2026-09-26T10:48:21.2181134Z","type":"DRIVER_PRELOADED","start":"[SC] StartService 失败 1056:  服务的实例已在运行中。 "}
+{"pid":5844,"type":"MOCK_LISTENER_STARTED","utc":"2026-09-26T10:48:21.2493646Z"}
+{"argv":"-k 1234567890 -n 2 -m 1","pid":4088,"type":"PARENT_STARTED_NATURAL_ARGS","utc":"2026-09-26T10:48:21.2649893Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_F0D6D07A_BFCAC451.exe","pid":3556,"ppid":4088,"type":"CHILD_FOUND","utc":"2026-09-26T10:48:23.9368648Z"}
+{"target_pid":3556,"debugger_pid":1532,"type":"CDB_ATTACHED","utc":"2026-09-26T10:48:23.9524896Z"}
+{"pid":5644,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-26T10:48:23.9837428Z"}
+{"pid":3076,"type":"WATCHER_STARTED","utc":"2026-09-26T10:48:24.0149881Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-26T10:48:24.0149881Z"}

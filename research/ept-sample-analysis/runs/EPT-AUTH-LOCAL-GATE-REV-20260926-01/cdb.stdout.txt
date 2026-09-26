@@ -1,0 +1,102 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.625 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+...
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 3.438 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\ept_core\Hardware.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(8b0.13d8): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:004> .echo RUN_GATE_REV2_BEGIN
+RUN_GATE_REV2_BEGIN
+0:004> sxe av
+0:004> ba e 1 0x1407adae0 ".echo STAGE_LOG; da @r8; r r9d; g"
+0:004> ba e 1 0x1407adb40 ".echo STAGE_LOG2; r r8; r r9d; g"
+0:004> ba e 1 0x1407aa694 ".echo FATAL_CALLSITE; k L8; r @rip; dd @rsp L2; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> ba e 1 0x1407c1c40 ".echo EXIT_CALLSITE_7C1C40; k L8; r @rip; dd @rsp L2; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> .echo GATE_REV2_ARMED
+GATE_REV2_ARMED
+0:004> g
+ModLoad: 00007ffb`d9bc0000 00007ffb`d9bcc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffb`da3b0000 00007ffb`da432000   C:\Windows\System32\bcryptPrimitives.dll
+ModLoad: 00007ffb`d9520000 00007ffb`d9553000   C:\Windows\SYSTEM32\ntmarta.dll
+ModLoad: 00007ffb`dc310000 00007ffb`dc3bd000   C:\Windows\System32\SHCORE.dll
+ModLoad: 00007ffb`dbde0000 00007ffb`dbe3b000   C:\Windows\System32\shlwapi.dll
+ModLoad: 00007ffb`d8390000 00007ffb`d8b35000   C:\Windows\SYSTEM32\windows.storage.dll
+ModLoad: 00007ffb`d9c50000 00007ffb`d9c7b000   C:\Windows\SYSTEM32\Wldp.dll
+ModLoad: 00007ffb`dc570000 00007ffb`dc63d000   C:\Windows\System32\OLEAUT32.dll
+ModLoad: 00007ffb`d8190000 00007ffb`d81a2000   C:\Windows\SYSTEM32\kernel.appcore.dll
+ModLoad: 00007ffb`d4ee0000 00007ffb`d4fd4000   C:\Windows\SYSTEM32\PROPSYS.dll
+ModLoad: 00007ffb`dadc0000 00007ffb`dae69000   C:\Windows\System32\clbcatq.dll
+ModLoad: 00007ffb`da230000 00007ffb`da254000   C:\Windows\SYSTEM32\profapi.dll
+ModLoad: 00007ffb`da610000 00007ffb`da65e000   C:\Windows\System32\CFGMGR32.dll
+ModLoad: 00007ffb`c8c80000 00007ffb`c8ca4000   C:\Windows\SYSTEM32\edputil.dll
+ModLoad: 00007ffb`cdb10000 00007ffb`cdd02000   C:\Windows\SYSTEM32\urlmon.dll
+ModLoad: 00007ffb`ce7e0000 00007ffb`cea9f000   C:\Windows\SYSTEM32\iertutil.dll
+ModLoad: 00007ffb`d5590000 00007ffb`d55b8000   C:\Windows\SYSTEM32\srvcli.dll
+ModLoad: 00007ffb`d97f0000 00007ffb`d97fc000   C:\Windows\SYSTEM32\netutils.dll
+ModLoad: 00007ffb`c9410000 00007ffb`c9556000   C:\Windows\System32\Windows.StateRepositoryPS.dll
+ModLoad: 00007ffb`da1b0000 00007ffb`da1e2000   C:\Windows\SYSTEM32\SspiCli.dll
+ModLoad: 00007ffb`d5550000 00007ffb`d5563000   C:\Windows\SYSTEM32\virtdisk.dll
+ModLoad: 00007ffb`d5d40000 00007ffb`d5d4b000   C:\Windows\SYSTEM32\FLTLIB.DLL
+ModLoad: 00007ffb`d6e70000 00007ffb`d6fc7000   C:\Windows\System32\wintypes.dll
+ModLoad: 00007ffb`d1da0000 00007ffb`d1e34000   C:\Windows\System32\appresolver.dll
+ModLoad: 00007ffb`d8e00000 00007ffb`d8e29000   C:\Windows\System32\SLC.dll
+ModLoad: 00007ffb`d0d40000 00007ffb`d0d9b000   C:\Windows\System32\Bcp47Langs.dll
+ModLoad: 00007ffb`da1f0000 00007ffb`da21e000   C:\Windows\System32\USERENV.dll
+ModLoad: 00007ffb`d8dd0000 00007ffb`d8df5000   C:\Windows\System32\sppc.dll
+onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFBD4EF460D: (caller: 00007FFBD4EF300F) ReturnHr(1) tid(3bc) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFBD4EF460D: (caller: 00007FFBD4EF300F) ReturnHr(2) tid(3bc) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFBD4EF460D: (caller: 00007FFBD4EF300F) ReturnHr(3) tid(3bc) 80070490 找不到元onecoreuap\shell\propsys\memorymappedcache\version.cpp(210)\PROPSYS.dll!00007FFBD4EF460D: (caller: 00007FFBD4EF300F) ReturnHr(4) tid(3bc) 80070490 找不到元ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\system32\apphelp.dll
+ModLoad: 00007ffb`ca2e0000 00007ffb`ca300000   C:\Windows\SYSTEM32\pcacli.dll
+ModLoad: 00007ffb`ca2c0000 00007ffb`ca2dd000   C:\Windows\SYSTEM32\MPR.dll
+ModLoad: 00007ffb`c6e10000 00007ffb`c6e22000   C:\Windows\System32\sfc_os.dll
+ModLoad: 00007ffb`dbea0000 00007ffb`dc310000   C:\Windows\System32\SETUPAPI.dll

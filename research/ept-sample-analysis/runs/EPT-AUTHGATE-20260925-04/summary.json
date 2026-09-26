@@ -1,0 +1,27 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-04",
+  "evidence_scope": "real_sample_guest_run_predecode_auth_gate_bypass",
+  "sample_launch_requested": true,
+  "network_request_sent": false,
+  "real_card_present": false,
+  "response_injection": false,
+  "target_path": "C:\\ept_core\\Hardware.exe",
+  "started_utc": "2026-09-25T03:59:27.5484298Z",
+  "ended_utc": "2026-09-25T03:59:28.0171793Z",
+  "deadline_seconds": 45,
+  "deadline_reached": false,
+  "cdb_exit_code": null,
+  "pre_relevant_processes": [],
+  "post_relevant_processes": [],
+  "target_native_return": "NOT_OBSERVED",
+  "target_caller_diff_bytes": "NOT_OBSERVED",
+  "post_decode_behavior": "NOT_OBSERVED",
+  "observation_state": "PARENT_ENTRY_OBSERVED_NO_CHILD",
+  "target_process_created": false,
+  "temporary_patch_points_executed": [],
+  "planned_patch_points": [
+    "FUN_1407a3080 runtime return -> 1",
+    "main authorization-controlled branch at 0x1407a6a6a -> fall-through"
+  ],
+  "instrument_note": "The user-session launch hit the corrected entry breakpoint. No child-create event followed; neither temporary patch executed."
+}

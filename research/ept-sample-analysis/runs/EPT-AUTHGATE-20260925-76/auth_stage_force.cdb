@@ -1,0 +1,61 @@
+.echo STATIC_FATAL_REGION_BEGIN
+u 0x1407aa640 L16
+u 0x1407aa694 L10
+u 0x1407b1090 L6
+.echo STATIC_FATAL_REGION_END
+.echo RUN61_STAGE_FORCE_BEGIN
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo ENTRY_GATE_RELEASED
+sxi av
+sxi c0000005
+sxi e06d7363
+sxi 80000003
+sxi 80000004
+sxi c000001d
+sxi c0000094
+sxi e0434352
+sxi 6d9
+.echo EXCEPTION_PASSTHROUGH_ARMED
+eb 0x1403b34d0 33 c0 c3
+eb 0x1403b3280 33 c0 c3
+eb 0x1403c47e0 33 c0 c3
+eb 0x1403b3d30 33 c0 c3
+eb 0x1403c49d0 33 c0 c3
+.echo SDK_STAGES_PATCHED_RETURN_ZERO
+bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+bu kernel32!WriteFile ".echo WFW; r rcx; r r8; db @rdx L8; j (@r8 > 0x100000) 'r $t9=@r9; gu; r eax; !gle; dd @$t9 L1; g' 'g'"
+bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+bu ws2_32!connect ".echo CONN; db @rdx L10; g"
+bu ws2_32!WSAConnect ".echo WSACONN; db @rdx L10; g"
+bu ws2_32!GetAddrInfoW ".echo GAI; du @rcx; g"
+bu ws2_32!getaddrinfo ".echo GAI_A; da @rcx; g"
+bu ws2_32!recv ".echo RECV; r rcx; r r8; dd @rsp L1; u poi(@rsp) L14; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260925-77/text_runtime.bin 140100000 L80000; g"
+bu ws2_32!WSARecv ".echo WSARECV; r rcx; dd @rsp L1; u poi(@rsp) L14; g"
+bu kernelbase!DeviceIoControl ".echo DIOC; r rcx; r rdx; r r8; r r9; dd @rsp+20 L4; g"
+bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+bu kernelbase!GetFileSizeEx ".echo GFS; r rcx; g"
+bu kernelbase!SetFilePointerEx ".echo SFP; r rcx; g"
+bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+ba e 1 14171f567 ".echo FATAL_THUNK; k L12; dd @rsp L4; u 0x1407aa580 L28; u 0x1407aa694 L12; da 140f8e308 L30; du 140f8e308 L20; da 140f92ed0 L20; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260925-70/fatal_region.bin 1407aa000 L3000; r rsp=@$t0; r rbx=0; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b109b; r eax=1; g"
+.echo HWBP_ARMED_SYNTHRET
+g
+.echo RUN61_STOP
+~*k
+.echo RUN61_END
+q

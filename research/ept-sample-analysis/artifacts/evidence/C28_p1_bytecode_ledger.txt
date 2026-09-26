@@ -1,0 +1,102 @@
+# C28 - P1 字节码级复核台账（本机 Python 3.13.15，marshal 直接加载样本 .pyc）
+# 复核脚本 <HOST_PATH>/vmctl/verify_p1.py；运行目录非样本目录，避免 struct.pyc 遮蔽标准库
+# 全部为离线只读动作；未访问网络；未解码任何 token
+
+module main               212654 B  magic=f30d0d0a  code objects=196
+module auto_decode        208484 B  magic=f30d0d0a  code objects=145
+module activate_system      8248 B  magic=f30d0d0a  code objects=8
+
+== 1) 密码学引用普查（co_names / co_varnames / 字符串常量）==
+  main             hits=0
+  [PASS] main 无密码学引用  -- 若仅剩 share_url 一类命名，属误命中，逐条列在上方
+  auto_decode      hits=0
+  [PASS] auto_decode 无密码学引用  -- 若仅剩 share_url 一类命名，属误命中，逐条列在上方
+  activate_system  hits=0
+  [PASS] activate_system 无密码学引用  -- 若仅剩 share_url 一类命名，属误命中，逐条列在上方
+
+== 2) run_decode 的卡密分支：非空检查 + 无条件宣布通过 ==
+  found <module>.DecodeEngine.run_decode  行号跨度 1..1  (1 个有行号的指令)
+  含"卡密"的字符串常量: ['\n一键解码主流程\nparams:\n  cardKey: 卡密\n  codeType: static/dynamic\n  modeSelect: mode1/mode2/mode3\n  netBlock: noBlock/block\n  versionSelect: universal(通杀版) | compat(兼容1) | compat2(兼容2)\n', '⚠ 请先输入卡密！', '未输入卡密', '] 卡密验证通过', '卡密验证', '⛔ 卡密验证失败: ']
+  [PASS] 存在无条件"卡密验证通过"常量  -- ['] 卡密验证通过']
+  [PASS] 存在"请先输入卡密"告警常量
+  [PASS] 分支形态含 TO_BOOL + POP_JUMP_IF_TRUE  -- TO_BOOL=32 POP_JUMP_IF_TRUE=14
+  [FAIL] 源码行 287..291 落在此函数内  -- 实际 287 在=False 291 在=False
+
+== 3) 参数下发：-k/-n/-m 与 series/run 映射 ==
+  <module>._call_spoofer_commandline 字符串常量里的选项字母: ['-k', '-n', '-m']
+  [PASS] 三个选项 -k -n -m 全部作为常量出现
+  整型常量: [False, 1, 2, 3, 5, 8]
+  [PASS] 出现 0/2 与 1/2/3 映射所需常量
+  [PASS] sleep(8) 常量存在
+
+== 4) 结果回传：读弹窗文本 ==
+  绑定相关常量 10 条:
+     <module>.DecodeEngine.CardKeyBoundError: '卡密已绑定其他机器的特殊异常，用于中止解码流程'
+     <module>.DecodeEngine.run_decode: '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'
+     <module>.DecodeEngine.run_decode: '此授权码已绑定其他机器'
+     <module>.DecodeEngine.run_decode_from_exe: '⚠ 检测到：此授权码已绑定其他机器！停止解码流程。'
+     <module>.DecodeEngine.run_decode_from_exe: '此授权码已绑定其他机器'
+     <module>._detect_bind_error_dialog: '\n检测目标程序是否弹出了"此授权码已绑定其他机器"错误对话框\n\n★ ViewWizard 验证结果（v1.52实测确认）：\n  - 弹窗类名: #32770，窗口标题为空字符串\n  - 文字在 Static 子控件中，窗'
+  [PASS] 存在"此授权码已绑定其他机器"文案常量
+  弹窗类名/进程/备用策略线索 17 条
+     <module>.PasswordWindowDetector: '\n密码输入窗口深度检测与目标锁定器\n\n★ 核心功能：\n  1. 用 Win32 API 枚举所有窗口，精确定位「输入密码」对话框\n  2. 采集完整信息：HWND、PID、TID、进程路径、窗口类名/样式/位置/大小\n  3. 锁定目标进程，防止进程切换或伪造\n  4. 采集完成后交由 pywina'
+     <module>.PasswordWindowDetector._find_password_window: '\n用 EnumWindows 枚举所有顶层窗口，找到标题含「输入密码」且类名为 #32770 的窗口\n返回 HWND (int)，未找到返回 0\n'
+     <module>.PasswordWindowDetector._find_password_window._enum_callback: '#32770'
+     <module>._detect_bind_error_dialog: '\n检测目标程序是否弹出了"此授权码已绑定其他机器"错误对话框\n\n★ ViewWizard 验证结果（v1.52实测确认）：\n  - 弹窗类名: #32770，窗口标题为空字符串\n  - 文字在 Static 子控件中，窗口句柄如 984102\n  - 父窗口链: Static(984102) → #'
+     <module>._detect_bind_error_dialog: '[BIND-CHECK-B] >>> pywinauto 读子控件 hwnd='
+  [PASS] 文档串记录 #32770 与 Spoofersoftware.exe
+
+== 5) 下发通道常量（只登记，不访问）==
+     http://schemas.microsoft.com/windows/2004/02/mit/task">
+     http://xz.hwid001.com/
+     http://xz.hwid001.com/d/yd2537/laomaohwid/UVT-EPT.exe?sign=SL0Lfx6GvO3ihFYlhWH1Q74B98nYl9CJHh...
+     https://jiwu.lanzouw.com/b0hdinspa
+     https://my.feishu.cn/wiki/OMXlwKvyZiYQJTkVZrMcqY6vntd?from=from_copylink
+     https://www.baidu.com
+  [PASS] 飞书 wiki 源存在
+  [FAIL] 硬编码 exe 直链存在
+  [PASS] 蓝奏云源存在
+  含 .exe 的正则/模式常量 5 条
+     '(https?://[^\\s"\\\\]+?\\.exe[^\\s"\\\\]*)'
+     '(https?://[^\\s<>"\\\'\\`\\)]+?\\.exe[^\\s<>"\\\'\\`]*)'
+     'https?://[^\\s<>"\\\'\\`\\)]+?\\.exe[^\\s<>"\\\'\\`]*'
+     '(https?://[^\\s<>"\\\'\\`\\)]+?/[^\\s<>"\\\'\\`\\)]*?\\.exe[^\\s<>"\\\'\\`]*)'
+
+== 6) install_webview2：下载即执行且关闭证书校验？==
+  <module>.install_webview2 (main) co_names 网络/执行相关: ['gettempdir']
+     常量含 False: True   含 verify 名称: False
+  [FAIL] %s 里 verify=False 的字节码特征（False 常量 + verify 名）  -- 两者分别=True/False
+
+== 7) 本地路径常量 ==
+  main           view_machine_code: 'C:\\R6-QZD'
+  main           manual_swap_code: 'C:\\Windows\\System32\\Hardware.exe'
+  main           ResourceExtractor: '\nPyInstaller/Nuitka 单文件 exe 运行时资源释放器：\n\n启动时: 从 _MEIPASS 异步释放 EXE/DLL/图片/HTML 到 C:\\R6-QZD\\\n退'
+  main           ResourceExtractor: 'C:\\R6-QZD'
+  main           _do_extract: '\n实际执行资源释放 —— 采用子目录遍历方式（与参考代码逻辑一致）\n\nbuild.py 将所有资源通过 --add-data 以"子目录"形式打包到 _MEIPASS：\n  _pa'
+  auto_decode    <module>: 'C:\\Windows\\SysWOW64\\SpooferSoftware.exe'
+  auto_decode    <module>: 'C:\\Windows\\SysWOW64\\WineverySet'
+  auto_decode    <module>: 'C:\\Windows\\System32\\Hardware.exe'
+  auto_decode    <module>: 'C:\\Windows\\System32\\Hardware'
+  auto_decode    <module>: 'C:\\Windows\\SysWOW64\\EPTHWID.exe'
+  auto_decode    <module>: 'C:\\Windows\\SysWOW64\\JW.txt'
+  auto_decode    <module>: 'C:\\Windows\\SysWOW64\\EPTHWID.txt'
+  auto_decode    _deploy_epthwid: '部署 EPTHWID.exe 到 C:\\Windows\\SysWOW64\\\n\n从打包资源中释放 EPTHWID.exe，用于开机自动启动 Hardware.exe 并拦截 EPT '
+
+== 8) 前端格式校验（正则只在前端 JS，不在 Python）==
+  index.html 内 ^[a-zA-Z0-9]{n,m}$ 命中: ['^[a-zA-Z0-9]{30,40}$']
+  [PASS] 前端存在纯格式正则
+  [PASS] Python 侧不存在同形正则常量
+  pywebview.api 调用 42 处，不同方法 28 个；index.html 内 http(s) 链接 1 条
+
+== 9) SplashScreen 的三重格式校验（§12.4 对 §3.1 的更正是否成立）==
+  相关代码对象 34 个: SplashScreen, show, on_close_enter, on_close_leave, <lambda>, <lambda>, start_drag, do_drag, _load_notice_async, _do_load, <lambda>, _set_notice
+     <module>.SplashScreen._on_confirm 字符串常量: ['用户点击确认或按回车', 'state', 'disabled', '', '⚠ 请输入卡密！', '_detail_label', '^[a-zA-Z0-9]{31,36}$', '⚠ 卡密错误，验证失败！', '^(C|E(?!PT))', '⚠ 卡密输入有误！']
+     整型常量(长度阈值候选): [0, 31, 36]
+  [FAIL] _on_confirm 内出现长度判断常量 30/40  -- [0, 31, 36]
+
+== 结论 ==
+FAIL 数 = 4
+  - 源码行 287..291 落在此函数内
+  - 硬编码 exe 直链存在
+  - %s 里 verify=False 的字节码特征（False 常量 + verify 名）
+  - _on_confirm 内出现长度判断常量 30/40

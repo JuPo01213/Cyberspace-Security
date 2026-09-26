@@ -1,0 +1,44 @@
+== C59 corrected .Sq> callee address check ==
+instrument=<HOST_PATH>/vmctl/verify_sq_callees_corrected.py
+supersedes=C55_sq_callee_addresses_byte_check.txt
+C55_status=RETRACTED: its E8 target resolver used BASE=0x140001000
+claim_scope=call-site existence and capture bounds; not callee behavior
+
+input=stream_text.bin bytes=8257536 sha256=5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757 base=0x140000000
+input=RG2_region_0x140e00000.bin bytes=4194304 sha256=09d8d5de6059679957d3b49f17b9aed6b85c48756ff8d36b41e4ce6e93044c7a base=0x140e00000
+stream_text_mapping=embedded PE header proves stream_offset 0 -> VA 0x140000000
+
+-- target resolution --
+target=0x141a1ff1b target_offset_from_text_base=0x1a1ff1b
+  blob=stream_text.bin imm32le_count=0 E8_target_count=1
+    call_sites=0x1407a305c
+    context:
+      0x1407a305c e8bace2701           call    0x141a1ff1b
+      0x1407a3061 8032c0               xor     byte ptr [rdx], 0xc0
+      0x1407a3064 488b8c2420010000     mov     rcx, qword ptr [rsp + 0x120]
+      0x1407a306c 4833cc               xor     rcx, rsp
+      0x1407a306f e83cd60000           call    0x1407b06b0
+      0x1407a3074 4881c430010000       add     rsp, 0x130
+  blob=RG2_region_0x140e00000.bin imm32le_count=0 E8_target_count=0
+  callee_bytes_in_stream_text=False
+  callee_visibility=outside the captured 8.26 MB stream; no claim about callee instructions
+target=0x1417612fa target_offset_from_text_base=0x17612fa
+  blob=stream_text.bin imm32le_count=0 E8_target_count=1
+    call_sites=0x1407a7b1b
+    context:
+      0x1407a7b1b e8da97fb00           call    0x1417612fa
+      0x1407a7b20 cc                   int3    
+      0x1407a7b21 488d15c0887e00       lea     rdx, [rip + 0x7e88c0]
+      0x1407a7b28 eb07                 jmp     0x1407a7b31
+      0x1407a7b2a 488d1587887e00       lea     rdx, [rip + 0x7e8887]
+      0x1407a7b31 41b910000000         mov     r9d, 0x10
+  blob=RG2_region_0x140e00000.bin imm32le_count=0 E8_target_count=0
+  callee_bytes_in_stream_text=False
+  callee_visibility=outside the captured 8.26 MB stream; no claim about callee instructions
+
+-- corrected conclusion --
+Both disputed addresses have real E8 call-site support under VA=0x140000000+stream_offset if the counts above are nonzero.
+The earlier conclusion that the addresses were absent from plaintext is retracted.
+The current capture does not include either callee body, so it cannot decide whether either callee terminates the process.
+This leaves the runtime effect as a named static gap, not as evidence that the addresses are phantoms.
+confidence=HIGH for call-site existence and capture-bound statement; RUNTIME_EFFECT=UNRESOLVED

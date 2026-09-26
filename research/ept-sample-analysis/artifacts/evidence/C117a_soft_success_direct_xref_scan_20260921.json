@@ -1,0 +1,61 @@
+{
+  "claim_id": "C117a",
+  "status": "completed",
+  "input": "<HOST_PATH>\\EPT\\artifacts\\captures\\stream_C6\\stream_text.bin",
+  "size": 8257536,
+  "sha256": "5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757",
+  "mapping": "VA=0x140000000+stream_offset",
+  "tool": "Python 3.13 + Capstone",
+  "capstone_version": "5.0.7",
+  "mode": "x86_64 continuous disassembly with skipdata=True; RIP-relative memory operands only",
+  "decoded_instruction_count": 2004141,
+  "skipdata_count": 11973,
+  "elapsed_sec": 20.236,
+  "targets": {
+    "RUN_apply_soft_success": "0x140f93570",
+    "RC00": "0x140f8d7b0",
+    "RC03": "0x140f8d870",
+    "RC04": "0x140f8d8d0",
+    "RC06": "0x140f8d940"
+  },
+  "hits": {
+    "RUN_apply_soft_success": [],
+    "RC00": [
+      {
+        "insn_va": "0x14078ed97",
+        "mnemonic": "lea",
+        "op_str": "rcx, [rip + 0x7fea12]",
+        "target": "0x140f8d7b0",
+        "offset": "0x78ed97"
+      }
+    ],
+    "RC03": [
+      {
+        "insn_va": "0x14078eec2",
+        "mnemonic": "lea",
+        "op_str": "rcx, [rip + 0x7fe9a7]",
+        "target": "0x140f8d870",
+        "offset": "0x78eec2"
+      }
+    ],
+    "RC04": [
+      {
+        "insn_va": "0x14078ef2b",
+        "mnemonic": "lea",
+        "op_str": "rcx, [rip + 0x7fe99e]",
+        "target": "0x140f8d8d0",
+        "offset": "0x78ef2b"
+      }
+    ],
+    "RC06": [
+      {
+        "insn_va": "0x14078efd1",
+        "mnemonic": "lea",
+        "op_str": "rcx, [rip + 0x7fe968]",
+        "target": "0x140f8d940",
+        "offset": "0x78efd1"
+      }
+    ]
+  },
+  "interpretation": "RUN_apply_soft_success has no direct RIP-relative xref in the recovered .text; RC00/RC03/RC04/RC06 controls each have one known hit. This is bounded to the input and scan mode."
+}

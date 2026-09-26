@@ -1,0 +1,157 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.047 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.046 seconds
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\sym
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\sym
+Symbol search path is: C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\sym
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_8E5863F6_06390C08.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(13ec.1270): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:004> .echo SAME_ROUND_CAPTURE_BEGIN
+SAME_ROUND_CAPTURE_BEGIN
+0:004> ed 0x141154ced 1
+0:004> ed 0x141154cf1 1
+0:004> eb 0x141154ae7 1
+0:004> ed 0x141154ce9 1
+0:004> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:004> sxi av
+0:004> sxi c0000005
+0:004> sxi e06d7363
+0:004> sxi 80000003
+0:004> sxi 80000004
+0:004> sxi c000001d
+0:004> sxi c0000094
+0:004> sxi e0434352
+0:004> sxi 6d9
+0:004> .echo EXCEPTION_PASSTHROUGH_ARMED
+EXCEPTION_PASSTHROUGH_ARMED
+0:004> eb 0x1403b34d0 33 c0 c3
+0:004> eb 0x1403b3280 33 c0 c3
+0:004> eb 0x1403c47e0 33 c0 c3
+0:004> eb 0x1403b3d30 33 c0 c3
+0:004> eb 0x1403c49d0 33 c0 c3
+0:004> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:004> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:004> bu kernel32!ExitProcessImplementation ".echo EXIT_PROCESS_SKIPPED; k 10; dd @rsp L8; .dump /ma C:/ept_obs/spool/EPT-AUTHGATE-20260926-15/early_death.dmp; r rip=poi(rsp); r rsp=rsp+8; g"
+breakpoint 3 redefined
+0:004> bu kernelbase!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+0:004> bu kernelbase!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+0:004> bu kernelbase!CreateFile2 ".echo KB2_CFW; du rcx; g"
+0:004> bu kernelbase!CreateFileW ".echo KB_CFW; du rcx; g"
+0:004> bu kernel32!WriteFile ".echo WFW; r rcx; r r8; db @rdx L16; g"
+0:004> bu kernelbase!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+0:004> bu ws2_32!connect ".echo CONN; db @rdx L10; g"
+0:004> bu ws2_32!WSAConnect ".echo WSACONN; db @rdx L10; g"
+0:004> bu ws2_32!getaddrinfo ".echo GAI_A; da @rcx; g"
+0:004> bu ws2_32!GetAddrInfoW ".echo GAI; du @rcx; g"
+0:004> bu ws2_32!send ".echo SEND_OBS; r rcx; r rdx; r r8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/sendbuf_at_send.bin @rdx @rdx+0x200; .echo SEND_BUF_DUMPED; u poi(@rsp) L12; g"
+0:004> bu ws2_32!WSASend ".echo WSASEND_OBS; r rcx; r rdx; r r8; dd @rsp L1; u poi(@rsp) L10; g"
+0:004> bu ws2_32!recv ".echo RECV; r rcx; r r8; r $t10=@rdx; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/recvbuf_at_recv.bin @rdx @rdx+0x200; .echo RECV_BUF_DUMPED; u poi(@rsp) L12; g"
+0:004> bu ws2_32!WSARecv ".echo WSARECV; r rcx; dd @rsp L1; u poi(@rsp) L10; g"
+0:004> bu kernelbase!DeviceIoControl ".echo DIOC; r rcx; r rdx; r r8; dd @rsp+20 L4; g"
+0:004> bu kernelbase!ReadFile ".echo RDF; r rcx; r r8; g"
+0:004> bu kernelbase!TerminateProcess ".echo TERM_PROC_SKIPPED; r rcx; r rdx; k 8; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:004> ba e 1 14078e6ac ".echo KEY_DERIVER_DONE; dd 0x14115c340 L8; db 0x14115c3f0 L28; g"
+0:004> ba e 1 14078ee73 ".echo RC00_CALLSITE; r rcx; r rdx; r r8; r r9; dd @rsp+20 L8; dd 0x14115c340 L8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/rc00_request_284.bin @rsp+0x50 @rsp+0x50+0x11c; .echo RC00_REQUEST_DUMPED; g"
+0:004> ba e 1 14078ee9b ".echo RC03_VALIDATOR_CALLSITE; r rcx; r rdx; r r8; r r9; dd @rsp+0x50 L8; dd 0x14115c340 L8; .writemem C:/ept_obs/spool/EPT-AUTHGATE-20260926-16/rc00_response_284.bin @rsp+0x50 @rsp+0x50+0x11c; .echo RC03_RESPONSE_DUMPED; g"
+0:004> ba e 1 14171f567 ".echo FATAL_THUNK_OBS; k L12; g"
+0:004> .echo SAME_ROUND_CAPTURE_ARMED
+SAME_ROUND_CAPTURE_ARMED
+0:004> g
+EXIT_PROCESS_SKIPPED
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_8E5863F6_06390C08.exe
+Child-SP          RetAddr               Call Site
+00000000`0014e5f8 00000001`43ae5d57     KERNEL32!ExitProcessImplementation
+00000000`0014e600 00000000`00000000     EPT_8E5863F6_06390C08+0x3ae5d57
+00000000`0014e5f8  43ae5d57 00000001 00000000 2437b697
+00000000`0014e608  43c533a6 00000001 43d11ddf 00000001
+Unable to create file 'C:/ept_obs/spool/EPT-AUTHGATE-20260926-15/early_death.dmp' - Win32 error 0n3
+    "ÏµÍ³ÕÒ²»µ½Ö"
+ntdll!NtTerminateProcess+0x14:
+00007ffb`dcd0db24 c3              ret
+0:000> .echo SAME_ROUND_CAPTURE_STOP
+SAME_ROUND_CAPTURE_STOP
+0:000> ~*k
+
+.  0  Id: 13ec.808 Suspend: 0 Teb: 00000000`00338000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0014feb8 00007ffb`dcccef88     ntdll!NtTerminateProcess+0x14
+00000000`0014fec0 00007ffb`dccbec85     ntdll!RtlExitUserProcess+0xb8
+00000000`0014fef0 00007ffb`db50737d     ntdll!RtlExitUserThread+0x55
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x1d
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo SAME_ROUND_CAPTURE_END
+SAME_ROUND_CAPTURE_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

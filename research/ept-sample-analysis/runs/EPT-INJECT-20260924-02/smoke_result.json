@@ -1,0 +1,11 @@
+﻿{
+    "pid":  2396,
+    "timed_out":  false,
+    "exited":  true,
+    "exit_code":  0,
+    "stdout_bytes":  5276,
+    "stderr_bytes":  0,
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "94504120-4548-4bb8-8bf5-69dbd86b4dcf",
+    "PSShowComputerName":  true
+}

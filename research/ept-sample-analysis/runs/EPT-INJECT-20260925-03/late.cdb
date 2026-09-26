@@ -1,0 +1,6 @@
+.echo [RECON_LATE_ARMED]
+bu 1407a3080 ".echo [RECON_AUTH]; r rip; r eax; r rcx; r rdx; dq @rsp L6; k; g"
+bu 14078ee73 ".echo [RECON_RC00]; r rcx; r rdx; r r8; r r9; dq @rsp L10; k; g"
+bu 14078ef02 ".echo [RECON_RC03_MARKER]; r; dq @rsp L10; k; g"
+bu 14078ef42 ".echo [RECON_RC06_ENTRY]; r; dq @rsp L10; k; g"
+bu 14078efb3 ".echo [RECON_RC06_AFTER_COPY]; r; dq @rsp L10; k; g"

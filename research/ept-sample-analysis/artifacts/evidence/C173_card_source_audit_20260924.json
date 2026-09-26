@@ -1,0 +1,13 @@
+{
+  "run_id": "C173-card-source-audit-20260924-01",
+  "vm_name": "<VM_LABEL>",
+  "checked_roots": "<HOST_PATH>/VMs/<VM_LABEL>/host-secrets;<HOST_PATH>/EPT/sample;<HOST_PATH>/EPT/artifacts/evidence;<HOST_PATH>/EPT/method",
+  "candidate_file_count": 0,
+  "candidate_file_names": "",
+  "known_non_card_secret_files": "<VM_USER>.password.txt;<VM_LABEL>_sample_share.password.txt",
+  "authoritative_sample_file_count": 1,
+  "real_card_input_present": false,
+  "sample_launch_requested": false,
+  "launch_gate": "SAMPLE_LAUNCH_HELD",
+  "note": "Checked filenames and metadata only. Historical card/license records and account credentials are not a real card input. No secret value was read or recorded."
+}

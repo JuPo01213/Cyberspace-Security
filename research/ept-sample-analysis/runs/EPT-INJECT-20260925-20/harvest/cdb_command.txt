@@ -1,0 +1,23 @@
+.echo [XREF2_PARENT_READY]
+.symfix
+.reload
+.childdbg 1
+sxd ibp
+sxe av
+sxe -c "$$><child.cdb" cpr
+bp kernel32!CopyFileW ".echo [COPYW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!CopyFileExW ".echo [COPYEXW]; r rcx; r rdx; r r8; r r9; dU @rcx L60; dU @rdx L60; k L10; g"
+bp kernel32!MoveFileExW ".echo [MOVEW]; r rcx; r rdx; r r8; dU @rcx L60; dU @rdx L60; k L10; $$><late.cdb; g"
+bp kernel32!DeleteFileW ".echo [DELW]; r rcx; dU @rcx L60; k L8; g"
+.echotime
+bu advapi32!RegOpenKeyExW ".if (@$t5 < 60) { .echo [REG_OPEN]; r rcx; r rdx; dU @rdx L40; k L12; r @$t5=@$t5+1 } ; g"
+bu advapi32!RegQueryValueExW ".if (@$t6 < 60) { .echo [REG_QUERY]; r rcx; r rdx; dU @rdx L40; k L12; r @$t6=@$t6+1 } ; g"
+bu advapi32!RegSetValueExW ".if (@$t7 < 40) { .echo [REG_SET]; r rcx; r rdx; dU @rdx L40; k L12; r @$t7=@$t7+1 } ; g"
+bp kernel32!CreateFileW ".if (@$t8 < 80) { .echo [FILE_OPEN]; r rcx; dU @rcx L40; k L10; r @$t8=@$t8+1 } ; g"
+bp kernel32!ReadFile ".if (@$t9 < 40) { .echo [FILE_READ]; r rcx; r rdx; r r8; k L10; r @$t9=@$t9+1 } ; g"
+bp kernel32!WriteFile ".if (@$ta < 40) { .echo [FILE_WRITE]; r rcx; r rdx; r r8; k L10; r @$ta=@$ta+1 } ; g"
+bp user32!MessageBoxW ".echo [MSGBOXW]; r rcx; r rdx; dU @rdx L10; k L16 ; g"
+bp ntdll!NtWaitForSingleObject 400 ".echo [SNAP_400]; ~* k L18; g"
+bp ntdll!NtWaitForSingleObject 1600 ".echo [SNAP_1600]; ~* k L18; g"
+sxe -c ".echo [XREF2_PARENT_AV]; .lastevent; r; k; g" av
+g

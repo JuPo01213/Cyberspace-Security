@@ -1,0 +1,10 @@
+.echo RUN_GATE_REV_BEGIN
+sxe av
+ba e 1 0x1407adae0 ".echo STAGE_LOG; da @r8; r r9d; g"
+ba e 1 0x1407adb40 ".echo STAGE_LOG2; r r8; r r9d; g"
+ba e 1 0x1407aa694 ".echo FATAL_CALLSITE; k L8; r @rip; dd @rsp L2; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+.echo GATE_REV_ARMED
+g
+.echo RUN_GATE_REV_END
+~*k
+q

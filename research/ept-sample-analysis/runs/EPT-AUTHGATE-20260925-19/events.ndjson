@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T07:12:37.4586138Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":3152,"type":"PARENT_STARTED","utc":"2026-09-25T07:12:37.5523613Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_68368B6E_AD50C1CD.exe","pid":1636,"ppid":3152,"type":"CHILD_FOUND","utc":"2026-09-25T07:12:40.4274397Z"}
+{"child_pid":1636,"utc":"2026-09-25T07:12:40.4429897Z","debugger_pid":4484,"type":"CDB_ATTACHED"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T07:12:40.4586155Z"}

@@ -1,0 +1,61 @@
+== 1) RG2 block, measured per the range each claim covers ==
+   artifact RG2_region_0x140e00000.bin = 4,194,304 B, covers 0x280e00000..0x281200000
+   ciphertext part claimed by P3 (1.5 MB) 1,572,864 B entropy=8.000 printable=0.371 zeroshare=0.004  | claim: entropy 8.00 printable 0.371
+   claimed decrypted .rdata+.data         2,031,616 B entropy=4.199 printable=0.122 zeroshare=0.535  | claim: 942 strings >=6 chars
+   claimed .Sq> head = VMProtect code     589,824 B entropy=6.573 printable=0.223 zeroshare=0.174  | claim: operator island at 0x141190000
+   WHOLE 4 MB BLOCK                       4,194,304 B entropy=6.383 printable=0.229 zeroshare=0.285  | claim: n/a (C36 measured this by mistake)
+   4 KB pages: 1024 total, entropy>=7.90 in 404, <7.00 in 590, min=-0.000 max=7.965
+
+== 2) SP_* return-code names, naive vs underscore-aware ==
+   naive SP_[A-Z]+      distinct=27
+   all-caps tokens with an underscore-aware pattern distinct=28   <- the return-code set to cite
+   mixed-case stage names (SP_Verify_* / SP_Cloud_Beat), excluded: SP_Cloud_Beat SP_Verify_CardLogin SP_Verify_GetLastestVersionInfo SP_Verify_GetNotice SP_Verify_GetServerOption SP_Verify_Init SP_Verify_IsLogin
+   names the naive scan truncates: ['SP_UNKNOWN_CODE']
+   truncated forms present in naive set: []
+   vocab lines carrying an SP_* name=39
+   the 28 names: SP_ANOTHERUSERUNBIND SP_BANNEDAGENT SP_BANNEDCARD SP_BINDMSGDIFF SP_CONNECTFAILED SP_DATAERROR SP_DISABLELOGIN SP_EXPIREDCARD SP_EXPIREDTOKEN SP_FAILEDACTIVATECARD SP_FAILEDGETCARD SP_FAILEDWRITE SP_FYINOTENOUGH SP_INVALIDAGENT SP_INVALIDCARD SP_INVALIDPARAM SP_LOGINEXCEPTION SP_MAXONLINE SP_MAXUNBINDCOUNT SP_NOACTIVATEDCARD SP_NOBIND SP_NOERROR SP_NOINIT SP_NOLOADCLOUDDLL SP_OFFLINE SP_UNKNOWNERRROR SP_UNKNOWN_CODE SP_WSAFAILED
+
+== 3) manifest offsets, every search basis ==
+   find(<trustInfo                  ) = 0x1f2834e
+   find(<requestedExecutionLevel    ) = 0x1f283b9
+   find(requestedExecutionLevel     ) = 0x1f283ba
+   find(level='asInvoker'           ) = 0x1f283d2
+   find(asInvoker                   ) = 0x1f283d9
+   element text: <requestedExecutionLevel level='asInvoker' uiAccess='false' />
+   requireAdministrator occurrences=0  highestAvailable=0
+
+== 4) import directory: descriptors vs distinct DLLs vs thunks ==
+   DataDirectory[1] = RVA 0x3a1d4c8 size 0x118 -> file 0x19c38c8 (14.0 descriptors of 20 B)
+      KERNEL32.dll   GetExitCodeProcess         (ILT)
+      USER32.dll     SetFocus                   (ILT)
+      GDI32.dll      DeleteDC                   (ILT)
+      ADVAPI32.dll   RegOpenKeyExA              (ILT)
+      SHELL32.dll    ShellExecuteExW            (ILT)
+      ole32.dll      CoTaskMemFree              (ILT)
+      WS2_32.dll     ordinal 21  (ILT #1)
+      ntdll.dll      RtlVirtualUnwind           (ILT)
+      CRYPT32.dll    CryptBinaryToStringW       (ILT)
+      COMCTL32.dll   InitCommonControlsEx       (ILT)
+      IPHLPAPI.DLL   GetAdaptersInfo            (ILT)
+      KERNEL32.dll   GetSystemTimeAsFileTime    (ILT)
+      KERNEL32.dll   HeapAlloc                  (ILT)
+      KERNEL32.dll   HeapFree                   (ILT)
+      KERNEL32.dll   ExitProcess                (ILT)
+      KERNEL32.dll   LoadLibraryA               (ILT)
+      KERNEL32.dll   GetModuleHandleA           (ILT)
+      KERNEL32.dll   GetProcAddress             (ILT)
+   descriptor 13 = NULL terminator
+   descriptors=13  named=13  distinct DLL names=11  thunks=18
+   per-DLL thunk counts: {'KERNEL32.dll': 8, 'USER32.dll': 1, 'GDI32.dll': 1, 'ADVAPI32.dll': 1, 'SHELL32.dll': 1, 'ole32.dll': 1, 'WS2_32.dll': 1, 'ntdll.dll': 1, 'CRYPT32.dll': 1, 'COMCTL32.dll': 1, 'IPHLPAPI.DLL': 1}
+
+== 5) decompiled gate file ==
+   physical lines=5505 non-empty=2709 bytes=101,587
+   banners=9 distinct=8 -> duplicate: ['// ==== FUN_1407a3080 @ 1407a3080 ====']
+     // ==== FUN_14078b650 @ 14078b650 ====
+     // ==== FUN_14078de50 @ 14078de50 ====
+     // ==== FUN_14078f060 @ 14078f060 ====
+     // ==== FUN_1407a1880 @ 1407a1880 ====
+     // ==== FUN_1407a3080 @ 1407a3080 ====
+     // ==== FUN_1407a4a90 @ 1407a4a90 ====
+     // ==== FUN_1407a4b90 @ 1407a4b90 ====
+     // ==== FUN_1407c1f44 @ 1407c1f44 ====

@@ -1,0 +1,5 @@
+.echo [SMOKE_CHILD_ATTACHED]
+sxd ibp
+sxd epr
+.echo [SMOKE_CHILD_BPS_ARMED]
+g

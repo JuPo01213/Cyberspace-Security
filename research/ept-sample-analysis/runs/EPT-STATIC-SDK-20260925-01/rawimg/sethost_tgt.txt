@@ -1,0 +1,112 @@
+       ::   0x1416f98f0      push  rbp
+       ::   0x1416f98f1      push  rbx
+       ::   0x1416f98f2      pushfq
+       ::   0x1416f98f3      mov   rbx, 0xaa27caa4bda19214
+       ::   0x1416f98fd      neg   rbx
+       ::   0x1416f9900      shr   rbx, 0xc5
+       ::   0x1416f9904      shl   ebx, 0x4f
+      ,===< 0x1416f9907      jnbe  0x141a98a60
+      |::   0x1416f990d      mov   rbp, qword [rsp+rbx*1-0x79b77fe8]
+      |::   0x1416f9915      lea   rbx, qword [rbx+rbx*4+0x6248fae]
+      |::   0x1416f991d      or    ebx, ebx
+      |::   0x1416f991f      shr   bl, 0x53
+      |::   0x1416f9922      setnz bl
+      |::   0x1416f9925      neg   bl
+      |::   0x1416f9927      lea   rbp, qword [rbp+rbx*1-0x66ba0eff]
+      |::   0x1416f992f      neg   ebx
+     ,====< 0x1416f9931      jb    0x1419ceaf0
+     ||::   0x1416f9937      pop   rdi
+     ||::   0x1416f9938      push  r8
+     ||::   0x1416f993a      pushfq
+     ||::   0x1416f993b      mov   r8, 0xed393cab25878284
+     ||::   0x1416f9945      push  rbp
+     ||::   0x1416f9946      mov   rbp, r8
+     ||::   0x1416f9949      xchg  qword [rsp+0x18], rdi
+     ||::   0x1416f994e      not   rbp
+     ||::   0x1416f9951      and   rbp, 0x28292f1a
+     ||::   0x1416f9958      not   ebp
+     ||::   0x1416f995a      sub   r8b, 0x16                           ; 22
+     ||::   0x1416f995e      cmp   r8w, bp
+     ||::   0x1416f9962      push  r9
+     ||::   0x1416f9964      setnl bpl
+     ||::   0x1416f9968      cmp   rbp, 0x50a5a1be
+     ||::   0x1416f996f      mov   r8, qword [rsp+0x18]
+     ||::   0x1416f9974      mov   qword [rsp+0x18], rdi
+     ||::   0x1416f9979      call  0x141a9ce84
+     ||::   0x1416f997e      pushfq
+     ||::   0x1416f997f      add   qword [rsp+0x10], 0xffffffffbeb8277b
+     ||::   0x1416f9988      mov   qword [rsp+0x28], rcx
+     ||::   0x1416f998d      push  r8
+     ||::   0x1416f998f      mov   r8, 0xd3b743a781a705ac
+     ||::   0x1416f9999      movzx r8, r8w
+     ||::   0x1416f999d      add   qword [rsp+0x20], 0x6815e9          ; [0x6815e9:8]=-1
+     ||::   0x1416f99a6      mov   rcx, r8
+     ||::   0x1416f99a9      not   r8w
+     ||::   0x1416f99ad      not   r8
+     ||::   0x1416f99b0      neg   r8b
+     ||::   0x1416f99b3      push  rdi
+     ||::   0x1416f99b4      mov   r8b, cl
+     ||::   0x1416f99b7      mov   rcx, qword [rsp+r8*2+0x1f4d0]
+     ||::   0x1416f99bf      mov   rcx, qword [rcx+r8*4+0x3e950]
+     ||::   0x1416f99c7      mov   qword [rsp+r8*8+0x7d2c8], r8
+     ||::   0x1416f99cf      push  r14
+     ||::   0x1416f99d1      movsx r8d, byte [rsp+r8*2+0x1f4d9]
+     ||::   0x1416f99da      mov   r14, 0x46174515429b5caa
+    ,=====< 0x1416f99e4      jnz   0x141833820
+    |||::   0x1416f99ea      cmp   bl, ah
+    |||::   0x1416f99ec      mov   edx, 0x7ffefe
+    |||::   0x1416f99f1      add   byte [rcx+0x53], al
+    |||::   0x1416f99f4      or    r15d, 0xa2812a3b
+    |||::   0x1416f99fb      call  0x141699ac2
+    |||::   0x1416f9a00      mov   r8, 0xd30ee306c780b002
+    |||::   0x1416f9a0a      call  0x140783a33
+    |||::   0x1416f9a0f      call  0x1413cc50a
+    |||:`=< 0x1416f9a14      jb    0x141179a20
+    |||:    0x1416f9a1a      push  qword [rsp+0x48]
+    |||:    0x1416f9a1e      popfq
+    |||:    0x1416f9a1f      lea   rsp, qword [rsp+0x68]
+    |||:    0x1416f9a24      ret
+    |||:    0x1416f9a25      pushfq
+    |||:    0x1416f9a26      or    r10, r10
+    |||:    0x1416f9a29      movzx r10w, r10b
+    |||:    0x1416f9a2e      push  r11
+    |||:    0x1416f9a30      mov   r11, 0xf826ff99fb151d3a
+    |||:    0x1416f9a3a      mov   r10b, 0xa0                          ; 160
+    |||:    0x1416f9a3d      xchg  qword [rsp+0x28], rbp
+    |||:    0x1416f9a42      cmp   r10b, r11b
+    |||:    0x1416f9a45      not   r11w
+    |||:    0x1416f9a49      call  0x1419caa01
+    |||:    0x1416f9a4e      push  rbx
+    |||:    0x1416f9a4f      push  rbx
+    |||:    0x1416f9a50      pushfq
+    |||:    0x1416f9a51      mov   rbx, 0xe022ce080303a437
+    |||:    0x1416f9a5b      call  0x1415aff68
+    |||:    0x1416f9a60      mov   r10, 0x9481da9589288c8d
+    |||:    0x1416f9a6a      lea   r10, qword [r10*4+0xbab0e39]
+    |||:    0x1416f9a72      add   qword [rsp+0x20], 0xffffffffffff5dcb
+    |||:    0x1416f9a7b      call  0x14188ad7c
+    |||:    0x1416f9a80      shl   r10d, 0xeb
+    |||:    0x1416f9a84      neg   rsi
+    |||:    0x1416f9a87      add   qword [rsp+0x30], 0xffffffffffd54208
+    |||:    0x1416f9a90      call  0x14185ad00
+    |||:    0x1416f9a95      call  0x1418ac8c5
+    |||`==< 0x1416f9a9a      jns   0x1414dd7fb
+    ||| :   0x1416f9aa0      movsx r13w, r13b
+    ||| :   0x1416f9aa5      xor   r13b, r13b
+    ||| :   0x1416f9aa8      shl   r13d, 0xba
+    ||| :   0x1416f9aac      mov   r13, qword [rsp+r13*1+0x30]
+    ||| :   0x1416f9ab4      test  qword [rsp+0x48], 0xffffffffc915b187
+    ||| :   0x1416f9abd      call  0x14176816b
+    ||| :   0x1416f9ac2      bswap r12
+    ||| :   0x1416f9ac5      test  r15, 0x39a8f4b8
+    ||| :   0x1416f9acc      call  0x14118c315
+    ||| :   0x1416f9ad1      call  0x14171cf86
+    ||| :   0x1416f9ad6      shr   cl, 0x13
+    ||| :   0x1416f9ad9      sub   cx, 0xfc8b
+    ||| :   0x1416f9ade      bswap rcx
+    ||| :   0x1416f9ae1      mov   qword [rsp+0x10], rcx
+    ||| :   0x1416f9ae6      mov   qword [rsp+0x10], rcx
+    ||| :   0x1416f9aeb      invalid
+    ||| :   0x1416f9aec      invalid
+    ||| `=< 0x1416f9aed      jbe   0x1416f9a97
+    |||     0x1416f9aef      invalid

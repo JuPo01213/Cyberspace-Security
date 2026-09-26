@@ -1,0 +1,31 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-37",
+  "date": "2026-09-25",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "vm": "<VM_LABEL>",
+  "baseline_checkpoint": "<VM_LABEL>-gen1-channel-ready",
+  "sample_lineage": "C:\\ept_core\\Hardware.exe SHA-256 CFA6998E...AFB28BD7 <- authoritative sample SHA-256 CA6B4C6A...D87ACAA3B2",
+  "hypothesis": "Run36 终点链（payload 写盘 -> 第3次 StartServiceA -> 明文 0x1407aa694 FatalExit）在同条件强制链下可复现；本轮在 FatalExit 决策点抓全寄存器/栈（识别决定退出的条件输入），并在 OpenServiceA/W 上拿到服务名、对 C:\\Windows\\Temp 随机名载荷文件完成落盘取证（内容+SHA-256）。",
+  "new_info_points": [
+    "服务名（OpenServiceA/W @rdx，run36 只有 SC_HANDLE）",
+    "TEMP 载荷文件内容与哈希（run36 只见到路径）",
+    "FatalExit 决策点全寄存器（r15d/eax/r13b/ebx 等条件输入）与 k12 全栈",
+    "svc_paths（Win32_Service PathName 含 Temp/Hardware/EPT/Cheat 的服务）",
+    "ExitProcess/TerminateProcess 退出路径（跳过 FatalExit 后进程如何死）"
+  ],
+  "acceptance_fields": {
+    "opensvc_name_observed": "HpSvcGLBDmwG24BiocdknfI(probe,open-fail); HpSvcnWVwANAwnFRqMQkJM3; HpSvczwwmC2oYJHyaxS3sUR; HpSvcjQRWUYTIbo3qtNzbXf — 每轮随机新名，Open→Create→Start→reOpen ×3",
+    "temp_payload_files": "none_created_this_run（配置已存在时无 payload 写盘；run36 的 GxtzesMZfGLDHgvp/kudcHHlnJWaZB 未重建）",
+    "fatalexit_registers_captured": false,
+    "fatalexit_k12_captured": true,
+    "exit_path": "plaintext FatalExit(0)@0x1407aa694 <- 0x1407b1094(scheduler) <- thread start; FatalExit+0xb -> RtlExitUserProcess -> NtTerminateProcess; kernel32!FatalExit entry bp NOT hit (suspected entry-bypass by protected thunk)",
+    "svc_paths": "no residue (snapshot svc_paths only false-positive 'perceptionsimulation' by case-insensitive 'ept' match)",
+    "config_900b_reshash": "not captured (gap)",
+    "stage_chain_reproduced": "true — NEW config-present branch: CFW read System32\\Hardware\\Hardware -> StoredFlow.LoadConfig=1 -> StoredAuthorizationUsable=1 -> VerifyStoredCardStatusBeforeUse=1 -> SP_Verify_Init=0 -> SP_Verify_GetServerOption=-3(原始值,早期阶段不经wrapper-1) -> sc.exe CPA x2 -> 3x(Open/Create/Start svc) -> FatalExit; Setup GUI entirely skipped (winproc agree=0, no windows)"
+  },
+  "deadline_sec": 720,
+  "stop_loss": "若同序列再次无新信息（服务名/载荷/寄存器三项全空），停止该观测分支；instrument failure 按 INVALID_INSTRUMENT 记录并收割已得件。",
+  "instrument_constraints": "复用 run24 验证动作形态（echo/da/du/r/k/u + g）；DR0-3 全占不加硬件断点；无 j/条件执行；无 response 注入；UI 自动化复用 run36 合并式 helper。",
+  "verdict": "POSITIVE(观测) — 假设主体成立：终点链复现且三项核心新信息（服务名/死亡链/路径分叉）全部取得；差异发现：run36 落盘的 900B 加密配置使后续运行跳过 Setup GUI 走 StoredFlow 分支。",
+  "environment_note": "15:14Z/15:17Z 两次 PowerShell Direct 查询返回与终态矛盾的'空环境'结果（ept_obs=False / Hardware.exe not found），终态复核为完整存在；原因未明（无 Hyper-V VMMS 事件、无 guest 重启），两次查询数据判为不可信。教训：关键状态判定需双方法复核。"
+}

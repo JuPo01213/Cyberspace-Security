@@ -1,0 +1,37 @@
+region 0x1407a7d90..0x1407aa590 = 10240 bytes (0x2800), whole-region entropy 7.944
+
+[1] per-256B chunk entropy distribution (is it uniform, or block-structured?)
+    chunks=40  min=6.171 max=7.174 mean=6.935 stdev=0.211
+
+[2] period search: does byte[i] == byte[i+p] more often than chance?
+    lag 16    match=0.0054  (random control 0.0039)  excess=+0.0015
+    lag 32    match=0.0059  (random control 0.0040)  excess=+0.0020
+    lag 64    match=0.0056  (random control 0.0031)  excess=+0.0017
+    lag 256   match=0.0056  (random control 0.0040)  excess=+0.0017
+    lag 264   match=0.0034  (random control 0.0044)  excess=-0.0005
+    lag 512   match=0.0032  (random control 0.0047)  excess=-0.0007
+    lag 1024  match=0.0036  (random control 0.0038)  excess=-0.0003
+    lag 4096  match=0.0042  (random control 0.0046)  excess=+0.0003
+
+[3] repeated 16-byte blocks anywhere in the region (dedup / ECB-style repetition)
+    control (region shifted 1 byte): 0/640 16B blocks found in table
+    control (region shifted 7 bytes): 0/640 16B blocks found in table
+
+[4] recognisable constants: AES s-box/rcon, SHA/MD5 IVs, base64 alphabet, zip/zlib magic
+    AES sbox[0:32]     found=-1
+    base64 alphabet    found=-1
+    zlib 78 9c         found=6349
+    gzip 1f8b          found=-1
+    PK zip             found=-1
+    SHA-256 IV         found=-1
+    MD5 IV             found=-1
+
+[5] printable-run profile (compressed/base64 vs encrypted look different)
+    runs=2354 longest=9 mean=1.67  (random control longest=7)
+
+[6] does the region contain either observed runtime +256 block prefix?
+    run-1 prefix in static region: -1  | anywhere in .text: -1
+    run-2 prefix in static region: -1  | anywhere in .text: -1
+    control - a prefix of THIS region must be found: 0
+
+artifact -> <HOST_PATH>/EPT/artifacts/mem/C13_static_highentropy_region.bin (10240 bytes)

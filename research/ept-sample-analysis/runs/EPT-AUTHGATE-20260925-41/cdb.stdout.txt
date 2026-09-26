@@ -1,0 +1,129 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.031 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.047 seconds
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_7529F647_A38716C4.exe
+ModLoad: 00007ffe`c5190000 00007ffe`c5388000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffe`c4bf0000 00007ffe`c4cb2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffe`c2dd0000 00007ffe`c30c6000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffe`bfe10000 00007ffe`bfea4000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffe`c4a40000 00007ffe`c4be1000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffe`c2af0000 00007ffe`c2b12000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffe`c3ec0000 00007ffe`c3eeb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffe`c2870000 00007ffe`c2989000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffe`c2bb0000 00007ffe`c2c4d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffe`c2cd0000 00007ffe`c2dd0000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffe`c4520000 00007ffe`c45d1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffe`c4010000 00007ffe`c40ae000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffe`c3cb0000 00007ffe`c3d4f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffe`c3ef0000 00007ffe`c4010000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffe`c30d0000 00007ffe`c30f7000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffe`c3540000 00007ffe`c3cb0000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffe`c5020000 00007ffe`c514b000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffe`c31e0000 00007ffe`c3534000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffe`c4900000 00007ffe`c496b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffe`c2990000 00007ffe`c2aed000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffe`afc30000 00007ffe`afce0000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffe`c1bb0000 00007ffe`c1beb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffe`c31b0000 00007ffe`c31df000   C:\Windows\System32\imm32.dll
+(1058.cc0): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffe`c52310d0 cc              int     3
+0:003> .echo RUN41_STAGE_FORCE_BEGIN
+RUN41_STAGE_FORCE_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:003> eb 0x1403b34d0 33 c0 c3
+0:003> eb 0x1403b3280 33 c0 c3
+0:003> eb 0x1403c47e0 33 c0 c3
+0:003> eb 0x1403b3d30 33 c0 c3
+0:003> eb 0x1403c49d0 33 c0 c3
+0:003> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:003> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:003> bu kernel32!ExitProcess ".echo EXIT_PROCESS; k 10; g"
+breakpoint 3 redefined
+0:003> bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+0:003> bu kernel32!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+0:003> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:003> bu kernel32!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+0:003> bu kernel32!CreateProcessA ".echo CPA_OBS; du @rdx; g"
+0:003> bu advapi32!OpenServiceA ".echo OPENSVCA; da @rdx; g"
+0:003> bu advapi32!OpenServiceW ".echo OPENSVCW; du @rdx; g"
+0:003> bu advapi32!StartServiceW ".echo STARTSVCW; du @rcx; g"
+0:003> bu advapi32!StartServiceA ".echo STARTSVCA; du @rcx; g"
+0:003> ba e 1 1407adb40 ".echo STAGE_LOG2_CODENAME; r r8; r r9d; g"
+0:003> ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+0:003> ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+0:003> ba e 1 14171f567 ".echo FATAL_THUNK; r rsp=@$t0; r rbx=@$t1; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b1094; r eax=0; g"
+0:003> .echo HWBP_ARMED_SYNTHRET
+HWBP_ARMED_SYNTHRET
+0:003> g
+EXIT_PROCESS
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_7529F647_A38716C4.exe
+Child-SP          RetAddr               Call Site
+00000000`0014e5f8 00000001`43ae5d57     KERNEL32!FatalExit
+00000000`0014e600 00000000`00000000     EPT_7529F647_A38716C4+0x3ae5d57
+ntdll!NtTerminateProcess+0x14:
+00007ffe`c522db24 c3              ret
+0:000> .echo RUN41_STOP
+RUN41_STOP
+0:000> ~*k
+
+.  0  Id: 1058.cf4 Suspend: 0 Teb: 00000000`002a6000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0014e598 00007ffe`c51eef88     ntdll!NtTerminateProcess+0x14
+00000000`0014e5a0 00007ffe`c4c0e3eb     ntdll!RtlExitUserProcess+0xb8
+00000000`0014e5d0 00000001`43ae5d57     KERNEL32!FatalExit+0xb
+00000000`0014e600 00000000`00000000     EPT_7529F647_A38716C4+0x3ae5d57
+0:000> .echo RUN41_END
+RUN41_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

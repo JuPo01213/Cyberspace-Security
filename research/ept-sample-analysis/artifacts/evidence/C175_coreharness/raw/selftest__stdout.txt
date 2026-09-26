@@ -1,0 +1,17 @@
+{
+  "status": "self_test_passed",
+  "vectors": [
+    "38bba6186c2e0320d30f77c0985a842e25c44c67341a2d6b5a522a4bcd067a1d",
+    "7f28e601d3aec2fc26036a7feadc99a732c9715422c1055cad941befa7f1b843"
+  ],
+  "validator_rax": [
+    "0x00000001",
+    "0x00000001"
+  ],
+  "decoded_matches_input": [
+    true,
+    true
+  ],
+  "negative_control_branch": "RC03 decode_failed",
+  "marker_mismatch_control_branch": "RC04 session_mismatch"
+}

@@ -1,0 +1,46 @@
+== 0) control: does this instrument still land on agreed instructions? ==
+   0x1407a30b2  want cmp   got cmp    dword ptr [rip + 0x9b1c34], 1      OK
+   0x1407a30bb  want cmp   got cmp    dword ptr [rip + 0x9b1c2f], 1      OK
+   0x1407a30d6  want mov   got mov    bl, 1                              OK
+   0x1407a3111  want test  got test   bl, bl                             OK
+   control 4/4
+
+== 1) extent of 0x1407be620 ==
+   first ret at 0x1407be730; body = 273 B, 77 instructions
+   forms: {'mov': 32, 'je': 6, 'xor': 5, 'test': 5, 'cmp': 5, 'lea': 5, 'call': 4, 'jne': 3, 'movups': 2, 'jmp': 2, 'push': 1, 'sub': 1, 'movdqu': 1, 'jns': 1, 'or': 1, 'and': 1}
+
+== 2) discriminating immediates present ==
+   none of the marker set appears
+   digit-parse-style bounds (sub/cmp by 4..16): 0
+
+== 3) printable-range compares (the formatter signature) ==
+   0x1407be633  sub   rsp, 0x70                        ; 0x70 = 'p'
+   1 such compares
+
+== 4) callees and whether they stay inside captured .text ==
+   0x1407b87c8  captured .text
+   0x1407b8afc  captured .text
+   0x1407b8e3c  captured .text
+   3 distinct callees
+
+== 5) direct callers of the loop, over the whole captured .text ==
+   1 E8-rel32 call site(s): 0x140789eef
+   scope note: only E8 rel32 is matched here; an indirect or far call would not appear.
+
+== 6) marker scan over the depth-3 callee closure of the loop (E8 rel32 edges only) ==
+   d0 0x1407be620   273 B/ 77 ins  markers=none
+   d1 0x1407b8e3c   410 B/113 ins  markers=none
+   d1 0x1407b8afc   107 B/ 29 ins  markers=['0x30']
+   d1 0x1407b87c8    97 B/ 30 ins  markers=['0x20']
+   d2 0x1407bbbf0   669 B/189 ins  markers=['0x20', '0x23', '0x2b', '0x2d', '0x30']
+   d2 0x1407c68b0    60 B/ 21 ins  markers=['0x20']
+   d2 0x1407b06b0    21 B/  6 ins  markers=['0xffff']
+   d2 0x1407b8830   106 B/ 32 ins  markers=['0x20']
+   d2 0x1407d86c0    80 B/ 36 ins  markers=none
+   d2 0x1407c67e4    91 B/ 27 ins  markers=['0x30']
+   closure = 17 bodies; markers seen anywhere in it: ['0x20', '0x23', '0x2b', '0x2d', '0x30', '0xffff']
+
+== 7) global census: where in recovered .text is a literal 0x25 (percent) compared? ==
+   1 instruction(s) over RVA 0x1000..0x7da900 compare 0x25
+      0x1401bfaf1  cmp eax, 0x25
+   a format engine has to test the percent sign; this is where that would happen.

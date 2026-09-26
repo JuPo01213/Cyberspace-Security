@@ -1,0 +1,59 @@
+== C53: the offline read-only disk channel, and what it re-classifies ==
+
+-- identity controls (a negative is worthless without these) --
+   staged sample on the mounted clone: 32671232 B / sha256 CFA6998ECC2F  ==  the recorded genB CFA6998E  : True
+   health.ps1 first line matches the file this lab pushes: True
+   the volume really appeared when the clone was attached: 卷 ###      LTR  标签         FS     类型        大小     状态       信息
+
+-- 1) does the channel work? --
+   arm14 (poweroff -> find child -> clonemedium to VHD) : 17 lines, 1 explicitly-successful step(s)
+        Clone medium created in format 'VHD'. UUID: 3ddfb772-c09c-425a-9d45-0db28c60183c
+   arm15 (attach vdisk READ-ONLY + list + detach)       : 19 lines, 3 explicitly-successful step(s)
+        DiskPart 已成功选择虚拟磁盘文件。
+        DiskPart 已成功连接虚拟磁盘文件。
+        DiskPart 已成功分离虚拟磁盘文件。
+   clone size 49,356,069,376 B; attach ~7 s; detach rc=0; drive letter appeared as F: and
+   disappeared after detach (C:,D:,E: only). The clone was then deleted: free space back to
+   163 GB. Nothing on the VM, its snapshots or the guest disk was written by any of this.
+   => OBSERVATION: a post-mortem, read-only extraction path exists and works.
+
+-- 2) what it says about CTRL3 (and about the 18 live retries) --
+   collector home   collector-artefact matches on the clone : 0
+   ept              collector-artefact matches on the clone : 0
+   ept_obs          collector-artefact matches on the clone : 0
+   ept_core         collector-artefact matches on the clone : 0
+   Windows\Temp     collector-artefact matches on the clone : 0
+   Users\Public     collector-artefact matches on the clone : 0
+   newest files in the collector home:
+      2026-09-20T04:57:29       585 B  health.ps1
+      2026-09-19T05:44:04       820 B  stage2.txt
+      2026-09-19T05:43:15       770 B  stage2.cmd
+      2026-09-19T05:43:15      2179 B  runA.ps1
+   files newer than the clean snapshot (04:25): health.ps1 (2026-09-20T04:57:29)
+   => OBSERVATION: spawn7.ps1 / br7.ps1 / br7_stream.txt are absent from every directory that
+      the collector or its launcher would ever write, while health.ps1 - the FIRST thing
+      arm12 pushes - landed at 04:57:29. So CTRL3 died between the health push and the
+      collector push: the collector never ran, and never wrote anything.
+   => RE-CLASSIFICATION: the 18 handshake-abort results in harvest_CTRL3LIVE.out were retries
+      to retrieve a file that does not exist. They say NOTHING about scp as a channel - a
+      timeout looks identical from here whether the file is missing or the pipe is dead.
+      CTRL3 is therefore void as evidence about the network channels; it is, however, now
+      positive evidence about something else: SSH was alive at 04:57:29 and gone before the
+      next push, which brackets "when the channel dies" far more tightly than any retry loop.
+
+-- 3) what this changes for BR7 --
+   Extraction moves off the live channels entirely: run the collector, power off, clone the
+   session disk, mount read-only, copy the file out, then restore. Consequences that are now
+   hard design requirements rather than preferences:
+     * the collector must flush per line (br7.ps1 already does AppendAllText per record),
+       because a hard poweroff - which is what this build needs, ACPI does not take - loses the
+       unflushed tail of the file;
+     * every input push must be verified by read-back BEFORE the collector starts, since the
+       push window is minutes wide and CTRL3 just showed a push can silently not happen;
+     * post-mortem cannot see transients: whatever the sample does and then wipes from memory
+       is gone by the time the disk is read. The observable quantity is what the collector
+       chose to record while the process was alive, which is exactly what the WIN/ZRIDLE
+       windows are for - so the window list, not a longer wait, carries the load;
+     * cost per arm: ~2 min poweroff+clone, ~80 s for 49 GB, ~10 s mount, plus a restore.
+   What still cannot be closed this way: nothing new. The gate question (P4 4.16-6) needs the
+   two .Sq> pages while the sample process is alive, and the collector can read them.

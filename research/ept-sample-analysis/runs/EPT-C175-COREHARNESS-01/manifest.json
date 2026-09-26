@@ -1,0 +1,60 @@
+{
+  "schema": "guest-communication-workbench/run-summary/v2",
+  "run_id": "EPT-C175-COREHARNESS-01",
+  "mode": "EVIDENCE",
+  "agent_id": "guest-communication-workbench@EPT",
+  "lease_id": "LEASE-C175-COREHARNESS-01",
+  "target_vm": "<VM_LABEL>",
+  "guest_host": "<VM_LABEL>",
+  "guest_control_user": "<VM_USER>",
+  "baseline_snapshot": "C173-gen1-comm-baseline",
+  "control_plane": "PowerShell Direct (Enter-PSSession / Invoke-Command -VMName)",
+  "data_plane": "PowerShell Direct PSSession Copy-Item + Guest spool C:\\ept_obs\\spool",
+  "completion_plane": "Guest done.json + Host harvest via PSSession",
+  "sample": {
+    "path": "EPT/artifacts/captures/stream_C6/stream_text.bin (genB recovered .text)",
+    "sha256": "5ae354e2983a5bf407601b3629d114b8faa1ddd731d074e8d2092c338abdf757",
+    "authority": "HOST"
+  },
+  "input_state": "PRESENT",
+  "evidence_scope": "caller_injection_harness",
+  "target_fields": [
+    "target_native_return: NOT_COLLECTED",
+    "target_caller_diff_bytes: NOT_COLLECTED",
+    "post_decode_behavior: NOT_OBSERVED"
+  ],
+  "observed_harness_fields": [
+    "harness_rc03_branch",
+    "harness_validator_rax",
+    "harness_validator_accepted",
+    "harness_marker_matches_g340",
+    "harness_decoded_output_bytes",
+    "harness_caller_output_written",
+    "harness_caller_diff_bytes"
+  ],
+  "status": "CLOSED",
+  "last_confirmed_phase": "evidence_closed_caller_injection_harness_not_target_completion",
+  "conclusion": "Caller/injection harness regression is HOST_VERIFIED and internally self-consistent, but it is not a real-sample target result. target_native_return and target_caller_diff_bytes were not collected, and RC06-post behavior was not observed.",
+  "deadline_policy": {
+    "expected_duration_s": 600,
+    "deadline_s": 900,
+    "poll_interval_s": 15,
+    "retry_budget": 4,
+    "same_error_budget": 3
+  },
+  "artifacts_expected": [
+    "C:\\ept_obs\\out\\decode_report.json (--input mode)",
+    "C:\\ept_obs\\out\\caller_structure_after_decode.bin (--input mode)",
+    "C:\\ept_obs\\out_response\\decode_report.json (--response mode)",
+    "Guest runner stdout/stderr tails",
+    "Guest process PID/PPID snapshot"
+  ],
+  "unknown_fields": [],
+  "notes": [
+    "Host Authority: 捕获件 SHA-256 已 Host 侧核验，与 harness 内置 TEXT_SHA256 一致。",
+    "raw decode_report.json/run_meta.json 保留为不可变的迁移前收割件，仍含未加前缀旧字段；derive.py 仅在内存中归一化为 harness_*，不把它们升级为 target_*。",
+    "Guest Python 仅 Store 桩（0 字节），需投递 embeddable Python 后方可运行 harness。",
+    "无真卡密；采用无密钥核心 harness（caller/injection 级），不启动 Hardware.exe / 不开设备 / 不联网。",
+    "凭据仅从 <HOST_PATH>/VMs/<VM_LABEL>/host-secrets/<VM_USER>.password.txt 运行时读取，不外写。"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-44",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "instrument_fix": "run43 root cause decoded: msgbox text = 服务器配置获取失败! (0x140f92ed0) — wrapper-1 force (0x14078ff03) had been dropped in run41 DR reallocation; GetServerOption=-3 unforced -> driver msgbox -> ExitProcess. DR set restored to: wrapper1+wrapper2+capture(1407b108f)+synthret(14171f567); observation loggers dropped (no stage echoes this round).",
+  "hypothesis": "wrapper-1 强制恢复后走 27-35 同款 GUI 全链（Setup chain -> 免责 -> 主GUI -> KEY -> CardLogin链 -> 配置落盘 -> 服务轮次 -> 明文 fatal 尾块），FATAL_THUNK 命中后合成返回，调度器进入 Run 调度 -> RC00 区域。",
+  "acceptance_fields": {
+    "gui_path_reached": null,
+    "fatal_thunk_hit": null,
+    "synthetic_return_executed": null,
+    "scheduler_continued": null,
+    "rc00_region_evidence": null,
+    "new_behaviors": null
+  },
+  "deadline_sec": 720
+}

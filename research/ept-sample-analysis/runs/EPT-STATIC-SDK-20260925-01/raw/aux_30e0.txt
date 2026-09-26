@@ -1,0 +1,65 @@
+            0x1403b30e0      sub   rsp, 0x48
+            0x1403b30e4      mov   rax, qword [0x140f9e010]            ; [0x140f9e010:8]=-1
+            0x1403b30eb      xor   rax, rsp
+            0x1403b30ee      mov   qword [rsp+0x40], rax
+            0x1403b30f3      lea   rcx, qword [0x1407dd445]
+            0x1403b30fa      push  r9
+            0x1403b30fc      pushfq
+            0x1403b30fd      mov   r9, 0xf42518aef101a826
+            0x1403b3107      lea   r9, qword [r9+r9*8-0x5c4f3166]
+            0x1403b310f      not   r9d
+            0x1403b3112      push  rbx
+            0x1403b3113      mov   rbx, 0xd2b4b985a63f872a
+            0x1403b311d      mov   r9, qword [rsp+0x10]
+            0x1403b3122      mov   qword [rsp+0x10], 0x5bed50f5        ; [0x5bed50f5:8]=-1
+            0x1403b312b      mov   rbx, qword [rsp]
+            0x1403b3130      call  0x1414eac58
+            0x1403b3135      push  r12
+            0x1403b3137      push  r11
+            0x1403b3139      shr   bx, 0xf9
+            0x1403b313d      xchg  qword [rsp+r9*1-0x4c98], rsi
+            0x1403b3145      mov   rbx, qword [rsp+0x38]
+            0x1403b314a      and   dword [rsp+r9*8-0x267b8], r9d
+            0x1403b3152      test  word [rsp+r9*2-0x99d8], r9w
+            0x1403b315b      not   dword [rsp+r9*8-0x267d8]
+            0x1403b3163      mov   r11, 0x39a22bbfcf8dda90
+            0x1403b316d      call  0x1416cc791
+            0x1403b3172      or    r14, 0x6ab4c6a5
+            0x1403b3179      setb  cl
+            0x1403b317c      mov   rcx, r14
+            0x1403b317f      xchg  qword [rsp+0x50], rsi
+            0x1403b3184      mov   r14, qword [rsp+0x10]
+            0x1403b3189      shr   rbx, 0xf2
+            0x1403b318d      cmp   qword [rsp+0x30], rcx
+        ,=< 0x1403b3192      jnb   0x1419d55da
+        |   0x1403b3198      not   rcx
+        |   0x1403b319b      mov   rcx, qword [rsp+0x20]
+        |   0x1403b31a0      setl  bl
+        |   0x1403b31a3      and   word [rsp+rbx*2+0x2e], 0xbe96       ; [0xbe96:2]=0xffff
+        |   0x1403b31ad      cmp   ebx, dword [rsp+rbx*8+0x2b]
+        |   0x1403b31b4      lea   rbx, qword [rbx*8+0x5889f637]
+        |   0x1403b31bc      mov   rbx, qword [rsp+rbx*1-0x5889f5ff]
+        |   0x1403b31c4      call  0x141b0ada3
+        |   0x1403b31c9      shl   r15, 0xaf
+        |   0x1403b31cd      cmp   r15, 0x45ac40a9
+        |   0x1403b31d4      call  0x14144721d
+        |   0x1403b31d9      push  qword [rsp+0x20]
+        |   0x1403b31dd      popfq
+        |   0x1403b31de      lea   rsp, qword [rsp+0x30]
+        |   0x1403b31e3      call  0x141ca5f3e
+        |   0x1403b31e8      pushfq
+        |   0x1403b31e9      mov   qword [rsp], 0x457f00c0             ; [0x457f00c0:8]=-1
+        |   0x1403b31f2      call  0x141ca5f3e
+        |   0x1403b31f7      shl   word [rsp+0x90], 0x96
+        |   0x1403b3200      call  0x141633917
+        |   0x1403b3205      call  0x141488864
+        |   0x1403b320a      mov   eax, dword [rsp+0x28]
+        |   0x1403b320e      mov   dword [rsp+0x2c], eax
+        |   0x1403b3212      mov   eax, dword [rsp+0x2c]
+        |   0x1403b3216      mov   rcx, qword [rsp+0x40]
+        |   0x1403b321b      xor   rcx, rsp
+        |   0x1403b321e      mov   dword [rsp+0x20], eax
+        |   0x1403b3222      call  0x1407b06b0
+        |   0x1403b3227      mov   eax, dword [rsp+0x20]
+        |   0x1403b322b      add   rsp, 0x48
+        |   0x1403b322f      ret

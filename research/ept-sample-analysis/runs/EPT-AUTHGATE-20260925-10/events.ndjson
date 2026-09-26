@@ -1,0 +1,5 @@
+﻿{"utc":"2026-09-25T06:44:48.5216518Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":4304,"type":"PARENT_STARTED","utc":"2026-09-25T06:44:48.6153765Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_C56B8DE1_7A7F6CFA.exe","pid":588,"ppid":4304,"type":"CHILD_FOUND","utc":"2026-09-25T06:44:51.2872544Z"}
+{"child_pid":588,"utc":"2026-09-25T06:44:51.3185469Z","debugger_pid":4268,"type":"CDB_ATTACHED"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-25T06:44:51.3341271Z"}

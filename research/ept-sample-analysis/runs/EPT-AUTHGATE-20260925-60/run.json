@@ -1,0 +1,21 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-60",
+  "evidence_scope": "real_sample_guest_run",
+  "vm_state": {"note": "连续活动 VM(不恢复), 无父进程 cdb — 复刻 52/53/55 条件 ⇒ 完整管线 4/4 复现"},
+  "hypothesis": "缓冲区尾页探测(MDL锁定失败假设) + j 条件探测(canary 验证形式)",
+  "results": {
+    "verdict": "DECISIVE_PROBE",
+    "findings": [
+      "GUI 三连击完成(winproc agree/key/appstart 全 1), payload 文件 UPFyBwHhrPLQcIjxXyg 创建, 终态 0 字节",
+      "大写入探测命中: h=0x1fc n=7966720 (0x799000)",
+      "缓冲区头 0x049a2060 = 4d 5a 90 00 (MZ, 可读)",
+      "缓冲区尾 0x0513b058 = 00 00 00 00 00 00 00 00 (可读但全零!)",
+      "!address: 两个探测点同处一个堆区 0x049a2000-0x05508000 (11.398MB), MEM_COMMIT, PAGE_READWRITE, MEM_PRIVATE, heap large/virtual block ⇒ 缓冲区完全健康, MDL 锁定失败假设排除",
+      "尾部全零 ⇒ 7.9MB 缓冲区只有头部被填充, 解密未完成即尝试写入(或写入的是零体)",
+      "大写入后样本继续: 多次小 WriteFile(0x358 等到同句柄 0x1fc)+Sleep(0x78) 循环, 然后 FATAL_THUNK ⇒ 终点与 52-57 一致",
+      "!address 的 Building memory map 将目标冻结数秒(断点命中期间目标停止) — 后续探针避免在大写入断点内做全内存图扫描"
+    ],
+    "open_question": "7.9MB WriteFile 的 API 返回值与 bytesWritten 仍未捕获(无法区分写入失败/成功后截断); 截断者未观测(SetEndOfFile/NtWriteFile 未观察)",
+    "seam_fields": {"target_native_return": "NOT_OBSERVED", "target_caller_diff_bytes": "NOT_OBSERVED"}
+  }
+}

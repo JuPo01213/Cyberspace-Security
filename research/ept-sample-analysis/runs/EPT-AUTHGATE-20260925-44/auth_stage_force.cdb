@@ -1,0 +1,39 @@
+.echo RUN44_STAGE_FORCE_BEGIN
+ed 0x141154ced 1
+ed 0x141154cf1 1
+eb 0x141154ae7 1
+ed 0x141154ce9 1
+.echo ENTRY_GATE_RELEASED
+sxi av
+sxi c0000005
+.echo AV_PASSTHROUGH_ARMED
+eb 0x1403b34d0 33 c0 c3
+eb 0x1403b3280 33 c0 c3
+eb 0x1403c47e0 33 c0 c3
+eb 0x1403b3d30 33 c0 c3
+eb 0x1403c49d0 33 c0 c3
+.echo SDK_STAGES_PATCHED_RETURN_ZERO
+bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+bu kernel32!ExitProcess ".echo EXIT_PROCESS; k 10; g"
+bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+bu kernel32!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+bu kernel32!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+bu kernel32!CreateProcessA ".echo CPA_OBS; du @rdx; g"
+bu advapi32!OpenServiceA ".echo OPENSVCA; da @rdx; g"
+bu advapi32!OpenServiceW ".echo OPENSVCW; du @rdx; g"
+bu advapi32!StartServiceW ".echo STARTSVCW; du @rcx; g"
+bu advapi32!StartServiceA ".echo STARTSVCA; du @rcx; g"
+ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+ba e 1 14171f567 ".echo FATAL_THUNK; r rsp=@$t0; r rbx=@$t1; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b1094; r eax=0; g"
+.echo HWBP_ARMED_SYNTHRET
+g
+.echo RUN44_STOP
+~*k
+.echo RUN44_END
+q

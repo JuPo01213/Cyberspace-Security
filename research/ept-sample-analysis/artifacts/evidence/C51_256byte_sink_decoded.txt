@@ -1,0 +1,132 @@
+== C51: decode the sink that receives the 256-byte block, from the RG2 capture ==
+
+-- step 0: calibrate on pages whose nature we already established --
+   every column is a raw measurement; the last three are a shift-sensitivity test, so that a
+   "dense decode" claim can be read against what the same bytes give one byte later.
+   CTRL code .text        nz 3513/4096  ent 5.983  int3 runs>=8  3 (longest  12)  cover 100.0 %   1012 ins  ret   4  far call/jmp 109 in-image 109 (100 %)  shift+0/+1/+2 = 71/71/71 ins
+   CTRL code .text        nz 3561/4096  ent 6.636  int3 runs>=8  0 (longest   1)  cover  99.1 %   1011 ins  ret   9  far call/jmp 154 in-image 153 ( 99 %)  shift+0/+1/+2 = 3/3/3 ins
+   CTRL non-code C12      nz 4050/4096  ent 7.875  int3 runs>=8  0 (longest   1)  cover  95.4 %   1336 ins  ret  20  far call/jmp  35 in-image  25 ( 71 %)  shift+0/+1/+2 = 1/1/1 ins
+   CTRL non-code C12      nz 4034/4096  ent 7.851  int3 runs>=8  0 (longest   1)  cover  96.2 %   1264 ins  ret  10  far call/jmp  46 in-image  32 ( 70 %)  shift+0/+1/+2 = 0/0/0 ins
+
+-- 256-byte sink called at 0x1407a21e8 : 0x14117c32e  [RG2 blob (held here)]
+   TARGET page 0x14117c000 nz 3950/4096  ent 7.416  int3 runs>=8  6 (longest  12)  cover  98.1 %   1149 ins  ret  16  far call/jmp  65 in-image  62 ( 95 %)  shift+0/+1/+2 = 83/83/83 ins
+   first 32 B at the target: 58559c48bd1b119aed901610614080e588e801e14200488d642428e828ccba00
+   0x14117c32e  pop      rax                                58
+   0x14117c32f  push     rbp                                55
+   0x14117c330  pushfq                                      9c
+   0x14117c331  movabs   rbp, 0x61101690ed9a111b            48bd1b119aed90161061
+   0x14117c33b  and      bpl, 0x88                          4080e588
+   0x14117c33f  call     0x1415aa445                        e801e14200   -> .Sq> beyond the held head (NOT captured)
+   0x14117c344  lea      rsp, [rsp + 0x28]                  488d642428
+   0x14117c349  call     0x141d28f76                        e828ccba00   -> .Sq> beyond the held head (NOT captured)
+   0x14117c34e  call     0x141b24ff5                        e8a28c9a00   -> .Sq> beyond the held head (NOT captured)
+   0x14117c353  push     rdi                                57
+   0x14117c354  call     0x1417fae2e                        e8d5ea6700   -> .Sq> beyond the held head (NOT captured)
+   0x14117c359  mov      byte ptr [rsp + 0x20], 0xa2        c6442420a2
+   0x14117c35e  not      byte ptr [rsp + 0x20]              f6542420
+   0x14117c362  setae    byte ptr [rsp + 0x20]              0f93442420
+   0x14117c367  push     qword ptr [rsp + 0x28]             ff742428
+   0x14117c36b  popfq                                       9d
+   0x14117c36c  lea      rsp, [rsp + 0x38]                  488d642438
+   0x14117c371  ret      8                                  c20800
+   0x14117c374  jbe      0x1417ddfe7                        0f866d1c6600
+   0x14117c37a  mov      qword ptr [rsp + 0x30], r15        4c897c2430
+   0x14117c37f  xchg     qword ptr [rsp + rcx*4 + 0x414003b0], rbp 4887ac8cb0034041
+   0x14117c387  mov      rcx, qword ptr [rsp + 0x18]        488b4c2418
+   0x14117c38c  add      r8, r10                            4d03c2
+   0x14117c38f  mov      qword ptr [rsp + 0x30], 0x25340414 48c744243014043425
+   0x14117c398  xor      r15, qword ptr [rsp + r10*2 + 0x20a001d8] 4e33bc54d801a020
+   0x14117c3a0  test     qword ptr [rsp + r10 + 0x105000e4], 0x6f1d88a2 4af78414e4005010a2881d6f
+   0x14117c3ac  mov      r12, qword ptr [rsp + 0x48]        4c8b642448
+   0x14117c3b1  call     0x141651063                        e8ad4c4d00   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3b6  call     0x141a10a2b                        e870468900   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3bb  call     0x1415e4013                        e8537c4600   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3c0  push     rcx                                51
+   0x14117c3c1  push     r14                                4156
+   0x14117c3c3  call     0x141829083                        e8bbcc6a00   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3c8  mov      qword ptr [rsp + 0x38], rsi        4889742438
+   0x14117c3cd  push     rbx                                53
+   0x14117c3ce  mov      rbx, rcx                           488bd9
+   0x14117c3d1  call     0x14159f2ee                        e8182f4200   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3d6  call     0x1417f141d                        e842506700   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3db  push     rbx                                53
+   0x14117c3dc  call     0x1415722d8                        e8f75e3f00   -> .Sq> beyond the held head (NOT captured)
+   0x14117c3e1  mov      dl, 0x56                           b256
+   0x14117c3e3  dec      esp                                ffcc
+   0x14117c3e5  int3                                        cc
+   0x14117c3e6  int3                                        cc
+   0x14117c3e7  int3                                        cc
+   0x14117c3e8  int3                                        cc
+   0x14117c3e9  int3                                        cc
+   0x14117c3ea  int3                                        cc
+   0x14117c3eb  int3                                        cc
+   0x14117c3ec  int3                                        cc
+   0x14117c3ed  int3                                        cc
+   0x14117c3ee  int3                                        cc
+   0x14117c3ef  int3                                        cc
+   0x14117c3f0  mov      qword ptr [rsp + 0x10], rbx        48895c2410
+   0x14117c3f5  mov      qword ptr [rsp + 0x18], rbp        48896c2418
+   0x14117c3fa  mov      qword ptr [rsp + 0x20], rsi        4889742420
+   0x14117c3ff  push     rdi                                57
+   0x14117c400  sub      rsp, 0x40                          4883ec40
+   0x14117c404  mov      rbp, r9                            498be9
+   0x14117c407  mov      rsi, r8                            498bf0
+   0x14117c40a  mov      rbx, rdx                           488bda
+   0x14117c40d  mov      rdi, rcx                           488bf9
+   0x14117c410  test     r8, r8                             4d85c0
+   0x14117c413  jne      0x14117c41c                        7507
+   0x14117c415  xor      al, al                             32c0
+   0x14117c417  jmp      0x14117c64f                        e933020000
+   0x14117c41c  mov      rax, qword ptr [r9]                498b01
+   0x14117c41f  xor      r11d, r11d                         4533db
+   0x14117c422  mov      qword ptr [rsp + 0x50], r12        4c89642450
+   0x14117c427  mov      byte ptr [rsp], 0x41               c6042441
+   window decode: 83 instructions before the window ran out or an undecodable byte
+   C: >=10 instructions decoded: PASS
+   C: call targets out of this block (11 of 11 shown):
+      0x14117c33f -> 0x1415aa445  [.Sq> beyond the held head (NOT captured)]
+      0x14117c349 -> 0x141d28f76  [.Sq> beyond the held head (NOT captured)]
+      0x14117c34e -> 0x141b24ff5  [.Sq> beyond the held head (NOT captured)]
+      0x14117c354 -> 0x1417fae2e  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3b1 -> 0x141651063  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3b6 -> 0x141a10a2b  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3bb -> 0x1415e4013  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3c3 -> 0x141829083  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3d1 -> 0x14159f2ee  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3d6 -> 0x1417f141d  [.Sq> beyond the held head (NOT captured)]
+      0x14117c3dc -> 0x1415722d8  [.Sq> beyond the held head (NOT captured)]
+   0 of those 11 targets are inside the held blob (chaseable offline), 11 are past its
+   top (they need a capture we do not have).
+
+-- contrast: callee at 0x1407a2189 : 0x14166d369  [.Sq> beyond the held head (NOT captured)]
+   outside the held region - nothing to decode here; the contrast is the point.
+
+-- reading --
+   What the controls ruled OUT, first, because both were my own candidate judges:
+     * instruction COUNT per page is worthless: the two known DATA pages decode MORE
+       densely (1336 / 1264 ins) than the two known CODE pages (1012 / 1011), because short
+       garbage bytes decode into 1-2 instruction bytes. "It decodes" is not "it is code"
+       (same lesson as the 22 % reachability error, now with numbers).
+     * the shift test is a null result: +0/+1/+2 give identical counts in every row
+       (71/71/71, 3/3/3, 1/1/1, 0/0/0, 83/83/83). The walk is deterministic, so alignment
+       sensitivity as I built it measures nothing - do not cite this column.
+     * coverage and entropy separate the reference classes weakly/partially: code covers
+       99.1-100.0 % at entropy 5.98-6.64, data 95.4-96.2 % at 7.85-7.88, and the target sits
+       BETWEEN them (98.1 % / 7.42). So neither can decide the target - and that is exactly
+       why the first version of this script, which trusted an invented entropy cut of 7.4,
+       got the wrong answer with a straight face.
+   What does decide it, in the same table: the fraction of FAR (rel32-shaped) call/jmp
+   targets that land inside the image. Code 100 % and 99 % over 109/154 samples; data 71 %
+   and 70 % over 35/46; the target 95 % over 65. Data reaches ~70 % only through its
+   short-range jumps; a 95 % hit rate on far displacements is a displacement-distribution
+   property of real code, and the target has it.
+   Plus one non-statistical argument: 0x14117c32e is a call target computed from verified
+   plaintext .text (C50), so it is an instruction start by construction; decoding from it
+   gives 83 instructions in 0x140 bytes, a `ret 8`, and then eleven int3 padding bytes.
+   推断 (not observation): the held .Sq> head is decrypted runtime code, VMProtect-MUTATED
+   (pushfq/popfq pairs, not/setae on a scratch byte, movabs garbage into an unused register
+   - mutation junk, which is also why its page entropy is 7.4 rather than 6.x).
+   Consequence for the goal: the 256-byte sink is NOT an unknown-address callee. It lives in
+   bytes already on disk here, so the append action needs no new run to be characterised
+   down to this block. What still needs a capture is the next hop: all 11 call targets out
+   of the block land past the held head, i.e. in the part of .Sq> BR7 is meant to reach.

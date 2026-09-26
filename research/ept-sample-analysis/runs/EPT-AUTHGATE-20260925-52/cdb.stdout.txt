@@ -1,0 +1,491 @@
+
+************* Preparing the environment for Debugger Extensions Gallery repositories **************
+   ExtensionRepository : Implicit
+   UseExperimentalFeatureForNugetShare : true
+   AllowNugetExeUpdate : true
+   NonInteractiveNuget : true
+   AllowNugetMSCredentialProviderInstall : true
+   AllowParallelInitializationOfLocalRepositories : true
+
+   EnableRedirectToV8JsProvider : false
+
+   -- Configuring repositories
+      ----> Repository : LocalInstalled, Enabled: true
+      ----> Repository : UserExtensions, Enabled: true
+
+>>>>>>>>>>>>> Preparing the environment for Debugger Extensions Gallery repositories completed, duration 0.031 seconds
+
+************* Waiting for Debugger Extensions Gallery to Initialize **************
+
+>>>>>>>>>>>>> Waiting for Debugger Extensions Gallery to Initialize completed, duration 0.016 seconds
+   ----> Repository : UserExtensions, Enabled: true, Packages count: 0
+   ----> Repository : LocalInstalled, Enabled: true, Packages count: 30
+
+Microsoft (R) Windows Debugger Version 10.0.26100.9169 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+*** wait with pending attach
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*
+Symbol search path is: srv*
+Executable search path is: 
+ModLoad: 00000001`40000000 00000001`43f83000   C:\Windows\TEMP\EPT_68ECC4BD_74BAB9AD.exe
+ModLoad: 00007ffb`dcc70000 00007ffb`dce68000   C:\Windows\SYSTEM32\ntdll.dll
+ModLoad: 00007ffb`db4f0000 00007ffb`db5b2000   C:\Windows\System32\KERNEL32.DLL
+ModLoad: 00007ffb`da690000 00007ffb`da986000   C:\Windows\System32\KERNELBASE.dll
+ModLoad: 00007ffb`d78f0000 00007ffb`d7984000   C:\Windows\SYSTEM32\apphelp.dll
+ModLoad: 00007ffb`dc3c0000 00007ffb`dc561000   C:\Windows\System32\USER32.dll
+ModLoad: 00007ffb`da440000 00007ffb`da462000   C:\Windows\System32\win32u.dll
+ModLoad: 00007ffb`dc6a0000 00007ffb`dc6cb000   C:\Windows\System32\GDI32.dll
+ModLoad: 00007ffb`da990000 00007ffb`daaa9000   C:\Windows\System32\gdi32full.dll
+ModLoad: 00007ffb`da570000 00007ffb`da60d000   C:\Windows\System32\msvcp_win.dll
+ModLoad: 00007ffb`da470000 00007ffb`da570000   C:\Windows\System32\ucrtbase.dll
+ModLoad: 00007ffb`db430000 00007ffb`db4e1000   C:\Windows\System32\ADVAPI32.dll
+ModLoad: 00007ffb`dc950000 00007ffb`dc9ee000   C:\Windows\System32\msvcrt.dll
+ModLoad: 00007ffb`dcb90000 00007ffb`dcc2f000   C:\Windows\System32\sechost.dll
+ModLoad: 00007ffb`daca0000 00007ffb`dadc0000   C:\Windows\System32\RPCRT4.dll
+ModLoad: 00007ffb`da660000 00007ffb`da687000   C:\Windows\System32\bcrypt.dll
+ModLoad: 00007ffb`db5d0000 00007ffb`dbd40000   C:\Windows\System32\SHELL32.dll
+ModLoad: 00007ffb`dc6d0000 00007ffb`dc7fb000   C:\Windows\System32\ole32.dll
+ModLoad: 00007ffb`daf20000 00007ffb`db274000   C:\Windows\System32\combase.dll
+ModLoad: 00007ffb`dc800000 00007ffb`dc86b000   C:\Windows\System32\WS2_32.dll
+ModLoad: 00007ffb`daab0000 00007ffb`dac0d000   C:\Windows\System32\CRYPT32.dll
+ModLoad: 00007ffb`c82a0000 00007ffb`c8350000   C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.19041.6280_none_792d7c952443c49a\COMCTL32.dll
+ModLoad: 00007ffb`d9690000 00007ffb`d96cb000   C:\Windows\SYSTEM32\IPHLPAPI.DLL
+ModLoad: 00007ffb`dbdb0000 00007ffb`dbddf000   C:\Windows\System32\imm32.dll
+(afc.cac): Break instruction exception - code 80000003 (first chance)
+ntdll!DbgBreakPoint:
+00007ffb`dcd110d0 cc              int     3
+0:003> .echo RUN52_STAGE_FORCE_BEGIN
+RUN52_STAGE_FORCE_BEGIN
+0:003> ed 0x141154ced 1
+0:003> ed 0x141154cf1 1
+0:003> eb 0x141154ae7 1
+0:003> ed 0x141154ce9 1
+0:003> .echo ENTRY_GATE_RELEASED
+ENTRY_GATE_RELEASED
+0:003> sxi av
+0:003> sxi c0000005
+0:003> sxi e06d7363
+0:003> sxi 80000003
+0:003> sxi 80000004
+0:003> sxi c000001d
+0:003> sxi c0000094
+0:003> sxi e0434352
+0:003> sxi 6d9
+0:003> .echo EXCEPTION_PASSTHROUGH_ARMED
+EXCEPTION_PASSTHROUGH_ARMED
+0:003> eb 0x1403b34d0 33 c0 c3
+0:003> eb 0x1403b3280 33 c0 c3
+0:003> eb 0x1403c47e0 33 c0 c3
+0:003> eb 0x1403b3d30 33 c0 c3
+0:003> eb 0x1403c49d0 33 c0 c3
+0:003> .echo SDK_STAGES_PATCHED_RETURN_ZERO
+SDK_STAGES_PATCHED_RETURN_ZERO
+0:003> bu user32!MessageBoxA ".echo MSGBOXA_SKIPPED; da rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!MessageBoxW ".echo MSGBOXW_SKIPPED; du rdx; k L6; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu user32!SoftModalMessageBox ".echo SOFTMSGBOX_SKIPPED; r eax=1; r rip=poi(rsp); r rsp=rsp+8; g"
+0:003> bu kernel32!FatalExit ".echo FATALEXIT_OBS; k 8; g"
+0:003> bu kernel32!ExitProcess ".echo EXIT_PROCESS; k 10; g"
+Couldn't resolve error at 'kernel32!ExitProcess ".echo EXIT_PROCESS; k 10; g"'
+Child-SP          RetAddr               Call Site
+00000000`00ebfef8 00007ffb`dcd3cb3e     ntdll!DbgBreakPoint
+00000000`00ebff00 00007ffb`db507374     ntdll!DbgUiRemoteBreakin+0x4e
+00000000`00ebff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x14
+00000000`00ebff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+                                                          ^ addresses must be preceeded by whitespace error in 'bu kernel32!ExitProcess ".echo EXIT_PROCESS; k 10; g"'
+0:003> bu user32!CreateWindowExA ".echo CWEXA_OBS; du @rdx; du @r8; g"
+0:003> bu kernel32!Sleep ".echo SLEEP_OBSERVER; r rcx; g"
+Couldn't resolve error at 'kernel32!Sleep ".echo SLEEP_OBSERVER; r rcx; g"'
+rcx=0000000000000000
+                                                       ^ addresses must be preceeded by whitespace error in 'bu kernel32!Sleep ".echo SLEEP_OBSERVER; r rcx; g"'
+0:003> bu kernel32!CreateFileW ".echo CFW; du rcx; g"
+0:003> bu kernel32!WriteFile ".echo WFW; r rcx; r r8; g"
+0:003> bu kernel32!CreateProcessW ".echo CPW_OBS; du @rdx; g"
+Couldn't resolve error at 'kernel32!CreateProcessW ".echo CPW_OBS; du @rdx; g"'
+00007ffb`dcd3caf0  "ÇF???¼±                                                           ^ addresses must be preceeded by whitespace error in 'bu kernel32!CreateProcessW ".echo CPW_OBS; du @rdx; g"'
+0:003> bu kernel32!CreateProcessA ".echo CPA_OBS; da @rdx; g"
+Couldn't resolve error at 'kernel32!CreateProcessA ".echo CPA_OBS; da @rdx; g"'
+00007ffb`dcd3caf0  "H..(eH..%`"
+                                                           ^ addresses must be preceeded by whitespace error in 'bu kernel32!CreateProcessA ".echo CPA_OBS; da @rdx; g"'
+0:003> bu advapi32!OpenServiceA ".echo OPENSVCA; da @rdx; g"
+Couldn't resolve error at 'advapi32!OpenServiceA ".echo OPENSVCA; da @rdx; g"'
+00007ffb`dcd3caf0  "H..(eH..%`"
+                                                          ^ addresses must be preceeded by whitespace error in 'bu advapi32!OpenServiceA ".echo OPENSVCA; da @rdx; g"'
+0:003> bu advapi32!OpenServiceW ".echo OPENSVCW; du @rdx; g"
+Couldn't resolve error at 'advapi32!OpenServiceW ".echo OPENSVCW; du @rdx; g"'
+00007ffb`dcd3caf0  "ÇF???¼±                                                          ^ addresses must be preceeded by whitespace error in 'bu advapi32!OpenServiceW ".echo OPENSVCW; du @rdx; g"'
+0:003> bu advapi32!StartServiceW ".echo STARTSVCW; du @rcx; g"
+Couldn't resolve error at 'advapi32!StartServiceW ".echo STARTSVCW; du @rcx; g"'
+00000000`00000000  "????????????????????????????????"
+00000000`00000040  "????????????????????????????????"
+00000000`00000080  "????????????????????????????????"
+00000000`000000c0  "????????????????????????????????"
+00000000`00000100  "????????????????????????????????"
+00000000`00000140  "????????????????????????????????"
+00000000`00000180  "????????????????????????????????"
+00000000`000001c0  "????????????????????????????????"
+00000000`00000200  "????????????????????????????????"
+00000000`00000240  "????????????????????????????????"
+00000000`00000280  "????????????????????????????????"
+00000000`000002c0  "????????????????????????????????"
+                                                            ^ addresses must be preceeded by whitespace error in 'bu advapi32!StartServiceW ".echo STARTSVCW; du @rcx; g"'
+0:003> bu advapi32!StartServiceA ".echo STARTSVCA; du @rcx; g"
+Couldn't resolve error at 'advapi32!StartServiceA ".echo STARTSVCA; du @rcx; g"'
+00000000`00000000  "????????????????????????????????"
+00000000`00000040  "????????????????????????????????"
+00000000`00000080  "????????????????????????????????"
+00000000`000000c0  "????????????????????????????????"
+00000000`00000100  "????????????????????????????????"
+00000000`00000140  "????????????????????????????????"
+00000000`00000180  "????????????????????????????????"
+00000000`000001c0  "????????????????????????????????"
+00000000`00000200  "????????????????????????????????"
+00000000`00000240  "????????????????????????????????"
+00000000`00000280  "????????????????????????????????"
+00000000`000002c0  "????????????????????????????????"
+                                                            ^ addresses must be preceeded by whitespace error in 'bu advapi32!StartServiceA ".echo STARTSVCA; du @rcx; g"'
+0:003> ba e 1 14078ff87 ".echo STAGE_FORCE_POINT2_TRUE; r rbx; r rbx=1; g"
+0:003> ba e 1 1407b108f ".echo SCHED_CALLSITE; r $t0=@rsp; r $t1=@rbx; r $t2=@rsi; r $t3=@rdi; r $t4=@r12; r $t5=@r13; r $t6=@r14; r $t7=@r15; r $t8=@rbp; g"
+0:003> ba e 1 14078ff03 ".echo STAGE_FORCE_POINT; r rbx; r eax=0; r ebx=0; g"
+0:003> ba e 1 14171f567 ".echo FATAL_THUNK; r rsp=@$t0; r rbx=0; r rsi=@$t2; r rdi=@$t3; r r12=@$t4; r r13=@$t5; r r14=@$t6; r r15=@$t7; r rbp=@$t8; r rip=1407b109b; r eax=1; g"
+0:003> .echo HWBP_ARMED_SYNTHRET
+HWBP_ARMED_SYNTHRET
+0:003> g
+ModLoad: 00007ffb`d9bc0000 00007ffb`d9bcc000   C:\Windows\SYSTEM32\CRYPTBASE.DLL
+ModLoad: 00007ffb`da3b0000 00007ffb`da432000   C:\Windows\System32\bcryptPrimitives.dll
+SCHED_CALLSITE
+*** WARNING: Unable to verify checksum for C:\Windows\TEMP\EPT_68ECC4BD_74BAB9AD.exe
+CFW
+00000000`006089e0  "C:\Windows\System32\Hardware"
+WFW
+rcx=00000000000001bc
+r8=0000000000000016
+WFW
+rcx=00000000000001bc
+r8=000000000000000f
+WFW
+rcx=00000000000001bc
+r8=0000000000000002
+ModLoad: 00007ffb`cc4e0000 00007ffb`cc4f7000   C:\Windows\system32\napinsp.dll
+ModLoad: 00007ffb`cb2a0000 00007ffb`cb2bb000   C:\Windows\system32\pnrpnsp.dll
+ModLoad: 00007ffb`d4040000 00007ffb`d405d000   C:\Windows\system32\wshbth.dll
+ModLoad: 00007ffb`d4fe0000 00007ffb`d4ffd000   C:\Windows\system32\NLAapi.dll
+ModLoad: 00007ffb`d99b0000 00007ffb`d9a1a000   C:\Windows\System32\mswsock.dll
+ModLoad: 00007ffb`d96d0000 00007ffb`d979a000   C:\Windows\SYSTEM32\DNSAPI.dll
+ModLoad: 00007ffb`dac90000 00007ffb`dac98000   C:\Windows\System32\NSI.dll
+ModLoad: 00007ffb`cad40000 00007ffb`cad52000   C:\Windows\System32\winrnr.dll
+ModLoad: 00007ffb`d2a20000 00007ffb`d2aa0000   C:\Windows\System32\fwpuclnt.dll
+ModLoad: 00007ffb`d1f00000 00007ffb`d1f0a000   C:\Windows\System32\rasadhlp.dll
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+WFW
+rcx=00000000000002c4
+r8=0000000000000030
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+STAGE_FORCE_POINT
+rbx=0000000000000000
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+WFW
+rcx=00000000000002c4
+r8=0000000000000021
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+WFW
+rcx=00000000000002c4
+r8=0000000000000042
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+STAGE_FORCE_POINT
+rbx=00000000fffffffd
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+WFW
+rcx=00000000000002c4
+r8=000000000000003c
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+STAGE_FORCE_POINT
+rbx=00000000fffffffd
+WFW
+rcx=00000000000002c4
+r8=0000000000000016
+WFW
+rcx=00000000000002c4
+r8=0000000000000060
+WFW
+rcx=00000000000002c4
+r8=0000000000000002
+CWEXA_OBS
+00000001`40f8fa40  "ª„?Îï¬›®y?ª››C˜
+00000001`40f8fa60  "ùÒ??????
+CWEXA_OBS
+00000001`40f8f974  "ß½…Í
+00000001`40f8f930  "???????ùÒ???????üª??ùá?????®ä???.
+00000001`40f8f970  ""
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8ebc0  "??ùÓ?????????????????????????.¨Ê.
+00000001`40f8ec00  "??????????????.?????????????????"
+00000001`40f8ec40  "????¨Ê???????????????????????????
+00000001`40f8ec80  "??????????????????þê???..??üÀ????
+00000001`40f8ecc0  ".????.??¦o?????®ä?????®Û?????..?¦
+00000001`40f8ed00  "??????..¡å????????.????.??ùá???¬·
+00000001`40f8ed40  "?????.???.????üÀ?.??..??????..???
+00000001`40f8ed80  "??????üÀ???????????????????????ùÓ
+00000001`40f8edc0  "??.???????????..¡ä?..????????????
+00000001`40f8ee00  "?¦S¬´????????.?????????üÀ??????¦S
+00000001`40f8ee40  ".?????.????¨œ?.????¨œ???..¡å?????
+00000001`40f8ee80  "?????????..?????????????????????"
+ModLoad: 00007ffb`cb610000 00007ffb`cb6bc000   C:\Windows\SYSTEM32\TextShaping.dll
+CWEXA_OBS
+00000001`40f8f974  "ß½…Í
+00000001`40f8f990  ".???????????????????????????????"
+00000001`40f8f9d0  "???.?ùÌ??????.???????¨¿???ùá?????
+00000001`40f8fa10  "??"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8fa18  "?ùá???
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8fa30  "??ùá???
+CWEXA_OBS
+00000001`40f90150  "ª„Ó¡¬Áé
+00000001`40f8eba8  "‚£?´È“·¿¶ÇÃ
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff34  "-"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff38  "X"
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8cb58  ""
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff3c  "??"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff44  "??"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff4c  "??"
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8cb58  ""
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff58  "??.????"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff68  "??.????"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff78  "??.????"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff88  "??£??
+CWEXA_OBS
+00000001`40f8f97c  "?…Ò
+00000001`40f8ff94  "1"
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8cb58  ""
+CWEXA_OBS
+00000001`40f8fa24  "†Žß¾
+00000001`40f8ff98  ".????"
+CWEXA_OBS
+00000001`40f8fc28  "äó›K˜NªŸË
+00000000`00000000  "????????????????????????????????"
+00000000`00000040  "????????????????????????????????"
+00000000`00000080  "????????????????????????????????"
+00000000`000000c0  "????????????????????????????????"
+00000000`00000100  "????????????????????????????????"
+00000000`00000140  "????????????????????????????????"
+00000000`00000180  "????????????????????????????????"
+00000000`000001c0  "????????????????????????????????"
+00000000`00000200  "????????????????????????????????"
+00000000`00000240  "????????????????????????????????"
+00000000`00000280  "????????????????????????????????"
+00000000`000002c0  "????????????????????????????????"
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+WFW
+rcx=00000000000002d4
+r8=000000000000003b
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+STAGE_FORCE_POINT
+rbx=00000000ffffffeb
+ModLoad: 00007ffb`d9ba0000 00007ffb`d9bb8000   C:\Windows\SYSTEM32\CRYPTSP.dll
+ModLoad: 00007ffb`d92d0000 00007ffb`d9308000   C:\Windows\system32\rsaenh.dll
+WFW
+rcx=00000000000002d4
+r8=0000000000000004
+WFW
+rcx=00000000000002d4
+r8=0000000000000380
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+WFW
+rcx=00000000000002d4
+r8=000000000000001e
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+STAGE_FORCE_POINT2_TRUE
+rbx=00000000000002d4
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+WFW
+rcx=00000000000002d4
+r8=0000000000000036
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000001
+WFW
+rcx=00000000000002d4
+r8=0000000000000016
+WFW
+rcx=00000000000002d4
+r8=0000000000000025
+WFW
+rcx=00000000000002d4
+r8=0000000000000002
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000000
+ModLoad: 00007ffb`c63e0000 00007ffb`c64cc000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000000ab8
+ModLoad: 00007ffb`c63e0000 00007ffb`c64cc000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000001000
+WFW
+rcx=00000000000002f0
+r8=0000000000000ab8
+WFW
+rcx=00000000000002f0
+r8=0000000000000016
+WFW
+rcx=00000000000002f0
+r8=0000000000000037
+WFW
+rcx=00000000000002f0
+r8=0000000000000002
+STAGE_FORCE_POINT2_TRUE
+rbx=0000000000000000
+WFW
+rcx=00000000000002f0
+r8=000000000000001e
+WFW
+rcx=00000000000002f0
+r8=00000000000000aa
+CFW
+00000000`0061c950  "C:\Windows\TEMP\LwfwibrZYuwPxCWP"
+00000000`0061c990  "aOMGsrvbWB"
+WFW
+rcx=00000000000002f0
+r8=0000000000799000
+WFW
+rcx=00000000000002f0
+r8=0000000000000401
+WFW
+rcx=00000000000002f0
+r8=00000000000000a7
+CFW
+00000000`0061a4b0  "C:\Windows\TEMP\cGjZsiYwqbpnSVjg"
+00000000`0061a4f0  "elTMIdR"
+WFW
+rcx=00000000000002f0
+r8=0000000000799000
+WFW
+rcx=00000000000002f0
+r8=000000000000042d
+ModLoad: 00007ffb`caaf0000 00007ffb`cabdc000   C:\Windows\system32\ci.dll
+WFW
+rcx=00000000000002f4
+r8=0000000000001000
+WFW
+rcx=00000000000002f4
+r8=0000000000001000
+WFW
+rcx=00000000000002f4
+r8=0000000000001000
+WFW
+rcx=00000000000002f4
+r8=0000000000001000
+WFW
+rcx=00000000000002f4
+r8=0000000000000ab8
+FATAL_THUNK
+ntdll!NtTerminateProcess+0x14:
+00007ffb`dcd0db24 c3              ret
+0:000> .echo RUN52_STOP
+RUN52_STOP
+0:000> ~*k
+
+.  0  Id: afc.c60 Suspend: 0 Teb: 00000000`0030a000 Unfrozen
+Child-SP          RetAddr               Call Site
+00000000`0014feb8 00007ffb`dcccef88     ntdll!NtTerminateProcess+0x14
+00000000`0014fec0 00007ffb`dccbec85     ntdll!RtlExitUserProcess+0xb8
+00000000`0014fef0 00007ffb`db50737d     ntdll!RtlExitUserThread+0x55
+00000000`0014ff30 00007ffb`dccbcc91     KERNEL32!BaseThreadInitThunk+0x1d
+00000000`0014ff60 00000000`00000000     ntdll!RtlUserThreadStart+0x21
+0:000> .echo RUN52_END
+RUN52_END
+0:000> q
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\Visualizers\winrt.natvis'

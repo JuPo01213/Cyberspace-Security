@@ -1,0 +1,11 @@
+{
+    "path":  "C:\\Windows\\Temp\\EPT_46F4557F_E917B6D2.exe",
+    "before":  null,
+    "after":  {
+                  "path":  "C:\\Windows\\Temp\\EPT_46F4557F_E917B6D2.exe",
+                  "length":  32671488,
+                  "last_write_utc":  "2026-09-24T13:50:20.3466349Z",
+                  "sha256":  "D2FA3ACE3205E01C6DD3973410933A57F687E1E2E85141C1B74CD8AA92B1B893",
+                  "attributes":  "Archive"
+              }
+}

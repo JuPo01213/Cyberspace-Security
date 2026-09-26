@@ -1,0 +1,1 @@
+﻿{"status": "CANDIDATE_SCAN_COMPLETE", "hits": 50, "control": true, "capstone": "5.0.7"}

@@ -1,0 +1,9 @@
+﻿{"state":"        STATE              : 4  RUNNING ","create":"[SC] CreateService 失败 1073:  指定的服务已存在。 ","utc":"2026-09-26T04:07:07.1949468Z","type":"DRIVER_PRELOADED","start":"[SC] StartService 失败 1056:  服务的实例已在运行中。 "}
+{"pid":972,"type":"MOCK_LISTENER_STARTED","utc":"2026-09-26T04:07:07.2574478Z"}
+{"utc":"2026-09-26T04:07:07.2574478Z","type":"HOSTS_PINNED","line":"127.0.0.1 yz.hwid001.com"}
+{"pid":2652,"type":"PARENT_STARTED_NOARGS","utc":"2026-09-26T04:07:07.2730733Z"}
+{"path":"C:\\Windows\\TEMP\\EPT_9B120F2F_041E5491.exe","pid":3644,"ppid":2652,"type":"CHILD_FOUND","utc":"2026-09-26T04:07:13.4293221Z"}
+{"target_pid":3644,"debugger_pid":5560,"type":"CDB_ATTACHED","utc":"2026-09-26T04:07:13.4449476Z"}
+{"pid":1420,"type":"WINPROC_HELPER_STARTED","utc":"2026-09-26T04:07:13.4761965Z"}
+{"pid":3828,"type":"WATCHER_STARTED","utc":"2026-09-26T04:07:13.5074459Z"}
+{"type":"LAUNCH_SCRIPT_EXIT","utc":"2026-09-26T04:07:13.5074459Z"}

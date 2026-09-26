@@ -1,0 +1,33 @@
+# C24 - log bytes at the gate/carrier exits (source: artifacts/stream_C6/stream_rdata.bin)
+# plaintext coverage of this capture is ~9% of pages; terminated=False => not (yet) captured plaintext
+
+0x140f92520  gate: conjunction-result log (control string, known plaintext)
+     raw      53 74 6f 72 65 64 56 65 72 69 66 79 2e 53 74 6f 72 65 64 41 75 74 68 6f 72 69 7a 61 74 69 6f 6e
+     ascii    'StoredVerify.StoredAuthorizationUsable'  terminated=True
+     utf-16le ''  terminated=False
+
+0x140f92770  gate table-B leaf 0x1407a32a3 -> mov al,1 (allow)
+     raw      53 74 6f 72 65 64 56 65 72 69 66 79 2e 63 61 72 64 6c 6f 67 69 6e 5f 66 61 69 6c 65 64 5f 73 6f
+     ascii    'StoredVerify.cardlogin_failed_soft_allow'  terminated=True
+     utf-16le ''  terminated=False
+
+0x140f92740  gate default leaf 0x1407a32b6 -> call FUN_1407a3000 (block)
+     raw      53 74 6f 72 65 64 56 65 72 69 66 79 2e 63 61 72 64 6c 6f 67 69 6e 5f 64 65 6e 69 65 64 5f 63 6c
+     ascii    'StoredVerify.cardlogin_denied_clear_or_block'  terminated=True
+     utf-16le ''  terminated=False
+
+0x140f92898  carrier 0x1407a48a4 r8 = format/tag of the log on the "not satisfied" sink
+     raw      b9 cc b6 a8 b2 bf ca f0 00 00 00 00 00 00 00 00 ce b4 d5 d2 b5 bd d3 d0 d0 a7 c5 e4 d6 c3 a3 ac
+     ascii    ''  terminated=False
+     utf-16le ''  terminated=False
+
+0x140f928a8  carrier 0x1407a48a4 rdx = message of that log
+     raw      ce b4 d5 d2 b5 bd d3 d0 d0 a7 c5 e4 d6 c3 a3 ac c7 eb cf c8 ca b9 d3 c3 20 2d 6b 20 cd ea b3 c9
+     ascii    ''  terminated=False
+     utf-16le ''  terminated=False
+
+0x140f92920  carrier 0x1407a4875-copy rdx (same r9d=0x10 log shape, different message)
+     raw      b9 cc b6 a8 b2 bf ca f0 ca a7 b0 dc a3 a1 00 00 73 63 2e 65 78 65 20 63 6f 6e 66 69 67 20 22 41
+     ascii    ''  terminated=False
+     utf-16le ''  terminated=False
+

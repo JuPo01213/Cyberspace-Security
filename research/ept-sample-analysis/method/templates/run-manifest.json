@@ -1,0 +1,50 @@
+{
+  "run_id": "",
+  "started": "",
+  "objective_question": "",
+  "hypothesis": "",
+  "rival_explanations": [],
+  "single_variable_changed": "",
+  "held_fixed": {
+    "sample_sha256": "",
+    "snapshot": "",
+    "launch_mode": "attached|detached",
+    "paravirt_effective": "",
+    "network": "",
+    "instruments": []
+  },
+  "primary_instrument": "",
+  "cross_check_instrument": "",
+  "communication": {
+    "control": "guestcontrol|guestproperty|ssh|winrm|none",
+    "data": "guest_local_spool|shared_folder|guestcontrol|ssh_scp|offline_disk",
+    "completion": "guestproperty|marker_file|vm_power_state|offline_disk|none",
+    "run_id": "",
+    "bootstrap_only": true,
+    "channel_events": [
+      { "t": "", "plane": "control|data|completion", "channel": "", "event": "", "latency_ms": null, "bytes": null, "detail": "" }
+    ]
+  },
+  "timing": {
+    "expected_duration_sec": 0,
+    "deadline_sec": 0,
+    "poll_interval_sec": 0,
+    "completion_event": "",
+    "started_at": "",
+    "last_progress_at": "",
+    "elapsed_sec": 0,
+    "timeout_action": "classify_WAIT_TIMEOUT_and_preserve_artifacts"
+  },
+  "success_criterion": "",
+  "stop_condition": "",
+  "events": [
+    { "t": "", "tag": "BOOT_READY|PROCESS_ATTACHED|DNS_MATCH|AUTH_GATE_RESULT|FILE_SIZE_CHANGED|DRIVER_CALL|RUN_FINISHED|CHANNEL_LOST", "detail": "" }
+  ],
+  "outputs": [
+    { "path": "", "bytes": 0, "sha256": "", "meaning": "" }
+  ],
+  "verdict": "criterion_met|criterion_not_met|instrument_failure",
+  "negative_result_scope": "",
+  "cleanup_done": false,
+  "notes": ""
+}

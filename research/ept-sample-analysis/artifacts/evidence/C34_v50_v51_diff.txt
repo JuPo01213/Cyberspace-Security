@@ -1,0 +1,27 @@
+# C34 - V5.0 <-> V5.1 差异重跑（旧 §11.9 的机械复核）
+# V5.0 对照件：<HOST_PATH>/CTF/_reference/EPT/v5.0_sample/EPTv5_from_r14_vm.exe（54,753,806 B）
+# 离线只读；归一化指纹刻意排除行号与对象 repr（含内存地址），否则重编译本身就会造出假变化
+
+== 0) 两侧解包目录是否可比 ==
+  V5.1 文件数=1998   V5.0 文件数=2029
+  仅 V5.1 有: 0 个 -> []
+  仅 V5.0 有: 31 个 -> ['PYZ.pyz_extracted/tkinter/__init__.pyc', 'PYZ.pyz_extracted/tkinter/__main__.pyc', 'PYZ.pyz_extracted/tkinter/colorchooser.pyc', 'PYZ.pyz_extracted/tkinter/commondialog.pyc', 'PYZ.pyz_extracted/tkinter/constants.pyc', 'PYZ.pyz_extracted/tkinter/dialog.pyc', 'PYZ.pyz_extracted/tkinter/dnd.pyc', 'PYZ.pyz_extracted/tkinter/filedialog.pyc']
+
+== 1) 共有文件的字节级比对（旧文：除 auto_decode.pyc 外全部逐字节相同）==
+  完全相同 = 1995 个；不同 = 3 个
+    差异: PYZ.pyz                                               V5.0=6932827  V5.1=6637778
+    差异: PYZ.pyz_extracted/auto_decode.pyc                     V5.0=205671  V5.1=208484
+    差异: base_library.zip                                      V5.0=1409329  V5.1=1409329
+  指名核对 main.pyc                                 相同=True  (212654 vs 212654 B)
+  指名核对 _pack_html/index.html                    相同=True  (208386 vs 208386 B)
+  指名核对 PYZ.pyz_extracted/auto_decode.pyc        相同=False  (205671 vs 208484 B)
+  指名核对 _pack_tools/EPTHWID.exe                  相同=True  (16896 vs 16896 B)
+  指名核对 _pack_tools/DrvCeo.exe                   相同=True  (26195121 vs 26195121 B)
+
+== 2) auto_decode.pyc 的逐函数归一化比对（旧文：唯一实质变化是 _parse_feishu_links，+31 行）==
+  仅 5.1 新增 code object: ['<module>._parse_feishu_links._in_a_tag', '<module>._parse_feishu_links._in_href', '<module>._parse_feishu_links._in_href.<genexpr>']
+  仅 5.0 存在（5.1 删除）: []
+  指纹不同的 code object: ['<module>.PasswordWindowDetector', '<module>.PasswordWindowDetector._RECT', '<module>._parse_feishu_links']
+    <module>.PasswordWindowDetector: 指令 92->92  行数 36->36  名量 34->34  跨度 2397..2783 -> 2448..2834
+    <module>.PasswordWindowDetector._RECT: 指令 28->28  行数 6->6  名量 8->8  跨度 2428..2433 -> 2479..2484
+    <module>._parse_feishu_links: 指令 1054->1319  行数 199->236  名量 46->46  跨度 1806..2084 -> 1806..2135

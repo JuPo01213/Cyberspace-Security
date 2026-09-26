@@ -1,0 +1,13 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-54",
+  "evidence_scope": "real_sample_guest_run",
+  "vm_state": {"vm": "<VM_LABEL>", "checkpoint": "C173-gen1-ready2 恢复后"},
+  "verdict": "INSTANT_DEATH characterized",
+  "findings": [
+    "恢复检查点后的首次运行, 样本在管线启动前即从虚拟化区 0x143ae5d57 (EPT+0x3ae5d57) 直接调用 kernel32!ExitProcess 退出 (RUN54 中 EXIT_PROCESS 标记命中, 栈仅 2 帧且伪造)",
+    "0x143ae5d57 与 run 38/39/41 速死地址一致 ⇒ 速死不是残留污染, 而是保护第二条退出路径 (不经 fatal-thunk)",
+    "本轮仪器状态: kernel32!ExitProcessImplementation / kernelbase!Sleep / kernelbase!CreateProcessW/A 首次全部解析成功 (无 PDB 缓存后); advapi32 服务 API 六行在子进程内(模块已加载)硬失败(api-set 转发), 全部删除",
+    "本轮 cdb stdout 仅 182 行, 无 CFW/WFW/CWEXA ⇒ 死在管线早期"
+  ],
+  "instrument_note": "ExitProcess/TerminateProcess 断点当时动作仅 log+g 放行, 未做强制跳过; run 55 改为跳过"
+}

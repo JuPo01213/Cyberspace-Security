@@ -1,0 +1,16 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-48",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "instrument_fix": "runs 42/47 froze at uncovered first-chance exceptions in the COM/shell phase (C++ EH 0xE06D7363 and protection int3 80000003 break by default). Extended passthrough: av, c0000005, e06d7363, 80000003, 80000004, c000001d, c0000094, e0434352.",
+  "hypothesis": "异常透传修复后全链不再冻结；GUI 链 -> 载荷 -> FATAL_THUNK -> 合成返回(109b, eax=1) -> 成功路径 -> Run 调度推进。",
+  "acceptance_fields": {
+    "no_prompt_hang": null,
+    "gui_chain": null,
+    "synthret_executed": null,
+    "gate2_passed": null,
+    "b08e4_called": null,
+    "rc00_region_evidence": null
+  },
+  "deadline_sec": 720,
+  "verdict": "47: INVALID_INSTRUMENT(prompt-hang on uncovered first-chance exceptions in COM phase -> sxi fix in 48); 48: POSITIVE(观测) — full GUI chain + payload-create + 7.9MB WriteFile attempt (file left 0 bytes) + FATAL_THUNK synthret landed 109b/eax=1 -> success path b08e4(1,0) -> main returned cleanly (RtlExitUserThread) -> process exit (no worker kept alive). RC00 not reached: deployment completion (service start) blocked in isolated env."
+}

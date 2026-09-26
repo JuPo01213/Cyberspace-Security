@@ -1,0 +1,13 @@
+{
+    "script_sha256":  "69CB4539438945ED4F6CCF2F74DA4A23978BBD469DC44BC7A3865AE61702568B",
+    "ready_utc":  "2026-09-24T15:38:10.2589443Z",
+    "expected_script_sha256":  "69CB4539438945ED4F6CCF2F74DA4A23978BBD469DC44BC7A3865AE61702568B",
+    "writable":  true,
+    "guest_root":  "C:\\ept_obs\\spool\\EPT-REAL-20260924-03",
+    "guest_host":  "<VM_LABEL>",
+    "run_id":  "EPT-REAL-20260924-03",
+    "script_path":  "C:\\ept_obs\\spool\\EPT-REAL-20260924-03\\natural_runner.ps1",
+    "PSComputerName":  "<VM_LABEL>",
+    "RunspaceId":  "bb696d79-6d64-46e4-b964-89fe5f7410ac",
+    "PSShowComputerName":  true
+}

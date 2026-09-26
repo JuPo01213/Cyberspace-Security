@@ -1,0 +1,98 @@
+﻿[
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\run_meta.json",
+        "sha256":  "A79193D6F0850312DE64552C5E37AB070611554345D6CCD0A434B42187223965",
+        "guest_path":  "C:\\ept_obs\\spool\\run_meta.json",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\done.json",
+        "sha256":  "F03D7467BE5555A7FC7DFF18EC689623F73E4087ACB7CF3EAC39AEB8DB736232",
+        "guest_path":  "C:\\ept_obs\\spool\\done.json",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\input__decode_report.json",
+        "sha256":  "A8A06EC86AB63164E44C41DC14B7AA0CA5244BDA5C73A8A1B0635EF6D9A7CFED",
+        "guest_path":  "C:\\ept_obs\\out\\decode_report.json",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\input__caller_structure_after_decode.bin",
+        "sha256":  "F58E8D4CCC625A12D6E6FB61702870D39127D12B10E15C5C39D439D5F2BF4DB7",
+        "guest_path":  "C:\\ept_obs\\out\\caller_structure_after_decode.bin",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\input__decoded_output.bin",
+        "sha256":  "7C9293E800192A21F09FFFFD88C22DDEB9E83204FE221A128A8F4097CDCC5D6E",
+        "guest_path":  "C:\\ept_obs\\out\\decoded_output.bin",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\input__response_before_decode.bin",
+        "sha256":  "BFA525E78731BEAAA2EBF1C64E993FCD933AC43D60B7A6E3D1F61576C78B0CC8",
+        "guest_path":  "C:\\ept_obs\\out\\response_before_decode.bin",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\input__stdout.txt",
+        "sha256":  "A8A06EC86AB63164E44C41DC14B7AA0CA5244BDA5C73A8A1B0635EF6D9A7CFED",
+        "guest_path":  "C:\\ept_obs\\out\\stdout.txt",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\input__stderr.txt",
+        "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "guest_path":  "C:\\ept_obs\\out\\stderr.txt",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\response__decode_report.json",
+        "sha256":  "6369CFE0B2E04C47F3084819D3FD3373B4EBFE561C20153EF3F7B275ABC433C8",
+        "guest_path":  "C:\\ept_obs\\out_response\\decode_report.json",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\response__caller_structure_after_decode.bin",
+        "sha256":  "CED04F83FA10B0C6E2D53389EB397681E568AF70B21F1CEFFE7AFC48FEC76858",
+        "guest_path":  "C:\\ept_obs\\out_response\\caller_structure_after_decode.bin",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\response__decoded_output.bin",
+        "sha256":  "7C9293E800192A21F09FFFFD88C22DDEB9E83204FE221A128A8F4097CDCC5D6E",
+        "guest_path":  "C:\\ept_obs\\out_response\\decoded_output.bin",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\response__response_before_decode.bin",
+        "sha256":  "BFA525E78731BEAAA2EBF1C64E993FCD933AC43D60B7A6E3D1F61576C78B0CC8",
+        "guest_path":  "C:\\ept_obs\\out_response\\response_before_decode.bin",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\response__stdout.txt",
+        "sha256":  "6369CFE0B2E04C47F3084819D3FD3373B4EBFE561C20153EF3F7B275ABC433C8",
+        "guest_path":  "C:\\ept_obs\\out_response\\stdout.txt",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\response__stderr.txt",
+        "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "guest_path":  "C:\\ept_obs\\out_response\\stderr.txt",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\selftest__stdout.txt",
+        "sha256":  "93F049CE3AF92361E95314C8FFD65B97447D3183B389224BE9212857460CF564",
+        "guest_path":  "C:\\ept_obs\\out_selftest\\stdout.txt",
+        "acquired":  true
+    },
+    {
+        "host_path":  "<HOST_PATH>\\EPT\\artifacts\\evidence\\C175_coreharness\\raw\\selftest__stderr.txt",
+        "sha256":  "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+        "guest_path":  "C:\\ept_obs\\out_selftest\\stderr.txt",
+        "acquired":  true
+    }
+]

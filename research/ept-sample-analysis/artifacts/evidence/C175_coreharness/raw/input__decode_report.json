@@ -1,0 +1,36 @@
+{
+  "status": "completed",
+  "semantic_role": "genB_user_mode_decode_success_seam",
+  "synthetic_response": true,
+  "response_bytes": 284,
+  "response_before_decode_sha256": "bfa525e78731beaaa2ebf1c64e993fcd933ac43d60b7a6e3d1f61576c78b0cc8",
+  "validator_rax": "0x00000001",
+  "validator_marker": "0x13579bdf",
+  "validator_accepted": true,
+  "marker_matches_g340": true,
+  "rc03_branch": "RC06 success",
+  "decoded_output_bytes": 268,
+  "decoded_output_sha256": "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e",
+  "decoded_matches_input": true,
+  "encrypted_payload_sha256": "6f6a7d1c1434b53ceb3e5152e303b43cedb641fcbb10119c75ba8314b62471c3",
+  "caller_structure_bytes": 396,
+  "caller_output_offset": "0x80",
+  "caller_output_sha256": "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e",
+  "caller_output_written": true,
+  "synthetic_globals": {
+    "g340": "0x13579bdf",
+    "g344": "0x2468ace0",
+    "g348": "0x01020304",
+    "g34c": "0x11223344",
+    "g350": "0x55667788",
+    "g354": "0x99aabbcc"
+  },
+  "external_dependencies": [],
+  "side_effects": [
+    "caller_structure+0x80[0x10c]"
+  ],
+  "external_side_effects": [],
+  "elapsed_ms": 33.473,
+  "input_bytes": 268,
+  "input_sha256": "7c9293e800192a21f09ffffd88c22ddeb9e83204fe221a128a8f4097cdcc5d6e"
+}

@@ -1,0 +1,42 @@
+{
+  "run_id": "EPT-AUTHGATE-20260925-29",
+  "evidence_scope": "real_sample_guest_run_with_predecode_gate_release",
+  "objective": "Force the CardLogin-family failure branch at the driver site 0x142037792 (captured in run 28 stack: logger2 called directly by virtualized driver, ret 0x142037792) and observe subsequent stage progression.",
+  "hypothesis": "The Setup driver keeps the stage code in rbx at its post-logger2 site (same convention as the wrapper-1 site 0x142037706); zeroing eax/ebx at 0x142037792 makes the driver treat the CardLogin stage as successful and proceed to the next stage.",
+  "discriminator": "chain advances (new stage tags beyond GetNotice, e.g. CardLogin/IsLogin/SaveConfig/StoredAuthorizationUsableAfterSave) vs chain stalls at GetNotice or earlier (no new tags).",
+  "changed_variable_vs_run24": "run26 j-based conditional force replaced by run24-proven unconditional force at shared wrapper ret 0x14078ff03 (r rbx logged, then r eax=0; r ebx=0); no new command syntax, instrumentation canary waived because every action form (echo/da/r/k/g on bu/ba) was proven in run 24 and the syntax canary of run 26",
+  "observation_mode": "attach-after-launch (CDB attaches natural EPT_* temp child started by parent C:/ept_core/Hardware.exe under SYSTEM scheduled task)",
+  "acceptance": [
+    "stage log captured with original codes per stage (STAGE_LOG lines)",
+    "presence/absence of stage tags beyond GetNotice recorded",
+    "every forced stage marked FORCED_ZERO with the forcing site fixed at 0x14078ff03",
+    "post_snapshot flags: tasks/log_dirs/files/hardware_dir/services/drivers/procs",
+    "no response injection, no card value fabrication, in-memory writes only"
+  ],
+  "control_adapter": "Hyper-V PowerShell Direct (<VM_USER>)",
+  "data_adapter": "Copy-Item ToSession/FromSession over the same PSSession",
+  "completion_source": "cdb.stdout.txt + events.ndjson + post_snapshot.json",
+  "writer_lock": "exclusive scheduled task name EPT-EPT-AUTHGATE-20260925-26; prep kills leftover Hardware/EPT_/cdb processes; single operator session",
+  "vm": "<VM_LABEL> (Windows 10 Pro 19045, Gen1, adapter disconnected)",
+  "target": {
+    "path": "C:/ept_core/Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "authority_sample": {
+    "path": "<HOST_PATH>/EPT/sample/EPT专业游戏维修工具箱V5.1.exe",
+    "sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2"
+  },
+  "instrument_canary": "canary_syntax.cdb run against benign cmd.exe before task registration; task not registered unless all markers present and no Syntax error",
+  "expected_duration_sec": 240,
+  "deadline_sec": 300,
+  "timeout_action": "host kills cdb at harvest; run classified INCONCLUSIVE if no stage evidence",
+  "stop_conditions": [
+    "deadline",
+    "process exit",
+    "FatalExit hit (observer-only)",
+    "debugger stall"
+  ],
+  "predecessor": "EPT-AUTHGATE-20260925-28 (chain Init->GetServerOption->GetNotice forced; logger2 hit r8=fffffffd r9=SP_CONNECTFAILED-string VA 0x140f8e060; driver ret site 0x142037792 captured; stalled at TextShaping UI wait)",
+  "changed_variable_vs_run27": "logger2 bp becomes stack-capturing observer; second forcer added at wrapper-2 ret 0x14078ff87; HIT_COMM_INIT bp dropped to stay within 4 hardware breakpoints; SoftModalMessageBox/DialogBoxIndirectParamW skips added for the session-0 UI wait.",
+  "changed_variable_vs_run28": "fixed-site force at 0x142037792 replaces the wrapper-2-ret probe (0x14078ff87 forcer dropped: run 28 proved logger2 is called directly by the driver, not through wrapper-2)."
+}
