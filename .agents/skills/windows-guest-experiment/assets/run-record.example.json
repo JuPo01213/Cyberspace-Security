@@ -24,5 +24,14 @@
   "phase": "PRECHECK",
   "outstanding_op": null,
   "blocked_on": [],
-  "outcome": null
+  "outcome": null,
+  "acceptance_authority": {
+    "type": "repository_contract",
+    "reference": "<DESENSITIZED_PATH>#<SECTION>",
+    "revision": "<GIT_COMMIT_OR_LOCAL_REVISION>"
+  },
+  "evidence_scope": {
+    "class": "TARGET_NATURAL",
+    "detail": "<OPTIONAL_PROJECT_SPECIFIC_SCOPE>"
+  }
 }
