@@ -1,37 +1,9 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "run_id": "RUN-YYYYMMDD-NNN",
-  "objective": "<observable final objective>",
-  "acceptance": [
-    {
-      "id": "A1",
-      "criterion": "<observable acceptance criterion>",
-      "state": "OPEN"
-    }
-  ],
-  "target": {
-    "sha256": "<SHA256>",
-    "label": "<DESENSITIZED_TARGET_LABEL>"
-  },
-  "environment": {
-    "vm": "<DESENSITIZED_VM_LABEL>",
-    "baseline": "<DESENSITIZED_BASELINE_LABEL>",
-    "control_adapter": "<ADAPTER>",
-    "data_adapter": "<ADAPTER>",
-    "observation_mode": "natural"
-  },
-  "deadline": "<ISO-8601>",
-  "phase": "PRECHECK",
-  "outstanding_op": null,
-  "blocked_on": [],
-  "outcome": null,
-  "acceptance_authority": {
-    "type": "repository_contract",
-    "reference": "<DESENSITIZED_PATH>#<SECTION>",
-    "revision": "<GIT_COMMIT_OR_LOCAL_REVISION>"
-  },
-  "evidence_scope": {
-    "class": "TARGET_NATURAL",
-    "detail": "<OPTIONAL_PROJECT_SPECIFIC_SCOPE>"
-  }
+  "goal_ref": "<CURRENT_TASK_OR_REPOSITORY_CONTRACT>",
+  "subject": "sha256:<SHA256_OR_OTHER_STABLE_SUBJECT_ID>",
+  "interventions": [],
+  "status": "RUNNING",
+  "outcome": null
 }
