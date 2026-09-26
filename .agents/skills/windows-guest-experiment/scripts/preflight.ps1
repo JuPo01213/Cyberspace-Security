@@ -83,7 +83,7 @@ if ($vbox.available) {
 }
 
 $result = [ordered]@{
-    schema = "wge-preflight-v1"
+    schema = "wge-preflight-v2"
     note = "Read-only capability discovery. Do not commit raw output containing identifiers."
     host = [ordered]@{
         powershell = $PSVersionTable.PSVersion.ToString()
@@ -104,8 +104,12 @@ $result = [ordered]@{
         available = $ssh.available
         scp_available = $scp.available
     }
-    cdb = [ordered]@{
+    host_cdb = [ordered]@{
         available = $cdb.available
+        note = "Host capability only. Guest debugger capability is not probed by this read-only Host preflight."
+    }
+    guest_debugger = [ordered]@{
+        state = "UNKNOWN_NOT_PROBED"
     }
 }
 
@@ -114,7 +118,7 @@ if ($IncludeIdentifiers) {
     $result.virtualbox.executable = $vbox.source
     $result.ssh.executable = $ssh.source
     $result.ssh.scp_executable = $scp.source
-    $result.cdb.executable = $cdb.source
+    $result.host_cdb.executable = $cdb.source
 }
 
 $result | ConvertTo-Json -Depth 6
