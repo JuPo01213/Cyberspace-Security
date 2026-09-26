@@ -31,9 +31,8 @@ if d["outcome"] not in ALLOWED_OUTCOMES:
     fail("invalid outcome")
 if not d["target"].get("sha256"):
     fail("target.sha256 is required")
-print("OK")
-
 if not isinstance(d["acceptance_authority"],dict) or not d["acceptance_authority"].get("reference"):
     fail("acceptance_authority.reference is required")
 if not isinstance(d["evidence_scope"],dict) or d["evidence_scope"].get("class") not in ALLOWED_SCOPES:
     fail("invalid evidence_scope.class")
+print("OK")
