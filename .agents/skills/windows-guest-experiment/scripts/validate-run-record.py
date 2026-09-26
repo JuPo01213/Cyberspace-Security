@@ -2,9 +2,8 @@
 import json, sys
 from pathlib import Path
 
-ALLOWED_MODES={"natural","attach-after-launch","debugger-launch"}
+ALLOWED_STATUS={"CREATED","RUNNING","FINISHED"}
 ALLOWED_OUTCOMES={None,"POSITIVE","NEGATIVE","INCONCLUSIVE","INVALID_INSTRUMENT","INFRA_FAILURE"}
-ALLOWED_SCOPES={"TARGET_NATURAL","TARGET_CONTROLLED","TARGET_INJECTED","HARNESS","SYNTHETIC","OFFLINE_REFERENCE"}
 
 def fail(msg):
     print(f"INVALID: {msg}", file=sys.stderr)
@@ -12,27 +11,32 @@ def fail(msg):
 
 if len(sys.argv)!=2:
     fail("usage: validate-run-record.py <run.json>")
+
 p=Path(sys.argv[1])
 try:
     d=json.loads(p.read_text(encoding="utf-8"))
 except Exception as e:
     fail(f"cannot parse JSON: {e}")
 
-for k in ("schema_version","run_id","objective","acceptance","acceptance_authority","evidence_scope","target","environment","phase","blocked_on","outcome"):
+for k in ("schema_version","run_id","goal_ref","subject","status","outcome"):
     if k not in d:
         fail(f"missing field: {k}")
-if not d["run_id"] or not d["objective"]:
-    fail("run_id/objective must be non-empty")
-if not isinstance(d["acceptance"],list) or not d["acceptance"]:
-    fail("acceptance must be a non-empty list")
-if d["environment"].get("observation_mode") not in ALLOWED_MODES:
-    fail("invalid observation_mode")
+
+if d["schema_version"] != 3:
+    fail("schema_version must be 3")
+if not isinstance(d["run_id"],str) or not d["run_id"].strip():
+    fail("run_id must be non-empty")
+if not isinstance(d["goal_ref"],str) or not d["goal_ref"].strip():
+    fail("goal_ref must be non-empty")
+if not isinstance(d["subject"],str) or not d["subject"].strip():
+    fail("subject must be non-empty")
+if d["status"] not in ALLOWED_STATUS:
+    fail("invalid status")
 if d["outcome"] not in ALLOWED_OUTCOMES:
     fail("invalid outcome")
-if not d["target"].get("sha256"):
-    fail("target.sha256 is required")
-if not isinstance(d["acceptance_authority"],dict) or not d["acceptance_authority"].get("reference"):
-    fail("acceptance_authority.reference is required")
-if not isinstance(d["evidence_scope"],dict) or d["evidence_scope"].get("class") not in ALLOWED_SCOPES:
-    fail("invalid evidence_scope.class")
+if d["status"] == "FINISHED" and d["outcome"] is None:
+    fail("FINISHED run requires outcome")
+if "interventions" in d and (not isinstance(d["interventions"],list) or not all(isinstance(x,str) and x.strip() for x in d["interventions"])):
+    fail("interventions must be a list of non-empty strings")
+
 print("OK")
