@@ -1,10 +1,38 @@
 # Adapter Reference
 
-Use only the section that matches the backend selected in WGE-01.
-
-This file contains verified command families and conservative templates. Local versions may differ. When a command rejects a documented option, query the local tool help before changing syntax.
+Select the highest-level backend that satisfies the task. A mature task runtime is preferred over low-level transport composition.
 
 Never put passwords, tokens, private addresses, local usernames, or unsanitized absolute paths into repository files.
+
+## CAPE / managed malware sandbox
+
+Use a managed sandbox when the goal is ordinary Windows dynamic execution/behavior collection and the sandbox can own the task lifecycle.
+
+CAPE exposes task submission and task status to AI clients through its official MCP server, including `submit_file`, `get_task_status`, `view_task`, task search and reprocessing. Treat CAPE task state and result storage as authoritative; do not mirror them into a second STATE/events protocol.
+
+Agent-facing flow:
+
+```text
+submit task
+→ get task id
+→ query task status
+→ retrieve report/artifacts
+→ decide whether deeper code/debug/GUI work is needed
+```
+
+CAPE's Windows Guest uses its own Guest agent; validate that agent before snapshotting the Guest rather than testing Guest readiness with the real sample.
+
+Current boundary: CAPE's documented interactive-desktop feature is KVM/VNC-based. Do not assume it replaces an existing Hyper-V interactive debugger/GUI lab.
+
+Official references:
+
+- https://capev2.readthedocs.io/en/latest/usage/mcp.html
+- https://capev2.readthedocs.io/en/latest/installation/guest/agent.html
+- https://capev2.readthedocs.io/en/latest/usage/interactive_desktop.html
+
+## Direct-lab adapters
+
+The sections below are low-level mechanisms for capabilities not covered by the selected managed runtime. They are not themselves workflow engines.
 
 ## Hyper-V: PowerShell Direct
 
