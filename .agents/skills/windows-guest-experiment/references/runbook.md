@@ -1,404 +1,210 @@
 # Executable Runbook
 
-Execute the gates in order. Do not skip a gate unless it explicitly says optional.
+The normal path is short because mature backends should own execution state.
 
-## Inputs
+## WGE-00 — Bind the investigation intent
 
-Resolve these from the task and environment when possible:
+Before launching anything, resolve:
 
-- OBJECTIVE
-- ACCEPTANCE[]
-- TARGET and TARGET_SHA256
-- VM
-- BASELINE snapshot/checkpoint
-- HYPERVISOR or sandbox
-- CONTROL_ADAPTER
-- DATA_ADAPTER
-- OBSERVATION_MODE = natural | attach-after-launch | debugger-launch
-- EXPECTED_DURATION
-- DEADLINE
+- `goal_ref`: current task/project contract that defines success;
+- `subject`: the exact object/process/code being observed;
+- `interventions`: only the changes that may affect behavior.
 
-If target identity, baseline, authorization/scope, or safe side-effect boundaries cannot be established, stop before launching the target.
+Do not copy the entire project goal into every run if a stable current contract already exists.
+
+Generated summaries, memories, handoffs, old status files, and prior assistant prose are discovery aids only. They do not redefine the current goal.
 
 ---
 
-## WGE-00 — Read-only preflight
+## WGE-01 — Route to a backend
 
-Run scripts/preflight.ps1 on a Windows Host if possible.
+Choose the highest-level existing backend that can perform the required task.
 
-The preflight must not start, stop, restore, attach, copy, or execute inside a Guest. It only discovers capabilities.
+### Managed runtime path
 
-Required facts:
+Use when a sandbox/orchestrator already owns:
 
-- Host PowerShell version and elevation state;
-- Hyper-V cmdlet availability;
-- PowerShell Direct parameter availability;
-- VBoxManage availability and version;
-- ssh/scp availability;
-- CDB availability;
-- candidate backend count and state summary.
+- task identity and status;
+- VM lifecycle;
+- execution worker/Guest agent;
+- retry/recovery;
+- artifacts/results.
 
-Do not commit raw preflight output if it contains local identifiers.
+Examples include CAPE/Cuckoo-style sandbox execution or another durable task runtime.
 
-Pass: at least one plausible control path can be named, or an existing sandbox/orchestrator is already authoritative.
+**Delegate those responsibilities.** Do not mirror their state into a second custom workflow protocol.
 
-Failure: no executable control path exists. End as INFRA_FAILURE unless provisioning a missing tool is explicitly in scope.
+The Agent should normally do only:
 
----
+```text
+submit/start
+→ query status
+→ retrieve artifacts/results
+→ interpret against goal_ref
+```
 
-## WGE-01 — Choose backend and bind adapters
+If the backend lacks one required capability, add only that capability through a thin adapter; do not reimplement the rest of the runtime.
 
-Prefer an existing sandbox or durable orchestrator if it already owns task state, VM lifecycle, result storage, and retries.
+### Direct-lab path
 
-Otherwise select adapters using references/adapters.md.
+Use only when the task requires a capability the managed runtime cannot provide in the current environment, such as:
 
-The Agent must name:
+- precise debugger attach/breakpoint/memory interaction;
+- project-specific transient patching/intervention;
+- interactive Windows desktop/GUI control;
+- an existing Hyper-V/VirtualBox lab that must be used directly.
 
-- authoritative task/run state;
-- writer-lock mechanism;
-- control adapter;
-- data adapter;
-- completion source;
-- artifact destination.
-
-Do not silently switch adapters after a canary failure. Record why the current adapter failed, then test the next candidate with its own canary.
-
----
-
-## WGE-02 — Freeze the run definition
-
-Create a unique RUN_ID and record:
-
-- objective;
-- observable acceptance criteria;
-- acceptance authority: current project contract path + revision/section, or an explicit current task directive;
-- evidence scope class: TARGET_NATURAL | TARGET_CONTROLLED | TARGET_INJECTED | HARNESS | SYNTHETIC | OFFLINE_REFERENCE;
-- optional project-specific scope detail when the generic class is not precise enough;
-- target hash;
-- VM and baseline;
-- observation mode;
-- expected duration and deadline.
-
-Acceptance must describe the real final behavior or evidence.
-
-These are never final acceptance by themselves:
-
-- debugger attached;
-- harness passed;
-- breakpoint hit;
-- static candidate found;
-- communication restored;
-- script executed.
-
-Pass: another Agent could decide completion without chat history, and could tell whether the evidence came from the real target, a controlled/injected target run, a harness, or an offline/synthetic reference.
-
-Authority rule: generated platform summaries, memories, handoffs, old status files, or prior assistant prose may help discovery but cannot redefine current acceptance. If they conflict with the bound authority, the bound authority wins until the user/project contract changes it.
-
-Scope rule: HARNESS, SYNTHETIC, and OFFLINE_REFERENCE observations must not populate target-level result fields. TARGET_CONTROLLED and TARGET_INJECTED may describe real-target behavior only with the intervention/injection explicitly attached to the claim.
+Low-level transports are adapters, not runtimes.
 
 ---
 
-## WGE-03 — Acquire one writer
+## WGE-02 — Prove only required capabilities
 
-Acquire exclusive write control over the VM/debug session using, in preference order:
+Managed runtime: use its own documented readiness/task checks. Do not duplicate them unless project evidence shows a real gap.
 
-1. platform Lease/CAS;
-2. database transaction/lock;
-3. OS mutex/file lock;
-4. an external scheduler that already guarantees serial execution.
+Direct-lab: before the real target, prove only what this experiment requires.
 
-Do not implement locking as read owner field then write my name.
+### Command execution
 
-If another live writer owns the resource, remain read-only.
+Execute a benign fresh nonce in the intended Guest identity/context.
 
----
+`VM Running`, port open, SSH banner, Guest Additions present, or login UI are not substitutes for command execution.
 
-## WGE-04 — Restore/start baseline
+### Artifact round-trip
 
-Before restore, harvest any unique evidence from the previous state if it still matters.
+Have the Guest/runtime produce a small nonce artifact and verify the Host/runtime actually acquired it.
 
-Restore the required baseline, then start or resume the VM.
+Immediate path/auth errors are immediate errors; do not turn them into polling timeouts.
 
-A hypervisor state such as Running is only a hypervisor fact.
+### Long-job lifetime
 
-Pass: the VM is ready for Guest canaries.
+Only when the experiment is long-running and there is no durable worker: prove the job survives closing the launch/control session.
 
-Failure: INFRA_FAILURE if the VM cannot reach the canary stage.
+### Instrumentation
 
----
+Only when debugger/observer work is required: use a benign target to prove syntax, attach/start, a real emitted event, and harvestable raw output.
 
-## WGE-05 — Control canary
+Configuration text or command echo does not count as an observed event.
 
-Use the selected control adapter to:
+### Interactive desktop
 
-1. read Guest identity, OS, current user, privilege context, and working directory;
-2. execute one short benign command;
-3. return a fresh nonce marker;
-4. verify the returned marker was produced by command execution, not command echo or stale output.
+Only when GUI behavior matters: prove the target runs in the intended interactive session and the GUI observation/input path works. Session 0 process existence is not proof of user-desktop behavior.
 
-Do not substitute VM Running, an open port, an SSH banner, login UI, or Guest Additions presence for execution.
-
-Pass: the expected nonce returns from the expected Guest context.
-
-On failure, consult references/failure-routing.md. Do not launch the real target.
+Reuse a prior capability proof until a relevant condition changes, such as Guest image/baseline, identity/session, backend/transport, runner, debugger version/configuration, or GUI execution context.
 
 ---
 
-## WGE-06 — Data canary
+## WGE-03 — Execute through the backend
 
-1. Guest writes a small nonce file.
-2. Guest computes size and hash.
-3. Host retrieves the actual file through the intended data path.
-4. Host independently computes size and hash.
-5. Compare them.
+Use the backend's native task/run identity when one exists.
 
-Repeat for every new PSSession, SMB/UNC mapping, mapped drive, SCP path, shared folder, or identity context whose scope may differ.
+If no native task identity exists, create one unique local RUN_ID.
 
-Pass: Host acquired the file and the content/hash matches.
+Do not reuse a failed run as though it were the same causal experiment.
 
-A path error is an immediate path error; do not convert it into a long polling timeout.
+Before an intervention, record what is being changed. Examples:
 
----
+```text
+debugger attach
+branch reversal
+injected response
+temporary memory patch
+GUI input sequence
+```
 
-## WGE-07 — Long-runner canary
+Execution platform/harness names are provenance, not evidence meaning.
 
-Required only for long tasks when the platform does not already provide a durable worker/job.
-
-1. Start a benign detached test job.
-2. Close the control session that launched it.
-3. Open a fresh control session.
-4. Prove the job survived or completed.
-5. Harvest its result through the data path.
-
-Pass: runner lifetime is independent from the foreground control session.
-
-Failure: do not run the real long task. Switch to a scheduled task, service, independent worker/agent job, or another proven detach mechanism.
+For a state-changing action whose result could become ambiguous after disconnect, define a concrete way to determine whether it happened. Create special operation bookkeeping only when that ambiguity actually exists.
 
 ---
 
-## WGE-08 — Instrumentation canary
+## WGE-04 — Observe facts, not plans
 
-Required only when instrumenting.
+During execution distinguish:
 
-Using a benign target, prove:
+```text
+configured / armed / requested
+from
+hit / applied / observed
+```
 
-- debugger/observer starts or attaches;
-- command or script syntax is valid;
-- marker output is distinguishable from command echo;
-- raw log is harvestable;
-- parser recognizes a real event rather than configuration text.
+A breakpoint being set does not prove it fired.
+A runner field describing an intended action does not prove the action occurred.
+An API call site being observed does not prove downstream business success.
 
-Pass: instrumentation and its output chain are independently proven.
-
-Failure: INVALID_INSTRUMENT until fixed.
-
-Natural runs do not inherit debugger-canary success.
+Do not combine observations from different runs into one causal chain.
 
 ---
 
-## WGE-09 — Define side-effect verification
+## WGE-05 — Retrieve evidence
 
-Before every non-idempotent or state-changing operation, define:
+Prefer the backend's native result/artifact store.
 
-- OP_ID;
-- operation;
-- exact post-disconnect verification method.
+For direct-lab fallback, retrieve conclusion-critical artifacts to the Host before destructive cleanup or rollback.
 
-Examples:
+A useful evidence progression is:
 
-- launch target;
-- modify system/target state;
-- restore checkpoint;
-- create/delete persistent resource;
-- debugger mutation unsafe to repeat.
+```text
+observed in execution
+→ acquired by backend/Host
+→ verified when necessary
+```
 
-Verification must use a concrete fact such as platform task state, nonce-bound runner marker, run-specific PID/PPID lineage, or a durable result record.
-
-Reads, health queries, and log reads do not need OP_ID.
-
-Pass: the operation can later be classified APPLIED / NOT_APPLIED / UNKNOWN.
+Hash/size verification is needed for irreplaceable, corruption-prone, or formal evidence; it is not mandatory bookkeeping for every temporary file.
 
 ---
 
-## WGE-10 — Launch once
+## WGE-06 — Interpret against the goal
 
-1. Record OP_STARTED in platform history or fallback event log.
-2. Dispatch exactly once.
-3. Perform only a short confirmation.
-4. Do not keep the full experiment coupled to that control call.
-5. Enter observation.
+Ask:
 
-If control is lost, go to WGE-11A. Do not dispatch again.
+1. Did this run observe the required subject?
+2. Which interventions could affect the result?
+3. Was the required event actually observed, rather than merely configured?
+4. Are all facts used in the causal claim from this same run?
+5. Is missing evidence explained by infrastructure or instrumentation failure?
 
----
+When a normalized outcome is useful:
 
-## WGE-11 — Observe
+- `POSITIVE`: required behavior was validly observed;
+- `NEGATIVE`: the defined observation window completed with valid and sufficient coverage and the behavior was absent;
+- `INCONCLUSIVE`: evidence is insufficient or ambiguous;
+- `INVALID_INSTRUMENT`: the observer/debugger/parser invalidated the run;
+- `INFRA_FAILURE`: execution infrastructure failed before a business conclusion was possible.
 
-Each observation cycle asks only:
-
-1. new business marker?
-2. new infrastructure/instrument failure?
-3. new artifact?
-4. deadline reached?
-5. acceptance closed?
-
-Continue only while the target plausibly progresses and the observer remains valid.
-
-Repeated identical errors without changed environment, parameter, channel, hypothesis, or observation method must stop at the retry budget.
-
-Branches:
-
-- acceptance closed -> WGE-12
-- deadline reached -> WGE-12
-- control/Guest loss -> WGE-11A
-- observer failure -> WGE-12 then INVALID_INSTRUMENT
+Timeout, no breakpoint hit, missing stdout, or transport disconnect do not by themselves mean NEGATIVE.
 
 ---
 
-## WGE-11A — Reconcile after disconnect
+## WGE-07 — Cleanup and learning
 
-Before retrying:
+Use the backend's native reset/cleanup lifecycle where available.
 
-1. query hypervisor/platform task state;
-2. query Guest spool/job history if available;
-3. check the OP verification marker;
-4. classify the operation.
+Direct-lab fallback:
 
-APPLIED: do not rerun; resume observation or harvest.
+```text
+stop new side effects
+→ harvest
+→ cleanup/restore
+→ release exclusive control
+```
 
-NOT_APPLIED: a new OP_ID may be used only if the failure condition was fixed or the next attempt changes a meaningful variable.
+Do not turn every incident into a Skill edit.
 
-UNKNOWN: do not issue another side effect. Recover observability first. If unresolved, the run cannot end NEGATIVE.
-
----
-
-## WGE-12 — Harvest
-
-Stop introducing new side effects.
-
-Harvest in this order:
-
-1. acceptance/terminal markers;
-2. runner/task terminal status;
-3. critical raw logs;
-4. required PRE/POST state;
-5. dump/PCAP/screenshot/dropped files or other critical artifacts;
-6. Host-side control/instrument logs.
-
-Evidence levels:
-
-GUEST_OBSERVED -> HOST_ACQUIRED -> HOST_VERIFIED
-
-A conclusion-critical artifact must be at least HOST_ACQUIRED. Use hash/size verification for irreplaceable or formal evidence.
-
-Never report dump acquired merely because the Guest reported its size.
+Record the incident as project/run fact first. Promote a lesson only after it is shown to be reusable and evidence-backed, then compare against mature existing workflows before adding a new abstraction.
 
 ---
 
-## WGE-13 — Outcome gate
+## Minimal fallback state
 
-Choose exactly one:
+Use only when the selected backend has no durable task state.
 
-### POSITIVE
-
-Acceptance-required behavior was validly observed and supported by Host/platform evidence.
-
-### NEGATIVE
-
-Use only if all are true:
-
-- predefined observation window completed;
-- control/data/completion remained adequate;
-- instrumentation, if any, remained valid;
-- observer coverage was sufficient;
-- no evidence gap can explain the absence.
-
-### INCONCLUSIVE
-
-Use for timeout with unresolved result, control/data loss, missing critical artifacts, UNKNOWN operation state, or insufficient observer coverage.
-
-### INVALID_INSTRUMENT
-
-Debugger/script/filter/parser/observer failure invalidated the run.
-
-### INFRA_FAILURE
-
-VM/control/data infrastructure failed such that no business conclusion is valid.
-
-Hard rules:
-
-- WAIT_TIMEOUT is not NEGATIVE
-- no breakpoint hit is not NEGATIVE
-- no stdout is not NEGATIVE
-- GuestControl/SSH/PSSession disconnect is not NEGATIVE
-- VM Running is not POSITIVE
-- harness success is not POSITIVE
-
----
-
-## WGE-14 — Restore and release
-
-Order:
-
-1. stop new side effects;
-2. confirm harvest is complete;
-3. terminate/clean the run if required;
-4. restore baseline, or preserve scene only when evidence preservation justifies it;
-5. run the minimum control canary after restore;
-6. resolve or freeze outstanding operations;
-7. release writer lock.
-
-Do not create a new snapshot for every run.
-
----
-
-## WGE-15 — Agent handoff/recovery
-
-Do not maintain a live handoff document by default.
-
-A new Agent restores from:
-
-1. platform/fallback current run state;
-2. recent events;
-3. conclusion-critical artifacts;
-4. outstanding OP reconciliation;
-5. writer lock acquisition.
-
-Generate a handoff only as a derived view when these are insufficient.
-
----
-
-## Human-stop gate
-
-Do not ask the user merely because execution became inconvenient.
-
-Stop for human input only when:
-
-- credentials are required and unavailable;
-- target/VM/baseline/scope is ambiguous;
-- a destructive choice could erase unique evidence;
-- a non-idempotent OP remains UNKNOWN after available reconciliation;
-- equally valid next actions have materially different preservation consequences and no task preference resolves them.
-
-Otherwise choose the next verified adapter or classify the failure.
-
----
-
-## Fallback state
-
-Use only when no platform-native durable state exists:
-
-~~~text
+```text
 runs/<RUN_ID>/
 ├── run.json
-├── events.ndjson
 └── artifacts/
-~~~
+```
 
-Rules:
+Add an event log only when there is a real consumer for an event history (for example recovery after disconnect). Do not create one by default.
 
-- run.json: current facts only; atomic replace.
-- events.ndjson: append only; only information-gaining events.
-- artifacts/: Host-acquired raw evidence.
-- no live manifest + channel-state + lease.json + handoff + summary + artifact-index fan-out.
-- use an OS/platform lock for the writer; do not put locking semantics in JSON.
+The fallback record stores investigation intent and final conclusion. Runtime details such as VM, adapter, PID, timestamps and tool versions should be generated automatically when tooling can provide them rather than hand-maintained by the Agent.
