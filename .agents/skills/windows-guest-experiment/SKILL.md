@@ -1,60 +1,66 @@
 ---
 name: windows-guest-experiment
-description: Execute, recover, or hand off experiments where a stable Host controls an unstable Windows Guest/VM. Use for VM snapshot/checkpoint runs, long-running Guest jobs, debugger/instrumentation runs, artifact harvesting, transport failures, safe retry after disconnects, or multi-agent control of the same VM. Do not use for ordinary static-only analysis that does not execute a Guest.
+description: Route and interpret experiments where an Agent needs a Windows Guest/VM. Prefer a mature sandbox/runtime for task lifecycle and artifacts; use direct Hyper-V/VirtualBox control only for capabilities the runtime does not provide, such as precise debugger or GUI interaction.
 ---
 
 # Windows Guest Experiment
 
-This is the canonical execution skill for Host to Windows Guest experiments.
+This Skill is an **Agent policy and backend router**, not a workflow engine.
 
-## Load and execute in this order
+## What the Agent owns
 
-Before any state-changing Guest or VM action:
+The Agent owns only the parts that require investigation judgment:
 
-1. Read references/runbook.md completely.
-2. Run scripts/preflight.ps1 on a Windows Host when a shell is available. If it cannot be run, reproduce the same read-only capability checks manually.
-3. After the backend is selected, read only the applicable sections of references/adapters.md.
-4. When any canary or operation fails, consult references/failure-routing.md before retrying.
-5. Read references/patterns.md only when changing this skill, choosing architecture, or explaining provenance.
+- `goal_ref`: which current task/project contract defines success;
+- `subject`: what object/process/code is actually being observed;
+- `interventions`: what was deliberately changed, injected, patched, attached, or forced;
+- interpretation of the returned evidence.
 
-Use assets/run-record.example.json only when the current platform has no native durable task/run state.
-Run scripts/validate-run-record.py when using that fallback record.
+The execution platform, Agent client, harness/runner, VM label, transport, timestamps, PID, retry history, locks, and artifact bookkeeping are runtime/provenance details. Do not turn them into business evidence classes.
 
-## Autonomy policy
+## Backend rule
 
-Continue autonomously when the next action is read-only, reversible, or already covered by a verified operation contract.
+1. If an existing sandbox/runtime already owns task state, VM lifecycle, retry/recovery, result storage, and artifacts, use it directly.
+2. Do not duplicate that runtime with custom STATE/events/lease/handoff protocols.
+3. Use the direct-lab path only when the requested capability is not provided by the mature runtime, for example precise CDB attach/breakpoint/memory work or an interactive GUI path.
+4. A low-level adapter such as PowerShell Direct, VBoxManage, SSH, or SMB is **not** a workflow runtime by itself.
 
-Stop and require human input only when at least one is true:
+Read `references/runbook.md` for the execution path and only the selected backend section of `references/adapters.md`.
 
-- required credentials are unavailable;
-- target, VM, baseline, or authorization/scope cannot be uniquely resolved;
-- a destructive action could erase the only remaining evidence;
-- a non-idempotent operation is UNKNOWN and cannot be reconciled safely;
-- two valid next actions have materially different evidence or preservation consequences and the task does not choose between them.
+## Evidence rules
 
-Do not stop merely because one transport failed, one command returned no stdout, or one preferred tool is missing. Route to the next verified adapter or classify the run.
+- The current task/project contract outranks generated summaries, memories, old status files, and prior assistant prose.
+- Prove what actually happened, not what was configured: armed/configured/requested != hit/applied/observed.
+- Keep one run's causal claims inside that run. Different runs may be compared, not spliced into one event chain.
+- The subject matters more than the runner. A function extracted from a target is a different subject from the full target process even if the same Agent launches both.
+- Any intervention that may change behavior must be attached to the resulting claim.
+- Unknown stays unknown. Timeout, transport loss, missing stdout, or invalid instrumentation are not business-negative results.
+- A Guest-reported artifact is not acquired evidence until the runtime/Host actually has it.
+- Harvest before rollback or destructive cleanup.
 
-## Core execution rules
+## Direct-lab fallback
 
-1. Prefer platform-native task state, retry, lease/CAS, result server, and artifact APIs. Do not build a second runtime protocol beside CAPE/Cuckoo or another durable orchestrator.
-2. Define the real objective and observable acceptance criteria before instrumentation.
-3. Bind every run to an acceptance authority: the current project contract (path + revision/section) or an explicit current task directive. Generated platform summaries, memories, handoffs, and old status files are never acceptance authority.
-4. Assign an evidence scope to every run. At minimum distinguish target-natural, target-controlled/instrumented, target-injected, harness, synthetic, and offline-reference evidence. Never promote a narrower scope to target evidence without explicit bridge evidence.
-5. Use a unique RUN_ID for every real launch. Never reuse a failed run directory.
-6. Prove Control, Data, long-runner lifetime, and required instrumentation with benign canaries before the real target.
-7. Treat Control, Data, and Completion as separate facts.
-8. A state-changing operation must have a verification method before dispatch. After a disconnect, reconcile it as APPLIED / NOT_APPLIED / UNKNOWN before retrying.
-9. Guest-reported files are not evidence until the Host/platform has actually acquired them.
-10. Natural, attach-after-launch, and debugger-launch observations are separate runs.
-11. Timeout, transport loss, missing stdout, or instrument failure do not mean a business-negative result.
-12. Harvest before rollback, shutdown, or destructive cleanup.
-13. One mutable VM/debug session has one writer. Use a real atomic primitive, not a JSON owner field.
-14. Repository-facing records must be desensitized. Runtime identifiers may exist transiently in local execution but must not be committed without sanitization.
-15. Do not invent commands when an adapter already defines them. If local tool syntax differs by version, query local help first and record that divergence as an environment fact.
+Use the fallback only when no mature runtime covers the needed operation.
 
-## Required final outcome
+Before the real target, prove only the capabilities actually required by the experiment:
 
-Every run ends in exactly one class:
+- command execution in the expected Guest context;
+- artifact round-trip;
+- detached lifetime for long jobs;
+- debugger/observer smoke when instrumentation is required;
+- interactive desktop smoke when GUI interaction is required.
+
+Do not build a general scheduler around these checks. Reuse verified capabilities until the environment/context that justified them changes.
+
+## Fallback run record
+
+Only when no backend provides durable task state, use the small record in `assets/run-record.example.json`.
+
+It records intent and conclusion, not all runtime bookkeeping.
+
+## Final outcome
+
+When the backend/project requires a normalized conclusion, use one of:
 
 - POSITIVE
 - NEGATIVE
@@ -62,4 +68,4 @@ Every run ends in exactly one class:
 - INVALID_INSTRUMENT
 - INFRA_FAILURE
 
-Do not invent stronger conclusions than the runbook permits.
+Do not invent a stronger conclusion than the observed evidence supports.
