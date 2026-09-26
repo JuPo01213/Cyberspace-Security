@@ -38,17 +38,19 @@ Do not stop merely because one transport failed, one command returned no stdout,
 
 1. Prefer platform-native task state, retry, lease/CAS, result server, and artifact APIs. Do not build a second runtime protocol beside CAPE/Cuckoo or another durable orchestrator.
 2. Define the real objective and observable acceptance criteria before instrumentation.
-3. Use a unique RUN_ID for every real launch. Never reuse a failed run directory.
-4. Prove Control, Data, long-runner lifetime, and required instrumentation with benign canaries before the real target.
-5. Treat Control, Data, and Completion as separate facts.
-6. A state-changing operation must have a verification method before dispatch. After a disconnect, reconcile it as APPLIED / NOT_APPLIED / UNKNOWN before retrying.
-7. Guest-reported files are not evidence until the Host/platform has actually acquired them.
-8. Natural, attach-after-launch, and debugger-launch observations are separate runs.
-9. Timeout, transport loss, missing stdout, or instrument failure do not mean a business-negative result.
-10. Harvest before rollback, shutdown, or destructive cleanup.
-11. One mutable VM/debug session has one writer. Use a real atomic primitive, not a JSON owner field.
-12. Repository-facing records must be desensitized. Runtime identifiers may exist transiently in local execution but must not be committed without sanitization.
-13. Do not invent commands when an adapter already defines them. If local tool syntax differs by version, query local help first and record that divergence as an environment fact.
+3. Bind every run to an acceptance authority: the current project contract (path + revision/section) or an explicit current task directive. Generated platform summaries, memories, handoffs, and old status files are never acceptance authority.
+4. Assign an evidence scope to every run. At minimum distinguish target-natural, target-controlled/instrumented, target-injected, harness, synthetic, and offline-reference evidence. Never promote a narrower scope to target evidence without explicit bridge evidence.
+5. Use a unique RUN_ID for every real launch. Never reuse a failed run directory.
+6. Prove Control, Data, long-runner lifetime, and required instrumentation with benign canaries before the real target.
+7. Treat Control, Data, and Completion as separate facts.
+8. A state-changing operation must have a verification method before dispatch. After a disconnect, reconcile it as APPLIED / NOT_APPLIED / UNKNOWN before retrying.
+9. Guest-reported files are not evidence until the Host/platform has actually acquired them.
+10. Natural, attach-after-launch, and debugger-launch observations are separate runs.
+11. Timeout, transport loss, missing stdout, or instrument failure do not mean a business-negative result.
+12. Harvest before rollback, shutdown, or destructive cleanup.
+13. One mutable VM/debug session has one writer. Use a real atomic primitive, not a JSON owner field.
+14. Repository-facing records must be desensitized. Runtime identifiers may exist transiently in local execution but must not be committed without sanitization.
+15. Do not invent commands when an adapter already defines them. If local tool syntax differs by version, query local help first and record that divergence as an environment fact.
 
 ## Required final outcome
 
