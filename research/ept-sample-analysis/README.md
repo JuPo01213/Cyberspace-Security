@@ -21,6 +21,8 @@
 5. `RUN_MANIFEST_genB.md` —— 每一轮做了什么、产出哪个件、环境留在什么状态（按时间追加）。
 6. 固定加载的 `ept-analysis-workbench` 与 `reverse-engineering-workbench` Skills、`method/ROADMAP.md` —— 可复用的分析流程、通用通信契约与下一步路线。
 
+7. **跨平台通信工作流复核（C206–C208）** —— 原始问题切片、第一性原理审查与成熟流程对照；公开副本已脱敏，未包含完整平台会话数据库。
+
 ## 目录
 
 | 目录 | 内容 |
