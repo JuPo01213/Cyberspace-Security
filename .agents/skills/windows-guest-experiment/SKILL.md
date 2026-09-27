@@ -35,6 +35,7 @@ description: 为需要 Windows Guest/VM 的分析任务选择、建设和复用�
 
 只读取当前任务真正需要的 reference：
 
+- **已有标准 Windows 分析能力，需要执行普通动态分析** → `references/standard-analysis-flow.md`
 - **没有标准 Windows 分析环境 / 需要重建环境** → `references/windows-analysis-stack.md`
 - **需要 Host Agent 通过成熟 runtime 提交、观察和收割样本任务** → `references/capesolo-mcp.md`
 - **需要比 runtime 内置 debugger 更深的远程调试能力** → `references/debugger-stack.md`
