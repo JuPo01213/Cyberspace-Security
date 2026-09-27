@@ -19,6 +19,8 @@
 2. 当前环境是否已经安装并验证成熟工具/runtime；
 3. 官方或社区是否有维护中的成熟方案可以合理部署。
 
+如果当前 Host 的能力完全未知，并且有 PowerShell shell，可选运行 `scripts/preflight.ps1` 做**只读发现**。它只能帮助发现 Hyper-V、VirtualBox、SSH、Host debugger 等基础能力，不能替代成熟分析 capability 的识别。
+
 机器名只是能力的承载位置，不应成为首要选择依据。
 
 ## 成熟能力存在
@@ -82,3 +84,15 @@
 2. 判断它是环境特例还是可复用问题；
 3. 查成熟方案是否已经解决；
 4. 只有反复出现、通用且长期收益高于维护成本时，才晋升为 Skill 规则或可复用适配器。
+
+
+## 对应参考
+
+- 建设 Windows 分析环境：`windows-analysis-stack.md`
+- CAPEsolo MCP runtime：`capesolo-mcp.md`
+- Microsoft debugger：`debugger-stack.md`
+- 行为采集：`behavior-capture.md`
+- 网络分析：`network-analysis.md`
+- GUI：`gui-analysis.md`
+- 低层 fallback：`adapters.md`
+- 失败判断：`failure-routing.md`
