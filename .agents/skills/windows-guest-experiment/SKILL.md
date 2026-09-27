@@ -31,12 +31,20 @@ description: 为需要 Windows Guest/VM 的分析任务选择、建设和复用�
 - unknown 保持 unknown；超时、通信失败或插桩失效不自动等于业务阴性。
 - 当前任务和项目契约高于旧摘要、旧 handoff 和模型先前结论。
 
-## 何时读取参考
+## 按需参考索引
 
-仅在以下情况读取 `references/runbook.md`：
+只读取当前任务真正需要的 reference：
 
-- 当前没有可直接使用的成熟分析能力；
-- 现有成熟能力损坏，需要决定修复还是重建；
-- 已确认成熟方案缺少某项必要能力，需要设计薄适配。
+- **没有标准 Windows 分析环境 / 需要重建环境** → `references/windows-analysis-stack.md`
+- **需要 Host Agent 通过成熟 runtime 提交、观察和收割样本任务** → `references/capesolo-mcp.md`
+- **需要比 runtime 内置 debugger 更深的远程调试能力** → `references/debugger-stack.md`
+- **需要详细文件/注册表/进程行为证据** → `references/behavior-capture.md`
+- **需要隔离网络模拟或网络侧观察** → `references/network-analysis.md`
+- **任务确实依赖交互式 Windows GUI** → `references/gui-analysis.md`
+- **成熟能力损坏、缺失或需要判断是否 fallback** → `references/runbook.md`
+- **已经确认要使用低层 transport/CLI 薄适配** → `references/adapters.md`
+- **遇到失败，需要判断修复还是换路线** → `references/failure-routing.md`
+- **修改本 Skill 或解释成熟度来源** → `references/patterns.md`
 
-只有确定要使用 PowerShell Direct、VBoxManage、SSH、SMB、CDB 等低层机制时，才读取 `references/adapters.md`。
+不要为了“全面”而一次加载所有 reference。
+
