@@ -1,9 +1,0 @@
-{
-  "schema_version": 3,
-  "run_id": "RUN-YYYYMMDD-NNN",
-  "goal_ref": "<CURRENT_TASK_OR_REPOSITORY_CONTRACT>",
-  "subject": "sha256:<SHA256_OR_OTHER_STABLE_SUBJECT_ID>",
-  "interventions": [],
-  "status": "RUNNING",
-  "outcome": null
-}
