@@ -1,62 +1,42 @@
-# Failure Routing
+# 失败路由
 
-Use this after a failed canary or operation. Do not collapse distinct failures into timeout.
+本参考只用于判断：**应该修成熟能力，还是确实需要换路线。**
 
-| Symptom | What it proves | What it does not prove | Next action |
-|---|---|---|---|
-| VM state is Running but Guest command fails | Hypervisor says VM is running | Guest OS/control path is ready | Re-run control canary; classify CONTROL_NOT_READY or TRANSPORT_FAILED |
-| SSH port/banner responds but command cannot execute | Network/service answered | Authentication or command execution works | Test authentication and nonce execution separately |
-| PowerShell Direct/PSSession works but mapped drive is absent | Current session is usable | Another logon/session shares mappings | Use UNC or recreate mapping in the exact session; rerun data canary |
-| Path-not-found appears immediately | Referenced path is invalid in that context | File is merely slow to appear | Fix path/context; do not poll |
-| Guest reports file size but Host has no file | Guest observed a file | Host acquired evidence | Copy to Host and verify size/hash |
-| Control call returns but long task later vanishes | Foreground call completed | Runner is durable | Fail long-runner canary; use scheduled task/service/durable worker |
-| Control disconnects after target launch | Transport was lost | Launch failed or target stopped | Reconcile OP as APPLIED/NOT_APPLIED/UNKNOWN before retry |
-| stdout is empty | No stdout was captured | No behavior occurred | Check Guest spool, task state, raw log, artifacts |
-| CDB command text contains expected marker | Marker text exists in log | Debugger emitted the event | Require a nonce/event format that cannot be satisfied by command echo |
-| No breakpoint hit | Breakpoint did not produce a hit in this run | Target behavior is absent | Check coverage, symbols/address validity, mode, and observer validity |
-| Natural run shows child/process activity but debugger run does not | Modes differ | Natural behavior disappeared globally | Keep separate RUN_IDs; treat debugger perturbation as possible |
-| GUI target started from service/session 0 but no visible UI | Process may exist outside interactive desktop | User-desktop behavior was exercised | Use an interactive-session-capable runner if UI behavior matters |
-| WMI/CIM polling changes timing or causes load | Observer is perturbing target | Target itself is unstable | Reduce polling; use lighter process/event APIs or offline artifacts |
-| Same error repeats with unchanged inputs | No new information is being gained | More retries will help | Stop that path at retry budget and change adapter/hypothesis |
-| Restore/start command disconnects mid-operation | Control path failed during side effect | Restore was or was not applied | Query hypervisor state and reconcile before issuing another restore |
-| Instrument script/parser fails | Observer invalid | Business result is negative | INVALID_INSTRUMENT |
-| Deadline reached with control/evidence gap | Observation window ended with uncertainty | Business result is negative | INCONCLUSIVE |
+## 先判断故障属于哪一层
 
-## Session and path rules
+| 现象 | 首先说明什么 | 下一步 |
+|---|---|---|
+| 成熟 runtime 无法启动 | 环境/依赖可能损坏 | 查官方文档、版本、服务和配置，优先修复 |
+| MCP/API 能连但 job 失败 | runtime 已在线，任务或配置有问题 | 查 job/log/result，不另起 runner |
+| job 创建成功但目标行为不对 | 提交语义或目标本身有问题 | 核对 package/options/参数/目标身份 |
+| debugger 已配置但不命中 | 只证明没有观察到 hit | 核对地址、模块、时机和 observer，有效性不足时不要推业务结论 |
+| debugger 状态陈旧/清理失败 | observer 生命周期失效 | 停止解释后续缺失行为，修 observer |
+| VM Running 但 Guest command 失败 | 只证明 hypervisor 状态 | 修 control/runtime，不把 VM Running 当 readiness |
+| Guest 报告文件存在但 Host/runtime 没拿到 | 只证明 Guest 观察到文件 | 修 artifact/data path |
+| 路径立即报不存在 | 路径/上下文错误 | 立即修路径，不轮询 |
+| 同样错误在相同输入下重复 | 没有新增信息 | 停止重复，查文档/换假设 |
 
-Windows path visibility depends on identity and session scope.
+## 不允许的捷径
 
-Never assume:
+以下情况不能直接触发“自己写一个替代方案”：
 
-- a mapped drive exists in a fresh PSSession;
-- a service account sees a user mapping;
-- session 0 is equivalent to an interactive desktop;
-- a path verified by one transport is valid in another.
+- 工具尚未安装；
+- 不知道当前版本参数；
+- 第一次调用失败；
+- 服务未启动；
+- 配置文件错误；
+- 需要一次版本兼容修复。
 
-For a new context, use a fresh nonce data canary.
+先修成熟能力。
 
-## Retry routing
+## 什么时候可以转入薄适配
 
-A retry is allowed only when at least one changed:
+只有至少满足一项：
 
-- environment state;
-- credentials/context;
-- path/channel;
-- command/tool syntax;
-- observation method;
-- hypothesis;
-- known failure condition.
+- 官方能力明确不支持当前必要动作；
+- 当前平台与成熟方案明确不兼容；
+- 安装/修复成本明显超过当前任务价值；
+- 安全/授权边界不允许部署；
+- 已有 runtime 能覆盖大部分流程，只缺一个明确动作。
 
-Otherwise stop the route and preserve the error as evidence.
-
-## Conclusion routing
-
-Infrastructure and instrumentation failures override absence-based business conclusions.
-
-Priority when the run ends:
-
-1. if the observer itself is invalid -> INVALID_INSTRUMENT;
-2. else if infrastructure prevented meaningful observation -> INFRA_FAILURE or INCONCLUSIVE depending on when evidence became insufficient;
-3. else if acceptance is directly satisfied -> POSITIVE;
-4. else NEGATIVE only when the full negative gate in the runbook is satisfied;
-5. otherwise -> INCONCLUSIVE.
+转入薄适配后只补缺口，不复制已有 runtime 的 task、artifact、retry、VM 生命周期。
