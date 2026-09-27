@@ -1,71 +1,42 @@
 ---
 name: windows-guest-experiment
-description: Route and interpret experiments where an Agent needs a Windows Guest/VM. Prefer a mature sandbox/runtime for task lifecycle and artifacts; use direct Hyper-V/VirtualBox control only for capabilities the runtime does not provide, such as precise debugger or GUI interaction.
+description: 为需要 Windows Guest/VM 的分析任务选择、建设和复用成熟分析能力。优先使用现有标准环境和官方入口；能力缺失时先安装、配置或修复；仅在确认成熟方案确有缺口后使用最小薄适配。
 ---
 
-# Windows Guest Experiment
+# Windows 分析能力路由
 
-This Skill is an **Agent policy and backend router**, not a workflow engine.
+本 Skill 解决的是“**该用什么成熟能力完成任务**”，不是“如何自己造一套 VM 工作流”。
 
-## What the Agent owns
+## 默认决策顺序
 
-The Agent owns only the parts that require investigation judgment:
+1. 先识别完成当前任务通常使用的成熟工具、标准分析环境或现有项目能力。
+2. 已存在且可用：使用其最高层、官方或已经验证的入口，完整复用其任务生命周期、状态和产物管理。
+3. 尚未安装但可合理部署：在授权、成本和安全边界内，先安装、配置并验证，再执行真实任务。
+4. 已安装但故障：优先修复；“调用失败”“不会用”“参数不清楚”都不等于该成熟方案不适用。
+5. 只有确认成熟方案确实缺少当前任务所需能力时，才为该缺口增加最小薄适配；不得因此重做成熟方案已经解决的部分。
 
-- `goal_ref`: which current task/project contract defines success;
-- `subject`: what object/process/code is actually being observed;
-- `interventions`: what was deliberately changed, injected, patched, attached, or forced;
-- interpretation of the returned evidence.
+不得因为 PowerShell、SSH、直接启动进程、临时 VM、手写脚本或手算更容易立即执行，就绕过可用或可合理建设的成熟能力。
 
-The execution platform, Agent client, harness/runner, VM label, transport, timestamps, PID, retry history, locks, and artifact bookkeeping are runtime/provenance details. Do not turn them into business evidence classes.
+## Host 与 Guest
 
-## Backend rule
+- Agent、项目状态、长期判断和证据解释保留在稳定 Host。
+- Windows Guest 是可回滚的执行环境，主要承载分析工具、runtime 和目标程序。
+- 若成熟 runtime 已提供 task、completion、artifact、retry 或 VM 生命周期，不建立第二套并行状态机。
 
-1. If an existing sandbox/runtime already owns task state, VM lifecycle, retry/recovery, result storage, and artifacts, use it directly.
-2. Do not duplicate that runtime with custom STATE/events/lease/handoff protocols.
-3. Use the direct-lab path only when the requested capability is not provided by the mature runtime, for example precise CDB attach/breakpoint/memory work or an interactive GUI path.
-4. A low-level adapter such as PowerShell Direct, VBoxManage, SSH, or SMB is **not** a workflow runtime by itself.
+## 证据约束
 
-Read `references/runbook.md` for the execution path and only the selected backend section of `references/adapters.md`.
+- configured / armed / requested 不等于 observed / hit / applied。
+- 不同 run 的事实不得拼成同一条因果链。
+- 会改变目标行为的 intervention 必须随结论保留。
+- unknown 保持 unknown；超时、通信失败或插桩失效不自动等于业务阴性。
+- 当前任务和项目契约高于旧摘要、旧 handoff 和模型先前结论。
 
-## Evidence rules
+## 何时读取参考
 
-- The current task/project contract outranks generated summaries, memories, old status files, and prior assistant prose.
-- Prove what actually happened, not what was configured: armed/configured/requested != hit/applied/observed.
-- Keep one run's causal claims inside that run. Different runs may be compared, not spliced into one event chain.
-- The subject matters more than the runner. A function extracted from a target is a different subject from the full target process even if the same Agent launches both.
-- Any intervention that may change behavior must be attached to the resulting claim.
-- Unknown stays unknown. Timeout, transport loss, missing stdout, or invalid instrumentation are not business-negative results.
-- A Guest-reported artifact is not acquired evidence until the runtime/Host actually has it.
-- Harvest before rollback or destructive cleanup.
+仅在以下情况读取 `references/runbook.md`：
 
-## Direct-lab fallback
+- 当前没有可直接使用的成熟分析能力；
+- 现有成熟能力损坏，需要决定修复还是重建；
+- 已确认成熟方案缺少某项必要能力，需要设计薄适配。
 
-Use the fallback only when no mature runtime covers the needed operation.
-
-Before the real target, prove only the capabilities actually required by the experiment:
-
-- command execution in the expected Guest context;
-- artifact round-trip;
-- detached lifetime for long jobs;
-- debugger/observer smoke when instrumentation is required;
-- interactive desktop smoke when GUI interaction is required.
-
-Do not build a general scheduler around these checks. Reuse verified capabilities until the environment/context that justified them changes.
-
-## Fallback run record
-
-Only when no backend provides durable task state, use the small record in `assets/run-record.example.json`.
-
-It records intent and conclusion, not all runtime bookkeeping.
-
-## Final outcome
-
-When the backend/project requires a normalized conclusion, use one of:
-
-- POSITIVE
-- NEGATIVE
-- INCONCLUSIVE
-- INVALID_INSTRUMENT
-- INFRA_FAILURE
-
-Do not invent a stronger conclusion than the observed evidence supports.
+只有确定要使用 PowerShell Direct、VBoxManage、SSH、SMB、CDB 等低层机制时，才读取 `references/adapters.md`。
