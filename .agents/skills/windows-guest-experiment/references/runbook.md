@@ -4,6 +4,8 @@
 
 ## 先找能力，不先找机器
 
+先读 `capability-contract.md`。任务契约定义需要什么，能力登记只回答本地哪个环境能够满足；本地发现不能反向改变任务语义。
+
 先确定当前任务真正需要的能力，例如：
 
 - Windows 动态执行与行为采集；
@@ -21,7 +23,7 @@
 
 如果当前 Host 的能力完全未知，并且有 PowerShell shell，可选运行 `scripts/preflight.ps1` 做**只读发现**。它只能帮助发现 Hyper-V、VirtualBox、SSH、Host debugger 等基础能力，不能替代成熟分析 capability 的识别。
 
-机器名只是能力的承载位置，不应成为首要选择依据。
+机器名、hypervisor、IP 和命令只是能力的承载或实现，不应成为首要选择依据。发现某个平台或某台 VM 只能产生候选，不能自动产生选择结论。
 
 ## 成熟能力存在
 
@@ -36,6 +38,8 @@
 - VM 生命周期；
 
 就让它继续管理，不在外面再造一套 runner、done marker、轮询协议或状态文件。
+
+若 runtime 不管理 VM 生命周期，则 checkpoint、隔离和 Guest 控制仍由已登记的基础设施后端负责；不得把 runtime 未声明的能力补写成其既有能力。
 
 ## 成熟能力不存在
 
@@ -88,6 +92,7 @@
 
 ## 对应参考
 
+- 能力分层与登记：`capability-contract.md`
 - 建设 Windows 分析环境：`windows-analysis-stack.md`
 - CAPEsolo MCP runtime：`capesolo-mcp.md`
 - Microsoft debugger：`debugger-stack.md`
@@ -96,3 +101,4 @@
 - GUI：`gui-analysis.md`
 - 低层 fallback：`adapters.md`
 - 失败判断：`failure-routing.md`
+

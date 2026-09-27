@@ -5,27 +5,29 @@
 ## 默认路径
 
 ```text
-确认已有标准 Windows 分析 capability
+从任务契约导出所需 capability
+→ 解析已登记且验证有效的 Windows 分析环境
 → 若不存在：按 windows-analysis-stack.md 建设并验证
-→ 恢复干净 checkpoint
+→ 通过该环境登记的基础设施后端恢复干净 checkpoint
+→ 验证本轮需要的 control / data / network / GUI / runtime 入口
 → 确认目标文件身份
-→ 通过 CAPEsolo MCP 提交正式 analysis job
-→ 使用 CAPEsolo job 状态等待完成
+→ 通过已登记 analysis runtime 提交正式 job
+→ 使用 runtime 自身状态等待完成
 → 读取 results / logs / dropped files / payloads
 → 根据任务问题判断是否需要更深观察
 → 收割结论所需 artifact
 → 回滚分析 VM
 ```
 
-CAPEsolo 官方建议在 Windows 分析 VM 中安装后建立 snapshot，并在每次分析后 revert VM。
+CAPEsolo 是当前推荐 runtime 实现之一。环境登记为 CAPEsolo 时，按 `capesolo-mcp.md` 使用其 MCP、job 状态和 artifact；通用流程不把某个 runtime 或 hypervisor 名称当作接口定义。
 
 ## 深入分析按需升级
 
-普通 CAPEsolo 结果不足时，不要整套换工具，按缺口升级：
+当前 runtime 结果不足时，不要整套换工具，按缺口升级：
 
 ### 需要精确动态调试
 
-先用 CAPEsolo 的 interactive debugger。
+先用已登记 runtime 的 debugger；当前 runtime 为 CAPEsolo 时，先用其 interactive debugger。
 
 如果其能力仍不足，再读 `debugger-stack.md`，补 DbgEng / DbgSrv / WinDbg。
 
@@ -65,7 +67,7 @@ CAPEsolo 官方建议在 Windows 分析 VM 中安装后建立 snapshot，并在�
 - 直接 PowerShell 启动更快；
 - 另一台 VM 已经开着；
 - 自己写 runner 看起来简单；
-- CAPEsolo 参数暂时不熟；
+- 当前 runtime 参数暂时不熟；
 - 第一次 MCP 调用失败。
 
 先修正确路径。
@@ -73,9 +75,11 @@ CAPEsolo 官方建议在 Windows 分析 VM 中安装后建立 snapshot，并在�
 ## 相关参考
 
 - 环境建设：`windows-analysis-stack.md`
+- 能力契约：`capability-contract.md`
 - CAPEsolo MCP：`capesolo-mcp.md`
 - 调试：`debugger-stack.md`
 - 行为：`behavior-capture.md`
 - 网络：`network-analysis.md`
 - GUI：`gui-analysis.md`
 - 故障判断：`failure-routing.md`
+

@@ -9,7 +9,7 @@
 ```text
 工具自身 API / MCP
 → Windows UI Automation（UIA）
-→ VM/RDP/VMConnect 的可见桌面
+→ hypervisor console / RDP 的可见桌面
 → 像素级 Computer Use / 鼠标键盘
 ```
 
@@ -21,14 +21,16 @@ GUI 自动化仍应由 Host Agent 决策。Guest 只提供：
 
 - 可交互桌面；
 - UIA/辅助接口；
-- framebuffer / VMConnect / RDP 等显示和输入通道；
+- framebuffer / provider console / RDP 等显示和输入通道；
 - 实际 GUI 应用。
 
 不要把完整 Agent 和长期项目状态放进可回滚 Guest。
 
-## Hyper-V
+## 平台后端
 
-VMConnect 可用于连接 Hyper-V Windows VM；Enhanced Session Mode 基于 RDP 提供更完整的交互体验。GUI 能正常显示只证明桌面通道可用，不证明样本分析 runtime 或 debugger 正常。
+GUI 通道由本地 capability 登记的基础设施后端提供。例如 Hyper-V 可使用 VMConnect / Enhanced Session，VirtualBox 或 VMware 使用各自的 console 或远程显示入口。通用流程只要求“真实交互 session 可验证”，不固定具体 provider。
+
+GUI 能正常显示只证明桌面通道可用，不证明样本分析 runtime、数据收割或 debugger 正常。更换 provider 后应重新验证 GUI session，不能继承其他后端的结论。
 
 ## 使用原则
 
@@ -42,3 +44,4 @@ VMConnect 可用于连接 Hyper-V Windows VM；Enhanced Session Mode 基于 RDP 
 
 - Microsoft UI Automation: https://learn.microsoft.com/windows/win32/winauto/entry-uiauto-win32
 - Hyper-V VMConnect / Enhanced Session: https://learn.microsoft.com/windows-server/virtualization/hyper-v/enhanced-session-mode
+

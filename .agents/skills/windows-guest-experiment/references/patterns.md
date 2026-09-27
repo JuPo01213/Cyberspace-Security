@@ -31,19 +31,24 @@
 ## 核心架构原则
 
 ```text
-Stable Host
-  Agent / 状态 / 判断
+任务契约 / 证据要求
         ↓
-成熟 API / MCP / debugger protocol
+通用分析流程
         ↓
-Disposable Windows Guest
-  runtime / 工具 / 目标
+runtime / tool capability
+        ↓
+虚拟化、通信和 GUI 后端
+        ↓
+本机绑定与动态运行事实
 ```
 
 Host 不应因为 Guest 回滚而丢失长期状态；Guest 不应为了方便而承载整个 Agent 工作区。
 
+依赖方向不能反转：低层平台、已安装工具、现成 VM 和单次任务事实都不能定义高层语义。通用 Skill 保存能力契约和路由；部署环境保存机器、地址、凭据和 provider 绑定；项目保存任务特有规则；run record 保存动态事实。
+
 ## 为什么不自建 workflow engine
 
-如果成熟 runtime 已经提供 task、completion、artifact、retry、snapshot/restore 等能力，再维护一套 STATE、runner、done marker、轮询协议只会制造双重权威。
+如果成熟 runtime 已经提供 task、completion、artifact 或 retry，再维护一套 STATE、runner、done marker、轮询协议只会制造双重权威。checkpoint / restore 只有在 runtime 明确声明并验证由其管理时才归 runtime；否则属于基础设施后端。
 
 只有成熟 runtime 明确不覆盖的动作才适合做薄适配。
+
