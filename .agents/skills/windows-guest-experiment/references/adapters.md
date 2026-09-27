@@ -1,199 +1,80 @@
-# Adapter Reference
+# 低层适配器参考
 
-Select the highest-level backend that satisfies the task. A mature task runtime is preferred over low-level transport composition.
+**只有已经确认成熟 workflow 存在能力缺口时才读本文件。**
 
-Never put passwords, tokens, private addresses, local usernames, or unsanitized absolute paths into repository files.
+这些机制只是 transport / adapter，不是分析 runtime，也不应被扩展成第二套任务系统。
 
-## CAPE / managed malware sandbox
+## Hyper-V：PowerShell Direct
 
-Use a managed sandbox when the goal is ordinary Windows dynamic execution/behavior collection and the sandbox can own the task lifecycle.
+适用：Host 为 Hyper-V，且需要在不依赖 Guest 网络的情况下执行少量命令或复制文件。
 
-CAPE exposes task submission and task status to AI clients through its official MCP server, including `submit_file`, `get_task_status`, `view_task`, task search and reprocessing. Treat CAPE task state and result storage as authoritative; do not mirror them into a second STATE/events protocol.
+Microsoft 支持 Host 直接对 Windows Guest 使用 `Invoke-Command -VMName`、`New-PSSession -VMName` 和 `Copy-Item -ToSession/-FromSession`。
 
-Agent-facing flow:
+边界：
 
-```text
-submit task
-→ get task id
-→ query task status
-→ retrieve report/artifacts
-→ decide whether deeper code/debug/GUI work is needed
-```
+- PowerShell Direct 证明命令/数据通道可用，不证明交互式桌面可用。
+- 不用它替代已经存在的 CAPEsolo job/runtime。
+- 长任务不要默认与前台 PSSession 生命周期绑定。
 
-CAPE's Windows Guest uses its own Guest agent; validate that agent before snapshotting the Guest rather than testing Guest readiness with the real sample.
-
-Current boundary: CAPE's documented interactive-desktop feature is KVM/VNC-based. Do not assume it replaces an existing Hyper-V interactive debugger/GUI lab.
-
-Official references:
-
-- https://capev2.readthedocs.io/en/latest/usage/mcp.html
-- https://capev2.readthedocs.io/en/latest/installation/guest/agent.html
-- https://capev2.readthedocs.io/en/latest/usage/interactive_desktop.html
-
-## Direct-lab adapters
-
-The sections below are low-level mechanisms for capabilities not covered by the selected managed runtime. They are not themselves workflow engines.
-
-## Hyper-V: PowerShell Direct
-
-Use when the Host runs Hyper-V and the Guest supports PowerShell Direct.
-
-Microsoft documents PowerShell Direct for Windows 10 / Windows Server 2016 or later Hosts and Guests. It does not depend on Guest network configuration.
-
-### Control canary
-
-~~~powershell
-$cred = Get-Credential
-$nonce = [guid]::NewGuid().ToString("N")
-Invoke-Command -VMName "<VM_LABEL>" -Credential $cred -ArgumentList $nonce -ScriptBlock {
-    param($n)
-    [pscustomobject]@{
-        Marker = "WGE_$n"
-        ComputerName = $env:COMPUTERNAME
-        User = [Security.Principal.WindowsIdentity]::GetCurrent().Name
-        Pwd = (Get-Location).Path
-        PSVersion = $PSVersionTable.PSVersion.ToString()
-    }
-}
-~~~
-
-Pass only when Marker equals the fresh Host nonce and the context is expected.
-
-### Persistent data session
-
-~~~powershell
-$cred = Get-Credential
-$s = New-PSSession -VMName "<VM_LABEL>" -Credential $cred
-Copy-Item -ToSession $s -Path "<HOST_CANARY_FILE>" -Destination "<GUEST_CANARY_DIR>"
-Copy-Item -FromSession $s -Path "<GUEST_RESULT_FILE>" -Destination "<HOST_HARVEST_DIR>"
-Remove-PSSession $s
-~~~
-
-Treat each new PSSession as a new scope. Re-run path/data canaries when mappings or identity context matter.
-
-### Important boundary
-
-PowerShell Direct proves command/data reachability inside the Guest. It does not prove an interactive desktop session exists. Do not use it as evidence that GUI behavior launched in session 0 is equivalent to a user desktop run.
-
-Official reference:
+官方文档：
 https://learn.microsoft.com/windows-server/virtualization/hyper-v/powershell-direct
 
-## Oracle VirtualBox: Guest Control
+## VirtualBox Guest Control
 
-Use only when VBoxManage is present and Guest Additions Guest Control is functioning.
+适用：现有环境明确使用 VirtualBox，并且 Guest Additions Guest Control 已验证。
 
-Oracle documents guestcontrol run/start and copyfrom/copyto. Guest credentials are required by these subcommands.
+优先查当前本机 `VBoxManage guestcontrol --help`，不要凭记忆拼参数。
 
-Before use:
+边界：
 
-~~~powershell
-VBoxManage --version
-VBoxManage guestcontrol "<VM_LABEL>" --help
-~~~
+- `run` / `start` 的等待语义不同；
+- Guest 路径存在不等于 Host 已取得文件；
+- 不把 GuestControl 当通用 scheduler。
 
-### Control canary
-
-Prefer run when stdout/stderr is needed for the canary:
-
-~~~text
-VBoxManage guestcontrol "<VM_LABEL>" run --username "<GUEST_USER>" --passwordfile "<SECRET_FILE>" --exe "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -- powershell.exe -NoProfile -Command "<BENIGN_NONCE_COMMAND>"
-~~~
-
-Use a password file or another secure credential mechanism rather than embedding a password in repository content or logs.
-
-### Detached launch
-
-Oracle distinguishes run from start. In current VirtualBox documentation, start returns after the guest program is successfully started and does not wait for all stdout/stderr.
-
-Use start only after a long-runner canary proves the process survives the control call and after defining an external completion marker.
-
-### Data canary
-
-Host to Guest:
-
-~~~text
-VBoxManage guestcontrol "<VM_LABEL>" copyto --username "<GUEST_USER>" --passwordfile "<SECRET_FILE>" --target-directory="<GUEST_DIR>" "<HOST_FILE>"
-~~~
-
-Guest to Host:
-
-~~~text
-VBoxManage guestcontrol "<VM_LABEL>" copyfrom --username "<GUEST_USER>" --passwordfile "<SECRET_FILE>" --target-directory="<HOST_DIR>" "<GUEST_FILE>"
-~~~
-
-Do not infer success from a Guest path string alone. Verify the Host copy.
-
-Official reference:
+官方文档：
 https://docs.oracle.com/en/virtualization/virtualbox/7.1/user/vboxmanage.html
 
 ## SSH / SCP
 
-Use when the Guest has an explicitly provisioned SSH service and the network path is part of the intended lab design.
+只在 Guest 已明确配置 SSH 且网络通道本身属于设计时使用。
 
-Control canary requirements:
-
-- TCP reachability is not enough;
-- SSH banner is not enough;
-- authentication success is not enough;
-- a command must execute and return a fresh nonce.
-
-Generic pattern:
-
-~~~text
-ssh <HOST_ALIAS> "<BENIGN_NONCE_COMMAND>"
-scp <HOST_FILE> <HOST_ALIAS>:<GUEST_PATH>
-scp <HOST_ALIAS>:<GUEST_FILE> <HOST_PATH>
-~~~
-
-Prefer an SSH config Host alias or secret store. Do not commit private IPs, usernames, keys, or passwords.
-
-A disconnect after dispatch is not proof the Guest process stopped. Reconcile the OP before retry.
+- 端口开放或 SSH banner 只证明服务响应；
+- 必须实际执行命令才能证明 control；
+- SCP 路径错误应立即修路径，不要伪装成“文件还没准备好”继续轮询；
+- 凭据、私钥、私有地址不得写入仓库。
 
 ## SMB / UNC
 
-Treat SMB as a data adapter unless it is explicitly proven as part of control.
+主要作为数据通道。
 
-Rules:
+- 优先使用明确的 UNC 路径；
+- 映射盘符可能受用户、session、服务账户影响；
+- 一个 session 能看到路径，不代表另一个 session 也能看到。
 
-- use UNC paths when possible instead of assuming mapped-drive letters survive across sessions;
-- a mapping created in one logon/PSSession does not prove visibility in another;
-- perform a nonce write/read/hash canary from the same execution context that will use the share;
-- distinguish PATH_SCOPE_MISMATCH from FILE_NOT_READY.
+## CDB / WinDbg CLI
 
-Do not store credentials in scripts committed to the repository.
+只有当 `references/debugger-stack.md` 已判断需要 Microsoft debugger，并且没有更稳定的语义接口时再使用 CLI。
 
-## CDB
+优先顺序：
 
-Use CDB only in an instrumentation run. Natural-run conclusions remain separate.
+```text
+runtime 自带 debugger API
+→ DbgEng / DbgSrv 薄桥接
+→ 最后才是 CDB/WinDbg 文本 CLI
+```
 
-Microsoft documents:
+不要把命令回显当 breakpoint event；不要为长期控制反复解析人类文本输出。
 
-- -p PID: attach to an existing process;
-- -pv: noninvasive attach;
-- -pvr: noninvasive attach without suspending the target;
-- -pb: suppress the initial break-in request when attaching;
-- -pd: do not terminate the target when the debugging session ends;
-- -c "command": run initial debugger commands;
-- -cf "filename": run commands from a script file.
-
-### Benign smoke
-
-First select a benign process specifically created for the smoke test. Then choose the least intrusive attach mode that can answer the instrumentation question.
-
-Examples of documented command families:
-
-~~~text
-cdb.exe -p <PID>
-cdb.exe -pv -p <PID>
-cdb.exe -pvr -p <PID>
-cdb.exe -p <PID> -pd -cf "<DEBUGGER_SCRIPT>"
-~~~
-
-Do not combine flags mechanically. For example, -pb changes initial attach behavior and must be validated on the benign target before use on the real run.
-
-For long command sequences, prefer a debugger script file through -cf rather than deeply nested shell quoting.
-
-Pass the instrumentation canary only when the expected debugger event is observed in raw harvested output and the parser does not merely match echoed configuration text.
-
-Official reference:
+官方文档：
 https://learn.microsoft.com/windows-hardware/drivers/debugger/cdb-command-line-options
+
+## 最小验证原则
+
+低层 adapter 只验证当前任务真正依赖的能力，例如：
+
+- 一次真实命令执行；
+- 一次文件往返；
+- 一次 debugger attach/hit；
+- 一次 GUI session 可见性。
+
+不要因为选了低层 adapter 就自动展开 control/data/runner/state 全套自研框架。
