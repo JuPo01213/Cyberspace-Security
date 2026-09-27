@@ -13,7 +13,7 @@
 → 确认目标文件身份
 → 通过已登记 analysis runtime 提交正式 job
 → 使用 runtime 自身状态等待完成
-→ 读取 results / logs / dropped files / payloads
+→ 读取 runtime 结果、日志和 artifact
 → 根据任务问题判断是否需要更深观察
 → 收割结论所需 artifact
 → 回滚分析 VM
@@ -82,4 +82,5 @@ CAPEsolo 是当前推荐 runtime 实现之一。环境登记为 CAPEsolo 时，�
 - 网络：`network-analysis.md`
 - GUI：`gui-analysis.md`
 - 故障判断：`failure-routing.md`
+
 

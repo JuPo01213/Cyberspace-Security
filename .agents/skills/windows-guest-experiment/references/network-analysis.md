@@ -21,8 +21,9 @@ Windows 下优先使用官方 release 的 standalone executable，避免为正�
 - FakeNet-NG 会修改/拦截网络流量，只在隔离 VM 中运行。
 - 网络请求被捕获 ≠ 远端业务成功。
 - 模拟响应 ≠ 自然真实服务器响应；若模拟内容会改变目标行为，应把它记录为 intervention。
-- 如果 CAPEsolo 已经提供足够的网络结果，不重复启动第二套网络采集；需要主动服务模拟时再引入 FakeNet-NG。
+- 如果已登记 runtime（例如 CAPEsolo）已经提供足够的网络结果，不重复启动第二套网络采集；需要主动服务模拟时再引入 FakeNet-NG。
 
 ## 上游
 
 - FakeNet-NG: https://github.com/mandiant/flare-fakenet-ng
+

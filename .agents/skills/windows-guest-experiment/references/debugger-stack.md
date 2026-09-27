@@ -66,7 +66,7 @@ configured breakpoint、命令回显或旧 debugger state 都不能当作真实 
 ## 边界
 
 - DbgEng/DbgSrv 是调试基础设施，不负责样本 job、artifact pipeline 或 VM 回滚。
-- 如果 CAPEsolo 已经可靠完成相同 debugger 动作，不重复建设第二套控制面。
+- 如果已登记 runtime 已经可靠完成相同 debugger 动作，不重复建设第二套控制面。
 - remote debugging 本身扩大攻击面，应只在隔离分析网络中启用。
 
 ## 上游
@@ -74,3 +74,4 @@ configured breakpoint、命令回显或旧 debugger state 都不能当作真实 
 - Debugger Engine Overview: https://learn.microsoft.com/windows-hardware/drivers/debugger/debugger-engine-overview
 - Process Servers: https://learn.microsoft.com/windows-hardware/drivers/debugger/process-servers--user-mode-
 - Remote Debugging Using WinDbg: https://learn.microsoft.com/windows-hardware/drivers/debugger/remote-debugging-using-windbg
+

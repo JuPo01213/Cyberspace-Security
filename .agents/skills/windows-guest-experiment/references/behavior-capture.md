@@ -23,7 +23,7 @@ Noriben 在 Procmon 之上自动收集、过滤并生成较易读的 runtime 行
 → 与其他 runtime 结果交叉解释
 ```
 
-如果 CAPEsolo 已经提供足够的行为结果，先用 CAPEsolo；只有需要更细 Procmon 级证据或独立交叉验证时，再启用 Noriben/Procmon。
+如果已登记 runtime（例如 CAPEsolo）已经提供足够的行为结果，先使用该结果；只有需要更细 Procmon 级证据或独立交叉验证时，再启用 Noriben/Procmon。
 
 ## 证据原则
 
@@ -36,3 +36,4 @@ Noriben 在 Procmon 之上自动收集、过滤并生成较易读的 runtime 行
 
 - Noriben: https://github.com/Rurik/Noriben
 - Procmon 属于 Microsoft Sysinternals 工具集。
+
