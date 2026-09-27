@@ -1,0 +1,63 @@
+{
+  "schema": "ept.external_review_manifest.v1",
+  "generated_date": "2026-09-28",
+  "source_project": "EPT",
+  "target_repository": "JuPo01213/Cyberspace-Security",
+  "skill_snapshot": {
+    "name": "windows-guest-experiment",
+    "source": "C:\\Users\\Administrator\\.agents\\skills\\windows-guest-experiment\\SKILL.md",
+    "sha256": "C525295127F6C0D05F2213987B5EA683A9ADE250A3B967F2C8F171B486F1D902"
+  },
+  "run": {
+    "run_id": "EPT-STAGE2-INJECTEDIO-20260928-13",
+    "vm": "WindowsAnalysisWorkbench",
+    "evidence_scope": "real_sample_guest_run_injected_io",
+    "sample_sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "capesolo_package": "exe",
+    "capesolo_options_observed": "bp0=ep,idbg=1",
+    "target_native_return": "NOT_OBSERVED",
+    "target_caller_diff_bytes": "NOT_OBSERVED",
+    "response_injection_observed": false,
+    "rc06_after_behavior_observed": false,
+    "recommended_execution_classification": "INVALID_INSTRUMENT"
+  },
+  "host_acquired_artifacts": [
+    {
+      "name": "analysis.log",
+      "sha256": "185217E2B8F88A1B396D1787507A58FE2C69E710B519B8756C1E88FB88878773",
+      "length": 399135
+    },
+    {
+      "name": "files.json",
+      "sha256": "A90E09B3DD8E19951B97C4A35CC363502863996DB0B5660A10F6BD9F21771713",
+      "length": 1682
+    },
+    {
+      "name": "procdump-1768.bin",
+      "sha256": "26CE17352055D6A17B4A8D123D93AFF55744A8A1021FB28FADBE343EE597290E",
+      "length": 32671232
+    },
+    {
+      "name": "procdump-1820.bin",
+      "sha256": "ECAFBE2A12850D9953143EBE8421FBA3653C71564050EE7486BFE06DD08938C1",
+      "length": 66575872
+    },
+    {
+      "name": "cape-1820-raw.bin",
+      "sha256": "82137941BA4F775DF4FA7847F9DB7141E374B239019D7A91B8DF170900D4DE5C",
+      "length": 66480640
+    },
+    {
+      "name": "uploaded-child.bin",
+      "sha256": "7D65A2C3ED27911680631A4529E207EDCC37F2394257E9F9FE27E86B7ED6C403",
+      "length": 32671488
+    }
+  ],
+  "redactions": [
+    "user-provided credential",
+    "CAPEsolo token",
+    "sample binaries and memory contents",
+    "Guest credentials and runtime secrets",
+    "raw network payloads"
+  ]
+}
