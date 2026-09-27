@@ -1,210 +1,84 @@
-# Executable Runbook
+# Windows 分析能力路由手册
 
-The normal path is short because mature backends should own execution state.
+本文件只处理“成熟能力不可直接使用时怎么办”。不要把它当成固定实验流水线。
 
-## WGE-00 — Bind the investigation intent
+## 先找能力，不先找机器
 
-Before launching anything, resolve:
+先确定当前任务真正需要的能力，例如：
 
-- `goal_ref`: current task/project contract that defines success;
-- `subject`: the exact object/process/code being observed;
-- `interventions`: only the changes that may affect behavior.
+- Windows 动态执行与行为采集；
+- 用户态或内核调试；
+- 网络模拟/抓取；
+- GUI 交互；
+- 静态逆向；
+- VM 快照、恢复和隔离。
 
-Do not copy the entire project goal into every run if a stable current contract already exists.
+然后按以下顺序查找：
 
-Generated summaries, memories, handoffs, old status files, and prior assistant prose are discovery aids only. They do not redefine the current goal.
+1. 当前项目是否已经声明默认能力或标准分析环境；
+2. 当前环境是否已经安装并验证成熟工具/runtime；
+3. 官方或社区是否有维护中的成熟方案可以合理部署。
 
----
+机器名只是能力的承载位置，不应成为首要选择依据。
 
-## WGE-01 — Route to a backend
+## 成熟能力存在
 
-Choose the highest-level existing backend that can perform the required task.
+直接使用其最高层入口。
 
-### Managed runtime path
+如果 runtime 已经管理：
 
-Use when a sandbox/orchestrator already owns:
+- task/job；
+- 启动与完成；
+- retry/recovery；
+- artifact/result；
+- VM 生命周期；
 
-- task identity and status;
-- VM lifecycle;
-- execution worker/Guest agent;
-- retry/recovery;
-- artifacts/results.
+就让它继续管理，不在外面再造一套 runner、done marker、轮询协议或状态文件。
 
-Examples include CAPE/Cuckoo-style sandbox execution or another durable task runtime.
+## 成熟能力不存在
 
-**Delegate those responsibilities.** Do not mirror their state into a second custom workflow protocol.
+“没有安装”不是 fallback 条件。
 
-The Agent should normally do only:
-
-```text
-submit/start
-→ query status
-→ retrieve artifacts/results
-→ interpret against goal_ref
-```
-
-If the backend lacks one required capability, add only that capability through a thin adapter; do not reimplement the rest of the runtime.
-
-### Direct-lab path
-
-Use only when the task requires a capability the managed runtime cannot provide in the current environment, such as:
-
-- precise debugger attach/breakpoint/memory interaction;
-- project-specific transient patching/intervention;
-- interactive Windows desktop/GUI control;
-- an existing Hyper-V/VirtualBox lab that must be used directly.
-
-Low-level transports are adapters, not runtimes.
-
----
-
-## WGE-02 — Prove only required capabilities
-
-Managed runtime: use its own documented readiness/task checks. Do not duplicate them unless project evidence shows a real gap.
-
-Direct-lab: before the real target, prove only what this experiment requires.
-
-### Command execution
-
-Execute a benign fresh nonce in the intended Guest identity/context.
-
-`VM Running`, port open, SSH banner, Guest Additions present, or login UI are not substitutes for command execution.
-
-### Artifact round-trip
-
-Have the Guest/runtime produce a small nonce artifact and verify the Host/runtime actually acquired it.
-
-Immediate path/auth errors are immediate errors; do not turn them into polling timeouts.
-
-### Long-job lifetime
-
-Only when the experiment is long-running and there is no durable worker: prove the job survives closing the launch/control session.
-
-### Instrumentation
-
-Only when debugger/observer work is required: use a benign target to prove syntax, attach/start, a real emitted event, and harvestable raw output.
-
-Configuration text or command echo does not count as an observed event.
-
-### Interactive desktop
-
-Only when GUI behavior matters: prove the target runs in the intended interactive session and the GUI observation/input path works. Session 0 process existence is not proof of user-desktop behavior.
-
-Reuse a prior capability proof until a relevant condition changes, such as Guest image/baseline, identity/session, backend/transport, runner, debugger version/configuration, or GUI execution context.
-
----
-
-## WGE-03 — Execute through the backend
-
-Use the backend's native task/run identity when one exists.
-
-If no native task identity exists, create one unique local RUN_ID.
-
-Do not reuse a failed run as though it were the same causal experiment.
-
-Before an intervention, record what is being changed. Examples:
+在授权、资源和安全允许时：
 
 ```text
-debugger attach
-branch reversal
-injected response
-temporary memory patch
-GUI input sequence
+选择成熟方案
+→ 安装/启用
+→ 配置
+→ 用无害对象验证
+→ 注册为可用能力
+→ 再执行真实任务
 ```
 
-Execution platform/harness names are provenance, not evidence meaning.
+如果安装失败，先查官方文档、版本兼容和环境依赖并尝试修复。
 
-For a state-changing action whose result could become ambiguous after disconnect, define a concrete way to determine whether it happened. Create special operation bookkeeping only when that ambiguity actually exists.
+只有出现明确的不适用条件，例如平台不兼容、必要能力确实不存在、部署成本明显超过任务价值或安全边界不允许，才进入替代方案。
 
----
+## 成熟能力只有局部缺口
 
-## WGE-04 — Observe facts, not plans
+先明确缺的是哪一个动作，然后只补这一层。
 
-During execution distinguish:
+例如：
 
 ```text
-configured / armed / requested
-from
-hit / applied / observed
+成熟 runtime 已负责样本任务和 artifacts
+但缺精确 debugger 操作
+→ 只补 debugger adapter
 ```
 
-A breakpoint being set does not prove it fired.
-A runner field describing an intended action does not prove the action occurred.
-An API call site being observed does not prove downstream business success.
+不要因此重新实现样本启动、任务状态、artifact 收集或 VM 调度。
 
-Do not combine observations from different runs into one causal chain.
+## 低层直连是最后手段
 
----
+只有在前述判断完成后，才选择 PowerShell Direct、VBoxManage、SSH、SMB、CDB 等低层机制。
 
-## WGE-05 — Retrieve evidence
+使用低层机制时，只验证当前任务真正依赖的能力；不要顺手扩展成新的通用 workflow engine。
 
-Prefer the backend's native result/artifact store.
+## 完成后
 
-For direct-lab fallback, retrieve conclusion-critical artifacts to the Host before destructive cleanup or rollback.
+若本次暴露了新的缺口：
 
-A useful evidence progression is:
-
-```text
-observed in execution
-→ acquired by backend/Host
-→ verified when necessary
-```
-
-Hash/size verification is needed for irreplaceable, corruption-prone, or formal evidence; it is not mandatory bookkeeping for every temporary file.
-
----
-
-## WGE-06 — Interpret against the goal
-
-Ask:
-
-1. Did this run observe the required subject?
-2. Which interventions could affect the result?
-3. Was the required event actually observed, rather than merely configured?
-4. Are all facts used in the causal claim from this same run?
-5. Is missing evidence explained by infrastructure or instrumentation failure?
-
-When a normalized outcome is useful:
-
-- `POSITIVE`: required behavior was validly observed;
-- `NEGATIVE`: the defined observation window completed with valid and sufficient coverage and the behavior was absent;
-- `INCONCLUSIVE`: evidence is insufficient or ambiguous;
-- `INVALID_INSTRUMENT`: the observer/debugger/parser invalidated the run;
-- `INFRA_FAILURE`: execution infrastructure failed before a business conclusion was possible.
-
-Timeout, no breakpoint hit, missing stdout, or transport disconnect do not by themselves mean NEGATIVE.
-
----
-
-## WGE-07 — Cleanup and learning
-
-Use the backend's native reset/cleanup lifecycle where available.
-
-Direct-lab fallback:
-
-```text
-stop new side effects
-→ harvest
-→ cleanup/restore
-→ release exclusive control
-```
-
-Do not turn every incident into a Skill edit.
-
-Record the incident as project/run fact first. Promote a lesson only after it is shown to be reusable and evidence-backed, then compare against mature existing workflows before adding a new abstraction.
-
----
-
-## Minimal fallback state
-
-Use only when the selected backend has no durable task state.
-
-```text
-runs/<RUN_ID>/
-├── run.json
-└── artifacts/
-```
-
-Add an event log only when there is a real consumer for an event history (for example recovery after disconnect). Do not create one by default.
-
-The fallback record stores investigation intent and final conclusion. Runtime details such as VM, adapter, PID, timestamps and tool versions should be generated automatically when tooling can provide them rather than hand-maintained by the Agent.
+1. 先记录为一次真实运行事实；
+2. 判断它是环境特例还是可复用问题；
+3. 查成熟方案是否已经解决；
+4. 只有反复出现、通用且长期收益高于维护成本时，才晋升为 Skill 规则或可复用适配器。
