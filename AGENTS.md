@@ -2,7 +2,7 @@
 
 本文件只保存对**所有任务都成立**的仓库级规则。具体可重复工作流放在 Agent Skills 中，避免把长流程永久塞进上下文。
 
-## Mandatory skill usage
+## 强制 Skill 路由
 
 - 当任务涉及稳定 Host 控制不稳定 Windows Guest/VM、snapshot/checkpoint、长任务、Guest 通信、debugger/instrumentation、artifact 收割、安全重试或多 Agent 接手时，**必须使用** `$windows-guest-experiment`：
   - `.agents/skills/windows-guest-experiment/SKILL.md`
