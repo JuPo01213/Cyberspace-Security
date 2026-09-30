@@ -326,7 +326,7 @@ Prompt 行为依赖具体模型、模型版本和投递方式。不同模型可�
 
 只要要声称“这个 Prompt 更好、更稳定、修复了问题”，就转到 [evaluation.md](evaluation.md)。
 
-未经实际测试，只称 candidate prompt。
+未经实际测试，只称 candidate prompt。真实使用中的成功、失败和用户纠正应保存为 Case，见 [cases.md](cases.md)。
 
 ## 当前外部依据
 

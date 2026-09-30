@@ -16,7 +16,7 @@ Skill Construction 回答：
 
 ```text
 1. Capture
-   保存用户指出的具体 Observation / Case
+   把真实使用中的关键事实保存为 Case
 
 2. Reuse / Ownership Check
    先检查已有 Skill、当前项目规则、成熟官方/社区能力
@@ -25,8 +25,7 @@ Skill Construction 回答：
    没有 owner → 继续
 
 3. Abstract
-   Case → Mechanism → General Principle
-   只在经验来源场景需要
+   从 Case 提取可迁移关系；必要时形成 Principle / Workflow
 
 4. Define Capability
    明确这个 Skill 解决什么重复用户目标、哪些请求不属于它
@@ -44,10 +43,10 @@ Skill Construction 回答：
    discovery + execution + boundary + regression / holdout
 
 8. Decide
-   promote / merge / revise / reject
+   keep / merge / revise / reject，然后用 Git 保存变更
 ```
 
-其中 Case/Principle 的抽象规则由 [evolution.md](evolution.md) 和 [evaluation/case-engineering.md](evaluation/case-engineering.md) 提供；本文件负责把它们编排成“形成 Skill”的完整路径。
+Case 的保存、抽象和反馈规则由 [cases.md](cases.md) 提供；本文件只负责编排“是否以及如何形成 Skill”。
 
 ## 先判断：真的需要 Skill 吗
 
@@ -206,3 +205,24 @@ python scripts/validate_skill.py <skill-dir>
 - Harness/Runtime 能力没有被 Skill 文本伪造；
 - Candidate 已经过适当 Evaluation；
 - 未验证内容没有被写成成熟实践。
+
+
+## 使用中持续改进
+
+Skill 发布后不是终点。
+
+真实任务中的成功、失败和用户纠正先保存为 Case，而不是直接改 `SKILL.md`。需要优化时：
+
+```text
+Skill
+→ Use
+→ Case
+→ Candidate change
+→ Evaluation
+→ Skill vNext
+→ Git commit
+```
+
+具体见 [cases.md](cases.md)。
+
+Maintenance / Evolution 只描述最终变更性质，不要求不同流程。

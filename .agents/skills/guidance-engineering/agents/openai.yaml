@@ -1,4 +1,4 @@
 interface:
   display_name: "Guidance Engineering"
-  short_description: "Model behavior, write prompts/examples, build skills, and evaluate guidance"
-  default_prompt: "Model the desired behavior first: define the principle and, when process-dependent, its workflow. Then express it with the minimal useful Prompt and Examples, package it as a Skill only when reuse needs discovery/resources, and validate meaningful changes before promotion."
+  short_description: "Turn experience into prompts, examples, skills, and validated improvements"
+  default_prompt: "Treat the active Skill as compressed guidance and real usage as new Case evidence. Design the minimal useful Prompt, Workflow, Examples, or Skill change, validate meaningful changes, and keep history in Git."

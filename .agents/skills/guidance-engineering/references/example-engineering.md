@@ -35,7 +35,7 @@ Specific Case
 
 不能把原案例删掉人名、路径或品牌后就称为“通用 Example”。
 
-Case → Mechanism 由 [evaluation/case-engineering.md](evaluation/case-engineering.md) 负责；Mechanism → Principle 由 [evolution.md](evolution.md) 负责。
+从真实 Case 到可迁移 Principle 的抽象统一见 [cases.md](cases.md)。
 
 ## 默认先 zero-shot
 
@@ -180,7 +180,7 @@ status: candidate | active | historical
 
 Teaching Example 是教材。
 
-Development / Eval Case 是分析和考试材料，统一由 [evaluation/case-engineering.md](evaluation/case-engineering.md) 管理。
+Usage / Eval Case 统一由 [cases.md](cases.md) 管理。
 
 不能用：
 
