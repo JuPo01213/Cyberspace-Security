@@ -51,6 +51,8 @@ B 不属于 Workflow 专有。若已有正式 Workflow，可直接引用其完�
 
 ### Workflow
 
+Workflow 是独立的行为模型，即使没有独立 reference 也可以作为独立 unit under test：
+
 - 阶段与顺序；
 - 条件分支；
 - 状态传递；

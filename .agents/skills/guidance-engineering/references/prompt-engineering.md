@@ -6,7 +6,7 @@ Prompt Engineering 回答的不是“Prompt 有哪些种类”，而是：
 
 > **给定一个行为目标，具体应该怎样写出一段可投递、可维护、可测试的 Prompt。**
 
-Prompt 可以独立存在，也可以成为 Workflow、Skill、应用或 grader 的一部分。
+Prompt 可以独立存在，也可以表达一个 Principle / Workflow，或成为 Skill、应用与 grader 的一部分。
 
 ## 先区分两个维度
 
@@ -266,80 +266,37 @@ Skill 的 discovery、description、references 和 packaging 由 [skill-building
 1. 目标是否表达错；
 2. 条件或边界是否缺失；
 3. 关键信息是否根本没进入上下文；
-4. 需要把行为组织成明确的 Workflow structure，而不是继续堆零散规则；
+4. 底层行为模型是否其实缺少 Principle / Workflow，而不是措辞不够强；
 5. 需要的是 Example；
 6. 其实是 Tool/Harness/权限问题；
 7. 模型本身在当前条件下是否无法稳定完成。
 
 只修改真正导致偏离的变量。
 
-## 复杂行为：把 Workflow 写进 Prompt
+## 把 Principle / Workflow 编译成 Prompt
 
-Workflow 在本体系里不是独立载体，而是 **Prompt / Skill instructions 的一种组织结构**。当任务出现多阶段、状态、条件分支、工具序列、前后置依赖或失败恢复时，用下面的方法把行为组织清楚。
+Prompt 不负责发明行为模型，而负责把已经明确的 Principle / Workflow 转成模型需要看到的 instructions。
 
-### 1. 先确认是否真的需要流程结构
+### Principle → instruction
 
-只有出现以下情况之一时才引入：
+把 `applies_when → action → boundary` 表达成清晰条件规则，避免把边界丢掉。
 
-- 一个步骤成功不等于整体完成；
-- 后一步取决于前一步结果；
-- 存在会改变动作的状态；
-- 存在条件分支；
-- 存在明确的失败/恢复路径；
-- 需要多个工具或多轮推进。
+### Workflow → instructions
 
-否则继续保持简单 Prompt。
+从 Workflow 中只提取执行时真正需要的信息：
 
-### 2. 划分最少阶段
+- 当前阶段的目标；
+- 进入条件；
+- 需要观察的状态；
+- 分支条件；
+- 可执行动作；
+- completion / failure exit。
 
-只在状态、责任或决策真的发生变化时分阶段。
+不要把完整设计笔记、无消费者的中间状态或作者解释机械塞进 Prompt。
 
-可以暂时用：
+如果 Workflow 很短，可以直接写成顺序/条件 instructions；复杂 Workflow 在 Skill 中可以下沉为按需 reference，但它的行为模型仍来自主 Guidance 设计，而不是由 Prompt 文件重新定义。
 
-```text
-Frame → Acquire → Decide → Act → Verify → Close
-```
-
-帮助思考，但不要把它当固定模板。能删就删，能合就合。
-
-### 3. 每一步只保留会改变行为的信息
-
-对每一步问：
-
-- 输入是什么；
-- 为什么存在；
-- 产生什么可观察结果/状态；
-- 什么条件继续；
-- 什么条件跳过；
-- 什么条件停止；
-- 失败后是否恢复。
-
-没有消费者的状态、日志和中间产物不要因为“流程完整”而加入。
-
-### 4. 按事实分支
-
-写：
-
-```text
-如果已有可信证据满足完成条件
-→ 跳过重复验证
-
-如果关键事实缺失
-→ 获取该事实或返回合法非完成状态
-
-如果风险/恢复要求提高
-→ 增加对应保护和证据
-```
-
-不要按题材、工具名称或“看起来更专业”分支。
-
-### 5. 把 Workflow 编译回 Instructions
-
-最终给模型看的 Prompt 不需要是一篇流程设计文档。只保留模型执行时真正需要的阶段、条件、状态、工具规则和完成/失败出口。
-
-需要示范某个决策或工具轨迹时，调用 [example-engineering.md](example-engineering.md)。
-
-当这套 Workflow 会被长期复用、需要 discovery、references、scripts 或独立资源时，再由 [skill-building.md](skill-building.md) 封装成 Skill。
+需要示范某个决策边界或 tool trajectory 时，再调用 [example-engineering.md](example-engineering.md)。
 
 ## 常见反模式
 

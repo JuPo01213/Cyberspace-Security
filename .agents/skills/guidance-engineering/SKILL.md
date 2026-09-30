@@ -10,68 +10,82 @@ metadata:
 
 # Guidance Engineering
 
-## 核心模型
+## 信息层级
 
-Guidance Engineering 处理六类对象，但它们不处在一条强制流水线上。
-
-### 设计对象
+Guidance Engineering 不按“一个概念一个文件”组织，而按**行为从形成到落地**的层级组织。
 
 ```text
-Prompt
-= 如何把要求表达给模型
-
-Workflow
-= 当行为变复杂时，在 Prompt/Skill 中组织阶段、状态、分支、推进与停止的结构；它不是本 Skill 中独立的知识域
-
-Example
-= 如何用具体示范塑造行为
-
-Skill
-= 如何把相关 Guidance 与资源封装成可发现、可复用能力
-```
-
-### 生命周期
-
-```text
+意图 / 真实经验
+        ↓
+行为模型
+├── Principle
+│   = 什么条件下应该怎样做，以及边界在哪里
+└── Workflow
+    = 当行为具有过程性时，阶段、状态、分支和停止怎样组织
+        ↓
+表达层
+├── Prompt
+│   = 如何用语言把行为模型表达给模型
+└── Example
+    = 如何用具体示范把行为模型具体化
+        ↓
+封装层（可选）
+└── Skill
+    = 把相关 Guidance 与 supporting resources 封装成可发现、可复用能力
+        ↓
 Evaluation
-= 如何测量某个 Prompt / Workflow / Example / Skill 是否真的有效
-
+        ↕
 Evolution
-= 如何根据证据创建、修改、合并、删除或升格 Guidance
 ```
 
-正确关系更接近：
+**概念层级不要求和文件层级一一对应。** Workflow 是独立概念，但当前方法量不足以值得维护独立 reference；它的最小方法保留在主入口。Prompt 负责表达 Workflow，Skill 负责封装 Workflow，二者都不拥有 Workflow 本身的语义。
 
-```text
-行为需求
-├── Prompt                    几乎总会有某种表达
-│   └── Workflow structure    多步/状态/分支复杂时才需要
-├── Example                   示范有独立信息价值时才需要
-└── Skill                     需要可发现、可复用封装时才需要
+## 共同起点：行为要求
 
-任何候选 Guidance
-→ Evaluation
-→ keep / revise / reject
-→ Evolution 维护
-```
-
-不要把它机械理解成“先 Prompt，再 Workflow，再 Skill，最后才能 Eval”。
-
-## 共同起点：先明确要指导什么行为
-
-在选择 Prompt、Workflow、Example 或 Skill 之前，先明确最低充分的行为要求：
+选择任何 Guidance 形式前，先明确最低充分的行为要求：
 
 - **goal**：最终希望发生什么；
-- **scope / conditions**：什么条件下适用；
+- **conditions / scope**：什么条件下适用；
 - **required**：必须发生什么；
 - **prohibited**：当前条件下不能发生什么；
-- **completion evidence**：从哪里看出目标真的完成；
-- **failure / uncertainty**：信息不足、冲突或工具失败时允许怎样结束；
+- **completion evidence**：从哪里观察完成；
+- **failure / uncertainty**：信息不足、冲突或工具失败时怎样合法结束；
 - **environment**：当前模型、Harness、工具和权限真实提供什么。
 
-这是所有 Guidance 的共同输入，不是一个必须长期保存的新文件格式。
+简单行为到这里就可以直接进入 Prompt。
 
-如果行为进一步涉及阶段、状态、依赖、分支或恢复，就在 Prompt Engineering 中使用“复杂行为 / Workflow”方法组织它；不为这个概念单独维护一套参考文件。
+## Principle：条件化行为
+
+Principle 是对行为规律的抽象：
+
+```text
+条件
+→ 应采取 / 避免的行为
+→ 条件变化后的边界或反转
+```
+
+它可以直接来自明确需求，也可以从具体案例经 Mechanism 抽象得到。至少要能回答：什么时候适用、做什么、哪个条件变化后不再适用、不能泛化成什么。
+
+从真实经验提炼 Principle 的方法由 [evolution.md](references/evolution.md) 管理。
+
+## Workflow：过程化行为
+
+只有当正确行为依赖**时间、阶段、状态或前序结果**时，才需要 Workflow。
+
+最小 Workflow 设计只回答五件事：
+
+1. **Goal / completion**：整个流程最终完成什么；
+2. **Stages**：哪些阶段真的有不同职责；
+3. **State / observations**：哪些事实会改变下一步；
+4. **Transitions / branches**：观察到什么后进入哪一步、跳过什么或回退；
+5. **Failure / stop**：什么时候停止、失败、恢复或返回非完成状态。
+
+不要为了“流程完整”增加没有消费者的阶段、日志、状态或产物。
+
+Workflow 是行为模型，不是 Prompt 模板。设计完成后：
+- 由 [prompt-engineering.md](references/prompt-engineering.md) 编译成模型需要看到的 instructions；
+- 若决策或工具轨迹需要示范，由 [example-engineering.md](references/example-engineering.md) 提供 Example；
+- 若需要长期 discovery、references、scripts 或资源封装，由 [skill-building.md](references/skill-building.md) 纳入 Skill。
 
 ## 两条常见工作路径
 
@@ -82,7 +96,7 @@ Evolution
 ```text
 行为要求
 → 写 Prompt
-→ 必要时在 Prompt/Skill 内组织 Workflow
+→ 必要时建立 Workflow 行为模型
 → 必要时加入 Example
 → 如需长期复用则封装 Skill
 → Evaluation
@@ -98,7 +112,7 @@ Specific Observation / Case
 → General Principle Candidate
 → 选择合适的 Guidance 载体
 → 若示范有价值，从 Principle 重新生成 Generic Teaching Example
-→ Candidate Prompt / Skill（其中可包含 Workflow structure）
+→ Candidate Prompt / Skill（可表达或封装 Workflow）
 → 独立 Evaluation
 → merge / promote / revise / reject
 ```
@@ -131,7 +145,7 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 | 对象 | 权威位置 |
 | --- | --- |
 | Prompt 分类、结构、具体写法、上下文组织 | [prompt-engineering.md](references/prompt-engineering.md) |
-| Prompt 内的阶段、状态、分支、依赖、完成/失败路径 | [prompt-engineering.md](references/prompt-engineering.md) 的复杂行为 / Workflow 部分 |
+| Principle / Workflow 的最小行为建模 | 本 `SKILL.md` |
 | Teaching Example / few-shot | [example-engineering.md](references/example-engineering.md) |
 | Skill 能力边界、触发、目录与资源封装 | [skill-building.md](references/skill-building.md) |
 | Observation / Development Case / Eval Case | [evaluation/case-engineering.md](references/evaluation/case-engineering.md) |
@@ -143,7 +157,7 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 ## 路由
 
 - “帮我写/改/审这个提示词” → [prompt-engineering.md](references/prompt-engineering.md)。
-- “这套行为有多步、分支、状态或失败恢复” → [prompt-engineering.md](references/prompt-engineering.md) 的复杂行为 / Workflow 部分。
+- “这套行为有多步、分支、状态或失败恢复” → 使用本 `SKILL.md` 的 Workflow 五项模型，再由 Prompt 或 Skill 落地。
 - “这个规则需要示例才能讲清楚” → [example-engineering.md](references/example-engineering.md)。
 - “这个经验值得固化成 Skill / 帮我创建或重构 Skill” → [skill-building.md](references/skill-building.md)，并按需调用 Evolution / Prompt / Workflow / Example / Evaluation。
 - “从这次真实失败抽象可复用经验” → [evaluation/case-engineering.md](references/evaluation/case-engineering.md) + [evolution.md](references/evolution.md)。
@@ -154,9 +168,9 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 ## 共同原则
 
 - 先解决行为问题，再选择载体。
-- 最小充分：简单 instruction 能解决就不引入流程结构；已有 Skill 能承载就不新建 Skill。
+- 最小充分：简单行为不制造 Workflow；不需要长期复用就不制造 Skill。
 - 成熟方法优先：先检查目标生态当前官方能力、成熟工具和已有资产。
-- 一个语义一个主要 owner。
+- 一个语义一个主要 owner，但概念不因没有独立文件而消失。
 - Evidence 不自动等于 Instruction。
 - 可由 schema、script、test、permission 或 runtime policy 确定性保证的，不长期依赖自然语言提醒。
 - 未经 Evaluation 的新 Guidance 只能称 candidate。

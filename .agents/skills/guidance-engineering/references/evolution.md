@@ -64,7 +64,8 @@ Principle 不一定要变成新 Skill。
 选择最小 owner：
 
 - 一次性表达 → Prompt；
-- 阶段/状态/分支 → Workflow；
+- 行为依赖阶段/状态/分支 → 在 Principle 之上补充 Workflow 行为模型；
+- 用语言落地 → Prompt；
 - 示范比抽象文字更有效 → Example；
 - 已有 Skill 有自然 owner → 修改已有 Skill；
 - 形成稳定独立能力 → Candidate Skill；

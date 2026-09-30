@@ -103,9 +103,16 @@ Skill Construction 回答：
 
 ### Workflow
 
-Workflow 不再维护独立 reference。它是 Prompt / Skill instructions 的复杂行为组织方式。
+Workflow 是 Skill 可以封装的一种**行为模型**，不是 Prompt 的子概念。
 
-当能力存在阶段、状态、分支、依赖、工具序列或失败恢复时，按 [prompt-engineering.md](prompt-engineering.md) 的“复杂行为：把 Workflow 写进 Prompt”部分设计，再决定哪些内容常驻 `SKILL.md`、哪些下沉 reference、哪些交给 script/tool。
+需要阶段、状态、分支、依赖、工具序列或失败恢复时，先按主 `SKILL.md` 的 Workflow 五项模型确定行为结构，再：
+
+- 用 [prompt-engineering.md](prompt-engineering.md) 把执行所需部分写成 instructions；
+- 高频且短的流程可常驻主 `SKILL.md`；
+- 长、低频或分支性流程可下沉 reference；
+- 确定性机械步骤可交给 script/tool。
+
+删除独立 Workflow reference 不意味着删除 Workflow 层。
 
 ### Example
 
@@ -193,7 +200,7 @@ python scripts/validate_skill.py <skill-dir>
 - 新建 Skill 而不是并入已有 owner 有明确理由；
 - description 与实际能力一致；
 - Prompt 不是空洞身份设定；
-- 只有复杂行为才引入 Workflow structure，且没有为它复制第二套规则；
+- 只有行为确实依赖阶段/状态/分支时才引入 Workflow，并保持其行为模型只有一个 owner；
 - Examples 真正增加教学信息；
 - supporting resources 都有消费者；
 - Harness/Runtime 能力没有被 Skill 文本伪造；
