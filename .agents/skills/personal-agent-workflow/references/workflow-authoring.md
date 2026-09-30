@@ -2,7 +2,9 @@
 
 本参考是 `personal-agent-workflow` 内部的工作流设计分支，负责创建、更新、审查、重构和打包可复用工作流；当平台使用 Skill 作为载体时，同时处理 Skill 的结构与兼容要求。
 
-它**不是独立可发现 Skill**。关于 Harness / Runtime 如何选择、排序、压缩和投递上下文，归 `context-engineering.md`；本文件只处理一个工作流被选中后如何组织自身指导、references、scripts、examples/evals 与工具边界。
+它**不是独立可发现 Skill**。本文件只处理一个工作流在已经被宿主发现并加载之后，如何组织自身指导、references、scripts、examples/evals 与工具边界。
+
+宿主如何发现 Skill、决定加载时机、排列其他上下文、压缩历史、维护 memory/state、提供工具和执行权限，属于宿主/Harness/Runtime 的实现边界。本 Skill 只能适配这些既有接口，不能靠自身指令反向改变它们。优先遵循目标平台已经提供的 Skill 结构与能力，不发明只有自定义 Harness 才能实现的伪接口。
 
 ## 默认原则
 
