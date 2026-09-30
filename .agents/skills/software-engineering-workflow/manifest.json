@@ -1,0 +1,198 @@
+{
+  "name": "software-engineering-workflow",
+  "language": "zh-CN",
+  "entry": "SKILL.md",
+  "version": "8",
+  "architecture": {
+    "main_flow": [
+      "Explore",
+      "Design",
+      "Plan",
+      "Baseline",
+      "Implement",
+      "Review",
+      "Accept",
+      "Finish"
+    ],
+    "control_planes": [
+      "Requirement Discovery",
+      "Semantic Integrity",
+      "User Interaction",
+      "Project State"
+    ],
+    "normative_layers": [
+      "Invariant",
+      "Procedure",
+      "Gate"
+    ],
+    "convergence_points": [
+      "Design Freeze",
+      "Working Slice",
+      "Pre-review Reconstruction",
+      "Acceptance"
+    ]
+  },
+  "interaction": {
+    "default_recommendation_selected": true,
+    "exception_driven_review": true,
+    "batch_frontier_questions": true,
+    "supports_uncertain": true,
+    "supports_custom_answer": true,
+    "template": "templates/decision-questionnaire.html"
+  },
+  "semantic_integrity": {
+    "preserve_source_expression": true,
+    "summary_is_not_final_evidence": true,
+    "behavior_reconstruction": true,
+    "project_state_promotion": true,
+    "platform_memory_is_authoritative": false
+  },
+  "design_preferences": {
+    "refactor_over_patch": true,
+    "backward_compatibility_default": false,
+    "compatibility_requires_real_consumer": true,
+    "remove_legacy_paths_after_migration": true,
+    "optimize_for_elegance_and_single_source_of_truth": true
+  },
+  "files": [
+    "README.md",
+    "SKILL.md",
+    "SOURCES.md",
+    "manifest.json",
+    "references/acceptance.md",
+    "references/code-review.md",
+    "references/debugging.md",
+    "references/decision-questionnaire.md",
+    "references/finishing.md",
+    "references/foundations.md",
+    "references/git-and-workspaces.md",
+    "references/implementation-planning.md",
+    "references/implementation.md",
+    "references/project-state.md",
+    "references/requirements-and-decisions.md",
+    "references/research-and-prototyping.md",
+    "references/semantic-integrity.md",
+    "references/software-design.md",
+    "references/user-communication.md",
+    "templates/decision-questionnaire.html"
+  ],
+  "router": {
+    "owner": "SKILL.md",
+    "strategy": "primary_route_plus_event_triggers",
+    "preload_all_references": false,
+    "primary_routes": [
+      "small_change",
+      "feature",
+      "bug_regression_performance",
+      "refactor_architecture",
+      "research_prototype"
+    ],
+    "event_triggers": [
+      "user_decision",
+      "batch_decisions",
+      "semantic_drift",
+      "fact_or_design_unknown",
+      "workspace_risk",
+      "durable_state",
+      "workflow_meta"
+    ],
+    "loading_policy": "stage_triggered_progressive_disclosure",
+    "reference_read_rule": "read_only_when_stage_or_event_fires"
+  },
+  "markdown_files": [
+    "README.md",
+    "SKILL.md",
+    "SOURCES.md",
+    "references/acceptance.md",
+    "references/code-review.md",
+    "references/debugging.md",
+    "references/decision-questionnaire.md",
+    "references/finishing.md",
+    "references/foundations.md",
+    "references/git-and-workspaces.md",
+    "references/implementation-planning.md",
+    "references/implementation.md",
+    "references/project-state.md",
+    "references/requirements-and-decisions.md",
+    "references/research-and-prototyping.md",
+    "references/semantic-integrity.md",
+    "references/software-design.md",
+    "references/user-communication.md"
+  ],
+  "reference_files": [
+    "references/acceptance.md",
+    "references/code-review.md",
+    "references/debugging.md",
+    "references/decision-questionnaire.md",
+    "references/finishing.md",
+    "references/foundations.md",
+    "references/git-and-workspaces.md",
+    "references/implementation-planning.md",
+    "references/implementation.md",
+    "references/project-state.md",
+    "references/requirements-and-decisions.md",
+    "references/research-and-prototyping.md",
+    "references/semantic-integrity.md",
+    "references/software-design.md",
+    "references/user-communication.md"
+  ],
+  "git": {
+    "initialize_on_skill_load": true,
+    "local_nondestructive_operations_authorized": true,
+    "destructive_or_remote_side_effects_require_separate_basis": true,
+    "working_tree_is_current_truth": true,
+    "history_via_commits_not_versioned_copies": true,
+    "logical_commit_discipline": true,
+    "adr_managed_by_git": true
+  },
+  "quality": {
+    "design_vocabulary": [
+      "module",
+      "interface",
+      "depth",
+      "seam",
+      "adapter",
+      "locality",
+      "leverage"
+    ],
+    "design_it_twice_for_high_cost_interfaces": true,
+    "review_axes": [
+      "spec_behavior",
+      "correctness_bug_hunt",
+      "design_maintainability",
+      "test_verification",
+      "behavioral_discovery",
+      "risk_specialists"
+    ],
+    "fresh_review_context_preferred": true,
+    "fowler_smell_baseline": true,
+    "design_review_before_plan_for_medium_high_risk": true,
+    "nfr_and_risk_as_design_inputs": true,
+    "reviewability_as_quality_attribute": true,
+    "baseline_and_diff_security_review": true,
+    "repo_ecosystem_standards_discovery": true,
+    "review_learning_loop": true
+  },
+  "state_management": {
+    "static_policy_in_project_instruction_adapter": true,
+    "durable_state_path": ".agent/state/",
+    "continuation_checkpoint_path": ".agent/runtime/CONTINUATION.md",
+    "event_driven_sync": true,
+    "context_pressure_runtime_enhancement": true,
+    "memory_promotion_required": true,
+    "single_giant_handoff_forbidden": true,
+    "index_is_navigation_only": true,
+    "semantic_sharding_required_when_large": true,
+    "continuation_replace_in_place": true,
+    "continuation_append_only_forbidden": true,
+    "session_start_reads_index_then_relevant_shards": true,
+    "default_budgets_bytes": {
+      "instruction_protocol": 8192,
+      "state_index": 12288,
+      "continuation_or_workstream": 16384,
+      "durable_shard_target": 24576,
+      "durable_shard_split_before": 32768
+    },
+    "hierarchical_index_when_root_index_large": true
+  }
+}
