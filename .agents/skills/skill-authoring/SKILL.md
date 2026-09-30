@@ -26,6 +26,24 @@ description: 创建、更新、审查或重构 Agent/Codex Skill。用于从真�
 
 需要判断一条经验该停留在哪里、何时升格时，读取 [experience-to-guidance.md](references/experience-to-guidance.md)。
 
+### 默认聚合，避免 Skill 碎片化
+
+不要为了“模块化”把紧密相关的方法、阶段和子能力拆成大量独立 Skill。
+
+优先采用：
+
+```text
+一个主 SKILL.md
+→ 负责发现、共享约束和路由
+→ 按当前任务、阶段或事件读取 references
+```
+
+当多部分能力经常共同出现、共同维护、共享上下文或拆开后只会增加发现与同步成本时，优先聚合到同一个 Skill 内部。
+
+只有在独立后能明显降低上下文污染、耦合、维护复杂度，或它已经形成明显独立的用户任务与工具/知识体系时，才考虑新建独立 Skill。
+
+不要把“工作流不同”“成功条件不同”机械理解成必须拆 Skill；先判断是否可以由主入口安全、清晰地路由。
+
 ### Skill 约束语义，不追求流程外观
 
 优先写稳定目标、判断边界和后置条件，不把某次事故的修复动作机械复制成所有任务的固定序列。
@@ -76,7 +94,7 @@ description: 创建、更新、审查或重构 Agent/Codex Skill。用于从真�
 - 哪些 supporting files 需要按条件读取；
 - 哪些实时数据、认证、授权和副作用动作属于工具/MCP，而不是 Skill 本身。
 
-如果多个工作流具有不同触发、输入或成功条件，优先拆 Skill，而不是塞进一个大入口。
+多个相关工作流可以由同一个主 Skill 路由。只有当聚合导致明显误触发、不可控上下文加载、维护冲突或跨域污染时，再拆分。
 
 ### 3. 规划 reusable resources
 
@@ -136,7 +154,23 @@ MCP / 工具负责：实时数据、认证、授权和受控动作。
 
 examples 与 evals 分开。需要筛选 canonical examples、设计 cross-carrier eval 或做 ablation 时，读取 [examples-and-evals.md](references/examples-and-evals.md)。
 
-### 8. 验证
+### 8. 混同进化：主动吸收其他 Skill 的有效机制
+
+更新 Skill 时，不只查看目标 Skill 自己的历史。若仓库存在其他成熟或正在演进的 Skill，检查其中是否已经出现与当前问题相关的：
+
+- 稳定判断原则；
+- 失败机制；
+- 路由方法；
+- progressive disclosure 结构；
+- evidence / completion 规则；
+- evaluation / regression 方法；
+- 工具边界或安全边界。
+
+需要进行跨 Skill 迁移、互证或同步时，读取 [mixed-evolution.md](references/mixed-evolution.md)。
+
+混同进化共享的是**机制与证据**，不是要求所有 Skill 使用相同措辞、目录或完整流程。
+
+### 9. 验证
 
 先运行结构检查：
 
@@ -154,18 +188,18 @@ python scripts/validate_skill.py <skill-dir>
 
 区分两类失败：
 
-- 触发错误 → 优先改 description / 作用域；
+- 触发错误 → 优先改 description / 路由 / 作用范围；
 - 触发正确但执行错误 → 改 instruction / reference / example / script / adapter。
 
 测试可观察行为和真正的不变量，不要只匹配固定措辞。
 
-### 9. 安全与打包
+### 10. 安全与打包
 
 第三方 Skill、带脚本的 Skill、可联网 Skill 或高影响动作，在发布/共享前读取 [security-review.md](references/security-review.md)。
 
 如果需要上传、版本化、Plugin 打包或公开提交，读取 [packaging-and-release.md](references/packaging-and-release.md)。不要把本地仓库能运行等同于已经满足发布要求。
 
-### 10. 从真实使用迭代
+### 11. 从真实使用迭代
 
 真实运行首先产生证据，而不是直接产生规则：
 
@@ -173,9 +207,10 @@ python scripts/validate_skill.py <skill-dir>
 真实任务
 → observation / problem slice
 → 可复用经验或假设
-→ 跨情境验证 / 反例 / eval
+→ 跨任务 / 跨 Skill 互证
+→ 反例 / eval
 → 稳定执行指导
-→ Skill
+→ 进入最合适的 Skill / reference
 → 真正机械的不变量进入 script / test / lint / CI
 ```
 
@@ -189,13 +224,15 @@ python scripts/validate_skill.py <skill-dir>
 - 没把一次失败修复写成所有任务的固定流程；
 - 没把二手整理误标为官方或成熟实践；
 - 没重复已有成熟工具或工作流；
+- 没为了形式模块化制造不必要的新 Skill；
 - description 能区分该触发和不该触发的请求；
 - 每条核心指令都能说明何时改变行为；
 - supporting files 都有明确读取条件；
 - tool/MCP 与 Skill 的职责没有混淆；
 - examples 与 instructions 一致，eval 不只复用教学题；
+- 跨 Skill 借来的机制已按目标 Skill 语境重新验证；
 - 新增或修改脚本已实际运行验证；
 - 敏感动作仍受授权、审批和工具权限约束；
-- 修改已有 Skill 时没有破坏调用者、作用域和已有权限边界。
+- 修改已有 Skill 时没有破坏调用者、作用范围和已有权限边界。
 
 优先用 Git 保留修改历史；提交说明准确标明修改的是 Skill guidance、reference、example、eval、script 还是项目知识，不夸大验证程度。
