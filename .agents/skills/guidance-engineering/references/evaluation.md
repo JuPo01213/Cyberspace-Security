@@ -26,6 +26,34 @@ R = compare(B, T)
 
 关键观察缺失时只能是 `unmeasured`，不能猜测通过或失败。
 
+## 验证的是 Principle，不是 Example
+
+当一次 Guidance 修改来源于经验抽象时，Evaluation 的目标是判断 **general principle 是否在适用边界内成立**。
+
+不要把：
+
+```text
+Generic Teaching Example
+→ 模型复述正确
+```
+
+当成泛化证据。
+
+至少把验证拆成：
+
+```text
+Principle applies
+→ 独立 concrete case 应遵守
+
+Principle boundary changes
+→ 独立 boundary case 应反转/减弱
+
+Carrier changes
+→ cross-carrier case 仍保持同一条件逻辑
+```
+
+如果只在教学 Example 或其近重复版本上通过，最多证明模型记住了示范。
+
 ## Case 来源
 
 测试材料统一由 [evaluation/case-engineering.md](evaluation/case-engineering.md) 管理。

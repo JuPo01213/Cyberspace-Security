@@ -83,18 +83,67 @@ failure condition
 
 用于工具失败、证据不足、冲突或缺失信息。
 
-## 从 Case 变成 Teaching Example
+## 从 Principle 生成 Generic Teaching Example
 
-原始事件的抽象、去噪、mechanism 提取和 case card 统一由 [evaluation/case-engineering.md](evaluation/case-engineering.md) 完成。
+Teaching Example 的直接语义来源应该是**已经明确的 Principle Candidate**，而不是具体事故本身。
 
-把一个 development case 转成 Teaching Example 时，只做四件事：
+推荐链条：
 
-1. 指定**唯一主要教学变量**；
-2. 删除与该变量无关的题材、风格和偶然步骤；
-3. 若规则有反转条件，加入或选择对应 boundary partner；
-4. 渲染成目标 Prompt/Skill 能直接使用的最小示范。
+```text
+Specific Case
+→ Mechanism
+→ General Principle
+→ Generic Teaching Example
+```
 
-Example 不保存完整事故史。
+Case Engineering 负责 Specific Case → Mechanism；Evolution 负责 Mechanism → General Principle；Example Engineering 只负责 **Principle → Teaching Example**。
+
+这样做的目的，是阻断案例偶然细节进入长期教学资产。
+
+### Generic 不等于“匿名化”
+
+错误方法：
+
+```text
+原案例：移动 photo.jpg 时做了多余 SHA-256
+→ 把 photo.jpg 改成 file.txt
+→ 当作通用例
+```
+
+这仍然只是原案例的换皮。
+
+正确方法是先得到原则：
+
+```text
+验证强度应由风险、可逆性和真实消费者决定
+```
+
+然后从原则重新构造一个新载体：
+
+```text
+低风险：把临时草稿复制到个人目录，无审计消费者
+→ 最低充分确认
+
+高风险边界：发布生产配置，需要审计与可恢复
+→ 增加完整性与恢复证据
+```
+
+这里教的是原则的条件结构，而不是“文件移动”这个题材。
+
+## 从 Principle 变成 Teaching Example
+
+进入本文件前，应已经有一个 principle candidate。若手上只有具体事故，先回 [evaluation/case-engineering.md](evaluation/case-engineering.md) 抽 mechanism，再由 [evolution.md](evolution.md) 提炼原则。
+
+从 Principle 生成 Example 时：
+
+1. 指定原则中唯一要教学的决策关系；
+2. 主动选择与源案例不同的中性或替代载体；
+3. 保留 `applies_when / action / boundary` 的结构；
+4. 对条件性原则优先生成 boundary pair；
+5. 删除不影响原则的风格、字段和步骤；
+6. 渲染成目标 Prompt/Skill 能直接使用的最小示范。
+
+Example 不保存完整事故史，也不承担“证明原则正确”的职责。
 
 ## Example 设计记录
 
@@ -113,7 +162,8 @@ irrelevant_features:
 boundary_partner: 可为空
 forbidden_generalization:
   - 不能从此例推出什么
-source_case: 可为空
+source_principle: PRINCIPLE-...
+source_case: 仅用于追溯证据，可为空
 status: candidate | active | historical
 ```
 

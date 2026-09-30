@@ -52,6 +52,96 @@ observation/case
 
 只修改真正拥有该语义的层。
 
+## 从具体案例到通用原则
+
+Evolution 拥有“经验升格为通用原则”的过程。
+
+正确链条不是：
+
+```text
+具体失败
+→ 把失败改写成一条新规则
+```
+
+而是：
+
+```text
+具体案例
+→ mechanism candidate
+→ 找相邻案例 / 反例
+→ general principle candidate
+→ generic teaching example
+→ 独立 eval
+→ active guidance
+```
+
+### 1. 从具体案例抽出机制
+
+读取 Case Engineering 已经产出的 mechanism candidate。先确认真正决定行为的是条件关系，而不是题材、品牌、工具或偶然步骤。
+
+### 2. 从机制提炼原则
+
+General Principle 必须至少包含：
+
+```yaml
+principle: 要指导的通用行为
+applies_when:
+  - 哪些事实成立时适用
+action:
+  - 应采取或避免什么
+boundary:
+  - 哪些关键条件变化后原则应减弱、反转或停止适用
+evidence:
+  - 什么观察支持该原则
+forbidden_generalization:
+  - 绝不能把它扩大成什么
+```
+
+原则必须比原案例更抽象，但仍然保留决定行为的条件。
+
+例如从：
+
+```text
+移动几张普通图片时，Agent 自动生成哈希、备份和审计报告
+```
+
+不应直接得到：
+
+```text
+不要做额外验证
+```
+
+而应得到类似：
+
+```text
+当任务低风险、可逆，且不存在审计/恢复消费者时，
+验证应保持最低充分；
+当风险、恢复要求或消费者改变时，提高验证强度。
+```
+
+### 3. 用原则重新生成通用教学案例
+
+原则形成后，交给 [example-engineering.md](example-engineering.md) **重新构造** Generic Teaching Example。
+
+不要简单把源案例匿名化。优先换掉原领域与载体，只保留原则需要的决策结构。
+
+这样可以检验：我们到底提炼出了原则，还是只学会了“那次图片移动事故”。
+
+### 4. 再回到具体世界验证
+
+Generic Teaching Example 用来教，不用来证明。
+
+由 [evaluation.md](evaluation.md) 使用：
+
+- 原领域但不同具体输入；
+- 不同领域 / cross-carrier 输入；
+- 原则应生效案例；
+- 原则应释放或反转的 boundary case；
+
+验证原则本身，而不是验证教学例子能否被复述。
+
+只有经过这一步，principle candidate 才有资格进入活动 Guidance。
+
 ## Observation 不自动拥有指令权
 
 一条经验要成为长期 Guidance，至少需要：

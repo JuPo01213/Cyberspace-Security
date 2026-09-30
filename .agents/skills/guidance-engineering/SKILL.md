@@ -46,6 +46,27 @@ Prompt Engineering
 
 Example Engineering 是横切能力，不是第六层；它可以服务 Prompt、Workflow 和 Skill，但教学 Example 与测试 Case 必须分离。
 
+## 从具体经验到通用指导
+
+本 Skill 的长期知识形成遵循一条明确的抽象链：
+
+```text
+具体 Observation / Case
+→ 抽象出可迁移 Mechanism
+→ 提炼成带条件与边界的 General Principle
+→ 从 Principle 重新生成 Generic Teaching Example
+→ 用不同载体的独立 Case 验证
+→ 验证成立后写入唯一 Guidance owner
+```
+
+关键要求：
+
+- **案例不是原则。** 一个具体事故只能提供证据和候选机制。
+- **机制不是原则。** 机制描述“为什么发生”，原则还必须说明“什么条件下应该怎么做，以及何时反转”。
+- **通用 Example 应从原则重新构造。** 不应只是把原案例删掉品牌名、路径和人名后继续使用。
+- **教学 Example 不能证明原则。** 原则必须由没有进入教学上下文的独立案例验证。
+- **抽象要双向检查。** 既要避免保留原案例偶然细节，也要避免抽象过度，把局部经验写成无限适用的 universal rule。
+
 ## 与 Harness / Runtime 的边界
 
 Harness / Runtime 提供上下文装配、工具暴露、状态、sandbox、Skill discovery/loading 和执行循环等运行机制。
@@ -73,7 +94,7 @@ Guidance 可以影响模型**如何使用已有能力**，但不能仅靠文本�
 | Skill 能力边界、目录与资源封装 | [skill-building.md](references/skill-building.md) |
 | Development/Eval Case | [evaluation/case-engineering.md](references/evaluation/case-engineering.md) |
 | 测量、baseline/variant、判定 | [evaluation.md](references/evaluation.md) |
-| 经验升格、修改、回归后的采纳 | [evolution.md](references/evolution.md) |
+| 从具体证据抽象通用原则、经验升格、修改与采纳 | [evolution.md](references/evolution.md) |
 
 其他文件只能引用，不重复定义。
 

@@ -26,6 +26,27 @@ Case Engineering 管理**Development Case 与 Eval Case**。
 
 只有有稳定消费者、可观察判定标准，并能改变 keep/reject/revise 决策时，才值得进入长期回归集。
 
+## 从具体 Case 抽象 Mechanism
+
+Case Engineering 的最高产物不是“通用规则”，而是**可供进一步升格的机制候选**。
+
+```text
+具体 Observation
+→ Development Case
+→ 去除偶然噪声
+→ Mechanism Candidate
+```
+
+Mechanism Candidate 应回答：
+
+- 哪些输入条件真正改变了行为？
+- 哪个动作/判断发生了偏离？
+- 偏离和条件之间是什么关系？
+- 换掉品牌、文件名、领域对象后，这个关系是否仍成立？
+- 哪些条件一变，原结论就可能不成立？
+
+此处停止。不要在 Case Engineering 内直接宣布“因此以后都应该怎样做”。从 mechanism 到 general principle 的升格由 [../evolution.md](../evolution.md) 负责。
+
 ## 从 Observation 到 Case
 
 1. 保存原始目标、上下文、实际轨迹和影响。
@@ -33,7 +54,8 @@ Case Engineering 管理**Development Case 与 Eval Case**。
 3. 提取唯一主要机制：跳过、提前、替换、假完成、范围漂移、条件误判等。
 4. 去除不会改变决策的项目专名、品牌和偶然参数。
 5. 保留真正决定行为的权限、风险、可逆性、阶段、消费者、已有证据和完成条件。
-6. 根据用途生成 development case 或 eval case。
+6. 写出 mechanism candidate，并明确它仍然只是候选解释。
+7. 根据用途生成 development case 或 eval case。
 
 若要把其中某个机制用于教学，再交给 [../example-engineering.md](../example-engineering.md)，不要直接把完整事故复制进生产 Prompt。
 
@@ -43,7 +65,8 @@ Case Engineering 管理**Development Case 与 Eval Case**。
 id: CASE-...
 purpose: 这个 case 要测或分析什么
 source: real-observation | synthetic | derived
-contract_ref: 对应 behavior contract / requirement
+mechanism_candidate: 从该具体案例抽出的候选机制
+contract_ref: 若作为 eval case，对应 behavior contract / principle
 input: 可实际投递的输入
 critical_conditions:
   - 会改变正确决策的条件
