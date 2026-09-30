@@ -44,7 +44,7 @@ Evolution 负责在有证据、有消费者和有唯一归属的前提下修改�
 - **模型能力**：在表达、输入和执行条件都稳定后仍不能完成。
 - **用户契约**：目标、范围或完成证据本身尚未确定。
 
-只有第一类问题默认生成 Prompt/Skill 变体；其他问题转交对应组件，不用文字堆叠掩盖。
+只有第一类问题默认生成 Prompt/Workflow/Skill 变体；其他问题转交对应组件，不用文字堆叠掩盖。
 
 ## 单一维护问题
 
@@ -106,7 +106,7 @@ unverified_scope
 
 ```json
 {
-  "schema": "personal-agent-workflow/feedback-v1",
+  "schema": "guidance-engineering/feedback-v1",
   "feedback_id": "fb-001",
   "source_run_id": "run-001",
   "source_assessment_id": "assessment-001",

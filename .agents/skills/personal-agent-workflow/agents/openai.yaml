@@ -1,4 +1,0 @@
-interface:
-  display_name: "Personal Agent Workflow"
-  short_description: "Design, evaluate, and evolve reusable Agent workflows"
-  default_prompt: "Design or improve this Agent workflow using the relevant internal references, while staying within the host platform's actual Skill capabilities."

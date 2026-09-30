@@ -1,8 +1,8 @@
-# 工作流编写与 Skill 载体
+# Skill Construction
 
-本参考是 `personal-agent-workflow` 内部的工作流设计分支，负责创建、更新、审查、重构和打包可复用工作流；当平台使用 Skill 作为载体时，同时处理 Skill 的结构与兼容要求。
+本参考负责把已经设计清楚的 Prompt、Workflow、知识与支持资源封装成可发现、可复用的 Skill，并处理创建、更新、审查、重构和打包。
 
-它**不是独立可发现 Skill**。本文件只处理一个工作流在已经被宿主发现并加载之后，如何组织自身指导、references、scripts、examples/evals 与工具边界。
+它**不是独立可发现 Skill**。进入本分支前，应先用 [prompt-engineering.md](prompt-engineering.md) 明确 instruction 如何表达，并在需要多步行为时用 [workflow-design.md](workflow-design.md) 明确行为结构。Skill Construction 不从文件格式开始，而从能力边界开始。
 
 宿主如何发现 Skill、决定加载时机、排列其他上下文、压缩历史、维护 memory/state、提供工具和执行权限，属于宿主/Harness/Runtime 的实现边界。本 Skill 只能适配这些既有接口，不能靠自身指令反向改变它们。优先遵循目标平台已经提供的 Skill 结构与能力，不发明只有自定义 Harness 才能实现的伪接口。
 
@@ -12,7 +12,7 @@
 
 若领域已有官方工具、标准、成熟工作流、框架或社区方案，先调查再决定是否自建。不要因为模型能手写，就跳过成熟能力。
 
-区分来源权威，不把二次整理称为官方，不把一次本地成功称为成熟实践。需要调研、选型或判断来源时，读取 [research-and-reuse.md](workflow-authoring/research-and-reuse.md)。
+区分来源权威，不把二次整理称为官方，不把一次本地成功称为成熟实践。需要调研、选型或判断来源时，读取 [research-and-reuse.md](skill-building/research-and-reuse.md)。
 
 ### 区分知识与指令
 
@@ -23,7 +23,7 @@
 - 单次 problem slice、单个项目故障或一次成功实现，不自动升级为通用 Skill 规则。
 - 经验值得复用但尚未证明普适时，优先留在项目知识、research、design docs 或 reference 中。
 
-需要判断一条经验该停留在哪里、何时升格时，读取 [experience-to-guidance.md](workflow-authoring/experience-to-guidance.md)。
+需要判断一条经验该停留在哪里、何时升格时，读取 [experience-to-guidance.md](skill-building/experience-to-guidance.md)。
 
 ### 默认聚合，避免 Skill 碎片化
 
@@ -64,7 +64,20 @@
 - `assets/`：最终产出需要复制/转换的模板和素材；
 - `agents/openai.yaml`：Skill 的界面元数据，以及需要时声明工具依赖。
 
-当前 OpenAI 结构、trigger、MCP 边界和 bundle 要求见 [official-structure.md](workflow-authoring/official-structure.md)。
+当前 OpenAI 结构、trigger、MCP 边界和 bundle 要求见 [official-structure.md](skill-building/official-structure.md)。
+
+## Skill 的能力边界
+
+Skill 的核心问题不是“这个目录里放什么文件”，而是：
+
+- 它代表什么可复用能力；
+- 哪类用户目标应该触发；
+- 哪些 Prompt / Workflow 是这项能力共享的；
+- 哪些知识和资源只在特定分支需要；
+- 哪些确定性动作应交给 script/tool；
+- 哪些能力属于 Harness/Runtime，不能由 Skill 伪造。
+
+只有这些问题稳定后，才进入具体文件结构。
 
 ## 创建或更新流程
 
@@ -81,7 +94,7 @@
 
 如果仓库已有相关 Skill、problem slices、review、eval、历史版本或真实运行记录，先读取最相关材料，不从空白假设开始。
 
-### 2. 定义 workflow boundary
+### 2. 定义 capability / workflow boundary
 
 写清：
 
@@ -117,9 +130,11 @@ python scripts/init_skill.py <skill-name> --path <parent-dir> [--resources refer
 
 已有 Skill 不要重新初始化；先检查现有调用者、references、scripts、assets、tool dependencies 和权限边界。
 
-结构要求和当前 OpenAI 兼容注意事项见 [official-structure.md](workflow-authoring/official-structure.md)。
+结构要求和当前 OpenAI 兼容注意事项见 [official-structure.md](skill-building/official-structure.md)。
 
 ### 5. 写最小有效指令
+
+正文 instruction 的具体写法遵循 [prompt-engineering.md](prompt-engineering.md)。如果行为已经涉及阶段、状态、分支和停止条件，先遵循 [workflow-design.md](workflow-design.md)。
 
 `description` 是主要发现/触发入口。把“它做什么、哪些用户目标或条件应该触发它”写进 description；不要只在 body 里写 when-to-use。
 
@@ -143,7 +158,7 @@ MCP / 工具负责：实时数据、认证、授权和受控动作。
 
 如果 Skill 依赖 MCP，按目标运行环境在 `agents/openai.yaml` 声明 dependency；dependency 只保证工具可用，不能替代清晰 workflow instructions。
 
-详细边界和审查见 [official-structure.md](workflow-authoring/official-structure.md) 与 [security-review.md](workflow-authoring/security-review.md)。
+详细边界和审查见 [official-structure.md](skill-building/official-structure.md) 与 [security-review.md](skill-building/security-review.md)。
 
 ### 7. Examples 只解决规则难以稳定表达的行为
 
@@ -151,7 +166,7 @@ MCP / 工具负责：实时数据、认证、授权和受控动作。
 
 普通校准优先使用简洁 **input → desired output**。只有错误答案表面也合理、边界难以纯文字表达时，再使用 contrastive example。
 
-examples 与 evals 分开。需要筛选 canonical examples、设计 cross-carrier eval 或做 ablation 时，读取 [examples-and-evals.md](workflow-authoring/examples-and-evals.md)。
+examples 与 evals 分开。需要筛选 canonical examples、设计 cross-carrier eval 或做 ablation 时，读取 [examples-and-evals.md](skill-building/examples-and-evals.md)。
 
 
 ### 8. 验证
@@ -179,9 +194,9 @@ python scripts/validate_skill.py <skill-dir>
 
 ### 9. 安全与打包
 
-第三方 Skill、带脚本的 Skill、可联网 Skill 或高影响动作，在发布/共享前读取 [security-review.md](workflow-authoring/security-review.md)。
+第三方 Skill、带脚本的 Skill、可联网 Skill 或高影响动作，在发布/共享前读取 [security-review.md](skill-building/security-review.md)。
 
-如果需要上传、版本化、Plugin 打包或公开提交，读取 [packaging-and-release.md](workflow-authoring/packaging-and-release.md)。不要把本地仓库能运行等同于已经满足发布要求。
+如果需要上传、版本化、Plugin 打包或公开提交，读取 [packaging-and-release.md](skill-building/packaging-and-release.md)。不要把本地仓库能运行等同于已经满足发布要求。
 
 ### 10. 从真实使用迭代
 

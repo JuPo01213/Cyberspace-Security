@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guidance Engineering"
+  short_description: "Design prompts, workflows, skills, evaluations, and their evolution"
+  default_prompt: "Design or improve the relevant guidance asset: start with Prompt Engineering, add Workflow structure when needed, package as a Skill only when reuse justifies it, and validate changes with evidence."
