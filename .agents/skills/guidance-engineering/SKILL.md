@@ -83,6 +83,14 @@ Prompt 不是单一类型。至少区分：
 
 需要设计、改写、分类或审查 Prompt 时读取 [prompt-engineering.md](references/prompt-engineering.md)。
 
+## 横切能力：Example Engineering
+
+Example 不是装饰，也不只是输出格式样例。它通过具体输入与期望行为，把抽象规则压缩成模型可模仿的行为模式，因此会同时影响 Prompt、Workflow、Skill 与 Evaluation。
+
+当抽象 instruction 不足以稳定表达行为、边界或工具轨迹时，读取 [example-engineering.md](references/example-engineering.md)。
+
+Example 仍然不是第六层：它是贯穿五层的行为资产。它可以用于教学，但不能同时充当唯一考试题；教学 example、开发调试 case 与留出 eval 必须区分。
+
 ## 第二层：Workflow Design
 
 Workflow 关注行为如何展开：阶段、状态、分支、依赖、失败出口、验证和停止条件。
@@ -146,6 +154,7 @@ Skill Construction 必须以 Prompt 与 Workflow 的设计结果为输入，而�
 - `SKILL.md`：五层主模型、共享边界与路由。
 - `references/prompt-engineering.md`：Prompt 类型、设计原则与书写方法。
 - `references/workflow-design.md`：行为契约、阶段、状态、分支和完成门。
+- `references/example-engineering.md`：Example 的选择、构造、边界、few-shot、对照设计、放置、ablation 与防过拟合。
 - `references/skill-building.md`：把 Prompt + Workflow + supporting resources 封装为 Skill。
 - `references/skill-building/`：Skill 结构、复用、安全、examples/evals、发布等专项资料。
 - `references/evaluation.md`：行为评估、baseline/variant、回归与证据。

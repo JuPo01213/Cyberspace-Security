@@ -88,9 +88,11 @@ Prompt 是指导工程的基础，但不是全部指导工程。Prompt 可以独
 
 ### Few-shot / Examples
 
-Few-shot 不是独立消息角色，而是一种行为塑造手段。
+Few-shot 不是独立消息角色，而是一种行为塑造手段。Example 会把“应该怎样做”从抽象规则变成可模仿的具体行为，因此它往往比同长度的解释性文字拥有更强的行为牵引力。
 
-只有当抽象 instruction 难以稳定表达边界时才加入。示例越强，越要注意模仿、过拟合和对无关风格的携带。
+默认先尝试清晰的 zero-shot instruction；当模型仍然在格式、边界判断、工具轨迹或相邻概念上不稳定时，再加入最小充分 examples。
+
+不要在这里凭直觉堆例子。Example 的选择、构造、对照、边界、排列、ablation 和 eval 隔离统一遵循 [example-engineering.md](example-engineering.md)。
 
 ## Prompt 的基本结构
 
@@ -158,6 +160,16 @@ consumer: 谁使用结果
 如果某条要求能够由 schema、script、test、permission、runtime policy 或工具端校验确定性保证，优先交给这些机制。
 
 Prompt 适合指导模型决策，不适合伪装成权限系统。
+
+## Example 与 Prompt 的关系
+
+Instruction 主要表达显式规则；Example 主要展示规则在具体输入上的实例化。二者应一致，但不能互相替代：
+
+- 能用短规则稳定表达的行为，不为了“更强”机械加入 example；
+- 难以通过抽象规则表达的边界，可以用 demonstration / boundary / contrastive example；
+- 工具调用和多阶段行为若需要示范，可以展示**可观察动作轨迹**，不要依赖不可验证的内部推理文本；
+- example 中出现的风格、字段、步骤和题材都会成为潜在模仿信号，必须去除无关特征；
+- example 与 instruction 冲突时，不假设模型会自动理解“哪个才是真的”，先消除冲突。
 
 ## 从简单 Prompt 到 Workflow
 

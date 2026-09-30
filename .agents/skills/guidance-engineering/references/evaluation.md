@@ -4,6 +4,8 @@
 
 Evaluation 负责回答“当前行为是否满足冻结契约”，而不是给输出外观打分或证明规则文字看起来专业。评估必须有消费者：它要决定是否保留 Prompt/Skill 变体、是否修复 harness、是否报告回归或是否停止调查。
 
+**Teaching examples 与 eval cases 必须分离。** Example 用来教，eval 用来测。被放进生产 Prompt / Skill 的 example 不能同时作为唯一验收题；需要验证 example 的泛化时，使用留出 case、边界变体或 cross-carrier case。Example 的构造与 ablation 见 [example-engineering.md](example-engineering.md)。
+
 ## 五个变量
 
 运行前固定：

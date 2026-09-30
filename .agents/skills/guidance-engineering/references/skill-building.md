@@ -160,13 +160,18 @@ MCP / 工具负责：实时数据、认证、授权和受控动作。
 
 详细边界和审查见 [official-structure.md](skill-building/official-structure.md) 与 [security-review.md](skill-building/security-review.md)。
 
-### 7. Examples 只解决规则难以稳定表达的行为
+### 7. 设计与放置 Examples
 
-模型已经能稳定做到的事情，不为了“有 Few-shot”而加 examples。
+Example 是跨 Prompt、Skill 和 Evaluation 的核心行为资产，不在 Skill Construction 内重复维护一套独立方法论。
 
-普通校准优先使用简洁 **input → desired output**。只有错误答案表面也合理、边界难以纯文字表达时，再使用 contrastive example。
+需要决定是否加入 example、选择 demonstration / boundary / contrastive / trajectory 类型、抽象真实失败、控制无关特征、安排 example set、做 ablation 或防止 eval leakage 时，读取 [example-engineering.md](example-engineering.md)。
 
-examples 与 evals 分开。需要筛选 canonical examples、设计 cross-carrier eval 或做 ablation 时，读取 [examples-and-evals.md](skill-building/examples-and-evals.md)。
+Skill 层只额外决定**放在哪里**：
+
+- 极短、几乎所有触发都需要的 canonical example，可以留在主 `SKILL.md`；
+- 只服务某个分支、较长或数量较多的 examples，放入按需 reference；
+- 只用于测试的 case 不进入生产 guidance；
+- 不把 example 同时复制到多个 reference；保持唯一主要归属。
 
 
 ### 8. 验证
