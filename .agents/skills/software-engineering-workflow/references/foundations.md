@@ -203,7 +203,7 @@ Skill、Prompt、Workflow 和 Tool Policy 都是可修改的行为资产，但�
 
 ## Owner 原则
 
-一个机制应有主要归属，避免同一规则复制在多个 reference 中并逐渐分叉。
+一个机制应有主要归属，避免同一规则复制在 5 个 reference 中并逐渐分叉。
 
 ## 状态演化
 
