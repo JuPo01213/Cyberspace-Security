@@ -2,7 +2,9 @@
 
 ## 职责
 
-Context Engineering 负责决定 Agent 在当前任务中**看到什么、以什么角色看到、何时加载、哪些内容不能改变规则**。它不是把更多材料塞进上下文，而是让有效信息足以支持当前决策，同时保留指令、事实、数据和状态的边界。
+Context Engineering 是 **Harness / Runtime 层**的职责：决定 Agent 在当前任务中**看到什么、以什么角色看到、何时加载、哪些内容不能改变规则**。Skill / Workflow 是它可以选择加载的一类上下文资源，而不是 Context Engine 本身。
+
+它不是把更多材料塞进上下文，而是让有效信息足以支持当前决策，同时保留指令、事实、数据和状态的边界。
 
 ## 四类上下文
 
@@ -44,6 +46,7 @@ personal-agent-workflow/SKILL.md
         +-- context-engineering.md
         +-- behavior-engineering.md
         +-- prompt-workflow.md
+        +-- workflow-authoring.md
         +-- case-engineering.md
         +-- evaluation.md
         +-- evolution.md

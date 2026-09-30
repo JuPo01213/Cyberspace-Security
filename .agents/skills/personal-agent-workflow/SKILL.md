@@ -1,14 +1,27 @@
 ---
 name: personal-agent-workflow
 description: >-
-  用于需要主动调查、分阶段执行、行为约束、结果验证或长期维护的复杂 Agent 任务；
-  将用户意图编译为可观察契约，并按需路由到上下文、行为、案例、评估和演进参考。
-  不用于只需直接回答的简单问题，也不替代领域专用技能、权限控制或运行环境。
+  用于复杂 Agent/Harness 工作流的执行、设计、评估和维护；将用户意图编译为可观察契约，
+  并按需路由到上下文、行为、Prompt/Skill/Workflow 编写、案例、评估和演进参考。
+  不用于只需直接回答的简单问题，也不替代领域专用工作流、权限控制或运行环境。
 metadata:
   short-description: 以行为规格和证据驱动复杂 Agent 工作
 ---
 
 # Personal Agent Workflow
+
+## 综述
+
+从 Transformer 看，Prompt、Skill、reference、example、tool description 和执行状态最终都通过**上下文**影响模型行为；从系统架构看，负责选择、组织、排序、压缩和投递这些上下文的是 **Harness / Runtime**。
+
+因此，Context Engineering 属于 Harness 层；Skill / Workflow 是 Harness 可以发现、加载并注入的一类可复用工作流上下文。
+
+本工作流采用一个主入口：
+- `SKILL.md`：触发后默认进入上下文的共享原则、路由和边界；
+- `references/`：只在对应任务、阶段或分支出现时加载的条件上下文；
+- `scripts/`：适合确定执行的重复操作。
+
+**不是按“内容是否重要”决定放哪里，而是按“什么时候值得让模型看到”决定放哪里。**
 
 ## 定位
 
@@ -35,11 +48,12 @@ Prompt、Skill、Workflow、Memory、Tool policy、Example 和 Evaluation Case �
 ## Overall architecture
 
 ```text
-Agent Engineering
-├── Context Engineering   让正确的指令、事实、数据和状态在正确位置可见
-├── Behavior Engineering  把意图编译为 Goal/Policy/Boundary/ Evidence 规格
+Agent / Harness Workflow Engineering
+├── Context Engineering    Harness 层：让正确的指令、事实、数据和状态在正确位置可见
+├── Behavior Engineering   把意图编译为 Goal/Policy/Boundary/Evidence 规格
+├── Workflow Authoring     创建、更新、审查和组织 Prompt/Skill/Workflow 载体
 ├── Evaluation Engineering 用 B/C/I/T/R 验证行为、边界保持和回归
-└── Evolution Engineering  用证据决定修改、保留、拒绝或延期
+└── Evolution Engineering   用证据决定修改、保留、拒绝或延期
 ```
 
 `Skill.md` 是路由和共享契约；参考文件是内部实现模块。设计链路必须能从行为规格回到实际载体和评估：
@@ -77,7 +91,8 @@ Behavior Spec → Prompt / Skill / Workflow → Case Matrix → Evaluation → E
 只读取与当前问题有直接消费者的参考；不要全量加载：
 
 - 任务需要组织可信指令、项目材料、外部数据、状态或技能加载时，读取 [context-engineering.md](references/context-engineering.md)。
-- 任务需要设计或修改 Prompt、Skill、Workflow、Memory rule 或 Tool policy 时，读取 [behavior-engineering.md](references/behavior-engineering.md)；若要直接编写 Prompt，再读取 [prompt-workflow.md](references/prompt-workflow.md)。
+- 任务需要设计或修改行为规则、Memory rule 或 Tool policy 时，读取 [behavior-engineering.md](references/behavior-engineering.md)；若要直接编写 Prompt，再读取 [prompt-workflow.md](references/prompt-workflow.md)。
+- 任务需要创建、更新、审查、重构或打包 Skill / Workflow 时，读取 [workflow-authoring.md](references/workflow-authoring.md)；其官方结构、经验沉淀、examples/evals、安全与发布材料由该 reference 再按需路由。
 - 任务需要从真实失败抽象标准案例、设计高信息密度输入或建立案例覆盖时，读取 [case-engineering.md](references/case-engineering.md)；只在需要具体历史语料时定位读取 [case-library.md](references/case-library.md) 的相关标题。
 - 用户要求测试、已有偏离需要复现、或交付声称包含实测结果时，读取 [evaluation.md](references/evaluation.md)。
 - 任务是普通工程、研究、重构或长线执行时，读取 [execution-workflow.md](references/execution-workflow.md)。
@@ -91,6 +106,7 @@ Behavior Spec → Prompt / Skill / Workflow → Case Matrix → Evaluation → E
 - `references/context-engineering.md`：定义指令、事实、数据、状态和行为资产如何分层、加载和追溯；不定义具体 Prompt 文案。
 - `references/behavior-engineering.md`：定义 Goal/Policy、行为规格、优先级、冲突和风险边界；不替代实际评估。
 - `references/prompt-workflow.md`：把当前行为规格编译成可投递 Prompt；不把候选文本称为已验证效果。
+- `references/workflow-authoring.md`：负责创建、更新、审查和重构 Skill / Workflow，并路由到 `references/workflow-authoring/` 下的专项材料；不再作为独立 Skill。
 - `references/execution-workflow.md`：提供普通复杂任务的阶段循环和最小路线；不复制每个领域的专用操作手册。
 - `references/case-engineering.md`：定义案例如何抽象、改造、分层和覆盖；不把题材目录当成行为规则。
 - `references/case-library.md`：保留原始案例语料，按需定位读取；不作为默认上下文、当前指令或自动评分答案。

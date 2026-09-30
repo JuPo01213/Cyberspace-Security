@@ -1,3 +1,4 @@
 interface:
   display_name: "Personal Agent Workflow"
-  short_description: "Route complex work through behavior, evaluation, and evidence"
+  short_description: "Design, route, evaluate, and evolve Agent/Harness workflows"
+  default_prompt: "Use this workflow to route complex Agent/Harness work, including Prompt/Skill/Workflow design, evaluation, and maintenance."

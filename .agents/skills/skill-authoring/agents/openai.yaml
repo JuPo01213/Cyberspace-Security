@@ -1,4 +1,0 @@
-interface:
-  display_name: "Skill Authoring"
-  short_description: "创建、审查和迭代 Agent Skill"
-  default_prompt: "创建或优化这个 Skill；优先研究成熟方法，区分知识与指令，并用真实用例和验证结果约束修改。"

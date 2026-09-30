@@ -1,57 +1,8 @@
----
-name: skill-authoring
-description: 创建、更新、审查或重构 Agent/Codex Skill。用于从真实用例、成熟工作流、项目经验、失败案例、Few-shot 与评测中提炼可复用执行指导，同时避免把局部经验误升格为普遍规则；适用于 Skill 触发设计、内容分层、工具依赖、examples/evals、安全审查、校验、打包和迭代治理。
----
+# 工作流编写与 Skill 载体
 
-# Skill Authoring
+本参考是 `personal-agent-workflow` 内部的工作流设计分支，负责创建、更新、审查、重构和打包可复用工作流；当平台使用 Skill 作为载体时，同时处理 Skill 的结构与兼容要求。
 
-## 综述：Skill 是 Harness 上下文工程中的一种工作流载体
-
-从 Transformer 看，Skill 通过上下文影响模型行为；但从系统架构看，**负责选择、组织、排序、压缩和投递上下文的是 Harness / Runtime，而不是 Skill 本身。**
-
-因此层级应当是：
-
-```text
-Harness / Runtime
-├── Context Engineering
-│   ├── system / developer / user instructions
-│   ├── Skill discovery & loading
-│   ├── references / retrieval
-│   ├── memory / project state
-│   ├── tool descriptions & results
-│   ├── compaction / continuation
-│   └── context ordering / budget
-│
-└── Skill / Workflow
-    ├── SKILL.md
-    ├── references/
-    ├── examples
-    ├── scripts
-    └── tool-use guidance
-```
-
-**Skill 不是 Context Engine；Skill 是 Harness 可以发现并注入的一类可复用工作流上下文。**
-
-所以设计 Skill 时，不是在设计整个模型上下文，而是在回答两个更窄的问题：
-
-1. 当 Harness 选择这个 Skill 后，哪部分指导应该立即进入上下文？
-2. 哪部分内容只应在特定任务、阶段或分支下通过 references 再加载？
-
-主 `SKILL.md` 是该工作流被触发后的默认上下文；`references/` 是该工作流内部的条件上下文。至于 Skill 何时被发现、以什么优先级和其他上下文组合、怎样压缩、怎样处理跨轮状态，由 Harness / Runtime 决定。
-
-## 主技能常驻原则
-
-下面这些原则属于 **Skill Authoring 自身**，因此适合留在主 `SKILL.md`：
-
-- **主文件只放触发后普遍有用的内容。** 如果一段内容只在某个阶段、模式或边界条件下有价值，下沉到 reference。
-- **先路由，再展开。** 主文件负责共享约束和 reference 路由，不承担完整知识库职责。
-- **区分指导与资料。** 会直接改变执行行为的内容才作为 instruction；解释、背景、历史和证据优先作为按需参考。
-- **避免竞争性指导。** 同一工作流内重复、过时或冲突的 instruction 会削弱行为引导，应保持一个清晰活动版本。
-- **案例属于高强度上下文。** Few-shot / contrastive example 只在规则难以稳定表达时使用，并控制数量和适用范围。
-- **完成条件优先于过程外观。** Skill 应尽量约束可观察结果、边界和停止条件，而不是机械复刻某次成功流程。
-- **Skill 不创造权限。** 它可以建议工具顺序和使用条件，但认证、授权、审批和实际副作用控制属于 Harness / Tool / MCP。
-- **经验先作为证据，再决定是否进入指导。** 单次事故、局部修复或历史案例不因为被记录就自动成为长期 instruction。
-- **不要为了模块化制造过多 Skill。** 紧密相关、共同维护的工作流优先由一个主入口路由到 references；只有拆分确实降低管理和上下文成本时才独立。
+它**不是独立可发现 Skill**。关于 Harness / Runtime 如何选择、排序、压缩和投递上下文，归 `context-engineering.md`；本文件只处理一个工作流被选中后如何组织自身指导、references、scripts、examples/evals 与工具边界。
 
 ## 默认原则
 
@@ -59,7 +10,7 @@ Harness / Runtime
 
 若领域已有官方工具、标准、成熟工作流、框架或社区方案，先调查再决定是否自建。不要因为模型能手写，就跳过成熟能力。
 
-区分来源权威，不把二次整理称为官方，不把一次本地成功称为成熟实践。需要调研、选型或判断来源时，读取 [research-and-reuse.md](references/research-and-reuse.md)。
+区分来源权威，不把二次整理称为官方，不把一次本地成功称为成熟实践。需要调研、选型或判断来源时，读取 [research-and-reuse.md](workflow-authoring/research-and-reuse.md)。
 
 ### 区分知识与指令
 
@@ -70,7 +21,7 @@ Harness / Runtime
 - 单次 problem slice、单个项目故障或一次成功实现，不自动升级为通用 Skill 规则。
 - 经验值得复用但尚未证明普适时，优先留在项目知识、research、design docs 或 reference 中。
 
-需要判断一条经验该停留在哪里、何时升格时，读取 [experience-to-guidance.md](references/experience-to-guidance.md)。
+需要判断一条经验该停留在哪里、何时升格时，读取 [experience-to-guidance.md](workflow-authoring/experience-to-guidance.md)。
 
 ### 默认聚合，避免 Skill 碎片化
 
@@ -111,7 +62,7 @@ Harness / Runtime
 - `assets/`：最终产出需要复制/转换的模板和素材；
 - `agents/openai.yaml`：Skill 的界面元数据，以及需要时声明工具依赖。
 
-当前 OpenAI 结构、trigger、MCP 边界和 bundle 要求见 [official-structure.md](references/official-structure.md)。
+当前 OpenAI 结构、trigger、MCP 边界和 bundle 要求见 [official-structure.md](workflow-authoring/official-structure.md)。
 
 ## 创建或更新流程
 
@@ -164,7 +115,7 @@ python scripts/init_skill.py <skill-name> --path <parent-dir> [--resources refer
 
 已有 Skill 不要重新初始化；先检查现有调用者、references、scripts、assets、tool dependencies 和权限边界。
 
-结构要求和当前 OpenAI 兼容注意事项见 [official-structure.md](references/official-structure.md)。
+结构要求和当前 OpenAI 兼容注意事项见 [official-structure.md](workflow-authoring/official-structure.md)。
 
 ### 5. 写最小有效指令
 
@@ -190,7 +141,7 @@ MCP / 工具负责：实时数据、认证、授权和受控动作。
 
 如果 Skill 依赖 MCP，按目标运行环境在 `agents/openai.yaml` 声明 dependency；dependency 只保证工具可用，不能替代清晰 workflow instructions。
 
-详细边界和审查见 [official-structure.md](references/official-structure.md) 与 [security-review.md](references/security-review.md)。
+详细边界和审查见 [official-structure.md](workflow-authoring/official-structure.md) 与 [security-review.md](workflow-authoring/security-review.md)。
 
 ### 7. Examples 只解决规则难以稳定表达的行为
 
@@ -198,7 +149,7 @@ MCP / 工具负责：实时数据、认证、授权和受控动作。
 
 普通校准优先使用简洁 **input → desired output**。只有错误答案表面也合理、边界难以纯文字表达时，再使用 contrastive example。
 
-examples 与 evals 分开。需要筛选 canonical examples、设计 cross-carrier eval 或做 ablation 时，读取 [examples-and-evals.md](references/examples-and-evals.md)。
+examples 与 evals 分开。需要筛选 canonical examples、设计 cross-carrier eval 或做 ablation 时，读取 [examples-and-evals.md](workflow-authoring/examples-and-evals.md)。
 
 
 ### 8. 验证
@@ -226,9 +177,9 @@ python scripts/validate_skill.py <skill-dir>
 
 ### 9. 安全与打包
 
-第三方 Skill、带脚本的 Skill、可联网 Skill 或高影响动作，在发布/共享前读取 [security-review.md](references/security-review.md)。
+第三方 Skill、带脚本的 Skill、可联网 Skill 或高影响动作，在发布/共享前读取 [security-review.md](workflow-authoring/security-review.md)。
 
-如果需要上传、版本化、Plugin 打包或公开提交，读取 [packaging-and-release.md](references/packaging-and-release.md)。不要把本地仓库能运行等同于已经满足发布要求。
+如果需要上传、版本化、Plugin 打包或公开提交，读取 [packaging-and-release.md](workflow-authoring/packaging-and-release.md)。不要把本地仓库能运行等同于已经满足发布要求。
 
 ### 10. 从真实使用迭代
 
