@@ -203,9 +203,7 @@ Skill、Prompt、Workflow 和 Tool Policy 都是可修改的行为资产，但�
 
 ## Owner 原则
 
-同一 Skill 内，一个活动机制应有主要归属，避免同一规则复制在多个 reference 中逐渐分叉。
-
-跨 Skill 不要求字面单一归属。其他 Skill 中成熟的机制可以被借用、改写和重新验证；共享的是机制与证据，不是强迫所有 Skill 使用相同文本。若多个 Skill 长期维护完全相同的规则，再考虑提升为共享上层原则或共同 reference。
+一个机制应有主要归属，避免同一规则复制在多个 reference 中并逐渐分叉。
 
 ## 状态演化
 
