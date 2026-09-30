@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "problem_id": "pi-agent-c333-next-state-static-cont-timeout-20260930",
+  "run_id": "EPT-PI-C333-NEXT-STATE-STATIC-CONT-20260930-01",
+  "class": "agent_timeout_after_partial_static_analysis_no_report",
+  "delivery_complete": true,
+  "sample_executed": false,
+  "sample_modified": false,
+  "raw_session": "runs\\EPT-PI-C333-NEXT-STATE-STATIC-CONT-20260930-01\\harvest\\session.jsonl",
+  "raw_session_sha256": "B222675A23F310643DA3DBD13DEFBE4D29C2611FA04E12BC7DFACAA09E420523",
+  "observed_progress": [
+    "The Agent verified the staged main image and reused the existing disassembly helper.",
+    "The Agent statically observed mov cl, byte ptr [rbp+0x11b] at 0x14004c0d9 immediately before call 0x1405d5f80.",
+    "A helper script then failed to print a check mark under the Guest GBK console, and the Agent never wrote its required report files before the 300 second deadline."
+  ],
+  "classification_basis": "The raw session and stderr were read after terminal status; the classification is a bounded Agent timeout with concrete partial facts, not a sample negative and not an authorization result.",
+  "cleanup": "Guest child and runner PIDs 9056 and 5040 were absent; no process matched the run id after harvest.",
+  "next_action": "Host must verify the partial facts before any further Guest dispatch. A timeout alone is not a reason to issue another task."
+}
+

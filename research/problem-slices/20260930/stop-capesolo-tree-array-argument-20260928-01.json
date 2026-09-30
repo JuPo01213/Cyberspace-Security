@@ -1,0 +1,28 @@
+{
+  "slice_id": "stop-capesolo-tree-array-argument-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-TARGET-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "调用精确 CAPEsolo 进程回收脚本时，把 `3124,4080,4316` 作为一个字符串传给 `[int[]]` 参数，PowerShell 参数绑定失败。脚本未创建 Guest 会话、未停止进程、未移动目录。",
+  "observed": [
+    "失败为本地 ParameterArgumentTransformationError。",
+    "目标 PID 仍来自前一条只读诊断，尚未执行回收。"
+  ],
+  "expected_behavior": "多值数组参数应在调用端以 PowerShell 数组表达式传入，脚本再逐 PID 做命令行核验。",
+  "impact": "只延迟了精确清理调用，不影响当前 Guest 状态。",
+  "why": {
+    "confirmed_cause": "把逗号分隔的文本参数误当作 PowerShell `[int[]]` 的数组传递语法。",
+    "not_a_runtime_result": "不能说明目标 PID、目录句柄或 CAPE 状态。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "在外层脚本中用 `-TargetPids ([int[]](3124,4080,4316))` 或保存调用脚本传入数组；保留脚本内部 PID/命令行校验。",
+    "project_instruction": "执行副作用前先验证参数绑定；参数错误完成切片后再重试，不把命令调用失败写成 Guest 故障。",
+    "generic_skill": "不修改；这是一次 PowerShell 数组参数调用错误。"
+  },
+  "minimum_validation": "仅用数组语法重新调用脚本，结果必须显示每个 PID 的命令行匹配和 cleared=true；否则停止，不移动目录。",
+  "evidence": [
+    "当前执行输出：ParameterArgumentTransformationError",
+    "runs/EPT-PHASE3-INTERACTIVE-TARGET-20260928-01/control/analysis-lock-diagnosis.json"
+  ],
+  "secrets_redacted": true
+}
+

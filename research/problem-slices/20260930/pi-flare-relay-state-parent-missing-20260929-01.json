@@ -1,0 +1,14 @@
+{
+  "slice_id": "pi-flare-relay-state-parent-missing-20260929-01",
+  "scope": "host_guest_pi_controller",
+  "reproduction": "After correcting the pi-bansos relay-state location to C:\\Users\\flare\\.pi\\agent, run-pi-flare.ps1 wrote the file before ensuring the parent directory existed.",
+  "observation": "PowerShell Direct failed at WriteAllText with a missing-path error; the Guest Pi task was not started and no provider request was made.",
+  "expected": "The controller should create the managed Guest user-state directory before writing the per-run relay configuration.",
+  "impact": "A valid relay configuration could not be installed; this was an infrastructure precondition failure, not a model or sample result.",
+  "optimization_location": "method/pi-flare-workbench/run-pi-flare.ps1",
+  "minimal_change": "Create Split-Path($relayState) before writing the relay state file.",
+  "rollback": "Revert the one directory-creation statement and remove the managed relay state file.",
+  "verification": "New RUN_ID, successful state-file write, Guest task status marker, relay log request, and Host harvest.",
+  "unresolved_risk": "The upstream may still reject the exact free model or return a provider error after transport is working."
+}
+

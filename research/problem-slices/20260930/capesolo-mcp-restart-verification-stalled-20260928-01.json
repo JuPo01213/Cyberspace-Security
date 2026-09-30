@@ -1,0 +1,33 @@
+{
+  "slice_id": "capesolo-mcp-restart-verification-stalled-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "修正 cfg.ini 行解析后，宿主启动了一个串联的 Guest 变更调用：写入临时 cfg、停止三个已核验 CAPEsolo 进程、启动 MCP、在 Guest 内轮询 Get-NetTCPConnection。该调用超过约 60 秒仍无返回，宿主侧中止；无法从调用返回值判断配置写入、旧进程停止、新进程启动或 listener 验证分别进行到哪一步。",
+  "observed": [
+    "调用在宿主侧没有返回 PASS/FAIL 终态，也没有得到 after hash 或新 PID。",
+    "该调用包含多个有副作用/可能阻塞的步骤，不能把宿主超时升级为 Guest 状态或 CAPEsolo 状态结论。",
+    "在本切片写入前没有再次执行样本 job；当前唯一需要确认的是配置与 MCP 控制面状态。"
+  ],
+  "expected_behavior": "配置写入、旧进程回收、新 MCP 启动和 listener/握手验证应拆成独立、有界步骤，每一步都保留前后状态；任何一步超时都能确定当前状态并安全收尾。",
+  "why": {
+    "confirmed_cause": "尚未确认；当前已确认的是把文件写入、进程停止、进程启动和网络枚举串在一个 PowerShell Direct 调用中，导致部分完成状态不可见。",
+    "candidate_explanations": [
+      "Guest 内 Get-NetTCPConnection 或进程停止/启动步骤阻塞",
+      "MCP 进程启动后继承的远程会话/输出重定向造成等待",
+      "宿主中止只终止了外层 wrapper，可能留下新的 Guest/Host 诊断进程"
+    ],
+    "not_a_business_result": "没有样本业务结论，也没有证明 MCP 或 VM 失败。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "把 cfg hash、cfg line、MCP process set、listener TCP、MCP initialize/tools/list 分成独立短调用；Guest 只做最小启动/停止，不在远程调用中轮询复杂网络对象。",
+    "project_instruction": "配置和服务变更必须按可回收的事务阶段记录；超时后先收割状态并清理本批次 wrapper，再决定恢复或回滚。",
+    "generic_skill": "暂不修改通用 Skill；这是当前远程适配器把多个动作串联造成的本机执行问题。"
+  },
+  "minimum_validation": "先用短 Guest 读探针确认 cfg hash/analysis 行，再从 Host 确认 172.31.250.2:8000 TCP 和 MCP initialize/tools/list；若 cfg 已改变而 MCP 未监听，单独重启服务；若 cfg 未改变，重新执行仅配置写入步骤。",
+  "evidence": [
+    "runs/EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01/control/config-change-plan.json",
+    "Host-side stalled mutation call from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

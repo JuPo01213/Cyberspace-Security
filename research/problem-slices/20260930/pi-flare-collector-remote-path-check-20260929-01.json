@@ -1,0 +1,22 @@
+{
+  "slice_id": "pi-flare-collector-remote-path-check-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-SMOKE-20260929-03",
+  "status": "confirmed_script_error",
+  "what_happened": "Guest run 已产生 status.json/output.txt，但 Host collector 在 Host 进程中对 `C:\\EPT\\pi-flare\\runs\\...` 调用 Test-Path；该路径只存在于 Guest，因此 collector 跳过了 Copy-Item -FromSession，Host harvest 只有空 manifest。",
+  "expected": "先由 Guest 返回存在文件清单，再对这些远端路径执行 Copy-Item -FromSession，并记录每个文件的 Host size/hash。",
+  "impact": "Pi task 真实失败已产生，但 Host 交付缺少 status/output/session，无法复核模型网络失败。",
+  "why": {
+    "missing_fact": "没有区分 Test-Path 执行上下文（Host vs Guest）。",
+    "unverified_assumption": "把 Guest 路径字符串传给 Host Test-Path，假定它会在 PSSession 内执行。",
+    "error_layer": "Host 收割适配层。"
+  },
+  "where_to_optimize": {
+    "collector_script": "用 Invoke-Command 在 Guest 生成文件清单，或直接尝试 FromSession 并记录远端不存在；不要用 Host Test-Path 判定 Guest 文件。",
+    "project_layer": "harvest manifest 必须区分 guest_exists、host_copied、host_hash。",
+    "generic_skill": "不修改；这是当前脚手架的 Host–Guest 路径上下文错误。"
+  },
+  "minimum_validation": "同一 smoke run 收回 status.json、output.txt、prompt.txt 和 session（若存在），manifest 列出 guest/host size/hash；不重复模型请求。",
+  "rollback": "仅重写 Host harvest 目录，不改变 Guest task 或网络。",
+  "secrets_redacted": true
+}
+

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "slice_id": "c328-recv-return-mislabel-and-fixed-copy-address-20260930",
+  "utc": "2026-09-30T04:10:11.043323+00:00",
+  "run_id": "EPT-PHASE3-HOST-BASH-CONSUMER-COPY-RETURN-20260930-03",
+  "status": "CONFIRMED_MEASUREMENT_CONTRACT_ERROR",
+  "raw_artifact": "E:\\CTF\\EPT\\runs\\EPT-PHASE3-HOST-BASH-CONSUMER-COPY-RETURN-20260930-03\\harvest\\work\\native_observer_9832.stdout.txt",
+  "raw_sha256": "4732C976DD61A621E1D07DC6E6497D847394AF67E810DD5A315841B288C47CCB",
+  "observations": {
+    "recv_like_wrapper_arguments": {
+      "rcx": "0x2b4 socket",
+      "rdx": "0x1f0004",
+      "r8": "0x67=103",
+      "r9": "0"
+    },
+    "wrapper_return": "0x67",
+    "wrapper_return_marker_lines": [
+      123
+    ],
+    "mislabeled_target_marker_lines": [
+      135
+    ],
+    "response_read_marker_lines": [
+      191
+    ],
+    "copy_return_marker_lines": [],
+    "copy_return_condition_source": "RDX == 0x400004",
+    "actual_response_read_source": "RDX == 0x1f0004",
+    "before_snapshot_site": "0x14017713f after call r15",
+    "after_snapshot_site": "0x140177143 after add rsp,0x20",
+    "source_component_sha256_from_raw_event": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7"
+  },
+  "failure_reason": "Observer labels promoted a response-transport wrapper return to a decoder return. Both diagnostic snapshots occurred after the same call. The copy-return predicate used a prior run allocation address, so its false result is unexercised, not a valid negative.",
+  "corrected_interpretation": "0x67 is an observed response wrapper return consistent with 103 bytes received. Decoder return and target caller difference remain unobserved. The actual wrapper-to-recv semantic edge is to be confirmed with Guest static/API evidence; do not label 0x67 a decode failure code.",
+  "expected_behavior": "Only actual decode return may populate target_native_return. Capture caller before/after across the actual decode call. Derive response/destination/return addresses from this run.",
+  "minimal_fix": "Correct C328 run/evidence semantic fields; next observer transfers a response read watch to its live return address and then the live copy destination; use external command files for CDB handoffs.",
+  "rollback": "New-run observer only; originals and raw event/observer artifacts retained. No original sample modification.",
+  "verification": "Guest disassembly of 0x14017713c..0x14017715e and raw marker/argument cross-check, followed by one same-input narrow consumer observation."
+}
+

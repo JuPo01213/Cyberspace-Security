@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-e2c-recv-consumer-observation-20260929-01",
+  "status": "OPEN",
+  "parent_run": "EPT-PHASE3-AGENT-NATIVE-CARD-BRIDGE-20260929-04",
+  "observed": {
+    "native_card_bridge_applied": true,
+    "frame_total": 107,
+    "body_bytes": 103,
+    "bounded_echo": true,
+    "rc00_candidate": false,
+    "target_fields": "NOT_OBSERVED_DYNAMIC"
+  },
+  "evidence": "C191 states the 103-byte request is encrypted and echo is rejected; the next supported path is recv/WSARecv runtime observation to locate the response consumer before attempting a response-format variant.",
+  "scope": "read-only recv/WSARecv entry/return and response-buffer capture in the same controlled child run; no sample modification, no standalone Hardware, no repeated protocol variant until consumer boundary is located",
+  "success_evidence": [
+    "same-run native_card_bridge_applied and child hash",
+    "recv/WSARecv call/return records tied to the controlled 1029 response",
+    "response bytes and consumer return path harvested",
+    "observer removed and full cleanup verified"
+  ],
+  "forbidden_inference": "recv observation, echo behavior, or child release does not substitute for target_native_return, target_caller_diff_bytes, RC06, or post-seam evidence."
+}
+

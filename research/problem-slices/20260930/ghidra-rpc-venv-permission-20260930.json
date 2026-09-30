@@ -1,0 +1,16 @@
+{
+  "slice_id": "ghidra-rpc-venv-permission-20260930",
+  "category": "capability_not_ready",
+  "operation": "uv run ghidra-rpc status --project E:\\CTF\\EPT\\artifacts\\agent\\ghidra\\ept-proto-1029\\ept-proto-1029.gpr",
+  "observed": "The local runner failed before contacting the daemon because it could not remove C:\\Users\\Administrator\\.agents\\skills\\ghidra-rpc\\.venv\\lib64; the command returned os error 5 access denied.",
+  "impact": "ghidra-rpc is installed but not currently ready_for_task. No Ghidra write, daemon mutation, or sample execution was attempted.",
+  "evidence": [
+    "artifacts/work/evidence-support/ghidra-rpc-issue-20260930.md",
+    "C:\\Users\\Administrator\\.agents\\skills\\ghidra-rpc\\SKILL.md"
+  ],
+  "why": "Capability readiness was inferred from installation and prior benign setup instead of being checked at the exact current project invocation.",
+  "minimum_fix": "Repair or replace only the local skill virtual-environment entry with a reversible, permission-preserving action, then rerun the exact read-only status check. Do not install a second Ghidra stack or change the EPT project until status and project/binary identity are confirmed.",
+  "rollback": "Leave the current skill and Ghidra project unchanged; use the existing Capstone/static evidence while the adapter remains unavailable.",
+  "success": "The exact status command reaches the daemon or produces an explicit daemon/project error, and the selected EPT project and binary identity are verified before any query."
+}
+

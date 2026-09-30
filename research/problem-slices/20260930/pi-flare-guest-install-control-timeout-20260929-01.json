@@ -1,0 +1,20 @@
+{
+  "slice_id": "pi-flare-guest-install-control-timeout-20260929-01",
+  "run_id": "EPT-PI-GUEST-NPM-INSTALL-20260929-01",
+  "scope": "host_guest_control_method",
+  "reproduction": "A Guest-native npm install was invoked through a synchronous PowerShell Direct Invoke-Command while the Guest had a temporary Default Switch NIC; after the outer tool wait expired, follow-up sessions for even a minimal OK probe also failed to return.",
+  "observation": "The original tool handle disappeared without a terminal result, no host-copied install log appeared, and host pwsh wrappers with New-PSSession/FLARE-Analysis command lines remained alive.",
+  "expected": "A long Guest install must run under a durable Guest log/handle with a hard deadline; after a control timeout, the exact wrapper processes must be collected/reaped before any retry.",
+  "impact": "Guest installation outcome is UNKNOWN; the control plane was not proven healthy and no new install was submitted after the timeout.",
+  "evidence": [
+    "runs/EPT-PI-GUEST-NPM-INSTALL-20260929-01/run.json",
+    "host process command lines observed at 2026-09-29T01:06 Asia/Shanghai",
+    "no guest-install.log under the Host run directory"
+  ],
+  "optimization_location": "current run adapter and method/pi-flare-workbench; use a Guest-side durable installer task with a hard deadline and short nonce probes only",
+  "minimal_change": "Reap only the wrapper processes created by this batch, then verify one short PowerShell Direct nonce probe before deciding whether to resume or classify the install.",
+  "rollback": "Do not retry until the exact process set is gone and the nonce probe returns.",
+  "verification": "Process inventory empty for this batch plus one returned nonce; then inspect Guest-native install log and package paths.",
+  "unresolved_risk": "The Guest-side npm process may still exist after wrapper cleanup; it must be identified by command line and handled separately before a new run."
+}
+

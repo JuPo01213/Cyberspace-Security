@@ -1,0 +1,20 @@
+{
+  "slice_id": "pi-native-agent-relay-firewall-block-20260929-01",
+  "run_id": "EPT-PI-FLARE-MIMO-20260929-05",
+  "scope": "host_guest_model_egress",
+  "reproduction": "Guest native Pi started with delivery_verified=true and pi-bansos relay state pointing at the Host isolated address; the relay server was listening on 172.31.250.1:18181.",
+  "observation": "Guest session recorded repeated 'relay fetch failed' TypeError: fetch failed for https://opencode.ai/zen/v1/chat/completions; Host relay log contained only its startup event and no request. The Guest remained without a default route.",
+  "expected": "The Guest should be able to open TCP to the Host's allowlisted relay port while all other external traffic remains blocked.",
+  "impact": "The Agent reached the correct provider/relay code path but could not send a model request; no Agent work report was produced. This is transport infrastructure failure, not a model or sample conclusion.",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-05/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-05/control/model-relay.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-05/control/delivery-verification.json"
+  ],
+  "optimization_location": "Host firewall rule for the project-local model relay; do not broaden Guest routing.",
+  "minimal_change": "Allow TCP 18181 only from 172.31.250.2 to local 172.31.250.1, scoped to the relay node process and recorded for cleanup.",
+  "rollback": "Remove the exact named firewall rule and stop the relay process after the next run.",
+  "verification": "Guest healthz request returns 200, relay log records the request, then a new Agent run reaches the model provider or produces a distinguishable upstream response.",
+  "unresolved_risk": "The free upstream may still reject the model after transport is fixed; that must be classified separately."
+}
+

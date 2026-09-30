@@ -1,0 +1,30 @@
+{
+  "slice_id": "phase3-outer-launch-cwd-direct-network-20260929-01",
+  "created_utc": "2026-09-29T02:00:00Z",
+  "single_bottleneck": "The verified C-card outer run reproduced sample startup but produced zero HTTP proxy events and no child; the current adapter launch adds cwd=SAMPLE_DIR, while the earlier same-card child-producing run used a different launch context. The run did not yet distinguish a cwd-sensitive branch from direct network traffic that bypassed the proxy.",
+  "reproduction": {
+    "run_id": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03",
+    "card": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "proxy_connect": 0,
+    "proxy_get": 0,
+    "child_seen": false,
+    "sample_sha_pre_post_equal": true,
+    "cleanup_verified": true
+  },
+  "contrast": {
+    "run_id": "EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01",
+    "card": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "observed": "feishu CONNECT, xz.hwid001.com GET, and real Hardware child"
+  },
+  "expected": "A byte-for-byte current outer launch with the successful run's cwd semantics, plus one-second direct TCP/process/log capture, distinguishes proxy bypass from an early branch/context difference.",
+  "minimum_verifiable_success": "Record either a direct SYN/Established attempt or a durable sample-owned branch/log string; if a child appears, continue the existing gated 1029/RC00 path in the same run.",
+  "minimal_change": "Remove only the current cwd override or match the successful launch context; add direct Get-NetTCPConnection sampling and pre-create the traced cli_mode log sink. Do not change sample bytes, card, component, proxy policy, or target observer.",
+  "rollback": "Stop this run's exact process tree, restore hosts, remove run staging, and verify zero target descendants and unchanged sample hash.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/harvest/guest/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03/summary.md",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/harvest/guest/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03/events.final.ndjson",
+    "runs/EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01/run.json"
+  ],
+  "status": "CANDIDATE_REJECTED_BY_SCRIPT_DIFF",
+  "corrected_differential": "Successful and current adapters both use cwd=SAMPLE_DIR; verified difference is presence versus absence of c2_guard_armed hosts mapping. See phase3-outer-c2-guard-differential-20260929-01.json."
+}

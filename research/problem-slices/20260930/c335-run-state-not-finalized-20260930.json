@@ -1,0 +1,17 @@
+{
+  "slice_id": "c335-run-state-not-finalized-20260930",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01",
+  "category": "control_plane_state_error",
+  "occurred": "The runner, events.final.ndjson, cleanup output, and hash manifest showed the run had ended, but run.json remained status RUNNING with no verdict or observed fields.",
+  "observed_effect": "A later scheduler could mistake a completed run for a live or unknown process and either wait unnecessarily or issue an unsafe continuation.",
+  "evidence": [
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01/run.json",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01/harvest/work/events.final.ndjson",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01/harvest/work/verify_cleanup.json"
+  ],
+  "why": "Run finalization was treated as a documentation step after deciding the next experiment, rather than as a completion gate immediately after raw harvest and cleanup.",
+  "minimum_fix": "Finalize run.json before any new side-effectful action: set terminal status/verdict, record target fields, cleanup outcome, raw artifact hashes, and a decision-ready next_action.",
+  "rollback": "The correction only updates the run record and can be reverted through version control; it does not modify the sample or Guest.",
+  "success": "A run is never eligible for continuation while its durable record still says RUNNING unless a live process and fresh event timestamp are proven."
+}
+

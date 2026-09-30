@@ -1,0 +1,15 @@
+{
+  "slice_id": "pi-flare-bounded-probe-parameter-set-20260929-01",
+  "scope": "host_guest_control_diagnostic",
+  "reproduction": "The recovery probe called New-PSSession -VMName FLARE-Analysis -Credential ... -SessionOption ... to impose a bounded timeout.",
+  "observation": "PowerShell rejected the invocation immediately: the VMName parameter set cannot be combined with SessionOption; no Guest session was created and no control-plane conclusion follows.",
+  "expected": "The probe must use a parameter combination supported by the Hyper-V PowerShell Direct parameter set and impose the timeout through a compatible mechanism.",
+  "impact": "One diagnostic attempt produced no information about Guest reachability and delayed recovery.",
+  "evidence": "The SESSION_ERROR output from the recovery probe immediately preceding this slice.",
+  "optimization_location": "current host recovery adapter; verify New-PSSession help before composing bounded probes.",
+  "minimal_change": "Use the supported VMName parameter set and bound the outer process explicitly, or use a documented compatible session option path.",
+  "rollback": "No Guest or VM state changed; discard the invalid probe command.",
+  "verification": "Read local New-PSSession parameter help, then run exactly one valid bounded nonce probe.",
+  "unresolved_risk": "The underlying PowerShell Direct channel remains unresponsive until a valid probe distinguishes session-open failure from command execution failure."
+}
+

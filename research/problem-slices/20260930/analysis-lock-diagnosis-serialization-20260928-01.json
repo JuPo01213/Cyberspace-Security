@@ -1,0 +1,29 @@
+{
+  "slice_id": "analysis-lock-diagnosis-serialization-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-TARGET-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "用于区分 analysis 目录句柄/ACL 问题的 Guest 只读诊断已执行，但 Host 脚本将 ACL 枚举对象原样 ConvertTo-Json 后，在本地读回时失败：dictionary contains duplicated keys `value` and `Value`。脚本没有继续任何副作用操作；目录移动、MCP 启动和样本提交均未发生。",
+  "observed": [
+    "失败点是 HostOutputPath 写入后的 ConvertFrom-Json read-back gate。",
+    "诊断脚本的 Guest 查询只读取 analysis 目录、窄进程名和 ACL，没有启动进程或修改目录。",
+    "失败响应为 DuplicateKeysInJsonString，不是 Guest ACL/句柄结论。"
+  ],
+  "expected_behavior": "诊断输出应只包含显式字符串/数字/布尔字段；枚举、IdentityReference 和 PowerShell 对象不能直接作为 JSON 字段值。写盘后必须可读回。",
+  "impact": "只阻断了诊断结果收割；没有改变当前阻塞现场。",
+  "why": {
+    "confirmed_cause": "把 ACL 的 PowerShell 枚举对象直接交给 ConvertTo-Json，生成了大小写不同但 JSON 不允许同时存在的重复键。",
+    "not_a_runtime_result": "该错误不能说明目录被谁锁定，也不能说明 MCP/样本状态。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "ACL 诊断只输出 owner、identity、rights、type、inherited 的显式字符串/布尔值；保留写盘后 ConvertFrom-Json read-back gate。",
+    "project_instruction": "控制面诊断必须采用可序列化的窄输出，序列化失败先收尾，不得继续副作用操作。",
+    "generic_skill": "不修改；这是本项目诊断脚本的 PowerShell 枚举序列化错误。"
+  },
+  "minimum_validation": "修正 ACL 投影后，诊断 JSON 能写入并读回；结果只用于区分进程占用/ACL/目录存在性，不自动执行清理或提交。",
+  "evidence": [
+    "当前执行输出：DuplicateKeysInJsonString value/Value",
+    "runs/EPT-PHASE3-INTERACTIVE-TARGET-20260928-01/control/diagnose-analysis-lock.ps1"
+  ],
+  "secrets_redacted": true
+}
+

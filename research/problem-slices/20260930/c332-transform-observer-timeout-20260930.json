@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "problem_id": "c332-transform-observer-timeout-20260930",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-TRANSFORM-20260930-01",
+  "class": "instrumentation_timeout",
+  "symptom": "runner produced local component events and target processes but no transform observer events before deadline",
+  "evidence": [
+    "artifacts\\evidence\\C332_transform_observer_timeout_20260930.json",
+    "runs\\EPT-PHASE3-RESPONSE-CONSUMER-TRANSFORM-20260930-01\\harvest\\harvest-manifest.json"
+  ],
+  "not_a_sample_negative": true,
+  "next_action": "Guest Agent control-path diagnosis and minimal reversible repair"
+}
+

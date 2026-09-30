@@ -39,18 +39,16 @@ VM 生命周期
 
 ```text
 确定任务所需 capability
-→ 选择能完整提供基础设施契约的后端
-→ 准备干净 Windows VM
-→ 满足 FLARE-VM 前置条件
-→ 安装 FLARE-VM
-→ 验证关键工具可启动
-→ 安装任务需要的额外 runtime（例如 CAPEsolo）
-→ 建立干净 checkpoint
-→ 用无害程序做一次端到端验证
-→ 将该环境注册为可用分析 capability
+→ 选择能提供所需后置条件的后端
+→ 准备干净 Windows VM 与恢复点
+→ 安装/配置 Guest 工具和任务需要的 runtime
+→ 按 `tool-building.md` 验证入口、绑定、消费者握手、无害任务和 Host 收割
+→ 建立当前 profile 的能力登记
+→ 用一次无害但真实的任务验证从干净基线到有效证据
+→ 将环境注册为 `ready_for_task` 或 `ready_for_run`
 ```
 
-若标准分析环境不存在，优先建设它；不得因为临时 VM 更容易启动就绕过。
+若标准分析环境不存在，优先建设它；不得因为临时 VM 更容易启动就绕过。建设阶段仍应以当前任务需要的能力为边界，不安装与后置条件无关的工具。
 
 ## 边界
 
@@ -63,4 +61,5 @@ VM 生命周期
 
 - FLARE-VM: https://github.com/mandiant/flare-vm
 - VM-Packages: https://github.com/mandiant/VM-Packages
+
 

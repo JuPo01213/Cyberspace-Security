@@ -1,0 +1,35 @@
+{
+  "slice_id": "pi-native-agent-host-guest-parameter-mismatch-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-08",
+  "scope": "host_guest_runner_invocation",
+  "review_status": "candidate",
+  "what_happened": "启动 run-08 时，宿主调用 run-native-pi-agent.ps1 使用了 -ModelEgress 参数；该参数只属于 Guest guest-native-pi-agent.ps1，Host 控制器实际公开的是 -RelayUrl。PowerShell 在参数绑定阶段返回“找不到匹配参数 ModelEgress”，没有创建 Guest Agent 进程或模型请求。",
+  "observed": [
+    "命令在 Host 参数解析阶段以 exit_code=1 结束，错误为 ParameterBindingException/ModelEgress not found。",
+    "run-08 的 Pi-Agent-Temp 已提前创建，但本次失败调用未进入 New-PSSession、复制、启动或模型请求阶段。",
+    "Host 控制器源码参数列表包含 RelayUrl；Guest runner 参数列表包含 ModelEgress。"
+  ],
+  "expected_behavior": "启动前按实际入口脚本的参数定义核对调用；Host 只接受 RelayUrl，由 Host 计算并传递 ModelEgress 给 Guest。参数绑定失败时不应重复执行相同调用。",
+  "impact": "仅浪费一次本地调用并延迟 run-08；未触碰样本、Guest 文件或模型服务。",
+  "why": {
+    "confirmed_cause": "把 Host 控制器和 Guest runner 两个层级的参数接口混用。",
+    "missing_guidance": "脚手架 README/调用记录没有在入口处明确标出 Host 参数与 Guest 参数的边界；修复 runner 后直接凭记忆调用。",
+    "not_a_guest_or_model_result": "Guest Agent 尚未启动，不能据此判断 Pi、bansos、模型或网络状态。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "修正本次调用为 Host 的 -RelayUrl（直连时为空），并在启动前运行入口脚本的参数帮助/Parser 检查。",
+    "project_instruction": "运行记录中明确 Host→Guest 调度脚本只接受 RelayUrl；ModelEgress 是内部传递字段，不作为 Host 命令行参数。",
+    "documentation": "在 method/pi-flare-workbench/README.md 增加 Host runner、Guest runner 参数分层示例，避免凭记忆投递。",
+    "generic_skill": "暂不修改通用 Skill；这是本项目脚手架入口参数的文档和调用错误。"
+  },
+  "minimal_change": "不改变网络或模型配置；使用正确的 -RelayUrl 参数重新启动同一 run-08，并保留本次失败输出。",
+  "rollback": "本次没有产生 Guest Agent 状态；若验证中止，只移除 run-08 的精确临时网卡并保留该切片。",
+  "minimum_validation": "Host run script 参数解析通过，native-agent-start.json 写出 staging_verified=true 和 initial_delivery_verification=PENDING_SESSION_COMPARISON；随后再读取 Guest session 与 delivery-analysis。",
+  "evidence": [
+    "method/pi-flare-workbench/run-native-pi-agent.ps1",
+    "method/pi-flare-workbench/guest-native-pi-agent.ps1",
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/control/prompt-source.txt"
+  ],
+  "secrets_redacted": true
+}
+

@@ -1,0 +1,32 @@
+{
+  "slice_id": "pi-runner-nonterminal-harvest-20260929-01",
+  "source_run_id": "EPT-PI-COMM-DIAG-20260929-01",
+  "scope": "guest_pi_runner_output_and_terminal_state",
+  "review_status": "verified",
+  "what_happened": "历史 run-06 在两个未返回 toolCall 后留下 state=RUNNING、没有 output.txt、没有 exit_code；改前 guest-native-pi-agent.ps1 只在子进程正常退出后一次性写 output 和 finalize。",
+  "observed": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/status.json state=RUNNING and finished_utc=null",
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/ has no output.txt",
+    "EPT-PI-COMM-DIAG-20260929-01 Guest report and verify/t-hang status show partial output retained and PI_CHILD_TIMEOUT_OR_STALL",
+    "post-change guest-native-pi-agent.ps1 hash DDCB3E4427B7E3EF8DC8373B23ABEAA9DAE02C195B96A893E01112B24EDE6C63"
+  ],
+  "expected_behavior": "A child that fails, hangs, or times out leaves readable partial stdout/stderr, byte counts, heartbeat and a terminal classification; normal exit remains COMPLETED.",
+  "impact": "Host previously could not distinguish a live long task from a killed or hung runner and lost the only model output needed to classify the failure.",
+  "confirmed_cause": "Output and status finalization were after WaitForExit; no bounded timeout, streaming drain or orphan-child cleanup existed.",
+  "minimal_change": [
+    "stream stdout/stderr through asynchronous 8 KiB reads",
+    "create output files before child start",
+    "add configurable TimeoutSeconds and PI_CHILD_TIMEOUT_OR_STALL",
+    "finalize status in finally, separate runner errors into stderr, and record runner_pid/heartbeat/partial_output"
+  ],
+  "verification": [
+    "verify/t-ok => COMPLETED, output_bytes=9, stderr_bytes=11",
+    "verify/t-fail => FAILED with partial_output=true and separated stdout/stderr",
+    "verify/t-hang => FAILED/PI_CHILD_TIMEOUT_OR_STALL with partial output and no leaked test child",
+    "formal scripts parse with PowerShell Parser"
+  ],
+  "rollback": "restore workspace/work/EPT-PI-COMM-DIAG-20260929-01/backup/guest-native-pi-agent.ps1 and revalidate its SHA-256",
+  "remaining_risk": "If the runner PowerShell process itself is forcibly killed, finally may not run; Host harvest now classifies stale heartbeat as RUNNER_DIED_STALE_HEARTBEAT.",
+  "secrets_redacted": true
+}
+

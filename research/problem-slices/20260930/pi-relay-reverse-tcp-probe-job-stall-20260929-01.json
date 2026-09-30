@@ -1,0 +1,16 @@
+{
+  "slice_id": "pi-relay-reverse-tcp-probe-job-stall-20260929-01",
+  "run_id": "EPT-PI-FLARE-MIMO-20260929-05",
+  "scope": "host_guest_transport_diagnostic",
+  "reproduction": "A bounded reverse probe launched a Guest TcpListener on 172.31.250.2:18182 through Invoke-Command -AsJob and attempted a Host TCP connect.",
+  "observation": "Host-to-Guest TCP did not connect within 1.5 seconds; the remote listener job remained Running and its cleanup wrapper did not return promptly.",
+  "expected": "A diagnostic listener should distinguish transport direction and terminate within the hard deadline without leaving a remote job.",
+  "impact": "The probe confirms ordinary TCP is not usable on the isolated switch, but the diagnostic method itself introduced another remote-job cleanup risk.",
+  "evidence": "HOST_TO_GUEST_CONNECTED=False and LISTENER_JOB_STATE=Running output; host wrapper session remained active.",
+  "optimization_location": "communication adapter; do not use Invoke-Command -AsJob for recurring transport probes; use already-proven PowerShell Direct file/control transport or a purpose-built durable adapter.",
+  "minimal_change": "Reap the exact probe wrapper/listener and redesign model egress over the existing Host↔Guest control/data channel rather than opening a Guest TCP path.",
+  "rollback": "Remove only the temporary relay/firewall/listener artifacts after transport redesign is selected.",
+  "verification": "No probe wrapper or listener remains; the chosen control/data adapter has a bounded request/response canary and durable result.",
+  "unresolved_risk": "PowerShell Direct can transport files/commands but is not itself a streaming model proxy; the next adapter must preserve request/response streaming or use a Guest-side queue."
+}
+

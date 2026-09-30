@@ -64,7 +64,7 @@ PowerShell Direct、Guest Control、SSH、SMB、VMConnect 和 provider CLI 都�
 
 ```yaml
 windows_dynamic_analysis:
-  status: ready
+  status: ready_for_task
   environment: <local-environment-id>
   guest_base: flare-vm
   runtime:
@@ -77,10 +77,48 @@ windows_dynamic_analysis:
     data: <verified-data-channel>
     network: <verified-isolated-network>
     gui: <verified-gui-channel-or-null>
+  capability_evidence:
+    "<capability-name>":
+      status: ready_for_task
+      evidence: <host-verified-artifact-or-run-record>
+      verified_at: <timestamp>
+      scope_or_limit: <what-this-evidence-does-and-does-not-cover>
   last_verified: <timestamp>
 ```
 
-真实 VM 名称、IP、token、密码、Host 路径和当前状态不得写入公开 Skill。`ready` 必须来自端到端验证，不能由“组件已安装”推导。
+真实 VM 名称、IP、token、密码、Host 路径和当前状态不得写入公开 Skill。顶层状态只是摘要；每个任务只可使用 `capability_evidence` 中有证据且范围覆盖本任务的能力。未登记的能力保持 `unknown`；某一项端到端 canary 只证明它实际覆盖的部分，例如 control/data canary 不证明 debugger 或完整收割可用。`last_verified` 不能替代逐项能力证据。
+
+### Readiness 状态
+
+对每项能力分别记录：
+
+```text
+discovered
+  → installed
+  → configured
+  → bound
+  → consumer_handshake
+  → benign_task
+  → harvestable
+  → ready_for_task
+  → ready_for_run
+```
+
+`installed` 只说明组件存在；`ready_for_task` 还要求入口、持久配置、消费者握手、无害调用和 Host 收割都已证明，并记录范围和限制；`ready_for_run` 还要求当前 Guest、任务身份、路径、schema、通信 profile 和运行上下文对齐。两者都不等于目标业务成功。
+
+能力记录应包含 `evidence_source`（`upstream_official`、`curated_secondary`、`project_evidence` 或 `local_observation`）、`consumer_action`、`scope`、`limitations`、`invalidated_by` 和 `evidence_path`。安装成功、版本可读、`--help` 成功或单个回显 probe 不能直接升级为 `ready_for_task`。
+
+### 登记位置与发现顺序
+
+先复用项目、组织或分析平台已经声明的 capability registry；不得为了满足本 Skill 再造第二份权威登记。没有更高层登记时，使用用户级文件：`$CODEX_HOME/capabilities/windows-analysis.yaml`；若 `CODEX_HOME` 未设置，则使用 `~/.codex/capabilities/windows-analysis.yaml`。真实配置只保存在该部署环境，不进入共享仓库。
+
+登记文件不存在表示“尚未登记”，不表示“没有可用环境”。此时先按当前任务所需能力做只读发现，再验证候选；只有确认没有满足要求的候选，才进入环境建设。环境建成后，须在所声明的 registry 位置登记；若该位置不可写或任务不允许持久化，则报告未登记状态和 Host 可核验的验证证据，不另建平行文件。
+
+`last_verified` 应关联可核验的验证记录，而不只是填写日期。环境身份、Guest 基线、hypervisor、runtime、账户/上下文、关键通信后端、数据路径或收割路径发生变化后，相关 capability 退回 `unknown` 或 `needs_revalidation`；执行具体任务时仍需验证该任务依赖的能力，不能只凭历史状态放行。
+
+### 增量复核
+
+建设阶段已经验证且登记的能力默认复用。只有环境或 profile 发生变化、证据过期/冲突、当前任务需要未覆盖模式，或当前对象无法确认时，才做增量核对。每次核对先写明发生了什么变化、它会改变哪个决策和最低充分证据；能力核对失败只能说明能力状态未知或失效，不能直接说明样本业务失败。
 
 ## 选择规则
 
@@ -91,4 +129,5 @@ windows_dynamic_analysis:
 5. 更换 hypervisor、runtime 或关键通信后端后，重新做对应 canary 和端到端验证，不能继承旧环境的 `ready`。
 
 平台可替换不等于未经验证即可互换。替换的是后端实现，不是任务语义、证据要求或完成条件。
+
 

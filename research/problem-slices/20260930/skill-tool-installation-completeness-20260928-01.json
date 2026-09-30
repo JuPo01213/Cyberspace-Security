@@ -1,0 +1,18 @@
+{
+  "slice_id": "skill-tool-installation-completeness-20260928-01",
+  "source_run_id": "EPT-PHASE3-SAMPLE-MIN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "CAPEsolo 包、依赖、CLI help 和 MCP help 已通过，但真实任务启动 MCP 时，Guest 用户配置仍为 disabled，正式入口没有监听，消费者无法调用。",
+  "why": {
+    "confirmed_cause": "安装验收覆盖了包/版本/help，却没有覆盖持久化配置、隔离地址绑定、消费者连接和无害调用收割。",
+    "skill_gap": "Skill reference 假设“已安装且 Host 可通过 MCP 访问”，但没有把工具从安装到可消费入口的配置和交接作为明确完成条件。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "安装完成必须区分 installed 与 ready_for_task。",
+    "local_infrastructure": "补当前 Guest 用户 cfg.ini、MCP endpoint、Host consumer registration 和收割路径。",
+    "generic_skill_candidate": "候选补充工具层闭环：安装→配置→绑定→消费者握手→无害调用→收割；先由后续任务验证通用性。"
+  },
+  "minimum_validation": "用正式 MCP endpoint 完成隔离连接和真实工具调用；help、进程存在或端口配置本身都不算通过。",
+  "secrets_redacted": true
+}
+

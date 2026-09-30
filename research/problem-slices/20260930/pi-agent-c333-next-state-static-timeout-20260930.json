@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "problem_id": "pi-agent-c333-next-state-static-timeout-20260930",
+  "run_id": "EPT-PI-C333-NEXT-STATE-STATIC-20260930-01",
+  "class": "agent_timeout_with_partial_static_evidence",
+  "delivery_complete": true,
+  "sample_executed": false,
+  "sample_modified": false,
+  "agent_status": "PI_CHILD_TIMEOUT_OR_STALL",
+  "raw_session": "runs\\EPT-PI-C333-NEXT-STATE-STATIC-20260930-01\\harvest\\session.jsonl",
+  "observed": [
+    "Agent reached and inspected the transform continuation and existing RC00/RC06 observer definitions.",
+    "Agent created a disassembly helper and found the continuation's state write, but did not produce a terminal report before the 480 second deadline.",
+    "Repeated pi-bansos relay fetch failures were logged with direct fallback; this is transport evidence only."
+  ],
+  "guard": "Do not treat the partial state-machine interpretation or 0x14004c100 rax=1 as target_native_return or authorization success.",
+  "next_action": "Read and classify the complete raw session, Guest artifacts, errors, and cleanup before deciding whether a same-session continuation has information value.",
+  "superseded_next_action": "Dispatch one bounded continuation using only the already staged image and artifacts; require report output before the shorter deadline, then fall back to Host static verification if it times out again.",
+  "process_audit": "The original dispatch prescription was an execution error: timeout was treated as a cause for a new task before the review state was complete."
+}

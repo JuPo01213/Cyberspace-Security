@@ -88,3 +88,4 @@ analyze_sample(interactive_debug=true, breakpoint options)
 - CAPEsolo: https://github.com/CAPESandbox/CAPEsolo
 - MCP guide: https://github.com/CAPESandbox/CAPEsolo/blob/main/mcp_server.md
 - Interactive debugger: https://github.com/CAPESandbox/CAPEsolo/blob/main/interactive_debugger.md
+

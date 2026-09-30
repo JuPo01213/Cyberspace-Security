@@ -78,3 +78,4 @@ https://learn.microsoft.com/windows-hardware/drivers/debugger/cdb-command-line-o
 - 一次 GUI session 可见性。
 
 不要因为选了低层 adapter 就自动展开 control/data/runner/state 全套自研框架。
+

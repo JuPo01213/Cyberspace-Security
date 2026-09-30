@@ -1,0 +1,19 @@
+{
+  "slice_id": "pi-flare-native-installer-exitcode-refresh-20260929-01",
+  "run_id": "EPT-PI-GUEST-NPM-INSTALL-20260929-02",
+  "scope": "guest_native_installer",
+  "reproduction": "Guest installer ran Start-Process npm.cmd, WaitForExit returned, and the stdout log contained 'added 119 packages in 12s'; the script then read $process.ExitCode without refreshing the process object.",
+  "observation": "The recorded exit_code was null and the installer classified the successful npm step as PI_NPM_INSTALL_FAILED; plugin installation and final verification did not run.",
+  "expected": "After WaitForExit, the process object must be refreshed before reading ExitCode, and stdout/stderr evidence must remain available for classification.",
+  "impact": "A real Guest-native Pi installation was falsely reported as failed; the run is partial and cannot be called complete until the plugin and verification steps execute.",
+  "evidence": [
+    "Guest C:\\EPT\\pi-flare\\runs\\EPT-PI-GUEST-NPM-INSTALL-20260929-02\\native-install-work\\pi-npm-install.stdout.log",
+    "Guest C:\\EPT\\pi-flare\\runs\\EPT-PI-GUEST-NPM-INSTALL-20260929-02\\native-install.jsonl"
+  ],
+  "optimization_location": "method/pi-flare-workbench/guest-native-install-pi.ps1",
+  "minimal_change": "Call Refresh() after WaitForExit and before reading ExitCode.",
+  "rollback": "Revert the single process.Refresh() line; preserve the current run logs.",
+  "verification": "New RUN_ID with separate npm/plugin exit codes, terminal status, package version and temporary NIC cleanup.",
+  "unresolved_risk": "The current run may have native Pi installed despite the false-negative status; inspect it before the next run and do not reinstall blindly."
+}
+

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-native-card-bridge-ctypes-handle-20260929-01",
+  "status": "CORRECTED_IN_WORK_COPY",
+  "run": "EPT-PHASE3-AGENT-NATIVE-CARD-BRIDGE-20260929-03",
+  "observed_error": "native_card_bridge_error {'pid': 4272, 'error': \"'int' object has no attribute 'value'\"}",
+  "cause": "ctypes OpenProcess with restype c_void_p returned a plain Python int; result construction incorrectly accessed handle.value.",
+  "boundary": "The error fired after NtSuspendProcess, remote command-line write, and after-text verification; the script then resumed the child without emitting a durable bridge event or attaching the observer. This is instrument evidence only.",
+  "correction": "Normalize the returned handle with int(getattr(handle, 'value', handle)) immediately after acquisition and store int(handle) in the bridge result.",
+  "verification": "Corrected copy passed AST validation and a subsequent execution had no handle exception, but the sample took the documented zero-request instant-death branch before a child appeared; bridge success remains unverified.",
+  "next_information_point": "A new run with the corrected handle, lineage gate, and integrated residue cleanup must reach native_card_bridge_applied before any target seam claim."
+}
+

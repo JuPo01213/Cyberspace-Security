@@ -1,0 +1,16 @@
+{
+  "slice_id": "pi-flare-native-launch-boolean-literal-20260929-01",
+  "run_id": "EPT-PI-GUEST-NPM-INSTALL-20260929-02",
+  "scope": "host_native_installer_launcher",
+  "reproduction": "start-native-pi-install.ps1 reached the Guest staging/start path and then constructed its Host record with temporary_network=true.",
+  "observation": "PowerShell treated bare true as a command and terminated the launcher with 'The term true is not recognized'; the VM-side detached process may already have been started, so the Host record was not written.",
+  "expected": "The launcher should use the PowerShell boolean literal $true and write a durable start record after the Guest start result is known.",
+  "impact": "Host-side state was not recorded even though Guest-side effects may exist; a blind retry could duplicate npm/Pi installers.",
+  "evidence": "start-native-pi-install.ps1 error output from RUN_ID EPT-PI-GUEST-NPM-INSTALL-20260929-02.",
+  "optimization_location": "method/pi-flare-workbench/start-native-pi-install.ps1",
+  "minimal_change": "Replace the bare boolean literal true with $true and inspect current Guest/adapter state before any retry.",
+  "rollback": "Revert the one literal change; no sample was executed or modified.",
+  "verification": "PowerShell parse check, exact current adapter/process/status inspection, then a new RUN_ID if the prior installer did not reach a terminal state.",
+  "unresolved_risk": "The Guest installer may be running without a Host start record; current state must be harvested before another launch."
+}
+
