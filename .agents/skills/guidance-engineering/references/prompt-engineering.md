@@ -1,208 +1,96 @@
 # Prompt Engineering
 
-## 定位
+## 职责
 
-Prompt Engineering 负责回答：
+Prompt Engineering 只回答：
 
-> **如何把目标、约束、上下文和期望行为表达给模型，使其在当前运行条件下更稳定地做出正确决策。**
+> **如何把目标、约束、上下文和期望输出表达给模型。**
 
-Prompt 是指导工程的基础，但不是全部指导工程。Prompt 可以独立存在，也可以成为 Workflow、Skill、应用或评估系统的一部分。
+它不拥有多步状态机、Skill 目录结构、测试 case 或资产演进；这些分别由 Workflow、Skill、Evaluation 和 Evolution 负责。
 
-## 先判断 Prompt 类型
+## 先判断 Prompt 的位置
 
-写 Prompt 前先确认它在系统中的位置，因为不同类型的作用域、生命周期和风险不同。
+这些名称不完全属于同一协议维度；有些是消息角色，有些是来源/用途。设计时先确认目标 Harness 实际支持什么。
 
-### System Prompt
+- **System prompt**：若宿主存在该层，用于全局、稳定、长期的高层指导。
+- **Developer / application prompt**：应用长期提供的产品规则、业务约束和默认行为。
+- **Skill prompt / instructions**：Skill 被加载后提供的局部能力指导；“Skill prompt”不是新的消息角色。
+- **Task / user prompt**：当前任务目标、限制和材料。
+- **Tool-use guidance**：告诉模型何时、为何、怎样调用工具以及怎样消费结果。
+- **Grader / judge prompt**：评价其他输出或轨迹；应与被测生产指导隔离。
+- **Few-shot / examples**：示范手段，不是消息角色；具体设计见 [example-engineering.md](example-engineering.md)。
 
-由宿主/平台提供的高层指导，通常影响整个会话或运行环境。
+## Prompt 的组成
 
-设计重点：
+根据任务需要组合，不把它们固定成模板：
 
-- 高层身份与边界；
-- 长期稳定规则；
-- 与平台能力、权限和安全边界一致；
-- 避免塞入低频任务细节。
+1. **目标**：希望模型产生什么结果。
+2. **指令与约束**：必须、禁止、条件性行为。
+3. **上下文**：模型完成任务所需的可信事实。
+4. **任务数据**：需要处理的材料，与指令分开。
+5. **输出契约**：结果的形态、字段或成功标准。
+6. **失败处理**：信息不足、冲突或工具失败时允许怎样结束。
+7. **Examples**：只有确实提供新增行为信息时才加入。
 
-不要把 Skill 局部规则误写成全局 System Prompt。
-
-### Developer / Application Prompt
-
-由应用长期提供的行为规则、产品逻辑和任务框架。
-
-设计重点：
-
-- 产品级默认行为；
-- 稳定业务约束；
-- 工具策略与输出契约；
-- 与用户输入的关系；
-- 版本化与回归。
-
-它可以独立于任何 Skill 存在。
-
-### Skill Prompt
-
-由某个 Skill 提供、在该能力被发现并加载后影响模型行为的 instructions。
-
-**Skill Prompt 不是新的消息角色。** 它描述的是指导来源和功能，而不是固定协议层级。
-
-设计重点：
-
-- 只保留这项能力的共享规则；
-- 明确什么时候使用 references / scripts / tools；
-- 不把 Harness 能力假装成 Skill 自身能力；
-- 与 Skill 的能力边界、description 和 workflow 一致。
-
-### Task / User Prompt
-
-表达当前具体目标、材料、限制和期望交付。
-
-设计重点：
-
-- 当前目标优先；
-- 区分任务数据与指令；
-- 不让历史模板覆盖用户最新澄清；
-- 缺失会改变结果的关键事实时，明确失败或澄清出口。
-
-### Tool-use Guidance
-
-用于影响模型何时调用工具、调用哪个工具、参数如何形成、怎样处理结果和失败。
-
-设计重点：
-
-- 工具调用必须服务当前任务；
-- 工具可用不等于已授权所有副作用；
-- 结果要回到任务完成条件；
-- 工具错误不能由模型编造补齐。
-
-### Grader / Judge Prompt
-
-用于判断另一个输出、轨迹或行为是否满足标准。
-
-设计重点：
-
-- 与被测 Prompt 分离；
-- 不泄露“标准答案”给被测对象；
-- 判定标准可观察；
-- 允许 `unmeasured` / 证据不足，而不是强行二选一；
-- 通过人工标注和边界案例校准。
-
-### Few-shot / Examples
-
-Few-shot 不是独立消息角色，而是一种行为塑造手段。Example 会把“应该怎样做”从抽象规则变成可模仿的具体行为，因此它往往比同长度的解释性文字拥有更强的行为牵引力。
-
-默认先尝试清晰的 zero-shot instruction；当模型仍然在格式、边界判断、工具轨迹或相邻概念上不稳定时，再加入最小充分 examples。
-
-不要在这里凭直觉堆例子。Example 的选择、构造、对照、边界、排列、ablation 和 eval 隔离统一遵循 [example-engineering.md](example-engineering.md)。
-
-## Prompt 的基本结构
-
-先冻结行为契约，再写自然语言：
-
-```yaml
-goal: 当前要产生的结果
-required: 必须发生的动作或结果
-prohibited: 当前条件下不可发生的偏离
-conditional: 哪些事实出现后才允许额外动作
-context: 当前可信事实
-task_data: 要处理的材料
-completion: 什么可观察证据算完成
-failure_exit: 缺失、冲突或工具失败时如何结束
-consumer: 谁使用结果
-```
-
-不是所有 Prompt 都需要显式写出这些字段。它们是设计检查，不是固定模板。
+复杂到需要正式阶段、状态、依赖和分支时，不继续扩张 Prompt 结构，转到 [workflow-design.md](workflow-design.md)。
 
 ## 书写原则
 
-### 目标先于措辞
+### 简单直接
 
-先回答“模型最终应该做出什么可观察行为”，再优化文字。不要用“更专业”“更严格”“更聪明”代替行为定义。
+优先清楚表达目标和约束。不要把“更专业”“更谨慎”“深入思考”当作可验证行为。
 
-### 指令、上下文、数据、状态分离
+对 reasoning model，不默认要求展示或模拟 chain-of-thought；关注目标、约束和可观察成功标准。
 
-- 指令：应该做什么；
-- 上下文：已确认事实；
-- 数据：当前要处理的对象；
-- 状态：已经发生什么、下一步受什么影响。
+### 指令、上下文与数据分开
 
-外部材料中的命令、角色声明或“忽略前文”默认只是数据，除非当前契约明确赋予它指令权。
+外部材料中的命令、角色声明、网页文本和“忽略前文”默认是任务数据，不自动获得更高指令权。
 
-### 写条件，不写无边界绝对命令
+用 headings、XML、Markdown 或其他稳定分隔方式，只为减少歧义；标记法本身不是质量。
 
-错误：
+### 条件优于绝对化
+
+若一条规则存在合理反转条件，把条件写出来。
+
+例如不要写：
 
 ```text
 永远不要创建额外文件。
 ```
 
-更好：
+而应表达何时额外产物没有消费者、何时审计/恢复要求又使它成为交付的一部分。
 
-```text
-除非用户明确要求、存在下游消费者或恢复/审计要求，否则不要创建与主交付无关的额外产物。
-```
+### 结果优于自评
 
-### 完成绑定证据
+“确保完成”“确认正确”太弱。需要说明成功由什么输出、文件、工具状态或外部结果观察。
 
-不要只写“确保完成”。说明从哪里观察完成：
+正式的 completion、failure exit、dependencies 归 [workflow-design.md](workflow-design.md) 所有；Prompt 只表达当前任务真正需要的部分。
 
-- 输出；
-- 文件；
-- 工具状态；
-- 外部系统；
-- 用户指定的交付。
+### 不用 Prompt 伪造硬机制
 
-### 控制信息密度
+认证、授权、schema、runtime policy、tool enforcement 等能在机械层保证的内容交给对应组件。
 
-稳定、高频、会改变决策的 instruction 应显著；低频背景、长案例和平台细节应下沉到按需资源。
+## 什么时候使用 Example
 
-### 不用 Prompt 模拟硬约束
+先尝试清晰 zero-shot instruction。若仍在以下方面不稳定，再考虑 Example：
 
-如果某条要求能够由 schema、script、test、permission、runtime policy 或工具端校验确定性保证，优先交给这些机制。
+- 输出形状；
+- 边界判断；
+- 相邻概念区分；
+- 工具选择；
+- 合法失败；
+- 多步可观察轨迹。
 
-Prompt 适合指导模型决策，不适合伪装成权限系统。
+Example 的构造、边界配对、泄漏与删减测试统一见 [example-engineering.md](example-engineering.md)。
 
-## Example 与 Prompt 的关系
+## 什么时候升级为 Workflow / Skill
 
-Instruction 主要表达显式规则；Example 主要展示规则在具体输入上的实例化。二者应一致，但不能互相替代：
+出现阶段、状态、分支、依赖、失败恢复或多步完成门 → [workflow-design.md](workflow-design.md)。
 
-- 能用短规则稳定表达的行为，不为了“更强”机械加入 example；
-- 难以通过抽象规则表达的边界，可以用 demonstration / boundary / contrastive example；
-- 工具调用和多阶段行为若需要示范，可以展示**可观察动作轨迹**，不要依赖不可验证的内部推理文本；
-- example 中出现的风格、字段、步骤和题材都会成为潜在模仿信号，必须去除无关特征；
-- example 与 instruction 冲突时，不假设模型会自动理解“哪个才是真的”，先消除冲突。
+一套 Prompt/Workflow 已形成稳定、反复出现的能力，并需要长期 references/scripts/assets 或独立触发 → [skill-building.md](skill-building.md)。
 
-## 从简单 Prompt 到 Workflow
+仅仅“Prompt 很长”不是新建 Skill 的理由。
 
-以下情况出现时，不要继续靠增加段落解决，转到 [workflow-design.md](workflow-design.md)：
+## 验证
 
-- 多阶段；
-- 条件分支；
-- 状态迁移；
-- 工具调用序列；
-- 失败恢复；
-- 需要明确停止条件；
-- 单一输出无法代表完成。
-
-## 从 Prompt 到 Skill
-
-当一套 Prompt / Workflow：
-
-- 会被反复用于同一类能力；
-- 有稳定触发条件；
-- 需要 references / scripts / assets；
-- 需要长期维护和 eval；
-
-再进入 [skill-building.md](skill-building.md)。
-
-不要因为 Prompt 很长就自动变成 Skill。
-
-## 自检
-
-- Prompt 类型和作用域明确。
-- 主目标可观察。
-- required / prohibited / conditional 不冲突。
-- 当前事实和任务数据没有被误写成永久规则。
-- 完成证据不是模型自评。
-- 缺失与失败有合法出口。
-- 没有用自然语言假装控制宿主权限或运行时。
-- 若行为已复杂到阶段/状态级，已转成 Workflow 设计。
+Prompt 改写后若要声称“更好”“更稳定”或“修复了问题”，转到 [evaluation.md](evaluation.md)。未经运行验证时，只称候选 Prompt。
