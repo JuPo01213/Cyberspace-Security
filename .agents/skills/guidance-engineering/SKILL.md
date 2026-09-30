@@ -2,8 +2,8 @@
 name: guidance-engineering
 description: >-
   设计、编写、审查、评估和演进面向大语言模型与 Agent 的行为指导资产。
-  覆盖 Prompt Engineering、Workflow Design、Example Engineering、Skill Construction、
-  Evaluation 与 Evolution；不负责实现 Harness/Runtime、Memory、Tool 或 Sandbox 本身。
+  覆盖 Prompt Engineering、Example Engineering、Skill Construction、Evaluation 与 Evolution，
+  并处理 Prompt/Skill 中的复杂 Workflow 组织；不负责实现 Harness/Runtime、Memory、Tool 或 Sandbox 本身。
 metadata:
   short-description: Prompt、Workflow 与 Skill 的指导工程
 ---
@@ -21,7 +21,7 @@ Prompt
 = 如何把要求表达给模型
 
 Workflow
-= 多步行为如何组织、分支、推进和停止
+= 当行为变复杂时，在 Prompt/Skill 中组织阶段、状态、分支、推进与停止的结构；它不是本 Skill 中独立的知识域
 
 Example
 = 如何用具体示范塑造行为
@@ -45,7 +45,7 @@ Evolution
 ```text
 行为需求
 ├── Prompt                    几乎总会有某种表达
-├── Workflow                  复杂行为才需要
+│   └── Workflow structure    多步/状态/分支复杂时才需要
 ├── Example                   示范有独立信息价值时才需要
 └── Skill                     需要可发现、可复用封装时才需要
 
@@ -71,7 +71,7 @@ Evolution
 
 这是所有 Guidance 的共同输入，不是一个必须长期保存的新文件格式。
 
-如果行为进一步涉及阶段、状态、依赖、分支或恢复，再进入 Workflow Design。
+如果行为进一步涉及阶段、状态、依赖、分支或恢复，就在 Prompt Engineering 中使用“复杂行为 / Workflow”方法组织它；不为这个概念单独维护一套参考文件。
 
 ## 两条常见工作路径
 
@@ -82,7 +82,7 @@ Evolution
 ```text
 行为要求
 → 写 Prompt
-→ 必要时设计 Workflow
+→ 必要时在 Prompt/Skill 内组织 Workflow
 → 必要时加入 Example
 → 如需长期复用则封装 Skill
 → Evaluation
@@ -98,7 +98,7 @@ Specific Observation / Case
 → General Principle Candidate
 → 选择合适的 Guidance 载体
 → 若示范有价值，从 Principle 重新生成 Generic Teaching Example
-→ Candidate Prompt / Workflow / Skill
+→ Candidate Prompt / Skill（其中可包含 Workflow structure）
 → 独立 Evaluation
 → merge / promote / revise / reject
 ```
@@ -131,7 +131,7 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 | 对象 | 权威位置 |
 | --- | --- |
 | Prompt 分类、结构、具体写法、上下文组织 | [prompt-engineering.md](references/prompt-engineering.md) |
-| 阶段、状态、分支、依赖、完成/失败路径 | [workflow-design.md](references/workflow-design.md) |
+| Prompt 内的阶段、状态、分支、依赖、完成/失败路径 | [prompt-engineering.md](references/prompt-engineering.md) 的复杂行为 / Workflow 部分 |
 | Teaching Example / few-shot | [example-engineering.md](references/example-engineering.md) |
 | Skill 能力边界、触发、目录与资源封装 | [skill-building.md](references/skill-building.md) |
 | Observation / Development Case / Eval Case | [evaluation/case-engineering.md](references/evaluation/case-engineering.md) |
@@ -143,7 +143,7 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 ## 路由
 
 - “帮我写/改/审这个提示词” → [prompt-engineering.md](references/prompt-engineering.md)。
-- “这套行为有多步、分支、状态或失败恢复” → [workflow-design.md](references/workflow-design.md)。
+- “这套行为有多步、分支、状态或失败恢复” → [prompt-engineering.md](references/prompt-engineering.md) 的复杂行为 / Workflow 部分。
 - “这个规则需要示例才能讲清楚” → [example-engineering.md](references/example-engineering.md)。
 - “这个经验值得固化成 Skill / 帮我创建或重构 Skill” → [skill-building.md](references/skill-building.md)，并按需调用 Evolution / Prompt / Workflow / Example / Evaluation。
 - “从这次真实失败抽象可复用经验” → [evaluation/case-engineering.md](references/evaluation/case-engineering.md) + [evolution.md](references/evolution.md)。
@@ -154,7 +154,7 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 ## 共同原则
 
 - 先解决行为问题，再选择载体。
-- 最小充分：短 Prompt 能解决就不制造 Workflow；已有 Skill 能承载就不新建 Skill。
+- 最小充分：简单 instruction 能解决就不引入流程结构；已有 Skill 能承载就不新建 Skill。
 - 成熟方法优先：先检查目标生态当前官方能力、成熟工具和已有资产。
 - 一个语义一个主要 owner。
 - Evidence 不自动等于 Instruction。

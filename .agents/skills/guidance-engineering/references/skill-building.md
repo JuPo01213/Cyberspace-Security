@@ -103,7 +103,9 @@ Skill Construction 回答：
 
 ### Workflow
 
-只有存在阶段、状态、分支、依赖或失败恢复时读取 [workflow-design.md](workflow-design.md)。
+Workflow 不再维护独立 reference。它是 Prompt / Skill instructions 的复杂行为组织方式。
+
+当能力存在阶段、状态、分支、依赖、工具序列或失败恢复时，按 [prompt-engineering.md](prompt-engineering.md) 的“复杂行为：把 Workflow 写进 Prompt”部分设计，再决定哪些内容常驻 `SKILL.md`、哪些下沉 reference、哪些交给 script/tool。
 
 ### Example
 
@@ -191,7 +193,7 @@ python scripts/validate_skill.py <skill-dir>
 - 新建 Skill 而不是并入已有 owner 有明确理由；
 - description 与实际能力一致；
 - Prompt 不是空洞身份设定；
-- Workflow 只在必要时存在；
+- 只有复杂行为才引入 Workflow structure，且没有为它复制第二套规则；
 - Examples 真正增加教学信息；
 - supporting resources 都有消费者；
 - Harness/Runtime 能力没有被 Skill 文本伪造；
