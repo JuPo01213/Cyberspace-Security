@@ -2,144 +2,198 @@
 
 ## 职责
 
-Skill Construction 只回答：
+Skill Construction 回答：
 
-> **何时值得形成一个可发现、可复用能力，以及怎样把已有 Guidance 封装成 Skill。**
+> **什么时候一组 Guidance 值得被封装成一个可发现、可复用能力，以及如何完成这个封装。**
 
-它不重新定义 Prompt、Workflow、Example 或 Evaluation。
+它不要求 Guidance 一定先被完整写成独立 Prompt/Workflow 文档；但在封装前，能力目标、行为边界和实际指导必须已经足够清楚。
 
-进入本分支前，相关行为应已经在对应层说清：
+## 最常见入口：用户说“这个可以固化成技能”
 
-- instruction → [prompt-engineering.md](prompt-engineering.md)
-- 多步行为结构 → [workflow-design.md](workflow-design.md)
-- teaching examples → [example-engineering.md](example-engineering.md)
+当用户在真实任务中发现某种经验值得长期复用，不直接创建 `SKILL.md`。
 
-## 先定义能力边界
+使用下面的主流程：
 
-Skill 的第一问题不是目录，而是：
+```text
+1. Capture
+   保存用户指出的具体 Observation / Case
 
-- 它代表什么可复用能力；
-- 哪类用户目标应该触发；
-- 哪些相邻请求不应该触发；
-- 哪些 Guidance 是所有触发都共享的；
-- 哪些知识/示范/流程只在特定分支需要；
-- 哪些确定性工作应交给 script/tool；
-- 哪些能力属于 Harness/Runtime，不能由 Skill 伪造。
+2. Reuse / Ownership Check
+   先检查已有 Skill、当前项目规则、成熟官方/社区能力
+   ↓
+   已有 owner → 优先修改/合并
+   没有 owner → 继续
 
-## 粒度：默认聚合相关工作流
+3. Abstract
+   Case → Mechanism → General Principle
+   只在经验来源场景需要
 
-理论上可区分，不代表必须拆 Skill。
+4. Define Capability
+   明确这个 Skill 解决什么重复用户目标、哪些请求不属于它
 
-优先一个主 Skill 内部路由，当多个部分：
+5. Design Guidance
+   写 Prompt
+   + 必要时 Workflow
+   + 必要时 Generic Examples
+   + 必要时 scripts/references/tools
 
+6. Package Candidate Skill
+   组织 SKILL.md / references / scripts / assets / metadata
+
+7. Evaluate
+   discovery + execution + boundary + regression / holdout
+
+8. Decide
+   promote / merge / revise / reject
+```
+
+其中 Case/Principle 的抽象规则由 [evolution.md](evolution.md) 和 [evaluation/case-engineering.md](evaluation/case-engineering.md) 提供；本文件负责把它们编排成“形成 Skill”的完整路径。
+
+## 先判断：真的需要 Skill 吗
+
+满足越多，越值得 Skill 化：
+
+- 同一类用户目标反复出现；
+- 有相对稳定的触发边界；
+- 不只是一个项目事实；
+- 需要按需知识、Examples、scripts 或工具指导；
+- 长期维护价值高于额外 discovery/context 成本；
+- 与已有 Skill 合并会明显造成边界污染。
+
+以下情况优先不建新 Skill：
+
+- 一次性 Prompt；
+- 单个项目局部事实；
+- 仅仅是一条短规则；
+- 已有 Skill 已有自然 owner；
+- 只是某个 Harness / Tool 的实现缺口。
+
+## 能力边界
+
+在碰文件结构前，先回答：
+
+- 这个 Skill 帮用户完成什么；
+- 哪类请求应该触发；
+- 哪类相邻请求不应该触发；
+- 哪些指导对所有触发都成立；
+- 哪些内容只在分支场景需要；
+- 哪些操作应该交给 script/tool；
+- 哪些属于 Harness/Runtime，Skill 无法实现。
+
+## 粒度：默认聚合相关能力
+
+当多个子流程：
+
+- 共享同一用户目标；
 - 经常共同出现；
-- 共享触发目标；
 - 共同维护；
-- 拆开只增加 discovery 与同步成本。
+- 拆开只增加 discovery 与同步成本；
 
-只有独立后能显著降低误触发、上下文污染或维护耦合，或已形成明显独立用户目标时再拆。
+优先聚合到一个 Skill，由主 `SKILL.md` 路由 references。
 
-## 创建 / 更新流程
+只有独立后能明显降低误触发、上下文污染或维护耦合，才拆成新 Skill。
 
-### 1. Use-case inventory
+## 设计 Guidance
 
-至少覆盖：
+### Prompt
 
-- 直接触发；
-- 间接表达同一目标；
-- 信息不完整；
-- 不应触发的相邻请求；
-- 典型边界。
+具体书写方法见 [prompt-engineering.md](prompt-engineering.md)。
 
-如果仓库已有相关 Skill、运行证据、review 或历史版本，先读最相关材料。
+不要只写“这是一个 XX 专家 Skill”；必须有真正会改变行为的 instructions。
 
-需要调查官方/成熟方案时，读 [skill-building/research-and-reuse.md](skill-building/research-and-reuse.md)。
+### Workflow
 
-### 2. 确定目标平台
+只有存在阶段、状态、分支、依赖或失败恢复时读取 [workflow-design.md](workflow-design.md)。
 
-先确认 Skill 将运行在哪个生态/宿主，再决定结构和依赖。当前 OpenAI 结构与能力边界见 [skill-building/official-structure.md](skill-building/official-structure.md)。
+### Example
 
-不要把一种 Harness 的挂载、权限或 discovery 机制写成所有平台的通用事实。
+只有示范能提供新增行为信息时读取 [example-engineering.md](example-engineering.md)。
 
-### 3. 规划文件归属
+### Knowledge / references
+
+把低频、长背景、平台细节、schemas 和分支知识下沉。
+
+### Scripts / Tools
+
+重复、确定性、机械执行逻辑优先 script；实时数据、认证、授权和副作用由 Tool/Harness 实现。
+
+## 规划文件归属
 
 默认：
 
-- `SKILL.md`：触发后的共享核心指导和路由；
-- `references/`：只在特定分支需要的知识、policy、schema、examples 和专项流程；
-- `scripts/`：适合确定性、重复执行的逻辑；
-- `assets/`：要复制、转换或交付的模板/素材；
-- `agents/openai.yaml`：目标平台支持时的界面与依赖元数据。
+- `SKILL.md`：能力边界、共享指导、主路由；
+- `references/`：按需知识、分支流程、Examples、schemas；
+- `scripts/`：重复且适合确定性执行的逻辑；
+- `assets/`：模板和最终产物素材；
+- `agents/openai.yaml`：目标平台支持时的界面/依赖元数据。
 
-同一语义只留一个权威位置。
+不要为了完整而创建空目录、README 或重复副本。
 
-### 4. 写 description 与主入口
+## Description 与 Discovery
 
-`description` 负责让模型知道“这是什么能力、什么时候考虑它”。
+`description` 要同时表达：
 
-主 `SKILL.md` 保持短，只保留：
+- Skill 做什么；
+- 哪些用户目标/条件应该让模型考虑它。
 
-- 共享边界；
-- 共享 workflow；
-- 高价值常驻规则；
-- supporting files 的读取条件。
+不要把触发条件只藏在正文。
 
-详细措辞回 [prompt-engineering.md](prompt-engineering.md)，正式 Workflow 回 [workflow-design.md](workflow-design.md)。
+目标平台的当前 discovery、metadata 和 authority 行为见 [skill-building/official-structure.md](skill-building/official-structure.md)。
 
-### 5. 放置 Examples
+## 主 SKILL.md
 
-Example 的设计统一见 [example-engineering.md](example-engineering.md)。
+保持最小充分：
 
-Skill 层只决定放置：
+- 共享能力边界；
+- 真正高频的 instructions；
+- 主 workflow（若存在）；
+- references / scripts 的读取条件；
+- Tool/Harness 边界。
 
-- 高频、短、几乎所有触发都需要 → 主 `SKILL.md`；
-- 分支性、较长、数量较多 → reference；
+详细内容下沉，不把整个知识库常驻上下文。
+
+## Example 放置
+
+Example 的设计由 Example Engineering 负责；Skill Construction 只决定：
+
+- 短且高频 → 主 `SKILL.md`；
+- 长、低频、分支性 → reference；
 - 测试 case → 不进入生产 Guidance。
 
-### 6. Scripts 与 Tools
+## Validation
 
-只有确定性、重复执行的逻辑才值得成为 script。
-
-Skill 可以指导工具使用顺序与结果消费；认证、授权、实时数据和受控副作用由工具/Harness 实现。
-
-第三方 Skill、联网、脚本和高影响工具调用需要 [skill-building/security-review.md](skill-building/security-review.md)。
-
-### 7. 验证
-
-结构校验可运行：
+结构校验：
 
 ```bash
 python scripts/validate_skill.py <skill-dir>
 ```
 
-行为有效性、触发/非触发、边界和回归统一交给 [evaluation.md](evaluation.md)，不要在 Skill Construction 再维护第二套测试方法。
+它只能证明 bundle 的基础结构，没有证明行为有效。
 
-### 8. 发布 / 版本
+行为验证由 [evaluation.md](evaluation.md) 负责，至少区分：
 
-只有需要 hosted/upload/plugin/public release 时读取 [skill-building/packaging-and-release.md](skill-building/packaging-and-release.md)。
+- **Discovery**：该触发时能否发现/选择；
+- **Negative discovery**：相邻请求会不会误触发；
+- **Execution**：加载后是否执行正确行为；
+- **Boundary**：条件变化时是否合理反转；
+- **Regression**：修改是否破坏已有能力。
 
-## 经验如何进入 Skill
+新 Skill 在这些测试之前只是 Candidate Skill。
 
-真实运行不会自动产生新规则。
+## 发布 / 安全
 
-```text
-observation / case
-→ hypothesis
-→ candidate guidance
-→ evaluation
-→ evolution decision
-→ active Skill
-```
+第三方 Skill、联网、scripts、高影响工具调用：读 [skill-building/security-review.md](skill-building/security-review.md)。
 
-完整升格与维护规则由 [evolution.md](evolution.md) 所有。
+需要 hosted/upload/plugin/public release：读 [skill-building/packaging-and-release.md](skill-building/packaging-and-release.md)。
 
 ## 完成检查
 
-- 能力目标与触发边界清楚；
-- 没有为了模块化制造新 Skill；
-- 主 `SKILL.md` 没有复制 references 的长内容；
-- supporting files 都有明确消费者与读取条件；
-- Prompt / Workflow / Example / Eval 的权威归属没有重复；
-- scripts/tools 没有承担自然语言层已经足够完成的工作，反之亦然；
+- 新建 Skill 而不是并入已有 owner 有明确理由；
+- description 与实际能力一致；
+- Prompt 不是空洞身份设定；
+- Workflow 只在必要时存在；
+- Examples 真正增加教学信息；
+- supporting resources 都有消费者；
 - Harness/Runtime 能力没有被 Skill 文本伪造；
-- 行为修改已经交由 Evaluation 验证，未验证内容明确标成候选。
+- Candidate 已经过适当 Evaluation；
+- 未验证内容没有被写成成熟实践。

@@ -81,6 +81,19 @@ interface:
 
 当 Skill 依赖 MCP 工具时，可在其中声明 `dependencies.tools`。不要凭空填 MCP URL 或依赖；只在目标环境和实际工具已知时添加。
 
+## 当前 OpenAI 中 Skill instructions 的位置
+
+在当前 Responses API shell / Skills 机制中，Harness 会把已发现 Skill 的 `name`、`description`、`path` 加入 user-prompt context；模型决定是否读取完整 `SKILL.md`。当前官方文档明确说明：Skill instructions 属于 **user prompt input，而不是 system prompt input**。
+
+因此：
+
+- 不把 “Skill Prompt” 当成新的高权威消息角色；
+- Skill 不能靠自身文本覆盖真正更高层的系统/开发者约束；
+- 其他 Harness 可能有不同注入方式，跨平台时必须重新确认。
+
+当前官方依据：
+https://developers.openai.com/api/docs/guides/tools-skills
+
 ## Skill 与 MCP / 工具职责
 
 Skill：

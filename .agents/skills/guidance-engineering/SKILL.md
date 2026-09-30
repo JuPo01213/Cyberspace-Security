@@ -12,66 +12,110 @@ metadata:
 
 ## 核心模型
 
-本 Skill 只处理“指导资产”：
+Guidance Engineering 处理六类对象，但它们不处在一条强制流水线上。
+
+### 设计对象
 
 ```text
 Prompt
-= 如何表达行为要求
+= 如何把要求表达给模型
 
 Workflow
-= 行为如何组织和推进
+= 多步行为如何组织、分支、推进和停止
 
 Example
 = 如何用具体示范塑造行为
 
 Skill
-= 如何把 Prompt、Workflow、Example、知识和支持资源封装成可复用能力
+= 如何把相关 Guidance 与资源封装成可发现、可复用能力
+```
 
+### 生命周期
+
+```text
 Evaluation
-= 如何测量实际行为
+= 如何测量某个 Prompt / Workflow / Example / Skill 是否真的有效
 
 Evolution
-= 何时以及如何修改活动指导资产
+= 如何根据证据创建、修改、合并、删除或升格 Guidance
 ```
 
-主依赖链：
+正确关系更接近：
 
 ```text
-Prompt Engineering
-→ Workflow Design（需要多步/状态/分支时）
-→ Skill Construction（需要长期复用时）
+行为需求
+├── Prompt                    几乎总会有某种表达
+├── Workflow                  复杂行为才需要
+├── Example                   示范有独立信息价值时才需要
+└── Skill                     需要可发现、可复用封装时才需要
+
+任何候选 Guidance
 → Evaluation
-→ Evolution
+→ keep / revise / reject
+→ Evolution 维护
 ```
 
-Example Engineering 是横切能力，不是第六层；它可以服务 Prompt、Workflow 和 Skill，但教学 Example 与测试 Case 必须分离。
+不要把它机械理解成“先 Prompt，再 Workflow，再 Skill，最后才能 Eval”。
 
-## 从具体经验到通用指导
+## 共同起点：先明确要指导什么行为
 
-本 Skill 的长期知识形成遵循一条明确的抽象链：
+在选择 Prompt、Workflow、Example 或 Skill 之前，先明确最低充分的行为要求：
+
+- **goal**：最终希望发生什么；
+- **scope / conditions**：什么条件下适用；
+- **required**：必须发生什么；
+- **prohibited**：当前条件下不能发生什么；
+- **completion evidence**：从哪里看出目标真的完成；
+- **failure / uncertainty**：信息不足、冲突或工具失败时允许怎样结束；
+- **environment**：当前模型、Harness、工具和权限真实提供什么。
+
+这是所有 Guidance 的共同输入，不是一个必须长期保存的新文件格式。
+
+如果行为进一步涉及阶段、状态、依赖、分支或恢复，再进入 Workflow Design。
+
+## 两条常见工作路径
+
+### 从明确需求直接设计
+
+当目标和边界本来就清楚：
 
 ```text
-具体 Observation / Case
-→ 抽象出可迁移 Mechanism
-→ 提炼成带条件与边界的 General Principle
-→ 从 Principle 重新生成 Generic Teaching Example
-→ 用不同载体的独立 Case 验证
-→ 验证成立后写入唯一 Guidance owner
+行为要求
+→ 写 Prompt
+→ 必要时设计 Workflow
+→ 必要时加入 Example
+→ 如需长期复用则封装 Skill
+→ Evaluation
+```
+
+### 从真实经验固化
+
+当用户在使用过程中发现“这个经验值得以后复用”：
+
+```text
+Specific Observation / Case
+→ Mechanism Candidate
+→ General Principle Candidate
+→ 选择合适的 Guidance 载体
+→ 若示范有价值，从 Principle 重新生成 Generic Teaching Example
+→ Candidate Prompt / Workflow / Skill
+→ 独立 Evaluation
+→ merge / promote / revise / reject
 ```
 
 关键要求：
 
-- **案例不是原则。** 一个具体事故只能提供证据和候选机制。
-- **机制不是原则。** 机制描述“为什么发生”，原则还必须说明“什么条件下应该怎么做，以及何时反转”。
-- **通用 Example 应从原则重新构造。** 不应只是把原案例删掉品牌名、路径和人名后继续使用。
-- **教学 Example 不能证明原则。** 原则必须由没有进入教学上下文的独立案例验证。
-- **抽象要双向检查。** 既要避免保留原案例偶然细节，也要避免抽象过度，把局部经验写成无限适用的 universal rule。
+- 具体案例不是原则；
+- 匿名化原案例不等于抽象；
+- General Principle 必须保留适用条件和反转边界；
+- Teaching Example 用来教，不能自己证明原则正确；
+- 新 Skill 不是默认结果，先检查是否已有合适 owner。
 
 ## 与 Harness / Runtime 的边界
 
 Harness / Runtime 提供上下文装配、工具暴露、状态、sandbox、Skill discovery/loading 和执行循环等运行机制。
 
-Guidance 可以影响模型**如何使用已有能力**，但不能仅靠文本创造或改变：
+Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创造或改变：
 
 - 工具与权限；
 - context window；
@@ -80,42 +124,40 @@ Guidance 可以影响模型**如何使用已有能力**，但不能仅靠文本�
 - agent loop；
 - 运行时状态机制。
 
-问题实际属于这些层时，转交 Harness / Runtime / Tool 工程，不继续堆 Prompt。
+问题实际属于这些层时，转交 Harness / Runtime / Tool 工程。
 
 ## 唯一归属
 
-同一语义只保留一个主要权威位置：
-
 | 对象 | 权威位置 |
 | --- | --- |
-| Prompt 类型、措辞、上下文组织 | [prompt-engineering.md](references/prompt-engineering.md) |
-| 阶段、状态、分支、behavior contract | [workflow-design.md](references/workflow-design.md) |
+| Prompt 分类、结构、具体写法、上下文组织 | [prompt-engineering.md](references/prompt-engineering.md) |
+| 阶段、状态、分支、依赖、完成/失败路径 | [workflow-design.md](references/workflow-design.md) |
 | Teaching Example / few-shot | [example-engineering.md](references/example-engineering.md) |
-| Skill 能力边界、目录与资源封装 | [skill-building.md](references/skill-building.md) |
-| Development/Eval Case | [evaluation/case-engineering.md](references/evaluation/case-engineering.md) |
+| Skill 能力边界、触发、目录与资源封装 | [skill-building.md](references/skill-building.md) |
+| Observation / Development Case / Eval Case | [evaluation/case-engineering.md](references/evaluation/case-engineering.md) |
 | 测量、baseline/variant、判定 | [evaluation.md](references/evaluation.md) |
-| 从具体证据抽象通用原则、经验升格、修改与采纳 | [evolution.md](references/evolution.md) |
+| Principle 提炼、经验升格、资产维护 | [evolution.md](references/evolution.md) |
 
-其他文件只能引用，不重复定义。
+其他文件只引用，不复制第二套同义规则。
 
 ## 路由
 
-- 写、改、审 Prompt，或判断 system/developer/skill/task/tool/grader guidance：读 [prompt-engineering.md](references/prompt-engineering.md)。
-- 任务需要多步、分支、状态、失败出口或完成门：读 [workflow-design.md](references/workflow-design.md)。
-- 需要 few-shot、边界示范、对照示范或工具轨迹示范：读 [example-engineering.md](references/example-engineering.md)。
-- 创建、重构、打包或审查 Skill：读 [skill-building.md](references/skill-building.md)。
-- 构造测试 case、从真实失败抽象测试机制：读 [evaluation/case-engineering.md](references/evaluation/case-engineering.md)。
-- 判断指导是否有效：读 [evaluation.md](references/evaluation.md)。
-- 根据真实证据维护活动资产：读 [evolution.md](references/evolution.md)。
+- “帮我写/改/审这个提示词” → [prompt-engineering.md](references/prompt-engineering.md)。
+- “这套行为有多步、分支、状态或失败恢复” → [workflow-design.md](references/workflow-design.md)。
+- “这个规则需要示例才能讲清楚” → [example-engineering.md](references/example-engineering.md)。
+- “这个经验值得固化成 Skill / 帮我创建或重构 Skill” → [skill-building.md](references/skill-building.md)，并按需调用 Evolution / Prompt / Workflow / Example / Evaluation。
+- “从这次真实失败抽象可复用经验” → [evaluation/case-engineering.md](references/evaluation/case-engineering.md) + [evolution.md](references/evolution.md)。
+- “这次改动真的更好吗” → [evaluation.md](references/evaluation.md)。
 
-只加载当前任务所需的最窄分支。
+只加载当前任务需要的最窄分支。
 
 ## 共同原则
 
-- **先解决行为问题，再选择载体。** 不从“我要写一个 Skill/Prompt”反推需求。
-- **最小充分干预。** 短 instruction 能解决，不升级成 workflow；workflow 能解决，不为了形式新建 Skill。
-- **成熟方法优先。** 当前平台已有官方机制、成熟工具或已验证资产时先复用。
-- **一个语义一个归属。** 引用权威文件，不复制规则。
-- **证据不自动变成指令。** 真实失败先成为 observation/case，再通过 Evaluation/Evolution 决定是否升格。
-- **可机械保证的交给机械层。** schema、script、test、permission、runtime policy 能确定性约束的，不长期依赖自然语言。
-- **用户当前明确要求与真实平台约束优先。**
+- 先解决行为问题，再选择载体。
+- 最小充分：短 Prompt 能解决就不制造 Workflow；已有 Skill 能承载就不新建 Skill。
+- 成熟方法优先：先检查目标生态当前官方能力、成熟工具和已有资产。
+- 一个语义一个主要 owner。
+- Evidence 不自动等于 Instruction。
+- 可由 schema、script、test、permission 或 runtime policy 确定性保证的，不长期依赖自然语言提醒。
+- 未经 Evaluation 的新 Guidance 只能称 candidate。
+- 用户当前明确要求、真实平台能力与工具返回优先于默认指导。

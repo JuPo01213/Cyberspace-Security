@@ -2,110 +2,144 @@
 
 ## 职责
 
-Evaluation 只回答：
+Evaluation 回答：
 
-> **在固定执行条件下，当前 Guidance 是否产生了目标行为。**
+> **在已知执行条件下，一个候选 Guidance 是否真的产生了目标行为。**
 
-它不重新设计 Prompt/Workflow，也不决定经验是否升格；前者回对应设计层，后者由 Evolution 决定。
+它可以独立评估：
 
-## 测量对象
+- Prompt；
+- Workflow；
+- Example set；
+- Skill；
+- General Principle 的实现。
+
+不要求先有 Skill，也不要求先有 Workflow。
+
+## 冻结 Requirement
+
+运行前先固定本次真正要测什么：
 
 ```text
-B = frozen behavior contract / requirement
+B = behavior requirement / contract
 C = execution conditions
-I = actual delivered input
+I = actual delivered input/context
 T = observed trace
 R = compare(B, T)
 ```
 
-- **B**：优先引用 [workflow-design.md](workflow-design.md) 中已经冻结的 behavior contract；简单 Prompt 可以使用同等明确的局部 requirement。
-- **C**：模型、参数、Harness、工具、权限、初始状态。
-- **I**：实际送达的消息、文件、图片、工具描述及其顺序。
-- **T**：输出、工具调用、文件、网络、状态变化和错误。
+- **B**：目标、适用条件、required/prohibited、completion 等当前验收要求；
+- **C**：模型/版本、参数、Harness、工具、权限、初始状态；
+- **I**：实际送达的 messages、Prompt、Skill instructions、files、tool descriptions、Examples；
+- **T**：输出、工具调用、文件、网络、状态变化、错误；
 - **R**：`conforming | deviated | unmeasured`。
 
-关键观察缺失时只能是 `unmeasured`，不能猜测通过或失败。
+B 不属于 Workflow 专有。若已有正式 Workflow，可直接引用其完成门与边界；若只是简单 Prompt，就冻结一个简单 requirement。
 
-## 验证的是 Principle，不是 Example
+关键观察缺失时只能是 `unmeasured`。
 
-当一次 Guidance 修改来源于经验抽象时，Evaluation 的目标是判断 **general principle 是否在适用边界内成立**。
+## 不同 Guidance 的测试重点
 
-不要把：
+### Prompt
 
-```text
-Generic Teaching Example
-→ 模型复述正确
-```
+- 目标行为；
+- 指令遵循；
+- 数据/指令边界；
+- 输出契约；
+- 失败处理；
+- 模型/版本变化。
 
-当成泛化证据。
+### Workflow
 
-至少把验证拆成：
+- 阶段与顺序；
+- 条件分支；
+- 状态传递；
+- tool trajectory；
+- completion / failure exit。
 
-```text
-Principle applies
-→ 独立 concrete case 应遵守
+### Example
 
-Principle boundary changes
-→ 独立 boundary case 应反转/减弱
+- 加入后是否改善目标行为；
+- holdout 上是否有效；
+- 是否只模仿表面风格；
+- 删除后是否真的退化。
 
-Carrier changes
-→ cross-carrier case 仍保持同一条件逻辑
-```
+### Skill
 
-如果只在教学 Example 或其近重复版本上通过，最多证明模型记住了示范。
+除执行行为外，还要测：
+
+- positive discovery；
+- indirect discovery；
+- negative discovery；
+- input incomplete；
+- loaded-but-wrong behavior。
 
 ## Case 来源
 
-测试材料统一由 [evaluation/case-engineering.md](evaluation/case-engineering.md) 管理。
+Development / Eval Case 统一由 [evaluation/case-engineering.md](evaluation/case-engineering.md) 管理。
 
-Teaching Examples 是教材，不是唯一考试题。新增 Example 后至少保留独立 holdout；要测泛化，可使用 boundary 或 cross-carrier case。
+Teaching Example 不能作为唯一考试题。
 
-## 测试类型
+## Principle 验证
 
-- **Compliance**：规则应生效时是否发生目标行为。
-- **Boundary preservation**：关键条件变化时是否能正确释放/反转规则。
-- **Regression**：修改后旧任务是否退化。
-- **Integration / trajectory**：工具、文件、网络、多轮和真实状态是否按契约推进。
-- **Longitudinal**：只有有长期维护消费者时，才观察跨时间行为漂移。
+当 Guidance 来自：
+
+```text
+Specific Case → Mechanism → General Principle
+```
+
+至少测试：
+
+- 原则应生效的独立 concrete case；
+- 条件改变后的 boundary case；
+- 需要证明迁移时的 cross-carrier case。
+
+Generic Teaching Example 被复述正确不等于原则已泛化。
 
 ## 最小运行流程
 
 1. 冻结 B。
 2. 记录 C。
-3. 固定完整 I，避免把评估意图或答案泄漏进去。
-4. 执行并捕获与 B 相关的 T。
-5. 独立判定 required/prohibited/conditional/completion。
-6. 输出 R 与证据。
-7. 把结果交给当前消费者：保留、拒绝、继续取证或进入 Evolution。
+3. 捕获真实 I；不要只看“设计稿 Prompt”。
+4. 执行并记录与 B 相关的 T。
+5. 独立判定。
+6. 记录证据与 uncertainty。
+7. 根据消费者决定 keep / reject / more evidence / evolution。
 
 ## Baseline / Variant
 
-只有要声称“修改造成改善”时才需要因果比较：
+只有要做“修改导致改善”的因果结论时才需要：
 
-- baseline 与 variant 使用同一 B；
-- 保持模型、参数、任务、Harness、工具、权限和判定标准尽量不变；
-- 明确唯一主要 changed variable；组合修改只能归因于组合；
+- 同一个 B；
+- 尽量固定模型、版本、参数、输入、Harness、Tool 和权限；
+- 一次只改变一个主要变量，或明确结论只归因于组合；
 - 两侧都必须可观察。
 
-baseline 已符合时，不声称“修复成功”；最多说明本轮没有观察到改善空间。
+Baseline 已经符合时，不宣称“修复成功”。
+
+## Holdout / Boundary / Cross-carrier
+
+- **Holdout**：未进入生产 Guidance 的独立题；
+- **Boundary**：改变真正决策条件，检查原则是否反转/释放；
+- **Cross-carrier**：换题材/工具/表面形式，机制保持不变。
+
+只换几个名词不算有意义的泛化测试。
 
 ## 判定原则
 
-- 主任务完成与副作用约束分别判定。
-- 语义满足优先于固定措辞相似。
-- 命令成功、文件存在、模型自评都不是天然完成证据。
-- 结果只覆盖实际运行的模型、条件、输入和观察面。
-- 题材或关键词相似不等于机制相同。
-- 没有会改变决策的消费者时，不无限扩展测试。
+- 主任务与副作用约束分别判定；
+- 语义完成优先于固定措辞；
+- 命令成功、文件存在、HTTP 200、模型自评都不是天然业务完成；
+- 结果只覆盖实际运行的模型/版本/条件；
+- 没有会改变决策的消费者时，不无限增加测试。
 
 ## 最小记录
 
-保留足够复核的信息即可：
-
 ```yaml
 run_id: ...
+unit_under_test: prompt | workflow | example_set | skill | principle
 case_id: ...
-behavior_contract_ref: ...
+requirement_ref: ...
 execution_conditions: ...
 actual_input: ...
 observed_trace: ...
@@ -116,14 +150,6 @@ evidence_refs: []
 uncertainty: ...
 ```
 
-需要 baseline/variant 时，再附：
+需要因果比较时再附 baseline / variant 信息。
 
-```yaml
-reference_run: ...
-variant_run: ...
-changed_variable: ...
-held_constant: [...]
-decision: keep | reject | needs_more_evidence
-```
-
-Evaluation 只产生测量结果；是否把候选修改写入活动 Guidance，由 [evolution.md](evolution.md) 决定。
+Evaluation 只产生测量结论；是否把变化写入活动 Guidance，由 [evolution.md](evolution.md) 决定。

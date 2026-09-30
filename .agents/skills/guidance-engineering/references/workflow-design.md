@@ -2,90 +2,121 @@
 
 ## 职责
 
-Workflow Design 只回答：
+Workflow Design 回答：
 
-> **行为怎样分阶段、分支、推进、验证和停止。**
+> **当行为不再是一个简单输入→输出时，怎样组织阶段、状态、分支、依赖、验证和停止。**
 
-Prompt 负责表达，Workflow 负责结构。Workflow 可以只服务一次任务，也可以被 Skill 封装。
+Prompt 负责把 Workflow 表达给模型；Workflow 本身负责行为结构。
 
-## Behavior Contract：正式归属
+## 不再独占“行为要求”
 
-Guidance Engineering 中，正式的行为契约只在这里定义。
+所有 Guidance 在设计前都需要基本目标、边界和完成证据；这些是共同起点，不属于 Workflow 专有。
 
-按需要使用这些字段：
+Workflow 只在复杂度出现后扩展这些要求，例如：
 
 ```yaml
-goal: 最终结果
 trigger: 何时进入流程
-inputs: 所需输入
-required: 必须发生的行为或结果
-prohibited: 当前条件下不可发生的偏离
-conditional: 条件动作
-state: 会改变下一步的状态
-dependencies: 前置与后置条件
-completion: 可观察完成证据
-failure_exit: 缺失、冲突或工具失败时的合法出口
-consumer: 谁使用结果
-risk: 失败影响、可逆性和恢复要求
+inputs: 必要输入
+stages: 阶段
+state: 会改变下一步动作的状态
+dependencies: 前置/后置条件
+branches: 条件分支
+completion: 整体完成门
+failure_exit: 各失败路径怎样结束
+recovery: 必要时如何恢复
 ```
 
-不是所有 Workflow 都必须填满字段；只保留会改变决策的内容。
+只保留真正影响决策的字段。
 
-Prompt 和 Evaluation 可以引用该 contract，但不要各自维护另一套同义 schema。
+## 设计方法
 
-## 设计流程
+### 1. 先确认为什么需要 Workflow
 
-### 冻结 Goal
+出现以下任一情况才值得正式设计：
 
-Goal 是结果；Policy 是行动偏好。
+- 多阶段；
+- 工具调用序列；
+- 条件分支；
+- 跨轮状态；
+- 前后置依赖；
+- 失败恢复；
+- 单一步骤成功不等于整体完成。
 
-“少创建文件”“先搜索”“多验证”通常是 Policy，不是 Goal。Policy 可以随风险、用户要求和环境变化，不能吞掉完成条件。
+否则继续使用简单 Prompt。
 
-### 划分最少阶段
+### 2. 划分最少阶段
 
-只在状态或决策真的发生变化时划分阶段。
-
-可以用：
+只有状态或责任真的变化时才分阶段。
 
 ```text
 Frame → Acquire → Decide → Act → Verify → Close
 ```
 
-作为思考骨架，但它不是固定模板；能删则删，能合则合。
+可以作为思考骨架，不是固定模板。能删则删，能合则合。
 
-### 按事实分支
+### 3. 为每一步定义输入与出口
 
-分支条件必须是可观察事实，例如：
+每一步至少问：
 
-- 是否已有可信证据满足后置条件；
-- 风险是否高到需要恢复证据；
-- 目标是否仍未确定；
-- 工具是否可用；
-- 权限是否足够。
+- 为什么存在；
+- 消费什么；
+- 产生什么可观察结果或状态；
+- 什么条件继续；
+- 什么条件跳过；
+- 什么条件停止；
+- 失败后是否需要恢复。
 
-不要按“看起来专业”或题材名称分支。
+### 4. 按事实分支
 
-### 只保存必要状态
+分支依据必须是可观察事实：
 
-状态存在的唯一理由是改变下一步动作。没有消费者的状态字段不进入 Workflow。
+```text
+已有可信证据满足完成条件
+→ 跳过重复验证
 
-### 定义完成与失败出口
+风险/恢复要求提高
+→ 增加对应保护和证据
 
-每条主路径都应知道：
+关键事实仍缺失
+→ 只获取该事实或返回合法非完成状态
+```
 
-- 什么证据表示完成；
-- 什么情况允许跳过；
-- 什么情况必须停止；
-- 何时返回非完成状态，而不是猜测或假完成。
+不要按题材、工具名字或“看起来专业”分支。
 
-## Workflow 的落地
+### 5. 只保存必要状态
 
-LLM 主导执行时，用 [prompt-engineering.md](prompt-engineering.md) 把关键阶段、条件和出口表达成指导。
+状态存在的理由只有一个：**它会改变后续动作。**
 
-需要示范决策或可观察工具轨迹时，用 [example-engineering.md](example-engineering.md)。
+没有消费者的状态、日志和字段不进入 Workflow。
 
-Workflow 稳定复用、需要独立触发或 supporting resources 时，再由 [skill-building.md](skill-building.md) 封装。
+### 6. 定义整体完成门
+
+不要把某个命令成功、文件创建或 API 200 当作整体完成，除非它就是用户目标。
+
+整体 completion 应绑定真实消费者和最终结果。
+
+## 如何写回 Prompt
+
+Workflow 设计完成后，用 [prompt-engineering.md](prompt-engineering.md) 把真正需要模型知道的：
+
+- 阶段；
+- 条件；
+- 状态；
+- 工具使用；
+- 完成/失败出口；
+
+编译成可读 instructions。
+
+不要把设计文档全文机械塞进 Prompt。
+
+需要示范某个决策或 trajectory 时，调用 [example-engineering.md](example-engineering.md)。
+
+## 什么时候封装成 Skill
+
+Workflow 反复服务同一类能力、存在稳定触发边界、需要 supporting resources 或长期维护时，再进入 [skill-building.md](skill-building.md)。
+
+多个相关 Workflow 可以由一个 Skill 路由，不因“流程不同”自动拆 Skill。
 
 ## 验证
 
-只要声称某个阶段、分支、顺序或停止条件是必要改进，就交给 [evaluation.md](evaluation.md) 测量；Workflow 文件本身不定义测试方法。
+任何关于阶段、顺序、分支、状态或停止条件的“改进”都必须由 [evaluation.md](evaluation.md) 实测。

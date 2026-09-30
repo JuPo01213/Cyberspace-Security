@@ -9,23 +9,28 @@ NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 SKILL_TEMPLATE = """---
 name: {name}
-description: TODO: 用一句话说明这个 Skill 完成什么用户目标，以及哪些请求/条件应触发它。
+description: TODO: 用一句话说明这个 Skill 提供什么可复用能力，以及哪些用户目标或条件应该触发它。
 ---
 
 # {title}
 
-## 目标与边界
+## 能力与边界
 
-写清输入、步骤、输出、禁止性推断、追问/停止条件，以及需要按需读取的 supporting files。
+说明：
+- 这个 Skill 帮用户完成什么；
+- 哪些请求应该触发；
+- 哪些相邻请求不应该触发；
+- 哪些能力属于 Harness / Tool，不能由本 Skill 伪造。
 
-## 工作流
+## 共享指导
 
-1. TODO
-2. TODO
+只写所有触发都真正需要的 instructions。
+如果需要复杂阶段/分支，再加入最小 Workflow；如果 Example 有独立教学价值，再加入最小 Example。
 
-## Supporting resources
+## 按需资源
 
-只保留实际需要的 references / scripts / assets，并在这里说明何时读取或运行。
+列出真正需要的 references / scripts / assets，并说明何时读取或运行。
+不要为了结构完整创建无消费者的资源。
 """
 
 OPENAI_YAML_TEMPLATE = """interface:
@@ -74,8 +79,8 @@ def main() -> int:
     agents = skill_dir / "agents"
     agents.mkdir()
     display_name = args.display_name or title
-    short_description = args.short_description or f"Create and use {title}"
-    default_prompt = args.default_prompt or f"Use the {name} skill for this task."
+    short_description = args.short_description or f"Use {title} for a reusable capability"
+    default_prompt = args.default_prompt or f"Use the {name} skill when it is relevant to the user's goal."
     (agents / "openai.yaml").write_text(
         OPENAI_YAML_TEMPLATE.format(
             display_name=display_name.replace('"', '\\"'),

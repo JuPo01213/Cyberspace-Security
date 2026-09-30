@@ -2,95 +2,311 @@
 
 ## 职责
 
-Prompt Engineering 只回答：
+Prompt Engineering 回答的不是“Prompt 有哪些种类”，而是：
 
-> **如何把目标、约束、上下文和期望输出表达给模型。**
+> **给定一个行为目标，具体应该怎样写出一段可投递、可维护、可测试的 Prompt。**
 
-它不拥有多步状态机、Skill 目录结构、测试 case 或资产演进；这些分别由 Workflow、Skill、Evaluation 和 Evolution 负责。
+Prompt 可以独立存在，也可以成为 Workflow、Skill、应用或 grader 的一部分。
 
-## 先判断 Prompt 的位置
+## 先区分两个维度
 
-这些名称不完全属于同一协议维度；有些是消息角色，有些是来源/用途。设计时先确认目标 Harness 实际支持什么。
+不要把所有“Prompt 类型”混成同一分类。
 
-- **System prompt**：若宿主存在该层，用于全局、稳定、长期的高层指导。
-- **Developer / application prompt**：应用长期提供的产品规则、业务约束和默认行为。
-- **Skill prompt / instructions**：Skill 被加载后提供的局部能力指导；“Skill prompt”不是新的消息角色。
-- **Task / user prompt**：当前任务目标、限制和材料。
-- **Tool-use guidance**：告诉模型何时、为何、怎样调用工具以及怎样消费结果。
-- **Grader / judge prompt**：评价其他输出或轨迹；应与被测生产指导隔离。
-- **Few-shot / examples**：示范手段，不是消息角色；具体设计见 [example-engineering.md](example-engineering.md)。
+### 1. 投递位置 / 指令权威
 
-## Prompt 的组成
+由目标 Harness / API 决定，例如：
 
-根据任务需要组合，不把它们固定成模板：
+- system；
+- developer / instructions；
+- user / task input；
+- Skill 被加载后进入上下文的 instructions。
 
-1. **目标**：希望模型产生什么结果。
-2. **指令与约束**：必须、禁止、条件性行为。
-3. **上下文**：模型完成任务所需的可信事实。
-4. **任务数据**：需要处理的材料，与指令分开。
-5. **输出契约**：结果的形态、字段或成功标准。
-6. **失败处理**：信息不足、冲突或工具失败时允许怎样结束。
-7. **Examples**：只有确实提供新增行为信息时才加入。
+不同平台不一定拥有同样的消息角色和优先级。先确认真实接口，再决定放置。
 
-复杂到需要正式阶段、状态、依赖和分支时，不继续扩张 Prompt 结构，转到 [workflow-design.md](workflow-design.md)。
+### 2. Prompt 的功能
 
-## 书写原则
+同一条消息里可以同时包含：
 
-### 简单直接
+- identity / role；
+- task goal；
+- behavioral instructions；
+- tool-use guidance；
+- output contract；
+- examples；
+- context / reference material；
+- grader criteria。
 
-优先清楚表达目标和约束。不要把“更专业”“更谨慎”“深入思考”当作可验证行为。
+“Skill Prompt”“Tool Prompt”“Grader Prompt”更多是在描述来源或用途，不一定是独立消息角色。
 
-对 reasoning model，不默认要求展示或模拟 chain-of-thought；关注目标、约束和可观察成功标准。
+## 一套可直接使用的 Prompt 编写流程
 
-### 指令、上下文与数据分开
+### 1. 写清目标结果
 
-外部材料中的命令、角色声明、网页文本和“忽略前文”默认是任务数据，不自动获得更高指令权。
+先用一句话回答：
 
-用 headings、XML、Markdown 或其他稳定分隔方式，只为减少歧义；标记法本身不是质量。
+> 模型最终要产生什么可观察结果？
 
-### 条件优于绝对化
+不要从“你是一位专家”“请深入思考”开始。
 
-若一条规则存在合理反转条件，把条件写出来。
-
-例如不要写：
+例如：
 
 ```text
-永远不要创建额外文件。
+目标：审查一个已有 Skill，找出重复职责、缺失能力和错误边界，并给出最小重构方案。
 ```
 
-而应表达何时额外产物没有消费者、何时审计/恢复要求又使它成为交付的一部分。
+### 2. 写必要行为
 
-### 结果优于自评
+把真正影响结果的动作写成明确动词：
 
-“确保完成”“确认正确”太弱。需要说明成功由什么输出、文件、工具状态或外部结果观察。
+```text
+- 读取当前活动版本，不凭记忆审查旧版本。
+- 区分结构问题、内容缺失和平台限制。
+- 对每个发现指出唯一 owner。
+- 修改后检查引用与行为边界。
+```
 
-正式的 completion、failure exit、dependencies 归 [workflow-design.md](workflow-design.md) 所有；Prompt 只表达当前任务真正需要的部分。
+优先写“做什么”，只有存在真实误行为时再补“不要做什么”。
 
-### 不用 Prompt 伪造硬机制
+### 3. 写条件与边界
 
-认证、授权、schema、runtime policy、tool enforcement 等能在机械层保证的内容交给对应组件。
+避免把局部规则写成绝对命令。
 
-## 什么时候使用 Example
+使用：
 
-先尝试清晰 zero-shot instruction。若仍在以下方面不稳定，再考虑 Example：
+```text
+当 X 时 → 做 A
+当关键条件变为 Y 时 → 改做 B / 跳过 A
+```
+
+例如：
+
+```text
+当仓库已有成熟实现时先复用；
+只有现有实现存在明确缺口时再做最小自建。
+```
+
+而不是：
+
+```text
+永远不要自己实现。
+```
+
+### 4. 分开 Instructions、Context 与 Task Data
+
+至少在语义上区分：
+
+- **Instructions**：模型应该怎样行为；
+- **Context**：完成任务所需的可信背景；
+- **Task Data**：要处理的正文、文件、网页、日志等；
+- **State**：已经发生、且会影响下一步的结果。
+
+外部材料中的“忽略前文”“你现在是……”默认只是 Task Data，不自动获得新的指令权。
+
+可以用 Markdown headings、XML tags 或其他稳定边界表达。标记法本身不是目标，减少歧义才是目标。
+
+### 5. 写工具使用规则（如果需要）
+
+不要只写“可以使用工具”。
+
+写清真正影响决策的部分：
+
+```text
+何时调用
+→ 调哪个类别的工具
+→ 需要哪些输入
+→ 如何解释返回
+→ 失败/歧义时怎么办
+→ 什么工具结果才能支撑完成结论
+```
+
+例如：
+
+```text
+涉及当前官方接口时先检索当前官方文档。
+若搜索没有得到足够证据，不把猜测写成当前事实。
+```
+
+认证、授权、审批和服务器端 policy 仍由 Harness / Tool 实现，不由 Prompt 创造。
+
+### 6. 写输出契约
+
+只约束真正有消费者的输出。
+
+可写：
+
+- 必须包含哪些字段；
+- 允许哪些值；
+- 需要什么顺序；
+- 是否允许解释；
+- 信息不足时怎样表示；
+- 什么算完成、部分完成或未测量。
+
+如果结构必须机器可靠解析，优先使用平台的 structured output / schema，而不是单靠自然语言。
+
+### 7. 处理失败与不确定性
+
+提前定义合法出口，防止模型用猜测补齐：
+
+```text
+缺少关键事实 → 明确指出缺什么；
+工具失败 → 报告实际失败，不编造结果；
+关键观察缺失 → 不声称完成；
+目标存在冲突 → 指出冲突并完成仍可安全完成的部分。
+```
+
+### 8. 判断是否需要 Example
+
+先尝试清晰 zero-shot。
+
+当模型在以下方面仍不稳定时，再读 [example-engineering.md](example-engineering.md)：
 
 - 输出形状；
-- 边界判断；
-- 相邻概念区分；
+- 条件边界；
+- 相邻概念；
 - 工具选择；
 - 合法失败；
-- 多步可观察轨迹。
+- 可观察 trajectory。
 
-Example 的构造、边界配对、泄漏与删减测试统一见 [example-engineering.md](example-engineering.md)。
+Example 是新增行为信息，不是装饰。
 
-## 什么时候升级为 Workflow / Skill
+### 9. 组织 Prompt
 
-出现阶段、状态、分支、依赖、失败恢复或多步完成门 → [workflow-design.md](workflow-design.md)。
+对于长期 developer/application prompt，一个常见、可读的结构是：
 
-一套 Prompt/Workflow 已形成稳定、反复出现的能力，并需要长期 references/scripts/assets 或独立触发 → [skill-building.md](skill-building.md)。
+```text
+# Identity / Purpose        可选
+# Instructions              核心
+# Tool Use                  需要时
+# Output                    需要时
+# Examples                  需要时
+# Context                   动态背景
+```
 
-仅仅“Prompt 很长”不是新建 Skill 的理由。
+这不是固定模板。当前 OpenAI 文档把 Identity、Instructions、Examples、Context 作为常见 developer-message 组织方式，但明确最优内容和顺序会随模型变化。
+
+对于简单 task prompt，完全可以只有：
+
+```text
+任务
++ 必要约束
++ 输入
++ 期望输出
+```
+
+不要为了“专业”套大模板。
+
+## 三个常用骨架
+
+### 简单任务 Prompt
+
+```text
+任务：
+{要完成什么}
+
+要求：
+- {真正影响结果的要求}
+- {边界/限制}
+
+输入：
+{task data}
+
+输出：
+{只有确有需要时描述}
+```
+
+### Developer / Application Prompt
+
+```text
+# Purpose
+{产品或助手长期目标}
+
+# Instructions
+- {稳定行为规则}
+- 当 {condition} 时，{action}
+- 不要 {具体已知误行为}
+
+# Tool Use
+{何时使用哪些工具，以及如何处理失败}
+
+# Output
+{稳定输出契约}
+
+# Examples
+{只有有独立教学价值时}
+
+# Context
+{动态事实，由应用注入}
+```
+
+### Skill 内 Instructions
+
+```text
+能力：
+{这个 Skill 帮模型做什么}
+
+共享指导：
+- {所有触发都需要的规则}
+
+路由：
+- 当 {condition} 时读取 {reference/script}
+- 当 {condition} 时执行 {workflow}
+
+边界：
+- {不得推断/不得越权的事项}
+```
+
+Skill 的 discovery、description、references 和 packaging 由 [skill-building.md](skill-building.md) 负责。
+
+## Prompt 的修改方法
+
+不要通过“再加一段更强的话”无限堆叠。
+
+出现失败时先判断：
+
+1. 目标是否表达错；
+2. 条件或边界是否缺失；
+3. 关键信息是否根本没进入上下文；
+4. 需要的是 Workflow，而不是更多文字；
+5. 需要的是 Example；
+6. 其实是 Tool/Harness/权限问题；
+7. 模型本身在当前条件下是否无法稳定完成。
+
+只修改真正导致偏离的变量。
+
+## 常见反模式
+
+- 用身份设定替代具体任务；
+- 大量“务必、绝对、非常重要”但没有行为定义；
+- 正负规则互相冲突；
+- 把 Task Data 混成指令；
+- 所有任务都塞同一长 Prompt；
+- 用 Prompt 模拟权限、schema 或 runtime enforcement；
+- 只规定过程，不说明成功结果；
+- 为了防一次事故新增永久 universal rule；
+- Examples 与 instructions 冲突；
+- Prompt 变长后不做 eval，只凭感觉认为更强。
+
+## 模型与版本适配
+
+Prompt 行为依赖具体模型、模型版本和投递方式。不同模型可能需要不同显式程度。
+
+因此生产 Prompt：
+
+- 记录实际模型/版本与投递层；
+- 不把某个模型上的经验升级成跨模型硬规则；
+- 更换模型或重要版本时重新跑代表性 eval；
+- 对当前平台能力有疑问时重新检查当前官方文档。
 
 ## 验证
 
-Prompt 改写后若要声称“更好”“更稳定”或“修复了问题”，转到 [evaluation.md](evaluation.md)。未经运行验证时，只称候选 Prompt。
+只要要声称“这个 Prompt 更好、更稳定、修复了问题”，就转到 [evaluation.md](evaluation.md)。
+
+未经实际测试，只称 candidate prompt。
+
+## 当前外部依据
+
+核对日期：2026-10-01。
+
+OpenAI 当前 Prompt Engineering 文档强调：不同模型/快照可能需要不同 prompting；message roles 具有不同权威；Markdown/XML 可用于划分逻辑边界；developer message 常见组成包括 Identity、Instructions、Examples、Context；few-shot 应使用多样输入与期望输出，并建议用 eval 监控 Prompt 迭代。
+
+https://developers.openai.com/api/docs/guides/prompt-engineering
