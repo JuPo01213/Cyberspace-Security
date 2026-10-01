@@ -4,9 +4,11 @@
 
 ## 先区分目标
 
-### 仓库 / 本地 Harness
+### 本地 Git / 本地 Harness
 
-Skill 可以作为仓库目录被 Harness 发现。重点是目录、description、instructions、supporting resources 和本地验证。
+每个 Skill 文件夹在作者环境中应由自己的本地 Git repository 管理。这个 Git 边界负责版本、回滚和 Case 历史；它不要求存在独立 GitHub / GitLab remote。
+
+Harness 发现的是 Skill 目录及其内容，不依赖是否配置 remote。发布或上传 bundle 时，`.git/` 属于本地版本管理元数据，不应被当作 Skill 运行资源打包。重点仍是目录、description、instructions、supporting resources 和本地验证。
 
 ### Responses API hosted Skill
 

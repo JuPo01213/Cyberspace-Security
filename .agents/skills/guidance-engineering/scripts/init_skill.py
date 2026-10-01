@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import subprocess
 from pathlib import Path
 
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -47,7 +48,7 @@ def main() -> int:
     p = argparse.ArgumentParser(description="Initialize a minimal Agent Skill scaffold.")
     p.add_argument("name")
     p.add_argument("--path", required=True, help="Parent directory where the skill folder will be created.")
-    p.add_argument("--resources", default="", help="Comma-separated subset of references,scripts,assets.")
+    p.add_argument("--resources", default="", help="Comma-separated subset of references,examples,cases,scripts,assets.")
     p.add_argument("--display-name")
     p.add_argument("--short-description")
     p.add_argument("--default-prompt")
@@ -59,7 +60,7 @@ def main() -> int:
     if len(name) > 64:
         raise SystemExit("skill name should be <= 64 characters for broad compatibility")
 
-    allowed = {"references", "scripts", "assets"}
+    allowed = {"references", "examples", "cases", "scripts", "assets"}
     resources = [x.strip() for x in args.resources.split(",") if x.strip()]
     invalid = sorted(set(resources) - allowed)
     if invalid:
@@ -69,6 +70,23 @@ def main() -> int:
     if skill_dir.exists():
         raise SystemExit(f"refusing to initialize existing directory: {skill_dir}")
     skill_dir.mkdir(parents=True)
+
+    try:
+        subprocess.run(
+            ["git", "init"],
+            cwd=skill_dir,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+    except FileNotFoundError:
+        skill_dir.rmdir()
+        raise SystemExit("git is required: each Skill folder must be its own local Git repository")
+    except subprocess.CalledProcessError as exc:
+        skill_dir.rmdir()
+        detail = (exc.stderr or exc.stdout or "").strip()
+        raise SystemExit(f"git init failed: {detail or exc.returncode}")
 
     title = " ".join(part.capitalize() for part in name.split("-"))
     (skill_dir / "SKILL.md").write_text(SKILL_TEMPLATE.format(name=name, title=title), encoding="utf-8")

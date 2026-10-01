@@ -95,7 +95,9 @@ Interpretation:
 
 Case 属于产生它的 Skill repository，是 Skill 演化上下文的一部分，而不是全局知识数据库。
 
-Case 默认不进入运行时上下文，避免正常使用时把全部历史塞入上下文；但它必须保存在产生它的 Skill repository 内，与对应的 Skill revision 一起由 Git 管理。
+Case 默认不进入运行时上下文，避免正常使用时把全部历史塞入上下文；但它必须保存在产生它的 Skill 文件夹内部，并随这个 Skill 自己的本地 Git repository 一起版本化。
+
+这里不要求 Skill 有独立 GitHub / GitLab remote。Case 与 Skill 的绑定来自同一个本地 Git history，而不是来自远端托管关系。
 
 默认结构：
 
@@ -122,7 +124,7 @@ Skill repository owns:
 
 Case 必须能追溯到当时的 Skill revision。Skill 的版本差异由 Git 保存，不在 Case 里复制完整旧文件。
 
-Do not separate Skill cases into an unrelated global repository unless they become an independent capability with their own owner and lifecycle.
+原始 Case 始终留在产生它的 Skill 内。可以从 Case 抽象出新的通用 Principle，甚至形成另一个 Skill，但不要因此把源 Case 搬出原 Skill。
 
 ## Case 如何反哺 Skill
 

@@ -2,37 +2,43 @@
 
 ## Skill Repository Boundary
 
-A Skill is an independent Git-managed capability unit.
+每个 Skill 文件夹都应当**单独由 Git 管理**：Skill 文件夹本身就是一个本地 Git repository，也是这个 Skill 的生命周期边界。
 
-Each Skill folder is a separate Git repository. The repository is the lifecycle boundary of that Skill and owns:
+这里的 “independent Git repository” 指独立的 Git 历史，不等于必须为每个 Skill 创建独立 GitHub / GitLab 远端仓库。Remote、托管和公开发布都是可选的分发层，不能与本地版本管理边界混为一谈。
 
-- `SKILL.md`;
-- `references/`;
-- `examples/`;
-- `cases/`;
-- `scripts/` and tools;
-- evaluation assets;
-- the complete Git history of the Skill.
+一个 Skill repository 自己拥有：
 
-A Skill should be self-contained: it owns the knowledge required to understand, execute, evaluate, and improve itself. Self-contained does not mean copying unrelated material into the repository; external dependencies must have explicit ownership and version boundaries.
+- `SKILL.md`；
+- `references/`；
+- `examples/`；
+- `cases/`；
+- `scripts/`、tools 和必要 assets；
+- evaluation assets；
+- 该 Skill 自己的 Git history。
 
-Do not use one Git repository to manage multiple unrelated Skills. Different Skills have different owners, maintenance cycles, evolution speeds, and release boundaries.
+Skill 应尽可能自包含：理解、执行、评估和改进该能力所需的主要知识应归这个 Skill 自己所有。自包含不等于复制无关材料；真正的外部依赖必须有明确 owner 和边界。
 
-Shared knowledge should be extracted only when it becomes an independent capability with its own owner and lifecycle.
+不要用一个上层 Git repository 统一管理多个 Skill 的版本历史。外层 `skills/` 可以只是本地放置目录；每个子 Skill 自己 `git init`、自己 commit、自己回滚。是否配置 remote 由实际需要决定。
 
-Default structure:
+Default local layout:
 
 ```text
-skill-repository/
-├── .git/
-├── SKILL.md
-├── references/
-├── examples/
-├── cases/
-└── scripts/
+skills/                     # 可只是普通目录
+├── skill-a/
+│   ├── .git/               # skill-a 自己的 Git repository
+│   ├── SKILL.md
+│   ├── references/
+│   ├── cases/
+│   └── ...
+└── skill-b/
+    ├── .git/               # skill-b 自己的 Git repository
+    ├── SKILL.md
+    └── ...
 ```
 
-A Skill is not merely a prompt file. It is a versioned, independently evolvable capability asset.
+共享知识只有在它真的形成独立能力、拥有独立 owner 和生命周期时才抽出；否则优先留在自然 owner 的 Skill 内。
+
+Skill 不是一个 Prompt 文件，而是一个可以独立版本化和演进的能力资产。
 
 ## 职责
 
@@ -77,7 +83,7 @@ Skill Construction 回答：
    discovery + execution + boundary + regression / holdout
 
 8. Decide
-   keep / merge / revise / reject，然后用 Git 保存变更
+   keep / merge / revise / reject，然后在该 Skill 自己的 Git repository 中提交变更
 ```
 
 Case 的保存、抽象和反馈规则由 [cases.md](cases.md) 提供；本文件只负责编排“是否以及如何形成 Skill”。
@@ -231,6 +237,7 @@ python scripts/validate_skill.py <skill-dir>
 ## 完成检查
 
 - 新建 Skill 而不是并入已有 owner 有明确理由；
+- Skill 文件夹已经作为独立本地 Git repository 管理；是否配置 remote 不影响这一要求；
 - description 与实际能力一致；
 - Prompt 不是空洞身份设定；
 - 只有行为确实依赖阶段/状态/分支时才引入 Workflow，并保持其行为模型只有一个 owner；
