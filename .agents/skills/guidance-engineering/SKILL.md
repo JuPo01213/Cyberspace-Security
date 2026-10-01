@@ -171,7 +171,7 @@ Evolution change
 - 用户反馈是重要证据，但不会自动变成长期 instruction；
 - 匿名化原案例不等于抽象；
 - 从 Case 产生 Teaching Example 时，先抽象原则，再重新构造通用 Example；
-- 新 Skill 不是默认结果，优先检查已有 owner。
+- 从经验自行决定是否 Skill 化时，不默认新建；但用户已明确要求创建 Skill 时，创建决定优先，直接进入创建流程。
 
 ## 与 Harness / Runtime 的边界
 
@@ -190,7 +190,8 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 
 - 写、改、审 Prompt → [prompt-engineering.md](references/prompt-engineering.md)
 - 设计 few-shot / Teaching Example → [example-engineering.md](references/example-engineering.md)
-- 从零创建、合并、拆分、重构 Skill → [skill-building.md](references/skill-building.md)；创建时按其中“从零创建 Skill：标准流程”执行
+- 用户明确要求创建 Skill → 直接执行 [skill-building.md](references/skill-building.md) 的“从零创建 Skill：执行流程”；不重新判断是否应该创建，不用调研结果否决用户决定
+- 用户尚未决定是否 Skill 化，或要求合并 / 拆分 / 重构 → [skill-building.md](references/skill-building.md)
 - 从真实使用保存经验、反哺 Skill → [cases.md](references/cases.md)
 - 验证候选修改是否真实有效 → [evaluation.md](references/evaluation.md)
 - 查询历史/构造案例 → [case-library.md](references/case-library.md)
