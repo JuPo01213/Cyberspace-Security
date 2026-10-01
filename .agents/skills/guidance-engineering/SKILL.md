@@ -186,15 +186,39 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 
 问题属于这些层时，转交 Harness / Runtime / Tool 工程。
 
-## 路由
+## 执行入口
 
-- 写、改、审 Prompt → [prompt-engineering.md](references/prompt-engineering.md)
-- 设计 few-shot / Teaching Example → [example-engineering.md](references/example-engineering.md)
-- 用户明确要求创建 Skill → 直接执行 [skill-building.md](references/skill-building.md) 的“从零创建 Skill：执行流程”；不重新判断是否应该创建，不用调研结果否决用户决定
-- 用户尚未决定是否 Skill 化，或要求合并 / 拆分 / 重构 → [skill-building.md](references/skill-building.md)
-- 从真实使用保存经验、反哺 Skill → [cases.md](references/cases.md)
-- 验证候选修改是否真实有效 → [evaluation.md](references/evaluation.md)
-- 查询历史/构造案例 → [case-library.md](references/case-library.md)
+先判断当前用户要完成哪类工作，然后**执行对应 reference 的主流程直到其完成标准**。不要只读取原则后自行拼装另一套流程。
+
+```text
+写 / 改 / 审 Prompt
+→ prompt-engineering.md
+→ 从输入执行到 Evaluation / revise / keep
+
+设计 Teaching Example / few-shot
+→ example-engineering.md
+→ 从“是否需要 Example”执行到 keep / revise / delete
+
+用户明确要求创建 Skill
+→ skill-building.md
+→ 直接执行“从零创建 Skill：执行流程”
+→ 不重新判断是否应该创建
+→ 不用调研结果否决用户决定
+
+用户尚未决定是否 Skill 化，或要求 merge / split / refactor
+→ skill-building.md
+→ 只在这种情况下做必要性与粒度判断
+
+真实使用 / Evaluation 产生值得保留的新经验
+→ cases.md
+→ 从记录 Facts 执行到 absorbed / no-change
+
+验证 Candidate Guidance / Skill change
+→ evaluation.md
+→ 从 claim 定义执行到 keep / revise / reject / unmeasured
+```
+
+需要历史或构造案例时按需读取 [case-library.md](references/case-library.md)，但它不是独立执行流程。
 
 ## 共同原则
 
