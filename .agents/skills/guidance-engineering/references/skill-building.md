@@ -1,5 +1,39 @@
 # Skill Construction
 
+## Skill Repository Boundary
+
+A Skill is an independent Git-managed capability unit.
+
+Each Skill folder is a separate Git repository. The repository is the lifecycle boundary of that Skill and owns:
+
+- `SKILL.md`;
+- `references/`;
+- `examples/`;
+- `cases/`;
+- `scripts/` and tools;
+- evaluation assets;
+- the complete Git history of the Skill.
+
+A Skill should be self-contained: it owns the knowledge required to understand, execute, evaluate, and improve itself. Self-contained does not mean copying unrelated material into the repository; external dependencies must have explicit ownership and version boundaries.
+
+Do not use one Git repository to manage multiple unrelated Skills. Different Skills have different owners, maintenance cycles, evolution speeds, and release boundaries.
+
+Shared knowledge should be extracted only when it becomes an independent capability with its own owner and lifecycle.
+
+Default structure:
+
+```text
+skill-repository/
+├── .git/
+├── SKILL.md
+├── references/
+├── examples/
+├── cases/
+└── scripts/
+```
+
+A Skill is not merely a prompt file. It is a versioned, independently evolvable capability asset.
+
 ## 职责
 
 Skill Construction 回答：

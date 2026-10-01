@@ -93,21 +93,36 @@ Interpretation:
 
 ## 如何保存
 
-Case 属于学习层，默认**不放进生产 Skill bundle**，避免正常使用时把全部历史塞进上下文。
+Case 属于产生它的 Skill repository，是 Skill 演化上下文的一部分，而不是全局知识数据库。
 
-优先使用项目已有的案例/测试目录。
+Case 默认不进入运行时上下文，避免正常使用时把全部历史塞入上下文；但它必须保存在产生它的 Skill repository 内，与对应的 Skill revision 一起由 Git 管理。
 
-如果没有约定，可以采用简单默认：
+默认结构：
 
 ```text
-.agents/cases/<skill-name>/
-├── cases.ndjson
-└── evidence/        # 只有复杂 Case 真需要额外证据时才创建
+skill-repository/
+├── SKILL.md
+├── references/
+├── examples/
+├── cases/
+│   ├── cases.ndjson
+│   └── evidence/        # 只有复杂 Case 真需要额外证据时才创建
+└── scripts/
 ```
 
-`cases.ndjson` 适合追加、小记录、Git diff 和程序筛选；如果项目已经有更合适的 Markdown / JSON / test fixture 体系，直接复用，不为了格式迁移。
+Skill repository owns:
+
+- current guidance;
+- supporting resources;
+- usage cases;
+- evaluation evidence;
+- Git history.
+
+`cases.ndjson` 适合追加、小记录、Git diff 和程序筛选；如果 Skill repository 已有更合适的 Markdown / JSON / test fixture 体系，直接复用，不为了格式迁移。
 
 Case 必须能追溯到当时的 Skill revision。Skill 的版本差异由 Git 保存，不在 Case 里复制完整旧文件。
+
+Do not separate Skill cases into an unrelated global repository unless they become an independent capability with their own owner and lifecycle.
 
 ## Case 如何反哺 Skill
 
