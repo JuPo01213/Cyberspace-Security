@@ -48,45 +48,294 @@ Skill Construction 回答：
 
 它不要求 Guidance 一定先被完整写成独立 Prompt/Workflow 文档；但在封装前，能力目标、行为边界和实际指导必须已经足够清楚。
 
-## 最常见入口：用户说“这个可以固化成技能”
+## 从零创建 Skill：标准流程
 
-当用户在真实任务中发现某种经验值得长期复用，不直接创建 `SKILL.md`。
+这一节是 Skill Construction 的主执行协议。
 
-使用下面的主流程：
+假设当前 Agent 没有任何前文，只收到类似：
+
+> “创建一个用于 X 的 Skill。”
+
+应当按下面的顺序完成，而不是只写一个 `SKILL.md` 就结束。
+
+### 0. 建立创建上下文
+
+先确定创建所需的最低事实：
+
+- 用户真正想重复完成的目标是什么；
+- 当前是否已经存在自然 owner 的 Skill；
+- 目标运行环境 / Harness 是什么；如果未知，采用可移植的最小结构，不虚构平台能力；
+- 当前项目是否已有约束、模板、官方规范或成熟社区工作流；
+- 哪些信息如果缺失会真正阻塞正确创建。
+
+能从当前仓库、官方文档、现有 Skill 或用户已给材料中得到的信息，主动读取，不重复追问。
+
+只有缺失信息会改变能力边界、造成安全问题或使 Skill 根本无法定义时才追问；否则做合理最小假设并继续。
+
+**本阶段产物：**
 
 ```text
-1. Capture
-   把真实使用中的关键事实保存为 Case
-
-2. Reuse / Ownership Check
-   先检查已有 Skill、当前项目规则、成熟官方/社区能力
-   ↓
-   已有 owner → 优先修改/合并
-   没有 owner → 继续
-
-3. Abstract
-   从 Case 提取可迁移关系；必要时形成 Principle / Workflow
-
-4. Define Capability
-   明确这个 Skill 解决什么重复用户目标、哪些请求不属于它
-
-5. Design Guidance
-   写 Prompt
-   + 必要时 Workflow
-   + 必要时 Generic Examples
-   + 必要时 scripts/references/tools
-
-6. Package Candidate Skill
-   组织 SKILL.md / references / scripts / assets / metadata
-
-7. Evaluate
-   discovery + execution + boundary + regression / holdout
-
-8. Decide
-   keep / merge / revise / reject，然后在该 Skill 自己的 Git repository 中提交变更
+creation context
+= user goal
++ existing owner / no owner
++ target environment
++ relevant constraints / sources
 ```
 
-Case 的保存、抽象和反馈规则由 [cases.md](cases.md) 提供；本文件只负责编排“是否以及如何形成 Skill”。
+### 1. 先调查复用，再决定新建
+
+创建新 Skill 前先检查：
+
+1. 已有 Skill 是否已经拥有这个能力；
+2. 当前项目规则是否已经覆盖；
+3. 目标生态是否有官方能力、成熟 Skill、成熟 workflow、library、tool 或标准；
+4. 是否只需要修改现有 Skill，而不是创建新的。
+
+优先顺序：
+
+```text
+reuse existing owner
+→ extend / merge existing owner
+→ reuse mature external capability
+→ only then create a new Skill
+```
+
+调查到的成熟实践可以成为设计依据；自己的组合、抽象和推导必须标成自己的 synthesis，不能伪装成“官方成熟做法”。
+
+**继续新建的门槛：**
+
+只有不存在合适 owner，且该能力有稳定、可复用的独立边界，才进入下一步。
+
+### 2. 定义 Capability Contract
+
+在创建文件前先把能力说清楚。
+
+至少回答：
+
+```text
+Goal
+- 这个 Skill 最终帮助用户完成什么？
+
+Trigger
+- 哪些目标 / 条件应该触发？
+
+Non-trigger
+- 哪些相邻请求不属于它？
+
+Inputs
+- 需要什么信息 / 文件 / 工具结果？
+
+Required behavior
+- 所有触发都必须发生什么？
+
+Boundaries
+- 哪些事情不能推断、不能越权、不能由 Skill 文本伪造？
+
+Completion
+- 什么可观察结果才算完成？
+
+Environment
+- 哪些能力来自 Harness / Tool / Runtime，而不是 Skill 本身？
+```
+
+如果这些问题还答不清楚，不要进入“写文件”阶段。
+
+### 3. 建模行为
+
+把 Capability Contract 压缩成最少的行为模型：
+
+- 用 **Principle** 表达“什么条件下应该怎样做，以及边界在哪里”；
+- 只有行为依赖阶段、状态、前序结果、分支或恢复时，才加入 **Workflow**；
+- 不为了看起来完整而制造流程。
+
+Workflow 只需要：
+
+```text
+Goal / completion
+Stages
+State / observations
+Transitions / branches
+Failure / stop
+```
+
+### 4. 规划 Skill Bundle
+
+先决定每类内容的 owner，再创建目录：
+
+- `SKILL.md`：能力边界、共享 instructions、主路由；
+- `references/`：长、低频、分支性知识；
+- `examples/` 或 reference：只有 Example 有独立教学价值时；
+- `scripts/`：重复、确定、机械执行；
+- `cases/`：真实使用或 Evaluation 产生的经验；
+- `assets/`：真正被输出或流程消费的模板 / 素材；
+- `agents/openai.yaml`：目标平台需要时的界面 / 依赖元数据。
+
+不要先创建一堆空目录再寻找内容。
+
+Skill 应尽可能自包含；正常执行不依赖仓库外部的隐含知识。
+
+### 5. 创建独立 Git 管理边界
+
+Skill 文件夹创建后立即成为自己的本地 Git repository。
+
+优先使用：
+
+```bash
+python scripts/init_skill.py <name> --path <parent>
+```
+
+或等价地：
+
+```bash
+mkdir <skill-name>
+cd <skill-name>
+git init
+```
+
+这里的 Git repository 是本地版本边界。是否配置 GitHub / GitLab remote 是独立决定，不属于创建 Skill 的必要条件。
+
+### 6. 写最小可执行 SKILL.md
+
+按这个顺序写：
+
+1. **name / description**
+   - description 同时说明“做什么”和“何时应该考虑它”；
+2. **能力与边界**
+   - 让刚加载 Skill 的 Agent 知道它负责什么、不负责什么；
+3. **共享 instructions**
+   - 只写所有主要触发都需要的行为；
+4. **必要 Workflow**
+   - 只保留真正影响推进的阶段、状态、分支、完成/失败出口；
+5. **资源路由**
+   - 明确什么条件下读取哪个 reference / example / script；
+6. **Tool / Harness 边界**
+   - 不把不存在的权限、工具、memory、runtime 能力写成 Skill 自己拥有。
+
+具体 Prompt 写法见 [prompt-engineering.md](prompt-engineering.md)。
+
+### 7. 只添加有消费者的 supporting resources
+
+逐项判断：
+
+- 抽象 instruction 已经足够 → 不加 Example；
+- Example 能教出新增行为信息 → 按 [example-engineering.md](example-engineering.md) 设计；
+- 长知识只在某分支使用 → 下沉 reference；
+- 机械规则可以确定执行 → 写 script / schema / test，而不是反复提醒模型；
+- 来自真实使用的经验 → 保存 Case，见 [cases.md](cases.md)。
+
+每增加一个文件都要能回答：
+
+> 谁会在什么条件下读取 / 执行它？
+
+答不出来就不要加。
+
+### 8. Validation：先结构，再行为
+
+先运行结构校验：
+
+```bash
+python scripts/validate_skill.py <skill-dir>
+```
+
+然后至少验证：
+
+```text
+Positive discovery
+- 应该触发时能否发现 / 选择 Skill？
+
+Negative discovery
+- 相邻但不属于它的请求会不会误触发？
+
+Execution
+- 加载以后是否真的执行预期行为？
+
+Boundary
+- 关键条件变化时是否合理停止、反转或降级？
+
+Completion
+- 是否以真实结果而不是“步骤执行过”判断完成？
+```
+
+如果 Skill 是从某个真实 Case 抽象出来的，再加入独立 holdout / boundary case，避免只会复现原案例。
+
+不能执行的验证要明确标成未验证，不把候选方案写成“已经成熟”。
+
+### 9. 从零上下文做一次自审
+
+提交前假设：
+
+> 另一个 Agent 没有这次对话，只拿到这个 Skill repository。
+
+检查它是否能够：
+
+- 从 description 判断什么时候考虑 Skill；
+- 从 `SKILL.md` 理解目标和边界；
+- 找到必要 reference / script；
+- 不依赖作者脑中的隐含知识；
+- 不需要读取全部 Case 历史才能正常执行；
+- 区分 Skill 指导与 Harness / Tool 能力；
+- 在失败或信息不足时有合法出口。
+
+如果答案是否定的，先补 Skill 本身，而不是依赖“以后解释”。
+
+### 10. 提交初始版本
+
+在这个 Skill 自己的 Git repository 中：
+
+```text
+review diff
+→ remove accidental / dead files
+→ run validation
+→ git add
+→ git commit
+```
+
+提交说明描述这个 Skill 此次形成了什么能力，不把未验证内容写成已经证明有效。
+
+Remote 是可选的；本地 commit 不是可选的生命周期细节，而是 Skill 版本历史的起点。
+
+## 两种入口如何接入这条主流程
+
+### 入口 A：用户直接要求创建一个 Skill
+
+```text
+用户目标
+→ Step 0
+→ Step 1
+→ ...
+→ Step 10
+```
+
+不要求先存在 Case。
+
+### 入口 B：从真实使用经验固化
+
+```text
+真实使用
+→ 先保存 Case
+→ Step 1 Reuse / Ownership
+→ Step 2 Capability Contract
+→ ...
+→ Step 10
+```
+
+Case 的保存、抽象和反馈规则见 [cases.md](cases.md)。
+
+## Definition of Done
+
+只有同时满足以下条件，才能说“Skill 已创建”：
+
+- 能力目标、trigger 和 non-trigger 已明确；
+- 新建而不是复用已有 owner 有理由；
+- Skill 文件夹由自己的本地 Git repository 管理；
+- `SKILL.md` 有可执行 instructions，而不是只有身份描述；
+- supporting resources 都有明确消费者；
+- 需要的 references / scripts / examples 能从主 Skill 被发现；
+- Tool / Harness / Runtime 边界没有被伪造；
+- 至少完成结构验证；
+- 对核心行为完成了与风险和复杂度相称的 Evaluation，或明确标记未验证部分；
+- 已从“无前文 Agent”视角做自审；
+- 已在 Skill 自己的 Git repository 中产生初始 commit。
 
 ## 先判断：真的需要 Skill 吗
 
@@ -236,15 +485,16 @@ python scripts/validate_skill.py <skill-dir>
 
 ## 完成检查
 
-- 新建 Skill 而不是并入已有 owner 有明确理由；
-- Skill 文件夹已经作为独立本地 Git repository 管理；是否配置 remote 不影响这一要求；
-- description 与实际能力一致；
-- Prompt 不是空洞身份设定；
-- 只有行为确实依赖阶段/状态/分支时才引入 Workflow，并保持其行为模型只有一个 owner；
-- Examples 真正增加教学信息；
-- supporting resources 都有消费者；
+创建阶段以本文件前面的 **Definition of Done** 为准。
+
+后续维护 / 演进时额外检查：
+
+- description 与实际能力仍一致；
+- Workflow 没有因为局部修补而膨胀；
+- Examples 仍然提供独立教学信息；
+- supporting resources 仍有消费者；
 - Harness/Runtime 能力没有被 Skill 文本伪造；
-- Candidate 已经过适当 Evaluation；
+- 新修改已经过适当 Evaluation；
 - 未验证内容没有被写成成熟实践。
 
 

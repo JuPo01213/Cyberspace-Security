@@ -190,7 +190,7 @@ Guidance 可以影响模型如何使用已有能力，但不能仅靠文本创�
 
 - 写、改、审 Prompt → [prompt-engineering.md](references/prompt-engineering.md)
 - 设计 few-shot / Teaching Example → [example-engineering.md](references/example-engineering.md)
-- 创建、合并、拆分、重构 Skill → [skill-building.md](references/skill-building.md)
+- 从零创建、合并、拆分、重构 Skill → [skill-building.md](references/skill-building.md)；创建时按其中“从零创建 Skill：标准流程”执行
 - 从真实使用保存经验、反哺 Skill → [cases.md](references/cases.md)
 - 验证候选修改是否真实有效 → [evaluation.md](references/evaluation.md)
 - 查询历史/构造案例 → [case-library.md](references/case-library.md)
