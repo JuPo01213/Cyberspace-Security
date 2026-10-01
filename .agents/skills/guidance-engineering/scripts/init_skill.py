@@ -109,7 +109,7 @@ def main() -> int:
     )
 
     print(skill_dir)
-    print("initialized local Git repository; next: define capability contract, write SKILL.md, validate, then create the initial commit")
+    print("initialized local Git repository; next: define capability, write SKILL.md, add only needed resources, build minimal cases, validate, self-review, then create the initial commit")
     return 0
 
 if __name__ == "__main__":
