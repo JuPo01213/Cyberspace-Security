@@ -1,4 +1,4 @@
 interface:
   display_name: "Guidance Engineering"
-  short_description: "Turn experience into prompts, examples, skills, and validated improvements"
-  default_prompt: "Treat the active Skill as compressed guidance and real usage as new Case evidence. Design the minimal useful Prompt, Workflow, Examples, or Skill change, validate meaningful changes, and keep history in Git."
+  short_description: "Build guidance from experience and evolve Skills through real use"
+  default_prompt: "Create or improve Guidance by following the relevant construction or evolution flow. Treat real usage and historical work as Case evidence, keep each Skill self-contained in its own Git history, and use Evaluation only when a candidate change has meaningful uncertainty."
