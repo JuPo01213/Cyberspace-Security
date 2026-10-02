@@ -1,0 +1,30 @@
+{
+  "slice_id": "direct-child-script-encoding-target-missing-20260928-01",
+  "source_run_id": "EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "新 direct-child observer 已脱离启动，但 Guest Windows PowerShell 读取无 BOM 的 UTF-8 runner 后，将中文目标文件名解析为乱码（事件中的 `EPT涓撲笟娓告垙缁翠慨宸ュ叿绠盫5.1.exe`）；`FileFact` 找不到权威输入，runner 写入 TARGET_MISSING 后退出，未启动父进程、未提交样本行为。",
+  "observed": [
+    "Guest events.ndjson seq=1 的 target 字段是乱码，source_sha256=null。",
+    "seq=2 为 TARGET_MISSING；done.json 尚未由该早退路径写入，但进程退出码为脚本分支 20。",
+    "权威 Guest 文件本身此前已通过独立 PowerShell Direct hash 检查，目标问题在脚本字面量编码，不是样本文件缺失。"
+  ],
+  "expected_behavior": "投递到 Guest 的 runner 必须使用纯 ASCII 路径/参数，或显式 BOM/编码并在启动前用权威哈希确认；脚本编码失败时应在 preflight 阶段阻止运行。",
+  "why": {
+    "confirmed_cause": "通过 Copy-Item 投递的无 BOM UTF-8 PowerShell 脚本在 Windows PowerShell Guest 中按本地代码页解析，中文目标路径字面量被破坏。",
+    "avoidable_assumption": "复用了本地 UTF-8 中文脚本内容，没有遵守项目已有的 Guest 脚本纯 ASCII 门禁。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "不再在 Guest runner 中嵌入中文路径；先以哈希核对把已有 Guest 权威副本复制为 ASCII-only `ept-authoritative.exe`，runner 只引用 ASCII 路径，并把源/派生 hash 写进 run record。",
+    "project_instruction": "所有 Guest 投递脚本在启动前检查 non-ASCII 字节；中文路径作为参数传输时不得写入 runner 字面量，优先使用已核对的 ASCII runtime copy。",
+    "generic_skill": "暂不修改通用 Skill；这是当前 Guest 脚本编码适配问题，项目已有经验可覆盖。"
+  },
+  "minimum_validation": "在重新启动样本前，Guest ASCII copy 与 Host authoritative sample SHA-256 相同；runner events 首行 source_sha256 非空且 target path 仅含 ASCII；然后才允许自然父进程启动。",
+  "evidence": [
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/launch.json",
+    "Guest C:\\ept_obs\\spool\\EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01\\events.ndjson",
+    "runs/EPT-PHASE3-SAMPLE-MIN-20260928-01/sample-transfer.json",
+    "artifacts/evidence/C206_cross_platform_issue_slices_20260927.md"
+  ],
+  "secrets_redacted": true
+}
+

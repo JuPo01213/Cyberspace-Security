@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-native-card-bridge-process-suspend-20260929-01",
+  "status": "OPEN",
+  "observed_blocker": "The verified outer C-card reaches the controlled download, creates the real Hardware child, and produces a 1029 frame, but the child command line still carries the 31-character outer card while the C204 native parser accepts only 10..29 hexadecimal characters.",
+  "new_information_point": "Use one run-scoped, reversible child-creation bridge that suspends only the observed Hardware child, replaces the command-line card in that child process parameters with the format-only native key 1234567890, records the before/after command line and remote-memory addresses, then resumes the same child and attaches a read-only RC00 observer.",
+  "method_boundary": {
+    "outer_sample": "C:\\EPT\\runs\\EPT-PHASE3-SAMPLE-MIN-20260928-01\\ept-authoritative.exe",
+    "outer_card": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "native_key": "1234567890",
+    "target_process": "only the Hardware.exe child whose parent is the current outer sample",
+    "bridge_scope": "in-memory RTL_USER_PROCESS_PARAMETERS.CommandLine of that child while suspended",
+    "forbidden": ["standalone Hardware.exe launch", "sample file modification", "generic CDB command-line rewrite", "UIA/PYZ/static rescan", "real C2"],
+    "rollback": "resume/terminate the same child, restore hosts bytes and remove staged component/artifacts in finally"
+  },
+  "success_evidence": [
+    "bridge_applied with exact old/new command lines and verified native key",
+    "child remains the verified controlled component hash and parent is the outer sample",
+    "1029 request/controlled response is captured after bridge",
+    "read-only RC00/RC06 observer output is harvested if the target path is reached",
+    "sample/component hashes and cleanup are verified"
+  ],
+  "non_success": "A bridge application or child/1029 observation alone is instrument progress; it cannot be promoted to target_native_return or target_caller_diff_bytes without the same-run strict observer evidence."
+}
+

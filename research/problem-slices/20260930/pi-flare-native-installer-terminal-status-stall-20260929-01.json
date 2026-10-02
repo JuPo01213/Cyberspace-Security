@@ -1,0 +1,20 @@
+{
+  "slice_id": "pi-flare-native-installer-terminal-status-stall-20260929-01",
+  "run_id": "EPT-PI-GUEST-NPM-INSTALL-20260929-02",
+  "scope": "guest_native_installer",
+  "reproduction": "guest-native-install-pi.ps1 wrote installer_started, command_exit with exit_code null, and installer_error PI_NPM_INSTALL_FAILED after npm stdout showed 119 packages added.",
+  "observation": "The Guest installer process remained alive and native-install-status.json remained state=RUNNING with no finished_utc; the exception path did not produce a durable terminal state.",
+  "expected": "Every failure path must write FAILED/timeout status and finished_utc before process exit, even if a step returned an unexpected null exit code.",
+  "impact": "Host cannot safely decide when to remove the temporary NIC or harvest final installation status; a partial Pi installation exists and must be inspected without blind reinstall.",
+  "evidence": [
+    "Guest native-install.jsonl for EPT-PI-GUEST-NPM-INSTALL-20260929-02",
+    "Guest native-install-status.json state=RUNNING",
+    "Guest process command line guest-native-install-pi.ps1"
+  ],
+  "optimization_location": "method/pi-flare-workbench/guest-native-install-pi.ps1",
+  "minimal_change": "Make terminal status writing unconditional in a finally block, normalize null exit codes only after checking process completion, and separate step evidence from finalization errors.",
+  "rollback": "Preserve current Guest logs and terminate only the exact stale installer process before the next run.",
+  "verification": "A new run reaches terminal status on both success and failure, and Host collector can remove the temporary NIC only after that status.",
+  "unresolved_risk": "The Pi package may already be installed; the next run must verify version/list before attempting another npm install."
+}
+

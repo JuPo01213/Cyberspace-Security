@@ -1,0 +1,16 @@
+{
+  "slice_id": "pi-flare-vm-stop-timeout-20260929-01",
+  "run_id": "EPT-PI-GUEST-NPM-INSTALL-20260929-01",
+  "scope": "hyperv_recovery",
+  "reproduction": "Stop-VM -Name FLARE-Analysis -Force -Confirm:$false was issued after PowerShell Direct nonce probes failed and the temporary install adapter was removed.",
+  "observation": "Hyper-V returned 0x800705B4 (operation timed out); the VM remained Running after the bounded wait.",
+  "expected": "The analysis VM should stop so the unresponsive Guest control/runtime state can be cleared before a new run.",
+  "impact": "Graceful/forced stop did not recover the VM; the Guest-native install result remains unknown and no retry is allowed until power-state recovery completes.",
+  "evidence": "Stop-VM error output and subsequent Get-VM state showing Running.",
+  "optimization_location": "current Hyper-V recovery adapter; use a separately recorded TurnOff recovery only because no sample ran in this run.",
+  "minimal_change": "Perform one exact VM TurnOff, wait for Off, then Start-VM and verify the control nonce.",
+  "rollback": "No rollback for a power-off; the next run starts from the same VM disk state, with this incomplete run retained.",
+  "verification": "Get-VM reaches Off then Running, one PowerShell Direct nonce returns, and the original isolated adapter is present without the temporary adapter.",
+  "unresolved_risk": "Any partial native npm installation may remain on disk and must be inspected before the next install run."
+}
+

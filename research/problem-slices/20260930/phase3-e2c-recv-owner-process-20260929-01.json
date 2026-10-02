@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-e2c-recv-owner-process-20260929-01",
+  "status": "OPEN",
+  "parent_runs": [
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-01",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-02",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-03",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-04",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-05",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-06",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-07",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-08",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-09",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-10",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-11",
+    "EPT-PHASE3-AGENT-RECV-OBS-20260929-12",
+    "EPT-PHASE3-AGENT-STATE-DISPATCH-20260929-01",
+    "EPT-PHASE3-HOST-BASH-CONSUMER-COPY-RETURN-20260930-02"
+  ],
+  "observed": {
+    "native_bridge_applied": true,
+    "l1029_frame": true,
+    "recv_markers_on_hardware_child": false,
+    "rc00_markers": false,
+    "response_body01_state_diff_reached": true,
+    "target_return_after_body01": null,
+    "response_wrapper_return_after_body01": "0x67"
+  },
+  "candidate_explanation": "The response consumer is confirmed at EPT_* --nsp-runtime-child through ws2_32!recv. C320 correlates the controlled response buffer and body-derived 0x67 argument with live 0x1414d75a2 and fields 0x5148 -> 0x263. C322 maps the resulting 0x5814 -> 0x68f0 -> 0x335e state chain and finds no direct recv-slot read in bounded handler windows; the first response-buffer read remains in the protected wrapper/helper path or an uncovered tail jump.",
+  "next_minimal_information_point": "Keep the same response and trace the first-consumer transform around 0x14004c02b/0x14004c0d5 and its 0x1405d5f80 call/return. Capture the live destination offset and post-call state; only the actual target decoder return plus caller diff and RC06-after can close the goal.",
+  "forbidden_inference": "Absence of recv hits in the child observer does not prove no response was consumed and does not close the target seam. The C218 derived words and C219 wrapper target are static transcriptions only; neither is a live response, authorization result, or target seam proof.",
+  "observations": [
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-02",
+      "fact": "Hardware child recv/WSARecv observer stayed negative across frame, echo and 62.2 s; Desktop helper and unrecorded EPT runtime grandchild remain candidates"
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-03",
+      "fact": "owner-aware script executed once but sample exited 2 before network/child; no owner evidence; cleanup clean"
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-04",
+      "fact": "Network branch and EPT runtime grandchild were observed; owner query returned listener PID 6744 because bidirectional matcher accepted server-side row first; client owner unresolved."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-05",
+      "fact": "Corrected client-side tuple matcher was staged and hashed, but the sample exited 2 before network; owner question remains unexercised."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-06",
+      "fact": "Corrected client-side tuple selected PID 6336, EPT_4E18EFD4_A20D5CBC.exe, parent Hardware 4456, command line --nsp-runtime-child, SHA 56B41B55...; this is the 1029 client owner."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-07",
+      "fact": "Runtime-observer edit validated; sample took EXIT_DECODE=2 before the identified runtime grandchild, so no runtime observer output was produced; runner timeout occurred after script completion."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-08",
+      "fact": "The identified runtime grandchild PID 5568 received the echoed 1029 frame: recv returned 4 for 6b000000, then 103 bytes whose SHA matches l1029_first_frame body; no RC00/RC06."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-09",
+      "fact": "Total-length 107 / zero-body 103-byte variant was validated and staged, but sample exited 2 before network; no response variant was sent."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-10",
+      "fact": "Total-length 107 zero-body variant was delivered and fully read by runtime PID 5692 (4+103 bytes, body all zero) but no RC00/RC06; echo and zero-body both fail after recv."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-11",
+      "fact": "C192 state-machine trace breakpoints were validated and staged, but sample took EXIT_DECODE=2 before network; no state marker evidence."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RECV-OBS-20260929-12",
+      "fact": "C192 trace addresses armed without resolve errors, but child tree called NtTerminateProcess before any 1029 accept; no state markers or response sent."
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-STATE-DISPATCH-20260929-01",
+      "fact": "Four state-dispatch breakpoints were validated offline and added only to the runtime observer, but the real sample took EXIT_DECODE=2 before network; no child, frame, marker, or state value was produced."
+    },
+    {
+      "run": "STATIC-C215-20260929",
+      "fact": "Offline reduction confirms 0x14014731c uses unknown per-frame [rbp+0x385c] plus seed 0x7858/0x675f before writing [rbp+0x2edc]; illustrative values are not runtime observations and do not prove decoding."
+    },
+    {
+      "run": "STATIC-C218-20260929",
+      "fact": "The missing g348/g34c/g350/g354 stores in 0x14078b035..0x14078b0f6 were transcribed instruction-for-instruction; the 1234567890 output is a reproducible static candidate with no independent live keygen vector."
+    },
+    {
+      "run": "STATIC-C219-20260929",
+      "fact": "At 0x14017713c, the recv body length is passed through a two-level runtime table to 0x1407d8402, which wraps 0x141a26585; readable bytes establish the call boundary, but the protected helper's algorithm and its writes into rbp+0x3850..0x385c remain unknown."
+    },
+    {
+      "run": "STATIC-C221-20260929",
+      "fact": "A full scan of the current dump's main-image range found contiguous writes to rbp+0x385c/+0x3858/+0x3854/+0x3850 at 0x14033c60c..0x14033c61f; 0x1400820dc separately writes qword [rbp+0x3858] as an indirect-dispatch target. The writer semantics and live response linkage remain unproven."
+    },
+    {
+      "run": "STATIC-C242-20260929",
+      "fact": "Across six already-harvested first 1029 frames from the same controlled environment, the 103-byte body varies only at offsets 1..4 and 39..46; the remaining 91 bytes are identical. This constrains the request template but does not identify field semantics or prove a response algorithm."
+    },
+    {
+      "run": "STATIC-C243-20260929",
+      "fact": "The runtime send wrapper at 0x14011f8c0 dereferences pointer slots at [rbp+0x2f00]/[rbp+0x2f48] for the length, [rbp+0x2f08] plus the pointed-to offset for the buffer, and [rbp+0x2f30] for the socket; C204's same-round CDB/line comparison confirms the 103-byte body is the real process send buffer. The pointed-to frame-field producers remain unresolved."
+    },
+    {
+      "run": "STATIC-C244-20260929",
+      "fact": "Thread 532 in child_full_recv2.dmp is stopped at ws2_32!recv with RBP=0x1416b0. The frame slots point to request buffer 0x50dfa0 (107-byte envelope) and response buffer base 0x1e0000 with recv writing 103 bytes at 0x1e0004; the four rbp+0x3850..0x385c fields are all 0x263. This closes the two-buffer relationship in one real context but does not prove response semantics or decoding."
+    },
+    {
+      "run": "STATIC-C245-20260929",
+      "fact": "At 0x14017713c in the same dump, qword [rbp+0x2f28]+dword [qword [rbp+0x2f18]] resolves to rdx=0x1e0004, and qword [qword [rbp+0x2f30]] resolves to rcx=0x2c4; the indirect target resolves to 0x1407d8402 with r8=r9=0. The 103-byte body at 0x1e0004 is all zero. This closes the real recv-buffer-to-wrapper edge while leaving protected helper state writes unknown."
+    },
+    {
+      "run": "STATIC-C246-20260929",
+      "fact": "Concrete replay of 0x140176e97..0x14017713c using the same dump frame corrects the call-site scope: the outer 0x1407d8402 call has rcx=0x2c4, rdx=0x1e0004, r8=0x67, r9=0; the wrapper then zeroes r8/r9 before calling protected 0x141a26585. Thus C245's zero r8/r9 values describe the inner helper call, not the outer call-site."
+    },
+    {
+      "run": "EFFICIENCY-C222-20260929",
+      "fact": "Network owner/recv runs were positive for closing process and framing attribution, while echo/zero-body retries had no target-level gain; after C221, network is a conditional high-value path rather than a hard constraint or a reason for response-format guessing."
+    },
+    {
+      "run": "STATIC-C247-20260929",
+      "fact": "A same-context comparison of the helper-observer pre-child run and successful run-19 found identical authoritative sample/component hashes, card, sample path, hosts baseline, proxy state, CLI args, parent command line and sink sizes. Only PID/time/runner-workdir and the outcome differed: RC2 before Hardware/1029 versus child creation and three protocol accepts. This supports a timing/hidden-state or stochastic pre-child branch candidate, not VM rejection and not a helper breakpoint negative."
+    },
+    {
+      "run": "RUN-C248-20260929",
+      "fact": "Helper-focused run-02 reached the real runtime child and consumed the controlled zero-body response. Wrapper entry hit four times, body return and raw TARGET_NATIVE_RETURN each hit once with rax=0x67, caller diff remained zero, and RC06 was absent. The helper breakpoint at 0x141a26585 produced no marker even though the captured wrapper bytes contain 0x1407d8426 call 0x141a26585; this is an instrumentation boundary. The runner summary also misclassified the raw target marker as NOT_OBSERVED_DYNAMIC because it only parses RC00_RET. Next point is wrapper callsite 0x1407d8426 and post-call 0x1407d842b, with direct TARGET_NATIVE_RETURN parsing."
+    },
+    {
+      "run": "RUN-C251-20260930",
+      "fact": "The real Guest run with unchanged sample/response reached Hardware PID 1440 and runtime PID 196, accepted three 1029 connections and exited 0. Read-only net sampling captured 29 TCP attempts to 223.5.5.5:53 beginning before the child PIDs appeared; records were TIME_WAIT/OwningProcess=0, so they support an outer direct-DNS observation but not per-connect PID attribution or causal proof for prechild RC2. The same run still returned 0x67 with caller diff 0 and no RC06. Existing evidence that the sample records BrandModel=Virtual Machine remains compatible with child creation; VM rejection is unproven."
+    },
+    {
+      "run": "RUN-C253-20260930",
+      "fact": "Immediate outer CDB attach captured the inner outer-process proxy connect to 127.0.0.1:18888 with eax=0xffffffff/WSAEWOULDBLOCK=10035, proving the socket observer works. No direct 223.5.5.5:53 connect was captured; 21 TIME_WAIT rows had OwningProcess=0. The same run reached Hardware/runtime and three 1029 accepts, but target return remained 0x67 with caller diff 0 and no RC06. Direct-DNS rows remain unassigned transport evidence, and the outer socket observer path is closed."
+    },
+    {
+      "run": "RUN-C254-20260930",
+      "fact": "Wrapper-entry/helper-code observer was prepared and syntax-validated, but the real sample exited EXIT_DECODE=2 after 4.3s before Hardware/runtime and 1029. No wrapper/helper negative is inferred; cleanup and hashes are clean."
+    },
+    {
+      "run": "STATIC-C255-20260930",
+      "fact": "Offline extraction from child_full_recv2.dmp confirms 0x141a26585 stable wrapper: three direct calls (0x14141abb9, 0x14175cd8e, 0x1416f0b89) followed by protected/obfuscated bytes. This closes the helper boundary but not response parsing or state writes; no new response or target seam is inferred."
+    },
+    {
+      "run": "RUN-C256-20260930",
+      "fact": "Successful real child run captured wrapper entry 0x1407d8402 four times. Every live disassembly contains call 0x141a26585; a 1025-byte helper dump has first64 SHA B22D2F... matching C255/C220. Helper callsite/postcall hardware markers remained zero, while body/target returned 0x67 and caller diff was 0. This is a control-flow/instrumentation boundary, not evidence that helper is dead."
+    },
+    {
+      "run": "RUN-C257-20260930",
+      "fact": "The four-slot post-precall observer run exited EXIT_DECODE=2 after 4.5s before Hardware/runtime; 0x1407d8408 and helper callsite were unexercised. This is not negative evidence and this observer path is now stopped."
+    },
+    {
+      "run": "RUN-C258-20260930",
+      "fact": "A real child run replaced the helper callsite hardware breakpoint with a software bp at 0x1407d8426. No software marker appeared, while body/target markers fired and target return stayed 0x67 with caller diff 0. This weakens a simple hardware-slot explanation but does not prove callsite unreachable; stop repeating callsite breakpoints."
+    },
+    {
+      "run": "STATIC-C259-20260930",
+      "fact": "Existing minidump disassembly shows wrapper 0x1407d8402 calls protected 0x1414d75a2 before syntactic helper call 0x1407d8426; 0x141945140, reached by the pre-call path, adds 0x14d38f to [rsp+8] before ret. This is a concrete candidate for non-linear control flow consistent with C256/C258, but remains static and unproven dynamically."
+    },
+    {
+      "run": "RUN-C260-20260930",
+      "fact": "Pre-call observer at 0x1414d75a2/0x141945140 ran on a real sample but sample exited EXIT_DECODE=2 after 4.3s before Hardware/runtime; no dynamic pre-call values. This path is stopped; C259 remains static candidate only."
+    },
+    {
+      "run": "RUN-C261-20260930",
+      "fact": "Real runtime PID 2864 reached state handler 0x14014731c once after the controlled response; context had rax=rdx=0xc0. State-field writer 0x14033c60c did not hit. Body/target returned 0x67, caller diff was 0, RC06 absent; cleanup clean. This proves a live post-recv state path but not writer execution, decoding, or a VM rejection."
+    },
+    {
+      "run": "RUN-C262-20260930",
+      "fact": "The state-handoff observer run exited prechild with EXIT_DECODE=2 after 5.5s; no Hardware/runtime, 1029, response or state markers. This repeats the known prechild/no-network branch and is not negative evidence for 0x14019349d or VM rejection."
+    },
+    {
+      "run": "STATIC-C263-20260930",
+      "fact": "C261 live state handler context showed rbp+3850..385c as four 0x204c dwords. Applying the existing reducer gives candidate states 0x5814 (seed 0x7858) or 0x4713 (seed 0x675f), whose dispatch listing targets are 0x1401475ce and 0x14018f4d2 respectively. The global branch input was not captured live; this is a bounded candidate mapping, not a target success claim."
+    },
+    {
+      "run": "RUN-C264-20260930",
+      "fact": "Real Hardware/runtime children were created and controlled download completed, but runtime CDB attach returned 0x80070057, Hardware observer returned 0x8007001e, and sidecar hit WinError 1455/pagefile exhaustion before 1029. Candidate 0x1401475ce is unclassified; this is instrument failure, not VM/response evidence."
+    },
+    {
+      "run": "RUN-C265-20260930",
+      "fact": "Dispatcher observer run exited prechild with EXIT_DECODE=2 after 4.2s; no Hardware/runtime, 1029, response or dispatcher markers. Lightweight sidecar completed 7 samples without resource errors. This strengthens the outer prechild/no-network blocker but is not dispatcher, VM or response evidence."
+    },
+    {
+      "run": "RUN-C266-20260930",
+      "fact": "With real Hardware/runtime and three 1029 frames, 0x14014731c saw four 0x204c fields and globals zero; dispatcher then observed 0x5814 after 0x52ba, followed by 0x68f0 after 0x5814 and a longer state chain. This confirms execution through the protected 0x5814 handler branch. Target return remained 0x67, caller diff 0, RC06 absent."
+    },
+    {
+      "run": "RUN-C267-20260930",
+      "fact": "A run-scoped local TCP/53 listener with all three public /32 loopback aliases was armed and cleaned up, yet the outer sample exited EXIT_DECODE=2 before Hardware/runtime. This proves TCP/53 success is insufficient; no field-watch or target evidence was produced."
+    },
+    {
+      "run": "RUN-C268-20260930",
+      "fact": "A real Hardware/runtime child and three 1029 frames were observed, but the nested CDB field-watch command failed with Malformed string before arming rbp+0x385c. Target return was 0x67 and caller diff 0; this is instrumentation failure, not field-write or VM evidence."
+    },
+    {
+      "run": "RUN-C269-20260930",
+      "fact": "After correcting CDB escaping, the outer sample again exited EXIT_DECODE=2 after 4.6s before Hardware/runtime; the DNS aliases were added and removed, and the field watch was unexercised. Host harvest exposed and recovered a sidecar PID residue; sample/component/hosts hashes remained clean."
+    },
+    {
+      "run": "RUN-C270-20260930",
+      "fact": "A real child run captured read-only CDB disassembly for dispatcher 0x1400f77ae and handlers 0x1401475ce/0x140147809/0x140147b48. The dispatcher reads [rbp+0x2edc] and writes [rbp+0x2e7c]; the candidate handler entry windows read global 0x14116c6c4/0x14116c6c8 or local scratch, not rbp+0x3850..0x385c. Target return remained 0x67, caller diff 0, RC06 absent; this narrows the response-field path without proving decode."
+    },
+    {
+      "run": "RUN-C271-20260930",
+      "fact": "The conditional 0x1405d5f80 call-boundary observer was armed in a new run, but the outer sample exited EXIT_DECODE=2 after 4.6s before Hardware/runtime and 1029. The call was unexercised; aliases, hosts, sample, component and sidecar cleanup were verified. This is VALID_NOT_REACHED, not a call-boundary negative or VM evidence."
+    },
+    {
+      "run": "RUN-C272-20260930",
+      "fact": "A real child run statically dumped the C221 writer/input/helper. 0x14033c54b copies one scalar from [rbp+0x8cfc] into all four 0x3850..0x385c fields; 0x1401d69f1 first stores ECX into [rbp+0x8cfc]; 0x1400820dc is an independent +0x3858 indirect writer. Target return remained 0x67, caller diff 0, RC06 absent. The remaining source is ECX's caller, not VM identity."
+    },
+    {
+      "run": "RUN-C273-20260930",
+      "fact": "The two read-only writer/input entry breakpoints were armed in a new run, but the outer sample exited EXIT_DECODE=2 after 4.6s before Hardware/runtime; both entries were unexercised. Cleanup and hashes were verified. This closes the dynamic writer-entry retry path as VALID_NOT_REACHED, not as a writer or VM negative."
+    },
+    {
+      "run": "RUN-C274-20260930",
+      "fact": "A real runtime child yielded a Guest-captured 8,237,057-byte main image. A Guest-side exact E8 rel32 scan found zero direct callers for 0x1401d69f1, 0x14033c54b, 0x14033c60c or 0x1400820dc. This bounded negative shifts the caller hypothesis toward indirect/protected dispatch; target return remained 0x67, caller diff 0, RC06 absent."
+    },
+    {
+      "run": "POSTHOC-C275-20260930",
+      "fact": "On the same Guest-captured main image, absolute target-pointer and FF15/FF25 RIP-relative slot scans both returned zero for the producer/writer targets. This narrows only the statically resolvable encodings; register-indirect/protected/jump-table callers remain possible."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-HELPER-BOUNDARY-20260930-01",
+      "fact": "C276 added read-only breakpoints at the resolved response callsite and helper chain but the outer sample exited EXIT_DECODE=2 after about 5.3 seconds before Hardware/runtime child creation; adapter/1029/helper were unexercised. Guest artifacts were harvested with matching hashes and cleanup was complete."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-HELPER-DISASM-20260930-01",
+      "fact": "Guest-side bounded Capstone scan of the harvested 0x141a26585 bytes confirms a short three-call wrapper ending at 0x141a2659d with no rbp writes in its function prefix; later contiguous rsp writes are outside a recovered function boundary. The response-state producer remains upstream/protected, especially the 0x1414d75a2/0x141945140 pre-call path."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-REDIRECT-20260930-01",
+      "fact": "The C278 harvest at 0x141622c97 remains a valid static window, but C283 corrected the arithmetic: 0x1414d75a8 + 0x14d38f = 0x141624937. The old address is superseded as a return candidate; no live execution or authorization result is claimed."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-REDIRECT-20260930-01",
+      "fact": "A child-reaching run with the then-derived 0x141622c97 observer reached three 1029 frames and state handler 0x14014731c, but the old-address marker did not hit. C283 later proved that address was an arithmetic error, so this no-hit does not classify the true return path. Raw CDB recorded target return 0x67, caller body before/after diff 0 and no RC06. Cleanup required manual termination because the runner left Python/CDB/target/sidecar processes; hashes, hosts, temp files and listeners were restored and rechecked."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-CONTROLFLOW-20260930-01",
+      "fact": "C280 replaced the static redirect observer with live entries at 0x1414d75a2 and 0x141945140, but the outer sample exited EXIT_DECODE=2 after about 5.1 seconds before child creation; both entries were unexercised. Runner cleanup wrote final events and restored sample/component/hosts; a sidecar child PID 1844 was then precisely terminated and rechecked."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-RETSTACK-20260930-01",
+      "fact": "C282 replaced the helper-entry observer with a ret-instruction stack capture at 0x141945170, but the outer sample exited EXIT_DECODE=2 before child creation; the ret observer was unexercised. Cleanup completed with manual sidecar PID 1048 termination."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-CONTROLFLOW-20260930-02",
+      "fact": "C281 reached a real runtime child and captured 0x1414d75a2 with [rsp]=0x1407d8408, then 0x141945140 with [rsp]=0x1414d75a8 across multiple frames. The syntactic 0x1407d8426 helper callsite stayed unhit; target return was 0x67, caller diff 0 and RC06 absent. This is live proof of protected non-linear pre-call control flow, not authorization success."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-RET-SEMANTICS-20260930-01",
+      "fact": "C283 ran the return-slot arithmetic on Guest using C281's live stack value and C259's instruction bytes. It derived corrected candidate 0x141624937 and recorded the prior 0x141622c97 as an arithmetic error. This is static correction only; no sample execution or authorization result."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-CORRECTED-TARGET-20260930-01",
+      "fact": "C284 disassembled the corrected 0x141624937 window on Guest: 89 instructions in 0x100 bytes, starting with leave and dense bytewise xor/and/or mixing, inside the captured runtime range. No sample execution, live RIP, state write or authorization result was claimed."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-CORRECTED-TARGET-20260930-01",
+      "fact": "C285 reached a real runtime child and the corrected 0x141624937 observer hit five times after 0x141945140 also hit five times. The same run still returned target_native_return=0x67, caller before/after diff was 0 and RC06 entry/after were absent. This closes corrected-address reachability but not the authorization seam; cleanup and harvest hashes were verified after exact sidecar PID recovery."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-CORRECTED-TARGET-EXTENDED-20260930-01",
+      "fact": "C286 extended the live corrected target's static window to 0x800 bytes: 531 instructions, calls to 0x141782f80 and 0x141985190, jumps to 0x14174d3c4, no ret in-window, and multiple rbp-relative state-write candidates. This narrows the next observer choice but does not identify caller output or authorization."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-CALLEE-CLASSIFY-20260930-01",
+      "fact": "C287 classified the two direct callees on Guest: 0x141782f80 is a small array/byte-mixing utility with three returns; 0x141985190 has TEB/guard/PE-metadata behavior with six returns. Neither bounded window directly writes the corrected block's rbp-relative state area, so the next focus stays on a corrected-block state-write boundary or caller consumer."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-DISPATCH-20260930-01",
+      "fact": "C288 showed the corrected block's shared jump target 0x14174d3c4 is a trampoline whose first instruction jumps to 0x141572ddb; adjacent 0x14174d3e0 is a separate helper function. The next static/dynamic focus is the actual trampoline target, not the adjacent function."
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-PRECALL-TRAMPOLINE-20260930-01",
+      "fact": "C289 classified 0x141572ddb as a large state dispatcher: it reads rbp+0xb334, copies it to rbp+0xb2f0 and branches on many case constants. This directly links the corrected block's state write to the next dispatch seam; no live or authorization result was claimed."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DISPATCH-20260930-01",
+      "fact": "C290 replaced the body-ret observer with 0x141572ddb, but the outer sample exited EXIT_DECODE=2 after 4.7s before Hardware/runtime and 1029. The dispatcher was unexercised; this is VALID_NOT_REACHED, not negative evidence. Cleanup and harvest hashes were verified after exact sidecar recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DISPATCH-20260930-02",
+      "fact": "C291 reached a real runtime child: corrected target and helper each hit three times, but 0x141572ddb did not. Live contexts changed from rax/rdx=0x140fd0 to 0x440004/r8=0x67 and later 0x4415c0, while target return stayed 0x67 and RC06 was absent. This narrows the next dynamic point to corrected-block jump sites 0x141624b7f/0x141624d04."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DISPATCH-20260930-03",
+      "fact": "C292 armed corrected-block jump sites 0x141624b7f/0x141624d04 but the outer sample exited EXIT_DECODE=2 after 5.1s before child creation. Both sites were unexercised; this is VALID_NOT_REACHED, not branch negative evidence."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DISPATCH-20260930-04",
+      "fact": "C293 reached a real child but CDB rejected the five-hardware-breakpoint observer configuration with 'Too many data breakpoints for thread 0' / 0x8007001e before any site hit. This is instrument failure, not sample negative; next configuration must use exactly four slots."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DISPATCH-20260930-05",
+      "fact": "C294 used the corrected four-slot observer but the outer sample exited EXIT_DECODE=2 after 4.9s before Hardware/runtime child creation. No observer site or 1029 exchange was exercised; this is VALID_NOT_REACHED, not branch, VM or authorization evidence. Cleanup and harvest hashes were verified."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DISPATCH-20260930-06",
+      "fact": "C295 reached real runtime PID 3452 with the exact four-slot observer. The controlled 1029 listener accepted three connections and sent one delayed prefix_u32_107_plus_zero103 response; corrected target 0x141624937 hit four times, while dispatcher 0x141572ddb and jump sites 0x141624b7f/0x141624d04 did not. Target-return was intentionally omitted, so target_native_return and caller diff are unobserved; RC06 was absent. The run proves stable observer deployment and corrected-target reachability only, not authorization. A stale sidecar file lock was resolved by exact command-line termination of python sidecar PID 6360, after which the harvest manifest matched all files."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-SUCCESSOR-20260930-01",
+      "fact": "C296 restored target-return 0x140177143 and replaced the unhit jump/dispatcher observers with corrected target 0x141624937, direct call 0x141624a76 and post-call address 0x141624a7f, but the outer sample exited EXIT_DECODE=2 after 4.7s before child creation. No observer or 1029 exchange was exercised; this is VALID_NOT_REACHED, not authorization or branch evidence. Cleanup and final harvest hashes were verified after exact sidecar PID 692 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-SUCCESSOR-20260930-02",
+      "fact": "C297 used the same observer and zero-body response as C296 in the next parity slot and reached a real child. It accepted one 1029 frame, sent the controlled response, and hit corrected target 0x141624937 once with rcx=0x2b4/r8=4/rax=rdx=0x140fd0. Target-return 0x140177143, direct call 0x141624a76, post-call 0x141624a7f and RC06 were not hit. Compared with C285/C291 (rcx=0x2a8/0x2b0 and target-return 0x67), this shows parity affects child creation but the response consumer also takes distinct state branches; zero-body repetition is no longer an information-positive path. Cleanup and final harvest hashes were verified after exact sidecar PID 192 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-WRITER-20260930-01",
+      "fact": "C298 replaced corrected-block successor observers with response wrapper 0x1407d8402 and C221 writer start/end 0x14033c60c/0x14033c61f while retaining target-return, but the outer sample exited EXIT_DECODE=2 after 5.9s before child creation. No wrapper, writer, target-return or 1029 evidence was produced; this is VALID_NOT_REACHED. Cleanup and final harvest hashes were verified after exact sidecar PID 2376 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-WRITER-20260930-02",
+      "fact": "C299 reached a real child and the controlled response wrapper 0x1407d8402 hit four times. The same runtime observer hit target-return 0x140177143 with rax=0x67; C221 writer start/end 0x14033c60c/0x14033c61f did not hit, target caller diff was 0, and RC06 was absent. This closes the response-to-wrapper edge but not state production or authorization. Cleanup and final harvest hashes were verified after exact sidecar PID 2208 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-HELPER-20260930-01",
+      "fact": "C300 replaced the unhit C221 writer observers with wrapper post-call boundaries 0x1407d8408 and 0x1407d842b while retaining target-return and wrapper entry, but the outer sample exited EXIT_DECODE=2 after 5.9s before child creation. No post-call, target-return or 1029 evidence was produced; this is VALID_NOT_REACHED. Cleanup and final harvest hashes were verified after exact sidecar PID 6308 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-HELPER-20260930-02",
+      "fact": "C301 reached a real child and the wrapper 0x1407d8402 hit four times; target-return 0x140177143 returned 0x67. Post-call points 0x1407d8408 and 0x1407d842b did not produce markers, matching the known hardware/control-flow boundary from C256; this does not prove helper absence. Caller diff was 0 and RC06 was absent. Cleanup and final harvest hashes were verified after exact sidecar PID 4144 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-TRACE-20260930-01",
+      "fact": "C302 replaced post-call hardware observers with a one-shot wrapper single-step trace while retaining target-return, but the outer sample exited EXIT_DECODE=2 after 4.9s before child creation. No trace or 1029 evidence was produced; this is VALID_NOT_REACHED. Cleanup and final harvest hashes were verified after exact sidecar PID 5748 recovery."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-TRACE-20260930-02",
+      "fact": "C303 reached a real runtime child and delivered the controlled response; wrapper 0x1407d8402 hit and the single-step marker printed, but CDB skipped the t commands inside the breakpoint event handler. target_native_return and caller diff were not observed, and RC06 was absent. This closes the t-in-event-handler observer path as instrumentation-invalid, not as sample or authorization evidence."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-RETSTACK-20260930-02",
+      "fact": "C304 retained the 0x1414d75a2/0x141945170 ret-boundary observer but the outer sample exited EXIT_DECODE=2 after 4.9s before child creation. No 1029, response, observer or target seam evidence was produced; this is VALID_NOT_REACHED and closes parity-only repetition of this observer."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-STATE-WATCH-20260930-01",
+      "fact": "C305 reached a real runtime child, delivered the controlled response, and hit 0x141945140 plus corrected target 0x141624937. A dynamic read-only watch installed at the first target entry on runtime rbp+0xb334 produced no write marker; raw target-return was 0x67 and caller body diff was 0, with RC06 absent. This is a first-frame timing/scope result, not a global no-write or authorization claim."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-PRECALL-DYNAMIC-JUMPS-20260930-01",
+      "fact": "C306 staged dynamic corrected-target branch observers at 0x141624b7f/0x141624d04 but the outer sample exited EXIT_DECODE=2 after 4.9s before child creation. No 1029, response, branch or target seam evidence was produced; this is VALID_NOT_REACHED and not branch or authorization evidence."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-DEVICE-IO-20260930-01",
+      "fact": "C307 reached the real runtime child and recorded one kernelbase!DeviceIoControl call with handle 0x1a8, control 0x390008, r8/r9 zero, stack output buffer 0x14ee38/size 0x30/bytes-returned 0x14ee18. Strict RC00 0x14078ee73 did not hit; target return remained 0x67 and RC06 was absent. This is real IOCTL entry evidence, not RC00 or authorization success."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-DEVICE-IO-RETURN-20260930-01",
+      "fact": "C308 added a dynamic return observer for C307 control-0x390008 DeviceIoControl, but the outer sample exited EXIT_DECODE=2 after 4.8s before child creation. No IOCTL entry/return, 1029 or target seam evidence was produced; this is VALID_NOT_REACHED."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-DEVICE-IO-RETURN-20260930-02",
+      "fact": "C309 reached a real runtime child, but the nested DeviceIoControl return observer failed in CDB parsing with Numeric expression missing on its compound condition. No IOCTL return was captured; this is INVALID_INSTRUMENT, not sample or authorization evidence."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-DEVICE-IO-RETURN-20260930-03",
+      "fact": "C310 used the corrected single-level DIOC return condition but the outer sample exited EXIT_DECODE=2 after 4.9s before child creation. No IOCTL return, 1029 or target seam evidence was produced; this is VALID_NOT_REACHED."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-DEVICE-IO-ATTRIBUTION-20260930-01",
+      "fact": "C311 added a bounded call stack at the only runtime-child kernelbase!DeviceIoControl control 0x390008 hit: KERNELBASE/KERNEL32 -> bcryptPrimitives!GetSeedFromKernelState -> InitUmRootRngState -> MsProviderStart -> DllMain. The hit is system crypto initialization, not EPT 0x141757acd/RC00 attribution. Runtime target return remained 0x67; RC00, caller diff and RC06 stayed unobserved. Cleanup and final harvest hashes were verified after exact sidecar PID 6472/32 reclamation."
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-DIFF-20260930-02",
+      "fact": "C312 reached the real runtime child and injected exactly one 107-byte response whose body byte[0] was 0x01 and remaining 102 bytes were zero. The same-run state handler still read 0x204c four times and the dispatcher prefix remained 0x5814 -> 0x68f0 -> 0x335e -> 0x983. Target return remained 0x67; RC00, caller diff and RC06-after were not closed. This is a bounded response-field differential, not authorization evidence.",
+      "classification": "VALID_TARGET_REACHED_NOT_COMPLETED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-WRITER-INPUT-20260930-01",
+      "fact": "C313 added read-only runtime observations at 0x1401d69f1 and 0x14033c54b but the outer sample exited EXIT_DECODE=2 after 4.9s before Hardware/runtime creation. No 1029, writer, state or target evidence exists; exact cleanup and harvest hashes verified.",
+      "classification": "VALID_NOT_REACHED_PRECHILD_WRITER_INPUT_UNEXERCISED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-WRITER-INPUT-20260930-02",
+      "fact": "C314 corrected the outer TCP/53 gate and recorded one actual local accept. The real Hardware/runtime child reached 1029 and injected body01. Runtime producer 0x1401d69f1 and four-field fan-out 0x14033c54b were armed but both had zero hits, while state handler 0x14014731c hit once with 0x204c x4; target return remained 0x67 and RC06 was absent. DNS aliases required manual removal after cleanup returncode 1 and were then verified absent.",
+      "classification": "REAL_CHILD_CANDIDATE_WRITERS_NOT_HIT_STATE_204C_TARGET67_RC06_UNCLOSED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-20260930-04",
+      "fact": "C315 reused the corrected TCP/53 gate and recorded one local accept, but the outer sample still exited EXIT_DECODE=2 before Hardware/runtime creation. The body-return rbp+0x385c write watch did not execute; cleanup and hashes were verified.",
+      "classification": "VALID_NOT_REACHED_PRECHILD_AFTER_TCP53_ACCEPT_FIELD_WRITE_UNEXERCISED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-20260930-05",
+      "fact": "C316 recorded check_decode_status inputs immediately before launch: SpooferSoftware.exe, Hardware.exe, Hardware, EPTHWID.exe, exact/new and old SpooferAutoStart tasks, keyword Run values and Startup candidates were all absent, deriving decoded=false/deployed=false. The same run reached Hardware PID 3452 and runtime PID 5480, accepted three 1029 frames and injected body01; runtime target returned 0x67, RC00/RC06 absent. The body-return CDB command reported Malformed string from a nested quoted ba w command, so rbp+0x385c write remains unknown; cleanup/verify passed and harvest hashes match.",
+      "classification": "VALID_CHILD_RESPONSE_OBSERVED_FIELD_WATCH_INSTRUMENT_INVALID_TARGET67_RC06_UNCLOSED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-20260930-06",
+      "fact": "C317 preserved the fixed CDB quote generation but its prelaunch snapshot found EPTHWID.exe (16896 bytes, SHA B0FEBC4C...3B321F) and the exact MicrosoftEdgeUpdateTaskMachineUA GUID task, deriving decoded=false/auto_start=true/deployed=true. TCP/53 accepted once, then the sample exited EXIT_DECODE=2 after 6.2s before Hardware/runtime; field watch and authorization were unexercised. C316 prelaunch had both absent, exposing a prior-run cleanup gap; C317 post-run confirmed the sample had cleared them, and sidecar/harvest/cleanup verification completed.",
+      "classification": "VALID_NOT_REACHED_PRECHILD_STATUS_GATE_RESIDUE_DETECTED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-20260930-07",
+      "fact": "C318 started with decoded=false/deployed=false, reached Hardware PID 7928/runtime PID 496, injected body01, and the corrected nested CDB observer produced one body-return marker plus 244 real FIELD_WRITE_385C markers. Target return remained 0x67; RC00/RC06 and caller diff were absent. Run-scoped cleanup removed newly created EPTHWID.exe and the exact auto-start task, and verification/harvest hashes passed.",
+      "classification": "VALID_FIELD_WRITE_OBSERVED_TARGET67_RC06_UNCLOSED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-20260930-08",
+      "fact": "C319 kept the clean auto-start baseline and field watch, reached runtime PID 7504, and at target-return logged r15=0x1407d8402. Static bytes in the same image show wrapper 0x1407d8402 -> 0x1414d75a2 -> 0x141a26585; target return remained 0x67, caller diff/RC06 absent. Cleanup and hashes passed.",
+      "classification": "VALID_R15_TARGET_RESOLVED_WRAPPER_0x1407D8402_TARGET67_RC06_UNCLOSED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-20260930-09",
+      "fact": "C320 reused the clean auto-start baseline and field watch, reached Hardware PID 4932/runtime PID 1904, accepted three 1029 frames and injected the fixed 103-byte body01 response. The live 0x1414d75a2 pre-call was captured four times: before/inner state had rdx=0x140fd0, r8=4 and four 0x5148 fields; the response call had rdx=0x1f0004, r8=0x67 and four 0x263 fields. Target return remained 0x67, caller diff was absent, RC00/RC06 were absent. Cleanup/83-check verification and all harvest hashes passed; this is response-to-wrapper field correlation, not authorization.",
+      "classification": "VALID_PRECALL_FIELD_CORRELATION_TARGET67_RC06_UNCLOSED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-FIELD-WATCH-REDIRECT-20260930-01",
+      "fact": "C321 replaced the already observed 0x1414d75a2 entry observer with static candidate 0x141945140 while retaining target/body/field instrumentation. The outer DNS gate accepted once, but the sample exited EXIT_DECODE=2 after 8.2s before Hardware/runtime; no 1029, response, redirect marker or target seam occurred. Exact sidecar PID 5404 cleanup, 71-check verification and all harvest hashes passed. This is VALID_NOT_REACHED and closes this duplicate prechild path for now.",
+      "classification": "VALID_NOT_REACHED_PRECHILD_REDIRECT_UNEXERCISED"
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-STATE-HANDLERS-20260930-01",
+      "fact": "C322 statically mapped the C266 live state chain: 0x5814 -> 0x1401475ce, 0x68f0 -> 0x140147809, 0x335e -> 0x140147b48 (and later states 0x983/0x425/0x7c25/0x1bf5). In bounded first 0x1000-byte windows, these handlers show opaque state arithmetic/logger calls but no direct reads of the known recv/send slots rbp+0x2f08/rbp+0x2f48. This is a bounded static result, not a global negative or authorization result.",
+      "classification": "STATIC_STATE_CHAIN_MAPPED_RESPONSE_READ_UNRESOLVED"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-READ-WATCH-20260930-01",
+      "fact": "C323 reached the real Hardware/runtime child and delivered the fixed response, but CDB rejected the nested dynamic ba r command with Malformed string during setup. No PRECALL or RESPONSE_READ marker occurred; target raw return remained 0x67 and field watch produced 244 writes. Cleanup/84-check verification and harvest hashes passed. This is INVALID_INSTRUMENT, not response-read or authorization evidence.",
+      "classification": "INVALID_INSTRUMENT_RESPONSE_READ_WATCH_MALFORMED_STRING"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-RESPONSE-READ-WATCH-20260930-02",
+      "fact": "C324 corrected the nested CDB quoting and reached Hardware PID 4196/runtime PID 4512. The one-shot response read watch hit at RIP 0x1407b4a1a with RDX=0x400004 and R8=0x10 while reading the controlled 103-byte response. The same run still returned 0x67, caller diff was null and RC00/RC06-after were absent. Guest verification passed 84/84 and all 34 harvested files matched; however, three external Feishu proxy tunnels and a Guest Default Switch route were observed, so isolated-sample business acceptance is not claimed.",
+      "classification": "VALID_INSTRUMENT_RESPONSE_READ_OBSERVED_TARGET67_RC06_UNCLOSED_NETWORK_BOUNDARY_NOT_ISOLATED"
+    },
+    {
+      "run": "EPT-PHASE3-STATIC-READ-SITE-COPY-20260930-01",
+      "fact": "C325 disassembled 0x1407b4a1a in the hashed main image and found a generic SIMD copy path: movdqu from [rdx] and [rdx+r8-0x10] followed by stores to [rcx] and [rcx+r8-0x10], then ret. C324's live arguments therefore represent a 16-byte copy from the response buffer to a destination buffer, not an authorization parser. Direct relative calls and qword pointers to the dispatch entry were absent in the bounded image scan; this is not a global no-caller result.",
+      "classification": "STATIC_READ_SITE_IS_MEMCPY_COPY_NOT_AUTH_PARSER"
+    },
+    {
+      "run": "EPT-PI-C324-READ-SITE-ANALYSIS-20260930-01",
+      "fact": "The Guest Agent prompt was delivered losslessly under the official stdin/session path, but bansos repeatedly reported OpenCode fetch failures and the child timed out at 600 seconds with no final output. The raw session contains partial static observations of 0x1407d8403 -> 0x1414d75a2 and 0x1407d8426 -> 0x141a26585; caller scanning was not completed. This is a model communication failure, not sample or authorization evidence.",
+      "classification": "MODEL_NETWORK_UNAVAILABLE_AGENT_TIMEOUT_PARTIAL"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-COPY-RETURN-20260930-01",
+      "fact": "C326 disconnected the Guest external adapter, disabled the corresponding Guest interface, removed the stale 0.0.0.0/0 route and verified zero external established connections. The outer DNS gate accepted once, then the sample attempted my.feishu.cn:443 through the local proxy; getaddrinfo failed and the sample exited before Hardware/runtime/1029. The copy-return observer was therefore unexercised. Cleanup, route restoration and all harvest hashes passed.",
+      "classification": "VALID_ISOLATED_PRECHILD_EXTERNAL_FEISHU_DEPENDENCY_NET_SAMPLE_INSTRUMENT_FAILURE"
+    },
+    {
+      "run": "EPT-PHASE3-HOST-BASH-CONSUMER-COPY-RETURN-20260930-02",
+      "fact": "C327 replaced the prechild external Feishu dependency with a fixed local TLS page on 127.0.0.1:18443 while keeping the Guest external adapter disconnected and default route absent. Three local Feishu responses and the controlled Hardware component download were served; one myip.ipip.net CONNECT was denied without an upstream connection. The real Hardware child PID 5780 and --nsp-runtime-child PID 5460 were created with the expected component lineage. The runtime observer exited 0x8007001e after 1.5 seconds before the 1029 client accepted a frame, so no response was injected and no target seam or RC06-after evidence exists. Cleanup verifier 72/72 and harvest hashes passed.",
+      "classification": "VALID_LOCAL_FEISHU_CHILD_REACHED_RUNTIME_OBSERVER_INSTRUMENTATION_FAILURE_NO_1029"
+    },
+    {
+      "run": "EPT-PHASE3-RESPONSE-CONSUMER-HANDOFF-20260930-01",
+      "fact": "Strictly isolated C330 captured 0x1407b4a1a copying source 0x1f0004 to 0x5ec800, dynamic copy return 0x140384496, and first destination read 0x14004c02b (break RIP 0x14004c030). The consumer wrote at 0x14004c0d5 and called 0x1405d5f80. Target return/caller/RC06 remain unobserved; cleanup verifier 86/86 and all harvest hashes passed.",
+      "classification": "VALID_INJECTED_IO_FIRST_CONSUMER_OBSERVED_DECODE_SEAM_UNCLOSED"
+    }
+  ],
+  "evidence_pointer": "artifacts/evidence/C330_first_consumer_observed_20260930.md",
+  "related_evidence": [
+    "artifacts/evidence/C213_runtime_consumer_state_trace_20260929.md",
+    "artifacts/evidence/C214_runtime_state_dispatch_observer_20260929.md",
+    "artifacts/evidence/C215_body_dispatch_static_reduction_20260929.md",
+    "artifacts/evidence/C218_keyderive_tail_transcription_20260929.md",
+    "artifacts/evidence/C219_response_consumer_wrapper_boundary_20260929.md",
+    "artifacts/evidence/C219_response_consumer_calc_20260929.json",
+    "artifacts/evidence/C221_stack_field_writer_scan_20260929.md",
+    "artifacts/evidence/C242_request_body_layout_20260929.md",
+    "artifacts/evidence/C243_1029_send_buffer_contract_20260929.md",
+    "artifacts/evidence/C244_recv_context_frame_slots_20260929.md",
+    "artifacts/evidence/C245_real_recv_to_wrapper_arguments_20260929.md",
+    "artifacts/evidence/C246_wrapper_argument_reconstruction_20260929.md",
+    "artifacts/evidence/C246_wrapper_argument_reconstruction_20260929.json",
+    "artifacts/evidence/C221_stack_field_writer_scan_20260929.json",
+    "artifacts/evidence/C222_network_branch_efficiency_reassessment_20260929.md",
+    "artifacts/evidence/C222_network_branch_efficiency_reassessment_20260929.json",
+    "artifacts/evidence/C247_prechild_success_context_comparison_20260929.md",
+    "artifacts/evidence/C247_prechild_success_context_comparison_20260929.json",
+    "artifacts/evidence/C248_helper_breakpoint_boundary_20260929.md",
+    "artifacts/evidence/C248_helper_breakpoint_boundary_20260929.json",
+    "artifacts/evidence/C251_outer_direct_dns_observed_20260930.md",
+    "artifacts/evidence/C251_outer_direct_dns_observed_20260930.json",
+    "artifacts/evidence/C252_outer_vm_gate_scope_20260930.md",
+    "artifacts/evidence/C252_outer_vm_gate_scope_20260930.json",
+    "artifacts/evidence/C253_immediate_outer_socket_observation_20260930.md",
+    "artifacts/evidence/C253_immediate_outer_socket_observation_20260930.json",
+    "artifacts/evidence/C254_wrapper_trace_prechild_unexercised_20260930.md",
+    "artifacts/evidence/C254_wrapper_trace_prechild_unexercised_20260930.json",
+    "artifacts/evidence/C255_existing_minidump_helper_structure_20260930.md",
+    "artifacts/evidence/C255_existing_minidump_helper_structure_20260930.json",
+    "artifacts/evidence/C256_live_wrapper_helper_trace_20260930.md",
+    "artifacts/evidence/C256_live_wrapper_helper_trace_20260930.json",
+    "artifacts/evidence/C257_post_precall_observer_prechild_20260930.md",
+    "artifacts/evidence/C257_post_precall_observer_prechild_20260930.json",
+    "artifacts/evidence/C258_software_callsite_boundary_20260930.md",
+    "artifacts/evidence/C258_software_callsite_boundary_20260930.json",
+    "artifacts/evidence/C259_precall_control_redirect_20260930.md",
+    "artifacts/evidence/C259_precall_control_redirect_20260930.json",
+    "artifacts/evidence/C260_precall_observer_prechild_20260930.md",
+    "artifacts/evidence/C260_precall_observer_prechild_20260930.json",
+    "artifacts/evidence/C261_state_handler_writer_boundary_20260930.md",
+    "artifacts/evidence/C261_state_handler_writer_boundary_20260930.json",
+    "artifacts/evidence/C262_state_handoff_prechild_exit_20260930.md",
+    "artifacts/evidence/C262_state_handoff_prechild_exit_20260930.json",
+    "artifacts/evidence/C263_state_handler_static_dispatch_mapping_20260930.md",
+    "artifacts/evidence/C263_state_handler_static_dispatch_mapping_20260930.json",
+    "artifacts/evidence/C264_candidate_observer_instrument_failure_20260930.md",
+    "artifacts/evidence/C264_candidate_observer_instrument_failure_20260930.json",
+    "artifacts/evidence/C265_dispatcher_prechild_light_sidecar_20260930.md",
+    "artifacts/evidence/C265_dispatcher_prechild_light_sidecar_20260930.json",
+    "artifacts/evidence/C266_live_dispatch_state_chain_20260930.md",
+    "artifacts/evidence/C266_live_dispatch_state_chain_20260930.json",
+    "artifacts/evidence/C267_tcp53_gate_insufficient_prechild_20260930.md",
+    "artifacts/evidence/C267_tcp53_gate_insufficient_prechild_20260930.json",
+    "artifacts/evidence/C268_field_watch_cdb_escaping_failure_20260930.md",
+    "artifacts/evidence/C268_field_watch_cdb_escaping_failure_20260930.json",
+    "artifacts/evidence/C269_field_watch_prechild_exit_20260930.md",
+    "artifacts/evidence/C269_field_watch_prechild_exit_20260930.json",
+    "artifacts/evidence/C270_handler_static_dump_real_child_20260930.md",
+    "artifacts/evidence/C270_handler_static_dump_real_child_20260930.json",
+    "artifacts/evidence/C271_logger_call_boundary_prechild_20260930.md",
+    "artifacts/evidence/C271_logger_call_boundary_prechild_20260930.json",
+    "artifacts/evidence/C272_writer_input_static_dump_real_child_20260930.md",
+    "artifacts/evidence/C272_writer_input_static_dump_real_child_20260930.json",
+    "artifacts/evidence/C273_writer_entry_prechild_20260930.md",
+    "artifacts/evidence/C273_writer_entry_prechild_20260930.json",
+    "artifacts/evidence/C274_guest_direct_call_scan_no_hit_20260930.md",
+    "artifacts/evidence/C274_guest_direct_call_scan_no_hit_20260930.json",
+    "artifacts/evidence/C275_guest_indirect_slot_scan_no_hit_20260930.md",
+    "artifacts/evidence/C275_guest_indirect_slot_scan_no_hit_20260930.json",
+    "artifacts/evidence/C294_guest_jump_observer_prechild_20260930.md",
+    "artifacts/evidence/C294_guest_jump_observer_prechild_20260930.json",
+    "artifacts/evidence/C295_guest_precall_four_slot_observer_20260930.md",
+    "artifacts/evidence/C295_guest_precall_four_slot_observer_20260930.json",
+    "artifacts/evidence/C296_guest_precall_successor_prechild_20260930.md",
+    "artifacts/evidence/C296_guest_precall_successor_prechild_20260930.json",
+    "artifacts/evidence/C297_guest_precall_successor_rcx2b4_20260930.md",
+    "artifacts/evidence/C297_guest_precall_successor_rcx2b4_20260930.json",
+    "artifacts/evidence/C298_response_writer_prechild_20260930.md",
+    "artifacts/evidence/C298_response_writer_prechild_20260930.json",
+    "artifacts/evidence/C299_response_wrapper_target_return_writer_not_hit_20260930.md",
+    "artifacts/evidence/C299_response_wrapper_target_return_writer_not_hit_20260930.json",
+    "artifacts/evidence/C300_response_helper_postcall_prechild_20260930.md",
+    "artifacts/evidence/C300_response_helper_postcall_prechild_20260930.json",
+    "artifacts/evidence/C301_response_helper_postcall_unobserved_20260930.md",
+    "artifacts/evidence/C301_response_helper_postcall_unobserved_20260930.json",
+    "artifacts/evidence/C302_wrapper_singlestep_prechild_20260930.md",
+    "artifacts/evidence/C302_wrapper_singlestep_prechild_20260930.json",
+    "artifacts/evidence/C303_wrapper_singlestep_event_handler_skipped_20260930.md",
+    "artifacts/evidence/C303_wrapper_singlestep_event_handler_skipped_20260930.json",
+    "artifacts/evidence/C304_precall_ret_prechild_20260930.md",
+    "artifacts/evidence/C304_precall_ret_prechild_20260930.json",
+    "artifacts/evidence/C305_state_watch_corrected_target_20260930.md",
+    "artifacts/evidence/C305_state_watch_corrected_target_20260930.json",
+    "artifacts/evidence/C306_dynamic_jump_observer_prechild_20260930.md",
+    "artifacts/evidence/C306_dynamic_jump_observer_prechild_20260930.json",
+    "artifacts/evidence/C307_runtime_device_io_390008_rc00_unhit_20260930.md",
+    "artifacts/evidence/C307_runtime_device_io_390008_rc00_unhit_20260930.json",
+    "artifacts/evidence/C308_device_io_return_prechild_20260930.md",
+    "artifacts/evidence/C308_device_io_return_prechild_20260930.json",
+    "artifacts/evidence/C309_device_io_return_instrument_failure_20260930.md",
+    "artifacts/evidence/C309_device_io_return_instrument_failure_20260930.json",
+    "artifacts/evidence/C310_device_io_return_prechild_20260930.md",
+    "artifacts/evidence/C310_device_io_return_prechild_20260930.json",
+    "artifacts/evidence/C311_device_io_attribution_bcrypt_20260930.md",
+    "artifacts/evidence/C311_device_io_attribution_bcrypt_20260930.json",
+    "artifacts/evidence/C312_response_body01_state_unchanged_20260930.md",
+    "artifacts/evidence/C312_response_body01_state_unchanged_20260930.json",
+    "artifacts/evidence/C313_writer_input_prechild_exit_20260930.md",
+    "artifacts/evidence/C313_writer_input_prechild_exit_20260930.json",
+    "artifacts/evidence/C314_writer_candidates_not_hit_body01_child_20260930.md",
+    "artifacts/evidence/C314_writer_candidates_not_hit_body01_child_20260930.json",
+    "artifacts/evidence/C315_field_watch_prechild_after_tcp53_accept_20260930.md",
+    "artifacts/evidence/C315_field_watch_prechild_after_tcp53_accept_20260930.json",
+    "artifacts/evidence/C320_precall_field_write_correlation_target67_rc06_unclosed_20260930.md",
+    "artifacts/evidence/C320_precall_field_write_correlation_target67_rc06_unclosed_20260930.json",
+    "artifacts/evidence/C321_precall_redirect_unexercised_20260930.md",
+    "artifacts/evidence/C321_precall_redirect_unexercised_20260930.json",
+    "artifacts/evidence/C322_static_state_handler_mapping_20260930.md",
+    "artifacts/evidence/C322_static_state_handler_mapping_20260930.json",
+    "artifacts/evidence/C323_response_read_watch_malformed_string_20260930.md",
+    "artifacts/evidence/C323_response_read_watch_malformed_string_20260930.json",
+    "artifacts/evidence/C324_response_read_observed_target67_rc06_unclosed_20260930.md",
+    "artifacts/evidence/C324_response_read_observed_target67_rc06_unclosed_20260930.json",
+    "artifacts/evidence/C325_static_read_site_copy_routine_20260930.md",
+    "artifacts/evidence/C325_static_read_site_copy_routine_20260930.json",
+    "artifacts/work/agent-reviews/AGENT-C325_guest_agent_timeout_partial_20260930.md",
+    "artifacts/work/agent-reviews/AGENT-C325_guest_agent_timeout_partial_20260930.json",
+    "artifacts/evidence/C326_isolated_prechild_feishu_dependency_20260930.md",
+    "artifacts/evidence/C326_isolated_prechild_feishu_dependency_20260930.json",
+    "artifacts/evidence/C327_local_feishu_child_runtime_observer_failure.md",
+    "artifacts/evidence/C327_local_feishu_child_runtime_observer_failure.json",
+    "artifacts/evidence/C328_local_feishu_target67_rc06_unclosed_20260930.md",
+    "artifacts/evidence/C328_local_feishu_target67_rc06_unclosed_20260930.json",
+    "artifacts/evidence/C330_first_consumer_observed_20260930.md",
+    "artifacts/evidence/C330_first_consumer_observed_20260930.json",
+    "artifacts/evidence/C331_static_first_destination_consumer.json"
+  ],
+  "measurement_audit": {
+    "utc": "2026-09-30T04:10:11.043323+00:00",
+    "problem_slice": "artifacts/problem-slices/c328-recv-return-mislabel-and-fixed-copy-address-20260930.json",
+    "historical_marker": "TARGET_NATIVE_RETURN at 0x140177143 is mislabeled",
+    "target_native_return": null,
+    "target_caller_diff_bytes": null,
+    "gate_patch_semantics": "For eax=103, test eax,eax and inc eax both yield ZF=0; this does not demonstrate authorization gate reversal."
+  }
+}
+

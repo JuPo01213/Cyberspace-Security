@@ -1,0 +1,13 @@
+{
+  "slice_id": "capesolo-cleanup-claimed-with-live-target-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-REBOOT-BATCH-20260928-01",
+  "observed": "官方 job 5f97680c9a95493fbcdafd8d2b56ba4f 已 completed，但 PID 3788、PPID 4344、路径 analysis/mcp_staging/ept-authoritative_8c752a1c.exe 仍存活，创建于该 job 的 2026-09-28T15:28:33.643Z。run.json 却写 cleanup_done=true。",
+  "expected": "任务终态、调试会话状态和进程清理分别核验；有残留时 cleanup_done=false。",
+  "why": "将删除断点或 job completed 错当成完成了进程清理；未核验实际进程。DLL 占用者与该残留进程的因果关系仍待区分。",
+  "where_to_optimize": "纠正旧 run 的清理状态；对已证明身份的残留进程执行精确清理，并比较同一 DLL 的无截断写入打开结果。停止将单 job/单 MCP 进程这一未验证对策固化到 AGENTS.md。",
+  "evidence": ["runs/EPT-PHASE3-INTERACTIVE-REBOOT-BATCH-20260928-01/control/cleanup-audit-job-status.json"],
+  "minimum_success": "身份一致的残留进程退出，清理前后事实可读回；DLL 锁是否释放单独报告。",
+  "rollback": "进程退出不可恢复其内存现场；既有寄存器、模块、栈已收割，原运行已终态。不得把清理后的状态补为该运行目标证据。",
+  "secrets_redacted": true
+}
+

@@ -1,0 +1,15 @@
+{
+  "slice_id": "pi-native-agent-host-guest-path-evaluation-20260929-01",
+  "scope": "host_guest_agent_delivery",
+  "reproduction": "In the first draft of run-native-pi-agent.ps1, $relayState was computed on Host from $env:USERPROFILE and then passed as if it were a Guest path.",
+  "observation": "On this Host it would resolve under the Administrator profile, while pi-bansos resolves its relay state under the Guest user's homedir (.pi\\agent); the error was caught by code review before the new Agent run was launched.",
+  "expected": "All Guest paths must be created/resolved inside the Guest script block and the delivered files/versions must be verified before launch.",
+  "impact": "If not corrected, the native Agent would either write relay state to the wrong Guest path or fail to enable the Host model relay, repeating the earlier provider-boundary failure.",
+  "evidence": "Initial run-native-pi-agent.ps1 draft and current Host/Guest user-profile distinction.",
+  "optimization_location": "method/pi-flare-workbench/run-native-pi-agent.ps1",
+  "minimal_change": "Resolve relay state with Guest $env:USERPROFILE inside Invoke-Command; hash-check the delivered task/prompt and verify native Pi/plugin/workspace before Start-Process.",
+  "rollback": "Revert the delivery-verification block and remove only the per-run relay state after cleanup.",
+  "verification": "delivery-verification.json with matching hashes, native Pi/plugin versions, and relay_state_path under Guest profile before Agent launch.",
+  "unresolved_risk": "The model upstream may still fail after correct delivery; that must be classified separately from delivery."
+}
+

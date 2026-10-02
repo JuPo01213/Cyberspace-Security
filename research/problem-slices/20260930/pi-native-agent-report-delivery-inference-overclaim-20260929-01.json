@@ -1,0 +1,35 @@
+{
+  "slice_id": "pi-native-agent-report-delivery-inference-overclaim-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-07",
+  "scope": "evidence_interpretation_and_host_acceptance",
+  "review_status": "candidate",
+  "what_happened": "在第一次读取 run-07 的 Agent 报告后，我把报告中的“本 run prompt 已完整送达”当成事实，并据此把 run-07 记录为完整 delivery。随后直接解析原始 session，发现真正的初始 role=user 只有 127 字符/233 字节；完整 prompt 是 Agent 后续用 read 工具从 Guest prompt.txt 自行读到的。这个判断把 Agent 的解释当成了底层证据。",
+  "observed": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/session.jsonl 第 5 行是唯一初始 role=user，newlines=0，session_user_equals_first=true，session_user_equals_full=false。",
+    "同一 session 第 18 行的 assistant toolCall call_5314fe2e14ab4fe4b6b7ccbb 读取 run-07/prompt.txt，第 19 行的 toolResult 才携带完整任务正文。",
+    "Agent 报告 agent-report.md 的 O-3/O-9 把自行读取后的可见内容误写成 prompt 初始交付证据。",
+    "run-07 模型请求和报告产出仍然是真实成功；错误只影响 delivery 完整性的判定。"
+  ],
+  "expected_behavior": "模型报告、模型自述、output.txt 摘要和 status 标签都是待核对材料；涉及投递、模型响应、工具执行和收割的关键结论必须回到原始 session 事件、文件哈希、时间戳和 Host/Guest 控制证据。",
+  "impact": "错误地高估了通信脚手架的投递能力，可能把模型自行补救的成功误记为 Host→Guest→Pi 的成功，并延迟修复仍存在的多行 prompt 传参缺陷。",
+  "why": {
+    "confirmed_cause": "没有按事件类型解析 session；先读了模型报告的总结，未立即核对 role=user、toolCall 和 toolResult 的顺序。",
+    "missing_guidance": "项目验收规则没有明确规定“模型报告不拥有 delivery 语义权威”，也没有要求把 prompt 交付与 Agent 后续自救读取分开记录。",
+    "not_a_model_or_sample_result": "模型成功生成报告这一事实成立，但不能反推 prompt 初始 delivery 完整，也不能说明 EPT 样本行为。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "增加结构化 session parser：只把初始 role=user 与 Host prompt 的字节比较结果写入 delivery 字段；单独记录 Agent 是否通过 read/bash 重新读取 prompt。",
+    "project_instruction": "明确原始 session 事件优先于 Agent 报告；报告中的 delivery/egress/成功声明必须标注为待核对，未经 raw event 支持不得升级为已验证。",
+    "generic_skill": "暂不修改通用 Skill；这是 EPT 当前 Agent consumer 的证据解释缺口。"
+  },
+  "minimal_change": "修正 run-07 记录和验收脚本的证据口径；后续 run 先解析原始 session，再阅读 Agent 报告作为解释材料。",
+  "rollback": "保留原始报告和 session；若验收字段实现有误，只回滚解析/记录逻辑，不回滚底层证据。",
+  "minimum_validation": "对现有 run-07 复算，结果必须同时显示 model_request_succeeded=true、report_harvested=true、initial_prompt_delivery_complete=false、prompt_recovered_by_agent_read=true；四个事实不得合并成单一 success。",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/work/agent-report.md",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/prompt.txt"
+  ],
+  "secrets_redacted": true
+}
+

@@ -1,0 +1,19 @@
+{
+  "slice_id": "pi-native-agent-egress-field-hardcoded-20260929-01",
+  "run_id": "EPT-PI-FLARE-MIMO-20260929-06",
+  "scope": "agent_run_evidence",
+  "reproduction": "The Guest native runner was launched with relay_configured=false over a temporary Default Switch, but guest-native-pi-agent.ps1 wrote model_egress=host_allowlisted_model_relay unconditionally.",
+  "observation": "The raw run status misidentified the actual egress even though the Host start record said guest_direct_network; the same run's session showed the Agent had begun local tool calls before it was stopped.",
+  "expected": "Run status must reflect the egress selected by the Host launch parameters.",
+  "impact": "A future comparison could attribute direct Guest success/failure to the wrong relay path; this is an evidence-integrity error, not a model result.",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/harvest/status.json",
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/control/native-agent-start.json"
+  ],
+  "optimization_location": "method/pi-flare-workbench/guest-native-pi-agent.ps1 and run-native-pi-agent.ps1",
+  "minimal_change": "Pass ModelEgress explicitly and write it into the Guest status instead of hardcoding relay.",
+  "rollback": "Revert the parameter and launch argument; preserve the incorrect run as historical evidence.",
+  "verification": "New direct run status says guest_direct_network; relay run status says host_allowlisted_model_relay; session/transport evidence agrees.",
+  "unresolved_risk": "Agent tool calls may still be long-running; monitoring must inspect session events and tool handles before applying a deadline."
+}
+

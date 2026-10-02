@@ -1,0 +1,19 @@
+{
+  "slice_id": "phase3-host-outcome-boolean-literal-20260929-01",
+  "created_utc": "2026-09-29T02:01:00Z",
+  "single_bottleneck": "The first Host run-record update used bare JSON-style true/false tokens inside a PowerShell hashtable, so outcome serialization stopped before writing the formal outcome object.",
+  "reproduction": {
+    "run_id": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02",
+    "error": "The term 'true' is not recognized as a cmdlet/function",
+    "guest_side_effect": "none; Guest run was already terminal and harvested"
+  },
+  "expected": "Use PowerShell $true/$false values, serialize the outcome, then parse it back before dispatching another run.",
+  "minimal_change": "Replace bare boolean literals with $true/$false in the Host bookkeeping script.",
+  "verification": "harvest/outcome.json and run.json outcome parse as valid JSON and retain target fields as NOT_OBSERVED_DYNAMIC.",
+  "rollback": "No Guest rollback required; this only affects Host run-record publication.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/run.json",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/control/delivery-analysis.json"
+  ]
+}
+

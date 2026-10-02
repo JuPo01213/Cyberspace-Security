@@ -1,0 +1,17 @@
+{
+  "slice_id": "c335-cdb-observer-syntax-error-20260930",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01",
+  "category": "instrumentation_failure",
+  "occurred": "The state-dispatch observer reached 0x1400494e0 but its combined CDB command failed with a syntax error before continuing; command included db @rbp+0x10d L0x13, stack, and disassembly commands.",
+  "observed_effect": "Observer exited with code 2147942430. target_native_return, caller diff, and RC06-after were not observed. The sample itself later exited 0x0/EXIT_DECODE and all sample/component identity and harvest hashes matched.",
+  "evidence": [
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01/harvest/work/state_dispatch_10020.cdb",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01/harvest/work/native_observer_10020.stdout.txt",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-PSFIX-20260930-01/harvest/work/events.final.ndjson"
+  ],
+  "why": "The observer command was edited as a compound string without first running the exact generated command through the installed CDB in a harmless validation path. The process optimized for collecting many fields at one breakpoint instead of preserving the minimum continuation command.",
+  "minimum_fix": "Use a new run and a one-shot breakpoint at statically proven 0x14004c2e1. The callback must contain only syntax-validated echo/register/dd/bc/g commands; remove db, k, and u from the critical continuation path.",
+  "rollback": "Discard the new observer copy and retain the C335 runner and evidence unchanged.",
+  "success": "The observer reaches 0x14004c2e1, records the selector and return context, continues without CDB error, and leaves target seam fields to the existing runtime observer."
+}
+

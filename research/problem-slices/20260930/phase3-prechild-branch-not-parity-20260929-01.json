@@ -1,0 +1,81 @@
+{
+  "slice_id": "phase3-prechild-branch-not-parity-20260929-01",
+  "created_utc": "2026-09-29T10:35:00Z",
+  "single_bottleneck": "The same authoritative sample and C2 guard sometimes exit EXIT_DECODE before network/child and sometimes reach the controlled child/protocol; run suffix odd/even is not a demonstrated control variable.",
+  "observations": [
+    {
+      "run": "EPT-PHASE3-AGENT-RESPONSE-DELAYED-PATCH-20260929-01",
+      "suffix": "01",
+      "returncode": 2,
+      "elapsed_seconds": 4.4,
+      "adapter_connect": 0,
+      "child": false
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RESPONSE-DELAYED-PATCH-20260929-02",
+      "suffix": "02",
+      "returncode": 0,
+      "elapsed_seconds": 35.5,
+      "adapter_connect": 4,
+      "child": true,
+      "l1029_accepts": 3,
+      "delayed_patch": true
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-RESPONSE-HWBP-20260929-02",
+      "suffix": "02",
+      "returncode": 2,
+      "elapsed_seconds": 4.6,
+      "adapter_connect": 0,
+      "child": false,
+      "hwbp_attached": false
+    },
+    {
+      "run": "EPT-PHASE3-AGENT-PRECHILD-HWBP-DIFF-20260929-01",
+      "suffix": "01",
+      "returncode": 0,
+      "elapsed_seconds": 40.5,
+      "adapter_connect": 4,
+      "adapter_get": 1,
+      "child": true,
+      "runtime_child_pid": 4568,
+      "l1029_accepts": 3,
+      "delayed_patch": true,
+      "raw_target_after_call_rax": "0x67",
+      "target_seam_closed": false
+    },
+    {
+      "run": "EPT-PHASE3-HOST-CONSUMER-WRITER-20260929-01",
+      "suffix": "01",
+      "returncode": 2,
+      "elapsed_seconds": 12.0,
+      "adapter_connect": 0,
+      "child": false,
+      "writer_variant_exercised": false,
+      "control_plane_recovery": true
+    }
+  ],
+  "static_check": {
+    "runner_parity_branch_found": false,
+    "sample_args_constant": "-k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA --no-pause",
+    "cwd": "C:\\EPT\\runs\\EPT-PHASE3-SAMPLE-MIN-20260928-01",
+    "source_diff": "HWBP only changes runtime observer generation after if tag; pre-child path does not call it"
+  },
+  "interpretation": "Odd/even is a chronological correlation/selection artifact, not sample code logic. C231 even-suffix failure falsified even=>child; C232 odd-suffix success after a prelaunch-context differential further separates suffix from the causal state.",
+  "known_conditions": [
+    "C2 guard previously correlated with child/protocol in the successful guard differential",
+    "C231 also armed the same guard but still exited before network, so guard is not sufficient",
+    "C229 proves the downstream child/protocol path is reachable under some run state",
+    "C232 proves the same path can reach the runtime target observer and produce raw rax=0x67 under the zero-body response variant, but not the required 0x1 seam",
+    "C233 did not reach the child, so the writer-link variant remains unexercised and must not be used to judge the writer hypothesis"
+  ],
+  "next_falsifiable_check": "Do not repeat the zero-body response unchanged. First reproduce C232's exact Guest Git-Bash/nohup runner launch mode (C233 used a Host PowerShell Start-Process parent and exited pre-child) while keeping the writer-only observer as the new information point; if the child/protocol is reached, use the raw rax=0x67 observation to select one response-consumer hypothesis and capture the actual return and caller diff in that same run.",
+  "do_not_claim": [
+    "natural authorization",
+    "target_native_return",
+    "target_caller_diff_bytes",
+    "RC06-after",
+    "parity causality"
+  ]
+}
+

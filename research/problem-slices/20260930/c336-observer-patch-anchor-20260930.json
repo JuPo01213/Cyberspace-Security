@@ -1,0 +1,16 @@
+{
+  "slice_id": "c336-observer-patch-anchor-20260930",
+  "category": "run_preparation_script_error",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01",
+  "occurred": "The C336 preparation script created the new control directory and copied files, but failed before writing the patched runner because the PowerShell here-string used backslash-escaped quotes while the Python source contained literal quotes. The exact observer block anchor was therefore not found.",
+  "effect": "No sample, Guest process, network policy, or debugger was started. The new control directory contains only copied C335 inputs and is not a runnable C336 preparation result.",
+  "evidence": [
+    "The failed preparation command output: observer block anchor not found",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01/control/native_card_bridge_recv_owner.py"
+  ],
+  "why": "The patch script guessed the serialized representation instead of reading the exact source substring before replacement.",
+  "minimum_fix": "Read the copied file's exact lines, use a literal single-quoted PowerShell here-string with unescaped Python double quotes, assert one match, then compile and read back the changed block.",
+  "rollback": "Delete only the unstarted C336 preparation directory or overwrite it from the unchanged C335 control source; retain C335 evidence.",
+  "success": "The new runner has exactly one observer block replacement, compiles, and its patch provenance records the before/after hashes."
+}
+

@@ -1,0 +1,28 @@
+{
+  "slice_id": "pi-host-collector-lock-and-stale-20260929-01",
+  "source_run_id": "EPT-PI-COMM-DIAG-20260929-01",
+  "scope": "host_pi_harvest_and_outcome_classification",
+  "review_status": "verified",
+  "what_happened": "首次在模型仍运行时收割 EPT-PI-COMM-DIAG-20260929-01，Copy-Item 遇到被 runner.stdout.log 占用的文件后整体退出，未能可靠取得其他可读产物。Guest session 还位于 .pi 根，Host 需要按 status.session_path 或 session 镜像收割。",
+  "observed": [
+    "collect-pi-flare.ps1 previously failed on runner.stdout.log file-in-use",
+    "Guest canonical session path was C:\\Users\\flare\\.pi\\agent\\sessions\\--C--EPT-pi-flare-workspace--\\...jsonl",
+    "final harvest control/harvest-outcome.json reports STATUS_TERMINAL and copy_deferred_count=0"
+  ],
+  "expected_behavior": "A harvest attempt copies every available artifact, records per-file deferrals, prefers session.jsonl mirror when present, and classifies terminal/stale/live status without turning a locked log into a total harvest failure.",
+  "impact": "A single transient file lock could hide the raw session, report and status needed to continue or classify the Agent run.",
+  "minimal_change": [
+    "copy each Guest file inside its own try/catch and write harvest-copy-results.json",
+    "include session.jsonl and use status.session_mirror_path with canonical fallback",
+    "write harvest-outcome.json with heartbeat age and STATUS_TERMINAL/RUNNER_ACTIVE_AT_HARVEST/RUNNER_DIED_STALE_HEARTBEAT"
+  ],
+  "verification": [
+    "collector PowerShell Parser returned collector_parse_ok",
+    "completed run harvested status, output, stderr, prompt, session and work artifacts",
+    "harvest-outcome.json classified the completed run as STATUS_TERMINAL"
+  ],
+  "rollback": "restore the prior collect-pi-flare.ps1 from version control; generated harvest artifacts remain evidence and are not deleted",
+  "remaining_risk": "A COPY_DEFERRED file needs a later harvest retry if the lock persists; classification does not kill a live runner.",
+  "secrets_redacted": true
+}
+

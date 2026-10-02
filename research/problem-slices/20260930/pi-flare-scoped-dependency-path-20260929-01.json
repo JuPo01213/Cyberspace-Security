@@ -1,0 +1,21 @@
+{
+  "slice_id": "pi-flare-scoped-dependency-path-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-PROVISION-20260929-04",
+  "status": "confirmed_script_error",
+  "what_happened": "依赖分发循环处理普通 npm 包名时先调用 `Split-Path -Parent`，得到空字符串，再把它传给 `Split-Path -Leaf`；PowerShell 报 `Cannot bind argument to parameter 'Path' because it is an empty string`。部署过程可能已复制部分受控依赖，但没有完成验证。",
+  "expected": "普通包复制到 `runtime\\node_modules`，scoped 包复制到 `runtime\\node_modules\\<scope>`，两者都不依赖空路径。",
+  "why": {
+    "missing_fact": "没有用普通包名和 scoped 包名各做一次路径解析对照。",
+    "unverified_assumption": "假定所有包名都能用同一层级的 Split-Path 计算父目录。",
+    "error_layer": "Host 部署脚本的 npm package path adapter。"
+  },
+  "where_to_optimize": {
+    "deployment_script": "按 npm 包名是否以 `@` 开头分支计算目标 scope 目录；增加普通/scoped 两种路径的落盘断言。",
+    "project_layer": "把依赖部署分为 source package、destination package 和 postcondition，失败时不得继续 Pi 验收。",
+    "generic_skill": "不修改；这是当前脚手架实现错误。"
+  },
+  "minimum_validation": "修复后完成全部直接依赖复制，验证至少一个普通包、一个 scoped 包和 Pi CLI 启动；记录部分复制不会被当成成功。",
+  "rollback": "重建受控 `C:\\EPT\\pi-flare\\pi-runtime\\node_modules` 目录。",
+  "secrets_redacted": true
+}
+

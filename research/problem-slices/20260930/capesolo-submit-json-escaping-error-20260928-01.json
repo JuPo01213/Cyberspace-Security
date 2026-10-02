@@ -1,0 +1,28 @@
+{
+  "slice_id": "capesolo-submit-json-escaping-error-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "提交真实 natural job 时，复用的 capesolo-call-noauth.ps1 在宿主侧 ConvertFrom-Json 阶段失败，错误为 Invalid property identifier character: \\，Path '', line 1, position 1。命令行构造的 ArgumentsJson 在 PowerShell/宿主字符串层多了一层转义，因此没有生成 job_id，也没有向 Guest 提交样本。",
+  "observed": [
+    "失败位置是本地 consumer 第 40 行 `$arguments = $ArgumentsJson | ConvertFrom-Json`，不是 MCP HTTP 或 CAPEsolo 返回错误。",
+    "本次调用没有得到 job-submit.json 的成功 payload，也没有改变 Guest 样本状态。",
+    "当前运行的真实提交参数仍应保持 sample_path、package=exe、options empty、timeout=900、enforce_timeout=true、run_from_current_directory=true、interactive_debug=false。"
+  ],
+  "expected_behavior": "消费者应从结构化参数对象生成有效 JSON，并在调用 MCP 前完成本地 JSON 解析；格式失败必须在宿主侧停止，不得继续提交或把它归类为 Guest/runtime 失败。",
+  "why": {
+    "confirmed_cause": "在嵌套 functions.exec JavaScript → 宿主 PowerShell → consumer PowerShell 的字符串中手工加入了 JSON 引号和反斜杠，最终传入 consumer 的文本不是合法 JSON。",
+    "avoidable_assumption": "把视觉上像 JSON 的命令行文本当成已通过解析的结构化参数，没有先在宿主用 ConvertTo-Json/ConvertFrom-Json 做闭环。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "使用 PowerShell hashtable/ordered object 的 ConvertTo-Json 生成 ArgumentsJson，或把参数写入独立 UTF-8 JSON 文件后读取；提交前先本地解析并记录参数摘要。",
+    "project_instruction": "接口参数必须区分语义对象、序列化文本和嵌套 shell 字符串；不要手工拼接多层转义 JSON。",
+    "generic_skill": "暂不修改通用 Skill；这是当前宿主调用层的序列化错误。"
+  },
+  "minimum_validation": "修正后先在宿主打印/解析参数摘要并确认 sample_path、package、interactive_debug 等字段，再调用 capesolo_analyze_sample；只有 MCP 返回 accepted=true 和 job_id 才算提交成功。",
+  "evidence": [
+    "runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-01/control/capesolo-call-noauth.ps1",
+    "Host consumer ConvertFrom-Json error from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

@@ -1,0 +1,29 @@
+{
+  "slice_id": "capesolo-unknown-submission-composite-probe-repeated-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "在真实提交的 job_id 丢失后，我再次使用了一个串联 Get-Process、Get-ChildItem 和 analysis.log Tail 的 PowerShell Direct 只读查询，等待约 35 秒仍无返回，随后中止。项目 AGENTS.md 已明确要求复杂枚举拆成单一有界调用；这是对新门禁的重复违反。",
+  "observed": [
+    "提交状态仍保持 unknown；本次组合查询没有得到任何 Guest 状态输出。",
+    "该查询没有写文件、停止进程或提交新样本，但增加了一个未回收/超时诊断 wrapper 风险。",
+    "之前最小单一 nonce 查询可以在约 2 秒返回，说明不应使用本组合查询作为控制面判断。"
+  ],
+  "expected_behavior": "unknown submission 状态只允许使用单一、有界、可回收的检查逐项收割；复杂查询超时后必须停止该方法并保留原始状态，不得再次组合重试。",
+  "why": {
+    "confirmed_cause": "为了同时判断样本进程、MCP、目录和日志，把多个可能阻塞的 Guest API 放进一个远程调用；忽略了项目刚新增的有界诊断门禁。",
+    "process_failure": "这是执行者没有把已写入 AGENTS.md 的规则落实到下一次动作，而不是 Guest 或样本证据。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "停止所有组合 Guest 查询；只用 Host TCP/MCP endpoint 和单一 nonce/单一文件属性探针。若需要日志，改用 CAPEsolo MCP 官方 job API，但当前 job_id 丢失时不得猜测。",
+    "project_instruction": "重复违反有界诊断门禁时，必须将该轮收割降级为 unknown，并在交付前审查是否产生孤儿 wrapper。",
+    "generic_skill": "暂不修改通用 Skill；该问题已在项目层有明确规则，是执行者未遵守。"
+  },
+  "minimum_validation": "先确认 Host 上没有本批次遗留 PowerShell Direct wrapper，再执行一个单一 nonce 探针；未知提交只能通过已有 MCP/目录事实收敛，不得重提样本。",
+  "evidence": [
+    "AGENTS.md 宿主控制诊断的有界执行与回收",
+    "Host-side composite probe timeout from the current execution turn",
+    "artifacts/problem-slices/capesolo-powershell-direct-query-stalled-20260928-01.json"
+  ],
+  "secrets_redacted": true
+}
+

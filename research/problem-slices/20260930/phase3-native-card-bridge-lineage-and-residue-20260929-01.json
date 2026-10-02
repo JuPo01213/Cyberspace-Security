@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-native-card-bridge-lineage-and-residue-20260929-01",
+  "status": "OPEN",
+  "run": "EPT-PHASE3-AGENT-NATIVE-CARD-BRIDGE-20260929-02",
+  "observed_facts": {
+    "attempt1": {
+      "outer_lineage": "1412 ept-authoritative.exe -> 6812 ept-authoritative.exe -> 1320 Hardware.exe",
+      "child_sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+      "child_command_line": "C:\\Windows\\System32\\Hardware.exe -k CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -n 0 -m 1",
+      "old_gate_event": "hardware_ignored_wrong_parent",
+      "old_gate_reason": "accepted only ParentProcessId == initially launched outer PID"
+    },
+    "attempt2": {
+      "sample_exit": 2,
+      "elapsed_seconds": 4.6,
+      "proxy_connect": 0,
+      "proxy_get": 0,
+      "child": false,
+      "classification": "documented_sample_side_instant_death_branch"
+    },
+    "residue": [
+      "C:\\Windows\\System32\\EPT.cmd",
+      "%TEMP%\\EPT_2623CCCA_68C0E591.exe",
+      "%TEMP%\\tmp_0g0j8st"
+    ]
+  },
+  "correction": {
+    "lineage_gate": "Accept only a Hardware child whose direct parent is the launched outer PID or an observed same-hash ept-authoritative descendant; record the inner re-exec explicitly.",
+    "cleanup": "Snapshot run-start target PIDs and relevant temp/EPT.cmd paths; remove only new run-created staging and terminate target descendants introduced after the baseline; record hashes and absence."
+  },
+  "verification_boundary": "The corrected gate and cleanup are instrument fixes. They do not establish native_card_bridge_applied, target_native_return, target_caller_diff_bytes, RC06, or post-seam behavior until a later same-run observer provides those fields."
+}
+

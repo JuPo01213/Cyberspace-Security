@@ -1,52 +1,81 @@
 ---
 name: windows-guest-experiment
-description: 为需要 Windows Guest/VM 的分析任务选择、建设和复用成熟分析能力。优先使用现有标准环境和官方入口；能力缺失时先安装、配置或修复；仅在确认成熟方案确有缺口后使用最小薄适配。
+description: 为需要 Windows Guest/VM 的分析任务选择、建设和复用成熟分析能力。以任务目标和可验证后置条件为核心，管理 Host/Guest 通信、运行时、证据收割、恢复与 Guest Agent 协作；能力缺失时先安装、配置或修复，只有确认成熟方案存在不可复用缺口时才做最小适配。
 ---
 
-# Windows 分析能力路由
+# Windows Guest 分析能力主技能
 
-本 Skill 解决的是“**该用什么成熟能力完成任务**”，不是“如何自己造一套 VM 工作流”。
+这项技能管理的是“如何让一个已授权的 Guest 任务可靠地产生可归因证据”，不是某个样本的分析方案，也不是某个虚拟化平台的固定脚本。任务目标、样本身份、干预边界和完成判据来自用户和项目层；本技能负责把它们落到可验证的能力、通信和运行闭环上。
 
-## 默认决策顺序
+第一性原理是：**任务结果必须由同一运行中可追溯的真实后置条件证明。** 命令发出、文件存在于 Host、job 被接受、进程仍在运行或 Agent 写了报告，都只是中间事实，不能自动升级为任务成功。
 
-1. 先识别完成当前任务通常使用的成熟工具、标准分析环境或现有项目能力。
-2. 已存在且可用：使用其最高层、官方或已经验证的入口，完整复用其任务生命周期、状态和产物管理。
-3. 尚未安装但可合理部署：在授权、成本和安全边界内，先安装、配置并验证，再执行真实任务。
-4. 已安装但故障：优先修复；“调用失败”“不会用”“参数不清楚”都不等于该成熟方案不适用。
-5. 只有确认成熟方案确实缺少当前任务所需能力时，才为该缺口增加最小薄适配；不得因此重做成熟方案已经解决的部分。
+## 架构边界
 
-不得因为 PowerShell、SSH、直接启动进程、临时 VM、手写脚本或手算更容易立即执行，就绕过可用或可合理建设的成熟能力。
+把工作拆成七个相互连接、但不互相冒充的平面：
 
-## Host 与 Guest
+1. **任务平面**：目标、允许动作、隔离和网络边界、成功条件、证据范围、截止时间。
+2. **能力平面**：Guest、runtime、工具、调试器、传输和收割能力的来源、适用范围、限制与验证状态。
+3. **交付平面**：Host 与 Guest 之间传输命令、文件、参数和结果，并验证接收方实际看到的内容。
+4. **执行平面**：成熟 runtime、一次性命令、后台 runner 或 Guest Agent 执行具体工作；执行器不是任务语义的权威。
+5. **观测平面**：原始事件、工具调用及返回、进程谱系、文件和网络证据；报告、状态标签和摘要只能作为线索。
+6. **监督平面**：管理运行状态、超时、部分完成、继续/收口/重开决策；监督不能靠单个 stdout 或进程状态代替。
+7. **恢复与校准平面**：收割、清理、运行终结、重启恢复，以及把重复出现的通用缺口反馈到技能候选改进。
 
-- Agent、项目状态、长期判断和证据解释保留在稳定 Host。
-- Windows Guest 是可回滚的执行环境，主要承载分析工具、runtime 和目标程序。
-- 若成熟 runtime 已提供 task、completion、artifact、retry 或 VM 生命周期，不建立第二套并行状态机。
+这些平面是语义边界，不要求每个任务都使用所有平面。每个任务只证明它实际依赖的平面；不应为了流程外观运行无关的 canary，也不应以一个平面的通过替代另一个平面的结果。层间关系和状态转换见 [architecture.md](references/architecture.md)。
 
-## 证据约束
+## 默认决策路由
 
-- configured / armed / requested 不等于 observed / hit / applied。
-- 不同 run 的事实不得拼成同一条因果链。
-- 会改变目标行为的 intervention 必须随结论保留。
-- unknown 保持 unknown；超时、通信失败或插桩失效不自动等于业务阴性。
-- 当前任务和项目契约高于旧摘要、旧 handoff 和模型先前结论。
+先写任务契约，再找能够证明该契约的成熟能力。读取当前能力登记和已有运行证据，确认哪些事实仍然有效；仅对发生变化、证据冲突、当前模式未覆盖或无法确认的部分做增量核对。
 
-## 按需参考索引
+选择最小能力组合后，为每个跨边界动作定义生产者、接收者、上下文、输入身份和成功后置条件。先完成交付验证，再启动消费者。执行期间按原始事件和持久化完成事件监督，超时先收割和分类，再决定是否继续。结束时先写入终态并保存原始材料，再按精确谱系清理；不能用清理完成替代任务完成。
 
-只读取当前任务真正需要的 reference：
+任务结果至少分为：目标证据、部分证据、通信/交付失败、仪器失败、运行时失败、收割/终结失败和未知。只有目标后置条件闭合时才称为任务成功。
 
-- **需要定义、比较、登记或选择分析 capability / 虚拟化后端** → `references/capability-contract.md`
-- **已有标准 Windows 分析能力，需要执行普通动态分析** → `references/standard-analysis-flow.md`
-- **没有标准 Windows 分析环境 / 需要重建环境** → `references/windows-analysis-stack.md`
-- **需要 Host Agent 通过成熟 runtime 提交、观察和收割样本任务** → `references/capesolo-mcp.md`
-- **需要比 runtime 内置 debugger 更深的远程调试能力** → `references/debugger-stack.md`
-- **需要详细文件/注册表/进程行为证据** → `references/behavior-capture.md`
-- **需要隔离网络模拟或网络侧观察** → `references/network-analysis.md`
-- **任务确实依赖交互式 Windows GUI** → `references/gui-analysis.md`
-- **成熟能力损坏、缺失或需要判断是否 fallback** → `references/runbook.md`
-- **已经确认要使用低层 transport/CLI 薄适配** → `references/adapters.md`
-- **遇到失败，需要判断修复还是换路线** → `references/failure-routing.md`
-- **修改本 Skill 或解释成熟度来源** → `references/patterns.md`
+成熟能力不足时，先定位具体缺口并修复或组合现有能力。只有缺口无法由现有能力覆盖，且新适配器不会建立第二套任务状态机或证据权威时，才允许薄适配。不要把低层工具绝对排除，也不要把自制 runner 当成成熟 runtime 的替代品。
 
-不要为了“全面”而一次加载所有 reference。
+## 从零建设分析工具
+
+当没有可复用的完整能力时，按“契约 → 最小骨架 → 交接 → 真实任务”的建设路径搭建，不按工具数量或安装完成度验收。建设流程和脚手架踩坑见 [tool-building.md](references/tool-building.md)。
+
+- 先写能力契约：任务入口、Guest 运行上下文、输入/输出格式、控制/数据/完成/观测后置条件、隔离边界、硬截止、回滚和失败分类。
+- 先搭最小垂直骨架：一个结构化入口、一个短控制探针、一个数据交付、一个持久完成事件、一个原始收割路径。不要先造第二套 runtime、复杂枚举或批量台账。
+- 安装不等于可用。依次证明 `installed → configured → bound → consumer_handshake → benign_task → harvestable → ready_for_task`，并登记版本、入口、限制、失效条件和证据位置。
+- 所有跨边界输入都显式定义路径上下文、UTF-8/字节编码、参数 schema、版本和哈希；Host 不能用自己的 `Test-Path` 代替 Guest 存在性，不能依赖隐式数组绑定或多层 shell 拼 JSON。
+- 每个长任务脱离短连接运行，使用唯一 run/task ID、硬截止、持久 completion event、原始日志和清理动作。超时先收割、回收本批次确切谱系，再决定重试。
+- 用一次无害但真实的端到端任务验收“从干净基线到第一条有效目标级证据”的时间、人工操作、往返次数、返工次数和同一 run 的证据闭合率；canary 不能替代这个验收。
+
+## Host、Guest 与 Guest Agent
+
+Host 持有长期项目权威、任务契约、样本/运行身份、隔离与网络、runtime/debugger 生命周期、原始会话收割、最终分类和清理。Guest 承载可回滚的工具、runtime、目标程序和临时工作。Guest Agent 是新的协作通信面：当唯一未知可以在 Guest 内通过已有工具、文件和运行上下文回答时，Host 用结构化任务包交付目标，Agent 在 Guest 内调查、调用工具并做授权范围内的最小修复，Host 通过原始会话和 Guest 产物收割。
+
+Guest Agent 能减少 Host 往返、凭据输入、GUI 操作和手工搬运，但只有真实任务数据证明节省了时间和返工后，才能宣称效率收益。Agent 不是样本身份、隔离状态、投递成功或目标结果的权威；双方不得同时修改同一正式文件。任务包、投递校验、状态和收割见 [agent-collaboration.md](references/agent-collaboration.md)。
+
+## 关键门禁
+
+- **身份**：运行、输入、输出和进程谱系绑定同一 `run_id`/`task_id`/`artifact_id`，跨运行材料不能拼成一次成功。
+- **交付**：Host、Guest、session 和结果路径分开解析，以接收方读回的字节、哈希或结构化确认作为证据。
+- **参数**：先构造并校验结构化对象，再由唯一入口序列化；禁止多层 shell 手工拼 JSON。
+- **证据**：原始 session、工具返回、日志、文件和运行事件优先于状态标签、摘要、报告和模型自述。
+- **终结**：收割原始材料、确认精确后代已退出、写入运行终态后，才开始下一项副作用操作。
+- **恢复**：压缩或重启后从当前任务、run record、事件日志、能力登记和最近收割物重新对账；摘要和旧 PID/job/path 不能直接驱动新副作用。
+
+Control、Data、Completion、Runtime、Observation 和 Collaboration 是语义角色，不是固定 hypervisor、传输协议或轮询间隔。通信底座变化时建立新的 profile，并按 [guest-communication.md](references/guest-communication.md) 重新证明受影响的后置条件。
+
+## 项目 overlay 与按需参考
+
+进入具体项目后，先读取项目根目录的 `AGENTS.md` 或等价规则。项目层定义样本身份、授权/干预语义、目标级判据、证据范围和本机部署事实；本技能不把这些事实固化为通用规则。一次运行只能留下问题切片：观察到的问题、影响的平面、最小可证伪检查、适配位置、回滚和未解决风险。只有在多个任务或平台重复出现、且不依赖项目语义时，才形成通用技能改进候选。
+
+按需读取：
+
+- 架构和过度约束审计 → `references/architecture.md`
+- 能力登记和增量复核 → `references/capability-contract.md`
+- Host–Guest 通信契约 → `references/guest-communication.md`
+- Guest Agent 协作 → `references/agent-collaboration.md`
+- 从零建设工具脚手架 → `references/tool-building.md`
+- 按后置条件执行运行 → `references/standard-analysis-flow.md`
+- 故障分类、恢复和禁止性推断 → `references/failure-routing.md`
+- 发现、复用、修复和薄适配 → `references/runbook.md`
+- 静态/动态分支、工具、CAPE、调试器、行为、网络和 GUI → 对应专项 reference
+
+不要为了“全面”一次加载所有 reference。benign/synthetic canary 只证明声明的基础能力；不同 run 的事实不得拼成同一条因果链；超时、通信失败或插桩失效不自动等于业务阴性。
 

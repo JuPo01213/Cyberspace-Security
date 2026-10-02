@@ -1,0 +1,25 @@
+{
+  "slice_id": "existing-evidence-not-consumed-20260928-01",
+  "source_run_id": "EPT-PHASE3-SAMPLE-MIN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "未先读取项目交接和已有目标证据，就用 CAPEsolo bp0=ep 重跑了外层入口，复现已知 EPT child/cmd/WMI 链并受到入口断点干扰；没有取得目标级 seam 或 RC06 后行为。",
+  "why": {
+    "confirmed_cause": "把当前 FLARE/CAPE runtime 的环境变化误当成必须重新验证已知样本外层链的理由，没有将既有 HANDOFF 的当前未闭合点作为新 run 的输入。",
+    "guidance_gap": "项目指令原先没有明确要求新 run 在启动前引用既有证据、声明唯一新信息和说明为什么不能直接复用已有路径。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "加入“新运行前的既有证据对账”门禁。",
+    "run_manifest": "记录已知结论、当前未知、唯一新信息和目标级最低充分成功证据。",
+    "execution_path": "复用 C210 的真实 child watcher + PID attach，将观察集中到 Stored/Run 的 runtime .Sq>/VMProtect dispatch；不再用 bp0=ep 作为泛化入口观察。",
+    "generic_skill": "暂不修改；当前证据更直接地指向项目层证据消费失败。"
+  },
+  "minimum_validation": "下一次运行只有在能明确说明其相对 HANDOFF/C210 的唯一新信息，并能在真实 EPT child 中取得目标调试命中或可区分的 Stored/Run dispatch 事件时才启动；否则保持在静态/仪器准备，不再重复入口运行。",
+  "evidence": [
+    "<REPO>/current/handoff.md",
+    "<REPO>/artifacts/evidence/C207_cross_platform_first_principles_review_20260927.md",
+    "<REPO>/artifacts/evidence/C210_netgate_runtime_workflow_review_20260927.md",
+    "<REPO>/runs/EPT-PHASE3-SAMPLE-MIN-20260928-01/run.json"
+  ],
+  "secrets_redacted": true
+}
+

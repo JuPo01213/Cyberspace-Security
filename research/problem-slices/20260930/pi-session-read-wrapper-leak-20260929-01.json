@@ -1,0 +1,27 @@
+{
+  "slice_id": "pi-session-read-wrapper-leak-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-08",
+  "what_happened": "需要读取 Pi 的原始 JSONL 时，宿主反复组合状态探针、收割和序列化。工具调用被中断后，相关 pwsh.exe 仍残留；后一次 New-PSSession 返回 OutOfMemoryException。run-08 的已取回 status/output 显示 Agent 早在 18:23:16Z 正常完成，但原始 session 尚未取回。",
+  "observed": {
+    "confirmed_host_wrapper_pids_at_audit": [18164, 14364, 12028],
+    "wrapper_ownership_evidence": "Win32_Process 的命令行分别对应 run-07 查询、Pi CLI 路径查询和当前 collect-pi-flare 调用；无关监控进程 PID 8424 排除。",
+    "connection_error": "New-PSSession: System.OutOfMemoryException",
+    "agent_status": "COMPLETED / exit_code=0",
+    "session_guest_path": "C:\\EPT\\pi-flare\\agent\\sessions\\EPT-PI-FLARE-MIMO-20260929-08.jsonl"
+  },
+  "why": {
+    "confirmed_execution_error": "没有先用已知 session 路径进行单一原始文件读取，也没有在中断后确认宿主子进程退出。",
+    "unproven_causal_claim": "残留包装与 OutOfMemoryException 同时存在，但尚不能证明这些进程就是内存异常根因；异常发生位置和资源限制仍未知。"
+  },
+  "where_to_optimize": "本项目 Host 读取入口：直接读取原始 session；超时后按 PID、命令行重新确认并回收本次产生的包装。已有原始副本时先本地读取。",
+  "minimal_change": "精确回收上述已证明归属的宿主包装，随后只做一次 Guest JSONL 原文读取，不重启 Pi/VM，不再运行全量收割器。",
+  "rollback": "宿主查询进程结束不能恢复其会话；它们只做读取，Guest JSONL 与 Agent 进程不受此清理修改。",
+  "minimum_success": "原始 JSONL 可读取，最后 assistant/toolResult 和初始 user 文本可核对，相关宿主查询包装不再残留。",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/harvest/status.json",
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/harvest/output.txt",
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/control/native-agent-start.json"
+  ],
+  "secrets_redacted": true
+}
+

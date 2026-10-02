@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-interactive-webview-input-not-reached-20260929-01",
+  "run_id": "EPT-PHASE3-AGENT-CONTROLLED-DECODER-INTERACTIVE-20260929-01",
+  "created_utc": "2026-09-28T21:43:31.431782Z",
+  "single_bottleneck": "The Session-1 helper could launch the authoritative outer sample and send a fallback keystroke, but could not prove that the WebView card field accepted it or reach the observed need_manual_download state.",
+  "reproduction": {
+    "vm": "FLARE-Analysis",
+    "session_id": 1,
+    "task_entry": "schtasks /IT",
+    "sample_guest_path": "C:\\EPT\\runs\\EPT-PHASE3-SAMPLE-MIN-20260928-01\\ept-authoritative.exe",
+    "sample_sha256": "CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+    "controlled_input": "R6TESTCARDKEY0123456789ABCDEFGHIJ",
+    "controlled_input_scope": "format_only_not_a_license",
+    "deadline_seconds": 720
+  },
+  "observed": {
+    "identity_verified": true,
+    "lineage": [
+      "helper(3796)",
+      "ept-authoritative.exe(7036)",
+      "ept-authoritative.exe(3420)",
+      "机器码专业查询工具.exe(5972)"
+    ],
+    "window_titles": [
+      "ept-authoritative",
+      "HWID"
+    ],
+    "card_event": "CARD_SENT_WINDOW_FALLBACK",
+    "manual_state_detected": false,
+    "desktop_component_present": false,
+    "hardware_child_launched": false,
+    "seam_fields": "NOT_OBSERVED_DYNAMIC",
+    "cleanup_residue_count": 0
+  },
+  "expected": "The official outer flow should expose a verifiable input/state transition to need_manual_download before the controlled Desktop component is staged and continue_decode_after_manual is triggered.",
+  "impact": "This run proves interactive launch and lineage only. It does not prove card acceptance, manual continuation, Hardware child identity, authorization, decode, or RC06 behavior.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-CONTROLLED-DECODER-INTERACTIVE-20260929-01/harvest/session.jsonl",
+    "runs/EPT-PHASE3-AGENT-CONTROLLED-DECODER-INTERACTIVE-20260929-01/harvest/work/session1_events.ndjson",
+    "runs/EPT-PHASE3-AGENT-CONTROLLED-DECODER-INTERACTIVE-20260929-01/harvest/work/analysis-efficiency.json",
+    "runs/EPT-PHASE3-AGENT-CONTROLLED-DECODER-INTERACTIVE-20260929-01/harvest/work/session1_helper.py"
+  ],
+  "minimum_verifiable_success": "Within one new run, record an observable WebView/input acknowledgement or the exact need_manual_download state from the outer process, then stage the controlled component only after that event and record the official continuation event.",
+  "next_action": "Use a supported manual continuation or a lower-level WebView2 accessibility route that produces a durable control acknowledgement; do not repeat CDB bridge variants or treat UIA tree absence as sample-business failure.",
+  "forbidden_retries": [
+    "Do not launch the historical Hardware.exe as a standalone target.",
+    "Do not treat CARD_SENT_WINDOW_FALLBACK as proof of accepted input.",
+    "Do not copy TLS secret output from the raw session into reports.",
+    "Do not rerun PYZ scans, child-only startup observation, or old C173 scripts."
+  ],
+  "rollback": "Delete the run-specific scheduled task and any Desktop component copy; stop only the recorded process tree; verify residue is zero.",
+  "latest_run_observation": {
+    "run_id": "EPT-PHASE3-AGENT-UIA-MANUAL-20260929-01",
+    "uia_main_tree_nodes": 16,
+    "uia_main_tree_classes": [
+      "TkTopLevel",
+      "TkChild",
+      "Static",
+      "Button"
+    ],
+    "uia_actionable_document": false,
+    "hwid_tree_nodes": 2,
+    "card_state": false,
+    "manual_state": false,
+    "component_staged": false,
+    "hardware_child": false,
+    "target_fields": "NOT_OBSERVED_DYNAMIC",
+    "agent_resource_failure": "bash fork/resource unavailable; actuator scheduled task did not execute",
+    "cleanup_verified": true
+  }
+}

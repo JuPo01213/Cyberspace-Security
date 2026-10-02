@@ -1,0 +1,26 @@
+{
+  "slice_id": "phase3-guard-recheck-proxy-tuple-20260929-01",
+  "created_utc": "2026-09-29T02:11:00Z",
+  "single_bottleneck": "The guard recheck adapter's accept loop passed the (socket,address) tuple into proxy_client, while proxy_client expects a socket; every observed request failed before HTTP parsing.",
+  "reproduction": {
+    "agent_run": "EPT-PHASE3-AGENT-OUTER-C2-GUARD-20260929-01",
+    "guest_work_run": "EPT-PHASE3-AGENT-OUTER-C2-GUARD-RECHECK-20260929-01",
+    "error": "'tuple' object has no attribute 'settimeout'",
+    "error_count_observed": 3,
+    "c2_guard_armed": true,
+    "sample_lineage_seen": true,
+    "proxy_request_result": "not_parsed_due_to_adapter_error",
+    "target_fields": "NOT_OBSERVED_DYNAMIC"
+  },
+  "expected": "The adapter accept loop must pass the accepted socket object (or unpack the tuple) before setting timeouts and parsing requests; a corrected run should record Feishu/xz events or a direct network observation.",
+  "impact": "This run is an instrument failure and cannot prove an outer branch, child absence, authorization result, or target seam.",
+  "minimal_change": "Change only the acceptor call from proxy_client(pair, ...) to proxy_client(pair[0], ...) or proxy_client(*pair) and retain the verified C2 guard, card, cwd, response policy, TCP/log sampling, and cleanup.",
+  "verification": "Corrected events must contain no tuple/settimeout proxy_error; each accepted connection has a parsed CONNECT/GET or an explicit socket error, and the raw failing events remain harvested.",
+  "rollback": "Restore hosts and terminate only the recorded recheck/sample/helper tree; preserve the failed run materials.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-OUTER-C2-GUARD-20260929-01/control/prior-evidence-transfer.json",
+    "runs/EPT-PHASE3-AGENT-OUTER-C2-GUARD-RECHECK-20260929-01/events.ndjson"
+  ],
+  "status": "RESOLVED_WITHIN_RECHECK_BEFORE_FINAL_ARTIFACT",
+  "resolution": "Agent corrected the acceptor/socket unpacking; final recheck events show proxy_raw_head, 3 CONNECT, 1 GET, 0 tuple errors, controlled child and cleanup."
+}

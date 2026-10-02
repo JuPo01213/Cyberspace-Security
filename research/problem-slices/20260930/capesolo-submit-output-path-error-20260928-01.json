@@ -1,0 +1,33 @@
+{
+  "slice_id": "capesolo-submit-output-path-error-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "related_runs": ["EPT-PHASE3-NATURAL-CLEAN-20260928-01"],
+  "review_status": "confirmed",
+  "what_happened": "修正 ArgumentsJson 后调用现有 capesolo-call-noauth.ps1；本地 JSON 已通过，脚本随后执行了 MCP 调用，但我把 RunId（EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01）误当成了 Host 输出目录，传入相对 HostOutputPath 后 consumer 在 Set-Content 阶段失败：路径为 E:\\CTF\\EPT\\EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01\\control\\job-submit.json，而正式目录实际位于 E:\\CTF\\EPT\\runs\\...。因此提交终态和 job_id 未被收割，不能假设 job 未提交。",
+  "observed": [
+    "ARGS_JSON_OK length=214 已输出，失败点是 consumer 第 56 行 Set-Content，而不是 ConvertFrom-Json。",
+    "现有 consumer 的 MCP 调用位于 Set-Content 之前；本次调用返回记录没有落盘。",
+    "当前没有再次调用 capesolo_analyze_sample；必须先核对 Guest 当前样本进程/新 analysis 目录和 MCP 状态。",
+    "在 EPT-PHASE3-NATURAL-CLEAN-20260928-01 收割已完成 job 的 results 时，adapter 因同一 run 尚未创建 harvest 父目录而在网络调用前返回 HOST_OUTPUT_PARENT_MISSING；没有产生重复 MCP 请求。"
+  ],
+  "expected_behavior": "提交调用必须使用绝对 HostOutputPath，先保证 run/control 目录存在；MCP response、job_id 和写盘结果必须在同一调用中闭合，任何收割失败都要把提交状态标为 unknown 并阻止重复提交。",
+  "why": {
+    "confirmed_cause": "把 consumer 的 RunId 语义（标识符）与 HostOutputPath 的文件系统路径语义混用；没有在调用前解析并验证最终绝对输出路径。",
+    "avoidable_assumption": "看到 run 目录已通过 apply_patch 创建，就假设 Join-Path $run 会自动指向 runs\\$run；实际 `$run` 只是名称。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "传入显式绝对 HostOutputPath；在提交/收割前创建并检查当前 run 的 control/harvest 父目录，提交前检查 parent directory，提交后先读取文件再决定是否继续。",
+    "project_instruction": "所有 consumer 输出路径必须是已解析的绝对路径；提交和收割是一个原子门，输出文件缺失时状态为 SUBMISSION_UNKNOWN，不得重试样本。",
+    "generic_skill": "暂不修改通用 Skill；这是本机 Host consumer 路径拼接错误。"
+  },
+  "minimum_validation": "先用独立短探针确认是否存在本轮 sample process、新 analysis 目录活动或 MCP job 记录；若无法证明未提交，收割/终止已存在 job 后才允许任何新的提交。",
+  "evidence": [
+    "runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-01/control/capesolo-call-noauth.ps1",
+    "method/scripts/capesolo-mcp-call.ps1",
+    "Host Set-Content path error from the current execution turn",
+    "runs/EPT-PHASE3-NATURAL-CLEAN-20260928-01/control/job-log-tail-01.json",
+    "Host consumer HOST_OUTPUT_PARENT_MISSING output from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

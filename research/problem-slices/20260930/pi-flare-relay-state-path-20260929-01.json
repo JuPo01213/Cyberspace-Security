@@ -1,0 +1,15 @@
+{
+  "slice_id": "pi-flare-relay-state-path-20260929-01",
+  "scope": "guest_pi_bansos_model_egress",
+  "reproduction": "The Host wrote relay state to C:\\EPT\\pi-flare\\agent\\pi-bansos-relay-state.json while PI_CODING_AGENT_DIR pointed at that directory.",
+  "observation": "Guest Pi created a session and attempted the model request, but the Host relay log contained only its startup event; the Guest output reported 502 upstream error and no relay request was recorded.",
+  "expected": "pi-bansos should load the enabled relay state before its provider proxy sends catalog/model requests.",
+  "cause": "The extension resolves relay state from the Guest user home .pi\\agent path by homedir(), independently of PI_CODING_AGENT_DIR.",
+  "impact": "The request bypassed the intended allowlisted Host egress and failed at the isolated Guest boundary; this run cannot prove relay behavior.",
+  "optimization_location": "method/pi-flare-workbench/run-pi-flare.ps1",
+  "minimal_change": "Resolve USERPROFILE through the Guest session and write relay state to <USERPROFILE>\\.pi\\agent\\pi-bansos-relay-state.json.",
+  "rollback": "Remove the per-run relay state file from the Guest user home and omit RelayUrl.",
+  "verification": "New RUN_ID, Guest state-file existence check, relay log request entry, and harvested Pi session/output.",
+  "unresolved_risk": "The upstream model catalog and model endpoint may still reject or change independently of the transport path."
+}
+
