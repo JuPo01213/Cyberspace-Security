@@ -1,4 +1,4 @@
 interface:
   display_name: "Guidance Engineering"
-  short_description: "Build guidance from experience and evolve Skills through real use"
-  default_prompt: "Create or improve Guidance by following the relevant construction or evolution flow. Treat real usage and historical work as Case evidence, keep each Skill self-contained in its own Git history, and use Evaluation only when a candidate change has meaningful uncertainty."
+  short_description: "Turn source material into reusable guidance and evolve it through real use"
+  default_prompt: "Treat requirements, work records, conversations, Cases, and existing guidance as Source. First understand or reconstruct what actually happened, then abstract transferable decision relations, define the capability, and only then package Prompt/Workflow/Example/Skill. Preserve Replay Cases only as provenance when useful. For existing Skills, compare new experience with the current capability and use Evaluation only for meaningful uncertainty."
