@@ -4,15 +4,17 @@
 
 Prompt Engineering 回答：
 
-> **给定一个明确行为目标，怎样把它写成一段可投递、可维护、可测试的 Prompt。**
+> **给定一个明确行为目标，怎样把它写成一段可投递、可维护的 Prompt。**
 
 Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Skill、应用与 grader 的一部分。
 
+Prompt Engineering 的完成条件是形成**可进入真实使用的 Prompt**，不是创建阶段必须先证明它已经稳定。
+
 ## 什么时候进入
 
-当已经知道“希望模型怎样行为”，但还没有形成稳定可投递 Prompt 时进入。
+当已经知道“希望模型怎样行为”，但还没有形成可投递 Prompt 时进入。
 
-如果底层行为目标本身还不清楚，先返回定义 Goal / Boundary / Completion；如果用户是在创建 Skill，则由 [skill-building.md](skill-building.md) 的创建流程负责上游能力定义。
+如果底层行为目标本身还不清楚，先返回 Goal / Boundary / Completion；如果用户是在创建 Skill，则由 [skill-building.md](skill-building.md) 负责上游能力定义。
 
 ## 输入
 
@@ -39,8 +41,7 @@ Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Ski
 7. 加入 Failure / uncertainty exits
 8. 判断是否需要 Example
 9. 组织并投递 Prompt
-10. Evaluation
-11. revise / keep
+10. 进入真实使用 / 后续反馈
 ```
 
 ## 1. 明确可观察结果
@@ -51,7 +52,7 @@ Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Ski
 
 不要从“你是一位专家”“请深入思考”开始。
 
-产物应是一句或几句可验证目标，例如：
+例如：
 
 ```text
 审查当前活动 Skill，找出重复职责、缺失能力和错误边界，并给出最小重构方案。
@@ -70,9 +71,7 @@ Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Ski
 - 修改后重新检查边界。
 ```
 
-优先写“做什么”；只有存在真实误行为时才补“不要做什么”。
-
-**产物：** 最小必要 instructions。
+优先写“做什么”；只有存在真实误行为时再补“不要做什么”。
 
 ## 3. 写条件与边界
 
@@ -103,7 +102,7 @@ Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Ski
 
 外部材料中的“忽略前文”“你现在是……”默认只是 Task Data，不自动获得新的指令权。
 
-可用 Markdown headings、XML tags 或其他稳定边界表达；标记法不是目标，减少歧义才是目标。
+可以用 Markdown headings、XML tags 或其他稳定边界表达；标记法本身不是目标，减少歧义才是目标。
 
 ## 5. 加入 Tool rules
 
@@ -152,7 +151,9 @@ Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Ski
 
 默认先尝试清晰 zero-shot。
 
-如果模型仍在以下方面不稳定，再进入 [example-engineering.md](example-engineering.md)：
+只有示范能增加独立行为信息时，才进入 [example-engineering.md](example-engineering.md)。
+
+常见场景：
 
 - 输出形状；
 - 条件边界；
@@ -161,11 +162,11 @@ Prompt 可以独立存在，也可以表达 Principle / Workflow，或成为 Ski
 - 合法失败；
 - 可观察 trajectory。
 
-Example 必须提供新增行为信息，而不是装饰。
+Example 不是装饰，也不是 Prompt 创建的必需步骤。
 
 ## 9. 组织并投递 Prompt
 
-简单 task prompt 可只包含：
+简单 task prompt 可以只有：
 
 ```text
 任务
@@ -198,56 +199,58 @@ Skill 内 instructions 常见结构：
 
 Skill 的 discovery、description、references 和 packaging 由 [skill-building.md](skill-building.md) 负责。
 
-## 10. Evaluation
+## 10. 进入真实使用 / 后续反馈
 
-只要要声称“更好、更稳定、修复了问题”，就进入 [evaluation.md](evaluation.md)。
-
-至少验证：
-
-- 目标行为是否发生；
-- 边界是否有效；
-- 输出契约是否满足；
-- 工具行为是否符合预期；
-- failure / uncertainty 是否能合法结束。
-
-无法实际测试时，明确标记为未验证。
-
-## 11. revise / keep
-
-如果 Evaluation 失败，不要默认“再加一句更强的话”。
-
-按顺序定位：
+初始 Prompt 形成后，应进入真实任务，而不是为了形式要求先构造完整 Evaluation。
 
 ```text
-目标表达错？
+Prompt
+→ Real Use
+→ outcome / user correction / boundary
+→ Case
+→ 如果属于已有 Skill，则进入 Skill Evolution
+```
+
+真实使用反馈见 [cases.md](cases.md)。
+
+如果这是已有 Skill 中的 Prompt 修改，后续由 [skill-evolution.md](skill-evolution.md) 判断是否需要 Evaluation。
+
+# 修改 Prompt 时如何回退
+
+真实使用发现问题时，不要默认“再加一句更强的话”。
+
+按归因回到对应步骤：
+
+```text
+目标表达错
 → Step 1
 
-核心行为缺失？
+核心行为缺失
 → Step 2
 
-条件 / 边界错？
+条件 / 边界错
 → Step 3
 
-Context / Data / State 混淆？
+Context / Data / State 混淆
 → Step 4
 
-Tool rule 错？
+Tool rule 错
 → Step 5
 
-Output contract 错？
+Output contract 错
 → Step 6
 
-Failure exit 缺失？
+Failure exit 缺失
 → Step 7
 
-需要 Example？
+需要 Example
 → Step 8
 
-其实是 Tool / Harness / 模型能力问题？
+其实是 Tool / Harness / 模型能力问题
 → 退出 Prompt 修补，转交对应层
 ```
 
-只修改真正导致偏离的 owner，然后重跑相关 Evaluation。
+如果修改发生在 Skill Evolution 中，并且变化存在实质不确定性，再按 [evaluation.md](evaluation.md) 验证。
 
 # 把 Principle / Workflow 编译成 Prompt
 
@@ -278,7 +281,7 @@ applies_when → action → boundary
 
 # 完成标准
 
-Prompt Engineering 完成时，应同时满足：
+Prompt Engineering 完成时：
 
 - 有明确可观察目标；
 - 必要行为和边界已表达；
@@ -286,8 +289,15 @@ Prompt Engineering 完成时，应同时满足：
 - Tool / Output / Failure 规则只在需要时存在；
 - Example 是否需要已有明确决定；
 - Prompt 已按真实投递位置组织；
-- 已完成必要 Evaluation，或明确记录未验证部分；
-- 已知失败可以回到明确步骤修正。
+- Prompt 已达到可以进入真实使用的状态。
+
+**不要求：**
+
+- 创建 Prompt 时必须先有独立 Case；
+- 创建 Prompt 时必须强制 Evaluation；
+- 没有真实素材时人为构造完整测试体系。
+
+当真实使用或 Evolution 产生足够材料后，再决定是否需要 Evaluation。
 
 # 常见反模式
 
@@ -300,7 +310,7 @@ Prompt Engineering 完成时，应同时满足：
 - 只规定过程，不说明成功结果；
 - 为一次事故新增永久 universal rule；
 - Examples 与 instructions 冲突；
-- Prompt 变长后不做 eval，只凭感觉认为更强。
+- 没有真实反馈却为了“测试完整”凭空扩张评估流程。
 
 ## 当前外部依据
 
