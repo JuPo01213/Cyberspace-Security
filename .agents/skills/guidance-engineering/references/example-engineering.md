@@ -4,22 +4,22 @@
 
 Example Engineering 只处理 Teaching Example / few-shot demonstration：
 
-> **当抽象 instruction 不能稳定传递行为时，怎样设计最小、有效、可验证的示范。**
+> **当抽象 instruction 不能充分传递某个行为时，怎样设计最小、清晰、可复用的示范。**
 
-Example 不是所有 Prompt 的必需部分。
+Example 不是所有 Prompt 的必需部分，也不要求在创建时先经过独立 Evaluation 才能存在。
 
 ## 什么时候进入
 
 只有出现以下任一情况时进入：
 
-- 输出形状难以只靠 instruction 稳定表达；
+- 输出形状难以只靠 instruction 表达；
 - 条件边界容易混淆；
 - 相邻概念容易误判；
-- 工具选择或 trajectory 不稳定；
+- 工具选择或 trajectory 需要示范；
 - failure / recovery 行为难以靠抽象规则传递；
 - 用户明确要求用 Example / few-shot 教行为。
 
-如果清晰 zero-shot 已经稳定，不需要 Example。
+如果清晰 zero-shot 已经足够，不需要 Example。
 
 ## 输入
 
@@ -28,9 +28,10 @@ Example 不是所有 Prompt 的必需部分。
 - 要教的目标行为；
 - 当前 instruction / Prompt；
 - 关键条件和边界；
-- 来源 Principle 或 Usage Case（如果有）；
-- Example 最终放置位置；
-- 可用于验证的独立 Case。
+- 来源 Principle 或 Case（如果有）；
+- Example 最终放置位置。
+
+没有真实 Case 时也可以从明确 requirement / principle 直接设计 Example，不需要为了 Example 创建而凭空制造 Evaluation Case。
 
 # 执行流程
 
@@ -42,15 +43,15 @@ Example 不是所有 Prompt 的必需部分。
 5. 删除偶然特征
 6. 组成 Example Set
 7. 放置到 Prompt / Skill
-8. 独立 Evaluation
-9. keep / revise / delete
+8. 进入真实使用
+9. 后续根据反馈 keep / revise / delete
 ```
 
 ## 1. 判断 Example 是否真的需要
 
 先问：
 
-> 当前 instruction 已经表达清楚了吗？模型真正缺的是示范，还是规则本身还没写好？
+> 当前 instruction 已经表达清楚了吗？模型真正缺的是示范，还是规则本身没写好？
 
 如果问题来自：
 
@@ -61,13 +62,11 @@ Example 不是所有 Prompt 的必需部分。
 
 不要用 Example 掩盖。
 
-如果 instruction 清晰但行为仍不稳定，继续。
-
 ## 2. 指定唯一教学变量
 
 每个 Example 先回答：
 
-> 这一个 Example 到底要教模型哪一个新增行为信息？
+> 这个 Example 到底要教哪一个新增行为信息？
 
 例如：
 
@@ -79,11 +78,9 @@ Example 不是所有 Prompt 的必需部分。
 
 不要一个 Example 同时塞进太多独立知识。
 
-**进入下一步：** 能用一句话说清 Example 的教学目的。
-
 ## 3. 选择 Example 类型
 
-按教学目的选最小类型：
+按教学目的选最小类型。
 
 ### Demonstration
 
@@ -137,30 +134,30 @@ initial state
 
 ```text
 failure condition
-→ 禁止的猜测/假完成
+→ 禁止的猜测 / 假完成
 → 合法 fallback / non-complete state
 ```
 
 ## 4. 构造最小 Example
 
-如果行为映射本来明确，可以直接从 requirement / principle 构造。
+如果行为映射本来就明确，可以直接从 requirement / principle 构造。
 
-如果来自真实经验，必须先：
+如果来源是真实经验：
 
 ```text
 Specific Case
-→ abstract Principle
+→ abstract Principle / decision relation
 → new Generic Teaching Example
 ```
 
-不要把原案例删掉人名、路径、品牌就称为通用 Example。
+不要把原案例删掉人名、路径、品牌就称为“通用 Example”。
 
 构造时：
 
 1. 保留真正改变决策的条件；
 2. 换掉源 Case 的表面载体；
-3. 删除无关步骤和背景；
-4. 输出目标 Prompt/Skill 可以直接使用的最小示范。
+3. 删除无关背景和偶然步骤；
+4. 只保留目标 Prompt / Skill 真正需要的示范内容。
 
 Generic 的标准是**保留机制、改变表面载体**。
 
@@ -203,37 +200,45 @@ Generic 的标准是**保留机制、改变表面载体**。
 
 - 很短、几乎所有触发都需要 → 主 Prompt / `SKILL.md`；
 - 长、低频、分支性 → 按需 reference / examples；
-- 纯 Evaluation Case、一次事故原始记录、尚未证明教学价值 → 不进入生产 Guidance。
+- 一次事故原始记录 → 留在 Case，不直接作为 Example；
+- 纯测试材料 → 不进入生产 Guidance。
 
-## 8. 独立 Evaluation
+## 8. 进入真实使用
 
-Teaching Example 是教材，不能同时作为唯一考试题。
-
-至少使用独立 holdout；如果要证明底层原则可迁移，再做：
-
-- boundary；
-- cross-carrier；
-- recovery / failure（相关时）。
-
-验证方法见 [evaluation.md](evaluation.md)。
-
-## 9. keep / revise / delete
-
-根据 Evaluation：
+Example 形成后，先让它进入真实 Prompt / Skill 使用。
 
 ```text
-行为改善且没有明显副作用
+Example
+→ Real Use
+→ outcome / user correction / boundary
+→ Case
+→ 如果属于已有 Skill，则进入 Skill Evolution
+```
+
+真实使用天然会暴露：
+
+- 是否真的有教学价值；
+- 是否造成错误模仿；
+- 是否只是在重复 instruction；
+- 是否让模型过拟合表面格式；
+- 是否需要边界 Example。
+
+## 9. 后续 keep / revise / delete
+
+后续根据真实使用和 Evolution 决定。
+
+```text
+真实使用显示 Example 有持续价值
 → keep
 
-行为部分改善但出现新误导
-→ 返回 Step 2 / 4 / 5 修正
+出现错误泛化 / 偶然风格模仿
+→ revise
 
-没有独立改善
+长期没有独立价值或删除后无明显退化
 → delete
-
-删除后无可观察退化
-→ 倾向 delete
 ```
+
+如果变化是否正确存在实质不确定性，由 [skill-evolution.md](skill-evolution.md) 决定是否调用 [evaluation.md](evaluation.md)。
 
 Example 必须允许被删除。
 
@@ -263,17 +268,24 @@ status: candidate | active | historical
 
 # 完成标准
 
-Example Engineering 完成时：
+Example Engineering 创建阶段完成时：
 
-- 已证明 Example 有存在理由；
+- Example 确实提供 instruction 之外的新增信息；
 - 每个 Example 有唯一主要教学变量；
 - 类型与教学目的匹配；
-- 没有把 Specific Case 直接伪装成 Generic Example；
+- Specific Case 没有被直接伪装成 Generic Example；
 - 偶然风格和无关特征已清理；
 - Example Set 中每个成员提供独立信息；
 - 放置位置与使用频率匹配；
-- 已用独立 Case 验证；
-- 有明确 keep / revise / delete 结论。
+- Example 已达到可以进入真实使用的状态。
+
+**不要求：**
+
+- 创建 Example 时必须先有独立 holdout；
+- 创建 Example 时必须强制 Evaluation；
+- 没有真实材料时凭空制造测试集。
+
+Example 的长期价值由真实使用和后续 Skill Evolution 继续检验。
 
 ## 外部依据
 
