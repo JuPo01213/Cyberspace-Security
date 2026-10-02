@@ -1,142 +1,311 @@
 # Skill Construction
 
-## Skill Repository Boundary
-
-每个 Skill 文件夹都应当单独由 Git 管理：Skill 文件夹本身就是一个本地 Git repository，也是这个 Skill 的生命周期边界。
-
-这里的 “independent Git repository” 指独立 Git 历史，不等于必须为每个 Skill 创建独立 GitHub / GitLab 远端仓库。Remote、托管和公开发布都是可选分发层。
-
-一个 Skill repository 可以拥有：
-
-- `SKILL.md`；
-- `references/`；
-- `examples/`；
-- `cases/`；
-- `scripts/`、tools 和必要 assets；
-- 该 Skill 自己的 Git history。
-
-Skill 应尽可能自包含：理解、执行和后续演化该能力所需的主要知识应归这个 Skill 自己所有。真正的外部依赖必须有明确 owner 和边界。
-
-不要用一个上层 Git repository 统一管理多个 Skill 的版本历史。外层 `skills/` 可以只是本地放置目录；每个子 Skill 自己 `git init`、自己 commit、自己回滚。
-
 ## 职责
 
-用户明确要求“创建一个 Skill”时，创建决定已经成立。Skill Construction 负责：
+Skill Construction 只回答：
 
-> **把用户要求的能力形成一个可独立理解、可实际使用、可继续演化的初始 Skill。**
+> **怎样从已有 Source 中理解真实行为、抽象可迁移能力，并把它封装成一个可独立使用和继续演化的 Skill。**
 
-它不负责证明这个 Skill 已经成熟，也不要求在创建阶段人为构造完整 Evaluation。
+这里的 Source 可以是：
 
-调研只用于决定“怎么建得更好”，不用于重新否决用户的创建意图。
+- 用户对新能力的明确 requirement；
+- 正在进行的真实工作上下文；
+- 已完成工作的对话、日志、文件变化、Git history 或最终产物；
+- 一个或多个已有 Case；
+- 用户提供的规则、流程、Prompt、Examples 或其他材料。
 
-# 从零创建 Skill：执行流程
+这些只是**来源不同**，不应为每种来源发明一套不同的 Skill 创建算法。
+
+统一主链：
 
 ```text
-1. 解析用户要求
-2. 调研成熟做法
-3. 定义能力边界
-4. 初始化 Skill + Git
-5. 写 SKILL.md
-6. 补必要资源
-7. 自包含与结构检查
-8. 初始 commit
-9. 进入真实使用
+Source
+→ Understand
+→ Abstract
+→ Capability
+→ Guidance
+→ Package as Skill
+→ Real Use
+→ Evolution
 ```
 
-除非缺失事实会让能力无法定义、造成明显权限/安全错误，或者用户明确要求先确认，否则不要在步骤间反复追问。
+用户明确要求“创建一个 Skill”时，创建决定已经成立。调研和分析用于提高质量，不用于重新否决用户的创建决定。
 
-## 1. 解析用户要求
+# 第一原则：先理解 Source，不要先写 Skill
 
-直接从当前消息和已有上下文提取：
+Source 不是 Skill。
 
-- Skill 名称或 working name；
-- 最终目标；
-- 典型触发条件；
-- 明显不属于它的相邻请求；
-- 预期输出 / completion；
-- 已知工具、Harness、平台与约束；
-- 用户提供的案例、失败经验或参考材料。
+尤其当 Source 是一段真实工作记录时，不要：
 
-用户已经给出的信息不要再问。名称未给时根据能力目标生成 working name。环境未知但不阻塞创建时，采用最小可移植假设继续。
+```text
+对话
+→ 摘要
+→ SKILL.md
+```
 
-**进入下一步：** 已能用一两句话说明“这个 Skill 在什么情况下帮助用户完成什么”。
+而应：
 
-## 2. 调研成熟做法
+```text
+工作记录
+→ 重建真实目标与行为轨迹
+→ 找出真正改变结果的决策关系
+→ 去掉偶然细节
+→ 定义 Capability
+→ Skill
+```
 
-调查目标是吸收成熟实践。
+“总结发生了什么”和“提取可复用能力”是两件不同的事。
 
-优先检查：
+# 执行流程
 
-- 当前官方文档与平台限制；
-- 成熟 workflow / Skill / tool / library；
-- 当前项目中可借鉴的实现；
-- 用户提供的经验和材料。
+```text
+1. 确定 Source 与范围
+2. Understand：理解或重建真实工作
+3. Abstract：提取可迁移决策关系
+4. 定义 Capability Contract
+5. 调研成熟做法并校准
+6. 设计 Guidance
+7. 初始化 Skill repository 并封装
+8. 保存必要来源证据
+9. 自包含与结构检查
+10. 初始 commit
+11. 进入真实使用
+```
 
-只提取真正影响设计的内容：
+除非缺失事实会让能力根本无法定义、造成明显权限/安全错误，或者用户明确要求先确认，否则不要在步骤间反复追问。
 
-- 结构要求；
-- 成熟工作顺序；
-- 工具接口；
-- 常见失败模式；
-- 可复用 script / schema / template。
+## 1. 确定 Source 与范围
 
-不要整篇复制资料；自己的综合与推导要和外部事实区分。
+先回答：
 
-**进入下一步：** 已知道哪些成熟做法应吸收，哪些行为仍需当前 Skill 自己定义。
+```text
+Source 是什么？
+要从其中构建哪个能力？
+哪些内容属于本次工作范围？
+```
 
-## 3. 定义能力边界
+### Source 是明确 requirement
 
-在落盘前形成工作中的能力定义：
+直接读取：
+
+- Goal；
+- Trigger；
+- Constraints；
+- Expected result；
+- 已知工具与环境；
+- 用户明确要求的行为。
+
+### Source 是当前或历史工作记录
+
+先确定需要回顾的工作范围。
+
+如果当前上下文已经足够明确，不要求用户重新总结。
+
+可以使用：
+
+- 对话；
+- 工具调用；
+- 文件内容和 diff；
+- Git history；
+- 用户纠正；
+- 中间失败；
+- 最终产物；
+- completion evidence。
+
+**进入下一步：** 已知道自己在解释哪一段真实材料，而不是对整个历史做无边界总结。
+
+## 2. Understand：理解或重建真实工作
+
+这一步的目标不是抽象规则，而是先恢复 Source 的真实结构。
+
+### requirement 型 Source
+
+解析：
 
 ```text
 Goal
-→ 最终要完成什么
+Constraints
+Inputs
+Expected behavior
+Completion
+Failure / uncertainty
+Environment
+```
+
+### 工作记录型 Source
+
+重建最小工作轨迹：
+
+```text
+Goal
+→ Initial approach
+→ Observations
+→ Failures / friction
+→ User corrections
+→ Tool / method changes
+→ Key decisions
+→ Successful path
+→ Completion
+```
+
+重点寻找**方向为什么发生变化**：
+
+- 哪个观察使旧做法被放弃；
+- 哪个用户纠正改变了行为；
+- 哪个工具结果改变了下一步；
+- 哪些做法看似合理但实际无效；
+- 最终为什么认为任务完成。
+
+不要把对话顺序机械复制成 Workflow。
+
+**进入下一步：** 已能解释“这件工作实际上是怎么被做成的”。
+
+## 3. Abstract：提取可迁移决策关系
+
+把重建结果分成三类：
+
+```text
+Facts
+= 实际发生了什么
+
+Local details
+= 项目名、品牌、文件名、一次性环境等偶然信息
+
+Transferable relations
+= 换掉表面对象后仍决定行为的关系
+```
+
+抽象的目标不是“去掉专有名词”，而是提取决策函数：
+
+```text
+conditions / observations
+→ decision
+→ action
+→ completion / stop
+```
+
+反事实检查：
+
+> 如果把当前项目名、工具名、品牌、题材全部替换，这条关系仍然成立吗？
+
+如果不成立，它大概率仍是局部细节。
+
+例如：
+
+```text
+“用了 GSAP”
+≠ 可迁移能力
+
+“成熟生态已经存在时，先发现并吸收成熟 workflow / implementation；
+只有现有能力不能满足约束时，才进入自定义实现”
+= 可迁移决策关系
+```
+
+不要从单个失败直接制造 universal rule。
+
+**进入下一步：** 已得到一组真正会改变未来行为的可迁移关系。
+
+## 4. 定义 Capability Contract
+
+把抽象关系组织成能力，而不是直接堆进 Prompt。
+
+最小 Capability Contract：
+
+```text
+Goal
+→ 这个能力最终帮助完成什么
 
 Trigger
-→ 什么请求应该触发
+→ 什么条件下应该使用
 
 Non-trigger
 → 哪些相邻请求不属于它
 
-Required behavior
-→ 每次触发都必须发生什么
+Inputs / observations
+→ 做决定需要看到什么
 
-Conditional behavior
-→ 哪些行为只在特定条件发生
+Required decisions / behavior
+→ 哪些判断和动作必须发生
+
+Workflow
+→ 只有依赖阶段、状态或前序结果时才建立
 
 Completion
 → 什么可观察结果才算完成
 
 Failure / uncertainty
-→ 信息不足、工具失败、条件不满足时怎样合法结束
+→ 信息不足、工具失败或条件不满足时怎样合法退出
 
 Environment boundary
-→ 哪些能力来自 Harness / Tool / Runtime，而不是 Skill 文本
+→ 哪些能力来自 Harness / Tool / Runtime
 ```
 
-只有行为依赖阶段、状态、前序结果、分支或恢复时才设计 Workflow。
+如果重建出的内容实际上包含多个独立能力，先判断：
 
-最小 Workflow：
+- 是否共享同一用户目标；
+- 是否经常共同触发；
+- 是否共同维护；
+- 拆开是否降低误触发和上下文污染。
+
+默认聚合自然属于同一能力的内容，不因为原对话里出现多个步骤就机械拆成多个 Skill。
+
+## 5. 调研成熟做法并校准
+
+现在才拿抽象出来的 Capability 去对照成熟生态。
+
+优先检查：
+
+- 当前官方文档与平台限制；
+- 成熟 workflow / Skill / tool / library；
+- 当前项目已有实现；
+- 用户提供的参考材料。
+
+调研用于：
+
+- 修正错误假设；
+- 吸收成熟工作顺序；
+- 发现可复用工具、schema、script；
+- 明确平台边界；
+- 避免把一次偶然成功误当成通用最佳实践。
+
+不要让外部资料抹掉真实工作里已经被证明关键的约束；也不要把自己的综合伪装成“官方成熟做法”。
+
+## 6. 设计 Guidance
+
+根据 Capability 决定需要哪些表达形式：
 
 ```text
-Goal / completion
-Stages
-State / observations
-Transitions / branches
-Failure / stop
+Principle
+= 条件 → 行为 → 边界
+
+Workflow
+= 阶段 / 状态 / 转移 / completion / stop
+
+Prompt
+= 把 Guidance 表达给模型
+
+Example
+= 当示范能提供独立行为信息时使用
+
+Script / schema
+= 可机械保证、重复执行的确定性部分
 ```
 
-**进入下一步：** 能力边界和核心行为足够明确，可以开始创建文件。
+具体 Prompt 见 [prompt-engineering.md](prompt-engineering.md)。
 
-## 4. 初始化 Skill + Git
+具体 Example 见 [example-engineering.md](example-engineering.md)。
 
-创建 Skill 文件夹，并立即建立它自己的本地 Git repository：
+不要为了形式完整让每个 Skill 都同时拥有 Principle、Workflow、Prompt、Example、Script。
+
+## 7. 初始化 Skill repository 并封装
+
+每个 Skill 文件夹应当是自己的本地 Git repository。
 
 ```bash
 python scripts/init_skill.py <name> --path <parent>
 ```
 
-或等价：
+或：
 
 ```bash
 mkdir <skill-name>
@@ -146,74 +315,82 @@ git init
 
 Remote 可选。
 
-不要为了目录完整性预先创建所有 `references/`、`examples/`、`cases/`、`scripts/`、`assets/`。
+按需组织：
 
-**进入下一步：** Skill 文件夹存在、`.git/` 已建立、`SKILL.md` 可编辑。
+```text
+skill/
+├── .git/
+├── SKILL.md
+├── references/
+├── examples/
+├── cases/
+├── scripts/
+└── assets/
+```
 
-## 5. 写 SKILL.md
+不要为了目录完整性创建无消费者的文件。
 
-按固定顺序完成主文件：
+### SKILL.md 至少应让 Agent 知道
 
-1. **name / description**
-   - description 同时说明“做什么”和“何时应考虑它”；
-2. **能力与边界**
-   - 负责什么、不负责什么、什么算完成；
-3. **共享 instructions**
-   - 所有主要触发都需要的行为；
-4. **必要 Workflow**
-   - 只保留执行时真正需要的阶段、状态、分支、completion / failure exit；
-5. **资源路由**
-   - 明确什么条件下读取哪个 reference / example / script；
-6. **Harness / Tool 边界**
-   - 不把权限、live data、memory、sandbox、runtime state 等能力用文字“假装实现”。
+- 这个能力何时触发；
+- 目标和边界；
+- 主要行为；
+- 必要 Workflow；
+- supporting resources 的读取条件；
+- completion / failure；
+- Harness / Tool 边界。
 
-具体 Prompt 写法见 [prompt-engineering.md](prompt-engineering.md)。
+只读取 `SKILL.md` 时，Agent 应能执行主要路径，或知道什么时候读取下一层资源。
 
-**进入下一步：** 只读取 `SKILL.md` 时，Agent 已能执行主要路径，或明确知道何时读取下一层资源。
+## 8. 保存必要来源证据
 
-## 6. 补必要资源
+Skill 保存**压缩后的能力**。
 
-现在才创建 supporting resources：
+Case 保存**这个能力从哪里来的重要经验**。
 
-- 长、低频、分支性知识 → `references/`；
-- Example 能增加独立教学信息 → `examples/` 或按需 reference；
-- 重复、确定、机械执行 → `scripts/` / schema；
-- 输出模板或素材 → `assets/`；
-- 如果创建本身来自一段已经完成的真实工作，可按需把关键经验保存为 Replay Case，见 [cases.md](cases.md)。
+当 Source 是真实工作记录，而且其中存在值得未来追溯的决策、纠正或结果时，可以同时保存 Replay Case：
 
-每个文件都必须能回答：
+```text
+                    ┌→ Skill
+Work Reconstruction ┤
+                    └→ Replay Case
+```
 
-> 谁会在什么条件下读取或执行它？
+不要把流程写成：
 
-答不出来就不要加。
+```text
+Conversation
+→ Replay Case
+→ Skill
+```
 
-Skill 应尽可能自包含，不依赖 Skill 文件夹外的隐含知识。
+Replay Case 不是能力建模的必经中间产物。
 
-## 7. 自包含与结构检查
+它只是来源证据，具体记录方式见 [cases.md](cases.md)。
 
-创建阶段只做**足以保证初始 Skill 可理解、可运行的检查**，不把完整行为 Evaluation 作为强制门槛。
+如果 Source 只是明确 requirement、没有真实历史经验，不要求凭空创建 Replay Case。
 
-检查：
+## 9. 自包含与结构检查
 
-- front matter 与基本目录结构合法；
+创建阶段只做足以保证初始 Skill 可理解、可运行的检查：
+
+- front matter 与基本结构合法；
 - description 能支持 discovery；
-- `SKILL.md` 能独立表达目标、边界和主要流程；
-- supporting resources 都能从主 Skill 被发现；
-- 没有依赖作者脑内信息或当前对话才能理解的关键内容；
+- `SKILL.md` 能独立表达能力；
+- supporting resources 有明确消费者；
+- 不依赖作者脑内信息或当前聊天才能理解；
 - Harness / Tool / Runtime 能力没有被文本伪造；
-- 没有明显死文件、重复 owner 或错误引用。
+- 没有明显重复 owner、死文件或错误引用。
 
-可以运行结构 validator：
+可以运行：
 
 ```bash
 python scripts/validate_skill.py <skill-dir>
 ```
 
-它只证明结构基础，不证明 Skill 已经过真实工作检验。
+这只证明结构基础，不证明 Skill 已经成熟。
 
-**进入下一步：** Skill 已达到“可以进入真实使用”的状态。
-
-## 8. 初始 commit
+## 10. 初始 commit
 
 在该 Skill 自己的 Git repository 中：
 
@@ -225,112 +402,120 @@ review diff
 → git commit
 ```
 
-提交说明描述实际形成的初始能力和边界，不把未经使用的 Skill 描述成成熟实践。
+提交说明描述：
+
+- Source 的类型；
+- 抽象出的能力；
+- 当前边界；
+- 不夸大验证程度。
 
 到这里可以说：
 
 > **初始 Skill 已创建。**
 
-## 9. 进入真实使用
+## 11. 进入真实使用
 
-Skill 创建完成后，不继续在 Construction 中人为制造测试流程。
+Construction 的终点不是“已经验证完成”，而是：
 
-下一阶段是：
+> **这个 Skill 已经可以进入真实工作。**
 
 ```text
 Skill v0
 → Real Use
-→ Usage Case
+→ new experience
+→ Case（值得保留时）
 → Skill Evolution
 → Skill vNext
 ```
 
-真实使用天然提供后续检验材料。
+真实使用天然检验：
 
-如果 Skill 是在工作完成后才从完整上下文中抽象出来，也可以从历史上下文构造 Replay Case，为后续 Evolution 提供材料。
+- 抽象是否过宽或过窄；
+- Trigger 是否正确；
+- Workflow 是否遗漏；
+- 原案例中的局部规律是否被误当成通用规律；
+- Example 是否产生错误模仿；
+- Tool / Harness 边界是否正确。
 
-后续见：
-
-- [cases.md](cases.md)
-- [skill-evolution.md](skill-evolution.md)
-- [evaluation.md](evaluation.md)（只有 Evolution 中确有需要时）
+后续见 [skill-evolution.md](skill-evolution.md)。
 
 # 创建完成标准
 
-只有以下条件满足，才说“初始 Skill 已创建”：
+初始 Skill 创建完成时：
 
-- 用户要求的 Skill 已实际创建；
-- Goal、Trigger、Non-trigger、Completion 已明确；
-- 已吸收必要成熟实践；
-- Skill 文件夹由自己的本地 Git repository 管理；
+- Source 和范围已经明确；
+- Source 已被正确理解或重建；
+- 局部细节与可迁移关系已经分开；
+- Capability Contract 已形成；
+- 必要成熟实践已经用于校准；
+- Guidance 与 Capability 对齐；
+- Skill repository 独立 Git 管理；
 - `SKILL.md` 能独立指导主要路径；
-- supporting resources 都有明确消费者和路由；
+- supporting resources 都有消费者；
+- 必要来源证据已按需保存；
 - Tool / Harness / Runtime 边界没有被伪造；
 - 已完成必要结构和自包含检查；
-- 已产生初始 Git commit。
+- 已产生初始 commit；
+- Skill 已准备进入真实使用。
 
 **不要求：**
 
+- 每种 Source 都维护独立创建算法；
+- 工作记录必须先转成 Replay Case 才能创建 Skill；
 - 创建阶段必须先产生 Usage Case；
-- 创建阶段必须人为构造一整套 Eval Case；
-- 创建阶段必须完成行为 Evaluation；
+- 创建阶段必须强制 Evaluation；
 - 创建阶段必须证明 Skill 已经成熟。
 
-Skill 的成熟度来自后续真实使用与演化，而不是创建时一次性证明。
+# Skill Repository Boundary
+
+每个 Skill 文件夹都应当单独由 Git 管理。
+
+Independent Git repository 指独立 Git history，不等于每个 Skill 必须拥有独立 GitHub / GitLab remote。
+
+外层 `skills/` 可以只是放置目录：
+
+```text
+skills/
+├── skill-a/
+│   ├── .git/
+│   └── ...
+└── skill-b/
+    ├── .git/
+    └── ...
+```
+
+共享知识只有在它真的形成独立能力、拥有独立 owner 和生命周期时才抽出。
 
 # 只有用户未决定是否 Skill 化时，才做必要性判断
 
-如果用户问的是：
+如果用户问：
 
 - “这值得做成 Skill 吗？”
 - “应该写 Prompt 还是 Skill？”
-- “这几个能力应该合并还是拆分？”
+- “这些能力应该合并还是拆分？”
 
-才判断是否 Skill 化、是否存在更自然 owner、是否应合并。
+才判断是否 Skill 化。
 
-不要把这套判断反向套到“请创建一个 Skill”这种已经明确的创建命令上。
+用户已经明确要求创建 Skill 时，不重新进行这层否决。
 
-# 设计细则
-
-## 粒度：默认聚合相关能力
-
-多个子流程共享同一用户目标、经常共同出现、共同维护，而且拆开只增加 discovery 与同步成本时，优先聚合到一个 Skill，由主 `SKILL.md` 路由 references。
-
-只有独立后能明显降低误触发、上下文污染或维护耦合，才拆成新 Skill。
-
-## Prompt
-
-具体书写见 [prompt-engineering.md](prompt-engineering.md)。不要只写“这是一个 XX 专家 Skill”；必须有真正会改变行为的 instructions。
-
-## Example
-
-只有示范能增加独立行为信息时读取 [example-engineering.md](example-engineering.md)。
-
-## Knowledge / references
-
-把低频、长背景、平台细节、schemas 和分支知识下沉。
-
-## Scripts / Tools
-
-重复、确定性、机械执行优先 script；实时数据、认证、授权和副作用由 Tool/Harness 实现。
-
-## Discovery / Security / Release
+# Discovery / Security / Release
 
 - 当前 discovery、metadata 和 authority 行为见 [skill-building/official-structure.md](skill-building/official-structure.md)；
 - 第三方 Skill、联网、scripts、高影响工具调用见 [skill-building/security-review.md](skill-building/security-review.md)；
 - hosted/upload/plugin/public release 见 [skill-building/packaging-and-release.md](skill-building/packaging-and-release.md)。
 
-## 生命周期交接
-
-Construction 的结束不是“验证完成”，而是“可以进入真实使用”。
+# 生命周期交接
 
 ```text
-Construction
-→ Usage
-→ Case
+Source
+→ Understand
+→ Abstract
+→ Capability
+→ Guidance
+→ Skill
+→ Real Use
+→ Experience
 → Evolution
-→（必要时）Evaluation
-→ Skill vNext
 ```
 
-后续变化统一交给 [skill-evolution.md](skill-evolution.md)。
+Skill Construction 到这里结束，后续变化统一交给 [skill-evolution.md](skill-evolution.md)。
