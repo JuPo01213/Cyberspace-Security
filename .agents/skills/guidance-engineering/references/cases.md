@@ -1,71 +1,116 @@
-# Cases：Skill 的经验载体
+# Cases：经验与来源证据
 
 ## 职责
 
-Case 只负责：
+Case 负责保存：
 
-> **把真实使用或历史工作中值得保留的经验，保存成后续 Skill Evolution 可以重新理解的材料。**
+> **真实使用或历史工作中，未来仍值得重新理解的事实、纠正、结果和来源证据。**
 
-Case 不负责直接修改 Skill，也不负责决定 Evaluation。
+Case 不是 Skill Construction 的必经中间表示，也不负责直接抽象能力。
+
+```text
+Source / Experience
+→ Understand / Reconstruct
+→ Abstract
+→ Skill
+
+同时，必要来源证据
+→ Case
+```
+
+所以：
+
+```text
+Conversation
+→ Replay Case
+→ Skill
+```
+
+不是强制流程。
+
+更准确的是：
+
+```text
+                    ┌→ Capability / Skill
+Work Reconstruction ┤
+                    └→ Replay Case（按需保存）
+```
+
+## Case 与其他对象
 
 ```text
 Case
-= 发生了什么
+= 来源事实和经验记录
+
+Principle
+= 从经验中抽象出的可迁移关系
+
+Workflow
+= 依赖阶段 / 状态的行为模型
 
 Example
-= 为了教学而构造的示范
+= 为教学而构造的示范
 
-Principle / Rule
-= 从经验中抽象出的可迁移关系
+Git history
+= Skill 版本如何变化
 ```
 
-## 来源
+不要让 Case 同时承担这些职责。
 
-### Usage Case
+# 两类主要 Case
 
-来自 Skill 的真实使用：
+## Usage Case
+
+来自已有 Skill 的真实使用：
 
 ```text
 Skill
 → Real Use
-→ outcome / user correction / boundary
+→ observation / result / user correction
 → Usage Case
 ```
 
-真实工作是最主要的来源。
+适合后续 Skill Evolution。
 
-### Replay Case
+## Replay Case
 
-当工作已经完成，之后才回顾并抽象 Skill 时，可以从已有上下文提取 Replay Case：
+来自已经发生过的真实工作：
 
 ```text
-historical work context
-→ key decisions / corrections / outcomes
+Historical Work
+→ reconstruction
+→ selected facts / decisions / outcomes
 → Replay Case
 ```
 
-可用材料包括：
+Replay Case 的作用是保存来源证据和关键历史，不是把整段工作记录转录一遍。
+
+可引用：
 
 - 对话；
-- 用户纠正；
 - 工具调用；
 - 文件变化；
 - Git diff；
+- 用户纠正；
+- 中间失败；
 - 最终产物；
-- 已知失败与成功结果。
+- completion evidence。
 
-Replay Case 必须能追溯到真实历史，不是凭空编造测试题。
+Replay Case 必须能追溯到真实历史。
 
-## 什么时候记录
+# 什么时候值得保存
 
-出现以下情况时值得记录：
+只有未来重新理解它有价值时才记录。
 
-- 用户纠正 Skill 行为；
-- 实际任务结果暴露缺口；
-- 出现重要边界；
-- 某个成功方法具有明显复用价值；
+常见信号：
+
+- 用户纠正了重要行为；
+- 实际结果推翻了原假设；
+- 出现新的边界；
+- 一个成功方法具有明显复用价值；
 - 某个历史决策后来被证明关键；
-- 该经验可能影响未来 Skill Evolution。
+- Skill Evolution 需要保留变化来源；
+- 构建 Skill 时需要保存“为什么会形成这条能力”的来源证据。
 
 普通、没有新增信息的成功不需要机械记录。
 
@@ -76,13 +121,13 @@ Replay Case 必须能追溯到真实历史，不是凭空编造测试题。
 2. 保存最小 Context
 3. 分离 Interpretation
 4. 保存必要 Evidence
-5. 判断归因方向
-6. 路由到 no-change 或 Skill Evolution
+5. 标记用途 / owner
+6. 交给 Construction 或 Evolution 的对应流程
 ```
 
 ## 1. 捕获 Facts
 
-优先记录可观察事实，不把解释写成事实。
+优先保存可观察事实。
 
 例如：
 
@@ -95,21 +140,19 @@ Fact:
 
 ```text
 Interpretation:
-Skill 可能缺少“优先复用成熟能力”的指导。
+可能缺少“成熟生态存在时优先复用”的 Guidance。
 ```
 
-属于解释。
+只是当前解释。
 
 ## 2. 保存最小 Context
 
-只保存未来重新理解这个 Case 所必需的信息。
-
-默认可以使用：
+只保存未来重新理解事实所必需的信息。
 
 ```yaml
 case_id: CASE-...
 source: usage | replay
-skill_revision: git-sha-or-version
+skill_revision: optional-git-sha
 
 context:
   task: ...
@@ -130,19 +173,27 @@ evidence_refs:
 status: open
 ```
 
-不要复制完整聊天或完整运行日志。
+Replay Case 在 Skill 尚未创建时可以没有 `skill_revision`；创建后再按需补 revision 指针。
+
+不要复制整个对话、全部日志或所有工具输出。
 
 ## 3. 分离 Interpretation
 
-Fact 尽量保持稳定；Interpretation 可以被后续证据推翻。
+Facts 尽量保持稳定；Interpretation 可以变化。
 
-后续发现 Tool 当时根本不可用时，应更新解释，而不是篡改“模型没有搜索”这个原始事实。
+例如后续发现：
+
+```text
+模型没有搜索
+```
+
+是因为当时没有 Web Tool。
+
+那么应更新 Interpretation，而不是修改历史 Fact。
 
 ## 4. 保存必要 Evidence
 
-只有复杂 Case 真正需要时才保存额外证据。
-
-默认结构：
+默认：
 
 ```text
 skill-repository/
@@ -153,108 +204,98 @@ skill-repository/
 └── ...
 ```
 
-如果已有更适合的 Markdown / JSON / fixture 体系，直接复用。
+只有复杂 Case 真正需要额外证据时才创建 `evidence/`。
 
-Case 必须自包含于产生它的 Skill repository，并随该 Skill 自己的 Git history 管理。
+如果已有更合适的 Markdown / JSON / fixture 体系，直接复用。
+
+Case 自包含于所属 Skill repository。
 
 不建立跨 Skill 的集中 Case 仓库。
 
-## 5. 判断归因方向
+## 5. 标记用途 / owner
 
-这里只做**路由级判断**，不在 Case 层完成修改设计。
-
-可能属于：
-
-- Principle；
-- Workflow；
-- Prompt；
-- Example；
-- Skill boundary / packaging；
-- Harness / Runtime；
-- Tool / Permission；
-- Model capability；
-- 用户目标本身。
-
-如果明显不属于 Skill 层：
+Case 自己不完成能力设计，只标明它接下来可能服务什么：
 
 ```text
-status = no-change
-reason = ...
+construction_source
+= 构建初始 Skill 时保留的来源证据
+
+evolution_source
+= 已有 Skill 的新经验
+
+evaluation_material
+= 某次 Evaluation 可复用的真实材料
+
+historical_only
+= 仅保留历史，不驱动当前 Guidance
 ```
 
-并关闭。
+一个 Case 可以服务多个用途，但不要因此复制多份。
 
-如果可能改变 Skill：
+## 6. 交给对应流程
+
+### 构建新 Skill
+
+Construction 不要求先创建 Case。
+
+正确关系：
 
 ```text
-Case
+Source
+→ Understand / Reconstruct
+→ Abstract
+→ Capability
+→ Skill
+
+必要来源证据
+→ Replay Case
+```
+
+见 [skill-building.md](skill-building.md)。
+
+### 改进已有 Skill
+
+```text
+Usage / Replay Case
 → Skill Evolution
 ```
 
-详细归因、抽象和修改由 [skill-evolution.md](skill-evolution.md) 负责。
+见 [skill-evolution.md](skill-evolution.md)。
 
-## 6. 路由与状态
+### 验证 Candidate Change
+
+Evaluation 可以复用已有 Usage / Replay Case，但 Case 并不是为了 Evaluation 而存在。
+
+见 [evaluation.md](evaluation.md)。
+
+# 状态
 
 最小状态：
 
 ```text
 open
-= 已记录，尚未完成处理
+= 仍可能影响 Construction / Evolution
 
 absorbed
 = 已被某个 Skill revision 吸收
 
 no-change
-= 已分析，但不需要修改 Skill
+= 已分析，不需要改变 Skill
+
+historical
+= 仅保留来源历史
 ```
 
-Case 进入 Skill Evolution 后可以保持 `open`，直到 Evolution 完成：
-
-- 修改被吸收 → `absorbed`；
-- 最终判断不修改 → `no-change`。
-
-关闭时只保存结果和 revision 指针，不复制完整版本历史。
-
-# Case 与 Evolution
-
-正确关系：
-
-```text
-Skill Usage / Historical Work
-→ Case
-→ Skill Evolution
-→ Candidate Change
-→ optional Evaluation
-→ Skill vNext
-→ close Case
-```
-
-Case 不自动成为 Rule，也不直接驱动 Prompt 修改。
-
-# Case 与 Evaluation
-
-Evaluation 可以使用 Case 作为材料，但 Case 不是为了 Evaluation 而存在。
-
-优先顺序：
-
-```text
-真实使用产生经验
-→ 保存 Case
-→ Evolution 需要验证某个不确定变化
-→ Evaluation 复用 Usage / Replay Case
-```
-
-如果没有真实使用或历史上下文提供检验材料，不为了满足形式要求凭空制造一套 Evaluation。
+关闭 Case 时保存结果和 revision 指针，不复制完整 Git 历史。
 
 # 完成标准
 
-Case 层完成时：
+一个 Case 记录合格时：
 
+- 来源是真实使用或可追溯历史；
 - Fact 与 Interpretation 已分开；
 - Context 足够但不过量；
-- 必要 Evidence 已保存；
-- Case 位于所属 Skill 内；
-- 已完成路由：
-  - 明显不属于 Skill → `no-change`
-  - 可能改变 Skill → 交给 Skill Evolution；
-- 没有在 Case 层直接制造长期 Rule 或修改 Skill。
+- Evidence 只保存必要部分；
+- 已明确它服务 Construction、Evolution、Evaluation 还是仅历史；
+- 没有把 Case 直接伪装成 Principle、Workflow 或 Example；
+- 没有把完整版本历史复制到 Case 中。
