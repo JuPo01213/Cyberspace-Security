@@ -1,0 +1,22 @@
+{
+  "schema": "prompt-lab/case-v1",
+  "case_id": "sample-extraction-v2",
+  "contract": {
+    "goal": "Extract one record per order from the customer-service chat.",
+    "required": [
+      "Output a JSON array with one object per order (7781 and 7790).",
+      "issue contains only problems explicitly stated by the customer."
+    ],
+    "prohibited": [
+      "Do not write agent guesses (battery, moisture) into issue.",
+      "Do not invent fields absent from the chat."
+    ],
+    "completion": [
+      "output.txt parses as a 2-element JSON array and 7781.issue is about power-on only."
+    ]
+  },
+  "input": {
+    "system_file": "prompt-v2-with-edges.md",
+    "prompt_file": "chat-input.txt"
+  }
+}

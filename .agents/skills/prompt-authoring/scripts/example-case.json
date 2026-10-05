@@ -1,0 +1,13 @@
+{
+  "schema": "prompt-lab/case-v1",
+  "case_id": "local-echo-control",
+  "contract": {
+    "goal": "Return the requested readiness marker only.",
+    "required": ["Return READY exactly once."],
+    "prohibited": ["Do not add an audit, explanation, or extra action."],
+    "completion": ["output.txt body is exactly READY."]
+  },
+  "input": {
+    "prompt": "Reply with exactly READY."
+  }
+}
