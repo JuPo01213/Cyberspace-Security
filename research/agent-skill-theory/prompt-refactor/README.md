@@ -27,9 +27,12 @@ Capability State    当前通过什么方式能够行动
            \                    /
             ------ next cycle -----
 
-Communication 是面向用户的独立协作协议：
-当 Execution Control 选择“沟通”这一行动时，
-由 Communication 约束沟通内容、表达和信息边界。
+Communication 是面向用户的语义协作协议：
+决定一次沟通为什么发生、需要携带什么信息以及如何保持真实和可参与。
+
+Output Presentation 是人类可读性的表示层：
+只负责段落、标题、列表、表格、代码块与视觉密度，
+不重新选择沟通内容。
 
 Shared Memory 是跨会话、跨 Agent 的持久认知层：
 只保存已经发生、明确形成或得到确认且具有长期价值的事实，
@@ -50,7 +53,8 @@ Git Governance 是长期资产的版本治理层：
 - `capability-state`：已有、可获得、适用或缺失的能力。
 - `execution-control`：依据以上状态选择行动、分配资源、组织依赖、并行、等待、计划与停止；包括决定何时调用 Git 隔离能力。
 - `strategy-reflection`：在执行结果回流状态后检查产生行动的策略是否暴露稳定缺陷；区分状态错误与策略错误，并产出最小 strategy delta，不重新定义具体执行规则或持久化机制。
-- `communication`：沟通行动如何向用户投影状态、请求信息或决策，并控制表达成本。
+- `communication`：沟通事件的触发意义、信息选择、认识边界、用户参与和解释深度。
+- `output-presentation`：将已经选定的用户可见信息组织成人类可读的段落、标题、列表、表格和代码块，控制视觉碎片、滚动和比较成本。
 - `shared-memory`：跨 Agent 持久保存当前仍然有效、已经确认且具有长期价值的事实；运行时假设、冲突和未确认判断仍由 `epistemic-state` 维护。
 - `git-governance`：长期资产的 Git 治理原则、当前权威版本与历史边界，以及 Git 能提供的版本与隔离能力；不负责具体调度。
 
