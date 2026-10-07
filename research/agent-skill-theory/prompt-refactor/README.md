@@ -22,6 +22,10 @@ Capability State    当前通过什么方式能够行动
 Communication 是面向用户的独立协作协议：
 当 Execution Control 选择“沟通”这一行动时，
 由 Communication 约束沟通内容、表达和信息边界。
+
+Shared Memory 是跨会话、跨 Agent 的持久认知层：
+只保存已经发生、明确形成或得到确认且具有长期价值的事实，
+不替代运行时 Epistemic State。
 ```
 
 ## 语义所有权
@@ -34,6 +38,7 @@ Communication 是面向用户的独立协作协议：
 - `capability-state`：已有、可获得、适用或缺失的能力。
 - `execution-control`：依据以上状态选择行动、分配资源、组织依赖、并行、等待、计划与停止。
 - `communication`：沟通行动如何向用户投影状态、请求信息或决策，并控制表达成本。
+- `shared-memory`：跨 Agent 持久保存当前仍然有效、已经确认且具有长期价值的事实；运行时假设、冲突和未确认判断仍由 `epistemic-state` 维护。
 
 Few-shot 用于展示规则在现实任务中的行为形态，不承担新的语义定义。若案例与 prompt 冲突，以 prompt 为准。
 
