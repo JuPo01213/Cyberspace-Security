@@ -1,0 +1,36 @@
+{
+  "slice_id": "capesolo-cleanup-control-unavailable-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "在已确认本轮 natural run 停滞、目标进程未出现且日志已收割后，宿主尝试按精确路径回收新 MCP 进程 PID 7040/1228/5712；PowerShell Direct 调用没有返回终态，Host 仍看到 FLARE-Analysis Running，且没有可见的本批次宿主 wrapper。",
+  "observed": [
+    "Host Get-VM 显示 FLARE-Analysis Running、CPUUsage=24、MemoryAssigned=4 GiB。",
+    "按已核验 PID/路径的 Guest Stop-Process 调用返回宿主 exit_code=1 且无可读终态；不能据此断言进程是否被停止。",
+    "Host 没有发现仍带 FLARE-Analysis New-PSSession 命令行的 pwsh wrapper；Guest 进程状态无法通过当前控制面确认。",
+    "Host Stop-VM -Name FLARE-Analysis -Force 经过有界等待后返回 0x800705B4（由于超时时间已过，该操作返回）；独立 Get-VM 查询仍显示 Running。"
+  ],
+  "expected_behavior": "收尾应能在已保存日志后通过控制面停止本轮 runtime，或明确返回可恢复失败；控制面失败时不得反复调用同一方法。",
+  "why": {
+    "confirmed_cause": null,
+    "candidate_explanations": [
+      "Guest PowerShell Direct/VMBus 在 CAPEsolo 停滞后不可用",
+      "远程 Stop-Process 调用本身被 Guest 运行状态阻塞",
+      "Host wrapper 在远程调用失败前已退出，导致执行结果不可见",
+      "Hyper-V worker 无法在 Stop-VM -Force 的超时窗口内完成关机"
+    ],
+    "not_a_sample_business_result": "该切片只描述清理通道不可用，不证明样本或授权业务结果。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "保存原始 logs 后，对无目标进程的失控 VM 使用一次有界 Hyper-V VM 收尾；恢复后只做短控制探针，不在停滞 Guest 上继续拼接远程命令。",
+    "project_instruction": "清理控制面失败时保留证据并升级为基础设施收尾，不机械重试；任何 VM 停止都必须记录原因、可恢复性和保留的 Guest 磁盘证据。",
+    "generic_skill": "暂不修改通用 Skill；这是当前 CAPE/Guest 停滞后的本机收尾问题。"
+  },
+  "minimum_validation": "在执行不同于 Stop-VM -Force 的断电路径前，确认 Host 已保存 isolated analysis.log、MCP stderr、cfg before/after hash 和本轮无目标进程探针；停机后 Host 看到 VM Off，磁盘与目录仍存在。",
+  "evidence": [
+    "runs/EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01/control/config-change-result.json",
+    "Guest MCP stderr and analysis.log paths recorded in capesolo-isolated-natural-stall-before-target-20260928-01.json",
+    "Host Get-VM and cleanup-call result from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

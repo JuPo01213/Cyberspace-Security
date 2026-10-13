@@ -1,0 +1,38 @@
+{
+  "slice_id": "capesolo-interactive-submit-wait-window-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-SHARED-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "官方 interactive_debug job c0ed866976234f54aefb6a740e9cfbaf 被 accepted；log 证明真实目标 PID 4352 被注入，入口断点在 0x7ff7fc7e5b40 命中。但从提交返回到下一次 dbg_wait_break 的独立 MCP 调用期间，CAPE 在约 8 秒内结束 job；wait_break 返回 No interactive debug session is active。",
+  "observed": [
+    "job status: completed/run_result=true, options=bp0=ep,idbg=1, interactive_debug=true。",
+    "log: Successfully executed ept-authoritative_7d140892.exe PID 4352; CAPEExceptionFilter breakpoint 0 hit at 0x00007FF7FC7E5B40; then Analysis termination requested by user and ResultServer complete=1/incomplete=1。",
+    "dbg_status after the job: ok=true, active=false；dbg_wait_break: no active debug session。",
+    "No target_native_return, target_caller_diff_bytes or RC06-after evidence was collected."
+  ],
+  "expected_behavior": "提交 interactive job 后，应在同一 MCP client/session 的最短可行窗口内发送 dbg_wait_break，并在返回后立即读取现场；暂停态不能暴露给多次独立启动/初始化和长消息往返。",
+  "impact": "真实入口命中已证明，但调试现场没有接管，job 结果不完整；不能把入口命中写成目标级 seam 或样本业务结果。",
+  "why": {
+    "confirmed_cause": "当前 project consumer 每次调用都重新 initialize 一个 MCP session；submit 与 wait_break 是分离的 Host 进程/调用，未提供提交后原子接管批次。",
+    "candidate_explanations": [
+      "CAPEsolo interactive session 在第一 break 后的空闲窗口很短",
+      "CAPE 的自动 termination 与 debugger API session 建立存在竞态",
+      "共享 analysis 根目录/ResultServer 不完整加速了终止，但不是入口未命中的证据"
+    ],
+    "not_a_sample_result": "日志已确认真实目标入口命中；随后无 session 不是自然授权阴性。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "增加一个项目本地的单批次 MCP consumer：initialize 一次，tools/call analyze_sample 后立即在同一 HTTP/MCP session 调用 dbg_wait_break；每一步都写 durable response，保留 job_id 和同一 session 的原始响应。",
+    "project_instruction": "interactive_debug 的 submit→first-break→inspect 必须视为一个有界接管批次；job accepted 或 entry breakpoint hit 不能替代 debugger现场收割。",
+    "generic_skill": "暂不修改；当前证据首先指向项目 consumer 时序，需在另一轮确认后再评估通用 Skill。"
+  },
+  "minimum_validation": "新 RUN_ID 使用同一 ASCII 样本和官方参数；在同一 MCP client/session 中完成 submit 与 dbg_wait_break，若 break 返回则立即收割 status/registers/modules/stack；若仍无 session，保留完整 timing/log 证据并分类为 INVALID_INSTRUMENT。",
+  "evidence": [
+    "runs/EPT-PHASE3-INTERACTIVE-SHARED-20260928-01/control/job-submit.json",
+    "runs/EPT-PHASE3-INTERACTIVE-SHARED-20260928-01/control/job-status-01.json",
+    "runs/EPT-PHASE3-INTERACTIVE-SHARED-20260928-01/control/debug-status-01.json",
+    "runs/EPT-PHASE3-INTERACTIVE-SHARED-20260928-01/control/debug-wait-break.json",
+    "runs/EPT-PHASE3-INTERACTIVE-SHARED-20260928-01/control/job-log-tail-01.json"
+  ],
+  "secrets_redacted": true
+}
+

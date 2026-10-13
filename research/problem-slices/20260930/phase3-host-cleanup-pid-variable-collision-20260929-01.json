@@ -1,0 +1,20 @@
+{
+  "slice_id": "phase3-host-cleanup-pid-variable-collision-20260929-01",
+  "created_utc": "2026-09-29T01:56:00Z",
+  "single_bottleneck": "The first Host PowerShell Direct cleanup probe used the reserved read-only variable $PID for the recorded Guest helper PID, so the probe failed before querying or terminating the process.",
+  "reproduction": {
+    "run_id": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02",
+    "target_pid": 988,
+    "error": "Cannot overwrite variable PID because it is read-only or constant",
+    "guest_side_effect": "none verified; Stop-Process was not reached"
+  },
+  "expected": "Host cleanup probes use a task-specific variable name and report the exact before/after process state.",
+  "minimal_change": "Rename the temporary variable to RecordedHelperPid and retry the same exact PID query/termination; do not broaden the target set.",
+  "verification": "control/agent-helper-cleanup.json must contain the before/after process records and baseline hash checks.",
+  "rollback": "No rollback; the failed probe made no Guest state change.",
+  "evidence_paths": [
+    "artifacts/problem-slices/phase3-agent-runner-helper-residue-20260929-01.json",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/control/agent-helper-cleanup.json"
+  ]
+}
+

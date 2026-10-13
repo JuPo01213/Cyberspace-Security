@@ -1,0 +1,16 @@
+{
+  "slice_id": "pi-native-agent-argument-array-binding-20260929-01",
+  "run_id": "EPT-PI-FLARE-MIMO-20260929-04",
+  "scope": "host_guest_agent_delivery",
+  "reproduction": "run-native-pi-agent.ps1 attempted to pass a long positional ArgumentList to Invoke-Command while also constructing a remote delivery-verification script block.",
+  "observation": "PowerShell failed before the Agent start record with 'A positional parameter cannot be found that accepts argument System.Object[]'; no model request or Guest Agent work is proven.",
+  "expected": "Remote delivery parameters must be passed as one explicitly structured argument object or one unambiguous ordered array accepted by the target parameter set.",
+  "impact": "The delivery verification did not complete and the new Agent run was not launched; this is a Host controller error, not a Guest/Model result.",
+  "evidence": "run-native-pi-agent.ps1 invocation output for EPT-PI-FLARE-MIMO-20260929-04.",
+  "optimization_location": "method/pi-flare-workbench/run-native-pi-agent.ps1",
+  "minimal_change": "Replace the ambiguous positional Invoke-Command argument list with a single hashtable/object parameter and explicit param($cfg) unpacking; record delivery only after it returns.",
+  "rollback": "Remove any per-run relay state if the current control inspection proves it was written; do not reuse this run for a new launch.",
+  "verification": "Parser check, Host/Guest delivery verification record, then a new RUN_ID for the real Agent launch.",
+  "unresolved_risk": "The relay process is already running for this run and must be reused or stopped exactly before retrying; no duplicate relay should be started."
+}
+

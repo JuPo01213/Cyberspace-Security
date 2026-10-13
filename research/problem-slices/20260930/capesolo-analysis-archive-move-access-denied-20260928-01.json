@@ -1,0 +1,40 @@
+{
+  "slice_id": "capesolo-analysis-archive-move-access-denied-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-TARGET-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "交互调试 RUN_ID 尚未提交样本；复用 clean analysis 准备脚本停止已知 CAPEsolo MCP 后，Guest `Move-Item C:\\Users\\Public\\CAPEsolo\\analysis -> analysis.before-ept-clean-...` 返回访问被拒绝。脚本在移动前失败，因此未重命名分析目录、未启动新 MCP、未提交 job。",
+  "observed": [
+    "失败点是 Guest Move-Item 的 DirectoryInfo IOException，不是 New-PSSession 或 MCP 调用。",
+    "准备脚本只在 Stop-Process 后固定等待 500 ms，没有确认每个已记录 MCP PID 已退出。",
+    "当前交互 RUN_ID 没有 job_id，也没有样本进程。",
+    "加入对已记录 CAPEsolo PID 的有界消失等待（10 秒）后，Move-Item 仍返回访问被拒绝；因此‘MCP PID 尚未退出’不再是已确认的唯一原因，根因需要区分其他 Guest 进程/句柄与目录 ACL。"
+  ],
+  "expected_behavior": "停止已确认属于本轮的 CAPEsolo MCP PID 后，应在有界时间内确认这些 PID 已退出，再移动由该服务持有的 analysis 目录；超时应停在清理分类，不强行覆盖或删除目录。",
+  "impact": "只阻断了下一轮的 clean-root 准备；上一轮的分析目录仍原位保留，既有结果没有损坏。",
+  "why": {
+    "confirmed_cause": null,
+    "candidate_explanations": [
+    "CAPEsolo analyzer/辅助进程或上一轮遗留进程仍持有 analysis 目录句柄",
+    "analysis 目录或子项 ACL/所有者在上一轮运行后改变，flare 用户不能移动父目录",
+    "MCP PID 消失但另一个已知 CAPE/结果进程仍在使用该目录",
+    "PowerShell Direct 用户上下文与目录创建者上下文不一致",
+    "CAPEsolo MCP 由不可读/未登记的父 PID 自动重新拉起；精确停止 3124/4080/4316 后，新的 MCP/Python 树再次出现，导致普通 stop-then-move 流程失去原子性"
+    ,"原子化停止当前 4948/5144/1060 后立即移动仍返回访问被拒绝；因此当前证据不足以把根因归结为 MCP 子进程或自动重启，系统级句柄/目录锁仍未定位。"
+    ],
+    "not_a_sample_result": "没有提交交互 job，不能说明样本、debugger 或 MCP 参数失败。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "停止重复移动；当前默认 analysis 根目录保留不动，后续 debugger 运行按 job_id/日志做范围归因。长期需用受控 SYSTEM/VM 维护入口定位目录句柄或监督入口，不能靠普通 flare 会话猜测。",
+    "project_instruction": "Guest 清理/回滚必须验证资源释放后再进入下一项有副作用动作；清理访问错误与样本业务结果分离。",
+    "generic_skill": "暂不修改；这是当前 Guest cleanup/监督链的本机部署问题。"
+  },
+  "minimum_validation": "执行一次有界的单目的 Guest 查询，返回匹配 CAPEsolo/analyzer/python 进程的 PID/路径、analysis 目录 ACL/所有者和目录是否存在；不执行删除、再次移动或样本提交。",
+  "evidence": [
+    "runs/EPT-PHASE3-NATURAL-CLEAN-20260928-01/control/prepare-clean-analysis.ps1",
+    "当前执行输出：MoveDirectoryItemIOError / Access denied",
+    "runs/EPT-PHASE3-INTERACTIVE-TARGET-20260928-01/run.json",
+    "runs/EPT-PHASE3-INTERACTIVE-TARGET-20260928-01/control/analysis-lock-diagnosis.json"
+  ],
+  "secrets_redacted": true
+}
+

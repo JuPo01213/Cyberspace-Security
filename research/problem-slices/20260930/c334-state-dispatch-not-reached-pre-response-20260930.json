@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "problem_id": "c334-state-dispatch-not-reached-pre-response-20260930",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-20260930-01",
+  "class": "valid_not_reached_pre_response_l1029_no_frame",
+  "trigger": "The new read-only dispatcher observer run created the real child but received no L1029 frame.",
+  "observed": [
+    "Controlled component download succeeded and child 6684/runtime child 7440 were observed.",
+    "The L1029 listener was bound but accepts remained zero; no response was injected.",
+    "The runner emitted ps_sample_error before the child was observed.",
+    "No target transform, state-dispatch, target return, caller diff or RC06 event occurred."
+  ],
+  "classification_basis": "The parent C333 run proves the response path can reach L1029 under the same controlled response; this run lacks the response frame and therefore cannot classify sample business behavior.",
+  "cleanup": {
+    "harvest_all_hashes_match": true,
+    "sample_unchanged": true,
+    "component_unchanged": true,
+    "hosts_restored": true,
+    "leftover_target_processes": []
+  },
+  "next_action": "Compare the ps_sample_error and L1029 listener timing with C333; do not repeat the same state-dispatch run unchanged."
+}
+

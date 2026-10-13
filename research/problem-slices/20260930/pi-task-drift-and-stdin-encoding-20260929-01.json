@@ -1,0 +1,44 @@
+{
+  "slice_id": "pi-task-drift-and-stdin-encoding-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-08",
+  "what_happened": "用户要求 Guest Agent 优先诊断并修复实际通信问题。run-07 被收窄为有限范围诊断报告；run-08 又被改成只写三行哨兵、写完停止。原始 JSONL 表明 run-08 正常执行 write 并结束，但初始 user 中文内容已乱码。",
+  "observed": {
+    "intended_prompt_utf8_bytes": 1025,
+    "actual_initial_user_utf8_bytes": 1393,
+    "unicode_replacement_character_count": 310,
+    "initial_user_equals_prompt": false,
+    "model_tool_calls": ["write"],
+    "last_assistant_stop_reason": "stop",
+    "guest_status": "COMPLETED / exit_code=0",
+    "model_observation": "The message is garbled (encoding issues)",
+    "diagnosis_or_repair_performed_in_run08": false
+  },
+  "why": {
+    "task_design_error": "将临时传递验证替代了用户要求的实际诊断/修复，还在 prompt 中称它为真实任务；三行成功标志由 prompt 指定，不能独立证明传递正确。",
+    "evidence_review_error": "已收到 output/status 后没有立即核对原始 role=user、工具调用和最后响应，而继续查询状态。",
+    "confirmed_encoding_cause": "已在同一 Guest 核验：ProcessStartInfo 没有 StandardInputEncoding 属性，旧脚本空 catch 吞掉设置错误，StandardInput.Encoding 为 gb2312；Pi 官方 readPipedStdin 使用 setEncoding(utf8)。按该解码方式复现旧写法得到 310 个 U+FFFD；改为 BaseStream 写入明确 UTF-8 字节后原文逐字一致、U+FFFD=0。"
+  },
+  "where_to_optimize": {
+    "task_dispatch": "恢复实际诊断/修复目标，不用固定成功字样代替模型工作结果；先核对发出任务和原始 session user。",
+    "stdin_adapter": "用明确的 UTF-8 字节写入 stdin，避免默认代码页；输出流编码分别配置，不吞掉配置失败。",
+    "observation": "收到原始 JSONL 后立即核对 user、assistant、toolCall、toolResult、stopReason；报告用于解释，原始事件用于验收。"
+  },
+  "minimum_success": "初始 user 的任务文本与源 prompt 逐字一致（只允许官方 CLI 明确的尾部换行处理），中文无损；随后 Agent 实际完成诊断或可审查修复，产物与 session 一致。",
+  "encoding_validation": {
+    "environment": "FLARE-Analysis, Windows PowerShell, existing Node.js",
+    "input_source": "run-08 Guest prompt.txt, 1025 UTF-8 bytes",
+    "receiver": "Node stdin.setEncoding(utf8), same decoding as Pi readPipedStdin",
+    "old_string_write": {"original_bytes": 1025, "decoded_bytes": 1394, "exact_equal": false, "unicode_replacement_count": 310},
+    "explicit_utf8_byte_write": {"original_bytes": 1025, "decoded_bytes": 1025, "exact_equal": true, "unicode_replacement_count": 0},
+    "scope": "验证输入编码修复；没有运行模型任务或 EPT 样本，不证明实际诊断任务完成。"
+  },
+  "rollback": "保留 run-07/run-08 原始 prompt、session、报告；后续编码修复单独记录，不回写历史原文。",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/prompt.txt",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/harvest/prompt.txt",
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/harvest/session.jsonl"
+  ],
+  "secrets_redacted": true
+}
+

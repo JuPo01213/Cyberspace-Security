@@ -1,0 +1,22 @@
+{
+  "slice_id": "pi-flare-harvest-manifest-self-reference-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-SMOKE-20260929-03",
+  "status": "confirmed_artifact_accuracy_error",
+  "what_happened": "collector 在第二次收割时把已有的 harvest-manifest.json 当作输入文件重新列入清单，随后覆盖写入新 manifest；清单中的自身 size/hash 对应旧版本，不是最终文件。",
+  "expected": "harvest-manifest.json 只描述本次收割的业务文件，不把自身作为被收割输入。",
+  "impact": "不影响 status/output/session 内容，但降低 manifest 的可核对性。",
+  "why": {
+    "missing_fact": "没有把 manifest 排除出待收割文件集合。",
+    "unverified_assumption": "默认 Get-ChildItem 结果可以直接作为最终清单。",
+    "error_layer": "Host 收割清单生成。"
+  },
+  "where_to_optimize": {
+    "collector_script": "生成 facts 时排除 harvest-manifest.json，再写入唯一最终 manifest。",
+    "project_layer": "manifest 的 files 字段只包含源收割物，不包含 manifest 自身。",
+    "generic_skill": "不修改；这是当前脚手架的产物清单错误。"
+  },
+  "minimum_validation": "重收割同一 smoke run 后，manifest 不列自身，status/output/prompt/session 仍可读且 hash 稳定。",
+  "rollback": "重写 Host harvest-manifest.json，不改变 Guest 状态。",
+  "secrets_redacted": true
+}
+

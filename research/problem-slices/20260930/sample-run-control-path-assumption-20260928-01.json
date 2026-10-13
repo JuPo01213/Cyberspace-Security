@@ -1,0 +1,28 @@
+{
+  "slice_id": "sample-run-control-path-assumption-20260928-01",
+  "source_run_id": "EPT-PHASE3-SAMPLE-MIN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "回读既有 run.json 后，执行者额外假定该 run 存在 `control` 子目录并调用 Get-ChildItem；实际路径不存在，命令只读失败，没有触碰 VM、样本或 MCP。",
+  "observed": [
+    "run.json 存在且记录了既有 interactive/bp0=ep 证据。",
+    "E:\\CTF\\EPT\\runs\\EPT-PHASE3-SAMPLE-MIN-20260928-01\\control 不存在。"
+  ],
+  "expected_behavior": "读取历史运行材料前先列出该 run 的实际目录/文件，再按存在的权威产物读取；不存在的路径只能记为未知，不能根据惯例补全。",
+  "impact": "只阻断了一个历史目录清单查询，不影响当前 FLARE-Analysis 或已收割证据。",
+  "why": {
+    "confirmed_cause": "把其他 Phase 3 run 的目录结构推广到 SAMPLE-MIN run，未先执行当前文件树检查。",
+    "not_a_sample_result": "该路径错误不说明样本、Guest 或 CAPE 状态。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "使用 Test-Path/rg --files 确认历史产物后再读取，禁止从 run 名称猜 control/harvest 结构。",
+    "project_instruction": "压缩恢复门禁要求以当前文件和 run record 为准；把目录假设与样本结论分离。",
+    "generic_skill": "不修改；这是本项目历史产物路径假设。"
+  },
+  "minimum_validation": "对每个被引用历史 run 先输出实际文件列表并检查目标文件存在，再继续读取；目标路径不存在时不重试同一路径。",
+  "evidence": [
+    "runs/EPT-PHASE3-SAMPLE-MIN-20260928-01/run.json",
+    "当前执行输出：Get-ChildItem path not found"
+  ],
+  "secrets_redacted": true
+}
+

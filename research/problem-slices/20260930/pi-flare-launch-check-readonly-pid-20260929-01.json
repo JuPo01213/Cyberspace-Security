@@ -1,0 +1,14 @@
+{
+  "slice_id": "pi-flare-launch-check-readonly-pid-20260929-01",
+  "scope": "host_guest_pi_controller",
+  "reproduction": "run-pi-flare.ps1 reached the post-launch Invoke-Command check; its ScriptBlock declared parameter $pid.",
+  "observation": "PowerShell rejected the parameter because $PID is a built-in read-only automatic variable; the Guest task was not classified and no model request evidence was produced.",
+  "expected": "The controller should perform a short post-launch check and record whether the Guest status marker exists and whether the child process is alive.",
+  "impact": "The new relay-backed Guest run could not be started; this was a controller defect, not evidence about Pi, pi-bansos, the model, or the Guest network.",
+  "optimization_location": "method/pi-flare-workbench/run-pi-flare.ps1",
+  "minimal_change": "Rename the ScriptBlock parameter from $pid to $processId.",
+  "rollback": "Revert the one-identifier change in run-pi-flare.ps1.",
+  "verification": "PowerShell parser check followed by a new RUN_ID and real Guest launch.",
+  "unresolved_risk": "The detached launcher and model relay still require runtime evidence after this controller error is fixed."
+}
+

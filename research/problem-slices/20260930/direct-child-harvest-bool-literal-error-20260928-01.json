@@ -1,0 +1,27 @@
+{
+  "slice_id": "direct-child-harvest-bool-literal-error-20260928-01",
+  "source_run_id": "EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "创建 direct-child harvest 脚本后首次执行，在 Guest 文件检查/复制尚未产生结果时，PowerShell 运行时将哈希字段 `match=true` 解释为命令，返回 ‘The term true is not recognized’；未启动样本、未改变 Guest 状态。",
+  "observed": [
+    "PowerShell parser 通过，但运行时先在 `match=true`、随后在 `exists=false` 记录表达式处失败；说明语法解析通过不等于语义执行通过。",
+    "harvest 脚本失败发生在 Host 收割阶段，原始 Guest runner 已完成并保持不变。"
+  ],
+  "expected_behavior": "PowerShell 布尔值必须使用 `$true/$false`；harvest 脚本应先完成文件复制和 manifest 写入，再报告成功。",
+  "why": {
+    "confirmed_cause": "把 JSON/JavaScript 风格的 `true` 写进 PowerShell 哈希字面量，没有经过实际执行探针。",
+    "avoidable_assumption": "仅做 parser 验证，未做最小 Host harvest execution smoke。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "修正 `$true` 后重跑同一个只读收割脚本；收割脚本的逻辑不改变样本运行。",
+    "project_instruction": "脚本交付验证必须覆盖 parser 和最小真实执行；PowerShell/JSON/JavaScript 布尔和字符串语义不能互换。",
+    "generic_skill": "暂不修改通用 Skill；这是项目脚本的 PowerShell 语义错误。"
+  },
+  "minimum_validation": "修正后收割目录产生 harvest-manifest.json，所有存在文件复制成功；Guest/样本不再启动。",
+  "evidence": [
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/control/harvest-direct-child.ps1",
+    "Host runtime error from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

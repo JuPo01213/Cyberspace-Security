@@ -1,0 +1,28 @@
+{
+  "slice_id": "pi-flare-staging-copy-layout-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-PROVISION-20260929-01",
+  "status": "confirmed_local_deployment_error",
+  "what_happened": "Host 侧部署把宿主 `...\\pi-coding-agent\\dist` 目录复制到已经存在的 Guest `C:\\EPT\\pi-flare\\pi-runtime\\dist` 目录。PowerShell 的目录复制语义形成了嵌套布局，预期的 `C:\\EPT\\pi-flare\\pi-runtime\\dist\\bundle\\cli.js` 不存在，Pi 版本/列表验证均得到 MODULE_NOT_FOUND。",
+  "observed": [
+    "Guest `pi-bansos` 0.4.13 package.json 已存在并可读。",
+    "Guest 默认 IPv4 路由为空。",
+    "没有启动 Pi 任务，没有提交模型请求，没有执行样本。",
+    "Guest verification 中的 cli 路径找不到，原始错误保存在 `runs/EPT-PI-FLARE-PROVISION-20260929-01/control/guest-verification.json`。"
+  ],
+  "expected": "Guest 的受控 runtime 目录直接包含 `dist\\bundle\\cli.js`，Pi 版本和 `pi list` 均可成功读取。",
+  "impact": "阻断 Pi 安装验收，但未影响样本或网络配置。",
+  "why": {
+    "missing_fact": "没有在复制后断言实际目录树。",
+    "unverified_assumption": "把 Copy-Item 复制到已存在的同名目录误认为复制其内容，而不是产生下一层目录。",
+    "error_layer": "Host→Guest 部署适配层的路径归属/后置验证。"
+  },
+  "where_to_optimize": {
+    "deployment_script": "把源 dist 复制到其父目录 `pi-runtime`，并在继续前断言 `dist\\bundle\\cli.js`、版本 manifest 和 plugin entry 均存在。",
+    "project_layer": "保留 Guest 安装的 source/destination layout 与 postcondition，不把命令执行成功写成部署成功。",
+    "generic_skill": "不修改；这是当前脚手架的本地路径实现错误。"
+  },
+  "minimum_validation": "修复脚本后重新部署受控目录，验证 cli `--version`、`list`、plugin version、workspace/agent paths 和无默认路由；否则不得启动 Pi 任务。",
+  "rollback": "仅删除/重建 `C:\\EPT\\pi-flare\\pi-runtime\\dist` 这一受控目录，不触碰样本或其他 Guest 路径。",
+  "secrets_redacted": true
+}
+

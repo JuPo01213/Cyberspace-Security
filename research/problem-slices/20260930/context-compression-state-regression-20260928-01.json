@@ -1,0 +1,48 @@
+{
+  "slice_id": "context-compression-state-regression-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "related_runs": [
+    "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02",
+    "EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01",
+    "EPT-PHASE3-DIRECT-CHILD-INVENTORY-20260928-01"
+  ],
+  "review_status": "candidate",
+  "what_happened": "在对话上下文压缩/交接后，续接执行依赖压缩摘要推进，没有先重新读取当前运行记录、事件日志、能力登记和被引用任务原文。此前官方 CAPEsolo natural 路径已经在 EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02 中启动真实 EPT 目标；恢复后的工作先遭遇 consumer 丢失 job_id/输出路径错误，随后转向项目门禁不允许替代成熟入口的 direct-child runner。该 runner 的有界结果是没有发现 EPT child，未取得目标级证据。",
+  "observed": [
+    "压缩后第一次回读调用把 turnLimit 设为 40，工具明确拒绝该参数；这说明恢复时没有先按工具契约建立最小读取方式。",
+    "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02 的事件记录了官方 CAPEsolo natural target launch，说明当前 FLARE-Analysis 上的官方入口曾经到达真实目标启动阶段；该轮结果报告被跨轮污染，不能当作完成。",
+    "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01 记录了 HostOutputPath 错误、job_id 未持久化和 isolated natural job 在 target 前停滞；它没有证明样本业务失败。",
+    "EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01 记录了自制 direct-child runner 在 60 秒内没有找到 EPT_*.exe；这只是有界启动/谱系观察，不是样本阴性。",
+    "上下文压缩本身没有修改 VM、VHDX、样本或仓库文件；当前回归来自恢复后的执行选择和缺少恢复门禁。"
+  ],
+  "expected_behavior": "压缩或交接后先从权威项目状态恢复：确认当前 Guest、样本哈希、最近一次真实运行、当前未闭合证据和已验证入口；在此基础上才选择下一项单变量实验，不把摘要中的历史路径直接当作当前现场。",
+  "impact": "增加了无效的基础设施/替代启动实验，消耗了真实分析时间，并把官方 natural 入口进展与自制 runner 结果混在了同一段叙事中；没有覆盖或伪造既有证据。",
+  "why": {
+    "confirmed_cause": "压缩后的工作记忆缺少可执行现场的完整状态，且项目层没有强制恢复后读取权威状态的门禁；执行者把摘要中的下一步描述升级成了当前动作依据。",
+    "not_the_cause": [
+      "没有证据表明上下文压缩修改了 VM 或 VHDX。",
+      "没有证据表明 direct-child no-child 结果是样本业务阴性。"
+    ],
+    "contributing_errors": [
+      "没有在恢复后的第一项副作用操作前建立状态对账。",
+      "官方入口的 consumer 故障尚未闭合时转入了等价自制 runner。",
+      "历史成功路径、当前第三阶段边界和未完成运行没有在一个恢复记录中分开。"
+    ]
+  },
+  "where_to_optimize": {
+    "project_instruction": "AGENTS.md 新增“会话压缩与交接后的状态恢复门禁”，要求副作用前重读当前 run.json、事件日志、收割物、能力登记和必要的原始任务，并记录恢复对账。",
+    "current_run_adapter": "不再把摘要中的旧 job_id、PID、路径或下一步当作当前输入；恢复后只从当前 run record 解析入口和状态。",
+    "infrastructure_registry": "保持当前 FLARE-Analysis/第三阶段边界与旧 WindowsAnalysisWorkbench 证据分离。",
+    "generic_skill": "暂不修改通用 Skill；目前是会话恢复与项目状态治理缺口，不足以证明通用 Guest 工作流抽象错误。"
+  },
+  "minimum_validation": "在下一次真实样本副作用操作前，读取本切片关联的三个 run.json、最近事件/收割物、AGENTS.md 的当前门禁和 capability_registry.local.json，写入一个恢复对账事件；随后只使用当前已验证的官方 CAPEsolo入口，若入口仍失败，先完成该入口的最小适配与收割，不转入等价自制启动器。",
+  "evidence": [
+    "runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/run.json",
+    "runs/EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01/run.json",
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/run.json",
+    "artifacts/problem-slices/capesolo-submit-output-path-error-20260928-01.json",
+    "artifacts/problem-slices/capesolo-isolated-natural-stall-before-target-20260928-01.json"
+  ],
+  "secrets_redacted": true
+}
+

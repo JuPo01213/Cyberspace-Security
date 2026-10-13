@@ -1,0 +1,41 @@
+{
+  "slice_id": "pi-native-agent-host-premature-stop-before-session-read-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-06",
+  "scope": "host_agent_monitoring_and_harvest",
+  "review_status": "candidate",
+  "what_happened": "run-06 的 Guest 原生 Pi Agent 已收到模型响应并产生两次 stopReason=toolUse 的 assistant 事件，随后又发出两个尚未返回的工具调用。宿主在读取 session 尾部和模型最终输出前，把没有 output.txt、status 仍为 RUNNING 解释成异常并终止了该运行；因此没有取得模型报告，也没有保留正常的终态。后续从 run-07 Agent 报告和已收割的 run-06 session 证实：这不是模型请求失败，而是模型正在执行工具/可能继续思考时被宿主提前收尾。",
+  "observed": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/harvest/session.jsonl 中存在 responseId、token usage 和 stopReason=toolUse，说明模型请求成功并已开始工作。",
+    "run-06 session 最后两条 assistant 事件包含尚未返回的 toolCall；没有对应 toolResult 不能证明模型失败或已经卡死。",
+    "run-06 status.json 保持 state=RUNNING、finished_utc=null、exit_code=null，output.txt 不存在；这些字段只证明 runner 没有正常 finalize，不证明模型没有进展。",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/work/agent-report.md 对 run-05/run-06 的 prompt 截断、模型成功响应和收割缺陷作了实际对照。"
+  ],
+  "expected_behavior": "发现 output/status 尚未终态时，宿主先读取 session 最近事件、最后写入时间、工具调用是否有返回和 Guest runner 进程状态；模型仍在思考或工具调用进行中时继续等待到硬截止。只有收到终态、明确的工具/进程失败，或硬截止后完成部分收割，才能分类并停止；停止前必须保留 session、原始输出、状态和原因。",
+  "impact": "run-06 消耗了一次模型运行并丢失了可继续工作的窗口；模型成功、工具进度和宿主收割失败被混成了一个未分类状态。没有产生 EPT 样本结论，但降低了通信实验的效率和证据完整性。",
+  "why": {
+    "confirmed_cause": "宿主监控把“进程仍在/没有 output.txt/状态未 finalize”当成了失败信号，没有先读取模型 session 中的 assistant/toolCall/toolResult 事件。",
+    "missing_guidance": "项目适配层没有把模型 session 读取列为停止前的必需动作，也没有为“长思考或长工具调用”定义持续时间与部分收割分类。",
+    "unverified_alternatives": [
+      "最后一个 toolCall 本身可能耗时过长或挂起；仅凭 session 停止增长不能区分工具挂起、模型继续等待和宿主终止。",
+      "run-06 的实际终止来源需要宿主进程/操作记录进一步确认；本切片不把终止原因升级为唯一根因。"
+    ],
+    "not_a_model_or_sample_result": "run-06 有成功 responseId 和 token usage，且没有执行或修改 EPT 样本；不能把这次中断写成模型不可用或样本业务阴性。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "在 Host 监控/收割器增加只读 session-tail 检查：读取最后 assistant、toolCall、toolResult、error 和时间戳；对仍有活动的模型运行继续等待，对硬截止运行先收割部分 session 再分类。",
+    "project_instruction": "在 EPT 项目层明确：模型 Agent 的 output.txt/status.json 尚未终态时，必须先读取实际 session 返回；长思考、模型生成和 Guest 工具调用不因暂时无报告而判失败；停止前记录硬截止、最后事件和收割结果。",
+    "infrastructure_record": "能力登记中区分 model_request_succeeded、agent_session_progress、runner_finalized 和 report_harvested，禁止用单一 process/status 标签代替四者。",
+    "generic_skill": "暂不修改通用 Skill；当前证据首先指向 EPT 的 Guest Agent 适配和宿主收割层，需在其他任务/平台重复出现后再提出通用改进。"
+  },
+  "minimal_change": "下一次 Agent run 保持现有 Guest 原生安装和 direct egress，只改 Host 监控决策：在任何终止动作前读取 session tail 和状态；若存在未返回 toolCall 或最近模型活动，则按硬截止继续等待或收割后分类，不直接写成 model failure。",
+  "rollback": "不回写或删除 run-06 的历史产物；监控逻辑改动可撤回，旧运行保留为对照证据。",
+  "minimum_validation": "在不接触 EPT 样本的条件下启动一个新的有界 Agent 任务：验证 prompt 完整送达、模型至少返回一次真实事件；若报告在硬截止前生成则收割并确认 status/output/session 一致；若硬截止触发，先收割 session tail、最后事件和部分输出，再将结果分类为 model_success_runner_incomplete 或 tool_progress_interrupted，而不是 model failure。",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/harvest/status.json",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/work/agent-report.md",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/session.jsonl"
+  ],
+  "secrets_redacted": true
+}
+

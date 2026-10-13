@@ -1,0 +1,19 @@
+{
+  "slice_id": "skill-task-bidirectional-calibration-20260928-01",
+  "source_run_id": "EPT-PHASE3-SAMPLE-MIN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "真实 EPT 样本推进被错误写成 Skill/工具验收清单，导致先做与当前样本决策无关的通用 preflight；纠偏时又把 Skill 过度降级为可有可无，忽略了它的高层抽象指导意义。",
+  "why": {
+    "confirmed_cause": "没有把“高层 Skill 指导、具体任务实例化、摩擦在最低层适配、真实运行反向反馈”的层级关系落实为 Goal 和行动选择。",
+    "task_fact": "当前运行还发现 CAPEsolo MCP 在 Guest cfg.ini 中被禁用；这属于本机 runtime 缺口，不能解释成样本阴性。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "明确样本目标是语义主来源，Skill 是候选参考；真实运行先反馈项目层。",
+    "goal_design": "Goal 写持续的样本结果和效率方向，不写 Skill 步骤、工具清单或单轮实验。",
+    "local_infrastructure": "只修当前 CAPEsolo MCP 配置缺口，并用真实样本继续验证。",
+    "generic_skill": "保留高层抽象指导；等待跨任务/跨平台证据证明抽象规则本身错误后再修改通用 Skill。"
+  },
+  "minimum_validation": "每个动作必须改变一个样本分析决策；否则不执行。",
+  "secrets_redacted": true
+}
+

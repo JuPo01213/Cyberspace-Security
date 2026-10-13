@@ -1,0 +1,15 @@
+{
+  "slice_id": "c339-sidecar-log-handle-harvest-20260930",
+  "category": "run_artifact_harvest",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-INDIRECT4B8B8-20260930-01",
+  "observed": "The first harvest could not hash/copy sidecar.stdout.txt and sidecar.stderr.txt because the sidecar log handles were still open.",
+  "effect": "The first manifest had two locked-log mismatches; the indirect observer, cleanup and target evidence were already complete.",
+  "action": "Guest UTF-8 text was read through the existing read-only PowerShell path, exact bytes were written to the Host harvest files, and SHA-256 values were checked against the Guest read result. No Guest or sample file was modified.",
+  "result": "The repaired manifest has 43/43 matching entries.",
+  "evidence": [
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-INDIRECT4B8B8-20260930-01/harvest/harvest-manifest.json",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-INDIRECT4B8B8-20260930-01/harvest/work/verify_cleanup.json"
+  ],
+  "rollback": "No sample rollback is required; only Host harvest copies were repaired."
+}
+

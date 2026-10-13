@@ -1,0 +1,26 @@
+{
+  "slice_id": "capability-readiness-contract-20260928-01",
+  "source_run_id": "EPT-PHASE3-SAMPLE-MIN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "分析 Guest 的建设工作已经产生安装、版本、路径和 canary 证据，但没有形成一份面向后续执行者的可消费就绪声明。执行者无法直接回答：哪些能力已可用、正式入口是什么、证据覆盖到哪里、哪些限制仍存在，于是重新探测并猜测路径。",
+  "why": {
+    "confirmed_cause": "建设运行记录偏重过程和安装结果，没有把验证结果汇总成 capability registry 或交接清单。",
+    "missing_contract": "缺少“已建设”与“可供任务直接使用”的明确区分，以及能力名称、入口、版本、验证证据、适用范围、限制、失效条件和消费者动作的统一字段。",
+    "scope": "这是基础设施交接和项目能力登记问题，不是 EPT 样本业务结论。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "在项目层要求所有建设运行生成可消费的 readiness/capability 登记，并规定任务优先读取登记。",
+    "infrastructure_build": "建设完成时生成脱敏的 capability registry；每项记录 status、entrypoint、version、evidence、scope、limitations、last_verified 和 consumer_action。",
+    "task_workflow": "真实任务只做与样本模式相关的增量检查；无变化时直接复用建设证据。",
+    "generic_skill": "暂不把本机交接字段写入通用 Skill；先由项目和基础设施模板验证其通用性。"
+  },
+  "minimum_success": "新执行者只读取项目指令、能力登记和对应验证产物，就能选择当前分析入口并知道哪些能力不能假定；无需重新安装、重复 canary 或猜测凭证/工具路径。",
+  "review_questions": [
+    "能力登记应放在项目 config、私有部署记录还是两者分层？",
+    "哪些字段必须脱敏后才能进入公开协作仓库？",
+    "如何定义登记失效：版本变化、VM 重建、快照回滚、路径变化还是证据过期？",
+    "能力可用与样本任务可用是否需要两个独立状态？"
+  ],
+  "secrets_redacted": true
+}
+

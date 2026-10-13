@@ -1,0 +1,22 @@
+{
+  "slice_id": "capesolo-utf8-process-enumeration-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "CAPEsolo 0.5.36 的官方 natural exe job 在 analyzer.prepare() 阶段因为 GetProcessImageFileNameA 返回的中文路径字节被按 UTF-8 解码而失败；样本未启动。上一轮取消后的 EPT child 树和中文命名进程仍在 Guest 中残留。",
+  "why": {
+    "confirmed_cause": "工具源码的显式 UTF-8 解码假设与 zh-CN Windows ANSI 返回值不兼容；未完成的前一轮清理使非 ASCII 进程在新 job 的系统枚举中可见。",
+    "guidance_gap": "能力登记只证明了 MCP/interactive job 的入口消费，没有区分 natural job readiness，也没有把取消后的进程树清零作为复用前提。"
+  },
+  "where_to_optimize": {
+    "guest_tool_adapter": "在 CAPEsolo analyzer 的单个解码点增加兼容回退/替换策略，保留备份、原始/修改哈希和回滚方式。",
+    "project_instruction": "把样本进程树的取消后收尾和 natural job 的 locale 适配写入项目运行记录/能力登记。",
+    "generic_skill": "暂不修改通用 Skill；当前证据属于本机语言环境与 CAPEsolo 版本适配。"
+  },
+  "minimum_validation": "新 RUN_ID 必须在 Guest 清理后通过 analyzer.prepare 并真正启动样本；否则保持为工具/清理失败，不作样本业务判断。",
+  "evidence": [
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-01/control/job-status-01.json",
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-01/run.json"
+  ],
+  "secrets_redacted": true
+}
+

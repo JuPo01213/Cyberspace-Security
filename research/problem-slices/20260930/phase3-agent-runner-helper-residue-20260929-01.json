@@ -1,0 +1,25 @@
+{
+  "slice_id": "phase3-agent-runner-helper-residue-20260929-01",
+  "created_utc": "2026-09-29T01:55:00Z",
+  "single_bottleneck": "The current outer-run cleanup filtered only ept-authoritative.exe and Hardware.exe, so an orphaned packaged helper remained after the sample parent exited.",
+  "reproduction": {
+    "agent_run": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02",
+    "guest_work_run": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03",
+    "helper_pid": 988,
+    "helper_name": "机器码专业查询工具.exe",
+    "parent_pid_at_observation": 3504,
+    "cleanup_event_leftover_procs": [],
+    "actual_process_after_cleanup_event": true
+  },
+  "observed": "events.ndjson cleanup restored hosts and sample hash but its leftover filter did not include the packaged helper; the exact process remained until Host reaped it.",
+  "expected": "Cleanup must enumerate and terminate the complete recorded sample descendant tree, including packaged helper names, then verify the filtered target set and parent-child lineage are empty.",
+  "impact": "This is a runner/cleanup fact, not a sample-business result; no target seam or component child was observed.",
+  "minimal_change": "Extend the run-specific cleanup check to the recorded process lineage and known packaged helper names; do not broaden termination to unrelated model or system processes.",
+  "verification": "Record exact PID/taskkill output and a post-cleanup process query showing zero EPT/Hardware/helper descendants; preserve the original events and process snapshot.",
+  "rollback": "No file rollback; process termination is limited to PID 988 and its recorded sample parent lineage.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/control/prior-evidence-transfer.json",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03/events.ndjson"
+  ]
+}
+

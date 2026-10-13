@@ -74,11 +74,11 @@
 
 不要因此重新实现样本启动、任务状态、artifact 收集或 VM 调度。
 
-## 低层直连是最后手段
+## 选择最低复杂度的可证路径
 
-只有在前述判断完成后，才选择 PowerShell Direct、VBoxManage、SSH、SMB、CDB 等低层机制。
+不要按工具层级机械排序。应选择能够证明当前后置条件、复杂度最低且影响范围可控的路径。PowerShell Direct、VBoxManage、SSH、SMB、CDB 等低层机制只有在成熟入口无法提供所需语义，或它们本身就是当前任务要验证的能力时才进入；进入后仍只补明确缺口。
 
-使用低层机制时，只验证当前任务真正依赖的能力；不要顺手扩展成新的通用 workflow engine。
+使用低层机制时，只验证当前任务真正依赖的能力；不要顺手扩展成新的通用 workflow engine。允许为交付和 Guest Agent 监督建立薄协调层，但不能复制 runtime 的任务结果权威。
 
 ## 完成后
 
@@ -101,4 +101,5 @@
 - GUI：`gui-analysis.md`
 - 低层 fallback：`adapters.md`
 - 失败判断：`failure-routing.md`
+
 

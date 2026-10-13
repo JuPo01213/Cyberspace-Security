@@ -1,0 +1,16 @@
+{
+  "slice_id": "c336-run-finished-marker-missing-20260930",
+  "category": "run_artifact_failure",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01",
+  "occurred": "The real run reached sampling_window_complete, sample_exit_observed, cleanup, and produced events.final.ndjson, but the runner workspace had no run_finished_utc.txt.",
+  "effect": "verify_cleanup.py reported one failure, all_artifacts_present, while all target safety, identity, gate restore, network, and process cleanup checks passed.",
+  "evidence": [
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01/harvest/work/events.final.ndjson",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01/harvest/work/verify_cleanup.json"
+  ],
+  "why": "The launch script creates run_started_utc.txt but the runner has no terminal write for run_finished_utc.txt; earlier runs carried that marker from an additional collection step.",
+  "minimum_fix": "Add a run-owned terminal marker in the existing runner finally/cleanup path or have the collector write a clearly labeled derived terminal marker after verifying events.final.ndjson and cleanup. Keep the missing-marker failure visible for this run.",
+  "rollback": "Do not alter C336 evidence or synthesize a success marker retroactively; fix only the runner/collector on a future run.",
+  "success": "A future run writes run_finished_utc.txt before harvest and verify_cleanup passes all artifact checks."
+}
+

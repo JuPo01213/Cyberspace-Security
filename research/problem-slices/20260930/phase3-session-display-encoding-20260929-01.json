@@ -1,0 +1,27 @@
+{
+  "slice_id": "phase3-session-display-encoding-20260929-01",
+  "created_utc": "2026-09-29T01:45:00Z",
+  "single_bottleneck": "A nested tool-output rendering showed mojibake while the raw Guest JSONL was UTF-8 and matched the delivered prompt; the host monitor almost classified a display artifact as a transport failure.",
+  "reproduction": {
+    "run_id": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-01",
+    "observed_display": "mojibake in nested session-tail output",
+    "authoritative_check": "prompt and initial role=user compared from raw JSONL with UTF-8 ordinal comparison",
+    "prompt_bytes": 6135,
+    "session_user_bytes": 6135,
+    "prompt_sha256": "31DD87063A7B1EEE63E25F9D34693C5221FA608BC7EFFECD04865D38C87DE870",
+    "session_user_sha256": "31DD87063A7B1EEE63E25F9D34693C5221FA608BC7EFFECD04865D38C87DE870",
+    "ordinal_equal": true,
+    "sample_executed": false
+  },
+  "impact": "The Agent was terminated during evidence exploration before any sample or controlled component launch. No sample state or Guest target evidence was changed.",
+  "expected": "Prompt-delivery decisions must use raw JSONL bytes and explicit UTF-8 ordinal comparison; terminal/nested serialization is presentation only.",
+  "minimal_change": "Keep the existing runner and UTF-8 stdin path; change only Host monitoring to parse the raw session file and record the comparison before classifying or terminating.",
+  "verification": "control/delivery-analysis.json records equal byte counts and hashes; harvest/guest-preabort-session.jsonl is preserved.",
+  "rollback": "No Guest rollback required beyond confirming the run process tree is empty and the baseline sample/hosts hashes remain unchanged.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-01/control/delivery-analysis.json",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-01/harvest/guest-preabort-session.jsonl",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-01/control/abort-record.json"
+  ]
+}
+

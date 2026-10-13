@@ -1,0 +1,29 @@
+{
+  "slice_id": "capesolo-direct-launch-inline-rejected-20260928-01",
+  "source_run_id": "EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "准备通过 Hyper-V PowerShell Direct 投递并脱离启动 current-FLARE direct-child observer 时，宿主执行器拒绝了过长、多层嵌套的内联 PowerShell 命令；命令未启动 Guest runner、未提交样本、未改变 Guest 状态。",
+  "observed": [
+    "exec_command 返回 CreateProcess rejected by policy。",
+    "失败发生在 Host 创建 PowerShell 进程之前，没有 launch.json 或 Guest start PID。",
+    "当前 run 已有独立 observer/child-readonly.cdb 文件，剩余动作只是投递和启动。"
+  ],
+  "expected_behavior": "投递、复制、脱离启动和 Host 记录应由保存的短脚本完成，复杂参数不应嵌套在单个 shell command 中。",
+  "why": {
+    "confirmed_cause": "把凭证读取、PSSession、文件复制、Guest Start-Process、哈希和 Host 写盘全部拼进一条多层内联命令，触发宿主执行策略拒绝。",
+    "avoidable_assumption": "没有复用当前项目关于复杂命令落盘执行的已知规则。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "使用 runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/control/launch-direct-child.ps1，分离 Host 控制逻辑和 Guest runner；先做路径/参数解析，再投递和启动。",
+    "project_instruction": "继续执行既有脚本投递门禁：复杂 PowerShell 不得多层内联；工具拒绝本身也要记录为控制层问题，不重提样本。",
+    "generic_skill": "暂不修改通用 Skill；项目已有脚本投递原则足够，当前是执行者未落实。"
+  },
+  "minimum_validation": "新脚本通过 PowerShell parser；执行后 Host launch.json 与 Guest runner PID/事件文件可收割，之后才允许等待 child。",
+  "evidence": [
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/control/guest-direct-child-observer.ps1",
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/control/child-readonly.cdb",
+    "Host exec_command policy rejection from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

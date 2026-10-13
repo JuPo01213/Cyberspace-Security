@@ -1,0 +1,23 @@
+{
+  "slice_id": "capability-revalidation-20260928-01",
+  "source_run_id": "EPT-PHASE3-SAMPLE-MIN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "基础设施构建运行已经留下核心工具、CAPEsolo runtime 和 GUI canary 证据后，执行者仍重新运行通用 Host preflight，并按假定路径再次探测 Guest 工具。该动作没有推进样本分析。",
+  "why": {
+    "confirmed_cause": "没有把建设阶段的验证产物当作当前能力登记来消费，并把通用 preflight 误当成真实样本启动的必经门禁。",
+    "guidance_gap": "能力登记没有以可直接消费的形式保存每项能力的权威入口、验证产物、适用范围和失效条件。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "建设阶段已验证能力默认复用；只有版本、路径、VM/快照、网络底座变化、证据冲突或新运行模式才做增量核对。",
+    "infrastructure_handoff": "输出可消费的 capability registry，登记入口、版本、验证证据、适用范围、失效条件和最后验证时间。",
+    "generic_skill": "暂不修改；先在实际任务中观察是否重复发生。"
+  },
+  "minimum_validation": "后续只验证真实样本所需的任务增量：样本投递、同一 Guest 运行入口、真实 child 谱系和联网校验观察。",
+  "evidence": [
+    "<REPO>/runs/EPT-INFRA-FLARE-CLEAN-20260928-01/artifacts/deployment/core-tools-validation.json",
+    "<REPO>/runs/EPT-INFRA-FLARE-CLEAN-20260928-01/artifacts/deployment/capesolo-runtime-verification.json",
+    "<REPO>/runs/EPT-INFRA-FLARE-CLEAN-20260928-01/artifacts/deployment/gui-session-canary.json"
+  ],
+  "secrets_redacted": true
+}
+

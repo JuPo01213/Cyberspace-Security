@@ -1,0 +1,17 @@
+{
+  "slice_id": "c336-sidecar-log-handle-harvest-20260930",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01",
+  "category": "harvest_transport_issue",
+  "occurred": "The standard FromSession copy and Get-FileHash could not open sidecar.stdout.txt and sidecar.stderr.txt because a Guest file handle remained open, even though the run's target/CDB processes and listeners were gone.",
+  "observed_effect": "harvest-manifest initially reported two unmatched sidecar log entries; all event, observer, CDB, memory, response, identity, and cleanup artifacts copied and hashed normally.",
+  "evidence": [
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01/harvest/harvest-manifest.json",
+    "Guest direct ReadAllBytes result: sidecar.stdout.txt 0 bytes and sidecar.stderr.txt 433 bytes readable",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-BRANCH420B-20260930-01/harvest/work/events.final.ndjson"
+  ],
+  "why": "The sidecar redirect handles outlived the normal process observation window; the standard file-copy path does not provide a second read-only handle strategy.",
+  "minimum_fix": "Read only the two run-owned files inside Guest with File.ReadAllBytes, copy their bytes to the existing Host harvest paths, record the original FromSession error and the alternate read method, then recompute their hashes in the existing harvest manifest.",
+  "rollback": "Remove only the recovered Host copies and revert the two manifest entries; no Guest or sample state is changed.",
+  "success": "Both sidecar entries have matching Guest/Host hashes with the alternate read method recorded, while the original copy error remains auditable."
+}
+

@@ -1,0 +1,29 @@
+{
+  "slice_id": "capesolo-config-line-format-mismatch-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "执行 CAPEsolo analysis_dir 隔离时，脚本先验证了 cfg.ini 原始 SHA-256 43A48A5CF7B3AB03F10AF730C428F2C3C3D7D61286AC79FE897C51804424D54E，并按计划创建了原文件备份；随后嵌套 PowerShell/宿主字符串中的正则反斜杠被过度转义，把 `\\s` 传成了匹配字面量反斜杠的模式，得到 CFG_ANALYSIS_LINE_COUNT=0，脚本在替换和重启前中止。原 cfg.ini 尚未写入，MCP 进程尚未停止。",
+  "observed": [
+    "远程变更脚本返回 System.Management.Automation.RemoteException: CFG_ANALYSIS_LINE_COUNT=0。",
+    "变更脚本的写入顺序是先校验 hash、备份、匹配，再写临时文件和 Move-Item；因此失败点位于配置写入之前。",
+    "计划中的备份路径为 C:\\Users\\Public\\CAPEsolo\\cfg.ini.before-ept-isolation-20260928-01；原配置哈希和 MCP 当前进程集合仍需重新核对后才能继续。"
+  ],
+  "expected_behavior": "只有在读取并确认实际 cfg.ini 行格式后，才对唯一目标配置项做最小替换；失败时不应改变原 cfg.ini、不应重启 MCP。",
+  "why": {
+    "confirmed_cause": null,
+    "confirmed_cause": "宿主脚本的多层字符串转义错误：PowerShell 正则本应接收单反斜杠 `\\s`，实际脚本文本使用了双反斜杠，导致唯一目标行未匹配。远程读取随后确认真实 cfg.ini 含有标准行 `analysis = C:\\Users\\Public\\CAPEsolo\\analysis`。",
+    "avoidable_assumption": "没有先在宿主对最终发送给 Guest 的正则做最小解析验证，并且把嵌套命令字符串中的转义结果当成了远端正则语义。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "不再使用嵌套正则替换；按行读取并定位 `[analysis_directory]` section 下唯一以 `analysis =` 开头的行，构造新文本后写入临时文件；写入前后分别哈希并验证只有目标键变化。",
+    "project_instruction": "任何 Guest 配置编辑必须先保存原始 hash/备份并读取实际序列化格式；嵌套命令的转义必须先在宿主验证，匹配失败时停止，不得放宽正则后连续试错。",
+    "generic_skill": "暂不修改通用 Skill；这是本机部署文件格式假设错误。"
+  },
+  "minimum_validation": "读取并持久化 cfg.ini 的实际 analysis 行上下文；确认原 hash 未变、备份 hash 与原 hash 一致，用按行 section-aware 替换完成一次唯一键变更；变更后核对目标 hash、MCP 重启和 listener。",
+  "evidence": [
+    "runs/EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01/control/config-change-plan.json",
+    "Host/Guest变更脚本返回 CFG_ANALYSIS_LINE_COUNT=0 的原始结果（本轮执行输出）"
+  ],
+  "secrets_redacted": true
+}
+

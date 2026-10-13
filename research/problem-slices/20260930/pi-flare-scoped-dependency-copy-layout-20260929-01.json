@@ -1,0 +1,21 @@
+{
+  "slice_id": "pi-flare-scoped-dependency-copy-layout-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-PROVISION-20260929-05",
+  "status": "confirmed_script_error",
+  "what_happened": "修正空父路径后，第一次 scoped copy 形成了 `@earendil-works\\chord\\chord`；改为复制 scope 根目录后，PowerShell 又把 scope 内容扁平化到 `node_modules` 根目录（出现 `node_modules\\chord`），Pi postcondition 仍正确失败。两次都说明隐含目录复制语义不可靠。",
+  "expected": "scoped 包的 scope 根目录应整体复制到 `runtime\\node_modules`，目标为 `@earendil-works\\chord\\package.json`。",
+  "why": {
+    "missing_fact": "没有对 Copy-Item 的已存在目标目录语义做普通包/scoped 包实测。",
+    "unverified_assumption": "把 scoped package 子目录复制到已存在 scope 目录，误认为会覆盖同名子目录。",
+    "error_layer": "Host 部署脚本的 npm scoped package layout adapter。"
+  },
+  "where_to_optimize": {
+    "deployment_script": "不再复制 scope 根目录；按 package 名计算唯一最终目标路径，先确保目标父目录存在，再把每个 source package 复制到该完整目标路径，并在目标 package.json 上断言。",
+    "project_layer": "依赖收割记录必须包含 source root、destination root 和实际 package.json 路径。",
+    "generic_skill": "不修改；这是当前脚手架实现错误。"
+  },
+  "minimum_validation": "重建受控 node_modules 后，普通包和 scoped 包的实际 package.json 均存在，Pi CLI `--version`/`list` 成功。",
+  "rollback": "仅重建 `C:\\EPT\\pi-flare\\pi-runtime\\node_modules`。",
+  "secrets_redacted": true
+}
+

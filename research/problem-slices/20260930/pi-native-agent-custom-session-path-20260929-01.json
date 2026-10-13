@@ -1,0 +1,33 @@
+{
+  "slice_id": "pi-native-agent-custom-session-path-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-08",
+  "scope": "pi_session_storage_and_harvest",
+  "review_status": "candidate",
+  "what_happened": "Guest runner 使用 `--session C:\\EPT\\pi-flare\\agent\\sessions\\<run>.jsonl` 把 Pi 原始对话写到脚手架自定义目录。该文件仍是 Pi 原始 JSONL，但不是 Pi 默认的 `C:\\Users\\flare\\.pi\\agent\\sessions\\--<cwd>--\\...jsonl` 位置，且我曾把自定义路径误称为默认记录位置。",
+  "observed": [
+    "Guest Pi 0.87.1 帮助支持 `--session`、`--session-id` 和 `--session-dir`。",
+    "Guest 官方 sessions.md 说明默认目录是 `~/.pi/agent/sessions/`，按工作目录分组；`--session` 会覆盖默认路径。",
+    "run-07/run-08 的 runner 源码显式传入 `--session` 自定义路径。"
+  ],
+  "expected_behavior": "使用 Pi 官方默认会话目录和唯一 `--session-id` 保存原始对话；Host 记录 session ID、默认根和最终解析出的 JSONL 路径，直接读取该原始文件。",
+  "impact": "没有损坏对话内容，但混淆了 Pi 原始记录、Host 副本和脚手架路径，增加了收割和判断 Agent 是否真实工作的成本。",
+  "why": {
+    "confirmed_cause": "脚手架为方便按 run 固定收割路径，选择了 `--session` 自定义文件，而没有先按 Guest 已安装 Pi 的官方会话语义设计。",
+    "not_a_model_result": "路径选择没有说明模型是否成功，也没有改变 EPT 样本。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "改用 `--session-id <RUN_ID>`，让 Pi 写入默认 `PI_CODING_AGENT_DIR\\sessions`；runner 在状态中记录解析出的真实 JSONL 路径，collector 直接读取该路径。",
+    "project_instruction": "明确区分 Pi 默认记录、`--session`/`--session-dir` 覆盖和 Host harvest 副本；优先直接读原始 JSONL。",
+    "generic_skill": "暂不修改通用 Skill；这是当前 EPT Agent consumer 的路径适配问题。"
+  },
+  "minimal_change": "只改变 session 选择和收割路径解析，不改变模型、prompt 内容、网络出口或工具权限。",
+  "rollback": "恢复 backup 中的 runner，历史 run 的自定义 JSONL 保留，不移动或删除。",
+  "minimum_validation": "新最小探针中，Guest 初始 role=user 与 Host prompt 完整一致；session 文件位于 Guest 默认 session 根的工作目录分组下；Host 直接读取同一 JSONL 并取得最终 assistant stop。",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-08/harvest/session.jsonl",
+    "method/pi-flare-workbench/guest-native-pi-agent.ps1",
+    "C:\\Users\\flare\\AppData\\Roaming\\npm\\node_modules\\@earendil-works\\pi-coding-agent\\docs\\sessions.md"
+  ],
+  "secrets_redacted": true
+}
+

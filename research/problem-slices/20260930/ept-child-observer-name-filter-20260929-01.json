@@ -1,0 +1,24 @@
+{
+  "slice_id": "ept-child-observer-name-filter-20260929-01",
+  "source_run_id": "EPT-PHASE3-AGENT-CONTINUE-20260929-01",
+  "scope": "phase3_natural_child_observation",
+  "review_status": "verified",
+  "what_happened": "旧 direct-child observer 只接受 EPT_*.exe 名称，因此把真实同源 child 误判为 TARGET_CHILD_NOT_FOUND/DEBUGGER_NOT_REACHED。新的有界自然 observer 不按名称过滤，确认 parent->同源 ept-authoritative.exe child->机器码专业查询工具.exe 两次出现。",
+  "observed": [
+    "authoritative sample SHA-256 CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2",
+    "run A and B each found an ept-authoritative.exe child in under one second",
+    "both runs found C:\\Users\\flare\\Desktop\\机器码专业查询工具.exe with SHA-256 7F92E4417CA1464E3EE4CC4DAAC8CD1435573BBC33CF8D0727BB55675AA59AD7",
+    "post-clean residue was zero; target seam fields remained NOT_OBSERVED_DYNAMIC"
+  ],
+  "expected_behavior": "Observer identifies the target by verified image path/hash and parent/child lineage, not a guessed filename prefix.",
+  "impact": "The prior name filter hid the real target child and converted an instrument false negative into a misleading runtime diagnosis.",
+  "minimal_change": "Use an identity-first natural observer with no EPT_*.exe name filter; record image path, SHA-256, parent PID, modules and cleanup.",
+  "verification": [
+    "two independent natural runs with the same verified child lineage",
+    "child module list includes python313.dll while parent does not",
+    "sample hash unchanged before/after and no residual process"
+  ],
+  "remaining_risk": "The observer does not capture target_native_return or target_caller_diff_bytes; a single target-specific instrument is still required.",
+  "secrets_redacted": true
+}
+

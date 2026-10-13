@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "problem_id": "pi-agent-c332-control-diagnosis-timeout-20260930",
+  "run_id": "EPT-PI-C332-TRANSFORM-CONTROL-DIAG-20260930-01",
+  "class": "guest_agent_timeout",
+  "delivery_complete": true,
+  "sample_executed": false,
+  "sample_modified": false,
+  "raw_session_sha256": "A53C00AA2C14C965F307C1829F3ABAB945BD681B11E77A5E1311BCC9445EDB25",
+  "finding": "ps_sample() has an unbounded subprocess.run and the C332 main loop stopped before proc_seen; no repair was completed before cutoff.",
+  "next_action": "Dispatch a narrow follow-up Agent task to implement and validate the timeout-bounded ps_sample repair in a backed-up Guest workspace copy; no sample run until Host reviews the diff."
+}
+

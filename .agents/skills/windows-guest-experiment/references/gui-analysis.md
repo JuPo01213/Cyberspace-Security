@@ -45,3 +45,4 @@ GUI 能正常显示只证明桌面通道可用，不证明样本分析 runtime�
 - Microsoft UI Automation: https://learn.microsoft.com/windows/win32/winauto/entry-uiauto-win32
 - Hyper-V VMConnect / Enhanced Session: https://learn.microsoft.com/windows-server/virtualization/hyper-v/enhanced-session-mode
 
+

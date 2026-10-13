@@ -1,0 +1,36 @@
+{
+  "slice_id": "phase3-outer-c2-guard-differential-20260929-01",
+  "created_utc": "2026-09-29T02:04:00Z",
+  "single_bottleneck": "The same-card successful outer run armed a loopback C2 guard for yz.hwid001.com before launch; the current zero-request run did not. Both adapter scripts use the sample directory as cwd, so cwd is not a supported distinguishing change.",
+  "comparison": {
+    "successful_run": {
+      "run_id": "EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01",
+      "c2_guard_event": "present",
+      "hosts_effect": "yz.hwid001.com -> 127.0.0.1",
+      "proxy_connect": 3,
+      "proxy_get": 1,
+      "hardware_child": true
+    },
+    "current_run": {
+      "run_id": "EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03",
+      "c2_guard_event": "absent",
+      "hosts_mapping_present": false,
+      "proxy_connect": 0,
+      "proxy_get": 0,
+      "hardware_child": false
+    },
+    "cwd_candidate": "rejected_as_distinguishing_fact; both scripts use cwd=SAMPLE_DIR"
+  },
+  "expected": "Reproducing the verified c2_guard_armed hosts mapping before the same outer launch yields either the known xz GET/child or a durable direct-network/branch observation without contacting real C2.",
+  "minimum_verifiable_success": "Record the guard change and restoration, sample PID direct TCP attempts, adapter events, and child lineage in one run; if child appears, gate 1029/RC00 on the existing native contract.",
+  "minimal_change": "Reuse the successful adapter's exact loopback hosts guard and keep the same C card, component, proxy policy, cwd, and cleanup; add only one-second TCP/log capture.",
+  "rollback": "Restore hosts byte-for-byte, stop only the run's recorded tree, remove staging, and verify zero target descendants and unchanged sample hash.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01/harvest/events.ndjson",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/harvest/guest/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03/events.final.ndjson",
+    "runs/EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01/control/io_adapter_controlled_http.py",
+    "runs/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-02/harvest/guest/EPT-PHASE3-AGENT-OUTER-CLI-1029-20260929-03/run_outer_cli_1029.py"
+  ],
+  "status": "CONFIRMED_GUARD_REACHES_CONTROLLED_CHILD",
+  "resolved_observation": "The guard recheck produced 3 Feishu CONNECTs, 1 controlled xz GET, Hardware child, and one 1029 framed request; native card contract remains the next blocker."
+}

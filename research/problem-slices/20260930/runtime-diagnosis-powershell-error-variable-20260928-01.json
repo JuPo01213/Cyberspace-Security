@@ -1,0 +1,14 @@
+{
+  "slice_id": "runtime-diagnosis-powershell-error-variable-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-ENTRY-INSPECT-20260928-01",
+  "what_happened": "只读 CAPEsolo runtime 诊断脚本在 Guest 执行阶段失败，PowerShell 报告无法覆盖只读自动变量 Error；未完成路径、ACL 或写入探针收集，也未改变 Guest/样本状态。",
+  "why": "脚本把局部错误消息变量写成了 `$error`；PowerShell 变量名不区分大小写，因此命中了只读的自动变量 `$Error`。这是没有先做最小脚本解析/运行探针的执行层错误。",
+  "where_to_optimize": "当前运行诊断适配层：改用 `$probeError`，并在同一只读诊断脚本中保持错误字段显式序列化；不修改 CAPEsolo、VM 或样本。",
+  "evidence": [
+    "runs/EPT-PHASE3-INTERACTIVE-ENTRY-INSPECT-20260928-01/control/diagnose-capesolo-runtime.ps1",
+    "PowerShell output: 无法覆盖变量 Error，因为该变量为只读变量或常量"
+  ],
+  "minimum_success": "脚本解析通过，Guest 诊断输出 durable JSON，包含实际 analyzer.py、analysis/dll 路径、ACL 和无害新文件写入/删除探针。",
+  "secrets_redacted": true
+}
+

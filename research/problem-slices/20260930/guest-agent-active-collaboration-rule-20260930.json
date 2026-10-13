@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "problem_id": "guest-agent-active-collaboration-rule-20260930",
+  "run_id": "EPT-PI-C333-NEXT-STATE-STATIC-20260930-01",
+  "class": "project_instruction_update",
+  "trigger": "Guest Agent work was useful only when current C333 evidence and the exact open question were passed in; Host-only repetition or waiting for wrapper status adds delay and can hide direction drift.",
+  "observation": "C332 Agent work identified and repaired the unbounded ps_sample control-path stall, and the repaired C333 run reached the real transform handoff; the current next-state static task is still being checked from the raw Pi session.",
+  "expected_behavior": "When a current unknown can be answered inside the Guest with existing tools and evidence, actively dispatch and supervise Guest Agent work, continuously read the raw session, correct drift, and harvest before classifying the result.",
+  "impact_scope": "EPT project collaboration workflow only; no change to sample identity, isolation, evidence_scope, target-level acceptance, or Guest Agent model gate.",
+  "instruction_change": "AGENTS.md: Guest Agent active collaboration rules",
+  "minimum_validation": [
+    "AGENTS.md contains explicit Host/Guest ownership and no same-file concurrent modification rule",
+    "prompt and run record requirements include current evidence, unique unknown, reusable materials, hard deadline, and harvest method",
+    "raw Pi JSONL remains the authority and Agent reports cannot satisfy target-level acceptance alone"
+  ],
+  "rollback": "Remove the added active-collaboration subsection from AGENTS.md and this problem-slice record.",
+  "unresolved_risk": "A Guest Agent can still spend time on low-value work or time out; Host must keep reading raw events and classify the outcome separately from sample business evidence."
+}
+

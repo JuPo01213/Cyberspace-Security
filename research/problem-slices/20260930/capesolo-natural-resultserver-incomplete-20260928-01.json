@@ -1,0 +1,32 @@
+{
+  "slice_id": "capesolo-natural-resultserver-incomplete-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02",
+  "review_status": "candidate",
+  "what_happened": "修复编码并清理旧进程后，官方 CAPEsolo natural job 3195ed4effef4d41b771444dc73c7c55 确实启动了当前 EPT 运行体 EPT_________V5.1_279ffb4f.exe（PID 1532），并成功恢复执行。随后日志出现“Analysis termination requested by user”，但本轮没有发出 cancel 调用；job 状态最终为 completed/run_result=true，同时 ResultServer 报告 transfers complete=0 incomplete=1。结果响应写入了 report，但收割完整性未闭合。",
+  "observed": [
+    "输入 SHA-256 仍为 CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2。",
+    "official execution_target 为 C:\\Users\\Public\\CAPEsolo\\analysis\\mcp_staging\\EPT_________V5.1_279ffb4f.exe。",
+    "日志记录 PID 1532 注入并 Successfully resumed process。",
+    "结果服务器最后报告 complete=0、incomplete=1；没有 target_native_return、target_caller_diff_bytes、Stored/Run dispatch 或 RC06 后行为。"
+  ],
+  "expected_behavior": "官方 job 的终止来源、target process 收尾、resultserver 传输完整性和 report/原始 artifact 应能在同一 run 中明确闭合；completed/run_result=true 不能覆盖 incomplete transfer。",
+  "why": {
+    "confirmed_cause": "当前运行记录只依赖 CAPEsolo job 状态和结果响应，没有把“终止来源”和“ResultServer transfer completeness”作为独立完成门；CAPE 日志中的 termination wording 与实际调用记录不一致，留下了未解释冲突。",
+    "contributing_gap": "Skill reference 说明了 status/results，但没有定义 resultserver incomplete、termination origin 和报告写入成功之间的证据优先级；项目 run manifest 也未预先要求这三个字段。"
+  },
+  "where_to_optimize": {
+    "project_run_record": "新增 natural job 的 target launch、termination_origin、resultserver_complete/incomplete、report_path、artifact harvest 状态字段。",
+    "harvest": "先保留官方 status/log/results 原文，再单独收割 report 和可用 dropped/process artifacts；incomplete transfer 时将 run 分类为结果不完整，不得进入目标级调试前提。",
+    "workflow": "下一轮只在 resultserver completeness 或其明确替代证据闭合后，复用当前 execution_target 做 read-only Stored/Run dispatch 观察。",
+    "generic_skill": "暂不修改通用 Skill；先确认该 CAPEsolo 版本/本机配置是否稳定复现。"
+  },
+  "minimum_validation": "对本 run 收割并哈希 report、job log tail、job status 和可用 artifact，验证 Guest 无样本残留；下一轮必须得到 resultserver complete 或明确、可复核的替代收割闭环，才能宣称 natural precursor 验收通过。",
+  "evidence": [
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/control/job-status-06.json",
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/control/job-log-tail-03.json",
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/control/job-results-01.json",
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/run.json"
+  ],
+  "secrets_redacted": true
+}
+

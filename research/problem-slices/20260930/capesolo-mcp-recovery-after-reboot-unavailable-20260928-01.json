@@ -1,0 +1,36 @@
+{
+  "slice_id": "capesolo-mcp-recovery-after-reboot-unavailable-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-REBOOT-BATCH-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "Hyper-V Stop-VM -TurnOff/Start-VM 重启 FLARE-Analysis 成功，Host 独立状态为 Running；重启后有界 45 秒 TCP probe 仍无法连接 172.31.250.2:8000。没有提交样本或 debugger job。",
+  "observed": [
+    "control/vm-restart.json 记录 before/after=Running，turnoff/start job 完成。",
+    "probe-mcp-endpoint.ps1 在 45 秒窗口内 ready=false，最终返回 MCP_ENDPOINT_NOT_READY。",
+    "当前失败发生在官方 MCP endpoint 恢复前，不是 CAPEsolo job 或样本业务结果。"
+  ],
+  "expected_behavior": "Guest 重启后应在控制面可用、MCP 官方进程启动并监听 172.31.250.2:8000 后才进入 interactive submit；若自动 supervisor 没有恢复，应使用登记的官方启动入口并再次做 endpoint probe。",
+  "impact": "阻断了本轮 interactive batch 的提交，保留了 VM 重启证据；没有重复任务或目标运行。",
+  "why": {
+    "confirmed_cause": null,
+    "candidate_explanations": [
+      "Guest boot 后自动 MCP supervisor 未启动",
+      "Guest 网络/PowerShell Direct 尚未完成恢复",
+      "CAPEsolo MCP 启动失败或绑定地址未就绪",
+      "隔离交换机在重启后尚未恢复"
+    ],
+    "not_a_sample_result": "没有 sample_path/job_id/target PID。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "先用短 nonce 控制探针确认 Guest 上下文，再复用已验证的官方 CAPEsolo MCP 启动脚本/命令，保存 stdout/stderr 和 endpoint probe；不在 endpoint 未就绪时提交。",
+    "project_instruction": "VM Running 不等于 MCP/runtime ready；重启后必须重新建立 Control→MCP endpoint→tools call 门禁，但不重复无关安装/canary。",
+    "generic_skill": "暂不修改；这是当前 Guest 启动后服务恢复状态。"
+  },
+  "minimum_validation": "一次短 Guest nonce、一次官方 MCP 启动、一次 TCP/initialize fake-status probe；若仍失败则保留日志并分类，不提交样本。",
+  "evidence": [
+    "runs/EPT-PHASE3-INTERACTIVE-REBOOT-BATCH-20260928-01/control/vm-restart.json",
+    "runs/EPT-PHASE3-INTERACTIVE-REBOOT-BATCH-20260928-01/control/mcp-endpoint-recovery.json",
+    "当前执行输出：MCP_ENDPOINT_NOT_READY"
+  ],
+  "secrets_redacted": true
+}
+

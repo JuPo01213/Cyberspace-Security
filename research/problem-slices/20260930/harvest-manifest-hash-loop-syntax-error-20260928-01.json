@@ -1,0 +1,29 @@
+{
+  "slice_id": "harvest-manifest-hash-loop-syntax-error-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CLEAN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "收割结果已落盘后，尝试用一条 PowerShell foreach/对象管道批量输出文件大小和 SHA-256 时发生解析错误：`An empty pipe element is not allowed`。该命令没有写入清单、没有调用 Guest/MCP、没有修改已收割文件。",
+  "observed": [
+    "官方 results 文件仍存在且此前已确认约 115 MB。",
+    "同一批次的目标摘要解析命令独立成功，得到 PID/PPID/调用数等字段。",
+    "失败仅发生在清单格式化命令的 PowerShell 语法层。"
+  ],
+  "expected_behavior": "收割清单应逐文件读取存在性、大小和哈希；清单生成器自身语法错误必须显式失败，不影响已有结果。",
+  "impact": "只延迟收割 manifest 生成，不影响真实 job、MCP 或已保存的结果证据。",
+  "why": {
+    "confirmed_cause": "在 foreach 的对象表达式和管道转换之间使用了不易读的单行嵌套语法，导致 PowerShell 解析出空管道元素；执行前没有用保存的短脚本或先做最小语法检查。",
+    "not_a_runtime_result": "该错误不是 CAPEsolo、Guest、样本或网络行为。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "改用保存的逐文件清单脚本/简单循环，每个文件先得到对象再统一 ConvertTo-Json；不把复杂对象管道压成一行。",
+    "project_instruction": "收割验收的格式化失败不能掩盖已有证据；应读取真实文件状态后再生成清单。",
+    "generic_skill": "不修改；这是本次 Host 验收命令的 PowerShell 语法错误。"
+  },
+  "minimum_validation": "用逐文件循环生成 manifest，验证每个已声明产物存在、大小/哈希可读，并单独解析 manifest JSON。",
+  "evidence": [
+    "当前执行输出：An empty pipe element is not allowed",
+    "runs/EPT-PHASE3-NATURAL-CLEAN-20260928-01/harvest/job-results.json"
+  ],
+  "secrets_redacted": true
+}
+

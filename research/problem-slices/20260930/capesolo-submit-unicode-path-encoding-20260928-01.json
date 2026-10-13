@@ -1,0 +1,36 @@
+{
+  "slice_id": "capesolo-submit-unicode-path-encoding-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CLEAN-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "通过已修复的 Host MCP consumer 提交官方 `capesolo_analyze_sample` 时，Host 侧参数 JSON 可解析且 MCP 返回 HTTP 200，但 Guest/CAPEsolo 收到的中文样本文件名变成问号，返回 `accepted=false` 和 file-does-not-exist。没有产生 job_id，没有启动样本。",
+  "observed": [
+    "提交输出已持久化到 runs/EPT-PHASE3-NATURAL-CLEAN-20260928-01/control/job-submit.json。",
+    "MCP structuredContent 明确为 accepted=false；错误路径中的中文部分为问号。",
+    "当前官方 MCP endpoint、initialize、tools/call 和 JSON durability 均已通过同一 RUN_ID 的 fake-status/本次响应验证。",
+    "随后投递的 Guest 验证脚本仍包含中文源路径字面量，Guest 侧返回 AUTHORITATIVE_SOURCE_MISSING；脚本未写入结果文件，也没有启动样本。"
+  ],
+  "expected_behavior": "权威样本应以 Guest 内存在且 SHA-256 已核验的路径提交，CAPEsolo 应返回 accepted=true/job_id；路径传输不得改变文件名或造成不可见的编码替换。",
+  "impact": "只阻断了本次提交；未执行样本、未改变 Guest analysis 目录和未产生业务结果。",
+  "why": {
+    "confirmed_cause": "中文路径经过 Host PowerShell 参数到 Guest 官方入口的边界后被替换为问号；当前 consumer 的结构化 JSON round-trip 只证明 Host 序列化正确，不能证明跨 Guest/Windows PowerShell 的路径编码正确。Guest 脚本内嵌中文字面量也会复现同一边界问题。",
+    "not_the_cause": [
+      "不是 CAPEsolo listener 或 MCP handshake 失败。",
+      "不是样本不存在或样本 SHA-256 不匹配。",
+      "不是自然运行的业务阴性。"
+    ]
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "使用已在 Guest 内复制并验证为同一 SHA-256 的 ASCII runtime copy `C:\\EPT\\runs\\EPT-PHASE3-SAMPLE-MIN-20260928-01\\ept-authoritative.exe` 作为官方 CAPEsolo 的 `sample_path`；后续 Guest 脚本只接受 ASCII 路径和已知 SHA-256，不再内嵌中文字面量，并在新的提交记录中写明 source/destination hash 关系。",
+    "project_instruction": "把 Host JSON 可解析与 Guest 最终路径可用分开验收；中文路径必须先做 Guest-side existence/hash probe，或使用 hash-verified ASCII runtime copy。",
+    "infrastructure_material": "保留 Unicode 路径失败输出和 ASCII copy 的来源/哈希关系，不修改原始样本。",
+    "generic_skill": "暂不修改；这是当前 Windows PowerShell/Guest adapter 的项目适配问题。"
+  },
+  "minimum_validation": "在任何重提前，使用纯 ASCII Guest 路径确认 runtime copy 存在且 SHA-256 等于 CA6B4C6A9A4DDC1C791A0BB3E98585856540C2BAA7CAC73F92CB21D87ACAA3B2；用该路径调用同一官方 `capesolo_analyze_sample`，只接受 accepted=true 且 durable job_id。",
+  "evidence": [
+    "runs/EPT-PHASE3-NATURAL-CLEAN-20260928-01/control/job-submit.json",
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/control/sample-ascii-copy.json",
+    "runs/EPT-PHASE3-DIRECT-CHILD-ATTACH-20260928-01/run.json"
+  ],
+  "secrets_redacted": true
+}
+

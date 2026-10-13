@@ -1,0 +1,29 @@
+{
+  "slice_id": "validation-mixed-text-json-20260928-01",
+  "source_run_id": "EPT-PHASE3-MCP-RECOVERY-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "恢复验证结束后，批量校验循环把 AGENTS.md 与 JSON 文件一起送入 ConvertFrom-Json，产生了“Unexpected character #”错误；同一命令随后仍输出 JSON_VALID，造成校验结果表达不严谨。配置恢复、MCP 启动和 fake-status 已经先分别成功，未被该校验命令改变。",
+  "observed": [
+    "AGENTS.md 是 Markdown，不是 JSON。",
+    "JSON 运行记录和问题切片可独立解析；fake-status.json 已存在并包含 HTTP 200。",
+    "该命令没有执行 Guest、MCP 或样本操作。"
+  ],
+  "expected_behavior": "按文件类型分别选择 Markdown/diff 检查和 JSON 解析；任何解析失败都应使校验命令失败，不应无条件输出成功标记。",
+  "impact": "只影响这一次本地验收命令的可信表达；没有影响已落盘的恢复结果。",
+  "why": {
+    "confirmed_cause": "为图省事把不同格式文件放入同一 JSON 解析列表，且脚本没有在 ConvertFrom-Json 失败后停止。",
+    "not_a_runtime_result": "这不是 MCP、Hyper-V 或样本执行错误。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "JSON 校验列表只包含 .json；Markdown 使用 git diff --check/目标段读取，且校验失败返回非零。",
+    "project_instruction": "最低充分验证必须保持失败可见，不得让错误输出后继续打印 PASS/JSON_VALID。",
+    "generic_skill": "不修改；这是一次本地验收脚本组织错误。"
+  },
+  "minimum_validation": "分别解析恢复 run.json、能力登记和问题切片；单独检查 AGENTS.md 的 UTF-8/diff；验证命令在注入一个非法 JSON 时返回非零。",
+  "evidence": [
+    "当前执行输出：AGENTS.md ConvertFrom-Json 错误后仍输出 JSON_VALID",
+    "runs/EPT-PHASE3-MCP-RECOVERY-20260928-01/control/fake-status.json"
+  ],
+  "secrets_redacted": true
+}
+

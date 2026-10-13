@@ -1,0 +1,23 @@
+{
+  "slice_id": "host-c327-status-child-residue-20260930",
+  "utc": "2026-09-30T04:16:22.0349864Z",
+  "observation": "C327 guest status call from 03:28:32Z remains alive as host pwsh20388 -> powershell2984 after C327 terminal harvest",
+  "scope": "Host control diagnostics only",
+  "processes": [
+    {
+      "pid": 2984,
+      "parent": 20388,
+      "created": "2026-09-30T11:28:32.509042+08:00",
+      "command": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -ExecutionPolicy Bypass -File .\\artifacts\\evidence\\work\\c327_guest_status.ps1"
+    },
+    {
+      "pid": 20388,
+      "parent": 6280,
+      "created": "2026-09-30T11:28:32.027709+08:00",
+      "command": "\"C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\npowershell.exe -NoProfile -ExecutionPolicy Bypass -File .\\artifacts\\evidence\\work\\c327_guest_status.ps1\""
+    }
+  ],
+  "action": "reap exact host diagnostic child then parent; leave VM/sample and unrelated monitor untouched",
+  "source": "artifacts/work/evidence-support/c327_guest_status.ps1",
+  "expected": "no run-attributed host diagnostic residue; single nonce response within30s"
+}

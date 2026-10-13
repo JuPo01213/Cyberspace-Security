@@ -1,0 +1,38 @@
+{
+  "slice_id": "capesolo-isolated-natural-stall-before-target-20260928-01",
+  "source_run_id": "EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01",
+  "review_status": "confirmed",
+  "what_happened": "本轮 consumer 输出路径错误导致 job_id 丢失，但独立 Guest 证据确认 CAPEsolo 已在新的 run-specific analysis_dir 启动一次真实 natural analysis。analysis.log 从 21:57:37.752 停在 ResultServer/辅助模块初始化和向 lsass 发送 monitor 配置；在约 6 分钟可比窗口内没有目标 EPT 进程、没有后续日志增长、没有可收割 job_id，之后单一 PowerShell Direct 文件属性探针也超时。",
+  "observed": [
+    "新目录为 C:\\Users\\Public\\CAPEsolo\\analysis\\EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01，日志明确记录 curdir 指向该目录。",
+    "MCP stderr 记录 ResultServer running on localhost:9999、package=exe、monitor config sent to lsass.exe；没有 target execution/resume 行。",
+    "13:58:33Z 的单一 Guest 进程探针没有 EPT_________V5.1_279ffb4f、Hardware、机器码专业查询工具或 cdb 进程。",
+    "analysis.log 长度为 7326、最后写入时间约为 21:57:37.752；job_id 没有写入 Host，不能调用官方 status/results/cancel API。",
+    "后续单一 Get-Item 探针在 15 秒窗口无返回，说明本轮 CAPE/Guest 控制面已经进入不可可靠收割状态。"
+  ],
+  "expected_behavior": "同一真实 natural job 应在合理窗口内继续到目标 execution 或明确终止，Host 应持有 job_id、status/log/results 收割入口；若收割入口丢失，必须在目标未启动时停止本轮并保留原始目录，不得重复提交。",
+  "why": {
+    "confirmed_cause": "本轮至少有一个已确认的宿主 consumer 收割缺陷：MCP response 在写盘前丢失 job_id；至于 CAPEsolo 在 monitor 初始化后停滞的 Guest/runtime 根因尚未确认。",
+    "candidate_explanations": [
+      "CAPEsolo 0.5.36 在当前 isolated analysis_dir/Guest 状态下的 monitor/辅助模块初始化阻塞",
+      "本轮提交参数或丢失 job_id 导致 Host 无法继续 status/harvest，但不一定是 Guest 业务失败",
+      "PowerShell Direct/VMBus 在 CAPE 分析运行期间出现资源争用或不可收割状态"
+    ],
+    "not_a_sample_business_result": "没有 target_native_return、target_caller_diff_bytes、Stored/Run dispatch、RC06 后行为，也没有自然授权阴性结论。"
+  },
+  "where_to_optimize": {
+    "host_consumer": "修复 capesolo-call-noauth 的绝对 HostOutputPath/父目录门禁，并让 MCP response 先写入临时结果再返回；提交状态缺少 job_id 时自动标为 unknown，禁止后续重复提交。",
+    "runtime_adapter": "下一轮拆分 submit、response durable write、status polling 和 harvest；先用新的 job_id 闭合控制面，再进入样本观察。",
+    "project_instruction": "submission unknown 的 run 只能收尾/回滚/分类，不能当作未提交；保留 analysis_dir 和原始日志，清理只针对已核验的本轮 CAPE 进程。",
+    "generic_skill": "暂不修改通用 Skill；当前证据混合了本机 consumer 收割缺陷与 CAPE/Guest runtime 停滞，尚不能抽象为通用流程缺陷。"
+  },
+  "minimum_validation": "回收已核验的 MCP/analysis 进程并确认 no target process；保存 isolated analysis.log、MCP stderr 和 cfg 哈希。下一轮先用修复后的 consumer 提交一个新 RUN_ID，确保 job_id durable，再观察同一目标。",
+  "evidence": [
+    "runs/EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01/control/config-change-result.json",
+    "Guest C:\\CAPEsolo\\mcp-ept-isolation-20260928-01.stderr.log",
+    "Guest C:\\Users\\Public\\CAPEsolo\\analysis\\EPT-PHASE3-ANALYSIS-ISOLATION-20260928-01\\analysis.log",
+    "Host/Guest independent probes from the current execution turn"
+  ],
+  "secrets_redacted": true
+}
+

@@ -1,0 +1,28 @@
+{
+  "slice_id": "pi-flare-runtime-dependency-staging-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-PROVISION-20260929-02",
+  "status": "confirmed_local_deployment_gap",
+  "what_happened": "修正 dist 目录布局后，Guest 已找到 `dist\\bundle\\cli.js`，但 Pi 启动仍失败：Node 报 `ERR_MODULE_NOT_FOUND`，缺少 `@earendil-works/chord`。",
+  "observed": [
+    "Guest plugin manifest 0.4.13 可读。",
+    "Guest 默认 IPv4 路由为空。",
+    "失败发生在 Pi CLI 启动时，没有模型请求、没有样本执行。",
+    "原始错误保存在 `runs/EPT-PI-FLARE-PROVISION-20260929-02/control/guest-verification.json`。"
+  ],
+  "expected": "受控 Pi runtime 除 dist 外还具备宿主当前 Pi package.json 声明的运行时依赖，Pi `--version` 与 `list` 成功。",
+  "impact": "Pi 安装验收仍未通过，Host–Guest 工作资料收割尚未启动。",
+  "why": {
+    "missing_fact": "没有检查 bundle 的 external dependency 边界，也没有按 package.json 声明部署依赖。",
+    "unverified_assumption": "把 dist bundle 误认为完全自包含。",
+    "error_layer": "Host→Guest runtime 依赖分发层。"
+  },
+  "where_to_optimize": {
+    "deployment_script": "从宿主已验证 Pi package 的 dependencies 目录复制可再生的 runtime dependency set，并逐项检查 package.json。",
+    "project_layer": "把 Pi runtime 与 pi-bansos 的版本、来源、依赖和网络限制写入 provision verification。",
+    "generic_skill": "不修改；这是当前 Guest 脚手架的依赖闭包问题。"
+  },
+  "minimum_validation": "修复后验证 cli `--version`、`list`、pi-bansos 版本、依赖闭包和无默认路由；否则不得启动 Pi task。",
+  "rollback": "仅重建 `C:\\EPT\\pi-flare\\pi-runtime\\node_modules` 受控目录。",
+  "secrets_redacted": true
+}
+

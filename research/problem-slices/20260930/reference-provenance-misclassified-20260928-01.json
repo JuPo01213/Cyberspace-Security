@@ -1,0 +1,32 @@
+{
+  "slice_id": "reference-provenance-misclassified-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02",
+  "review_status": "candidate",
+  "what_happened": "在解释 CAPEsolo 行为时，把 windows-guest-experiment 的 capesolo-mcp.md 二次整理与 CAPESandbox 上游 mcp_server.md/interactive_debugger.md 混称为“官方指导”。实际运行中又把上游文档的 bp0=ep 入口示例机械套到 EPT 多 child 样本上。",
+  "observed": [
+    "上游官方文档规定了 MCP transport、interactive_debug 参数、job/status/results 和 debugger 工具语义。",
+    "Skill reference 是本地整理材料，引用上游链接但不是上游完整手册，也没有覆盖 EPT 的 child/attach、目标 seam 或 RC06 后行为。",
+    "官方示例的合法性不能推出它适合当前多进程样本。"
+  ],
+  "expected_behavior": "执行前应标注材料来源类别：upstream_official、curated_secondary、project_evidence 或 local_observation；官方材料只约束其声明的工具语义，样本模式和证据闭环由项目证据决定。",
+  "why": {
+    "confirmed_cause": "没有在工作记录和沟通中区分上游规范、Skill 二次整理和 EPT 项目经验，导致合法工具示例被误当成当前样本的完整执行指导。",
+    "contributing_gap": "Skill reference 没有显式的来源/覆盖范围元数据，项目原有门禁也没有要求在 run manifest 中记录参考材料的来源类别。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "AGENTS.md 新增“参考材料的来源分层”，明确 upstream_official、curated_secondary、project_evidence、local_observation 的权威范围。",
+    "skill_reference": "为 Skill reference 补来源链接、适用范围和未覆盖边界；不把二次整理改名为官方手册。",
+    "execution": "运行前同时读取上游工具语义和项目样本证据；官方示例只能作为候选参数，必须用当前样本的进程/child 结构验证。",
+    "generic_skill": "暂不修改通用 Skill 语义；先完成来源标注，确认该缺口是否跨任务重复。"
+  },
+  "minimum_validation": "下一份 run.json 明确记录官方材料与项目证据的来源类别，并说明当前参数选择相对于项目既有证据的新信息；不得用 Skill reference 单独证明目标级完成。",
+  "evidence": [
+    "<REPO>/AGENTS.md",
+    "<REPO>/artifacts/evidence/C210_netgate_runtime_workflow_review_20260927.md",
+    "<SKILL>/references/capesolo-mcp.md",
+    "https://github.com/CAPESandbox/CAPEsolo/blob/main/mcp_server.md",
+    "https://github.com/CAPESandbox/CAPEsolo/blob/main/interactive_debugger.md"
+  ],
+  "secrets_redacted": true
+}
+

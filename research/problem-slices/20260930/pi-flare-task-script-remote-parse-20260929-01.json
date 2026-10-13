@@ -1,0 +1,22 @@
+{
+  "slice_id": "pi-flare-task-script-remote-parse-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-SMOKE-20260929-02",
+  "status": "confirmed_script_error",
+  "what_happened": "直接执行 Guest `run-prompt.ps1` 时，PowerShell 在 catch 分支解析失败：`[IO.File]::WriteAllText($OutputPath, $_ | Out-String, ...)` 把管道表达式直接放进方法参数，导致括号/参数解析错误；runner 因此没有写 status/output。",
+  "expected": "Guest runner 自身通过解析检查；启动阶段写 RUNNING，Pi 退出或异常均写 terminal status/output。",
+  "impact": "Host 只能观察到 Start-Process 返回和随后 PID 消失，无法分类实际 Pi 任务。",
+  "why": {
+    "missing_fact": "只解析了 Host 脚本，没有对嵌入式 Guest 脚本文本执行 PowerShell parser 检查。",
+    "unverified_assumption": "把 PowerShell 管道直接作为 .NET 方法实参，假定语法等价于先求值。",
+    "error_layer": "Host 生成的 Guest runner 脚本。"
+  },
+  "where_to_optimize": {
+    "deployment_script": "先把管道结果保存到变量再写文件；部署时在 Guest 对 run-prompt.ps1 执行 Parser 检查，失败不得宣称 provision ready。",
+    "project_layer": "Host–Guest runner 必须有启动阶段 durable marker 和脚本语法验证。",
+    "generic_skill": "不修改；这是当前脚手架生成脚本的实现错误。"
+  },
+  "minimum_validation": "新部署完成后 Guest parser 无错误；同一无害 prompt 能写 RUNNING/终态 status 与 output 或明确模型网络失败。",
+  "rollback": "仅重建受控 Pi runner 脚本和本次 smoke run 目录。",
+  "secrets_redacted": true
+}
+

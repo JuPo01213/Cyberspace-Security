@@ -1,0 +1,94 @@
+{
+  "slice_id": "PHASE3-EXTERNAL-COMPONENT-TRIGGER-20260929-01",
+  "created_utc": "2026-09-28T21:19:37.5636820Z",
+  "category": "sample_entry_and_external_component_missing",
+  "status": "controlled_outer_child_reached_target_seam_open",
+  "evidence_scope": "project_evidence_and_real_sample_guest_run_route_negative",
+  "observations": [
+    "The authoritative outer sample CArchive/PYZ TOC has no Hardware.exe entry; existing pyz_scan/TOC lists only packaged helper binaries such as 机器码专业查询工具.exe.",
+    "Current FLARE-Analysis has no C:\\ept_core\\Hardware.exe, C:\\Windows\\System32\\Hardware.exe, C:\\Users\\flare\\Desktop\\Hardware.exe, or Spoofersoftware.exe.",
+    "Static trace of existing main/auto_decode code shows main.main_entry releases 机器码专业查询工具.exe; main.PyWebViewAPI._get_decode_engine imports auto_decode.DecodeEngine; auto_decode.run_decode downloads/deploys the external decoder; run_decode_from_exe is the manual local-exe continuation.",
+    "Corrected 90-second natural child/API observation had zero runtime user32 marks, sample hash unchanged, and residue 0; it covered startup only and cannot be interpreted as a seam negative."
+  ],
+  "historical_material": {
+    "path": "runs/EPT-INJECT-20260924-04/identity/Hardware.exe",
+    "sha256": "CFA6998ECC2FBA92B027985C5283B09CD9C04C636158FD6961A10560AFB28BD7",
+    "constraint": "old C173/WindowsAnalysisWorkbench runs and addresses do not prove current FLARE identity",
+    "status": "historical derived component only; not migrated or used in current run"
+  },
+  "next_information_action": "First resolve the outer/native card contract conflict using the existing traced manual continuation or a minimal, explicitly marked reversible bridge; record the actual Hardware child command line and prove it satisfies 10..29 hex before starting target instrumentation. Then use the prepared 0x14078ee73 contract-driven RC00 observer (not generic IOCTL matching), inject only when the 284-byte in/out shape is present, and continue to RC06/caller.",
+  "forbidden_reuse": [
+    "do not directly launch historical C:\\ept_core\\Hardware.exe as current sample",
+    "do not treat old C173 authgate runs as current target success",
+    "do not use fake-card or harness return as natural authorization",
+    "do not repeat startup-only API observer without the appstart/decode trigger",
+    "do not treat CDB command echo as runtime hit",
+    "do not reuse a hosts backup that already contains the prior run C2 guard"
+  ],
+  "observations_current": [
+    {
+      "run_id": "EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01",
+      "fact": "outer-valid C-card run served the observed xz.hwid001.com HTTP GET with the verified controlled component; outer created C:\\Windows\\System32\\Hardware.exe with SHA256 CFA6998...AFB28BD7; cleanup restored sample hash and removed Hardware."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-CDB-OUTERVALID-20260929-01",
+      "fact": "CDB runtime output contained a standalone DIOC_ENTER for rdx=0x390008 on the real child; the dynamic return hardware breakpoint failed because five hardware slots were occupied. No return injection or target seam fields were obtained."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-CDB-OUTERVALID-FIX2-20260929-01",
+      "fact": "after known residue cleanup, a real child and CDB attach were obtained, but the CDB output contained no standalone DIOC/RC00/RC06 markers; command echo was excluded as evidence. EPT.cmd/helper residue was then removed and clean hosts restored."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-CDB-FASTATTACH-20260929-01",
+      "fact": "fast child polling on clean state saw no proxy request or Hardware child; outer exited code 2. This remains an outer/runtime-state fact, not a sample business result."
+    },
+    {
+      "fact": "The outer CLI accepted the 31..36 ASCII alphanumeric C-prefixed controlled card; the 10-character hexadecimal native card exited CLI with code 4 before any request. Do not merge these input contracts or call either value a license."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-CDB-FASTATTACH-SEEDED-20260929-01",
+      "fact": "After the controlled runtime seed, real Hardware child and CDB attach succeeded, but the sole strict rdx=0x390008 block had r8=0 and matched the known volume-device noise shape; DIOC_RET_DONE was a non-target return action. No RC00 target response, RC06 or caller evidence was obtained."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-RUNTIME-SEED-CALLER-20260929-01",
+      "fact": "A clean-state runtime seed attempt returned 2 with Feishu CONNECT only: no xz GET and no Hardware child. This is a runtime-state prerequisite failure, not a sample business result."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-BOOTSTRAP-CALLER-20260929-01",
+      "fact": "Controlled HTTP bootstrap reproduced the outer xz GET and real Hardware child, then intentionally left EPT.cmd/ept.cmd/helper residue for the following target run; it is prerequisite evidence only."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-CDB-CALLER-SEEDED-20260929-01",
+      "fact": "After a controlled bootstrap, the real child and CDB attached, but exact-line marker counts were DIOC_ENTER=0, DIOC_RET=0, DIOC_RET_DONE=0, RC06/CALLER=0; the child exited through NtTerminateProcess. No target seam fields were observed."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-BOOTSTRAP-CALLER2-20260929-01",
+      "fact": "A second clean-state controlled bootstrap also returned 2 without xz GET or Hardware child, despite the earlier successful bootstrap. Host recovered helper PID 3000 and restored baseline hashes; this establishes non-deterministic runtime prerequisite behavior that is not safe to brute-force."
+    },
+    {
+      "run_id": "EPT-PHASE3-IO-RUNTIME-SEED-20260929-01",
+      "fact": "The preserved successful seed event shows the exact prerequisite chain: controlled xz GET at 23:06:11Z, real Hardware child PID 6228 at 23:06:15Z, seed cleanup at 23:06:36Z with deliberate EPT.cmd/ept.cmd/helper residue left for the next run. It is the immediate parent of the seeded CDB run that hit DIOC_RET_DONE."
+    }
+  ],
+  "target_fields_current": {
+    "target_native_return": "NOT_OBSERVED_DYNAMIC",
+    "target_caller_diff_bytes": "NOT_OBSERVED_DYNAMIC",
+    "rc06_entry": "NOT_OBSERVED_DYNAMIC",
+    "post_seam_behavior": "NOT_OBSERVED_DYNAMIC"
+  },
+  "instrument_revision_prepared": {
+    "path": "runs/EPT-PHASE3-IO-CDB-CALLER-SEEDED-20260929-01/control/caller_seeded_run.py",
+    "change": "replace generic DeviceIoControl IOCTL match with hardware breakpoint at 0x14078ee73 and strict 284-byte in/out shape; after RC00_RET_DONE arm RC06 and caller observations",
+    "status": "prepared_not_executed",
+    "evidence_basis": "artifacts/evidence/C204_rc00_contract_and_request_selfconsistency_20260926.md"
+  },
+  "current_blocker": {
+    "kind": "outer_native_card_contract_conflict",
+    "outer_contract": "CLI accepts 31..36 ASCII alphanumeric values with C prefix; current controlled run uses CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "native_contract": "C204 documents the Hardware child key parser as 10..29 hexadecimal characters",
+    "implication": "The controlled C-card can reach the outer download/deploy path but cannot be assumed to reach native key derivation/comm_init/RC00. A target callsite arm without a native-valid child input would be another low-information run.",
+    "status": "unresolved",
+    "required_evidence_before_new_target_run": "A supported outer/manual path or explicitly marked reversible bridge that produces a native-valid child key, with the child command line recorded in the same run."
+  }
+}
+

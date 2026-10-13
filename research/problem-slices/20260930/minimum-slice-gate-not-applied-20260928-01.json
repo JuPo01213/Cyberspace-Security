@@ -1,0 +1,32 @@
+{
+  "slice_id": "minimum-slice-gate-not-applied-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02",
+  "review_status": "confirmed",
+  "what_happened": "在已经发现 CAPEsolo natural job 的编码失败、官方参考与 Skill reference 来源混淆、以及 natural job 结果服务器不完整等问题后，没有立即按项目指令写入最小问题切片；我先继续工具核对、运行推进和解释，之后才补写切片。",
+  "observed": [
+    "项目 AGENTS.md 已明确要求对可避免执行错误保留‘发生了什么/为什么/在哪里优化’的切片。",
+    "切片在后续才被补写，说明指令内容存在但没有在错误发生点成为执行门禁。",
+    "这次延迟没有改变样本证据范围，但增加了错误遗漏、重复动作和用户无法及时审查的风险。"
+  ],
+  "expected_behavior": "每次识别可避免错误后，先在当前 run.json 追加事件并创建隔离切片，再进行下一项有副作用操作或继续扩大分析；不能把‘之后会补文档’当作满足指令。",
+  "why": {
+    "confirmed_cause": "把最小问题切片错误地当成分析结束后的总结产物，而不是错误处理事务的第一步；工作节奏优先于项目已声明的记录门禁。",
+    "contributing_gap": "原指令要求保留切片，但没有明确写出‘切片未完成不得继续副作用操作’的时序约束；代理也没有在每次 failure routing 后执行一个切片存在性检查。"
+  },
+  "where_to_optimize": {
+    "project_instruction": "AGENTS.md 增加即时门禁：先写 run 事件和隔离切片，再重试、修复、重启或外部写入；延迟本身必须另记切片。",
+    "run_execution": "将 failure classification、slice write、原始证据路径记录作为同一批次完成，再决定是否修复或继续；当前 run 的后续动作必须引用已存在的 slice_id。",
+    "review": "交付前检查每个 INFRA_FAILURE、INSTRUMENTATION_INTERFERENCE、UNKNOWN 或证据冲突事件是否有对应切片，而不是只检查文件是否最终存在。",
+    "generic_skill": "暂不修改通用 Skill；这是当前执行者没有落实项目指令的协作纪律问题。"
+  },
+  "minimum_validation": "从下一次故障开始，任何会改变 Guest、runtime、job、文件或外部状态的动作前，都能在当前 run.json 和 artifacts/problem-slices/找到对应 slice_id、原始证据位置、分类和回滚/验证标准。",
+  "evidence": [
+    "<REPO>/AGENTS.md",
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/run.json",
+    "<REPO>/artifacts/problem-slices/capesolo-utf8-process-enumeration-20260928-01.json",
+    "<REPO>/artifacts/problem-slices/reference-provenance-misclassified-20260928-01.json",
+    "<REPO>/artifacts/problem-slices/capesolo-natural-resultserver-incomplete-20260928-01.json"
+  ],
+  "secrets_redacted": true
+}
+

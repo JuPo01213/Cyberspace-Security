@@ -1,0 +1,40 @@
+{
+  "slice_id": "capesolo-interactive-shared-dll-permission-20260928-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-BATCH-20260928-01",
+  "review_status": "corrected_competing_runtime_failures",
+  "what_happened": "同一 MCP session 的 interactive job 在两类不同的 runtime 故障上失败：一轮在 analyzer.run 复制 monitor DLL 阶段立即报 PermissionError；另一轮目标已经启动，但读取 analysis_id=2 对应的旧取消标记后记录了 `Analysis termination requested by user` 并结束。两类故障都发生在目标级闭环完成之前。",
+  "observed": [
+    "job status 为 failed，started_at 与 ended_at 基本相同，traceback 位于 CAPEsolo analyzer.py:540 copy(source_path,dest_name)。",
+    "dbg_wait_break 同 session 返回 No interactive debug session is active；dbg_status active=false。",
+    "错误指向共享 analysis 根目录的 dll 写入，不是样本业务结果或 target seam。",
+    "当前 Guest 仍有 `C:\\Users\\flare\\AppData\\Local\\Temp\\2b42b81577ab55cd2bcf2ac87b889bbb`；该空目录创建于 2026-09-28T12:45:12.7736193Z，正好对应 analysis_id=2 的 `md5(\"cape-2\")`。CAPEsolo 当前源码的 cancel() 会创建这个目录，analyzer 会把目录存在解释为用户终止。",
+    "旧标记存在时，2026-09-28 23:28:35 的 analysis.log 在恢复 PID 3788 后记录 `Analysis termination requested by user`；因此它足以解释该 interactive session 为什么提前结束。",
+    "终止 PID 3788 后，`oTwCoWEe.dll` 仍不能以写方式打开；当前进程枚举与 handle 查询没有证明唯一持有者。因此 DLL 锁的同进程随机名解释仍是候选假设，不是已确认的唯一根因。"
+  ],
+  "expected_behavior": "CAPEsolo 在提交 interactive job 前应能在其 analysis/dll 运行时目录写入当前 monitor DLL；若共享目录残留/权限异常，应在提交前被识别并修复或切换到可写的隔离运行目录。",
+  "impact": "阻断了同一 session consumer 的验证；没有重复提交、没有样本执行、没有 debugger 现场。",
+  "why": {
+    "confirmed_cause": "旧取消标记目录是 job 提前终止的已确认直接原因：当前 CAPEsolo 源码把 cancel() 映射为 `%TMP%\\<md5(cape-analysis_id)>` 目录，analysis_loop 每轮检查该目录；旧目录在后续 job 之前持续存在，日志也记录了 termination requested。",
+    "candidate_explanations": [
+      "oTwCoWEe.dll 的持有者尚未由当前枚举确定；同进程随机名复用可能参与 DLL PermissionError，但当前证据不足以确认",
+      "CAPEsolo analyzer 的相对 dll 目标路径解析到安装工作目录，目标目录权限/当前工作目录不稳定",
+      "宿主/Guest 中仍有未由当前进程枚举到的持有者延长 DLL 句柄",
+      "自动 supervisor 可能在生命周期回收时重新拉起同一运行时，导致进程边界或清理状态与预期不一致"
+    ],
+    "not_a_sample_result": "CAPEsolo 在目标启动前失败，不能说明授权、联网校验、target_native_return 或 caller 写回。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "下一次提交前先保留并移出 analysis_id=2 的精确取消标记，确认该路径不存在；同时重新检查当前 DLL 写锁。是否重启 MCP 进程由新的句柄/进程证据决定，不能由这条切片预先规定。",
+    "project_instruction": "共享 analysis 根目录写入失败、旧取消标记或 interactive session 提前结束，均先分类为 runtime/infrastructure failure；不得重复同一 job，也不得把 interactive wait 结果解释成业务阴性。",
+    "generic_skill": "暂不修改；当前证据属于本机 CAPEsolo analysis workspace 状态。"
+  },
+  "minimum_validation": "在新的运行记录中保存取消标记与 DLL 锁状态；将空的旧取消标记移到可恢复归档后确认原路径不存在；再提交一次 interactive job，分别记录其是否越过 DLL 复制、是否保持调试会话，以及新的失败证据。",
+  "evidence": [
+    "runs/EPT-PHASE3-INTERACTIVE-BATCH-20260928-01/control/batch-summary.json",
+    "runs/EPT-PHASE3-INTERACTIVE-BATCH-20260928-01/control/job-status-01.json",
+    "runs/EPT-PHASE3-INTERACTIVE-BATCH-20260928-01/control/batch-wait-break.json",
+    "runs/EPT-PHASE3-INTERACTIVE-ENTRY-INSPECT-20260928-01/control/termination-marker-diagnosis.json"
+  ],
+  "secrets_redacted": true
+}
+

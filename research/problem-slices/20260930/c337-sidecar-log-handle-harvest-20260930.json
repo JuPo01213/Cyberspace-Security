@@ -1,0 +1,21 @@
+{
+  "slice_id": "c337-sidecar-log-handle-harvest-20260930",
+  "category": "run_artifact_harvest",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-POSTWRITE-20260930-01",
+  "observed": "The first harvest could not read sidecar.stdout.txt and sidecar.stderr.txt because the run-owned sidecar still held both handles after sample cleanup.",
+  "process": {
+    "pid": 1740,
+    "name": "python.exe",
+    "command_line": "C:\\Python312\\python.exe -u sidecar_collect.py",
+    "identity_check": "exact PID and command-line match before stop"
+  },
+  "effect": "First harvest manifest had two mismatches; sample, target, observer and cleanup evidence were already complete.",
+  "action": "After events.final.ndjson, zero target processes/listeners and verify_cleanup 86/86 were confirmed, the exact sidecar PID 1740 was stopped and the harvest was retried.",
+  "result": "Second harvest manifest has 43/43 matching entries; no sample or component bytes changed.",
+  "evidence": [
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-POSTWRITE-20260930-01/harvest/harvest-manifest.json",
+    "runs/EPT-PHASE3-RESPONSE-CONSUMER-STATE-DISPATCH-POSTWRITE-20260930-01/harvest/work/verify_cleanup.json"
+  ],
+  "rollback": "No sample or project source rollback is required; the sidecar was already beyond its evidence window and was the only process stopped."
+}
+

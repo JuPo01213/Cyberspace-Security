@@ -42,7 +42,7 @@ runtime / tool capability
 本机绑定与动态运行事实
 ```
 
-Host 不应因为 Guest 回滚而丢失长期状态；Guest 不应为了方便而承载整个 Agent 工作区。
+Host 持有长期项目、任务和最终证据权威；Guest 可以承载工具、runtime、Agent 的临时工作区和本地状态，但必须有任务归属、回滚和收割策略。
 
 依赖方向不能反转：低层平台、已安装工具、现成 VM 和单次任务事实都不能定义高层语义。通用 Skill 保存能力契约和路由；部署环境保存机器、地址、凭据和 provider 绑定；项目保存任务特有规则；run record 保存动态事实。
 
@@ -50,5 +50,6 @@ Host 不应因为 Guest 回滚而丢失长期状态；Guest 不应为了方便�
 
 如果成熟 runtime 已经提供 task、completion、artifact 或 retry，再维护一套 STATE、runner、done marker、轮询协议只会制造双重权威。checkpoint / restore 只有在 runtime 明确声明并验证由其管理时才归 runtime；否则属于基础设施后端。
 
-只有成熟 runtime 明确不覆盖的动作才适合做薄适配。
+只有成熟 runtime 明确不覆盖、且当前任务确实需要的动作才适合做薄适配。通信交接和 Guest Agent 监督可以有协调状态，但不能产生第二个任务结果权威。建设和 Agent 协作的详细契约分别见 `tool-building.md` 与 `agent-collaboration.md`。
+
 

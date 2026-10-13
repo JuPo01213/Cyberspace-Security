@@ -1,0 +1,28 @@
+{
+  "slice_id": "host-tcp-query-parameter-invalid-20260928-01",
+  "source_run_id": "EPT-PHASE3-DIRECT-CHILD-INVENTORY-20260928-01",
+  "review_status": "candidate",
+  "what_happened": "恢复对账阶段读取 FLARE-Analysis 的 Host 状态后，附加的 `Get-NetTCPConnection -ComputerName 172.31.250.2 -RemotePort 8000` 查询因该 cmdlet 不支持 `-ComputerName` 参数而失败。VM 状态读取成功；没有建立 Guest 会话、提交 MCP 调用或改变 Guest 状态。",
+  "observed": [
+    "Get-VM 返回 FLARE-Analysis=Running、CPUUsage=0、MemoryAssigned=4 GiB。",
+    "PowerShell 报告参数绑定错误：Get-NetTCPConnection 没有名为 ComputerName 的参数。"
+  ],
+  "expected_behavior": "端口连通性检查应使用支持远端目标的 Test-NetConnection，或先在目标 Guest 内执行单一有界探针；本机连接表 cmdlet 不应被当作远程查询接口。",
+  "impact": "只阻断了当前恢复对账中的一个只读端口检查；不影响 VM、样本、MCP 或已收割证据。",
+  "why": {
+    "confirmed_cause": "把本机连接表 cmdlet 与远程连通性 cmdlet 的参数语义混淆，执行前没有读取本地帮助或验证参数集合。",
+    "not_a_sample_conclusion": "该错误不能说明 CAPEsolo、Hyper-V 通信或样本状态异常。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "使用 Test-NetConnection -ComputerName/-Port 做 Host 到 Guest 的端口探针；Get-NetTCPConnection 只用于本机并先按 OwningProcess/LocalPort 查询。",
+    "project_instruction": "保留为执行切片；涉及命令参数时先读取本地帮助，避免把 cmdlet 适用范围从本机扩展到远端。",
+    "generic_skill": "不修改；这是单次 Host 查询参数错误。"
+  },
+  "minimum_validation": "运行 Test-NetConnection -ComputerName 172.31.250.2 -Port 8000 -InformationLevel Quiet，并把结果仅标为 Host TCP 探针；随后再按 MCP consumer 的持久化结果判断 endpoint 是否可用。",
+  "evidence": [
+    "当前执行输出：Get-NetTCPConnection 参数绑定错误",
+    "runs/EPT-PHASE3-DIRECT-CHILD-INVENTORY-20260928-01/run.json"
+  ],
+  "secrets_redacted": true
+}
+

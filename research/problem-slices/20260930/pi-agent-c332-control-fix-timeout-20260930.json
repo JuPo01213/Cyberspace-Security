@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "problem_id": "pi-agent-c332-control-fix-timeout-20260930",
+  "run_id": "EPT-PI-C332-TRANSFORM-CONTROL-FIX-20260930-01",
+  "class": "agent_timeout_with_harvested_repair",
+  "delivery_complete": true,
+  "sample_executed": false,
+  "sample_modified": false,
+  "host_validation": "artifacts\\evidence\\C332_agent_fix_validation_20260930.json",
+  "agent_raw_status": "PI_CHILD_TIMEOUT_OR_STALL",
+  "next_action": "Use the harvested fixed runner in the next isolated Host sample run; this is a control-path repair, not a target-level result."
+}
+

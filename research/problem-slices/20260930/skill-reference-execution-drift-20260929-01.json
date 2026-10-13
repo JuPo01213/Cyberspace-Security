@@ -1,0 +1,15 @@
+{
+  "slice_id": "skill-reference-execution-drift-20260929-01",
+  "source_run_id": "EPT-PHASE3-INTERACTIVE-ENTRY-INSPECT-20260928-01",
+  "status": "correction_in_progress",
+  "what_happened": "用户多次明确技能是待实践检验的参考，代理仍说按技能修复，并未立即消除项目文件中强制套用技能流程的冲突。",
+  "expected": "目标和真实证据决定下一动作；技能提供抽象经验与候选方法，其步骤不能仅凭技能推荐成为前置任务。",
+  "why": "执行者未优先落实最新要求；AGENTS 同时保留参考语义、高层方向和约束、必须使用技能、固定 canary 序列。旧 goal 也仍含高层指导措辞。冲突是风险来源，不免除执行者责任。",
+  "impact": "可能反复扩建或验收底座而不推进真实样本；本片不声称它导致了取消标记或 DLL 锁。",
+  "evidence": ["AGENTS.md:目标优先与技能反馈闭环", "AGENTS.md:Windows Guest 工作流门禁", "当前会话用户关于技能只能作为参考及为何再次出错的原始纠正"],
+  "where_to_optimize": "只统一项目 AGENTS 的技能权威和增量验证语义；不改通用 Skill，不放宽样本身份、隔离、凭据、证据和清理要求。",
+  "minimum_validation": "diff 显示强制套用技能与固定重复 canary 条款已被任务适用性和证据复用条件替换；下一运行明确具体未知和最低充分证据。",
+  "rollback": "按本次精确 diff 撤销，仅限本次修改，不覆盖其他未提交工作。",
+  "remaining_risks": ["文字统一不能证明后续执行不会再次漂移", "goal 工具不支持修改进行中目标正文；旧目标措辞须服从用户最新要求，不伪造完成再重建 goal"]
+}
+

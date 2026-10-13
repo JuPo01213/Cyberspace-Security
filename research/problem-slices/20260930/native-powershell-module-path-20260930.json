@@ -1,0 +1,13 @@
+{
+  "slice_id": "native-powershell-module-path-20260930",
+  "run_id": "EPT-PHASE3-STATIC-MEASUREMENT-AUDIT-20260930-01",
+  "observation": "Bounded diagnostic exited before any Guest command; ConvertTo-SecureString could not autoload Microsoft.PowerShell.Security",
+  "raw_error": "runs/EPT-PHASE3-STATIC-MEASUREMENT-AUDIT-20260930-01/control/known-output.stderr.txt",
+  "producer": "native Windows PowerShell 5.1 child launched from pwsh",
+  "secret_format": "DPAPI protected external string, ASCII",
+  "correct_reader": "Windows PowerShell Security module from native PSHOME then ConvertTo-SecureString",
+  "scope": "host process environment/module lookup",
+  "candidate_cause": "inherited PowerShell7 module paths are incompatible with native Windows PowerShell",
+  "minimal_fix": "explicit native Security module import in this diagnostic only",
+  "validation": "Guest file read returns under30s; no secret values printed"
+}

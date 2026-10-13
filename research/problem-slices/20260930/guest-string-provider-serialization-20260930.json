@@ -1,0 +1,12 @@
+{
+  "slice_id": "guest-string-provider-serialization-20260930",
+  "run_id": "EPT-PHASE3-STATIC-MEASUREMENT-AUDIT-20260930-01",
+  "status": "CONFIRMED_SERIALIZATION_ERROR",
+  "observation": "Guest audit completed, output exists and no Python process remains. A 10455-byte Get-Content -Raw object placed inside an ordered dictionary was expanded by ConvertTo-Json into provider/type/drive metadata and more than one megabyte output; preceding observation timeouts did not indicate static analysis failure.",
+  "raw_artifact": "runs/EPT-PHASE3-STATIC-MEASUREMENT-AUDIT-20260930-01/control/known-output-process.stdout.txt",
+  "root_cause": "Get-Content returns a decorated string with FileSystem provider properties. Nested JSON serialization without explicit [string] can expand those properties.",
+  "minimal_fix": "Cast file text to [string] before placing it inside serialized objects; return compact hashes and byte lengths whenever full content is unnecessary.",
+  "verification": "Extracted output.value from original response as UTF-8 guest-audit.json; Guest-native Capstone audit confirms both snapshot sites follow the same call.",
+  "boundary": "Original sample and raw observer untouched; this repairs Host/Guest artifact serialization, not sample behavior."
+}
+

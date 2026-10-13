@@ -1,0 +1,21 @@
+{
+  "slice_id": "pi-flare-runner-detached-no-output-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-SMOKE-20260929-01",
+  "status": "confirmed_runner_observation_gap",
+  "what_happened": "Host controller通过 PowerShell Direct 启动 Guest PID 2468 并返回 STARTED，但首次收割时 Guest run 只有 prompt.txt；PID、子进程、status.json、output.txt 和 session JSONL 均不存在。",
+  "expected": "启动动作后立即有 RUNNING status；若 Pi/PowerShell 参数或模型网络失败，必须写出 FAILED 分类和 stderr/output。",
+  "impact": "Host–Guest 启动调用被误认为可观测任务，当前 smoke 结果不能分类为模型失败或 Pi 失败。",
+  "why": {
+    "confirmed_gap": "task runner 只在 Pi 子进程结束后写 status，没有启动阶段 durable marker；Host Start-Process 返回不等于 Guest task 已运行。",
+    "unresolved": "Guest task 为什么立即退出尚未由 stderr 区分，可能是参数传递、PowerShell 子进程启动或 Pi 入口错误。"
+  },
+  "where_to_optimize": {
+    "runner_script": "task runner 启动后立即落盘 RUNNING 状态，并把自身 stdout/stderr 重定向到 run 目录；Host start record 增加 Guest postcondition 检查。",
+    "project_layer": "只有 Guest status/runner process/durable output 至少一项可读时才把远程任务标为 STARTED；否则分类为 LAUNCH_UNKNOWN。",
+    "generic_skill": "不修改；这是当前 Pi Host–Guest 适配器的观测缺口。"
+  },
+  "minimum_validation": "同一无害 prompt 的新 run 中，启动后能读取 RUNNING 或 terminal status，并收割 output/error；不重启样本、不改变网络。",
+  "rollback": "仅清理由本 run 创建的 `C:\\EPT\\pi-flare\\runs\\<RUN_ID>` 文件。",
+  "secrets_redacted": true
+}
+

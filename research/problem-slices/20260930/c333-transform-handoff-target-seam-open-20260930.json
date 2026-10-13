@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "problem_id": "c333-transform-handoff-target-seam-open-20260930",
+  "run_id": "EPT-PHASE3-RESPONSE-CONSUMER-TRANSFORM-REPAIRED-20260930-01",
+  "class": "business_path_not_closed",
+  "observed": "transform write and post-transform call return rax=1 observed; final target seam and RC06-after absent",
+  "evidence": "artifacts\\evidence\\C333_repaired_transform_observed_20260930.json",
+  "not_natural_authorization": true,
+  "next_action": "Trace the caller or next state after 0x14004c100 in a new narrow same-response run."
+}
+

@@ -1,0 +1,29 @@
+{
+  "slice_id": "phase3-outer-card-selection-20260929-01",
+  "created_utc": "2026-09-29T01:38:00Z",
+  "single_bottleneck": "The prior current-outer adapter run used a syntactically accepted format-only card that was not the already verified outer-valid controlled input, so its zero-request result cannot distinguish an early card/branch sink from the external I/O boundary.",
+  "reproduction": {
+    "run_id": "EPT-PHASE3-AGENT-CONTINUE-IO-20260929-01",
+    "card_used": "R6TESTCARDKEY0123456789ABCDEFGHIJ",
+    "adapter_get_count": 0,
+    "matched_process_snapshots": 0,
+    "target_fields": "NOT_OBSERVED_DYNAMIC"
+  },
+  "contrasting_observation": {
+    "run_id": "EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01",
+    "card_used": "CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "observed_external_get": "xz.hwid001.com",
+    "observed_child": "real Hardware.exe child; target seam still unobserved"
+  },
+  "expected": "A new current-outer run using the verified C-prefixed format-only card records the sample log sink, controlled download request, child command line, and any 1029 network boundary in one run.",
+  "impact": "The earlier no-request run remains an unresolved branch observation, not an external-I/O negative or sample-business result.",
+  "minimum_verifiable_success": "With the verified C card, capture either a controlled xz GET and real child lineage or a durable sample-owned early-exit reason; do not infer from an empty stdout file.",
+  "minimal_change": "Change only the controlled input value and add sample-owned log/process capture; reuse the existing adapter, hashes, cleanup, and current outer entry.",
+  "rollback": "Stop only this run's process tree, restore hosts and remove any run-staged Desktop/System32 component, then verify zero residue and unchanged sample hash.",
+  "evidence_paths": [
+    "runs/EPT-PHASE3-AGENT-CONTINUE-IO-20260929-01/harvest/work/io-decision.json",
+    "runs/EPT-PHASE3-IO-CONTROLLED-HTTP-20260929-01/run.json",
+    "runs/EPT-PHASE3-IO-CDB-OUTERVALID-20260929-01/run.json"
+  ]
+}
+

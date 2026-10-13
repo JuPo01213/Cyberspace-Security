@@ -1,0 +1,22 @@
+{
+  "slice_id": "capesolo-shared-analysis-dir-contamination-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02",
+  "review_status": "candidate",
+  "what_happened": "官方 CAPEsolo natural job 已启动当前 EPT 运行体，但 report/结果目录混入上一轮 PID、时间窗和行为记录，且 ResultServer complete=0/incomplete=1；当前 report 不能作为单轮干净证据。",
+  "why": {
+    "confirmed_cause": "多个 job 复用同一 analysis_dir、analysis.log 和 report 输出位置，未建立可证明的 job 级隔离；收割不完整进一步放大了污染。",
+    "guidance_gap": "Skill reference 没有覆盖共享 analysis_dir 的跨 run 污染检查；项目收割门也没有要求按时间窗/PID/target_path 做归因。"
+  },
+  "where_to_optimize": {
+    "runtime_profile": "优先使用官方支持的独立 analysis_dir/清理机制；若不可用，增加项目层基线和收割过滤适配，不拼接混合行为。",
+    "project_instruction": "把 report 时间窗、target PID/PPID、ResultServer transfer completeness 和 artifact 归属加入 natural precursor 验收。",
+    "generic_skill": "暂不修改；需要先确认是否为 CAPEsolo 版本/配置特例。"
+  },
+  "minimum_validation": "下一次自然运行的 report、log 和 artifacts 必须能够证明只属于当前 job/run，且 ResultServer complete；否则不进入目标级调试。",
+  "evidence": [
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/harvest/report.json",
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/control/job-results-01.json"
+  ],
+  "secrets_redacted": true
+}
+

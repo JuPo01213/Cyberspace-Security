@@ -1,0 +1,44 @@
+{
+  "slice_id": "pi-native-agent-prompt-truncation-20260929-01",
+  "source_run_id": "EPT-PI-FLARE-MIMO-20260929-07",
+  "scope": "guest_agent_prompt_delivery",
+  "review_status": "candidate",
+  "what_happened": "run-05、run-06 和 run-07 的 prompt 文件都是完整多行任务，但 Pi session 中真正的初始 role=user 文本分别只到达首段；run-07 为 127 字符/233 字节且无换行，而 prompt.txt 为 1005 字符/1531 字节。run-07 的 Agent 随后通过 read 工具自行读取 prompt.txt，才恢复了完整任务并生成报告；这不能算作传递层完整交付。",
+  "observed": [
+    "run-05 prompt.txt=884 字符/1770 字节，session user 文本=108 字符/236 字节，delivered 等于第一行，newline=0。",
+    "run-06 prompt.txt=1286 字节，session user 文本=137 字符/277 字节，newline=0；随后 Agent 发出未受约束的全盘搜索 toolCall。",
+    "run-07 初始 role=user 在 session 第 5 行只有 127 字符/233 字节，session_user_equals_first=true，session_user_equals_full=false。",
+    "run-07 的 assistant toolCall call_5314fe2e14ab4fe4b6b7ccbb 读取了 C:/EPT/pi-flare/runs/EPT-PI-FLARE-MIMO-20260929-07/prompt.txt；对应 toolResult 才包含完整多段任务。",
+    "Agent 最终在 Guest workspace 写出了 agent-report.md，并在报告中把自行读取文件误判为 prompt 已完整送达。"
+  ],
+  "expected_behavior": "传递给 Pi 的 prompt 字节内容应与 Host 保存的 prompt 文件一致；不一致时在启动后的 session/状态中显式分类为 delivery_truncated，并禁止把该运行当作有约束的 Agent 结果。",
+  "impact": "模型可能收到完整任务的第一行但丢失安全边界、报告路径和任务目标，造成无任务发散、违规探索、模型调用和人工排障浪费；run-05/06 的模型/行为比较因此失真。",
+  "why": {
+    "confirmed_cause": "问题发生在 runner 的多行 prompt 到原生 Pi 调用的传参层；即使当前 PowerShell 使用 -Raw，经过 pi.cmd/cmd.exe 的 argv 仍把换行前的首段作为唯一初始 user 文本。证据证明是传参截断，不是 Pi 模型请求本身截断。",
+    "candidate_mechanisms": [
+      "旧版本可能使用未加 -Raw 的 Get-Content，把多行内容作为 PowerShell 字符串数组传成多个 argv。",
+      "旧 runner 经过 pi.cmd/cmd.exe shim 传递多行 argv 也可能在换行处分割。"
+    ],
+    "remaining_unknown": "旧版本没有按 run 保存脚本快照；当前证据已排除“只是不加 -Raw”这一充分修复，但还需要查明 pi.cmd shim/CLI 是否支持 stdin 或 prompt-file，才能选择稳定的文件/标准输入入口。",
+    "not_a_model_result": "run-05/06 的 prompt 丢失不能说明模型不会遵守任务，也不能说明样本或 Guest 工具失败。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "启动前保存 runner 快照和 prompt SHA-256；启动后从 Pi session 读取初始 role=user 文本长度/前缀并与 prompt 文件比较，delivery 不一致即停止该 Agent 任务并先收割 session。",
+    "project_instruction": "把 prompt 完整性作为 Agent 运行前置证据；prompt.txt 存在、Host/Guest 哈希一致或 Agent 报告声称完整，都不等于已送达。必须记录 delivered_bytes、prompt_bytes、newline_count、comparison_result，并区分 Agent 自行 read prompt 后的恢复。",
+    "runner": "不要继续把多行 prompt 当作 pi.cmd 的单个 argv；查明官方 CLI 的 stdin/prompt-file 入口，优先改为文件或标准输入，并保留当前 argv 路径作为失败对照。",
+    "generic_skill": "暂不修改通用 Skill；这是当前 Guest runner 的传参缺陷，先在 EPT 项目适配层验证跨运行可重复性。"
+  },
+  "minimal_change": "不改变 Pi、模型或网络路径；先在本地 Guest 对官方 CLI 入口做只读帮助核对，随后只替换 prompt 传递通道，并保留 runner 快照、prompt/delivery 字节断言和失败前 session 收割。",
+  "rollback": "回滚新增断言/快照逻辑即可；run-05/06 原始 session、prompt 和输出永久保留为对照，不能回滚历史事实。",
+  "minimum_validation": "新 Agent 运行中，Host prompt SHA-256 与 Guest prompt SHA-256 一致，Pi session 的初始 role=user 文本完整等于 prompt，delivered_bytes==prompt_bytes 且 newline_count 与文件一致；不得用 Agent 后续 read prompt 的 toolResult 补足 delivery 结论。",
+  "evidence": [
+    "runs/EPT-PI-FLARE-MIMO-20260929-05/harvest/prompt.txt",
+    "runs/EPT-PI-FLARE-MIMO-20260929-05/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/harvest/prompt.txt",
+    "runs/EPT-PI-FLARE-MIMO-20260929-06/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/session.jsonl",
+    "runs/EPT-PI-FLARE-MIMO-20260929-07/harvest/work/agent-report.md"
+  ],
+  "secrets_redacted": true
+}
+

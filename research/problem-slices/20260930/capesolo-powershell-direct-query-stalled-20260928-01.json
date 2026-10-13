@@ -1,0 +1,39 @@
+{
+  "slice_id": "capesolo-powershell-direct-query-stalled-20260928-01",
+  "source_run_id": "EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02",
+  "review_status": "candidate",
+  "what_happened": "在上一轮 natural job 已结束、Guest 仍显示 Running 后，宿主通过 Hyper-V PowerShell Direct 建立查询会话；包含 whoami、监听端口和目标进程的最小只读查询在约 30 秒内无返回，继续等待后被宿主侧中止。Host 侧 Get-VM 仍显示 FLARE-Analysis 正常运行，但 Guest Services Integration Service 当前为 Disabled。",
+  "observed": [
+    "New-PSSession -VMName FLARE-Analysis 建立后，Invoke-Command 未在预期窗口返回可读结果。",
+    "第二次缩减为 whoami、Get-NetTCPConnection -LocalPort 8000 和 Get-Process 的查询仍无返回；未取得 Guest 内部异常或样本进程结论。",
+    "Host Get-VM 显示 VM Running/正常运行，MemoryAssigned=4 GiB；Get-VMIntegrationService 显示 Guest Services Interface Disabled，其余关键集成服务为 Enabled/正常。",
+    "Host 进程清单发现两个仍存活的 pwsh.exe（PID 16112、17084），命令行分别是此前卡住的 Guest mcp_server.py/analyzer.py 读取会话；它们没有随外层诊断调用结束而被回收。",
+    "清理这两个已确认属于本轮的孤儿进程后，最小 nonce PowerShell Direct 探针在约 2 秒内返回并确认 Guest 用户/主机身份；但包含 Get-ScheduledTask/Get-Process 的组合查询再次无返回，说明复杂枚举方法本身仍可能阻塞，不能当作控制面整体失效。"
+  ],
+  "expected_behavior": "在没有活动样本任务的状态下，低成本 Guest 只读查询应在明确的短时限内返回；若 PowerShell Direct 不可用，应切换到已验证的控制入口并保留可解释的通信失败证据。",
+  "why": {
+    "confirmed_cause": null,
+    "candidate_explanations": [
+      "Guest 内部 PowerShell/WMI 或 Hyper-V VMBus 控制面暂时无响应",
+      "Guest Services 配置或 PowerShell Direct 会话状态不适配当前查询路径",
+      "查询命令中的进程/网络枚举触发了 Guest 内部阻塞",
+      "宿主侧未回收的 PowerShell Direct 子进程继续占用或争用 Guest runspace 或 VMBus 会话资源"
+    ],
+    "not_a_sample_conclusion": "该观察没有证明样本失败、没有证明 CAPEsolo 失败，也没有证明 VM 需要重启。"
+  },
+  "where_to_optimize": {
+    "current_run_adapter": "为 Guest 控制查询设置硬时限，先用最小静态入口确认会话可用，再执行进程、网络或文件枚举；超时后保存原始状态并切换已验证入口。",
+    "project_instruction": "把控制面查询超时与样本业务结果分离；同一通信方法无新信息时不得机械重试或直接重启 VM。",
+    "capability_registry": "补充 PowerShell Direct 的当前验证状态和 Guest Services 依赖，避免把历史可用性当作本轮保证。",
+    "generic_skill": "暂不修改通用 Skill；当前只有单台 VM、单次查询异常，尚不足以证明通用工作流缺陷。"
+  },
+  "minimum_validation": "只清理已确认属于本轮诊断的 PID 16112、17084 后，用一个有界的无副作用查询确认 PowerShell Direct 是否可返回；复杂枚举必须拆成单一、有界、可回收的调用；若仍失败，使用已存在的 CAPEsolo/Hyper-V 控制证据定位通信层，而不提交新样本 job。",
+  "evidence": [
+    "<REPO>/runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/control/powershell-direct-recovery-01.json",
+    "Host Get-VM/Get-VMIntegrationService output captured in the current execution turn",
+    "runs/EPT-PHASE3-NATURAL-CHILD-DISCOVERY-20260928-02/run.json",
+    "artifacts/problem-slices/capesolo-natural-resultserver-incomplete-20260928-01.json"
+  ],
+  "secrets_redacted": true
+}
+

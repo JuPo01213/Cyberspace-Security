@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "slice_id": "phase3-native-card-bridge-run04-no-rc00-after-echo-20260929-01",
+  "status": "OPEN_PROTOCOL_RESPONSE_UNKNOWN",
+  "run": "EPT-PHASE3-AGENT-NATIVE-CARD-BRIDGE-20260929-04",
+  "observed": {
+    "native_card_bridge_applied": true,
+    "child_command_line": "C:\\Windows\\System32\\Hardware.exe -k 1234567890 -n 0 -m 1",
+    "l1029_frame_total": 107,
+    "l1029_body_bytes": 103,
+    "l1029_body_sha256": "68DCDB28A250484EEBFDB56E237F7A80189067FBE3FAFBBD6FF09024C706C18B",
+    "bounded_echo": true,
+    "observer_attached_and_removed": true,
+    "observer_markers": {"rc00_candidate": false, "rc00_target": false, "rc06_entry": false, "rc06_after": false},
+    "target_fields": {"target_native_return": "NOT_OBSERVED_DYNAMIC", "target_caller_diff_bytes": "NOT_OBSERVED_DYNAMIC"}
+  },
+  "interpretation": "The bridge and communication path are now closed through child release and 1029 framing, but the echoed request was not accepted as a valid response; the child did not reach the RC00 observer address during the bounded observation window.",
+  "next_minimal_information_point": "Use the existing C191/Capture evidence to observe recv-side response consumption and test a small, explicitly recorded response-format variant; do not repeat the same echo or claim target progress.",
+  "forbidden_inference": "No target seam, natural authorization, or RC06/post-seam behavior can be inferred from native_card_bridge_applied or the 1029 frame alone."
+}
+
