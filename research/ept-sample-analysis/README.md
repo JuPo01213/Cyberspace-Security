@@ -2,7 +2,7 @@
 
 本目录是一个用于**授权安全研究、样本逆向分析和分析方法沉淀**的工作仓库。它既保存受控分析对象和逆向过程，也保存证据、阶段结论、失败记录与复盘材料，目标是让一次分析能够被复核、继续推进，并逐步沉淀为可复用的工作方法。
 
-本仓库只用于获得授权的研究环境和靶场，不面向真实生产系统、真实 C2 或未授权目标。
+本仓库内的研究均已取得授权；仓库只用于已获授权的研究环境和靶场，不面向真实生产系统、真实 C2 或未授权目标。
 
 ## 仓库承担的三类工作
 
@@ -90,6 +90,6 @@ README 只承担稳定的仓库入口说明；当前阶段、PID、时间、返�
 
 当前公开的脱敏条目位于：
 
-[Cyberspace-Security / research/ept-sample-analysis](https://github.com/JuPo01213/Cyberspace-Security/tree/jupo01213-upload-course-sample/research/ept-sample-analysis)
+[Security-Research / research/ept-sample-analysis](https://github.com/JuPo01213/Security-Research/tree/jupo01213-upload-course-sample/research/ept-sample-analysis)
 
 公开条目的收录、排除、脱敏和证据诚实度说明见 [PUBLIC_DELIVERY.md](PUBLIC_DELIVERY.md)。
