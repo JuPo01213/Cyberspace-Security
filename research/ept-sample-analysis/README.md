@@ -90,6 +90,6 @@ README 只承担稳定的仓库入口说明；当前阶段、PID、时间、返�
 
 当前公开的脱敏条目位于：
 
-[Cyberspace-Security / research/ept-sample-analysis](https://github.com/JuPo01213/Cyberspace-Security/tree/jupo01213-upload-course-sample/research/ept-sample-analysis)
+[Security-Research / research/ept-sample-analysis](https://github.com/JuPo01213/Security-Research/tree/jupo01213-upload-course-sample/research/ept-sample-analysis)
 
 公开条目的收录、排除、脱敏和证据诚实度说明见 [PUBLIC_DELIVERY.md](PUBLIC_DELIVERY.md)。
