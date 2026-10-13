@@ -1,0 +1,12 @@
+{
+  "schema": "prompt-lab/transport-v1",
+  "protocol": "openai_chat",
+  "url": "http://<REDACTED_LOOPBACK_ADDRESS>:8000/v1/chat/completions",
+  "model": "MODEL_NAME",
+  "api_key_env": "MODEL_API_KEY",
+  "parameters": {
+    "temperature": 0
+  },
+  "timeout_seconds": 60,
+  "max_response_bytes": 4194304
+}
